@@ -1,0 +1,31 @@
+{
+  "extends": "@react-native-community",
+  "plugins": ["import", "prettier"],
+  "rules": {
+    "prettier/prettier": "off",
+    "quotes": [2, "double", { "avoidEscape": true }],
+    "spaced-comment": "off",
+    "no-console": "warn",
+    "consistent-return": "off",
+    "func-names": "off",
+    "object-shorthand": "off",
+    "no-process-exit": "off",
+    "no-param-reassign": "off",
+    "no-return-await": "off",
+    "comma-dangle": "off",
+    "no-underscore-dangle": "off",
+    "class-methods-use-this": "off",
+    "prefer-destructuring": [
+      "error",
+      { "object": true, "array": false }
+    ],
+    "no-unused-vars": [
+      "error",
+      { "argsIgnorePattern": "req|res|next|val|err" }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      { "devDependencies": true }
+    ]
+  }
+}
