@@ -1,17 +1,14 @@
-import colors from "../utils/colors";
-import {
-  Text,
-  Button,
-  StyleSheet,
-  View,
-} from "react-native";
-import SubmitBtn from "../components/form/SubmitBtn";
-import SafeAreaAndroid from "../utils/SafeAreaAndroid";
-import AuthInputField from "../components/form/AuthInputField";
-import Form from "../components/form/index";
+import { StyleSheet, View } from "react-native";
+import SubmitBtn from "../../components/form/SubmitBtn";
+import AppLink from "../../ui/AppLink";
+import AuthInputField from "../../components/form/AuthInputField";
+import Form from "../../components/form/index";
 import * as yup from "yup";
-import PasswordVisibilityIcon from "../ui/PasswordVisibilityIcon";
+import PasswordVisibilityIcon from "../../ui/PasswordVisibilityIcon";
 import { useState } from "react";
+import AuthFormContainer from "../../components/AuthFormContainer";
+import { useNavigation } from "@react-navigation/native";
+import axios from "axios";
 
 const signUpSchema = yup.object({
   name: yup
@@ -28,10 +25,10 @@ const signUpSchema = yup.object({
     .string()
     .trim("Password is missing!")
     .min(8, "Password is too short!")
-    .matches(
-      /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#\$%\^&\*])[a-zA-Z\d!@#\$%\^&\*]+$/,
-      "Password is too simple!",
-    )
+    // .matches(
+    //   /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#\$%\^&\*])[a-zA-Z\d!@#\$%\^&\*]+$/,
+    //   "Password is too simple!",
+    // )
     .required("Password is required!"),
 });
 const initialValues = {
@@ -42,19 +39,38 @@ const initialValues = {
 
 const SignUp = (props) => {
   const [secureEntry, setSecureEntry] = useState(true);
+  const navigation = useNavigation();
 
   const togglePasswordView = () => {
     setSecureEntry(!secureEntry);
   };
 
+  const handleSubmit = async (values) => {
+    values.passwordConfirm = values.password;
+    console.log({ ...values });
+
+    try {
+      const res = await axios.post(
+        "http://linkoking.com/api/v1/users/signup",
+        {
+          ...values,
+        },
+      );
+      console.log(res);
+    } catch (error) {
+      console.log("Sign up error", error);
+    }
+  };
+
   return (
-    <SafeAreaAndroid style={styles.container}>
-      <Form
-        onSubmit={(values) => {
-          console.log(values);
-        }}
-        initialValues={initialValues}
-        signUpSchema={signUpSchema}
+    <Form
+      onSubmit={handleSubmit}
+      initialValues={initialValues}
+      signUpSchema={signUpSchema}
+    >
+      <AuthFormContainer
+        heading="Welcome!"
+        subHeading="Let's get started by creating your account."
       >
         <View style={styles.formContainer}>
           <AuthInputField
@@ -86,28 +102,38 @@ const SignUp = (props) => {
             onRightIconPress={togglePasswordView}
           />
           <SubmitBtn title="Sign Up" />
+          <View style={styles.linkContainer}>
+            <AppLink
+              title="I lost my password"
+              onPress={() => {
+                navigation.navigate("LostPassword");
+              }}
+            />
+            <AppLink
+              title="Sign in"
+              onPress={() => {
+                navigation.navigate("SignIn");
+              }}
+            />
+          </View>
         </View>
-      </Form>
-    </SafeAreaAndroid>
+      </AuthFormContainer>
+    </Form>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.PRIMARY,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  label: {
-    color: colors.CONTRAST,
-  },
   formContainer: {
     width: "100%",
-    paddingHorizontal: 15,
   },
   marginBottom: {
     marginBottom: 20,
+  },
+  linkContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginTop: 20,
   },
 });
 

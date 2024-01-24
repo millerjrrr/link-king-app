@@ -1,0 +1,82 @@
+import { StyleSheet, View } from "react-native";
+import SubmitBtn from "../../components/form/SubmitBtn";
+import AppLink from "../../ui/AppLink";
+import AuthInputField from "../../components/form/AuthInputField";
+import Form from "../../components/form/index";
+import * as yup from "yup";
+import AuthFormContainer from "../../components/AuthFormContainer";
+import { useNavigation } from "@react-navigation/native";
+
+const signUpSchema = yup.object({
+  email: yup
+    .string()
+    .trim("Email is missing!")
+    .email("Invalid email!")
+    .required("Email is required!"),
+});
+const initialValues = {
+  email: "",
+};
+
+const LostPassword = (props) => {
+  const navigation = useNavigation();
+  return (
+    <Form
+      onSubmit={(values) => {
+        console.log(values);
+      }}
+      initialValues={initialValues}
+      signUpSchema={signUpSchema}
+    >
+      <AuthFormContainer
+        heading="Forgot password"
+        subHeading={
+          "Oops, did you forget your password? Don't worry, we'll help you get back in."
+        }
+      >
+        <View style={styles.formContainer}>
+          <AuthInputField
+            name="email"
+            label="Email"
+            placeholder="you@example.com"
+            keyboardType="email-address"
+            autoCapitalize="none"
+            containerStyle={styles.marginBottom}
+          />
+          <SubmitBtn title="Send link" />
+          <View style={styles.linkContainer}>
+            <AppLink
+              title="Sign in"
+              onPress={() => {
+                navigation.navigate("SignIn");
+              }}
+            />
+            <AppLink
+              title="Sign up"
+              onPress={() => {
+                navigation.navigate("SignUp");
+              }}
+            />
+          </View>
+        </View>
+      </AuthFormContainer>
+    </Form>
+  );
+};
+
+const styles = StyleSheet.create({
+  formContainer: {
+    width: "100%",
+  },
+  marginBottom: {
+    marginBottom: 20,
+  },
+  linkContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginTop: 20,
+  },
+});
+
+export default LostPassword;

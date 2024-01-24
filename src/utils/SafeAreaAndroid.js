@@ -1,5 +1,6 @@
 import { StatusBar, SafeAreaView } from "react-native";
 import styled from "styled-components/native";
+import colors from "./colors";
 
 const SafeAreaAndroid = styled(SafeAreaView)`
   flex: 1;

@@ -1,5 +1,10 @@
-import SignUp from "./src/views/SignUp";
+import { NavigationContainer } from "@react-navigation/native";
+import AuthNavigator from "./src/navigation/AuthNavigator";
 
 export default function App() {
-  return <SignUp />;
+  return (
+    <NavigationContainer>
+      <AuthNavigator />
+    </NavigationContainer>
+  );
 }
