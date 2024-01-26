@@ -54,6 +54,7 @@ const Verification = (props) => {
                 handleChange(nativeEvent.key, index);
               }}
               keyboardType="numeric"
+              value={otp[index] || ""}
             />
           );
         })}

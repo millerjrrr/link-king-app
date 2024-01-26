@@ -1,10 +1,15 @@
 import { Text, StyleSheet, Pressable } from "react-native";
 import colors from "../utils/colors";
+import Loader from "./Loader";
 
-const AppButton = ({ title, onPress }) => {
+const AppButton = ({ title, busy, onPress }) => {
   return (
     <Pressable onPress={onPress} style={styles.container}>
-      <Text style={styles.title}>{title}</Text>
+      {!busy ? (
+        <Text style={styles.title}>{title}</Text>
+      ) : (
+        <Loader />
+      )}
     </Pressable>
   );
 };

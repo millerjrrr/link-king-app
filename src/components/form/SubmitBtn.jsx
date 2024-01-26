@@ -2,9 +2,13 @@ import AppButton from "../../ui/AppButton";
 import { useFormikContext } from "formik";
 
 const SubmitBtn = (props) => {
-  const { handleSubmit } = useFormikContext();
+  const { handleSubmit, isSubmitting } = useFormikContext();
   return (
-    <AppButton onPress={handleSubmit} title={props.title} />
+    <AppButton
+      busy={isSubmitting}
+      onPress={handleSubmit}
+      title={props.title}
+    />
   );
 };
 

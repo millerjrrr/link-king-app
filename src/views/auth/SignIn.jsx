@@ -8,6 +8,7 @@ import PasswordVisibilityIcon from "../../ui/PasswordVisibilityIcon";
 import { useState } from "react";
 import AuthFormContainer from "../../components/AuthFormContainer";
 import { useNavigation } from "@react-navigation/native";
+import client from "../../api/client";
 
 const signUpSchema = yup.object({
   email: yup
@@ -33,11 +34,29 @@ const SignIn = (props) => {
     setSecureEntry(!secureEntry);
   };
 
+  const handleSubmit = async (values, actions) => {
+    console.log({ ...values });
+
+    //to add loading without the formik context, video
+    // 228. Loading Indicator explains it well
+    actions.setSubmitting(true);
+    try {
+      const res = await client.post(
+        "/api/v1/users/login",
+
+        {
+          ...values,
+        },
+      );
+      console.log(res.data);
+    } catch (error) {
+      console.log("Sign in error", error);
+    }
+    actions.setSubmitting(false);
+  };
   return (
     <Form
-      onSubmit={(values) => {
-        console.log(values);
-      }}
+      onSubmit={handleSubmit}
       initialValues={initialValues}
       signUpSchema={signUpSchema}
     >

@@ -8,7 +8,7 @@ import PasswordVisibilityIcon from "../../ui/PasswordVisibilityIcon";
 import { useState } from "react";
 import AuthFormContainer from "../../components/AuthFormContainer";
 import { useNavigation } from "@react-navigation/native";
-import axios from "axios";
+import client from "../../api/client";
 
 const signUpSchema = yup.object({
   name: yup
@@ -45,13 +45,16 @@ const SignUp = (props) => {
     setSecureEntry(!secureEntry);
   };
 
-  const handleSubmit = async (values) => {
+  const handleSubmit = async (values, actions) => {
     values.passwordConfirm = values.password;
+    values.username = values.name;
     console.log({ ...values });
 
+    actions.setSubmitting(true);
     try {
-      const res = await axios.post(
-        "http://linkoking.com/api/v1/users/signup",
+      const res = await client.post(
+        "/api/v1/users/signup",
+
         {
           ...values,
         },
@@ -60,6 +63,7 @@ const SignUp = (props) => {
     } catch (error) {
       console.log("Sign up error", error);
     }
+    actions.setSubmitting(false);
   };
 
   return (
