@@ -50,6 +50,9 @@ const SignUp = (props) => {
     values.username = values.name;
     console.log({ ...values });
 
+    //to add loading without the formik context, video 
+    // 228. Loading Indicator explains it well
+
     actions.setSubmitting(true);
     try {
       const res = await client.post(

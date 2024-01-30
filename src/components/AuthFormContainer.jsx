@@ -19,7 +19,11 @@ const AuthFormContainer = ({
       <CircleUI position="bottom-left" size="100" />
       <CircleUI position="bottom-right" size="200" />
       <View style={styles.headerContainer}>
-        <Image source={require("../assets/logo.png")} />
+        <Image
+          source={require("../assets/link-king-header-logo.png")}
+          resizeMode="contain"
+          style={{ width: "100%" }}
+        />
         <Text style={styles.heading}>{heading}</Text>
         <Text style={styles.subHeading}>{subHeading}</Text>
       </View>
@@ -47,6 +51,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   headerContainer: {
+    alignItems: "center",
+    justifyContent: "center",
     width: "100%",
     marginBottom: 20,
   },

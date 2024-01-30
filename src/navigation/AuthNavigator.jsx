@@ -3,10 +3,14 @@ import LostPassword from "../views/auth/LostPassword";
 import SignIn from "../views/auth/SignIn";
 import SignUp from "../views/auth/SignUp";
 import Verification from "../views/auth/Verification";
+import { getAuthState } from "../store/auth";
+import { useSelector } from "react-redux";
 
 const Stack = createNativeStackNavigator();
 
 const AuthNavigator = () => {
+  const authState = useSelector(getAuthState);
+  console.log(authState);
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="SignIn" component={SignIn} />

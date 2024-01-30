@@ -9,6 +9,13 @@ import { useState } from "react";
 import AuthFormContainer from "../../components/AuthFormContainer";
 import { useNavigation } from "@react-navigation/native";
 import client from "../../api/client";
+import { useDispatch } from "react-redux";
+import {
+  updateLoggedInState,
+  updateUser,
+  updateToken,
+} from "../../store/auth";
+import { saveToAsyncStorage } from "../../utils/asyncStorage";
 
 const signUpSchema = yup.object({
   email: yup
@@ -29,6 +36,7 @@ const initialValues = {
 const SignIn = (props) => {
   const [secureEntry, setSecureEntry] = useState(true);
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const togglePasswordView = () => {
     setSecureEntry(!secureEntry);
@@ -41,14 +49,21 @@ const SignIn = (props) => {
     // 228. Loading Indicator explains it well
     actions.setSubmitting(true);
     try {
-      const res = await client.post(
+      const { data } = await client.post(
         "/api/v1/users/login",
 
         {
           ...values,
         },
       );
-      console.log(res.data);
+      // console.log(data);
+      // console.log(data.data);
+      // console.log(data.token);
+
+      await saveToAsyncStorage("auth-token", data.token);
+      dispatch(updateUser(data.data.user));
+      dispatch(updateToken(data.token));
+      dispatch(updateLoggedInState(true));
     } catch (error) {
       console.log("Sign in error", error);
     }
