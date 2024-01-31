@@ -61,7 +61,6 @@ const SignIn = (props) => {
       // console.log(data.token);
 
       await saveToAsyncStorage("auth-token", data.token);
-      dispatch(updateUser(data.data.user));
       dispatch(updateToken(data.token));
       dispatch(updateLoggedInState(true));
     } catch (error) {
@@ -69,6 +68,7 @@ const SignIn = (props) => {
     }
     actions.setSubmitting(false);
   };
+
   return (
     <Form
       onSubmit={handleSubmit}

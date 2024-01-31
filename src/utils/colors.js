@@ -14,6 +14,8 @@ const colors = {
   ERROR,
   SUCCESS,
   OVERLAY,
+  ORANGE: "hsl(32, 92%, 65%)",
+  RED: "hsl(0, 84%, 71%)",
 };
 
 export default colors;

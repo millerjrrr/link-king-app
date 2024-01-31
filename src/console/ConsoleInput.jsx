@@ -2,24 +2,33 @@ import { StyleSheet, TextInput } from "react-native";
 import colors from "../utils/colors";
 
 const ConsoleInput = (props) => {
+  const handleKeyPress = () => {
+    if (props.onSubmitEditing) {
+      props.onSubmitEditing();
+    }
+  };
+
   return (
     <TextInput
       {...props}
+      autoFocus={true}
+      blurOnSubmit={false}
+      enterKeyHint="enter"
+      autoCapitalize={"none"}
       selectionColor={colors.CONTRAST}
-      placeholderTextColor={colors.INACTIVE_CONTRAST}
       style={[styles.input, props.style]}
+      onSubmitEditing={handleKeyPress}
     />
   );
 };
 
 const styles = StyleSheet.create({
   input: {
+    width: "100%",
     borderWidth: 2,
-    borderColor: colors.CONTRAST,
     backgroundColor: colors.SECONDARY,
     height: 70,
     borderRadius: 25,
-    color: colors.CONTRAST,
     padding: 10,
     textAlign: "center",
     fontSize: 40,

@@ -5,7 +5,6 @@ import {
 
 const initialState = {
   loggedIn: false,
-  user: null,
   token: "",
   busy: false,
 };
@@ -14,9 +13,6 @@ const slice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    updateUser(authState, { payload }) {
-      authState.user = payload;
-    },
     updateLoggedInState(authState, { payload }) {
       authState.loggedIn = payload;
     },
@@ -30,7 +26,6 @@ const slice = createSlice({
 });
 
 export const {
-  updateUser,
   updateToken,
   updateLoggedInState,
   updateBusyState,
@@ -38,7 +33,7 @@ export const {
 
 export const getAuthState = createSelector(
   (authState) => authState,
-  (authState) => authState,
+  (state) => state.auth,
 );
 
 export default slice.reducer;

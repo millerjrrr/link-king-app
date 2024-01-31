@@ -16,7 +16,14 @@ const TabNavigator = () => {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarStyle: { backgroundColor: colors.PRIMARY },
+        tabBarStyle: {
+          backgroundColor: colors.PRIMARY,
+          height: 80,
+        },
+        tabBarLabelStyle: {
+          fontSize: 15,
+          borderTopWidth: 0,
+        },
       }}
     >
       <Tab.Screen
@@ -26,7 +33,7 @@ const TabNavigator = () => {
           tabBarIcon: (props) => (
             <Entypo
               name="home"
-              size={props.size}
+              size={props.size + 15}
               color={props.color}
             />
           ),
@@ -40,7 +47,7 @@ const TabNavigator = () => {
           tabBarIcon: (props) => (
             <Ionicons
               name="game-controller"
-              size={props.size}
+              size={props.size + 15}
               color={props.color}
             />
           ),
@@ -55,7 +62,7 @@ const TabNavigator = () => {
           tabBarIcon: (props) => (
             <MaterialIcons
               name="query-stats"
-              size={props.size}
+              size={props.size + 15}
               color={props.color}
             />
           ),
