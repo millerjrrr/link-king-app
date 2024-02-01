@@ -6,13 +6,11 @@ import {
   KeyboardAvoidingView,
 } from "react-native";
 import ConsoleInput from "../console/ConsoleInput";
-import colors from "../utils/colors";
+import colors, { colorByTries } from "../utils/colors";
 import clientWithAuth from "../api/clientWithAuth";
 import {
   getConsoleState,
   updateBusyState,
-  updateSolutions,
-  updateTarget,
   updateTries,
 } from "../store/console";
 import { useEffect, useState } from "react";
@@ -20,45 +18,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { acceptAnswer } from "../console/functions/acceptAnswer";
 import OptionsContainer from "../console/OptionsContainer";
 import KeyboardOff from "../console/KeyboardOff";
+import Tail from "../console/Tail";
+import { updateConsoleState } from "../console/functions/updateConsoleState";
+import { fetchConsoleInfo } from "../console/functions/fetchConsoleInfo";
 
 const Console = (props) => {
-  const colorByTries = [
-    colors.RED,
-    colors.ORANGE,
-    colors.CONTRAST,
-  ];
-
-  const { target, solutions, tries } =
+  const { attempt, options, tries, tail } =
     useSelector(getConsoleState);
+  const { solutions, target } = attempt;
   const dispatch = useDispatch();
 
-  const updateConsoleState = (resData) => {
-    const { attempt, tries } = resData;
-    dispatch(updateTarget(attempt.target));
-    dispatch(updateSolutions(attempt.solutions));
-    dispatch(updateTries(tries));
-    dispatch(updateBusyState(false));
-  };
-
   useEffect(() => {
-    const fetchConsoleInfo = async () => {
-      dispatch(updateBusyState(true));
-      try {
-        const { data } = await clientWithAuth.get(
-          "/api/v1/gameData/sendGameState",
-        );
-        updateConsoleState(data.data);
-      } catch (err) {
-        console.log("Console error: ");
-      } finally {
-        dispatch(updateBusyState(false));
-      }
-    };
-
-    fetchConsoleInfo();
+    fetchConsoleInfo(dispatch);
   }, []);
 
   const [formValue, setFormValue] = useState("");
+  const [showSolution, setShowSolution] = useState(false);
 
   const submitAttempt = async () => {
     const answerAccepted = acceptAnswer(
@@ -66,6 +41,7 @@ const Console = (props) => {
       solutions,
     );
     if (answerAccepted) {
+      setShowSolution(false);
       setFormValue("");
       try {
         const { data } = await clientWithAuth.post(
@@ -75,8 +51,7 @@ const Console = (props) => {
             time: 1000,
           },
         );
-        console.log(data.data.attempt.solutions);
-        updateConsoleState(data.data);
+        updateConsoleState(data, dispatch);
       } catch (error) {
         console.log("Console error:", error);
       }
@@ -92,11 +67,12 @@ const Console = (props) => {
             time: 1000,
           },
         );
-        console.log(data.data.attempt.solutions);
-        updateConsoleState(data.data);
+        updateConsoleState(data, dispatch);
       } catch (error) {
         console.log("Console error:", error);
       }
+      setFormValue("");
+      setShowSolution(true);
     }
     return false;
   };
@@ -109,10 +85,11 @@ const Console = (props) => {
       }
     >
       <View style={styles.container}>
-        <OptionsContainer />
+        <OptionsContainer options={options} />
         <Text style={styles.target}>{target}</Text>
         <ConsoleInput
           value={formValue}
+          placeholder={showSolution ? solutions[0] : null}
           style={{
             color: colorByTries[tries - 1],
             borderColor: colorByTries[tries - 1],
@@ -120,6 +97,7 @@ const Console = (props) => {
           onChangeText={(text) => setFormValue(text)}
           onSubmitEditing={submitAttempt}
         />
+        <Tail tail={tail} />
         <View style={styles.keyboardIcon}>
           <KeyboardOff />
         </View>
@@ -135,7 +113,7 @@ const styles = StyleSheet.create({
     justifyContent: "top",
     alignItems: "center",
     paddingHorizontal: 10,
-    paddingTop: 70,
+    paddingTop: 40,
   },
   target: {
     width: "100%",

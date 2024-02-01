@@ -16,6 +16,13 @@ const colors = {
   OVERLAY,
   ORANGE: "hsl(32, 92%, 65%)",
   RED: "hsl(0, 84%, 71%)",
+  LIGHTRED: "#ff939381",
 };
+
+export const colorByTries = [
+  colors.RED,
+  colors.ORANGE,
+  colors.CONTRAST,
+];
 
 export default colors;

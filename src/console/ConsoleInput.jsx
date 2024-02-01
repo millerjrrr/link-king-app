@@ -11,6 +11,7 @@ const ConsoleInput = (props) => {
   return (
     <TextInput
       {...props}
+      placeholderTextColor={colors.LIGHTRED}
       autoFocus={true}
       blurOnSubmit={false}
       enterKeyHint="enter"

@@ -27,20 +27,6 @@ const TabNavigator = () => {
       }}
     >
       <Tab.Screen
-        name="HomeScreen"
-        component={Home}
-        options={{
-          tabBarIcon: (props) => (
-            <Entypo
-              name="home"
-              size={props.size + 15}
-              color={props.color}
-            />
-          ),
-          tabBarLabel: "Home",
-        }}
-      />
-      <Tab.Screen
         name="ConsoleScreen"
         component={Console}
         options={{
@@ -53,6 +39,20 @@ const TabNavigator = () => {
           ),
           tabBarLabel: "Console",
           tabBarHideOnKeyboard: true,
+        }}
+      />
+      <Tab.Screen
+        name="HomeScreen"
+        component={Home}
+        options={{
+          tabBarIcon: (props) => (
+            <Entypo
+              name="home"
+              size={props.size + 15}
+              color={props.color}
+            />
+          ),
+          tabBarLabel: "Home",
         }}
       />
       <Tab.Screen

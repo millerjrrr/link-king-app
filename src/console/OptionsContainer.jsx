@@ -1,12 +1,42 @@
 import { View, Pressable, StyleSheet } from "react-native";
 import colors from "../utils/colors";
 import { Entypo, MaterialIcons } from "@expo/vector-icons";
+import { useDispatch, useSelector } from "react-redux";
+import { updateOptions } from "../store/console";
+import clientWithAuth from "../api/clientWithAuth";
 
-const OptionsContainer = ({ sound, blurred, timer }) => {
+const OptionsContainer = ({ options }) => {
+  const { sound, blurred, timer } = options;
+
+  const dispatch = useDispatch();
+
+  const soundButtonFunction = async () => {
+    console.log("PressedSound");
+    try {
+      console.log(!sound);
+      const { data } = await clientWithAuth.post(
+        "/api/v1/gameData/updateGameSettings",
+        {
+          sound: !sound,
+        },
+      );
+      dispatch(updateOptions(data.options));
+    } catch (error) {
+      console.log("Console error:", error);
+    }
+  };
+
+  const blurredButtonFunction = () => {
+    console.log("PressedBlurred");
+  };
+  const timerButtonFunction = () => {
+    console.log("PressedTimer");
+  };
+
   return (
     <View style={styles.container}>
       <Pressable
-        onPress={() => console.log("PressedOne")}
+        onPress={soundButtonFunction}
         style={styles.option}
       >
         {sound ? (
@@ -24,7 +54,7 @@ const OptionsContainer = ({ sound, blurred, timer }) => {
         )}
       </Pressable>
       <Pressable
-        onPress={() => console.log("PressedOne")}
+        onPress={blurredButtonFunction}
         style={styles.option}
       >
         {!blurred ? (
@@ -42,7 +72,7 @@ const OptionsContainer = ({ sound, blurred, timer }) => {
         )}
       </Pressable>
       <Pressable
-        onPress={() => console.log("PressedOne")}
+        onPress={timerButtonFunction}
         style={styles.option}
       >
         {timer ? (

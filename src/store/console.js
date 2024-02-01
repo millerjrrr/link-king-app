@@ -4,19 +4,25 @@ import {
 } from "@reduxjs/toolkit";
 
 const initialState = {
-  target: "",
-  solutions: [],
+  attempt: { target: "", solutions: [] },
+  options: { sound: true, blurred: false, timer: true },
+  tail: [],
+  tries: 1,
+  busy: false,
 };
 
 const slice = createSlice({
   name: "console",
   initialState,
   reducers: {
-    updateTarget(consoleState, { payload }) {
-      consoleState.target = payload;
+    updateAttempt(consoleState, { payload }) {
+      consoleState.attempt = payload;
     },
-    updateSolutions(consoleState, { payload }) {
-      consoleState.solutions = payload;
+    updateOptions(consoleState, { payload }) {
+      consoleState.options = payload;
+    },
+    updateTail(consoleState, { payload }) {
+      consoleState.tail = payload;
     },
     updateTries(consoleState, { payload }) {
       consoleState.tries = payload;
@@ -28,8 +34,9 @@ const slice = createSlice({
 });
 
 export const {
-  updateTarget,
-  updateSolutions,
+  updateAttempt,
+  updateOptions,
+  updateTail,
   updateTries,
   updateBusyState,
 } = slice.actions;
