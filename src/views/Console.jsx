@@ -86,7 +86,14 @@ const Console = (props) => {
     >
       <View style={styles.container}>
         <OptionsContainer options={options} />
-        <Text style={styles.target}>{target}</Text>
+        <Text
+          style={[
+            styles.target,
+            { opacity: !options.blurred ? 1 : 0 },
+          ]}
+        >
+          {target}
+        </Text>
         <ConsoleInput
           value={formValue}
           placeholder={showSolution ? solutions[0] : null}
@@ -122,6 +129,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 40,
     color: colors.CONTRAST,
+    visibility: "hidden",
     paddingBottom: 15,
   },
   keyboardIcon: {

@@ -14,11 +14,16 @@ const OptionsContainer = ({ options }) => {
     console.log("PressedSound");
     try {
       console.log(!sound);
+
+      const newOptions = blurred
+        ? { sound: !sound, blurred: false }
+        : { sound: !sound };
+
+      console.log(newOptions);
+
       const { data } = await clientWithAuth.post(
         "/api/v1/gameData/updateGameSettings",
-        {
-          sound: !sound,
-        },
+        newOptions,
       );
       dispatch(updateOptions(data.options));
     } catch (error) {
@@ -26,11 +31,38 @@ const OptionsContainer = ({ options }) => {
     }
   };
 
-  const blurredButtonFunction = () => {
+  const blurredButtonFunction = async () => {
     console.log("PressedBlurred");
+    try {
+      console.log(!blurred);
+      const newOptions = !blurred
+        ? { sound: true, blurred: !blurred }
+        : { blurred: !blurred };
+
+      const { data } = await clientWithAuth.post(
+        "/api/v1/gameData/updateGameSettings",
+        newOptions,
+      );
+      dispatch(updateOptions(data.options));
+    } catch (error) {
+      console.log("Console error:", error);
+    }
   };
-  const timerButtonFunction = () => {
+
+  const timerButtonFunction = async () => {
     console.log("PressedTimer");
+    try {
+      console.log(!timer);
+      const { data } = await clientWithAuth.post(
+        "/api/v1/gameData/updateGameSettings",
+        {
+          timer: !timer,
+        },
+      );
+      dispatch(updateOptions(data.options));
+    } catch (error) {
+      console.log("Console error:", error);
+    }
   };
 
   return (
