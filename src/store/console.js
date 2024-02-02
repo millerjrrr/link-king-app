@@ -4,8 +4,13 @@ import {
 } from "@reduxjs/toolkit";
 
 const initialState = {
-  attempt: { target: "", solutions: [] },
+  attempt: {
+    target: "",
+    solutions: [],
+    speechLang: "en-US",
+  },
   options: { sound: true, blurred: false, timer: true },
+  stats: { due: 0, steps: 0, time: 0, streak: 0 },
   tail: [],
   tries: 1,
   busy: false,
@@ -20,6 +25,9 @@ const slice = createSlice({
     },
     updateOptions(consoleState, { payload }) {
       consoleState.options = payload;
+    },
+    updateStats(consoleState, { payload }) {
+      consoleState.stats = payload;
     },
     updateTail(consoleState, { payload }) {
       consoleState.tail = payload;
@@ -36,6 +44,7 @@ const slice = createSlice({
 export const {
   updateAttempt,
   updateOptions,
+  updateStats,
   updateTail,
   updateTries,
   updateBusyState,

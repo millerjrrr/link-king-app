@@ -130,6 +130,7 @@ const styles = StyleSheet.create({
     width: "50%",
     flexDirection: "row",
     justifyContent: "center",
+    zIndex: 10,
   },
   option: {
     borderRadius: 15,
@@ -140,6 +141,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderWidth: 2,
     borderColor: colors.CONTRAST,
+    backgroundColor: colors.PRIMARY,
     margin: 8,
   },
 });

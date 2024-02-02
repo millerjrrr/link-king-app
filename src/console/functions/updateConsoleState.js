@@ -1,20 +1,24 @@
 import {
   updateAttempt,
   updateOptions,
+  updateStats,
   updateTries,
   updateTail,
   updateBusyState,
 } from "../../store/console";
 
 export const updateConsoleState = (resData, dispatch) => {
-  const { gamePlay, options, display } = resData;
+  const { gamePlay, options, stats, display } = resData;
+  const { target, solutions, speechLang } = gamePlay;
   dispatch(
     updateAttempt({
-      target: gamePlay.target,
-      solutions: gamePlay.solutions,
+      target,
+      solutions,
+      speechLang,
     }),
   );
   dispatch(updateOptions(options));
+  dispatch(updateStats(stats));
   console.log(options);
   dispatch(updateTries(gamePlay.tries));
   dispatch(updateTail(display.tail));

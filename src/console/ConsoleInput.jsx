@@ -1,4 +1,5 @@
-import { StyleSheet, TextInput } from "react-native";
+import { StyleSheet, TextInput, View } from "react-native";
+import Timer from "./Timer";
 import colors from "../utils/colors";
 
 const ConsoleInput = (props) => {
@@ -9,27 +10,44 @@ const ConsoleInput = (props) => {
   };
 
   return (
-    <TextInput
-      {...props}
-      placeholderTextColor={colors.LIGHTRED}
-      autoFocus={true}
-      blurOnSubmit={false}
-      enterKeyHint="enter"
-      autoCapitalize={"none"}
-      selectionColor={colors.CONTRAST}
-      style={[styles.input, props.style]}
-      onSubmitEditing={handleKeyPress}
-    />
+    <View
+      style={[
+        styles.formView,
+        { borderColor: props.color },
+      ]}
+    >
+      <Timer
+        isPlaying={props.isPlaying}
+        color={props.color}
+        key={props.key}
+      />
+      <TextInput
+        {...props}
+        placeholderTextColor={colors.LIGHTRED}
+        autoFocus={true}
+        blurOnSubmit={false}
+        enterKeyHint="enter"
+        autoCapitalize={"none"}
+        selectionColor={colors.CONTRAST}
+        style={[styles.input, { color: props.color }]}
+        onSubmitEditing={handleKeyPress}
+      />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  input: {
+  formView: {
     width: "100%",
     borderWidth: 2,
     backgroundColor: colors.SECONDARY,
-    height: 70,
     borderRadius: 25,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  input: {
+    width: "75%",
+    height: 70,
     padding: 10,
     textAlign: "center",
     fontSize: 40,

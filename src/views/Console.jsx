@@ -21,11 +21,15 @@ import KeyboardOff from "../console/KeyboardOff";
 import Tail from "../console/Tail";
 import { updateConsoleState } from "../console/functions/updateConsoleState";
 import { fetchConsoleInfo } from "../console/functions/fetchConsoleInfo";
+import ReadWordButton from "../console/ReadWordButton";
+import StatisticsContainer from "../console/StatisticsContainer";
+import * as Speech from "expo-speech";
+import Timer from "../console/Timer";
 
 const Console = (props) => {
-  const { attempt, options, tries, tail } =
+  const { attempt, options, stats, tries, tail } =
     useSelector(getConsoleState);
-  const { solutions, target } = attempt;
+  const { solutions, target, speechLang } = attempt;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -34,12 +38,24 @@ const Console = (props) => {
 
   const [formValue, setFormValue] = useState("");
   const [showSolution, setShowSolution] = useState(false);
+  const [timeOnThisWord, setTimeOnThisWord] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [key, setKey] = useState(0);
+
+  useEffect(() => {
+    const incrementTimer = () => {
+      setTimeOnThisWord((prevTime) => prevTime + 0.1);
+    };
+    const intervalId = setInterval(incrementTimer, 100);
+    return () => clearInterval(intervalId);
+  }, []);
 
   const submitAttempt = async () => {
     const answerAccepted = acceptAnswer(
       formValue,
       solutions,
     );
+
     if (answerAccepted) {
       setShowSolution(false);
       setFormValue("");
@@ -52,12 +68,20 @@ const Console = (props) => {
           },
         );
         updateConsoleState(data, dispatch);
+        Speech.speak(data.gamePlay.target, {
+          language: data.gamePlay.speechLang,
+        });
+        setKey(key + 1);
+        setIsPlaying(true);
+        console.log(timeOnThisWord);
+        setTimeOnThisWord(0);
       } catch (error) {
         console.log("Console error:", error);
       }
     } else if (tries > 1) {
       dispatch(updateTries(tries - 1));
-      console.log(answerAccepted);
+      setKey(key + 1);
+      setIsPlaying(true);
     } else {
       try {
         const { data } = await clientWithAuth.post(
@@ -68,11 +92,18 @@ const Console = (props) => {
           },
         );
         updateConsoleState(data, dispatch);
+        Speech.speak(data.gamePlay.target, {
+          language: data.gamePlay.speechLang,
+        });
       } catch (error) {
         console.log("Console error:", error);
       }
       setFormValue("");
       setShowSolution(true);
+      setKey(key + 1);
+      setIsPlaying(false);
+      console.log(timeOnThisWord);
+      setTimeOnThisWord(0);
     }
     return false;
   };
@@ -85,26 +116,23 @@ const Console = (props) => {
       }
     >
       <View style={styles.container}>
+        <StatisticsContainer stats={stats} />
         <OptionsContainer options={options} />
-        <Text
-          style={[
-            styles.target,
-            { opacity: !options.blurred ? 1 : 0 },
-          ]}
-        >
-          {target}
-        </Text>
+        {options.blurred ? (
+          <ReadWordButton attempt={attempt} />
+        ) : (
+          <Text style={styles.target}>{target}</Text>
+        )}
         <ConsoleInput
+          key={key}
           value={formValue}
+          isPlaying={isPlaying}
           placeholder={showSolution ? solutions[0] : null}
-          style={{
-            color: colorByTries[tries - 1],
-            borderColor: colorByTries[tries - 1],
-          }}
+          color={colorByTries[tries - 1]}
           onChangeText={(text) => setFormValue(text)}
           onSubmitEditing={submitAttempt}
         />
-        <Tail tail={tail} />
+        {!showSolution ? <Tail tail={tail} /> : null}
         <View style={styles.keyboardIcon}>
           <KeyboardOff />
         </View>
