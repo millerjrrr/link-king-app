@@ -2,7 +2,7 @@ import { Text, View, StyleSheet } from "react-native";
 import colors from "../utils/colors";
 import { convertMsToTime } from "./functions/convertMsToTime";
 
-const StatisticsContainer = ({ stats }) => {
+const StatisticsContainer = ({ stats, timeOnThisWord }) => {
   const { due, steps, time, streak } = stats;
 
   return (
@@ -10,7 +10,7 @@ const StatisticsContainer = ({ stats }) => {
       <Text style={styles.stat}>due: {due}</Text>
       <Text style={styles.stat}>steps: {steps}</Text>
       <Text style={styles.stat}>
-        time: {convertMsToTime(time)}
+        time: {convertMsToTime(time + timeOnThisWord)}
       </Text>
       <Text style={styles.stat}>streak: {streak}</Text>
     </View>

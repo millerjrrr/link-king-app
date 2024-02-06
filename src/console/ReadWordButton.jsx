@@ -1,12 +1,17 @@
 import { Feather } from "@expo/vector-icons";
-import { View, Pressable, StyleSheet } from "react-native";
+import {
+  Text,
+  View,
+  Pressable,
+  StyleSheet,
+} from "react-native";
 import colors from "../utils/colors";
-import * as Speech from "expo-speech";
+import { speak } from "expo-speech";
 
-const ReadWordButton = ({ attempt }) => {
+const ReadWordButton = ({ attempt, options }) => {
   const readWord = async () => {
-    console.log("PressedreadWord");
-    Speech.speak(attempt.target, {
+    console.log("PressedReadWord");
+    speak(attempt.target, {
       language: attempt.speechLang,
     });
   };
@@ -14,11 +19,17 @@ const ReadWordButton = ({ attempt }) => {
   return (
     <View style={styles.container}>
       <Pressable onPress={readWord} style={styles.option}>
-        <Feather
-          name="volume-2"
-          size={48}
-          color={colors.CONTRAST}
-        />
+        {options.blurred ? (
+          <Feather
+            name="volume-2"
+            size={48}
+            color={colors.CONTRAST}
+          />
+        ) : (
+          <Text style={styles.target}>
+            {attempt.target}
+          </Text>
+        )}
       </Pressable>
     </View>
   );
@@ -26,20 +37,21 @@ const ReadWordButton = ({ attempt }) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: "50%",
     flexDirection: "row",
     justifyContent: "center",
+    zIndex: 10,
   },
-  option: {
-    flexDirection: "row",
-    justifyContent: "center",
-    borderRadius: 15,
-    overflow: "hidden",
-    width: 150,
-    height: 52,
+  target: {
     justifyContent: "center",
     alignItems: "center",
-    margin: 8,
+    textAlign: "center",
+    fontSize: 40,
+    color: colors.CONTRAST,
+    paddingBottom: 15,
+  },
+  option: {
+    height: 70,
+    justifyContent: "center",
   },
 });
 

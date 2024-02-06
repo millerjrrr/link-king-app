@@ -16,11 +16,13 @@ const ConsoleInput = (props) => {
         { borderColor: props.color },
       ]}
     >
-      <Timer
-        isPlaying={props.isPlaying}
-        color={props.color}
-        key={props.key}
-      />
+      {props.timer ? (
+        <Timer
+          onComplete={props.onComplete}
+          isPlaying={props.isPlaying}
+          color={props.color}
+        />
+      ) : null}
       <TextInput
         {...props}
         placeholderTextColor={colors.LIGHTRED}
@@ -46,7 +48,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   input: {
-    width: "75%",
+    width: "100%",
     height: 70,
     padding: 10,
     textAlign: "center",

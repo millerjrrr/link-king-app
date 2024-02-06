@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Home from "../views/Home";
+import Dictionary from "../views/Dictionary";
 import Console from "../views/Console";
 import Stats from "../views/Stats";
 import colors from "../utils/colors";
@@ -27,6 +27,20 @@ const TabNavigator = () => {
       }}
     >
       <Tab.Screen
+        name="StatsScreen"
+        component={Stats}
+        options={{
+          tabBarIcon: (props) => (
+            <MaterialIcons
+              name="query-stats"
+              size={props.size + 15}
+              color={props.color}
+            />
+          ),
+          tabBarLabel: "Stats",
+        }}
+      />
+      <Tab.Screen
         name="ConsoleScreen"
         component={Console}
         options={{
@@ -42,31 +56,17 @@ const TabNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="HomeScreen"
-        component={Home}
+        name="Dictionary"
+        component={Dictionary}
         options={{
           tabBarIcon: (props) => (
             <Entypo
-              name="home"
+              name="open-book"
               size={props.size + 15}
               color={props.color}
             />
           ),
-          tabBarLabel: "Home",
-        }}
-      />
-      <Tab.Screen
-        name="StatsScreen"
-        component={Stats}
-        options={{
-          tabBarIcon: (props) => (
-            <MaterialIcons
-              name="query-stats"
-              size={props.size + 15}
-              color={props.color}
-            />
-          ),
-          tabBarLabel: "Stats",
+          tabBarLabel: "Dictionary",
         }}
       />
     </Tab.Navigator>

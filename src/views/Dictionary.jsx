@@ -8,7 +8,7 @@ import {
 } from "../store/auth";
 // import { useNavigation } from "@react-navigation/native";
 
-const Home = (props) => {
+const Dictionary = (props) => {
   const dispatch = useDispatch();
   // const navigation = useNavigation();
 
@@ -39,4 +39,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Home;
+export default Dictionary;

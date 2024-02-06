@@ -10,7 +10,7 @@ export const fetchConsoleInfo = async (dispatch) => {
     );
     updateConsoleState(data, dispatch);
   } catch (err) {
-    console.log("Console error: ");
+    console.log("Console error: ", err);
   } finally {
     dispatch(updateBusyState(false));
   }

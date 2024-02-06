@@ -39,7 +39,7 @@ const KeyboardOff = () => {
     >
       <MaterialCommunityIcons
         name="keyboard-off"
-        size={48}
+        size={24}
         color={colors.CONTRAST}
       />
     </Pressable>
@@ -49,11 +49,11 @@ const KeyboardOff = () => {
 const styles = StyleSheet.create({
   option: {
     overflow: "hidden",
-    width: 80,
-    height: 50,
-    justifyContent: "center",
+    width: 500,
+    height: 250,
+    justifyContent: "flex-end",
     alignItems: "center",
-    margin: 8,
+    margin: 4,
   },
 });
 

@@ -10,7 +10,6 @@ import colors, { colorByTries } from "../utils/colors";
 import clientWithAuth from "../api/clientWithAuth";
 import {
   getConsoleState,
-  updateBusyState,
   updateTries,
 } from "../store/console";
 import { useEffect, useState } from "react";
@@ -24,12 +23,11 @@ import { fetchConsoleInfo } from "../console/functions/fetchConsoleInfo";
 import ReadWordButton from "../console/ReadWordButton";
 import StatisticsContainer from "../console/StatisticsContainer";
 import * as Speech from "expo-speech";
-import Timer from "../console/Timer";
+import InnerTabBackground from "../components/InnerTabBackground";
 
 const Console = (props) => {
   const { attempt, options, stats, tries, tail } =
     useSelector(getConsoleState);
-  const { solutions, target, speechLang } = attempt;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -41,30 +39,36 @@ const Console = (props) => {
   const [timeOnThisWord, setTimeOnThisWord] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [key, setKey] = useState(0);
+  const [timerIsOn, setTimerIsOn] = useState(false);
 
   useEffect(() => {
-    const incrementTimer = () => {
-      setTimeOnThisWord((prevTime) => prevTime + 0.1);
+    const incrementTimer = async () => {
+      if (timerIsOn && timeOnThisWord < 30 * 1000)
+        setTimeOnThisWord((prevTime) => prevTime + 1000);
     };
-    const intervalId = setInterval(incrementTimer, 100);
+    const intervalId = setInterval(incrementTimer, 1000);
     return () => clearInterval(intervalId);
-  }, []);
+  }, [timerIsOn, timeOnThisWord]);
 
   const submitAttempt = async () => {
     const answerAccepted = acceptAnswer(
       formValue,
-      solutions,
+      attempt.solutions,
     );
 
     if (answerAccepted) {
       setShowSolution(false);
       setFormValue("");
       try {
+        const time = timerIsOn
+          ? Math.min(timeOnThisWord, 30 * 1000)
+          : 0;
+        console.log(time);
         const { data } = await clientWithAuth.post(
           "/api/v1/gameData/submitAttempt",
           {
             correct: answerAccepted,
-            time: 1000,
+            time,
           },
         );
         updateConsoleState(data, dispatch);
@@ -73,8 +77,8 @@ const Console = (props) => {
         });
         setKey(key + 1);
         setIsPlaying(true);
-        console.log(timeOnThisWord);
         setTimeOnThisWord(0);
+        setTimerIsOn(true);
       } catch (error) {
         console.log("Console error:", error);
       }
@@ -82,13 +86,17 @@ const Console = (props) => {
       dispatch(updateTries(tries - 1));
       setKey(key + 1);
       setIsPlaying(true);
+      setTimerIsOn(true);
     } else {
       try {
+        const time = timerIsOn
+          ? Math.min(timeOnThisWord, 30 * 1000)
+          : 0;
         const { data } = await clientWithAuth.post(
           "/api/v1/gameData/submitAttempt",
           {
-            correct: answerAccepted,
-            time: 1000,
+            correct: false,
+            time,
           },
         );
         updateConsoleState(data, dispatch);
@@ -102,32 +110,39 @@ const Console = (props) => {
       setShowSolution(true);
       setKey(key + 1);
       setIsPlaying(false);
-      console.log(timeOnThisWord);
       setTimeOnThisWord(0);
+      setTimerIsOn(false);
     }
     return false;
   };
 
   return (
-    <KeyboardAvoidingView
-      style={styles.container}
-      behavior={
-        Platform.OS === "ios" ? "padding" : undefined
-      }
-    >
-      <View style={styles.container}>
-        <StatisticsContainer stats={stats} />
+    <InnerTabBackground heading="Console">
+      <KeyboardAvoidingView
+        style={styles.container}
+        behavior={
+          Platform.OS === "ios" ? "padding" : undefined
+        }
+      >
+        {/* <View style={styles.container}> */}
+        <StatisticsContainer
+          stats={stats}
+          timeOnThisWord={timeOnThisWord}
+        />
         <OptionsContainer options={options} />
-        {options.blurred ? (
-          <ReadWordButton attempt={attempt} />
-        ) : (
-          <Text style={styles.target}>{target}</Text>
-        )}
+        <ReadWordButton
+          attempt={attempt}
+          options={options}
+        />
         <ConsoleInput
           key={key}
+          onComplete={submitAttempt}
           value={formValue}
           isPlaying={isPlaying}
-          placeholder={showSolution ? solutions[0] : null}
+          timer={options.timer}
+          placeholder={
+            showSolution ? attempt.solutions[0] : null
+          }
           color={colorByTries[tries - 1]}
           onChangeText={(text) => setFormValue(text)}
           onSubmitEditing={submitAttempt}
@@ -136,8 +151,9 @@ const Console = (props) => {
         <View style={styles.keyboardIcon}>
           <KeyboardOff />
         </View>
-      </View>
-    </KeyboardAvoidingView>
+        {/* </View> */}
+      </KeyboardAvoidingView>
+    </InnerTabBackground>
   );
 };
 
@@ -148,7 +164,6 @@ const styles = StyleSheet.create({
     justifyContent: "top",
     alignItems: "center",
     paddingHorizontal: 10,
-    paddingTop: 40,
   },
   target: {
     width: "100%",

@@ -19,7 +19,6 @@ export const updateConsoleState = (resData, dispatch) => {
   );
   dispatch(updateOptions(options));
   dispatch(updateStats(stats));
-  console.log(options);
   dispatch(updateTries(gamePlay.tries));
   dispatch(updateTail(display.tail));
   dispatch(updateBusyState(false));
