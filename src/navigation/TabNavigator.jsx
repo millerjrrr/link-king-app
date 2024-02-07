@@ -25,6 +25,7 @@ const TabNavigator = () => {
           borderTopWidth: 0,
         },
       }}
+      initialRouteName="Console"
     >
       <Tab.Screen
         name="StatsScreen"

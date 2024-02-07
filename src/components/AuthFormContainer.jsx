@@ -3,9 +3,11 @@ import {
   StyleSheet,
   Text,
   Image,
+  KeyboardAvoidingView,
+  Platform,
 } from "react-native";
 import colors from "../utils/colors";
-import CircleUI from "../ui/CircleUI";
+import CrownUI from "../ui/CrownUI";
 
 const AuthFormContainer = ({
   children,
@@ -13,21 +15,58 @@ const AuthFormContainer = ({
   subHeading,
 }) => {
   return (
-    <View style={styles.container}>
-      <CircleUI position="top-left" size="200" />
-      <CircleUI position="top-right" size="100" />
-      <CircleUI position="bottom-left" size="100" />
-      <CircleUI position="bottom-right" size="200" />
-      <View style={styles.headerContainer}>
-        <Image
-          source={require("../assets/link-king-header-logo.png")}
-          resizeMode="contain"
-          style={{ width: "100%" }}
-        />
-        <Text style={styles.heading}>{heading}</Text>
-        <Text style={styles.subHeading}>{subHeading}</Text>
-      </View>
-      {children}
+    <View
+      style={{ flex: 1, backgroundColor: colors.PRIMARY }}
+    >
+      <CrownUI
+        position="top-left"
+        size="100"
+        rotation="150"
+        color={colors.INACTIVE_CONTRAST}
+      />
+      <CrownUI
+        position="top-right"
+        size="50"
+        rotation="230"
+        color={colors.INACTIVE_CONTRAST}
+      />
+      <CrownUI
+        position="bottom-left"
+        size="80"
+        rotation="50"
+        color={colors.INACTIVE_CONTRAST}
+      />
+      <CrownUI
+        position="bottom-right"
+        size="110"
+        rotation="300"
+        color={colors.INACTIVE_CONTRAST}
+      />
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={
+          Platform.OS === "ios" ? "padding" : undefined
+        }
+      >
+        <View style={styles.container}>
+          <View style={styles.headerContainer}>
+            <Image
+              source={require("../assets/link-king-header-logo.png")}
+              resizeMode="contain"
+              style={{
+                height: 100,
+                borderColor: colors.CONTRAST,
+              }}
+            />
+
+            <Text style={styles.heading}>{heading}</Text>
+            <Text style={styles.subHeading}>
+              {subHeading}
+            </Text>
+          </View>
+          {children}
+        </View>
+      </KeyboardAvoidingView>
     </View>
   );
 };
@@ -35,16 +74,16 @@ const AuthFormContainer = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.PRIMARY,
+
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 15,
   },
   heading: {
-    color: colors.SECONDARY,
+    color: colors.INACTIVE_CONTRAST,
     fontSize: 25,
     fontWeight: "bold",
-    paddingVertical: 5,
+    paddingVertical: 0,
   },
   subHeading: {
     color: colors.CONTRAST,

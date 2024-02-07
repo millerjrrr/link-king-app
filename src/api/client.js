@@ -9,4 +9,4 @@ const client = {
   }),
 };
 
-export default client.local;
+export default client.live;

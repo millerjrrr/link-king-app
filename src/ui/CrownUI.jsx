@@ -1,8 +1,6 @@
-// import { View } from "react-native";
-import colors from "../utils/colors";
 import { Image } from "react-native";
 
-const CrownUI = ({ size, position, rotation }) => {
+const CrownUI = ({ size, position, rotation, color }) => {
   let viewPosition;
   let indent = 0.5;
 
@@ -37,7 +35,7 @@ const CrownUI = ({ size, position, rotation }) => {
       source={require("../assets/link-crown-symbol.png")}
       resizeMode="contain"
       style={{
-        tintColor: "black",
+        tintColor: color,
         width: size / 1,
         height: size / 1,
         position: "absolute",

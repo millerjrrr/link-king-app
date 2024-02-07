@@ -10,7 +10,7 @@ const AppLink = ({ title, onPress }) => {
 };
 
 const styles = StyleSheet.create({
-  title: { color: colors.SECONDARY },
+  title: { color: colors.INACTIVE_CONTRAST },
 });
 
 export default AppLink;

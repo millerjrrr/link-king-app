@@ -47,10 +47,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 40,
     color: colors.CONTRAST,
-    paddingBottom: 15,
   },
   option: {
-    height: 70,
+    height: 50,
     justifyContent: "center",
   },
 });

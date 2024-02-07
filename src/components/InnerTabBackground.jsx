@@ -8,29 +8,35 @@ import {
 } from "react-native";
 import colors from "../utils/colors";
 import CrownUI from "../ui/CrownUI";
+import StatusBarFiller from "./StatusBarFiller";
 
 const InnerTabBackground = ({ children, heading }) => {
   return (
     <View style={styles.container}>
+      <StatusBarFiller />
       <CrownUI
         position="top-left"
         size="100"
         rotation="150"
+        color={colors.SECONDARY}
       />
       <CrownUI
         position="top-right"
         size="50"
         rotation="230"
+        color={colors.SECONDARY}
       />
       <CrownUI
         position="bottom-left"
         size="80"
         rotation="50"
+        color={colors.SECONDARY}
       />
       <CrownUI
         position="bottom-right"
         size="110"
         rotation="300"
+        color={colors.SECONDARY}
       />
       <View style={styles.headerContainer}>
         <Image
@@ -55,7 +61,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.PRIMARY,
     alignItems: "center",
     justifyContent: "top",
-    paddingHorizontal: 15,
   },
   heading: {
     color: colors.CONTRAST,
@@ -73,6 +78,7 @@ const styles = StyleSheet.create({
   headerContainer: {
     alignItems: "center",
     justifyContent: "top",
+    zIndex: 10,
   },
 });
 

@@ -5,10 +5,13 @@ import {
   Keyboard,
 } from "react-native";
 import colors from "../utils/colors";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import {
+  MaterialCommunityIcons,
+  Entypo,
+} from "@expo/vector-icons";
 import { useEffect, useState } from "react";
 
-const KeyboardOff = () => {
+const KeyboardOff = ({ dontKnowFunction }) => {
   const [isKeyboardVisible, setIsKeyboardVisible] =
     useState(false);
 
@@ -33,26 +36,61 @@ const KeyboardOff = () => {
   }, []);
 
   return isKeyboardVisible ? (
-    <Pressable
-      onPress={() => Keyboard.dismiss()}
-      style={styles.option}
-    >
-      <MaterialCommunityIcons
-        name="keyboard-off"
-        size={24}
-        color={colors.CONTRAST}
-      />
-    </Pressable>
+    <View style={styles.outerContainer}>
+      <View style={styles.container}>
+        <Pressable
+          onPress={() => Keyboard.dismiss()}
+          style={styles.keyboardIcon}
+        >
+          <Entypo
+            name="back"
+            size={48}
+            color={colors.CONTRAST}
+          />
+        </Pressable>
+        <Pressable
+          onPress={() => Keyboard.dismiss()}
+          style={styles.keyboardIcon}
+        >
+          <MaterialCommunityIcons
+            name="keyboard-off"
+            size={36}
+            color={colors.CONTRAST}
+          />
+        </Pressable>
+        <Pressable
+          onPress={dontKnowFunction}
+          style={styles.dontKnowIcon}
+        >
+          <MaterialCommunityIcons
+            name="skip-forward"
+            size={48}
+            color={colors.CONTRAST}
+          />
+        </Pressable>
+      </View>
+    </View>
   ) : null;
 };
 
 const styles = StyleSheet.create({
-  option: {
-    overflow: "hidden",
-    width: 500,
-    height: 250,
+  outerContainer: {
+    flex: 1,
+    width: "100%",
     justifyContent: "flex-end",
+  },
+  container: {
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-between",
     alignItems: "center",
+  },
+  dontKnowIcon: {
+    overflow: "hidden",
+    margin: 4,
+  },
+  keyboardIcon: {
+    overflow: "hidden",
     margin: 4,
   },
 });

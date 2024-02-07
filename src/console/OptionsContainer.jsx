@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateOptions } from "../store/console";
 import clientWithAuth from "../api/clientWithAuth";
 
+const optionsSize = 36;
+
 const OptionsContainer = ({ options }) => {
   const { sound, blurred, timer } = options;
 
@@ -74,13 +76,13 @@ const OptionsContainer = ({ options }) => {
         {sound ? (
           <MaterialIcons
             name="volume-up"
-            size={48}
+            size={optionsSize}
             color={colors.CONTRAST}
           />
         ) : (
           <MaterialIcons
             name="volume-off"
-            size={48}
+            size={optionsSize}
             color={colors.CONTRAST}
           />
         )}
@@ -92,13 +94,13 @@ const OptionsContainer = ({ options }) => {
         {!blurred ? (
           <Entypo
             name="eye"
-            size={48}
+            size={optionsSize}
             color={colors.CONTRAST}
           />
         ) : (
           <Entypo
             name="eye-with-line"
-            size={48}
+            size={optionsSize}
             color={colors.CONTRAST}
           />
         )}
@@ -110,13 +112,13 @@ const OptionsContainer = ({ options }) => {
         {timer ? (
           <MaterialIcons
             name="timer"
-            size={48}
+            size={optionsSize}
             color={colors.CONTRAST}
           />
         ) : (
           <MaterialIcons
             name="timer-off"
-            size={48}
+            size={optionsSize}
             color={colors.CONTRAST}
           />
         )}
@@ -135,14 +137,17 @@ const styles = StyleSheet.create({
   option: {
     borderRadius: 15,
     overflow: "hidden",
-    width: 80,
-    height: 80,
+    width: (optionsSize * 80) / 48,
+    height: (optionsSize * 80) / 48,
     justifyContent: "center",
     alignItems: "center",
     borderWidth: 2,
     borderColor: colors.CONTRAST,
     backgroundColor: colors.PRIMARY,
-    margin: 8,
+    marginTop: 5,
+    marginRight: 2,
+    marginLeft: 2,
+    marginBottom: 0,
   },
 });
 

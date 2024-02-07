@@ -1,9 +1,8 @@
 import {
-  Text,
-  View,
   StyleSheet,
   Platform,
   KeyboardAvoidingView,
+  View,
 } from "react-native";
 import ConsoleInput from "../console/ConsoleInput";
 import colors, { colorByTries } from "../utils/colors";
@@ -25,7 +24,7 @@ import StatisticsContainer from "../console/StatisticsContainer";
 import * as Speech from "expo-speech";
 import InnerTabBackground from "../components/InnerTabBackground";
 
-const Console = (props) => {
+const Console = () => {
   const { attempt, options, stats, tries, tail } =
     useSelector(getConsoleState);
   const dispatch = useDispatch();
@@ -50,6 +49,68 @@ const Console = (props) => {
     return () => clearInterval(intervalId);
   }, [timerIsOn, timeOnThisWord]);
 
+  const returnCorrectAnswerToServer = async () => {
+    setShowSolution(false);
+    setFormValue("");
+    try {
+      const time = timerIsOn
+        ? Math.min(timeOnThisWord, 30 * 1000)
+        : 0;
+      console.log(time);
+      const { data } = await clientWithAuth.post(
+        "/api/v1/gameData/submitAttempt",
+        {
+          correct: true,
+          time,
+        },
+      );
+      updateConsoleState(data, dispatch);
+      Speech.speak(data.gamePlay.target, {
+        language: data.gamePlay.speechLang,
+      });
+      setKey(key + 1);
+      setIsPlaying(true);
+      setTimeOnThisWord(0);
+      setTimerIsOn(true);
+    } catch (error) {
+      console.log("Console error:", error);
+    }
+  };
+
+  const nextTry = async () => {
+    dispatch(updateTries(tries - 1));
+    setKey(key + 1);
+    setIsPlaying(true);
+    setTimerIsOn(true);
+  };
+
+  const returnWrongAnswerToServer = async () => {
+    try {
+      const time = timerIsOn
+        ? Math.min(timeOnThisWord, 30 * 1000)
+        : 0;
+      const { data } = await clientWithAuth.post(
+        "/api/v1/gameData/submitAttempt",
+        {
+          correct: false,
+          time,
+        },
+      );
+      updateConsoleState(data, dispatch);
+      Speech.speak(data.gamePlay.target, {
+        language: data.gamePlay.speechLang,
+      });
+    } catch (error) {
+      console.log("Console error:", error);
+    }
+    setFormValue("");
+    setShowSolution(true);
+    setKey(key + 1);
+    setIsPlaying(false);
+    setTimeOnThisWord(0);
+    setTimerIsOn(false);
+  };
+
   const submitAttempt = async () => {
     const answerAccepted = acceptAnswer(
       formValue,
@@ -57,61 +118,11 @@ const Console = (props) => {
     );
 
     if (answerAccepted) {
-      setShowSolution(false);
-      setFormValue("");
-      try {
-        const time = timerIsOn
-          ? Math.min(timeOnThisWord, 30 * 1000)
-          : 0;
-        console.log(time);
-        const { data } = await clientWithAuth.post(
-          "/api/v1/gameData/submitAttempt",
-          {
-            correct: answerAccepted,
-            time,
-          },
-        );
-        updateConsoleState(data, dispatch);
-        Speech.speak(data.gamePlay.target, {
-          language: data.gamePlay.speechLang,
-        });
-        setKey(key + 1);
-        setIsPlaying(true);
-        setTimeOnThisWord(0);
-        setTimerIsOn(true);
-      } catch (error) {
-        console.log("Console error:", error);
-      }
+      returnCorrectAnswerToServer();
     } else if (tries > 1) {
-      dispatch(updateTries(tries - 1));
-      setKey(key + 1);
-      setIsPlaying(true);
-      setTimerIsOn(true);
+      nextTry();
     } else {
-      try {
-        const time = timerIsOn
-          ? Math.min(timeOnThisWord, 30 * 1000)
-          : 0;
-        const { data } = await clientWithAuth.post(
-          "/api/v1/gameData/submitAttempt",
-          {
-            correct: false,
-            time,
-          },
-        );
-        updateConsoleState(data, dispatch);
-        Speech.speak(data.gamePlay.target, {
-          language: data.gamePlay.speechLang,
-        });
-      } catch (error) {
-        console.log("Console error:", error);
-      }
-      setFormValue("");
-      setShowSolution(true);
-      setKey(key + 1);
-      setIsPlaying(false);
-      setTimeOnThisWord(0);
-      setTimerIsOn(false);
+      returnWrongAnswerToServer();
     }
     return false;
   };
@@ -124,7 +135,6 @@ const Console = (props) => {
           Platform.OS === "ios" ? "padding" : undefined
         }
       >
-        {/* <View style={styles.container}> */}
         <StatisticsContainer
           stats={stats}
           timeOnThisWord={timeOnThisWord}
@@ -148,10 +158,9 @@ const Console = (props) => {
           onSubmitEditing={submitAttempt}
         />
         {!showSolution ? <Tail tail={tail} /> : null}
-        <View style={styles.keyboardIcon}>
-          <KeyboardOff />
-        </View>
-        {/* </View> */}
+        <KeyboardOff
+          dontKnowFunction={returnWrongAnswerToServer}
+        />
       </KeyboardAvoidingView>
     </InnerTabBackground>
   );
@@ -163,21 +172,7 @@ const styles = StyleSheet.create({
     width: "100%",
     justifyContent: "top",
     alignItems: "center",
-    paddingHorizontal: 10,
-  },
-  target: {
-    width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-    textAlign: "center",
-    fontSize: 40,
-    color: colors.CONTRAST,
-    visibility: "hidden",
-    paddingBottom: 15,
-  },
-  keyboardIcon: {
-    flex: 1,
-    justifyContent: "flex-end",
+    paddingHorizontal: 15,
   },
 });
 

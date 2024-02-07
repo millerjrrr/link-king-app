@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     justifyContent: "center",
     alignItems: "center",
+    zIndex: 1,
   },
   input: {
     width: "100%",

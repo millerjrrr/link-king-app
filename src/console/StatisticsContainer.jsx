@@ -3,11 +3,16 @@ import colors from "../utils/colors";
 import { convertMsToTime } from "./functions/convertMsToTime";
 
 const StatisticsContainer = ({ stats, timeOnThisWord }) => {
-  const { due, steps, time, streak } = stats;
+  const { due, steps, time, streak, newWords } = stats;
 
   return (
     <View style={styles.container}>
-      <Text style={styles.stat}>due: {due}</Text>
+      {newWords ? (
+        <Text style={styles.stat}>new: {newWords}</Text>
+      ) : (
+        <Text style={styles.stat}>due: {due}</Text>
+      )}
+
       <Text style={styles.stat}>steps: {steps}</Text>
       <Text style={styles.stat}>
         time: {convertMsToTime(time + timeOnThisWord)}
@@ -22,7 +27,8 @@ const styles = StyleSheet.create({
     width: "80%",
     flexDirection: "row",
     justifyContent: "center",
-    backgroundColor: colors.PRIMARY,
+    // backgroundColor: colors.PRIMARY,
+    zIndex: 10,
   },
   stat: {
     justifyContent: "center",
