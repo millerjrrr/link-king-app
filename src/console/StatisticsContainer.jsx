@@ -36,6 +36,8 @@ const styles = StyleSheet.create({
     color: colors.CONTRAST,
     marginRight: "auto",
     marginLeft: "auto",
+    marginTop: 2,
+    marginBottom: 2,
   },
 });
 

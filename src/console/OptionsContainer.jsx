@@ -145,8 +145,8 @@ const styles = StyleSheet.create({
     borderColor: colors.CONTRAST,
     backgroundColor: colors.PRIMARY,
     marginTop: 5,
-    marginRight: 2,
-    marginLeft: 2,
+    marginRight: 4,
+    marginLeft: 4,
     marginBottom: 0,
   },
 });

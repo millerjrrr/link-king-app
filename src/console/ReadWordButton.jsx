@@ -18,7 +18,10 @@ const ReadWordButton = ({ attempt, options }) => {
 
   return (
     <View style={styles.container}>
-      <Pressable onPress={readWord} style={styles.option}>
+      <Pressable
+        onPress={readWord}
+        style={styles.targetWord}
+      >
         {options.blurred ? (
           <Feather
             name="volume-2"
@@ -48,8 +51,8 @@ const styles = StyleSheet.create({
     fontSize: 40,
     color: colors.CONTRAST,
   },
-  option: {
-    height: 50,
+  targetWord: {
+    height: 60,
     justifyContent: "center",
   },
 });
