@@ -2,13 +2,13 @@ import { Text, View, StyleSheet } from "react-native";
 import colors from "../utils/colors";
 
 const LevelRow = ({ number, lbd }) => {
-  return lbd[number - 1] ? (
+  return lbd.length >= number ? (
     <View style={styles.row}>
       <Text style={[styles.cell, { textAlign: "right" }]}>
         Level {number}:
       </Text>
-      <Text style={[styles.cell, { textAlign: "left" }]}>
-        {lbd[number].frequency}
+      <Text style={[styles.cell, { textAlign: "center" }]}>
+        {lbd[number - 1].frequency}
       </Text>
     </View>
   ) : null;
@@ -16,23 +16,46 @@ const LevelRow = ({ number, lbd }) => {
 
 const Levels = ({ lbd }) => {
   const array = Array.from({ length: 10 });
-
   return (
-    <View style={styles.table}>
-      {/* {array.map((_, index) => (
-      <LevelRow number={index + 1} lbd={lbd} />
-      ))} */}
-      <LevelRow number={1} lbd={lbd} />
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "top",
+        alignItems: "center",
+      }}
+    >
+      <View>
+        <Text style={styles.title}>Levels Breakdown</Text>
+      </View>
+      <View style={styles.container}>
+        <View style={styles.table}>
+          {array.map((_, index) => (
+            <LevelRow
+              key={index}
+              number={index + 1}
+              lbd={lbd}
+            />
+          ))}
+        </View>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  title: {
+    color: colors.CONTRAST,
+    fontSize: 50,
+    marginTop: 20,
+    textAlign: "center",
+  },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   table: {
     margin: 20,
-    flex: 1,
-    borderWidth: 1,
-    borderColor: "#ffffff",
   },
   row: {
     width: "100%",
@@ -41,10 +64,8 @@ const styles = StyleSheet.create({
   },
   cell: {
     flex: 1,
-    borderWidth: 1,
-    borderColor: "#ffffff",
     color: colors.CONTRAST,
-    padding: 10,
+    padding: 5,
     fontSize: 30,
   },
 });
