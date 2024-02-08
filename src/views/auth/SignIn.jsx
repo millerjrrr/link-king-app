@@ -12,7 +12,6 @@ import client from "../../api/client";
 import { useDispatch } from "react-redux";
 import {
   updateLoggedInState,
-  updateUser,
   updateToken,
 } from "../../store/auth";
 import { saveToAsyncStorage } from "../../utils/asyncStorage";

@@ -30,7 +30,7 @@ const ConsoleInput = (props) => {
         blurOnSubmit={false}
         enterKeyHint="enter"
         autoCapitalize={"none"}
-        selectionColor={colors.CONTRAST}
+        selectionColor={props.color}
         style={[styles.input, { color: props.color }]}
         onSubmitEditing={handleKeyPress}
       />

@@ -3,6 +3,7 @@ import {
   Pressable,
   StyleSheet,
   Keyboard,
+  Dimensions,
 } from "react-native";
 import colors from "../utils/colors";
 import {
@@ -10,8 +11,16 @@ import {
   Entypo,
 } from "@expo/vector-icons";
 import { useEffect, useState } from "react";
+import StartButton from "./StartButton";
 
-const KeyboardOff = ({ dontKnowFunction }) => {
+const { width } = Dimensions.get("window");
+
+const KeyboardControls = ({
+  dontKnowFunction,
+  startFunction,
+  stopFunction,
+  isPlaying,
+}) => {
   const [isKeyboardVisible, setIsKeyboardVisible] =
     useState(false);
 
@@ -70,6 +79,12 @@ const KeyboardOff = ({ dontKnowFunction }) => {
         </Pressable>
       </View>
     </View>
+  ) : !isPlaying ? (
+    <StartButton
+      title="Start"
+      size={width / 1.5}
+      onPress={startFunction}
+    />
   ) : null;
 };
 
@@ -95,4 +110,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default KeyboardOff;
+export default KeyboardControls;

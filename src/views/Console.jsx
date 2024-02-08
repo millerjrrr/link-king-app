@@ -2,10 +2,10 @@ import {
   StyleSheet,
   Platform,
   KeyboardAvoidingView,
-  View,
+  Keyboard,
 } from "react-native";
 import ConsoleInput from "../console/ConsoleInput";
-import colors, { colorByTries } from "../utils/colors";
+import { colorByTries } from "../utils/colors";
 import clientWithAuth from "../api/clientWithAuth";
 import {
   getConsoleState,
@@ -15,7 +15,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { acceptAnswer } from "../console/functions/acceptAnswer";
 import OptionsContainer from "../console/OptionsContainer";
-import KeyboardOff from "../console/KeyboardOff";
+import KeyboardControls from "../console/KeyboardControls";
 import Tail from "../console/Tail";
 import { updateConsoleState } from "../console/functions/updateConsoleState";
 import { fetchConsoleInfo } from "../console/functions/fetchConsoleInfo";
@@ -68,10 +68,10 @@ const Console = () => {
       Speech.speak(data.gamePlay.target, {
         language: data.gamePlay.speechLang,
       });
-      setKey(key + 1);
       setIsPlaying(true);
       setTimeOnThisWord(0);
       setTimerIsOn(true);
+      setKey(key + 1); // used to highlight the input and restart the timer
     } catch (error) {
       console.log("Console error:", error);
     }
@@ -79,7 +79,7 @@ const Console = () => {
 
   const nextTry = async () => {
     dispatch(updateTries(tries - 1));
-    setKey(key + 1);
+    setKey(key + 1); // used to highlight the input and restart the timer
     setIsPlaying(true);
     setTimerIsOn(true);
   };
@@ -105,7 +105,7 @@ const Console = () => {
     }
     setFormValue("");
     setShowSolution(true);
-    setKey(key + 1);
+    setKey(key + 1); // used to highlight the input and restart the timer
     setIsPlaying(false);
     setTimeOnThisWord(0);
     setTimerIsOn(false);
@@ -125,6 +125,17 @@ const Console = () => {
       returnWrongAnswerToServer();
     }
     return false;
+  };
+
+  const startFunction = async () => {
+    // fetchConsoleInfo(dispatch);
+    Speech.speak(attempt.target, {
+      language: attempt.speechLang,
+    });
+    setIsPlaying(true);
+    setTimerIsOn(true);
+    setFormValue("");
+    setKey(key + 1); // used to highlight the input
   };
 
   return (
@@ -158,8 +169,10 @@ const Console = () => {
           onSubmitEditing={submitAttempt}
         />
         {!showSolution ? <Tail tail={tail} /> : null}
-        <KeyboardOff
+        <KeyboardControls
           dontKnowFunction={returnWrongAnswerToServer}
+          startFunction={startFunction}
+          isPlaying={isPlaying}
         />
       </KeyboardAvoidingView>
     </InnerTabBackground>
