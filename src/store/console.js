@@ -19,7 +19,13 @@ const initialState = {
   },
   tail: [],
   tries: 1,
-  busy: false,
+  busy: true,
+  formValue: "",
+  showSolution: "",
+  timeOnThisWord: 0,
+  isPlaying: false,
+  key: 0,
+  timerIsOn: false,
 };
 
 const slice = createSlice({
@@ -44,6 +50,25 @@ const slice = createSlice({
     updateBusyState(consoleState, { payload }) {
       consoleState.busy = payload;
     },
+    //CONSOLE STATE VARIABLES
+    updateFormValue(consoleState, { payload }) {
+      consoleState.formValue = payload;
+    },
+    updateShowSolution(consoleState, { payload }) {
+      consoleState.showSolution = payload;
+    },
+    updateTimeOnThisWord(consoleState, { payload }) {
+      consoleState.timeOnThisWord = payload;
+    },
+    updateIsPlaying(consoleState, { payload }) {
+      consoleState.isPlaying = payload;
+    },
+    updateKey(consoleState) {
+      consoleState.key += 1;
+    },
+    updateTimerIsOn(consoleState, { payload }) {
+      consoleState.timerIsOn = payload;
+    },
   },
 });
 
@@ -54,6 +79,12 @@ export const {
   updateTail,
   updateTries,
   updateBusyState,
+  updateFormValue,
+  updateShowSolution,
+  updateTimeOnThisWord,
+  updateIsPlaying,
+  updateKey,
+  updateTimerIsOn,
 } = slice.actions;
 
 export const getConsoleState = createSelector(

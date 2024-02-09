@@ -1,8 +1,12 @@
 import { Text, View, StyleSheet } from "react-native";
 import colors from "../utils/colors";
 import { convertMsToTime } from "./functions/convertMsToTime";
+import { useSelector } from "react-redux";
+import { getConsoleState } from "../store/console";
 
-const StatsContainer = ({ stats, timeOnThisWord }) => {
+const StatsContainer = () => {
+  const { stats, timeOnThisWord } =
+    useSelector(getConsoleState);
   const { due, steps, time, streak, newWords } = stats;
 
   return (

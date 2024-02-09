@@ -2,12 +2,17 @@ import { View, Pressable, StyleSheet } from "react-native";
 import colors from "../utils/colors";
 import { Entypo, MaterialIcons } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
-import { updateOptions } from "../store/console";
+import {
+  getConsoleState,
+  updateOptions,
+} from "../store/console";
 import clientWithAuth from "../api/clientWithAuth";
 
 const optionsSize = 36;
 
-const OptionsContainer = ({ options }) => {
+const OptionsContainer = () => {
+  const { options } = useSelector(getConsoleState);
+
   const { sound, blurred, timer } = options;
 
   const dispatch = useDispatch();

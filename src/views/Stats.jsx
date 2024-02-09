@@ -9,6 +9,7 @@ import Lifetime from "../statistics/Lifetime";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchStatsInfo } from "../statistics/functions/fetchStatsInfo";
 import { getStatsState } from "../store/stats";
+import Loader from "../ui/Loader";
 
 const Stats = () => {
   const { userGameData, levelBreakdown, busy } =
@@ -19,48 +20,19 @@ const Stats = () => {
     fetchStatsInfo(dispatch);
   }, []);
 
-  // const levelBreakdown = [
-  //   {
-  //     frequency: 14,
-  //     level: 1,
-  //   },
-  //   {
-  //     frequency: 6,
-  //     level: 2,
-  //   },
-  //   {
-  //     frequency: 9,
-  //     level: 3,
-  //   },
-  //   {
-  //     frequency: 6,
-  //     level: 4,
-  //   },
-  // ];
-
-  // const userGameData = {
-  //   rating: 932.3812311575521,
-  //   ratingPeak: 1246.5261918031106,
-  //   ratingPlays: 62,
-  //   dueToday: [],
-  //   timePlayingLifetime: 3679358.187127951,
-  //   timePlayingToday: 359000,
-  //   stepsTakenLifetime: 1107,
-  //   stepsTakenToday: 71,
-  //   collectedWordsDayStart: 35,
-  //   streakRecord: 15,
-  //   streakToday: 7,
-  //   streakCurrent: 0,
-  //   sound: true,
-  //   timer: true,
-  //   blurred: true,
-  //   playingMode: "ratings",
-  //   collectedWordsToday: 0,
-  // };
-
   return (
     <InnerTabBackground heading="Stats">
-      {busy ? null : (
+      {busy ? (
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Loader size={100} />
+        </View>
+      ) : (
         <SwipeView>
           <View
             style={[styles.container, styles.commonProp]}

@@ -1,5 +1,7 @@
 import { Text, View, StyleSheet } from "react-native";
 import colors from "../utils/colors";
+import { useSelector } from "react-redux";
+import { getConsoleState } from "../store/console";
 
 const TailEntry = ({ text, fontSize, opacity }) => {
   return (
@@ -9,8 +11,11 @@ const TailEntry = ({ text, fontSize, opacity }) => {
   );
 };
 
-const Tail = ({ tail }) => {
-  return (
+const Tail = () => {
+  const { tail, showSolution } =
+    useSelector(getConsoleState);
+
+  return showSolution ? (
     <View style={styles.container}>
       {tail[0] ? (
         <TailEntry
@@ -41,7 +46,7 @@ const Tail = ({ tail }) => {
         />
       ) : null}
     </View>
-  );
+  ) : null;
 };
 
 const styles = StyleSheet.create({

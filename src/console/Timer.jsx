@@ -1,8 +1,12 @@
 import { View, Dimensions } from "react-native";
 import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 import colors from "../utils/colors";
+import { useSelector } from "react-redux";
+import { getConsoleState } from "../store/console";
 
-const Timer = ({ isPlaying, key, onComplete, color }) => {
+const Timer = ({ onComplete, color }) => {
+  const { isPlaying, key } = useSelector(getConsoleState);
+
   const screenWidth = Dimensions.get("window").width;
   return (
     <View

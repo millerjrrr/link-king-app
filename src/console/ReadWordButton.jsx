@@ -7,8 +7,12 @@ import {
 } from "react-native";
 import colors from "../utils/colors";
 import { speak } from "expo-speech";
+import { useSelector } from "react-redux";
+import { getConsoleState } from "../store/console";
 
-const ReadWordButton = ({ attempt, options }) => {
+const ReadWordButton = () => {
+  const { attempt, options } = useSelector(getConsoleState);
+
   const readWord = async () => {
     console.log("PressedReadWord");
     speak(attempt.target, {

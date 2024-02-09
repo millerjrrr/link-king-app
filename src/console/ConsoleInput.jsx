@@ -1,38 +1,89 @@
 import { StyleSheet, TextInput, View } from "react-native";
 import Timer from "./Timer";
-import colors from "../utils/colors";
+import colors, { colorByTries } from "../utils/colors";
+import Loader from "../ui/Loader";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getConsoleState,
+  updateFormValue,
+} from "../store/console";
+import { acceptAnswer } from "./functions/acceptAnswer";
+import { returnCorrectAnswerToServer } from "./functions/returnCorrectAnswerToServer";
+import { returnWrongAnswerToServer } from "./functions/returnWrongAnswerToServer";
+import { returnNextTry } from "./functions/returnNextTry";
 
-const ConsoleInput = (props) => {
-  const handleKeyPress = () => {
-    if (props.onSubmitEditing) {
-      props.onSubmitEditing();
+const ConsoleInput = ({ inputFieldRef }) => {
+  const {
+    busy,
+    formValue,
+    options,
+    showSolution,
+    attempt,
+    timeOnThisWord,
+    timerIsOn,
+    tries,
+  } = useSelector(getConsoleState);
+
+  const color = colorByTries[tries - 1];
+
+  const dispatch = useDispatch();
+
+  const submitAttempt = async () => {
+    const answerAccepted = acceptAnswer(
+      formValue,
+      attempt.solutions,
+    );
+
+    if (answerAccepted) {
+      returnCorrectAnswerToServer(
+        dispatch,
+        timeOnThisWord,
+        timerIsOn,
+      );
+    } else if (tries > 1) {
+      returnNextTry(dispatch, tries);
+    } else {
+      returnWrongAnswerToServer(
+        dispatch,
+        timeOnThisWord,
+        timerIsOn,
+      );
     }
+    return false;
   };
 
   return (
-    <View
-      style={[
-        styles.formView,
-        { borderColor: props.color },
-      ]}
-    >
-      {props.timer ? (
-        <Timer
-          onComplete={props.onComplete}
-          isPlaying={props.isPlaying}
-          color={props.color}
-        />
+    <View style={[styles.formView, { borderColor: color }]}>
+      {options.timer ? (
+        <Timer onComplete={submitAttempt} color={color} />
+      ) : null}
+      {busy ? (
+        <View
+          style={{
+            position: "absolute",
+            zIndex: 20,
+          }}
+        >
+          <Loader size={24} />
+        </View>
       ) : null}
       <TextInput
-        {...props}
+        ref={inputFieldRef}
+        onChangeText={(text) =>
+          dispatch(updateFormValue(text))
+        }
+        placeholder={
+          showSolution ? attempt.solutions[0] : null
+        }
+        value={formValue}
         placeholderTextColor={colors.LIGHTRED}
-        autoFocus={true}
+        autoFocus={false}
         blurOnSubmit={false}
         enterKeyHint="enter"
         autoCapitalize={"none"}
-        selectionColor={props.color}
-        style={[styles.input, { color: props.color }]}
-        onSubmitEditing={handleKeyPress}
+        selectionColor={color}
+        style={[styles.input, { color: color }]}
+        onSubmitEditing={submitAttempt}
       />
     </View>
   );

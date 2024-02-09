@@ -12,15 +12,20 @@ import {
 } from "@expo/vector-icons";
 import { useEffect, useState } from "react";
 import StartButton from "./StartButton";
+import { useDispatch, useSelector } from "react-redux";
+import * as Speech from "expo-speech";
+import {
+  getConsoleState,
+  updateFormValue,
+  updateTimerIsOn,
+  updateKey,
+  updateIsPlaying,
+} from "../store/console";
+import { returnWrongAnswerToServer } from "./functions/returnWrongAnswerToServer";
 
 const { width } = Dimensions.get("window");
 
-const KeyboardControls = ({
-  dontKnowFunction,
-  startFunction,
-  stopFunction,
-  isPlaying,
-}) => {
+const KeyboardAndStartButton = ({ inputFieldRef }) => {
   const [isKeyboardVisible, setIsKeyboardVisible] =
     useState(false);
 
@@ -43,6 +48,30 @@ const KeyboardControls = ({
       keyboardDidHideListener.remove();
     };
   }, []);
+
+  const dispatch = useDispatch();
+  const { isPlaying, timeOnThisWord, timerIsOn, attempt } =
+    useSelector(getConsoleState);
+
+  const startFunction = async () => {
+    Speech.speak(attempt.target, {
+      language: attempt.speechLang,
+    });
+    if (inputFieldRef.current) {
+      inputFieldRef.current.focus();
+    }
+    dispatch(updateIsPlaying(true));
+    dispatch(updateTimerIsOn(true));
+    dispatch(updateFormValue(""));
+    dispatch(updateKey()); // used to highlight the input
+  };
+
+  const dontKnowFunction = () =>
+    returnWrongAnswerToServer(
+      dispatch,
+      timeOnThisWord,
+      timerIsOn,
+    );
 
   return isKeyboardVisible ? (
     <View style={styles.outerContainer}>
@@ -110,4 +139,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default KeyboardControls;
+export default KeyboardAndStartButton;
