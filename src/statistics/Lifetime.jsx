@@ -56,7 +56,7 @@ const Lifetime = ({ gd }) => {
             value={gd.streakRecord}
           />
           <StatsIcon
-            name="Remaining"
+            name="Rating"
             iconName="account-arrow-up"
             value={Math.round(gd.rating)}
           />

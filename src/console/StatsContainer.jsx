@@ -2,7 +2,7 @@ import { Text, View, StyleSheet } from "react-native";
 import colors from "../utils/colors";
 import { convertMsToTime } from "./functions/convertMsToTime";
 
-const StatisticsContainer = ({ stats, timeOnThisWord }) => {
+const StatsContainer = ({ stats, timeOnThisWord }) => {
   const { due, steps, time, streak, newWords } = stats;
 
   return (
@@ -41,4 +41,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default StatisticsContainer;
+export default StatsContainer;

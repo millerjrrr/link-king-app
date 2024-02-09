@@ -20,7 +20,7 @@ import Tail from "../console/Tail";
 import { updateConsoleState } from "../console/functions/updateConsoleState";
 import { fetchConsoleInfo } from "../console/functions/fetchConsoleInfo";
 import ReadWordButton from "../console/ReadWordButton";
-import StatisticsContainer from "../console/StatisticsContainer";
+import StatsContainer from "../console/StatsContainer";
 import * as Speech from "expo-speech";
 import InnerTabBackground from "../components/InnerTabBackground";
 
@@ -146,7 +146,7 @@ const Console = () => {
           Platform.OS === "ios" ? "padding" : undefined
         }
       >
-        <StatisticsContainer
+        <StatsContainer
           stats={stats}
           timeOnThisWord={timeOnThisWord}
         />
