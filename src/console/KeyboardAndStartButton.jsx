@@ -63,7 +63,14 @@ const KeyboardAndStartButton = ({ inputFieldRef }) => {
     dispatch(updateIsPlaying(true));
     dispatch(updateTimerIsOn(true));
     dispatch(updateFormValue(""));
-    dispatch(updateKey()); // used to highlight the input
+    // dispatch(updateKey()); // used to highlight the input
+  };
+
+  const resumeFunction = async () => {
+    if (inputFieldRef.current) {
+      inputFieldRef.current.focus();
+    }
+    // dispatch(updateKey()); // used to highlight the input
   };
 
   const dontKnowFunction = () =>
@@ -114,7 +121,13 @@ const KeyboardAndStartButton = ({ inputFieldRef }) => {
       size={width / 1.5}
       onPress={startFunction}
     />
-  ) : null;
+  ) : (
+    <StartButton
+      title="Resume"
+      size={width / 1.5}
+      onPress={resumeFunction}
+    />
+  );
 };
 
 const styles = StyleSheet.create({

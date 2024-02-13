@@ -15,7 +15,7 @@ const Tail = () => {
   const { tail, showSolution } =
     useSelector(getConsoleState);
 
-  return showSolution ? (
+  return !showSolution ? (
     <View style={styles.container}>
       {tail[0] ? (
         <TailEntry

@@ -16,6 +16,7 @@ const StartButton = ({ size, title, onPress }) => {
           borderRadius: size / 2,
           borderWidth: 2,
           borderColor: colors.INACTIVE_CONTRAST,
+          backgroundColor: colors.PRIMARY,
           height: size,
           width: size,
           alignItems: "center",

@@ -6,9 +6,9 @@ import {
   updateLoggedInState,
   updateToken,
 } from "../store/auth";
-// import { useNavigation } from "@react-navigation/native";
+import InnerTabBackground from "../components/InnerTabBackground";
 
-const Dictionary = (props) => {
+const Options = (props) => {
   const dispatch = useDispatch();
   // const navigation = useNavigation();
 
@@ -21,12 +21,12 @@ const Dictionary = (props) => {
   };
 
   return (
-    <View style={styles.container}>
+    <InnerTabBackground heading="Options">
       <View style={styles.container}>
         <AppButton onPress={onPress} title={"Logout"} />
       </View>
       <View style={styles.container}></View>
-    </View>
+    </InnerTabBackground>
   );
 };
 
@@ -39,4 +39,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Dictionary;
+export default Options;

@@ -1,5 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Dictionary from "../views/Dictionary";
+import Collection from "../views/Collection";
+import Options from "../views/Options";
 import Console from "../views/Console";
 import Stats from "../views/Stats";
 import colors from "../utils/colors";
@@ -18,7 +19,7 @@ const TabNavigator = () => {
         headerShown: false,
         tabBarStyle: {
           backgroundColor: colors.PRIMARY,
-          height: 80,
+          height: 100,
         },
         tabBarLabelStyle: {
           fontSize: 15,
@@ -57,8 +58,8 @@ const TabNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Dictionary"
-        component={Dictionary}
+        name="Collection"
+        component={Collection}
         options={{
           tabBarIcon: (props) => (
             <Entypo
@@ -67,7 +68,21 @@ const TabNavigator = () => {
               color={props.color}
             />
           ),
-          tabBarLabel: "Dictionary",
+          tabBarLabel: "Collection",
+        }}
+      />
+      <Tab.Screen
+        name="Options"
+        component={Options}
+        options={{
+          tabBarIcon: (props) => (
+            <MaterialIcons
+              name="settings"
+              size={props.size + 15}
+              color={props.color}
+            />
+          ),
+          tabBarLabel: "Options",
         }}
       />
     </Tab.Navigator>
