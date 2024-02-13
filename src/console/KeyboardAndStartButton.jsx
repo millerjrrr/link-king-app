@@ -49,8 +49,13 @@ const KeyboardAndStartButton = ({ inputFieldRef }) => {
   }, []);
 
   const dispatch = useDispatch();
-  const { isPlaying, timeOnThisWord, timerIsOn, attempt } =
-    useSelector(getConsoleState);
+  const {
+    showSolution,
+    isPlaying,
+    timeOnThisWord,
+    timerIsOn,
+    attempt,
+  } = useSelector(getConsoleState);
 
   const startFunction = async () => {
     Speech.speak(attempt.target, {
@@ -71,11 +76,12 @@ const KeyboardAndStartButton = ({ inputFieldRef }) => {
   };
 
   const closeKeyboardSubmitAnswer = () => {
-    returnWrongAnswerToServer(
-      dispatch,
-      timeOnThisWord,
-      timerIsOn,
-    );
+    if (showSolution)
+      returnWrongAnswerToServer(
+        dispatch,
+        timeOnThisWord,
+        timerIsOn,
+      );
     Keyboard.dismiss();
   };
 
