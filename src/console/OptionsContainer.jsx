@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
   option: {
-    borderRadius: 15,
+    borderRadius: (optionsSize * 80) / 48 / 2,
     overflow: "hidden",
     width: (optionsSize * 80) / 48,
     height: (optionsSize * 80) / 48,
