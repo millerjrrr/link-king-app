@@ -9,16 +9,20 @@ import Lifetime from "../statistics/Lifetime";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchStatsInfo } from "../statistics/functions/fetchStatsInfo";
 import { getStatsState } from "../store/stats";
+import { getConsoleState } from "../store/console";
 import Loader from "../ui/Loader";
 
 const Stats = () => {
   const { userGameData, levelBreakdown, busy } =
     useSelector(getStatsState);
+
+  const { stats } = useSelector(getConsoleState);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     fetchStatsInfo(dispatch);
-  }, []);
+  }, [stats.steps]);
 
   return (
     <InnerTabBackground heading="Stats">

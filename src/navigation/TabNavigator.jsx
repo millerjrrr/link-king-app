@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Collection from "../views/Collection";
+import CollectionNavigator from "./subnavigators/CollectionNavigator";
 import Options from "../views/Options";
 import Console from "../views/Console";
 import Stats from "../views/Stats";
@@ -59,7 +59,7 @@ const TabNavigator = () => {
       />
       <Tab.Screen
         name="Collection"
-        component={Collection}
+        component={CollectionNavigator}
         options={{
           tabBarIcon: (props) => (
             <Entypo

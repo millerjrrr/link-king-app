@@ -30,7 +30,7 @@ const Lifetime = ({ gd }) => {
         </View>
         <View style={styles.row}>
           <StatsIcon
-            name="Lifetime's Pace"
+            name="Lifetime Pace"
             iconName="run-fast"
             value={Math.round(
               (gd.stepsTakenLifetime /
@@ -51,7 +51,7 @@ const Lifetime = ({ gd }) => {
         </View>
         <View style={styles.row}>
           <StatsIcon
-            name="Lifetime's Streak"
+            name="Lifetime Streak"
             iconName="trophy-variant"
             value={gd.streakRecord}
           />

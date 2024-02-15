@@ -14,6 +14,7 @@ const colors = {
   ORANGE: "#f8ab54",
   RED: "#f37777",
   LIGHTRED: "#ff939381",
+  BLOOD: "rgba(243, 119, 119, 0.3)",
 };
 
 export const colorByTries = [

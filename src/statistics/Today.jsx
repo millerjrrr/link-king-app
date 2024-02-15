@@ -32,11 +32,16 @@ const Today = ({ gd }) => {
           <StatsIcon
             name="Today's Pace"
             iconName="run-fast"
-            value={Math.round(
-              (gd.stepsTakenToday / gd.timePlayingToday) *
-                60 *
-                1000,
-            )}
+            value={
+              gd.timePlayingToday
+                ? Math.round(
+                    (gd.stepsTakenToday /
+                      gd.timePlayingToday) *
+                      60 *
+                      1000,
+                  )
+                : 0
+            }
             units=" steps/min"
           />
           <StatsIcon

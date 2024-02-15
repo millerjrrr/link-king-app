@@ -76,7 +76,7 @@ const KeyboardAndStartButton = ({ inputFieldRef }) => {
   };
 
   const closeKeyboardSubmitAnswer = () => {
-    if (showSolution)
+    if (!showSolution)
       returnWrongAnswerToServer(
         dispatch,
         timeOnThisWord,

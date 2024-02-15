@@ -1,32 +1,52 @@
 import { View, StyleSheet } from "react-native";
-import AppButton from "../ui/AppButton";
-import { clearAsyncStorage } from "../utils/asyncStorage";
-import { useDispatch } from "react-redux";
-import {
-  updateLoggedInState,
-  updateToken,
-} from "../store/auth";
-// import { useNavigation } from "@react-navigation/native";
+import InnerTabBackground from "../components/InnerTabBackground";
+import WordCollectionList from "../collection/WordCollectionList";
+import { useEffect, useState } from "react";
+import { fetchTickets } from "../collection/functions/fetchTickets";
+import SearchBar from "../collection/SearchBar";
+import DataAndTitle from "../collection/DataAndTitle";
 
-const Collection = (props) => {
-  const dispatch = useDispatch();
-  // const navigation = useNavigation();
+const Collection = ({ navigation }) => {
+  const [tickets, setTickets] = useState([]);
+  const [searchKeyword, setSearchKeyword] = useState("");
+  const [filteredTickets, setFilteredTickets] =
+    useState(tickets);
+  const [busy, setBusy] = useState(true);
 
-  const onPress = () => {
-    dispatch(updateToken(""));
-    dispatch(updateLoggedInState(false));
+  useEffect(() => {
+    fetchTickets(setTickets, setFilteredTickets, setBusy);
+  }, []);
 
-    clearAsyncStorage();
-    // navigation.navigate("SignIn");
+  const filterFunction = () => {
+    if (tickets) {
+      const filtered = tickets.filter((ticket) => {
+        return ticket.dicEntry.target
+          .toLowerCase()
+          .includes(searchKeyword.toLowerCase());
+      });
+      console.log(searchKeyword);
+      console.log(filtered[0]);
+      setFilteredTickets(filtered);
+    }
   };
 
+  useEffect(() => {
+    filterFunction();
+  }, [searchKeyword]);
+
   return (
-    <View style={styles.container}>
+    <InnerTabBackground heading="Collection">
       <View style={styles.container}>
-        <AppButton onPress={onPress} title={"Logout"} />
+        <SearchBar
+          searchKeyword={searchKeyword}
+          setSearchKeyword={setSearchKeyword}
+        />
+        <WordCollectionList
+          navigation={navigation}
+          tickets={filteredTickets}
+        />
       </View>
-      <View style={styles.container}></View>
-    </View>
+    </InnerTabBackground>
   );
 };
 

@@ -1,4 +1,9 @@
-import { StyleSheet, TextInput, View } from "react-native";
+import {
+  Platform,
+  StyleSheet,
+  TextInput,
+  View,
+} from "react-native";
 import Timer from "./Timer";
 import colors, { colorByTries } from "../utils/colors";
 import Loader from "../ui/Loader";
@@ -53,7 +58,7 @@ const ConsoleInput = ({ inputFieldRef }) => {
   };
 
   return (
-    <View style={[styles.formView, { borderColor: color }]}>
+    <View style={styles.formView}>
       {options.timer ? (
         <Timer onComplete={submitAttempt} color={color} />
       ) : null}
@@ -82,7 +87,11 @@ const ConsoleInput = ({ inputFieldRef }) => {
         enterKeyHint="enter"
         autoCapitalize={"none"}
         selectionColor={color}
-        style={[styles.input, { color: color }]}
+        style={[
+          styles.input,
+          { color: color, shadowColor: color },
+          styles.commonProp,
+        ]}
         onSubmitEditing={submitAttempt}
       />
     </View>
@@ -92,9 +101,6 @@ const ConsoleInput = ({ inputFieldRef }) => {
 const styles = StyleSheet.create({
   formView: {
     width: "100%",
-    borderWidth: 2,
-    backgroundColor: colors.SECONDARY,
-    borderRadius: 35,
     justifyContent: "center",
     alignItems: "center",
     zIndex: 1,
@@ -105,7 +111,25 @@ const styles = StyleSheet.create({
     padding: 10,
     textAlign: "center",
     fontSize: 40,
+    borderRadius: 35,
+    backgroundColor: colors.SECONDARY,
   },
+  ...Platform.select({
+    ios: {
+      commonProp: {
+        shadowOffset: {
+          height: 1,
+        },
+        shadowOpacity: 0.5,
+        shadowRadius: 5,
+      },
+    },
+    android: {
+      commonProp: {
+        elevation: 3,
+      },
+    },
+  }),
 });
 
 export default ConsoleInput;
