@@ -1,7 +1,7 @@
 import { Platform, View, StyleSheet } from "react-native";
 import InnerTabBackground from "../components/InnerTabBackground";
 import colors from "../utils/colors";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SwipeView from "../statistics/SwipeView";
 import Levels from "../statistics/Levels";
 import Today from "../statistics/Today";
@@ -9,12 +9,12 @@ import Lifetime from "../statistics/Lifetime";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchStatsInfo } from "../statistics/functions/fetchStatsInfo";
 import { getStatsState } from "../store/stats";
-import { getConsoleState } from "../store/console";
-import Loader from "../ui/Loader";
 import BusyWrapper from "../components/BusyWrapper";
 
 const Stats = ({ navigation }) => {
-  const { userGameData, levelBreakdown, busy } =
+  // ...loader management...
+  const [page, refresh] = useState(true);
+  const { userGameData, levelBreakdown, busy, connected } =
     useSelector(getStatsState);
 
   const dispatch = useDispatch();
@@ -29,9 +29,17 @@ const Stats = ({ navigation }) => {
     return unsubscribe;
   }, [navigation]);
 
+  useEffect(() => {
+    fetchStatsInfo(dispatch);
+  }, [page]);
+
   return (
     <InnerTabBackground heading="Stats">
-      <BusyWrapper busy={busy}>
+      <BusyWrapper
+        busy={busy}
+        connected={connected}
+        refresh={() => refresh(!page)}
+      >
         <SwipeView>
           <View
             style={[styles.container, styles.commonProp]}

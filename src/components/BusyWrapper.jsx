@@ -1,10 +1,24 @@
 import { View, StyleSheet } from "react-native";
 import Loader from "../ui/Loader";
+import InternetConnectionPage from "../errors/InternetConnectionPage";
 
-const BusyWrapper = ({ children, busy }) => {
+const BusyWrapper = ({
+  children,
+  busy,
+  connected,
+  refresh,
+}) => {
   return (
     <View style={styles.container}>
-      {busy ? <Loader size={96} /> : children}
+      {connected ? (
+        busy ? (
+          <Loader size={96} />
+        ) : (
+          children
+        )
+      ) : (
+        <InternetConnectionPage refresh={refresh} />
+      )}
     </View>
   );
 };

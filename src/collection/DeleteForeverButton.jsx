@@ -22,7 +22,6 @@ const DeleteForeverButton = ({
         const elapsedTime =
           (Date.now() - pressStartTime) / 1000; // Convert to seconds
         setElapsedTime(elapsedTime);
-        console.log(elapsedTime);
       }
     }, 100); // Update every second
 

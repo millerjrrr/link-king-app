@@ -1,6 +1,7 @@
 import clientWithAuth from "../../api/clientWithAuth";
 import {
   updateBusyState,
+  updateConnectedState,
   updateFormValue,
   updateShowSolution,
   updateTimeOnThisWord,
@@ -28,6 +29,7 @@ export const returnWrongAnswerToServer = async (
         correct: false,
         time,
       },
+      { timeout: 3000 },
     );
     updateConsoleState(data, dispatch);
     Speech.speak(data.gamePlay.target, {
@@ -35,6 +37,7 @@ export const returnWrongAnswerToServer = async (
     });
   } catch (error) {
     console.log("Console error:", error);
+    dispatch(updateConnectedState(false));
   }
   dispatch(updateFormValue(""));
   dispatch(updateShowSolution(true));

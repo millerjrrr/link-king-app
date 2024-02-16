@@ -27,7 +27,7 @@ const StartButton = ({ size, title, onPress }) => {
         <Text
           style={{
             color: colors.INACTIVE_CONTRAST,
-            fontSize: 50,
+            fontSize: size / 4,
           }}
         >
           {title}

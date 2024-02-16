@@ -8,7 +8,7 @@ import {
   getConsoleState,
   updateTimeOnThisWord,
 } from "../store/console";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import OptionsContainer from "../console/OptionsContainer";
 import KeyboardAndStartButton from "../console/KeyboardAndStartButton";
@@ -17,10 +17,14 @@ import { fetchConsoleInfo } from "../console/functions/fetchConsoleInfo";
 import ReadWordButton from "../console/ReadWordButton";
 import StatsContainer from "../console/StatsContainer";
 import InnerTabBackground from "../components/InnerTabBackground";
+import BusyWrapper from "../components/BusyWrapper";
 
 const Console = ({ navigation }) => {
+  // ...loader management...
+  const [page, refresh] = useState(true);
+
   const inputFieldRef = useRef(null);
-  const { timeOnThisWord, timerIsOn } =
+  const { timeOnThisWord, timerIsOn, busy, connected } =
     useSelector(getConsoleState);
   const dispatch = useDispatch();
 
@@ -35,6 +39,10 @@ const Console = ({ navigation }) => {
   }, [navigation]);
 
   useEffect(() => {
+    fetchConsoleInfo(dispatch);
+  }, [page]);
+
+  useEffect(() => {
     const incrementTimer = async () => {
       if (timerIsOn && timeOnThisWord < 30 * 1000)
         dispatch(
@@ -47,21 +55,27 @@ const Console = ({ navigation }) => {
 
   return (
     <InnerTabBackground heading="Console">
-      <KeyboardAvoidingView
-        style={styles.container}
-        behavior={
-          Platform.OS === "ios" ? "padding" : undefined
-        }
+      <BusyWrapper
+        busy={false}
+        connected={connected}
+        refresh={() => refresh(!page)}
       >
-        <StatsContainer />
-        <OptionsContainer />
-        <ReadWordButton />
-        <ConsoleInput inputFieldRef={inputFieldRef} />
-        <Tail />
-        <KeyboardAndStartButton
-          inputFieldRef={inputFieldRef}
-        />
-      </KeyboardAvoidingView>
+        <KeyboardAvoidingView
+          style={styles.container}
+          behavior={
+            Platform.OS === "ios" ? "padding" : undefined
+          }
+        >
+          <StatsContainer />
+          <OptionsContainer />
+          <ReadWordButton />
+          <ConsoleInput inputFieldRef={inputFieldRef} />
+          <Tail />
+          <KeyboardAndStartButton
+            inputFieldRef={inputFieldRef}
+          />
+        </KeyboardAvoidingView>
+      </BusyWrapper>
     </InnerTabBackground>
   );
 };

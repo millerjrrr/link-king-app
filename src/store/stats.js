@@ -7,6 +7,7 @@ const initialState = {
   levelBreakdown: [],
   userGameData: null,
   busy: true,
+  connected: true,
 };
 
 const slice = createSlice({
@@ -22,6 +23,9 @@ const slice = createSlice({
     updateBusyState(statsState, { payload }) {
       statsState.busy = payload;
     },
+    updateConnectedState(statsState, { payload }) {
+      statsState.connected = payload;
+    },
   },
 });
 
@@ -29,6 +33,7 @@ export const {
   updateLevelBreakdown,
   updateUserGameData,
   updateBusyState,
+  updateConnectedState,
 } = slice.actions;
 
 export const getStatsState = createSelector(

@@ -20,6 +20,7 @@ const initialState = {
   tail: [],
   tries: 1,
   busy: true,
+  connected: true,
   formValue: "",
   showSolution: "",
   timeOnThisWord: 0,
@@ -50,6 +51,9 @@ const slice = createSlice({
     updateBusyState(consoleState, { payload }) {
       consoleState.busy = payload;
     },
+    updateConnectedState(consoleState, { payload }) {
+      consoleState.connected = payload;
+    },
     //CONSOLE STATE VARIABLES
     updateFormValue(consoleState, { payload }) {
       consoleState.formValue = payload;
@@ -79,6 +83,7 @@ export const {
   updateTail,
   updateTries,
   updateBusyState,
+  updateConnectedState,
   updateFormValue,
   updateShowSolution,
   updateTimeOnThisWord,

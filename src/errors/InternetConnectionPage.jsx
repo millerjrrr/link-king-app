@@ -1,7 +1,8 @@
 import { Text, StyleSheet, View } from "react-native";
 import colors from "../utils/colors";
+import RefreshButton from "./RefreshButton";
 
-const InternetConnectionPage = (props) => {
+const InternetConnectionPage = ({ refresh }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Disconnected!</Text>
@@ -9,6 +10,7 @@ const InternetConnectionPage = (props) => {
         ..looks like you are not connected to the internet.
         This app requires a stable internet connection...
       </Text>
+      <RefreshButton refresh={refresh} />
     </View>
   );
 };

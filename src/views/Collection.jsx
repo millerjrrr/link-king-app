@@ -7,11 +7,15 @@ import SearchBar from "../collection/SearchBar";
 import BusyWrapper from "../components/BusyWrapper";
 
 const Collection = ({ navigation }) => {
+  // ...loader management...
+  const [busy, setBusy] = useState(true);
+  const [connected, setConnected] = useState(true);
+  const [page, refresh] = useState(true);
+
   const [tickets, setTickets] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState("");
   const [filteredTickets, setFilteredTickets] =
     useState(tickets);
-  const [busy, setBusy] = useState(true);
 
   useEffect(() => {
     const unsubscribe = navigation.addListener(
@@ -21,11 +25,21 @@ const Collection = ({ navigation }) => {
           setTickets,
           setFilteredTickets,
           setBusy,
+          setConnected,
         );
       },
     );
     return unsubscribe;
   }, [navigation]);
+
+  useEffect(() => {
+    fetchTickets(
+      setTickets,
+      setFilteredTickets,
+      setBusy,
+      setConnected,
+    );
+  }, [page]);
 
   const filterFunction = () => {
     if (tickets) {
@@ -49,7 +63,11 @@ const Collection = ({ navigation }) => {
           searchKeyword={searchKeyword}
           setSearchKeyword={setSearchKeyword}
         />
-        <BusyWrapper busy={busy}>
+        <BusyWrapper
+          busy={busy}
+          connected={connected}
+          refresh={() => refresh(!page)}
+        >
           <WordCollectionList
             navigation={navigation}
             tickets={filteredTickets}
