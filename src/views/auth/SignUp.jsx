@@ -37,7 +37,7 @@ const initialValues = {
   password: "",
 };
 
-const SignUp = (props) => {
+const SignUp = () => {
   const [secureEntry, setSecureEntry] = useState(true);
   const navigation = useNavigation();
 
@@ -48,9 +48,8 @@ const SignUp = (props) => {
   const handleSubmit = async (values, actions) => {
     values.passwordConfirm = values.password;
     values.username = values.name;
-    console.log({ ...values });
 
-    //to add loading without the formik context, video 
+    //to add loading without the formik context, video
     // 228. Loading Indicator explains it well
 
     actions.setSubmitting(true);
@@ -61,8 +60,10 @@ const SignUp = (props) => {
         {
           ...values,
         },
+        {
+          timeout: 3000,
+        },
       );
-      console.log(res);
     } catch (error) {
       console.log("Sign up error", error);
     }

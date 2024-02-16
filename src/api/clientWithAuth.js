@@ -9,6 +9,7 @@ const clientWithAuth = {
       headers: {
         Authorization: "Bearer " + token,
       },
+      timeout: 3000,
     });
   },
   get: async (url) => {
@@ -18,6 +19,7 @@ const clientWithAuth = {
       headers: {
         Authorization: "Bearer " + token,
       },
+      timeout: 3000,
     });
   },
 };

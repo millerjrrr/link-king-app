@@ -38,7 +38,13 @@ const Loader = ({ color = colors.CONTRAST, size = 24 }) => {
   }, []);
 
   return (
-    <View>
+    <View
+      style={{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <Animated.View style={transform}>
         <AntDesign
           name="loading1"

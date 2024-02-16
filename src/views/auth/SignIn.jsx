@@ -32,7 +32,7 @@ const initialValues = {
   password: "",
 };
 
-const SignIn = (props) => {
+const SignIn = () => {
   const [secureEntry, setSecureEntry] = useState(true);
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -42,8 +42,6 @@ const SignIn = (props) => {
   };
 
   const handleSubmit = async (values, actions) => {
-    console.log({ ...values });
-
     //to add loading without the formik context, video
     // 228. Loading Indicator explains it well
     actions.setSubmitting(true);
@@ -54,10 +52,10 @@ const SignIn = (props) => {
         {
           ...values,
         },
+        {
+          timeout: 3000,
+        },
       );
-      // console.log(data);
-      // console.log(data.data);
-      // console.log(data.token);
 
       await saveToAsyncStorage("auth-token", data.token);
       dispatch(updateToken(data.token));

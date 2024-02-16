@@ -18,16 +18,21 @@ import ReadWordButton from "../console/ReadWordButton";
 import StatsContainer from "../console/StatsContainer";
 import InnerTabBackground from "../components/InnerTabBackground";
 
-const Console = () => {
+const Console = ({ navigation }) => {
   const inputFieldRef = useRef(null);
-
   const { timeOnThisWord, timerIsOn } =
     useSelector(getConsoleState);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetchConsoleInfo(dispatch);
-  }, []);
+    const unsubscribe = navigation.addListener(
+      "focus",
+      () => {
+        fetchConsoleInfo(dispatch);
+      },
+    );
+    return unsubscribe;
+  }, [navigation]);
 
   useEffect(() => {
     const incrementTimer = async () => {

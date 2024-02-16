@@ -11,32 +11,27 @@ import { fetchStatsInfo } from "../statistics/functions/fetchStatsInfo";
 import { getStatsState } from "../store/stats";
 import { getConsoleState } from "../store/console";
 import Loader from "../ui/Loader";
+import BusyWrapper from "../components/BusyWrapper";
 
-const Stats = () => {
+const Stats = ({ navigation }) => {
   const { userGameData, levelBreakdown, busy } =
     useSelector(getStatsState);
-
-  const { stats } = useSelector(getConsoleState);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetchStatsInfo(dispatch);
-  }, [stats.steps]);
+    const unsubscribe = navigation.addListener(
+      "focus",
+      () => {
+        fetchStatsInfo(dispatch);
+      },
+    );
+    return unsubscribe;
+  }, [navigation]);
 
   return (
     <InnerTabBackground heading="Stats">
-      {busy ? (
-        <View
-          style={{
-            flex: 1,
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Loader size={100} />
-        </View>
-      ) : (
+      <BusyWrapper busy={busy}>
         <SwipeView>
           <View
             style={[styles.container, styles.commonProp]}
@@ -54,7 +49,7 @@ const Stats = () => {
             <Levels lbd={levelBreakdown} />
           </View>
         </SwipeView>
-      )}
+      </BusyWrapper>
     </InnerTabBackground>
   );
 };

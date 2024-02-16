@@ -6,7 +6,6 @@ import {
 const initialState = {
   loggedIn: false,
   token: "",
-  busy: false,
 };
 
 const slice = createSlice({
@@ -19,17 +18,11 @@ const slice = createSlice({
     updateToken(authState, { payload }) {
       authState.token = payload;
     },
-    updateBusyState(authState, { payload }) {
-      authState.busy = payload;
-    },
   },
 });
 
-export const {
-  updateToken,
-  updateLoggedInState,
-  updateBusyState,
-} = slice.actions;
+export const { updateToken, updateLoggedInState } =
+  slice.actions;
 
 export const getAuthState = createSelector(
   (authState) => authState,

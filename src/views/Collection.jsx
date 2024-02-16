@@ -4,7 +4,7 @@ import WordCollectionList from "../collection/WordCollectionList";
 import { useEffect, useState } from "react";
 import { fetchTickets } from "../collection/functions/fetchTickets";
 import SearchBar from "../collection/SearchBar";
-import DataAndTitle from "../collection/DataAndTitle";
+import BusyWrapper from "../components/BusyWrapper";
 
 const Collection = ({ navigation }) => {
   const [tickets, setTickets] = useState([]);
@@ -14,8 +14,18 @@ const Collection = ({ navigation }) => {
   const [busy, setBusy] = useState(true);
 
   useEffect(() => {
-    fetchTickets(setTickets, setFilteredTickets, setBusy);
-  }, []);
+    const unsubscribe = navigation.addListener(
+      "focus",
+      () => {
+        fetchTickets(
+          setTickets,
+          setFilteredTickets,
+          setBusy,
+        );
+      },
+    );
+    return unsubscribe;
+  }, [navigation]);
 
   const filterFunction = () => {
     if (tickets) {
@@ -24,8 +34,6 @@ const Collection = ({ navigation }) => {
           .toLowerCase()
           .includes(searchKeyword.toLowerCase());
       });
-      console.log(searchKeyword);
-      console.log(filtered[0]);
       setFilteredTickets(filtered);
     }
   };
@@ -41,10 +49,12 @@ const Collection = ({ navigation }) => {
           searchKeyword={searchKeyword}
           setSearchKeyword={setSearchKeyword}
         />
-        <WordCollectionList
-          navigation={navigation}
-          tickets={filteredTickets}
-        />
+        <BusyWrapper busy={busy}>
+          <WordCollectionList
+            navigation={navigation}
+            tickets={filteredTickets}
+          />
+        </BusyWrapper>
       </View>
     </InnerTabBackground>
   );

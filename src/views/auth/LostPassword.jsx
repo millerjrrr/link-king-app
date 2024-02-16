@@ -19,7 +19,7 @@ const initialValues = {
   email: "",
 };
 
-const LostPassword = (props) => {
+const LostPassword = () => {
   const navigation = useNavigation();
 
   const handleSubmit = async (values, actions) => {

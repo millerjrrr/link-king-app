@@ -55,8 +55,9 @@ const WordCard = ({ navigation, ticket }) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    margin: 20,
-    marginBottom: 0,
+    margin: 10,
+    marginLeft: 15,
+    marginRight: 15,
     borderRadius: 15,
     padding: 5,
     backgroundColor: colors.SECONDARY,

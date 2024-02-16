@@ -8,6 +8,10 @@ import {
 import WordCard from "./WordCard";
 import colors from "../utils/colors";
 
+const ListHeaderComponent = () => {
+  return <View style={{ height: 70 }} />;
+};
+
 const WordCollectionList = ({ tickets, navigation }) => {
   return tickets === null || tickets.length === 0 ? (
     <View style={{ flex: 1, paddingTop: 90, width: "80%" }}>
@@ -36,12 +40,17 @@ const WordCollectionList = ({ tickets, navigation }) => {
       }}
       keyExtractor={(item) => item._id}
       style={styles.flatList}
+      ListHeaderComponent={ListHeaderComponent}
     />
   );
 };
 
 const styles = StyleSheet.create({
-  flatList: { flex: 1, width: "100%", paddingTop: 70 },
+  flatList: {
+    flex: 1,
+    width: "100%",
+    // paddingTop: 70,
+  },
 });
 
 export default WordCollectionList;
