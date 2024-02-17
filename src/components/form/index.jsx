@@ -6,6 +6,7 @@ const Form = (props) => {
       onSubmit={props.onSubmit}
       initialValues={props.initialValues}
       validationSchema={props.signUpSchema}
+      style={{ flex: 1 }}
     >
       {props.children}
     </Formik>

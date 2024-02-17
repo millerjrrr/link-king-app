@@ -3,8 +3,6 @@ import {
   StyleSheet,
   Text,
   Image,
-  KeyboardAvoidingView,
-  Platform,
 } from "react-native";
 import colors from "../utils/colors";
 import CrownUI from "../ui/CrownUI";
@@ -42,18 +40,15 @@ const AuthFormContainer = ({
         rotation="300"
         color={colors.INACTIVE_CONTRAST}
       />
-      <KeyboardAvoidingView
-        style={styles.container}
-        behavior={
-          Platform.OS === "ios" ? "padding" : undefined
-        }
-      >
+
+      <View style={styles.container}>
         <View style={styles.headerContainer}>
           <Image
             source={require("../assets/link-king-header-logo.png")}
             resizeMode="contain"
             style={{
-              height: 100,
+              marginTop: 50,
+              height: 50,
               borderColor: colors.CONTRAST,
             }}
           />
@@ -63,7 +58,7 @@ const AuthFormContainer = ({
           </Text>
         </View>
         {children}
-      </KeyboardAvoidingView>
+      </View>
     </View>
   );
 };
@@ -72,18 +67,20 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "top",
     paddingHorizontal: 15,
   },
   heading: {
-    color: colors.INACTIVE_CONTRAST,
-    fontSize: 25,
+    color: colors.CONTRAST,
+    fontSize: 15,
     fontWeight: "bold",
     paddingVertical: 0,
+    transform: [{ translateY: -8 }],
   },
   subHeading: {
     color: colors.CONTRAST,
-    fontSize: 16,
+    fontSize: 13,
+    textAlign: "center",
   },
   headerContainer: {
     alignItems: "center",

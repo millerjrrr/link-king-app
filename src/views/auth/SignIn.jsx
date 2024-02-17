@@ -1,11 +1,10 @@
-import { StyleSheet, View } from "react-native";
+import { Keyboard, StyleSheet, View } from "react-native";
 import SubmitBtn from "../../components/form/SubmitBtn";
 import AppLink from "../../ui/AppLink";
 import AuthInputField from "../../components/form/AuthInputField";
 import Form from "../../components/form/index";
 import * as yup from "yup";
 import PasswordVisibilityIcon from "../../ui/PasswordVisibilityIcon";
-import { useState } from "react";
 import AuthFormContainer from "../../components/AuthFormContainer";
 import { useNavigation } from "@react-navigation/native";
 import client from "../../api/client";
@@ -15,6 +14,7 @@ import {
   updateToken,
 } from "../../store/auth";
 import { saveToAsyncStorage } from "../../utils/asyncStorage";
+import { useEffect, useState } from "react";
 
 const signUpSchema = yup.object({
   email: yup
@@ -33,6 +33,29 @@ const initialValues = {
 };
 
 const SignIn = () => {
+  //Keyboard Management
+  const [isKeyboardShowing, setIsKeyboardShowing] =
+    useState(false);
+
+  useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener(
+      "keyboardDidShow",
+      () => setIsKeyboardShowing(true),
+    );
+    const keyboardDidHideListener = Keyboard.addListener(
+      "keyboardDidHide",
+      () => setIsKeyboardShowing(false),
+    );
+
+    // Cleanup function to remove listeners
+    return () => {
+      keyboardDidShowListener.remove();
+      keyboardDidHideListener.remove();
+    };
+  }, []);
+
+  ////////////////////////////////////
+
   const [secureEntry, setSecureEntry] = useState(true);
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -54,12 +77,12 @@ const SignIn = () => {
           timeout: 3000,
         },
       );
-
+    } catch (error) {
+      console.log("Sign in error", error);
+    } finally {
       await saveToAsyncStorage("auth-token", data.token);
       dispatch(updateToken(data.token));
       dispatch(updateLoggedInState(true));
-    } catch (error) {
-      console.log("Sign in error", error);
     }
     actions.setSubmitting(false);
   };
@@ -94,21 +117,25 @@ const SignIn = () => {
             }
             onRightIconPress={togglePasswordView}
           />
-          <SubmitBtn title="Sign in" />
-          <View style={styles.linkContainer}>
-            <AppLink
-              title="I lost my password"
-              onPress={() => {
-                navigation.navigate("LostPassword");
-              }}
-            />
-            <AppLink
-              title="Sign up"
-              onPress={() => {
-                navigation.navigate("SignUp");
-              }}
-            />
-          </View>
+          {!isKeyboardShowing ? (
+            <>
+              <View style={styles.linkContainer}>
+                <AppLink
+                  title="I lost my password"
+                  onPress={() => {
+                    navigation.navigate("LostPassword");
+                  }}
+                />
+                <AppLink
+                  title="Sign up"
+                  onPress={() => {
+                    navigation.navigate("SignUp");
+                  }}
+                />
+              </View>
+              <SubmitBtn title={"Sign In"} />
+            </>
+          ) : null}
         </View>
       </Form>
     </AuthFormContainer>
@@ -117,7 +144,7 @@ const SignIn = () => {
 
 const styles = StyleSheet.create({
   formContainer: {
-    width: "100%",
+    flex: 1,
   },
   marginBottom: {
     marginBottom: 20,
@@ -126,7 +153,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    marginTop: 20,
+    marginTop: 10,
+    marginBottom: 20,
   },
 });
 

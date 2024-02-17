@@ -95,7 +95,9 @@ const AuthInputField = (props) => {
 };
 
 const styles = StyleSheet.create({
+  containerStyle: { width: "100%" },
   labelContainer: {
+    width: "100%",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",

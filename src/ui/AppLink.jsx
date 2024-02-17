@@ -10,7 +10,7 @@ const AppLink = ({ title, onPress }) => {
 };
 
 const styles = StyleSheet.create({
-  title: { color: colors.INACTIVE_CONTRAST },
+  title: { color: colors.INACTIVE_CONTRAST, fontSize: 15 },
 });
 
 export default AppLink;

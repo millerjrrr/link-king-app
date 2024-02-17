@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { Keyboard, StyleSheet, View } from "react-native";
 import SubmitBtn from "../../components/form/SubmitBtn";
 import AppLink from "../../ui/AppLink";
 import AuthInputField from "../../components/form/AuthInputField";
@@ -7,6 +7,7 @@ import * as yup from "yup";
 import AuthFormContainer from "../../components/AuthFormContainer";
 import { useNavigation } from "@react-navigation/native";
 import client from "../../api/client";
+import { useEffect, useState } from "react";
 
 const signUpSchema = yup.object({
   email: yup
@@ -20,6 +21,29 @@ const initialValues = {
 };
 
 const LostPassword = () => {
+  //Keyboard Management
+  const [isKeyboardShowing, setIsKeyboardShowing] =
+    useState(false);
+
+  useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener(
+      "keyboardDidShow",
+      () => setIsKeyboardShowing(true),
+    );
+    const keyboardDidHideListener = Keyboard.addListener(
+      "keyboardDidHide",
+      () => setIsKeyboardShowing(false),
+    );
+
+    // Cleanup function to remove listeners
+    return () => {
+      keyboardDidShowListener.remove();
+      keyboardDidHideListener.remove();
+    };
+  }, []);
+
+  ////////////////////////////////////
+
   const navigation = useNavigation();
 
   const handleSubmit = async (values, actions) => {
@@ -63,21 +87,25 @@ const LostPassword = () => {
             autoCapitalize="none"
             containerStyle={styles.marginBottom}
           />
-          <SubmitBtn title="Send link" />
-          <View style={styles.linkContainer}>
-            <AppLink
-              title="Sign in"
-              onPress={() => {
-                navigation.navigate("SignIn");
-              }}
-            />
-            <AppLink
-              title="Sign up"
-              onPress={() => {
-                navigation.navigate("SignUp");
-              }}
-            />
-          </View>
+          {!isKeyboardShowing ? (
+            <>
+              <View style={styles.linkContainer}>
+                <AppLink
+                  title="Sign in"
+                  onPress={() => {
+                    navigation.navigate("SignIn");
+                  }}
+                />
+                <AppLink
+                  title="Sign up"
+                  onPress={() => {
+                    navigation.navigate("SignUp");
+                  }}
+                />
+              </View>
+              <SubmitBtn title="Send link" />
+            </>
+          ) : null}
         </View>
       </Form>
     </AuthFormContainer>
@@ -86,7 +114,7 @@ const LostPassword = () => {
 
 const styles = StyleSheet.create({
   formContainer: {
-    width: "100%",
+    flex: 1,
   },
   marginBottom: {
     marginBottom: 20,
@@ -95,7 +123,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    marginTop: 20,
+    marginTop: 10,
+    marginBottom: 20,
   },
 });
 

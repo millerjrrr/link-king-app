@@ -86,6 +86,8 @@ const ConsoleInput = ({ inputFieldRef }) => {
         blurOnSubmit={false}
         enterKeyHint="enter"
         autoCapitalize={"none"}
+        autoCompleteType="off"
+        autoCorrect={false}
         selectionColor={color}
         style={[
           styles.input,
