@@ -1,4 +1,9 @@
-import { View, Pressable, StyleSheet } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Platform,
+  TouchableOpacity,
+} from "react-native";
 import colors from "../utils/colors";
 import { Entypo, MaterialIcons } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
@@ -74,7 +79,7 @@ const OptionsContainer = () => {
 
   return (
     <View style={styles.container}>
-      <Pressable
+      <TouchableOpacity
         onPress={soundButtonFunction}
         style={styles.option}
       >
@@ -91,8 +96,8 @@ const OptionsContainer = () => {
             color={colors.CONTRAST}
           />
         )}
-      </Pressable>
-      <Pressable
+      </TouchableOpacity>
+      <TouchableOpacity
         onPress={blurredButtonFunction}
         style={styles.option}
       >
@@ -109,8 +114,8 @@ const OptionsContainer = () => {
             color={colors.CONTRAST}
           />
         )}
-      </Pressable>
-      <Pressable
+      </TouchableOpacity>
+      <TouchableOpacity
         onPress={timerButtonFunction}
         style={styles.option}
       >
@@ -127,32 +132,41 @@ const OptionsContainer = () => {
             color={colors.CONTRAST}
           />
         )}
-      </Pressable>
+      </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    width: "50%",
     flexDirection: "row",
     justifyContent: "center",
     zIndex: 10,
   },
   option: {
     borderRadius: (optionsSize * 80) / 48 / 2,
-    overflow: "hidden",
     width: (optionsSize * 80) / 48,
     height: (optionsSize * 80) / 48,
     justifyContent: "center",
     alignItems: "center",
-    borderWidth: 2,
-    borderColor: colors.CONTRAST,
-    backgroundColor: colors.PRIMARY,
+    backgroundColor: colors.SECONDARY,
     marginTop: 5,
     marginRight: 4,
     marginLeft: 4,
     marginBottom: 0,
+    shadowColor: colors.CONTRAST,
+    ...Platform.select({
+      ios: {
+        shadowOffset: {
+          height: 1,
+        },
+        shadowOpacity: 0.5,
+        shadowRadius: 3,
+      },
+      android: {
+        elevation: 3,
+      },
+    }),
   },
 });
 

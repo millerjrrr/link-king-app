@@ -43,16 +43,16 @@ const LostPassword = () => {
     actions.setSubmitting(false);
   };
   return (
-    <Form
-      onSubmit={handleSubmit}
-      initialValues={initialValues}
-      signUpSchema={signUpSchema}
+    <AuthFormContainer
+      heading="Forgot password"
+      subHeading={
+        "Oops, did you forget your password? Don't worry, we'll help you get back in."
+      }
     >
-      <AuthFormContainer
-        heading="Forgot password"
-        subHeading={
-          "Oops, did you forget your password? Don't worry, we'll help you get back in."
-        }
+      <Form
+        onSubmit={handleSubmit}
+        initialValues={initialValues}
+        signUpSchema={signUpSchema}
       >
         <View style={styles.formContainer}>
           <AuthInputField
@@ -79,8 +79,8 @@ const LostPassword = () => {
             />
           </View>
         </View>
-      </AuthFormContainer>
-    </Form>
+      </Form>
+    </AuthFormContainer>
   );
 };
 

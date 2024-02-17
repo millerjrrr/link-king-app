@@ -4,8 +4,14 @@ import WordCard from "./WordCard";
 import PopUpContainer from "../components/PopUpContainer";
 import colors from "../utils/colors";
 import DeleteForeverButton from "./DeleteForeverButton";
+import { deleteTicket } from "./functions/deleteTicket";
+import Loader from "../ui/Loader";
 
 const DeleteScreen = ({ route }) => {
+  // ...loader management...
+  const [busy, setBusy] = useState(false);
+  const [status, setStatus] = useState(true);
+
   const [elapsedTime, setElapsedTime] = useState(0);
   const [ticketDeleted, setTicketDeleted] = useState(false);
 
@@ -13,6 +19,7 @@ const DeleteScreen = ({ route }) => {
 
   const deleteFunction = () => {
     console.log("deleting...", ticket._id);
+    deleteTicket(ticket._id, setBusy, setStatus);
     setTicketDeleted(true);
   };
 
@@ -38,29 +45,46 @@ const DeleteScreen = ({ route }) => {
             }}
           />
         </View>
-        <WordCard ticket={ticket} />
-        {ticketDeleted ? (
-          <Text style={styles.questionStyle}>
-            This word has been removed from your collection.
-            You will no longer see it as part of your
-            repetitions but you may see it again as a new
-            word challenge at some point in the future
-          </Text>
+        {busy ? (
+          <Loader />
         ) : (
           <>
-            <View style={styles.questionContainer}>
-              <Text style={styles.questionStyle}>
-                Are you sure you want to permanently remove
-                this word from your collection?
-              </Text>
-            </View>
-            <Text style={styles.deleteText}>
-              Press and hold to delete
-            </Text>
-            <DeleteForeverButton
-              setElapsedTime={setElapsedTime}
-              deleteFunction={deleteFunction}
-            />
+            <WordCard ticket={ticket} />
+            {ticketDeleted ? (
+              <>
+                {status ? (
+                  <Text style={styles.questionStyle}>
+                    This word has been removed from your
+                    collection. You will no longer see it as
+                    part of your repetitions but you may see
+                    it again as a new word challenge at some
+                    point in the future
+                  </Text>
+                ) : (
+                  <Text style={styles.questionStyle}>
+                    ...something went wrong 😣 please check
+                    your internet connection and try
+                    again...
+                  </Text>
+                )}
+              </>
+            ) : (
+              <>
+                <View style={styles.questionContainer}>
+                  <Text style={styles.questionStyle}>
+                    Are you sure you want to permanently
+                    remove this word from your collection?
+                  </Text>
+                </View>
+                <Text style={styles.deleteText}>
+                  Press and hold to delete
+                </Text>
+                <DeleteForeverButton
+                  setElapsedTime={setElapsedTime}
+                  deleteFunction={deleteFunction}
+                />
+              </>
+            )}
           </>
         )}
       </PopUpContainer>

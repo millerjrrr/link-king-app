@@ -49,9 +49,6 @@ const SignUp = () => {
     values.passwordConfirm = values.password;
     values.username = values.name;
 
-    //to add loading without the formik context, video
-    // 228. Loading Indicator explains it well
-
     actions.setSubmitting(true);
     try {
       const res = await client.post(
@@ -68,17 +65,18 @@ const SignUp = () => {
       console.log("Sign up error", error);
     }
     actions.setSubmitting(false);
+    navigation.navigate("CheckYourEmail");
   };
 
   return (
-    <Form
-      onSubmit={handleSubmit}
-      initialValues={initialValues}
-      signUpSchema={signUpSchema}
+    <AuthFormContainer
+      heading="Welcome!"
+      subHeading="Let's get started by creating your account."
     >
-      <AuthFormContainer
-        heading="Welcome!"
-        subHeading="Let's get started by creating your account."
+      <Form
+        onSubmit={handleSubmit}
+        initialValues={initialValues}
+        signUpSchema={signUpSchema}
       >
         <View style={styles.formContainer}>
           <AuthInputField
@@ -125,8 +123,8 @@ const SignUp = () => {
             />
           </View>
         </View>
-      </AuthFormContainer>
-    </Form>
+      </Form>
+    </AuthFormContainer>
   );
 };
 

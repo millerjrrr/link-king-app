@@ -26,6 +26,7 @@ const Collection = ({ navigation }) => {
           setFilteredTickets,
           setBusy,
           setConnected,
+          setSearchKeyword,
         );
       },
     );
@@ -67,6 +68,7 @@ const Collection = ({ navigation }) => {
           busy={busy}
           connected={connected}
           refresh={() => refresh(!page)}
+          style={styles.container}
         >
           <WordCollectionList
             navigation={navigation}

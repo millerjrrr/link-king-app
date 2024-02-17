@@ -43,29 +43,26 @@ const AuthFormContainer = ({
         color={colors.INACTIVE_CONTRAST}
       />
       <KeyboardAvoidingView
-        style={{ flex: 1 }}
+        style={styles.container}
         behavior={
           Platform.OS === "ios" ? "padding" : undefined
         }
       >
-        <View style={styles.container}>
-          <View style={styles.headerContainer}>
-            <Image
-              source={require("../assets/link-king-header-logo.png")}
-              resizeMode="contain"
-              style={{
-                height: 100,
-                borderColor: colors.CONTRAST,
-              }}
-            />
-
-            <Text style={styles.heading}>{heading}</Text>
-            <Text style={styles.subHeading}>
-              {subHeading}
-            </Text>
-          </View>
-          {children}
+        <View style={styles.headerContainer}>
+          <Image
+            source={require("../assets/link-king-header-logo.png")}
+            resizeMode="contain"
+            style={{
+              height: 100,
+              borderColor: colors.CONTRAST,
+            }}
+          />
+          <Text style={styles.heading}>{heading}</Text>
+          <Text style={styles.subHeading}>
+            {subHeading}
+          </Text>
         </View>
+        {children}
       </KeyboardAvoidingView>
     </View>
   );
@@ -74,7 +71,6 @@ const AuthFormContainer = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 15,

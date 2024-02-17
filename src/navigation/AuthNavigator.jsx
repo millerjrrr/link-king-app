@@ -1,7 +1,8 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import LostPassword from "../views/auth/LostPassword";
 import SignIn from "../views/auth/SignIn";
 import SignUp from "../views/auth/SignUp";
+import LostPassword from "../views/auth/LostPassword";
+import CheckYourEmail from "../views/auth/CheckYourEmail";
 import { getAuthState } from "../store/auth";
 import { useSelector } from "react-redux";
 
@@ -16,6 +17,10 @@ const AuthNavigator = () => {
       <Stack.Screen
         name="LostPassword"
         component={LostPassword}
+      />
+      <Stack.Screen
+        name="CheckYourEmail"
+        component={CheckYourEmail}
       />
     </Stack.Navigator>
   );

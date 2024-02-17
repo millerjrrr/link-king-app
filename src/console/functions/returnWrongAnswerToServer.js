@@ -29,7 +29,6 @@ export const returnWrongAnswerToServer = async (
         correct: false,
         time,
       },
-      { timeout: 3000 },
     );
     updateConsoleState(data, dispatch);
     Speech.speak(data.gamePlay.target, {

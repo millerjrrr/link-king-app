@@ -7,9 +7,10 @@ const BusyWrapper = ({
   busy,
   connected,
   refresh,
+  style,
 }) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
       {connected ? (
         busy ? (
           <Loader size={96} />

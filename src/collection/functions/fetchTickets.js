@@ -5,9 +5,11 @@ export const fetchTickets = async (
   setFilteredTickets,
   setBusy,
   setConnected,
+  setSearchKeyword,
 ) => {
   setBusy(true);
   setConnected(true);
+  setSearchKeyword("");
   try {
     const { data } = await clientWithAuth.get(
       "/api/v1/tickets/collection",

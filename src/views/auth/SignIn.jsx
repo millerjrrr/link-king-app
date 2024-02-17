@@ -42,8 +42,6 @@ const SignIn = () => {
   };
 
   const handleSubmit = async (values, actions) => {
-    //to add loading without the formik context, video
-    // 228. Loading Indicator explains it well
     actions.setSubmitting(true);
     try {
       const { data } = await client.post(
@@ -67,12 +65,12 @@ const SignIn = () => {
   };
 
   return (
-    <Form
-      onSubmit={handleSubmit}
-      initialValues={initialValues}
-      signUpSchema={signUpSchema}
-    >
-      <AuthFormContainer heading="Welcome back!">
+    <AuthFormContainer heading="Welcome back!">
+      <Form
+        onSubmit={handleSubmit}
+        initialValues={initialValues}
+        signUpSchema={signUpSchema}
+      >
         <View style={styles.formContainer}>
           <AuthInputField
             name="email"
@@ -112,8 +110,8 @@ const SignIn = () => {
             />
           </View>
         </View>
-      </AuthFormContainer>
-    </Form>
+      </Form>
+    </AuthFormContainer>
   );
 };
 

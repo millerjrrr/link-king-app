@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchStatsInfo } from "../statistics/functions/fetchStatsInfo";
 import { getStatsState } from "../store/stats";
 import BusyWrapper from "../components/BusyWrapper";
+import StatsPanel from "../statistics/StatsPanel";
 
 const Stats = ({ navigation }) => {
   // ...loader management...
@@ -41,57 +42,19 @@ const Stats = ({ navigation }) => {
         refresh={() => refresh(!page)}
       >
         <SwipeView>
-          <View
-            style={[styles.container, styles.commonProp]}
-          >
+          <StatsPanel>
             <Lifetime gd={userGameData} />
-          </View>
-          <View
-            style={[styles.container, styles.commonProp]}
-          >
+          </StatsPanel>
+          <StatsPanel>
             <Today gd={userGameData} />
-          </View>
-          <View
-            style={[styles.container, styles.commonProp]}
-          >
+          </StatsPanel>
+          <StatsPanel>
             <Levels lbd={levelBreakdown} />
-          </View>
+          </StatsPanel>
         </SwipeView>
       </BusyWrapper>
     </InnerTabBackground>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    width: "90%",
-    marginLeft: 40,
-    marginRight: 40,
-    marginTop: 20,
-    marginBottom: 10,
-    borderRadius: 10,
-    backgroundColor: colors.PRIMARY,
-    shadowColor: colors.CONTRAST,
-  },
-  ...Platform.select({
-    ios: {
-      commonProp: {
-        shadowOffset: {
-          height: 2,
-        },
-        shadowOpacity: 0.5,
-        shadowRadius: 10,
-      },
-    },
-    android: {
-      commonProp: {
-        elevation: 10,
-      },
-    },
-  }),
-});
 
 export default Stats;

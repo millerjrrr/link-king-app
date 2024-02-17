@@ -43,10 +43,7 @@ const Lifetime = ({ gd }) => {
           <StatsIcon
             name="Collected Words"
             iconName="basket-fill"
-            value={
-              gd.collectedWordsDayStart +
-              gd.collectedWordsToday
-            }
+            value={gd.collectedWords}
           />
         </View>
         <View style={styles.row}>

@@ -1,4 +1,9 @@
-import { Text, View, Pressable } from "react-native";
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  Platform,
+} from "react-native";
 import colors from "../utils/colors";
 
 const StartButton = ({ size, title, onPress }) => {
@@ -11,16 +16,27 @@ const StartButton = ({ size, title, onPress }) => {
         zIndex: 10,
       }}
     >
-      <Pressable
+      <TouchableOpacity
         style={{
           borderRadius: size / 2,
-          borderWidth: 2,
-          borderColor: colors.INACTIVE_CONTRAST,
-          backgroundColor: colors.PRIMARY,
+          backgroundColor: colors.SECONDARY,
           height: size,
           width: size,
           alignItems: "center",
           justifyContent: "center",
+          shadowColor: colors.CONTRAST,
+          ...Platform.select({
+            ios: {
+              shadowOffset: {
+                height: 1,
+              },
+              shadowOpacity: 0.5,
+              shadowRadius: 5,
+            },
+            android: {
+              elevation: 3,
+            },
+          }),
         }}
         onPress={onPress}
       >
@@ -32,7 +48,7 @@ const StartButton = ({ size, title, onPress }) => {
         >
           {title}
         </Text>
-      </Pressable>
+      </TouchableOpacity>
     </View>
   );
 };

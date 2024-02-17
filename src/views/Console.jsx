@@ -2,6 +2,7 @@ import {
   StyleSheet,
   Platform,
   KeyboardAvoidingView,
+  View,
 } from "react-native";
 import ConsoleInput from "../console/ConsoleInput";
 import {
@@ -24,7 +25,7 @@ const Console = ({ navigation }) => {
   const [page, refresh] = useState(true);
 
   const inputFieldRef = useRef(null);
-  const { timeOnThisWord, timerIsOn, busy, connected } =
+  const { timeOnThisWord, timerIsOn, connected } =
     useSelector(getConsoleState);
   const dispatch = useDispatch();
 
@@ -55,27 +56,29 @@ const Console = ({ navigation }) => {
 
   return (
     <InnerTabBackground heading="Console">
-      <BusyWrapper
-        busy={false}
-        connected={connected}
-        refresh={() => refresh(!page)}
+      <KeyboardAvoidingView
+        style={styles.container}
+        behavior={
+          Platform.OS === "ios" ? "padding" : undefined
+        }
       >
-        <KeyboardAvoidingView
-          style={styles.container}
-          behavior={
-            Platform.OS === "ios" ? "padding" : undefined
-          }
+        <BusyWrapper
+          busy={false}
+          connected={connected}
+          refresh={() => refresh(!page)}
         >
-          <StatsContainer />
-          <OptionsContainer />
-          <ReadWordButton />
-          <ConsoleInput inputFieldRef={inputFieldRef} />
-          <Tail />
-          <KeyboardAndStartButton
-            inputFieldRef={inputFieldRef}
-          />
-        </KeyboardAvoidingView>
-      </BusyWrapper>
+          <View style={styles.container}>
+            <StatsContainer />
+            <OptionsContainer />
+            <ReadWordButton />
+            <ConsoleInput inputFieldRef={inputFieldRef} />
+            <Tail />
+            <KeyboardAndStartButton
+              inputFieldRef={inputFieldRef}
+            />
+          </View>
+        </BusyWrapper>
+      </KeyboardAvoidingView>
     </InnerTabBackground>
   );
 };

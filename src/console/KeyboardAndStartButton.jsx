@@ -19,6 +19,7 @@ import {
   updateFormValue,
   updateTimerIsOn,
   updateIsPlaying,
+  updateKey,
 } from "../store/console";
 import { returnWrongAnswerToServer } from "./functions/returnWrongAnswerToServer";
 
@@ -69,12 +70,6 @@ const KeyboardAndStartButton = ({ inputFieldRef }) => {
     dispatch(updateFormValue(""));
   };
 
-  const resumeFunction = async () => {
-    if (inputFieldRef.current) {
-      inputFieldRef.current.focus();
-    }
-  };
-
   const closeKeyboardSubmitAnswer = () => {
     if (!showSolution)
       returnWrongAnswerToServer(
@@ -82,6 +77,11 @@ const KeyboardAndStartButton = ({ inputFieldRef }) => {
         timeOnThisWord,
         timerIsOn,
       );
+    else {
+      dispatch(updateIsPlaying(false));
+      dispatch(updateTimerIsOn(false));
+      dispatch(updateKey());
+    }
     Keyboard.dismiss();
   };
 
@@ -134,13 +134,6 @@ const KeyboardAndStartButton = ({ inputFieldRef }) => {
       onPress={startFunction}
     />
   ) : null;
-  // (
-  //   <StartButton
-  //     title="Resume"
-  //     size={width / 1.5}
-  //     onPress={resumeFunction}
-  //   />
-  // );
 };
 
 const styles = StyleSheet.create({
