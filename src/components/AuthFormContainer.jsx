@@ -6,6 +6,7 @@ import {
 } from "react-native";
 import colors from "../utils/colors";
 import CrownUI from "../ui/CrownUI";
+import AppNotification from "./AppNotification";
 
 const AuthFormContainer = ({
   children,
@@ -18,26 +19,26 @@ const AuthFormContainer = ({
     >
       <CrownUI
         position="top-left"
-        size="100"
-        rotation="150"
+        size="96"
+        rotation="135"
         color={colors.INACTIVE_CONTRAST}
       />
       <CrownUI
         position="top-right"
-        size="50"
-        rotation="230"
+        size="96"
+        rotation="225"
         color={colors.INACTIVE_CONTRAST}
       />
       <CrownUI
         position="bottom-left"
-        size="80"
-        rotation="50"
+        size="96"
+        rotation="45"
         color={colors.INACTIVE_CONTRAST}
       />
       <CrownUI
         position="bottom-right"
-        size="110"
-        rotation="300"
+        size="96"
+        rotation="315"
         color={colors.INACTIVE_CONTRAST}
       />
 
@@ -57,6 +58,7 @@ const AuthFormContainer = ({
             {subHeading}
           </Text>
         </View>
+        <AppNotification />
         {children}
       </View>
     </View>

@@ -9,6 +9,7 @@ import {
 import colors from "../utils/colors";
 import CrownUI from "../ui/CrownUI";
 import StatusBarFiller from "./StatusBarFiller";
+import AppNotification from "./AppNotification";
 
 const InnerTabBackground = ({ children, heading }) => {
   return (
@@ -16,26 +17,26 @@ const InnerTabBackground = ({ children, heading }) => {
       <StatusBarFiller />
       <CrownUI
         position="top-left"
-        size="100"
-        rotation="150"
+        size="96"
+        rotation="135"
         color={colors.SECONDARY}
       />
       <CrownUI
         position="top-right"
-        size="50"
-        rotation="230"
+        size="96"
+        rotation="225"
         color={colors.SECONDARY}
       />
       <CrownUI
         position="bottom-left"
-        size="80"
-        rotation="50"
+        size="96"
+        rotation="45"
         color={colors.SECONDARY}
       />
       <CrownUI
         position="bottom-right"
-        size="110"
-        rotation="300"
+        size="96"
+        rotation="315"
         color={colors.SECONDARY}
       />
       <View style={styles.headerContainer}>
@@ -50,6 +51,7 @@ const InnerTabBackground = ({ children, heading }) => {
         />
         <Text style={styles.heading}>{heading}</Text>
       </View>
+      <AppNotification />
       {children}
     </View>
   );

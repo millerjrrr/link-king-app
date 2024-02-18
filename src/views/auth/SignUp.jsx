@@ -9,6 +9,9 @@ import AuthFormContainer from "../../components/AuthFormContainer";
 import { useNavigation } from "@react-navigation/native";
 import client from "../../api/client";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { updateNotification } from "../../store/notification";
+import catchAsyncError from "../../api/catchError";
 
 const signUpSchema = yup.object({
   name: yup
@@ -38,6 +41,7 @@ const initialValues = {
 };
 
 const SignUp = () => {
+  const dispatch = useDispatch();
   //Keyboard Management
   const [isKeyboardShowing, setIsKeyboardShowing] =
     useState(false);
@@ -74,10 +78,8 @@ const SignUp = () => {
 
     actions.setSubmitting(true);
     try {
-      console.log(values);
-      await client.post(
+      const { data } = await client.post(
         "/api/v1/users/signup",
-
         {
           ...values,
         },
@@ -85,11 +87,19 @@ const SignUp = () => {
           timeout: 3000,
         },
       );
+      console.log(data.status);
+      if (data.status === "success")
+        navigation.navigate("CheckYourEmail");
     } catch (error) {
-      console.log("Sign up error", error);
+      const errorMessage = catchAsyncError(error);
+      dispatch(
+        updateNotification({
+          message: errorMessage,
+          type: "error",
+        }),
+      );
     }
     actions.setSubmitting(false);
-    navigation.navigate("CheckYourEmail");
   };
 
   return (

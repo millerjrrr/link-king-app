@@ -8,6 +8,9 @@ import AuthFormContainer from "../../components/AuthFormContainer";
 import { useNavigation } from "@react-navigation/native";
 import client from "../../api/client";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { updateNotification } from "../../store/notification";
+import catchAsyncError from "../../api/catchError";
 
 const signUpSchema = yup.object({
   email: yup
@@ -21,6 +24,7 @@ const initialValues = {
 };
 
 const LostPassword = () => {
+  const dispatch = useDispatch();
   //Keyboard Management
   const [isKeyboardShowing, setIsKeyboardShowing] =
     useState(false);
@@ -60,12 +64,18 @@ const LostPassword = () => {
           ...values,
         },
       );
-      console.log(res.data);
     } catch (error) {
-      console.log("Lost password error", error);
+      const errorMessage = catchAsyncError(error);
+      dispatch(
+        updateNotification({
+          message: errorMessage,
+          type: "error",
+        }),
+      );
     }
     actions.setSubmitting(false);
   };
+
   return (
     <AuthFormContainer
       heading="Forgot password"

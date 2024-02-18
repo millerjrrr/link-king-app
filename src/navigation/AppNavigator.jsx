@@ -26,7 +26,7 @@ const AppTheme = {
   },
 };
 
-const AppNavigator = (props) => {
+const AppNavigator = () => {
   const { loggedIn, busy } = useSelector(getAuthState);
   const dispatch = useDispatch();
 

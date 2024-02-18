@@ -1,18 +1,21 @@
-import { StyleSheet } from "react-native";
-import SafeAreaAndroid from "../utils/SafeAreaAndroid";
+// import { StyleSheet } from "react-native";
+// import AppNotification from "./AppNotification";
 
-const AppContainer = ({ children }) => {
-  return (
-    <SafeAreaAndroid style={styles.container}>
-      {children}
-    </SafeAreaAndroid>
-  );
-};
+// const AppContainer = ({ children }) => {
+//   return (
+//     <>
+//       <AppNotification />
+//       {children}
+//     </>
+//   );
+// };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//   },
+// });
 
-export default AppContainer;
+// export default AppContainer;
+
+//NOT CURRENTLY IN  USE!!!!!!!!!!!

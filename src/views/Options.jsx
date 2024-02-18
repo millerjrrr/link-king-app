@@ -7,6 +7,7 @@ import {
   updateToken,
 } from "../store/auth";
 import InnerTabBackground from "../components/InnerTabBackground";
+import { updateNotification } from "../store/notification";
 
 const Options = (props) => {
   const dispatch = useDispatch();
@@ -20,12 +21,24 @@ const Options = (props) => {
     // navigation.navigate("SignIn");
   };
 
+  const test = () => {
+    console.log("test button pressed");
+    dispatch(
+      updateNotification({
+        message: "Just a little test",
+        type: "error",
+      }),
+    );
+  };
+
   return (
     <InnerTabBackground heading="Options">
       <View style={styles.container}>
         <AppButton onPress={onPress} title={"Logout"} />
       </View>
-      <View style={styles.container}></View>
+      <View style={styles.container}>
+        <AppButton onPress={test} title={"Test"} />
+      </View>
     </InnerTabBackground>
   );
 };
@@ -33,7 +46,6 @@ const Options = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: "100%",
     justifyContent: "center",
     alignItems: "center",
   },
