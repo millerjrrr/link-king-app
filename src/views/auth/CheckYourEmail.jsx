@@ -29,7 +29,7 @@ const CheckYourEmail = ({ navigation }) => {
             <AntDesign
               name="login"
               size={size / 2}
-              color={colors.CONTRAST}
+              color={colors.CONTRAST[0]}
             />
           </View>
         </TouchableOpacity>
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.SECONDARY,
     justifyContent: "center",
     alignItems: "center",
-    shadowColor: colors.CONTRAST,
+    shadowColor: colors.CONTRAST[0],
     ...Platform.select({
       ios: {
         shadowOffset: {
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     }),
   },
   text: {
-    color: colors.CONTRAST,
+    color: colors.CONTRAST[0],
     fontSize: 30,
     textAlign: "center",
   },
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     width: size,
     alignItems: "center",
     justifyContent: "center",
-    shadowColor: colors.CONTRAST,
+    shadowColor: colors.CONTRAST[0],
     ...Platform.select({
       ios: {
         shadowOffset: {

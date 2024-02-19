@@ -21,7 +21,7 @@ const Options = (props) => {
     // navigation.navigate("SignIn");
   };
 
-  const test = () => {
+  const testNotification = () => {
     console.log("test button pressed");
     dispatch(
       updateNotification({
@@ -37,7 +37,10 @@ const Options = (props) => {
         <AppButton onPress={onPress} title={"Logout"} />
       </View>
       <View style={styles.container}>
-        <AppButton onPress={test} title={"Test"} />
+        <AppButton
+          onPress={testNotification}
+          title={"Test"}
+        />
       </View>
     </InnerTabBackground>
   );

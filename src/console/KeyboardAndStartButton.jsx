@@ -23,11 +23,10 @@ import {
 } from "../store/console";
 import { returnWrongAnswerToServer } from "./functions/returnWrongAnswerToServer";
 
-const { width } = Dimensions.get("window");
-
 const KeyboardAndStartButton = ({ inputFieldRef }) => {
   const [isKeyboardVisible, setIsKeyboardVisible] =
     useState(false);
+  const { width } = Dimensions.get("window");
 
   useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(
@@ -56,6 +55,7 @@ const KeyboardAndStartButton = ({ inputFieldRef }) => {
     timeOnThisWord,
     timerIsOn,
     attempt,
+    golden,
   } = useSelector(getConsoleState);
 
   const startFunction = async () => {
@@ -102,7 +102,7 @@ const KeyboardAndStartButton = ({ inputFieldRef }) => {
           <Entypo
             name="back"
             size={48}
-            color={colors.CONTRAST}
+            color={colors.CONTRAST[golden]}
           />
         </Pressable>
         <Pressable
@@ -112,7 +112,7 @@ const KeyboardAndStartButton = ({ inputFieldRef }) => {
           <MaterialCommunityIcons
             name="keyboard-off"
             size={24}
-            color={colors.CONTRAST}
+            color={colors.CONTRAST[golden]}
           />
         </Pressable>
         <Pressable
@@ -122,7 +122,7 @@ const KeyboardAndStartButton = ({ inputFieldRef }) => {
           <MaterialCommunityIcons
             name="skip-forward"
             size={48}
-            color={colors.CONTRAST}
+            color={colors.CONTRAST[golden]}
           />
         </Pressable>
       </View>

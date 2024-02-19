@@ -1,9 +1,18 @@
 import { StyleSheet, Platform, View } from "react-native";
 import colors from "../utils/colors";
+import { useSelector } from "react-redux";
+import { getConsoleState } from "../store/console";
 
 const StatsPanel = ({ children }) => {
+  const { golden } = useSelector(getConsoleState);
   return (
-    <View style={[styles.container, styles.commonProp]}>
+    <View
+      style={[
+        styles.container,
+        styles.commonProp,
+        { shadowColor: colors.CONTRAST[golden] },
+      ]}
+    >
       {children}
     </View>
   );
@@ -21,7 +30,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderRadius: 10,
     backgroundColor: colors.SECONDARY,
-    shadowColor: colors.CONTRAST,
   },
   ...Platform.select({
     ios: {

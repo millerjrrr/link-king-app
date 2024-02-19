@@ -50,7 +50,7 @@ const AuthFormContainer = ({
             style={{
               marginTop: 50,
               height: 50,
-              borderColor: colors.CONTRAST,
+              borderColor: colors.CONTRAST[0],
             }}
           />
           <Text style={styles.heading}>{heading}</Text>
@@ -73,14 +73,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
   },
   heading: {
-    color: colors.CONTRAST,
+    color: colors.CONTRAST[0],
     fontSize: 15,
     fontWeight: "bold",
     paddingVertical: 0,
     transform: [{ translateY: -8 }],
   },
   subHeading: {
-    color: colors.CONTRAST,
+    color: colors.CONTRAST[0],
     fontSize: 13,
     textAlign: "center",
   },

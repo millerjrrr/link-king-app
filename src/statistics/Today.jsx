@@ -2,8 +2,11 @@ import { Text, View, StyleSheet } from "react-native";
 import colors from "../utils/colors";
 import { timeInStyle } from "./functions/timeInStyle";
 import StatsIcon from "./StatsIcon";
+import { useSelector } from "react-redux";
+import { getConsoleState } from "../store/console";
 
 const Today = ({ gd }) => {
+  const { golden } = useSelector(getConsoleState);
   return (
     <View
       style={{
@@ -13,7 +16,14 @@ const Today = ({ gd }) => {
       }}
     >
       <View>
-        <Text style={styles.title}>Stats Today</Text>
+        <Text
+          style={[
+            styles.title,
+            { color: colors.CONTRAST[golden] },
+          ]}
+        >
+          Stats Today
+        </Text>
       </View>
       <View style={styles.container}>
         <View style={styles.row}>
@@ -69,7 +79,6 @@ const Today = ({ gd }) => {
 
 const styles = StyleSheet.create({
   title: {
-    color: colors.CONTRAST,
     fontSize: 50,
     margin: 30,
     textAlign: "center",
@@ -87,14 +96,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginBottom: 30,
-  },
-  cell: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    color: colors.CONTRAST,
-    padding: 5,
-    fontSize: 20,
   },
 });
 

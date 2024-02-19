@@ -1,26 +1,38 @@
 import { View, StyleSheet, Platform } from "react-native";
 import { Searchbar } from "react-native-paper";
 import colors from "../utils/colors";
+import { useSelector } from "react-redux";
+import { getConsoleState } from "../store/console";
 
 const SearchBar = ({ searchKeyword, setSearchKeyword }) => {
+  const { golden } = useSelector(getConsoleState);
   return (
-    <View style={[styles.container, styles.commonProp]}>
+    <View
+      style={[
+        styles.container,
+        styles.commonProp,
+        { shadowColor: colors.CONTRAST[golden] },
+      ]}
+    >
       <Searchbar
         placeholder="Search Collected Words"
         placeholderTextColor={colors.INACTIVE_CONTRAST}
         textInputProps={{
-          caretColor: colors.CONTRAST,
+          caretColor: colors.CONTRAST[golden],
           autoCapitalize: "none",
           autoCorrect: false,
           autoFocus: true,
         }}
-        iconColor={colors.CONTRAST}
-        color={colors.CONTRAST}
+        iconColor={colors.CONTRAST[golden]}
+        color={colors.CONTRAST[golden]}
         value={searchKeyword}
         onChangeText={(text) => {
           setSearchKeyword(text);
         }}
-        style={styles.searchBar}
+        style={[
+          styles.searchBar,
+          { color: colors.CONTRAST[golden] },
+        ]}
       />
     </View>
   );
@@ -32,7 +44,6 @@ const styles = StyleSheet.create({
     position: "absolute",
     width: "80%",
     padding: 10,
-    shadowColor: colors.CONTRAST,
     zIndex: 10,
   },
   ...Platform.select({
@@ -53,9 +64,7 @@ const styles = StyleSheet.create({
   }),
   searchBar: {
     backgroundColor: colors.SECONDARY,
-    color: colors.CONTRAST,
     textAlign: "center",
-    // position: "absolute",
     zIndex: 10,
   },
 });

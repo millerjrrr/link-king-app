@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   label: {
-    color: colors.CONTRAST,
+    color: colors.CONTRAST[0],
   },
   errorMsg: {
     color: colors.ERROR,

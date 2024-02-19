@@ -10,8 +10,11 @@ import colors from "../utils/colors";
 import CrownUI from "../ui/CrownUI";
 import StatusBarFiller from "./StatusBarFiller";
 import AppNotification from "./AppNotification";
+import { useSelector } from "react-redux";
+import { getConsoleState } from "../store/console";
 
 const InnerTabBackground = ({ children, heading }) => {
+  const { golden } = useSelector(getConsoleState);
   return (
     <View style={styles.container}>
       <StatusBarFiller />
@@ -43,13 +46,21 @@ const InnerTabBackground = ({ children, heading }) => {
         <Image
           source={require("../assets/link-king-header-logo.png")}
           resizeMode="contain"
+          tintColor={colors.CONTRAST[golden]}
           style={{
             width: 100,
             height: 30,
             marginTop: StatusBar.currentHeight,
           }}
         />
-        <Text style={styles.heading}>{heading}</Text>
+        <Text
+          style={[
+            styles.heading,
+            { color: colors.CONTRAST[golden] },
+          ]}
+        >
+          {heading}
+        </Text>
       </View>
       <AppNotification />
       {children}
@@ -65,7 +76,6 @@ const styles = StyleSheet.create({
     justifyContent: "top",
   },
   heading: {
-    color: colors.CONTRAST,
     fontSize: 12,
     fontWeight: "bold",
     transform: [

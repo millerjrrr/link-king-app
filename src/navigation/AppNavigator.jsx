@@ -16,17 +16,18 @@ import { useEffect } from "react";
 import colors from "../utils/colors";
 import { View, StyleSheet } from "react-native";
 import Loader from "../ui/Loader";
-
-const AppTheme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    background: colors.PRIMARY,
-    primary: colors.CONTRAST,
-  },
-};
+import { getConsoleState } from "../store/console";
 
 const AppNavigator = () => {
+  const { golden } = useSelector(getConsoleState);
+  const AppTheme = {
+    ...DefaultTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      background: colors.PRIMARY,
+      primary: colors.CONTRAST[golden],
+    },
+  };
   const { loggedIn, busy } = useSelector(getAuthState);
   const dispatch = useDispatch();
 

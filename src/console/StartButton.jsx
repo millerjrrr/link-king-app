@@ -5,8 +5,11 @@ import {
   Platform,
 } from "react-native";
 import colors from "../utils/colors";
+import { useSelector } from "react-redux";
+import { getConsoleState } from "../store/console";
 
 const StartButton = ({ size, title, onPress }) => {
+  const { golden } = useSelector(getConsoleState);
   return (
     <View
       style={{
@@ -24,7 +27,7 @@ const StartButton = ({ size, title, onPress }) => {
           width: size,
           alignItems: "center",
           justifyContent: "center",
-          shadowColor: colors.CONTRAST,
+          shadowColor: colors.CONTRAST[golden],
           ...Platform.select({
             ios: {
               shadowOffset: {
@@ -42,7 +45,7 @@ const StartButton = ({ size, title, onPress }) => {
       >
         <Text
           style={{
-            color: colors.INACTIVE_CONTRAST,
+            color: colors.CONTRAST[golden],
             fontSize: size / 4,
           }}
         >

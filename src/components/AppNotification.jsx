@@ -29,7 +29,7 @@ const AppNotification = () => {
   });
 
   let backgroundColor = colors.BLOOD;
-  let textColor = colors.CONTRAST;
+  let textColor = colors.CONTRAST[0];
 
   switch (type) {
     case "success":

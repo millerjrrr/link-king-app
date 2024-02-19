@@ -9,18 +9,37 @@ import {
 import colors from "../utils/colors";
 import { numberDateToWordStyleDate } from "./functions/numberDateToWordStyle";
 import DeleteButton from "./DeleteButton";
+import { useSelector } from "react-redux";
+import { getConsoleState } from "../store/console";
 
 const WordCard = ({ navigation, ticket }) => {
   const levelArray = Array.from(new Array(ticket.level));
+  const { golden } = useSelector(getConsoleState);
 
   return (
-    <View style={[styles.container, styles.commonProp]}>
+    <View
+      style={[
+        styles.container,
+        styles.commonProp,
+        { shadowColor: colors.CONTRAST[golden] },
+      ]}
+    >
       <View style={styles.infoContainer}>
         <View style={styles.rowContainer}>
-          <Text style={styles.titleStyle}>
+          <Text
+            style={[
+              styles.titleStyle,
+              { color: colors.CONTRAST[golden] },
+            ]}
+          >
             {ticket.dicEntry.target}
           </Text>
-          <Text style={styles.ratingStyle}>
+          <Text
+            style={[
+              styles.ratingStyle,
+              { color: colors.CONTRAST[golden] },
+            ]}
+          >
             {ticket.dicEntry.rating}
           </Text>
         </View>
@@ -32,11 +51,16 @@ const WordCard = ({ navigation, ticket }) => {
                 name="star"
                 key={`star-${ticket.dicEntry.target}-${index}`}
                 size={12}
-                color={colors.CONTRAST}
+                color={colors.CONTRAST[golden]}
               />
             ))}
           </View>
-          <Text style={styles.dateStyle}>
+          <Text
+            style={[
+              styles.dateStyle,
+              { color: colors.CONTRAST[golden] },
+            ]}
+          >
             {numberDateToWordStyleDate(ticket.dueDate)}
           </Text>
         </View>
@@ -61,7 +85,6 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     padding: 5,
     backgroundColor: colors.SECONDARY,
-    shadowColor: colors.CONTRAST,
   },
   ...Platform.select({
     ios: {
@@ -92,13 +115,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   titleStyle: {
-    color: colors.CONTRAST,
     fontSize: 30,
     fontWeight: "bold",
     alignItems: "flex-start",
   },
   ratingStyle: {
-    color: colors.CONTRAST,
     fontSize: 20,
   },
   levelStarsContainer: {
@@ -107,7 +128,6 @@ const styles = StyleSheet.create({
     justifyContent: "left",
   },
   dateStyle: {
-    color: colors.CONTRAST,
     fontSize: 20,
     fontStyle: "italic",
   },

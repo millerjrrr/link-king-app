@@ -2,8 +2,11 @@ import { Text, View, StyleSheet } from "react-native";
 import colors from "../utils/colors";
 import { timeInStyle } from "./functions/timeInStyle";
 import StatsIcon from "./StatsIcon";
+import { useSelector } from "react-redux";
+import { getConsoleState } from "../store/console";
 
 const Lifetime = ({ gd }) => {
+  const { golden } = useSelector(getConsoleState);
   return (
     <View
       style={{
@@ -13,7 +16,14 @@ const Lifetime = ({ gd }) => {
       }}
     >
       <View>
-        <Text style={styles.title}>Stats Lifetime</Text>
+        <Text
+          style={[
+            styles.title,
+            { color: colors.CONTRAST[golden] },
+          ]}
+        >
+          Stats Lifetime
+        </Text>
       </View>
       <View style={styles.container}>
         <View style={styles.row}>
@@ -65,7 +75,6 @@ const Lifetime = ({ gd }) => {
 
 const styles = StyleSheet.create({
   title: {
-    color: colors.CONTRAST,
     fontSize: 40,
     margin: 30,
     textAlign: "center",
@@ -83,14 +92,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginBottom: 30,
-  },
-  cell: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    color: colors.CONTRAST,
-    padding: 5,
-    fontSize: 20,
   },
 });
 

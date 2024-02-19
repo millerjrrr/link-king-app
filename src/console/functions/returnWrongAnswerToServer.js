@@ -11,12 +11,14 @@ import {
 } from "../../store/console";
 import * as Speech from "expo-speech";
 import { updateConsoleState } from "./updateConsoleState";
+import { Vibration } from "react-native";
 
 export const returnWrongAnswerToServer = async (
   dispatch,
   timeOnThisWord,
   timerIsOn,
 ) => {
+  Vibration.vibrate(3000);
   dispatch(updateIsPlaying(false));
   try {
     dispatch(updateBusyState(true));

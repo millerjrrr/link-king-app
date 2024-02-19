@@ -3,12 +3,16 @@ import colors from "../utils/colors";
 
 const PasswordVisibilityIcon = ({ privateIcon }) => {
   return privateIcon ? (
-    <Entypo name="eye" size={16} color={colors.CONTRAST} />
+    <Entypo
+      name="eye"
+      size={16}
+      color={colors.CONTRAST[0]}
+    />
   ) : (
     <Entypo
       name="eye-with-line"
       size={16}
-      color={colors.CONTRAST}
+      color={colors.CONTRAST[0]}
     />
   );
 };

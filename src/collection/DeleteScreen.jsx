@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   questionStyle: {
-    color: colors.CONTRAST,
+    color: colors.CONTRAST[0],
     fontSize: 30,
     textAlign: "center",
   },

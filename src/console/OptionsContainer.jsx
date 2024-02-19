@@ -16,7 +16,7 @@ import clientWithAuth from "../api/clientWithAuth";
 const optionsSize = 36;
 
 const OptionsContainer = () => {
-  const { options } = useSelector(getConsoleState);
+  const { options, golden } = useSelector(getConsoleState);
 
   const { sound, blurred, timer } = options;
 
@@ -81,55 +81,64 @@ const OptionsContainer = () => {
     <View style={styles.container}>
       <TouchableOpacity
         onPress={soundButtonFunction}
-        style={styles.option}
+        style={[
+          styles.option,
+          { shadowColor: colors.CONTRAST[golden] },
+        ]}
       >
         {sound ? (
           <MaterialIcons
             name="volume-up"
             size={optionsSize}
-            color={colors.CONTRAST}
+            color={colors.CONTRAST[golden]}
           />
         ) : (
           <MaterialIcons
             name="volume-off"
             size={optionsSize}
-            color={colors.CONTRAST}
+            color={colors.CONTRAST[golden]}
           />
         )}
       </TouchableOpacity>
       <TouchableOpacity
         onPress={blurredButtonFunction}
-        style={styles.option}
+        style={[
+          styles.option,
+          { shadowColor: colors.CONTRAST[golden] },
+        ]}
       >
         {!blurred ? (
           <Entypo
             name="eye"
             size={optionsSize}
-            color={colors.CONTRAST}
+            color={colors.CONTRAST[golden]}
           />
         ) : (
           <Entypo
             name="eye-with-line"
             size={optionsSize}
-            color={colors.CONTRAST}
+            color={colors.CONTRAST[golden]}
           />
         )}
       </TouchableOpacity>
       <TouchableOpacity
         onPress={timerButtonFunction}
-        style={styles.option}
+        style={[
+          styles.option,
+          { shadowColor: colors.CONTRAST[golden] },
+        ]}
       >
         {timer ? (
           <MaterialIcons
             name="timer"
             size={optionsSize}
-            color={colors.CONTRAST}
+            color={colors.CONTRAST[golden]}
           />
         ) : (
           <MaterialIcons
             name="timer-off"
             size={optionsSize}
-            color={colors.CONTRAST}
+            color={colors.CONTRAST[golden]}
           />
         )}
       </TouchableOpacity>
@@ -154,7 +163,6 @@ const styles = StyleSheet.create({
     marginRight: 4,
     marginLeft: 4,
     marginBottom: 0,
-    shadowColor: colors.CONTRAST,
     ...Platform.select({
       ios: {
         shadowOffset: {

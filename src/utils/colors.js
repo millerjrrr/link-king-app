@@ -1,7 +1,7 @@
 const colors = {
   PRIMARY: "#1b1b1b",
   SECONDARY: "#000000",
-  CONTRAST: "#FFFFFF",
+  CONTRAST: ["#FFFFFF", "rgba(255, 238, 186, 1)"],
   INACTIVE_CONTRAST: "rgba(255, 255, 255, 0.5)",
   ERROR: "#FF5B14",
   SUCCESS: "#3BEF1E",
@@ -16,7 +16,7 @@ const colors = {
 export const colorByTries = [
   colors.RED,
   colors.ORANGE,
-  colors.CONTRAST,
+  colors.CONTRAST[0],
 ];
 
 export default colors;

@@ -5,6 +5,7 @@ import {
   updateTries,
   updateTail,
   updateBusyState,
+  updateGolden,
 } from "../../store/console";
 
 export const updateConsoleState = (resData, dispatch) => {
@@ -22,4 +23,5 @@ export const updateConsoleState = (resData, dispatch) => {
   dispatch(updateTries(gamePlay.tries));
   dispatch(updateTail(display.tail));
   dispatch(updateBusyState(false));
+  if (stats.newWords) dispatch(updateGolden(1));
 };

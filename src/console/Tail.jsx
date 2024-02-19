@@ -3,16 +3,18 @@ import colors from "../utils/colors";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../store/console";
 
-const TailEntry = ({ text, fontSize, opacity }) => {
+const TailEntry = ({ text, fontSize, opacity, color }) => {
   return (
-    <Text style={[styles.tail, { fontSize, opacity }]}>
+    <Text
+      style={[styles.tail, { fontSize, opacity, color }]}
+    >
       {text}
     </Text>
   );
 };
 
 const Tail = () => {
-  const { tail, showSolution } =
+  const { tail, showSolution, golden } =
     useSelector(getConsoleState);
 
   return !showSolution ? (
@@ -22,6 +24,7 @@ const Tail = () => {
           text={tail[0]}
           fontSize={40}
           opacity={0.6}
+          color={colors.CONTRAST[golden]}
         />
       ) : null}
       {tail[1] ? (
@@ -29,6 +32,7 @@ const Tail = () => {
           text={tail[1]}
           fontSize={30}
           opacity={0.4}
+          color={colors.CONTRAST[golden]}
         />
       ) : null}
       {tail[2] ? (
@@ -36,6 +40,7 @@ const Tail = () => {
           text={tail[2]}
           fontSize={25}
           opacity={0.25}
+          color={colors.CONTRAST[golden]}
         />
       ) : null}
       {tail[3] ? (
@@ -43,6 +48,7 @@ const Tail = () => {
           text={tail[3]}
           fontSize={22}
           opacity={0.1}
+          color={colors.CONTRAST[golden]}
         />
       ) : null}
     </View>
@@ -54,7 +60,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     alignItems: "center",
   },
-  tail: { color: colors.CONTRAST },
 });
 
 export default Tail;

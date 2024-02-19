@@ -9,8 +9,14 @@ import Animated, {
 } from "react-native-reanimated";
 import { AntDesign } from "@expo/vector-icons";
 import colors from "../utils/colors";
+import { useSelector } from "react-redux";
+import { getConsoleState } from "../store/console";
 
-const Loader = ({ color = colors.CONTRAST, size = 24 }) => {
+const Loader = ({ color = 0, size = 24 }) => {
+  const { golden } = useSelector(getConsoleState);
+  const workingColor =
+    color === 0 ? colors.CONTRAST[golden] : color;
+
   const initialRotation = useSharedValue(0);
 
   const transform = useAnimatedStyle(() => {
@@ -49,7 +55,7 @@ const Loader = ({ color = colors.CONTRAST, size = 24 }) => {
         <AntDesign
           name="loading1"
           size={size}
-          color={color}
+          color={workingColor}
         />
       </Animated.View>
     </View>

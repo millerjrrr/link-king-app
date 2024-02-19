@@ -11,7 +11,8 @@ import { useSelector } from "react-redux";
 import { getConsoleState } from "../store/console";
 
 const ReadWordButton = () => {
-  const { attempt, options } = useSelector(getConsoleState);
+  const { attempt, options, golden } =
+    useSelector(getConsoleState);
 
   const readWord = async () => {
     console.log("PressedReadWord");
@@ -30,10 +31,15 @@ const ReadWordButton = () => {
           <Feather
             name="volume-2"
             size={48}
-            color={colors.CONTRAST}
+            color={colors.CONTRAST[golden]}
           />
         ) : (
-          <Text style={styles.target}>
+          <Text
+            style={[
+              styles.target,
+              { color: colors.CONTRAST[golden] },
+            ]}
+          >
             {attempt.target}
           </Text>
         )}
@@ -53,7 +59,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     textAlign: "center",
     fontSize: 40,
-    color: colors.CONTRAST,
   },
   targetWord: {
     height: 60,

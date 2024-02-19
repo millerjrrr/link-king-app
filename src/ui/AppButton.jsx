@@ -7,16 +7,29 @@ import {
 } from "react-native";
 import colors from "../utils/colors";
 import Loader from "./Loader";
+import { useSelector } from "react-redux";
+import { getConsoleState } from "../store/console";
 
 const AppButton = ({ title, busy, onPress }) => {
+  const { golden } = useSelector(getConsoleState);
   return (
     <View style={styles.container}>
       <TouchableOpacity
         onPress={onPress}
-        style={styles.buttonContainer}
+        style={[
+          styles.buttonContainer,
+          { shadowColor: colors.CONTRAST[golden] },
+        ]}
       >
         {!busy ? (
-          <Text style={styles.text}>{title}</Text>
+          <Text
+            style={[
+              styles.text,
+              { color: colors.CONTRAST[golden] },
+            ]}
+          >
+            {title}
+          </Text>
         ) : (
           <Loader />
         )}
@@ -40,7 +53,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: "150%",
-    shadowColor: colors.CONTRAST,
     ...Platform.select({
       ios: {
         shadowOffset: {
@@ -55,7 +67,6 @@ const styles = StyleSheet.create({
     }),
   },
   text: {
-    color: colors.CONTRAST,
     fontSize: 40,
     textAlign: "center",
   },

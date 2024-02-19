@@ -1,13 +1,17 @@
 import { Text, View, StyleSheet } from "react-native";
 import colors from "../utils/colors";
+import { useSelector } from "react-redux";
+import { getConsoleState } from "../store/console";
 
 const LevelRow = ({ number, lbd, fontSize }) => {
+  const { golden } = useSelector(getConsoleState);
   return lbd.length >= number ? (
     <View style={styles.row}>
       <Text
         style={[
           styles.cell,
           {
+            color: colors.CONTRAST[golden],
             textAlign: "right",
             fontSize: (fontSize * 5) / lbd.length,
           },
@@ -19,6 +23,7 @@ const LevelRow = ({ number, lbd, fontSize }) => {
         style={[
           styles.cell,
           {
+            color: colors.CONTRAST[golden],
             textAlign: "left",
             fontSize: (fontSize * 5) / lbd.length,
           },
@@ -31,6 +36,7 @@ const LevelRow = ({ number, lbd, fontSize }) => {
 };
 
 const LevelLine = ({ level, height }) => {
+  const { golden } = useSelector(getConsoleState);
   return (
     <View
       style={{
@@ -43,13 +49,16 @@ const LevelLine = ({ level, height }) => {
         style={{
           height: height,
           width: 2,
-          borderColor: colors.CONTRAST,
+          borderColor: colors.CONTRAST[golden],
           borderWidth: 2,
           margin: 5,
         }}
       />
       <Text
-        style={{ color: colors.CONTRAST, fontSize: 20 }}
+        style={{
+          color: colors.CONTRAST[golden],
+          fontSize: 20,
+        }}
       >
         {level}
       </Text>
@@ -88,6 +97,7 @@ const HistoGram = ({ lbd, histHeight }) => {
 };
 
 const Levels = ({ lbd }) => {
+  const { golden } = useSelector(getConsoleState);
   const array = Array.from({ length: 10 });
   return (
     <View
@@ -98,7 +108,14 @@ const Levels = ({ lbd }) => {
       }}
     >
       <View>
-        <Text style={styles.title}>Levels Breakdown</Text>
+        <Text
+          style={[
+            styles.title,
+            { color: colors.CONTRAST[golden] },
+          ]}
+        >
+          Levels Breakdown
+        </Text>
       </View>
       <View style={styles.container}>
         <View>
@@ -121,7 +138,6 @@ const Levels = ({ lbd }) => {
 
 const styles = StyleSheet.create({
   title: {
-    color: colors.CONTRAST,
     fontSize: 30,
     marginTop: 20,
     textAlign: "center",
@@ -141,7 +157,6 @@ const styles = StyleSheet.create({
   },
   cell: {
     flex: 1,
-    color: colors.CONTRAST,
     padding: 5,
   },
 });
