@@ -6,6 +6,7 @@ import colors from "../utils/colors";
 import DeleteForeverButton from "./DeleteForeverButton";
 import { deleteTicket } from "./functions/deleteTicket";
 import Loader from "../ui/Loader";
+import { useDispatch } from "react-redux";
 
 const DeleteScreen = ({ route }) => {
   // ...loader management...
@@ -17,9 +18,9 @@ const DeleteScreen = ({ route }) => {
 
   const { ticket } = route.params;
 
+  const dispatch = useDispatch;
   const deleteFunction = () => {
-    console.log("deleting...", ticket._id);
-    deleteTicket(ticket._id, setBusy, setStatus);
+    deleteTicket(ticket._id, setBusy, setStatus, dispatch);
     setTicketDeleted(true);
   };
 

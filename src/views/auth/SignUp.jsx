@@ -87,7 +87,6 @@ const SignUp = () => {
           timeout: 3000,
         },
       );
-      console.log(data.status);
       if (data.status === "success")
         navigation.navigate("CheckYourEmail");
     } catch (error) {

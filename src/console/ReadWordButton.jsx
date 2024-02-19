@@ -15,7 +15,6 @@ const ReadWordButton = () => {
     useSelector(getConsoleState);
 
   const readWord = async () => {
-    console.log("PressedReadWord");
     speak(attempt.target, {
       language: attempt.speechLang,
     });

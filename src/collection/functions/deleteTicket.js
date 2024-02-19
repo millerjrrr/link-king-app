@@ -1,9 +1,12 @@
+import catchAsyncError from "../../api/catchError";
 import clientWithAuth from "../../api/clientWithAuth";
+import { updateNotification } from "../../store/notification";
 
 export const deleteTicket = async (
   ticketId,
   setBusy,
   setStatus,
+  dispatch,
 ) => {
   try {
     setBusy(true);
@@ -14,8 +17,14 @@ export const deleteTicket = async (
       },
     );
     setStatus(data.status === "success");
-  } catch (err) {
-    console.log("Ticket fetching error: ", err);
+  } catch (error) {
+    const errorMessage = catchAsyncError(error);
+    dispatch(
+      updateNotification({
+        message: errorMessage,
+        type: "error",
+      }),
+    );
     setBusy(false);
     setStatus(false);
   } finally {

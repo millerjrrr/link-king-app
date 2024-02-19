@@ -51,10 +51,6 @@ const LostPassword = () => {
   const navigation = useNavigation();
 
   const handleSubmit = async (values, actions) => {
-    console.log({ ...values });
-
-    //to add loading without the formik context, video
-    // 228. Loading Indicator explains it well
     actions.setSubmitting(true);
     try {
       const res = await client.post(

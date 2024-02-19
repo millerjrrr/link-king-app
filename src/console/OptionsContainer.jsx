@@ -12,6 +12,8 @@ import {
   updateOptions,
 } from "../store/console";
 import clientWithAuth from "../api/clientWithAuth";
+import { updateNotification } from "../store/notification";
+import catchAsyncError from "../api/catchError";
 
 const optionsSize = 36;
 
@@ -23,30 +25,28 @@ const OptionsContainer = () => {
   const dispatch = useDispatch();
 
   const soundButtonFunction = async () => {
-    console.log("PressedSound");
     try {
-      console.log(!sound);
-
       const newOptions = blurred
         ? { sound: !sound, blurred: false }
         : { sound: !sound };
-
-      console.log(newOptions);
-
       const { data } = await clientWithAuth.post(
         "/api/v1/gameData/updateGameSettings",
         newOptions,
       );
       dispatch(updateOptions(data.options));
     } catch (error) {
-      console.log("Console error:", error);
+      const errorMessage = catchAsyncError(error);
+      dispatch(
+        updateNotification({
+          message: errorMessage,
+          type: "error",
+        }),
+      );
     }
   };
 
   const blurredButtonFunction = async () => {
-    console.log("PressedBlurred");
     try {
-      console.log(!blurred);
       const newOptions = !blurred
         ? { sound: true, blurred: !blurred }
         : { blurred: !blurred };
@@ -57,14 +57,18 @@ const OptionsContainer = () => {
       );
       dispatch(updateOptions(data.options));
     } catch (error) {
-      console.log("Console error:", error);
+      const errorMessage = catchAsyncError(error);
+      dispatch(
+        updateNotification({
+          message: errorMessage,
+          type: "error",
+        }),
+      );
     }
   };
 
   const timerButtonFunction = async () => {
-    console.log("PressedTimer");
     try {
-      console.log(!timer);
       const { data } = await clientWithAuth.post(
         "/api/v1/gameData/updateGameSettings",
         {
@@ -73,7 +77,13 @@ const OptionsContainer = () => {
       );
       dispatch(updateOptions(data.options));
     } catch (error) {
-      console.log("Console error:", error);
+      const errorMessage = catchAsyncError(error);
+      dispatch(
+        updateNotification({
+          message: errorMessage,
+          type: "error",
+        }),
+      );
     }
   };
 

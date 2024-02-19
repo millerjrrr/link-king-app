@@ -1,42 +1,56 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Platform } from "react-native";
 import colors from "../utils/colors";
+import { useSelector } from "react-redux";
+import { getConsoleState } from "../store/console";
 
 const size = 15;
 
-const Circle = ({ color }) => {
+const Circle = ({ color, on }) => {
+  const shadowColor = on ? color : null;
+  // const shadowColor = colors.CONTRAST[0];
   return (
     <View
       style={{
         borderRadius: size / 2,
         height: size,
         width: size,
-        backgroundColor: color,
-        borderWidth: 1,
-        borderColor: colors.INACTIVE_CONTRAST,
+        backgroundColor: colors.SECONDARY,
         margin: 8,
+        shadowColor,
+        ...Platform.select({
+          ios: {
+            shadowOffset: {
+              height: 1,
+            },
+            shadowOpacity: 0.9,
+            shadowRadius: 10,
+          },
+          android: {
+            elevation: 3,
+          },
+        }),
       }}
     />
   );
 };
 
 const SliderCircleIndicator = ({ tabNumber }) => {
+  const { golden } = useSelector(getConsoleState);
+
   return (
     <View style={styles.container}>
-      {tabNumber === 0 ? (
-        <Circle color={colors.INACTIVE_CONTRAST} />
-      ) : (
-        <Circle />
-      )}
-      {tabNumber === 1 ? (
-        <Circle color={colors.INACTIVE_CONTRAST} />
-      ) : (
-        <Circle />
-      )}
-      {tabNumber === 2 ? (
-        <Circle color={colors.INACTIVE_CONTRAST} />
-      ) : (
-        <Circle />
-      )}
+      <Circle
+        color={colors.CONTRAST[golden]}
+        on={tabNumber === 0}
+      />
+      <Circle
+        color={colors.CONTRAST[golden]}
+        on={tabNumber === 1}
+      />
+      <Circle
+        color={colors.CONTRAST[golden]}
+        on={tabNumber === 2}
+      />
     </View>
   );
 };

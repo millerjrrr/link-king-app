@@ -11,6 +11,8 @@ import {
 } from "../../store/console";
 import * as Speech from "expo-speech";
 import { updateConsoleState } from "./updateConsoleState";
+import { updateNotification } from "../../store/notification";
+import catchAsyncError from "../../api/catchError";
 
 export const returnCorrectAnswerToServer = async (
   dispatch,
@@ -42,7 +44,13 @@ export const returnCorrectAnswerToServer = async (
     dispatch(updateTimerIsOn(true));
     dispatch(updateKey()); // used to highlight the input and restart the timer
   } catch (error) {
-    console.log("Console error:", error);
+    const errorMessage = catchAsyncError(error);
+    dispatch(
+      updateNotification({
+        message: errorMessage,
+        type: "error",
+      }),
+    );
     dispatch(updateConnectedState(false));
   }
 };

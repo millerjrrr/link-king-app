@@ -12,6 +12,8 @@ import {
 import * as Speech from "expo-speech";
 import { updateConsoleState } from "./updateConsoleState";
 import { Vibration } from "react-native";
+import catchAsyncError from "../../api/catchError";
+import { updateNotification } from "../../store/notification";
 
 export const returnWrongAnswerToServer = async (
   dispatch,
@@ -37,7 +39,13 @@ export const returnWrongAnswerToServer = async (
       language: data.gamePlay.speechLang,
     });
   } catch (error) {
-    console.log("Console error:", error);
+    const errorMessage = catchAsyncError(error);
+    dispatch(
+      updateNotification({
+        message: errorMessage,
+        type: "error",
+      }),
+    );
     dispatch(updateConnectedState(false));
   }
   dispatch(updateFormValue(""));

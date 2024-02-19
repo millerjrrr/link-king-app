@@ -5,8 +5,10 @@ import { useEffect, useState } from "react";
 import { fetchTickets } from "../collection/functions/fetchTickets";
 import SearchBar from "../collection/SearchBar";
 import BusyWrapper from "../components/BusyWrapper";
+import { useDispatch } from "react-redux";
 
 const Collection = ({ navigation }) => {
+  const dispatch = useDispatch();
   // ...loader management...
   const [busy, setBusy] = useState(true);
   const [connected, setConnected] = useState(true);
@@ -27,6 +29,7 @@ const Collection = ({ navigation }) => {
           setBusy,
           setConnected,
           setSearchKeyword,
+          dispatch,
         );
       },
     );
@@ -40,6 +43,7 @@ const Collection = ({ navigation }) => {
       setBusy,
       setConnected,
       setSearchKeyword,
+      dispatch,
     );
   }, [page]);
 

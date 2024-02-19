@@ -17,6 +17,8 @@ import colors from "../utils/colors";
 import { View, StyleSheet } from "react-native";
 import Loader from "../ui/Loader";
 import { getConsoleState } from "../store/console";
+import catchAsyncError from "../api/catchError";
+import { updateNotification } from "../store/notification";
 
 const AppNavigator = () => {
   const { golden } = useSelector(getConsoleState);
@@ -41,8 +43,14 @@ const AppNavigator = () => {
         dispatch(updateBusyState(false));
         dispatch(updateToken(token));
         dispatch(updateLoggedInState(true));
-      } catch (err) {
-        console.log("Auth error: ");
+      } catch (error) {
+        const errorMessage = catchAsyncError(error);
+        dispatch(
+          updateNotification({
+            message: errorMessage,
+            type: "error",
+          }),
+        );
       } finally {
         dispatch(updateBusyState(false));
       }
