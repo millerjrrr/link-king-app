@@ -143,21 +143,21 @@ const SignUp = () => {
           />
           {!isKeyboardShowing ? (
             <>
+              <SubmitBtn title="Sign Up" />
               <View style={styles.linkContainer}>
-                <AppLink
-                  title="I lost my password"
-                  onPress={() => {
-                    navigation.navigate("LostPassword");
-                  }}
-                />
                 <AppLink
                   title="Sign in"
                   onPress={() => {
                     navigation.navigate("SignIn");
                   }}
                 />
+                <AppLink
+                  title="I lost my password"
+                  onPress={() => {
+                    navigation.navigate("LostPassword");
+                  }}
+                />
               </View>
-              <SubmitBtn title="Sign Up" />
             </>
           ) : null}
         </View>
@@ -174,11 +174,10 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   linkContainer: {
-    flexDirection: "row",
+    flex: 0.5,
     alignItems: "center",
-    justifyContent: "space-between",
-    marginTop: 10,
-    marginBottom: 20,
+    justifyContent: "center",
+    marginBottom: 30,
   },
 });
 

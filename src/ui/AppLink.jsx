@@ -10,6 +10,9 @@ const AppLink = ({ title, onPress }) => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    margin: 10,
+  },
   title: { color: colors.INACTIVE_CONTRAST, fontSize: 15 },
 });
 

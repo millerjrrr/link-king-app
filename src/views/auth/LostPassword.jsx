@@ -99,6 +99,7 @@ const LostPassword = () => {
           />
           {!isKeyboardShowing ? (
             <>
+              <SubmitBtn title="Send link" />
               <View style={styles.linkContainer}>
                 <AppLink
                   title="Sign in"
@@ -113,7 +114,6 @@ const LostPassword = () => {
                   }}
                 />
               </View>
-              <SubmitBtn title="Send link" />
             </>
           ) : null}
         </View>
@@ -130,11 +130,10 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   linkContainer: {
-    flexDirection: "row",
+    flex: 0.5,
     alignItems: "center",
-    justifyContent: "space-between",
-    marginTop: 10,
-    marginBottom: 20,
+    justifyContent: "center",
+    marginBottom: 30,
   },
 });
 

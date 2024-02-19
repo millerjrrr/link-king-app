@@ -126,6 +126,7 @@ const SignIn = () => {
           />
           {!isKeyboardShowing ? (
             <>
+              <SubmitBtn title={"Sign In"} />
               <View style={styles.linkContainer}>
                 <AppLink
                   title="I lost my password"
@@ -140,7 +141,6 @@ const SignIn = () => {
                   }}
                 />
               </View>
-              <SubmitBtn title={"Sign In"} />
             </>
           ) : null}
         </View>
@@ -157,11 +157,10 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   linkContainer: {
-    flexDirection: "row",
+    flex: 0.5,
     alignItems: "center",
-    justifyContent: "space-between",
-    marginTop: 10,
-    marginBottom: 20,
+    justifyContent: "center",
+    marginBottom: 30,
   },
 });
 

@@ -39,6 +39,7 @@ const Collection = ({ navigation }) => {
       setFilteredTickets,
       setBusy,
       setConnected,
+      setSearchKeyword,
     );
   }, [page]);
 
