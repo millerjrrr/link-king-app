@@ -19,7 +19,7 @@ import {
   updateFormValue,
   updateTimerIsOn,
   updateIsPlaying,
-  updateKey,
+  restartTheTimer,
 } from "../store/console";
 import { returnWrongAnswerToServer } from "./functions/returnWrongAnswerToServer";
 
@@ -80,7 +80,7 @@ const KeyboardAndStartButton = ({ inputFieldRef }) => {
     else {
       dispatch(updateIsPlaying(false));
       dispatch(updateTimerIsOn(false));
-      dispatch(updateKey());
+      dispatch(restartTheTimer());
     }
     Keyboard.dismiss();
   };

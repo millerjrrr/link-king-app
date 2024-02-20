@@ -1,7 +1,7 @@
 const colors = {
   PRIMARY: "#1b1b1b",
   SECONDARY: "#000000",
-  CONTRAST: ["#FFFFFF", "rgba(255, 238, 186, 1)"],
+  CONTRAST: ["#FFFFFF", "#FFEEBA"],
   INACTIVE_CONTRAST: "rgba(255, 255, 255, 0.5)",
   ERROR: "#FF5B14",
   SUCCESS: "#3BEF1E",
@@ -12,11 +12,5 @@ const colors = {
   BLOOD: "rgba(243, 119, 119, 0.3)",
   GREENSHADOW: "rgba(59,239,30,0.5)",
 };
-
-export const colorByTries = [
-  colors.RED,
-  colors.ORANGE,
-  colors.CONTRAST[0],
-];
 
 export default colors;

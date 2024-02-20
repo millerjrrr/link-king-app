@@ -12,7 +12,6 @@ const StatsIcon = ({
   size = 90,
 }) => {
   const { golden } = useSelector(getConsoleState);
-
   return (
     <View style={styles.cell}>
       <Text

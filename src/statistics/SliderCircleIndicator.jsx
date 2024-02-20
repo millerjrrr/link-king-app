@@ -7,7 +7,6 @@ const size = 15;
 
 const Circle = ({ color, on }) => {
   const shadowColor = on ? color : null;
-  // const shadowColor = colors.CONTRAST[0];
   return (
     <View
       style={{

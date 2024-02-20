@@ -45,12 +45,12 @@ const Console = ({ navigation }) => {
 
   useEffect(() => {
     const incrementTimer = async () => {
-      if (timerIsOn && timeOnThisWord < 30 * 1000)
+      if (timerIsOn && timeOnThisWord < 30 * 2 * 500)
         dispatch(
-          updateTimeOnThisWord(timeOnThisWord + 1000),
+          updateTimeOnThisWord(timeOnThisWord + 500),
         );
     };
-    const intervalId = setInterval(incrementTimer, 1000);
+    const intervalId = setInterval(incrementTimer, 500);
     return () => clearInterval(intervalId);
   }, [timerIsOn, timeOnThisWord]);
 

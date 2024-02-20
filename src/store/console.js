@@ -22,17 +22,12 @@ const initialState = {
   busy: true,
   connected: true,
   formValue: "",
-  showSolution: "",
+  showSolution: false,
   timeOnThisWord: 0,
   isPlaying: false,
   key: 0,
   timerIsOn: false,
   golden: 0,
-  // pops: {
-  //   start: "",
-  //   end: "",
-  //   type: "success",
-  // },
 };
 
 const slice = createSlice({
@@ -73,18 +68,18 @@ const slice = createSlice({
     updateIsPlaying(consoleState, { payload }) {
       consoleState.isPlaying = payload;
     },
-    updateKey(consoleState) {
+    restartTheTimer(consoleState) {
       consoleState.key += 1;
     },
     updateTimerIsOn(consoleState, { payload }) {
       consoleState.timerIsOn = payload;
     },
-    //POPS
-    // updatePops(consoleState, { payload }) {
-    //   consoleState.pops = payload;
-    // },
     updateGolden(consoleState, { payload }) {
       consoleState.golden = payload;
+    },
+    // Group updates
+    updateCSState(consoleState, { payload }) {
+      return { ...consoleState, ...payload };
     },
   },
 });
@@ -101,10 +96,11 @@ export const {
   updateShowSolution,
   updateTimeOnThisWord,
   updateIsPlaying,
-  updateKey,
+  restartTheTimer,
   updateTimerIsOn,
   // updatePops,
   updateGolden,
+  updateCSState,
 } = slice.actions;
 
 export const getConsoleState = createSelector(

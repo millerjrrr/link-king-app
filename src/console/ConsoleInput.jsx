@@ -5,7 +5,7 @@ import {
   View,
 } from "react-native";
 import Timer from "./Timer";
-import colors, { colorByTries } from "../utils/colors";
+import colors from "../utils/colors";
 import Loader from "../ui/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -27,7 +27,14 @@ const ConsoleInput = ({ inputFieldRef }) => {
     timeOnThisWord,
     timerIsOn,
     tries,
+    golden,
   } = useSelector(getConsoleState);
+
+  const colorByTries = [
+    colors.RED,
+    colors.ORANGE,
+    colors.CONTRAST[golden],
+  ];
 
   const color = colorByTries[tries - 1];
 

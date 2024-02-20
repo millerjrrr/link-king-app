@@ -6,7 +6,7 @@ import {
   updateShowSolution,
   updateTimeOnThisWord,
   updateIsPlaying,
-  updateKey,
+  restartTheTimer,
   updateTimerIsOn,
 } from "../../store/console";
 import * as Speech from "expo-speech";
@@ -42,7 +42,7 @@ export const returnCorrectAnswerToServer = async (
     dispatch(updateIsPlaying(true));
     dispatch(updateTimeOnThisWord(0));
     dispatch(updateTimerIsOn(true));
-    dispatch(updateKey()); // used to highlight the input and restart the timer
+    dispatch(restartTheTimer()); // used to highlight the input and restart the timer
   } catch (error) {
     const errorMessage = catchAsyncError(error);
     dispatch(
