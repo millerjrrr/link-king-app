@@ -41,7 +41,7 @@ const slice = createSlice({
       consoleState.options = payload;
     },
     updateStats(consoleState, { payload }) {
-      consoleState.stats = payload;
+      return { ...consoleState.stats, ...payload };
     },
     updateTail(consoleState, { payload }) {
       consoleState.tail = payload;
@@ -70,6 +70,7 @@ const slice = createSlice({
     },
     restartTheTimer(consoleState) {
       consoleState.key += 1;
+      consoleState.isPlaying = true;
     },
     updateTimerIsOn(consoleState, { payload }) {
       consoleState.timerIsOn = payload;
@@ -80,6 +81,10 @@ const slice = createSlice({
     // Group updates
     updateCSState(consoleState, { payload }) {
       return { ...consoleState, ...payload };
+    },
+    //TimeManagement
+    incrementStatsTime(consoleState, { payload }) {
+      consoleState.stats.time += payload;
     },
   },
 });
@@ -98,9 +103,9 @@ export const {
   updateIsPlaying,
   restartTheTimer,
   updateTimerIsOn,
-  // updatePops,
   updateGolden,
   updateCSState,
+  incrementStatsTime,
 } = slice.actions;
 
 export const getConsoleState = createSelector(

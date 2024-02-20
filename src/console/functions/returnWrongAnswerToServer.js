@@ -2,12 +2,8 @@ import clientWithAuth from "../../api/clientWithAuth";
 import {
   updateBusyState,
   updateConnectedState,
-  updateFormValue,
-  updateShowSolution,
-  updateTimeOnThisWord,
   updateIsPlaying,
-  restartTheTimer,
-  updateTimerIsOn,
+  updateCSState,
 } from "../../store/console";
 import * as Speech from "expo-speech";
 import { updateConsoleState } from "./updateConsoleState";
@@ -22,8 +18,8 @@ export const returnWrongAnswerToServer = async (
 ) => {
   Vibration.vibrate(3000);
   dispatch(updateIsPlaying(false));
+  dispatch(updateBusyState(true));
   try {
-    dispatch(updateBusyState(true));
     const time = timerIsOn
       ? Math.min(timeOnThisWord, 30 * 1000)
       : 0;
@@ -48,10 +44,12 @@ export const returnWrongAnswerToServer = async (
     );
     dispatch(updateConnectedState(false));
   }
-  dispatch(updateFormValue(""));
-  dispatch(updateShowSolution(true));
-  dispatch(restartTheTimer()); // used to highlight the input and restart the timer
-  dispatch(updateIsPlaying(false));
-  dispatch(updateTimeOnThisWord(0));
-  dispatch(updateTimerIsOn(false));
+  const payload = {
+    formValue: "",
+    showSolution: true,
+    isPlaying: false,
+    timeOnThisWord: 0,
+    timerIsOn: false,
+  };
+  dispatch(updateCSState(payload));
 };

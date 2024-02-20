@@ -15,18 +15,20 @@ const Timer = ({ onComplete, color }) => {
         zIndex: 0,
       }}
     >
-      <CountdownCircleTimer
-        key={key}
-        isPlaying={isPlaying}
-        onComplete={onComplete}
-        duration={10}
-        size={0.95 * screenWidth}
-        colors={[colors.PRIMARY, color]}
-        strokeWidth={2}
-        trailStrokeWidth={0}
-        colorsTime={[10, 0]}
-        updateInterval={0.1}
-      ></CountdownCircleTimer>
+      {isPlaying ? (
+        <CountdownCircleTimer
+          key={key}
+          isPlaying={isPlaying}
+          onComplete={onComplete}
+          duration={10}
+          size={0.95 * screenWidth}
+          colors={[colors.PRIMARY, color]}
+          strokeWidth={2}
+          trailStrokeWidth={0}
+          colorsTime={[10, 0]}
+          updateInterval={0.1}
+        ></CountdownCircleTimer>
+      ) : null}
     </View>
   );
 };

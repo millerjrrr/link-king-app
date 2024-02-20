@@ -1,13 +1,9 @@
 import clientWithAuth from "../../api/clientWithAuth";
 import {
-  updateBusyState,
   updateConnectedState,
-  updateFormValue,
-  updateShowSolution,
-  updateTimeOnThisWord,
-  updateIsPlaying,
   restartTheTimer,
-  updateTimerIsOn,
+  incrementStatsTime,
+  updateCSState,
 } from "../../store/console";
 import * as Speech from "expo-speech";
 import { updateConsoleState } from "./updateConsoleState";
@@ -19,11 +15,17 @@ export const returnCorrectAnswerToServer = async (
   timeOnThisWord,
   timerIsOn,
 ) => {
-  dispatch(updateIsPlaying(false));
-  dispatch(updateShowSolution(false));
-  dispatch(updateFormValue(""));
+  const payload = {
+    timeOnThisWord: 0, // the clock is reset to zero, and starts counting the next timeOnThisWord to be sent to the server
+    updateIsPlaying: false, // turn the countdown timer off until result is returned from server
+    timerIsOn: true, // the clock should still be running to count seconds playing the game
+    busy: true,
+    showSolution: false,
+    formValue: "",
+  };
+  dispatch(updateCSState(payload));
+  dispatch(incrementStatsTime(timeOnThisWord));
   try {
-    dispatch(updateBusyState(true));
     const time = timerIsOn
       ? Math.min(timeOnThisWord, 30 * 1000)
       : 0;
@@ -39,10 +41,7 @@ export const returnCorrectAnswerToServer = async (
     Speech.speak(data.gamePlay.target, {
       language: data.gamePlay.speechLang,
     });
-    dispatch(updateIsPlaying(true));
-    dispatch(updateTimeOnThisWord(0));
-    dispatch(updateTimerIsOn(true));
-    dispatch(restartTheTimer()); // used to highlight the input and restart the timer
+    dispatch(restartTheTimer());
   } catch (error) {
     const errorMessage = catchAsyncError(error);
     dispatch(
