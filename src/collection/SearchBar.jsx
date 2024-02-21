@@ -1,11 +1,17 @@
 import { View, StyleSheet, Platform } from "react-native";
 import { Searchbar } from "react-native-paper";
 import colors from "../utils/colors";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getConsoleState } from "../store/console";
+import {
+  getCollectionState,
+  updateCollection,
+} from "../store/collection";
 
-const SearchBar = ({ searchKeyword, setSearchKeyword }) => {
+const SearchBar = () => {
   const { golden } = useSelector(getConsoleState);
+  const { searchKeyword } = useSelector(getCollectionState);
+  dispatch = useDispatch();
   return (
     <View
       style={[
@@ -26,8 +32,8 @@ const SearchBar = ({ searchKeyword, setSearchKeyword }) => {
         iconColor={colors.CONTRAST[golden]}
         color={colors.CONTRAST[golden]}
         value={searchKeyword}
-        onChangeText={(text) => {
-          setSearchKeyword(text);
+        onChangeText={(searchKeyword) => {
+          dispatch(updateCollection({ searchKeyword }));
         }}
         style={[
           styles.searchBar,

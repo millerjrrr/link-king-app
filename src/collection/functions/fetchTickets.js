@@ -1,24 +1,27 @@
 import catchAsyncError from "../../api/catchError";
 import clientWithAuth from "../../api/clientWithAuth";
+import { updateCollection } from "../../store/collection";
 import { updateNotification } from "../../store/notification";
 
-export const fetchTickets = async (
-  setTickets,
-  setFilteredTickets,
-  setBusy,
-  setConnected,
-  setSearchKeyword,
-  dispatch,
-) => {
-  setBusy(true);
-  setConnected(true);
-  setSearchKeyword("");
+export const fetchTickets = async (dispatch) => {
+  dispatch(
+    updateCollection({
+      busy: true,
+      connected: true,
+      searchKeyword: "",
+    }),
+  );
   try {
     const { data } = await clientWithAuth.get(
       "/api/v1/tickets/collection",
     );
-    setTickets(data.data.tickets);
-    setFilteredTickets(data.data.tickets);
+    dispatch(
+      updateCollection({
+        tickets: data.data.tickets,
+        filteredTickets: data.data.tickets,
+        busy: false,
+      }),
+    );
   } catch (error) {
     const errorMessage = catchAsyncError(error);
     dispatch(
@@ -27,8 +30,6 @@ export const fetchTickets = async (
         type: "error",
       }),
     );
-    setConnected(false);
-  } finally {
-    setBusy(false);
+    dispatch(updateCollection({ connected: false }));
   }
 };

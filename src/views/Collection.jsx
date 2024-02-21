@@ -5,56 +5,50 @@ import { useEffect, useState } from "react";
 import { fetchTickets } from "../collection/functions/fetchTickets";
 import SearchBar from "../collection/SearchBar";
 import BusyWrapper from "../components/BusyWrapper";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getCollectionState,
+  updateCollection,
+} from "../store/collection";
+import { normalize } from "../console/functions/normalize";
 
 const Collection = ({ navigation }) => {
   const dispatch = useDispatch();
-  // ...loader management...
-  const [busy, setBusy] = useState(true);
-  const [connected, setConnected] = useState(true);
-  const [page, refresh] = useState(true);
-
-  const [tickets, setTickets] = useState([]);
-  const [searchKeyword, setSearchKeyword] = useState("");
-  const [filteredTickets, setFilteredTickets] =
-    useState(tickets);
+  const {
+    busy,
+    connected,
+    page,
+    tickets,
+    searchKeyword,
+    filteredTickets,
+  } = useSelector(getCollectionState);
 
   useEffect(() => {
     const unsubscribe = navigation.addListener(
       "focus",
       () => {
-        fetchTickets(
-          setTickets,
-          setFilteredTickets,
-          setBusy,
-          setConnected,
-          setSearchKeyword,
-          dispatch,
-        );
+        fetchTickets(dispatch);
       },
     );
     return unsubscribe;
   }, [navigation]);
 
   useEffect(() => {
-    fetchTickets(
-      setTickets,
-      setFilteredTickets,
-      setBusy,
-      setConnected,
-      setSearchKeyword,
-      dispatch,
-    );
+    fetchTickets(dispatch);
   }, [page]);
 
   const filterFunction = () => {
     if (tickets) {
       const filtered = tickets.filter((ticket) => {
-        return ticket.dicEntry.target
-          .toLowerCase()
-          .includes(searchKeyword.toLowerCase());
+        return normalize(ticket.dicEntry.target).includes(
+          normalize(searchKeyword),
+        );
       });
-      setFilteredTickets(filtered);
+      dispatch(
+        updateCollection({
+          filteredTickets: filtered,
+        }),
+      );
     }
   };
 
@@ -65,14 +59,13 @@ const Collection = ({ navigation }) => {
   return (
     <InnerTabBackground heading="Collection">
       <View style={styles.container}>
-        <SearchBar
-          searchKeyword={searchKeyword}
-          setSearchKeyword={setSearchKeyword}
-        />
+        <SearchBar />
         <BusyWrapper
           busy={busy}
           connected={connected}
-          refresh={() => refresh(!page)}
+          refresh={() =>
+            dispatch(updateCollection({ page: !page }))
+          }
           style={styles.container}
         >
           <WordCollectionList
