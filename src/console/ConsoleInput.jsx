@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getConsoleState,
   updateFormValue,
+  updateIsPlaying,
 } from "../store/console";
 import { acceptAnswer } from "./functions/acceptAnswer";
 import { returnCorrectAnswerToServer } from "./functions/returnCorrectAnswerToServer";
@@ -41,25 +42,19 @@ const ConsoleInput = ({ inputFieldRef }) => {
   const dispatch = useDispatch();
 
   const submitAttempt = async () => {
+    dispatch(updateIsPlaying(false));
+
     const answerAccepted = acceptAnswer(
       formValue,
       attempt.solutions,
     );
 
     if (answerAccepted) {
-      returnCorrectAnswerToServer(
-        dispatch,
-        timeOnThisWord,
-        timerIsOn,
-      );
+      returnCorrectAnswerToServer(dispatch, timeOnThisWord);
     } else if (tries > 1) {
       returnNextTry(dispatch, tries);
     } else {
-      returnWrongAnswerToServer(
-        dispatch,
-        timeOnThisWord,
-        timerIsOn,
-      );
+      returnWrongAnswerToServer(dispatch, timeOnThisWord);
     }
     return false;
   };

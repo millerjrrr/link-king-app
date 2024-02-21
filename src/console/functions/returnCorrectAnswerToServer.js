@@ -13,11 +13,9 @@ import catchAsyncError from "../../api/catchError";
 export const returnCorrectAnswerToServer = async (
   dispatch,
   timeOnThisWord,
-  timerIsOn,
 ) => {
   const payload = {
     timeOnThisWord: 0, // the clock is reset to zero, and starts counting the next timeOnThisWord to be sent to the server
-    updateIsPlaying: false, // turn the countdown timer off until result is returned from server
     timerIsOn: true, // the clock should still be running to count seconds playing the game
     busy: true,
     showSolution: false,
@@ -26,9 +24,7 @@ export const returnCorrectAnswerToServer = async (
   dispatch(updateCSState(payload));
   dispatch(incrementStatsTime(timeOnThisWord));
   try {
-    const time = timerIsOn
-      ? Math.min(timeOnThisWord, 30 * 1000)
-      : 0;
+    const time = Math.min(timeOnThisWord, 30 * 1000);
     console.log(time);
     const { data } = await clientWithAuth.post(
       "/api/v1/gameData/submitAttempt",

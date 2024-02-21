@@ -62,8 +62,8 @@ const slice = createSlice({
     updateShowSolution(consoleState, { payload }) {
       consoleState.showSolution = payload;
     },
-    updateTimeOnThisWord(consoleState, { payload }) {
-      consoleState.timeOnThisWord = payload;
+    incrementTimeOnThisWord(consoleState, { payload }) {
+      consoleState.timeOnThisWord += payload;
     },
     updateIsPlaying(consoleState, { payload }) {
       consoleState.isPlaying = payload;
@@ -99,7 +99,7 @@ export const {
   updateConnectedState,
   updateFormValue,
   updateShowSolution,
-  updateTimeOnThisWord,
+  incrementTimeOnThisWord,
   updateIsPlaying,
   restartTheTimer,
   updateTimerIsOn,

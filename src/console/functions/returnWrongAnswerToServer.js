@@ -4,6 +4,7 @@ import {
   updateConnectedState,
   updateIsPlaying,
   updateCSState,
+  updateTimerIsOn,
 } from "../../store/console";
 import * as Speech from "expo-speech";
 import { updateConsoleState } from "./updateConsoleState";
@@ -14,15 +15,12 @@ import { updateNotification } from "../../store/notification";
 export const returnWrongAnswerToServer = async (
   dispatch,
   timeOnThisWord,
-  timerIsOn,
 ) => {
   Vibration.vibrate(3000);
-  dispatch(updateIsPlaying(false));
+  dispatch(updateTimerIsOn(false));
   dispatch(updateBusyState(true));
   try {
-    const time = timerIsOn
-      ? Math.min(timeOnThisWord, 30 * 1000)
-      : 0;
+    const time = Math.min(timeOnThisWord, 30 * 1000);
     const { data } = await clientWithAuth.post(
       "/api/v1/gameData/submitAttempt",
       {
@@ -49,7 +47,6 @@ export const returnWrongAnswerToServer = async (
     showSolution: true,
     isPlaying: false,
     timeOnThisWord: 0,
-    timerIsOn: false,
   };
   dispatch(updateCSState(payload));
 };

@@ -71,11 +71,7 @@ const KeyboardAndStartButton = ({ inputFieldRef }) => {
 
   const closeKeyboardSubmitAnswer = () => {
     if (!showSolution)
-      returnWrongAnswerToServer(
-        dispatch,
-        timeOnThisWord,
-        timerIsOn,
-      );
+      returnWrongAnswerToServer(dispatch, timeOnThisWord);
     else {
       dispatch(updateIsPlaying(false));
       dispatch(updateTimerIsOn(false));
@@ -84,11 +80,7 @@ const KeyboardAndStartButton = ({ inputFieldRef }) => {
   };
 
   const dontKnowFunction = () =>
-    returnWrongAnswerToServer(
-      dispatch,
-      timeOnThisWord,
-      timerIsOn,
-    );
+    returnWrongAnswerToServer(dispatch, timeOnThisWord);
 
   return isKeyboardVisible ? (
     <View style={styles.outerContainer}>

@@ -14,7 +14,7 @@ export const fetchTickets = async (dispatch) => {
   try {
     const { data } = await clientWithAuth.get(
       "/api/v1/tickets/collection",
-    );
+    ); 
     dispatch(
       updateCollection({
         tickets: data.data.tickets,

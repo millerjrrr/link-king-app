@@ -7,7 +7,8 @@ import {
 import ConsoleInput from "../console/ConsoleInput";
 import {
   getConsoleState,
-  updateTimeOnThisWord,
+  incrementTimeOnThisWord,
+  updateTimerIsOn,
 } from "../store/console";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -30,6 +31,7 @@ const Console = ({ navigation }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // reload page details on navigation
     const unsubscribe = navigation.addListener(
       "focus",
       () => {
@@ -40,19 +42,30 @@ const Console = ({ navigation }) => {
   }, [navigation]);
 
   useEffect(() => {
+    // reload page details on page refresh (after internet disconnect)
     fetchConsoleInfo(dispatch);
   }, [page]);
 
   useEffect(() => {
+    //increment the timer
+    const increment = 500;
     const incrementTimer = async () => {
-      if (timerIsOn && timeOnThisWord < 30 * 2 * 500)
-        dispatch(
-          updateTimeOnThisWord(timeOnThisWord + 500),
-        );
+      if (timerIsOn)
+        dispatch(incrementTimeOnThisWord(increment));
     };
-    const intervalId = setInterval(incrementTimer, 500);
+    const intervalId = setInterval(
+      incrementTimer,
+      increment,
+    );
     return () => clearInterval(intervalId);
-  }, [timerIsOn, timeOnThisWord]);
+  }, [timerIsOn]);
+
+  useEffect(() => {
+    // Pause the clock after 30 seconds
+    if (timeOnThisWord >= 30 * 1000) {
+      dispatch(updateTimerIsOn(false));
+    }
+  }, [timeOnThisWord]);
 
   return (
     <InnerTabBackground heading="Console">
