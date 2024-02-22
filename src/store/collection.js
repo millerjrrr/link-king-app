@@ -6,8 +6,9 @@ import {
 const initialState = {
   searchKeyword: "",
   tickets: [],
-  filteredTickets: [],
-  page: true,
+  page: 1,
+  allDataLoaded: false,
+  reload: true,
   busy: true,
   connected: true,
 };

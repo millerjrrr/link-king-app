@@ -1,7 +1,7 @@
 import { View, StyleSheet } from "react-native";
 import InnerTabBackground from "../components/InnerTabBackground";
 import WordCollectionList from "../collection/WordCollectionList";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { fetchTickets } from "../collection/functions/fetchTickets";
 import SearchBar from "../collection/SearchBar";
 import BusyWrapper from "../components/BusyWrapper";
@@ -10,50 +10,36 @@ import {
   getCollectionState,
   updateCollection,
 } from "../store/collection";
-import { normalize } from "../console/functions/normalize";
+import { fetchTicketsFirstBatch } from "../collection/functions/fetchTicketsFirstBatch";
 
 const Collection = ({ navigation }) => {
   const dispatch = useDispatch();
   const {
+    searchKeyword,
+    tickets,
+    page,
+    reload,
     busy,
     connected,
-    page,
-    tickets,
-    searchKeyword,
-    filteredTickets,
   } = useSelector(getCollectionState);
 
   useEffect(() => {
     const unsubscribe = navigation.addListener(
       "focus",
       () => {
-        fetchTickets(dispatch);
+        fetchTicketsFirstBatch(dispatch, []);
       },
     );
     return unsubscribe;
-  }, [navigation]);
+  }, [navigation, connected]);
 
   useEffect(() => {
-    fetchTickets(dispatch);
+    if (page > 1)
+      fetchTickets(dispatch, searchKeyword, tickets, page);
   }, [page]);
 
-  const filterFunction = () => {
-    if (tickets) {
-      const filtered = tickets.filter((ticket) => {
-        return normalize(ticket.dicEntry.target).includes(
-          normalize(searchKeyword),
-        );
-      });
-      dispatch(
-        updateCollection({
-          filteredTickets: filtered,
-        }),
-      );
-    }
-  };
-
   useEffect(() => {
-    filterFunction();
+    fetchTicketsFirstBatch(dispatch, searchKeyword);
   }, [searchKeyword]);
 
   return (
@@ -64,13 +50,13 @@ const Collection = ({ navigation }) => {
           busy={busy}
           connected={connected}
           refresh={() =>
-            dispatch(updateCollection({ page: !page }))
+            dispatch(updateCollection({ reload: !reload }))
           }
           style={styles.container}
         >
           <WordCollectionList
             navigation={navigation}
-            tickets={filteredTickets}
+            tickets={tickets}
           />
         </BusyWrapper>
       </View>

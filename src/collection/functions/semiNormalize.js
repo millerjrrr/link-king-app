@@ -1,4 +1,4 @@
-export const normalize = (inputString) => {
+export const semiNormalize = (inputString) => {
   let string = inputString + "";
   const accentsMap = {
     á: "a",
@@ -25,11 +25,8 @@ export const normalize = (inputString) => {
   string = string.toLowerCase();
 
   return string
-    .replace(/to /g, "")
     .replace(/[áéíóúàèìòùâêîôûãõñç]/gi, function (matched) {
       return accentsMap[matched];
     })
-    .replace(/[^a-zA-Z0-9]/g, "")
-    .replace(/nt/g, "not")
-    .replace(/ /g, "");
+    .replace(/[^a-zA-Z0-9 ]/g, "");
 };
