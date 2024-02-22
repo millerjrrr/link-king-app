@@ -3,6 +3,7 @@ import colors from "../utils/colors";
 import { convertMsToTime } from "./functions/convertMsToTime";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../store/console";
+import StatsIcon from "./StatsIcon";
 
 const StatsContainer = () => {
   const { stats, timeOnThisWord, golden } =
@@ -12,49 +13,16 @@ const StatsContainer = () => {
   return (
     <View style={styles.container}>
       {newWords ? (
-        <Text
-          style={[
-            styles.stat,
-            { color: colors.CONTRAST[golden] },
-          ]}
-        >
-          new: {newWords}
-        </Text>
+        <StatsIcon iconName="basket-fill" text={newWords} />
       ) : (
-        <Text
-          style={[
-            styles.stat,
-            { color: colors.CONTRAST[golden] },
-          ]}
-        >
-          due: {due}
-        </Text>
+        <StatsIcon iconName="target" text={due} />
       )}
-
-      <Text
-        style={[
-          styles.stat,
-          { color: colors.CONTRAST[golden] },
-        ]}
-      >
-        steps: {steps}
-      </Text>
-      <Text
-        style={[
-          styles.stat,
-          { color: colors.CONTRAST[golden] },
-        ]}
-      >
-        time: {convertMsToTime(time + timeOnThisWord)}
-      </Text>
-      <Text
-        style={[
-          styles.stat,
-          { color: colors.CONTRAST[golden] },
-        ]}
-      >
-        streak: {streak}
-      </Text>
+      <StatsIcon iconName="foot-print" text={steps} />
+      <StatsIcon
+        iconName="clock-outline"
+        text={convertMsToTime(time + timeOnThisWord)}
+      />
+      <StatsIcon iconName="trophy-variant" text={streak} />
     </View>
   );
 };
@@ -64,16 +32,8 @@ const styles = StyleSheet.create({
     width: "80%",
     flexDirection: "row",
     justifyContent: "center",
-    // backgroundColor: colors.PRIMARY,
-    zIndex: 10,
-  },
-  stat: {
-    justifyContent: "center",
     alignItems: "center",
-    marginRight: "auto",
-    marginLeft: "auto",
-    marginTop: 2,
-    marginBottom: 2,
+    zIndex: 10,
   },
 });
 

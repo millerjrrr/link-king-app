@@ -8,6 +8,7 @@ import ConsoleInput from "../console/ConsoleInput";
 import {
   getConsoleState,
   incrementTimeOnThisWord,
+  reloadPage,
   updateTimerIsOn,
 } from "../store/console";
 import { useEffect, useRef, useState } from "react";
@@ -22,22 +23,19 @@ import InnerTabBackground from "../components/InnerTabBackground";
 import BusyWrapper from "../components/BusyWrapper";
 
 const Console = ({ navigation }) => {
-  // ...loader management...
-  const [page, refresh] = useState(true);
-
   const inputFieldRef = useRef(null);
-  const { timeOnThisWord, timerIsOn, connected } =
+  const { timeOnThisWord, timerIsOn, connected, page } =
     useSelector(getConsoleState);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // reload page details on navigation
+    const fetchInfo = () => fetchConsoleInfo(dispatch);
     const unsubscribe = navigation.addListener(
       "focus",
-      () => {
-        fetchConsoleInfo(dispatch);
-      },
+      fetchInfo,
     );
+
+    fetchInfo();
     return unsubscribe;
   }, [navigation]);
 
@@ -47,16 +45,11 @@ const Console = ({ navigation }) => {
   }, [page]);
 
   useEffect(() => {
-    //increment the timer
-    const increment = 500;
-    const incrementTimer = async () => {
+    const incrementTimer = () => {
       if (timerIsOn)
-        dispatch(incrementTimeOnThisWord(increment));
+        dispatch(incrementTimeOnThisWord(1000));
     };
-    const intervalId = setInterval(
-      incrementTimer,
-      increment,
-    );
+    const intervalId = setInterval(incrementTimer, 1000);
     return () => clearInterval(intervalId);
   }, [timerIsOn]);
 
@@ -78,9 +71,9 @@ const Console = ({ navigation }) => {
         <BusyWrapper
           busy={false}
           connected={connected}
-          refresh={() => refresh(!page)}
+          refresh={() => dispatch(reloadPage())}
         >
-          <View style={styles.container}>
+          <View style={styles.content}>
             <StatsContainer />
             <OptionsContainer />
             <ReadWordButton />
@@ -100,9 +93,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: "100%",
-    justifyContent: "top",
-    alignItems: "center",
     paddingHorizontal: 15,
+  },
+  content: {
+    flex: 1,
+    // justifyContent: "center", // Adjust as needed
+    alignItems: "center",
   },
 });
 

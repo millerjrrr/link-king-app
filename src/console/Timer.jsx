@@ -26,7 +26,7 @@ const Timer = ({ onComplete, color }) => {
           strokeWidth={2}
           trailStrokeWidth={0}
           colorsTime={[10, 0]}
-          updateInterval={0.1}
+          updateInterval={0.2}
         ></CountdownCircleTimer>
       ) : null}
     </View>

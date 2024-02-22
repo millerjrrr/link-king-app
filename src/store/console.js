@@ -21,6 +21,7 @@ const initialState = {
   tries: 1,
   busy: true,
   connected: true,
+  page: true,
   formValue: "",
   showSolution: false,
   timeOnThisWord: 0,
@@ -48,6 +49,9 @@ const slice = createSlice({
     },
     updateTries(consoleState, { payload }) {
       consoleState.tries = payload;
+    },
+    reloadPage(consoleState) {
+      consoleState.page = !consoleState.page;
     },
     updateBusyState(consoleState, { payload }) {
       consoleState.busy = payload;
@@ -106,6 +110,7 @@ export const {
   updateGolden,
   updateCSState,
   incrementStatsTime,
+  reloadPage,
 } = slice.actions;
 
 export const getConsoleState = createSelector(

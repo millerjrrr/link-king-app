@@ -52,7 +52,6 @@ const KeyboardAndStartButton = ({ inputFieldRef }) => {
     showSolution,
     isPlaying,
     timeOnThisWord,
-    timerIsOn,
     attempt,
     golden,
   } = useSelector(getConsoleState);
@@ -70,7 +69,7 @@ const KeyboardAndStartButton = ({ inputFieldRef }) => {
   };
 
   const closeKeyboardSubmitAnswer = () => {
-    if (!showSolution)
+    if (!showSolution && isPlaying)
       returnWrongAnswerToServer(dispatch, timeOnThisWord);
     else {
       dispatch(updateIsPlaying(false));
