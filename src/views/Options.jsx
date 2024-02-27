@@ -1,5 +1,4 @@
 import { View, StyleSheet } from "react-native";
-import AppButton from "../ui/AppButton";
 import { clearAsyncStorage } from "../utils/asyncStorage";
 import { useDispatch } from "react-redux";
 import {
@@ -9,8 +8,10 @@ import {
 import InnerTabBackground from "../components/InnerTabBackground";
 import { updateNotification } from "../store/notification";
 import OptionsMenuItem from "../options/OptionsMenuItem";
+import colors from "../utils/colors";
+// import SetDailyGoalScreen from "../options/SetDailyGoalScreen";
 
-const Options = (props) => {
+const Options = ({ navigation }) => {
   const dispatch = useDispatch();
   // const navigation = useNavigation();
 
@@ -22,11 +23,10 @@ const Options = (props) => {
     // navigation.navigate("SignIn");
   };
 
-  const testNotification = () => {
-    console.log("test button pressed");
+  const comingSoon = () => {
     dispatch(
       updateNotification({
-        message: "Just a little test",
+        message: "...coming soon...",
         type: "error",
       }),
     );
@@ -34,25 +34,44 @@ const Options = (props) => {
 
   return (
     <InnerTabBackground heading="Options">
-      <OptionsMenuItem
-        iconName="logout"
-        text="Logout"
-        onPress={logOut}
-        first={true}
-      />
-      <OptionsMenuItem
-        iconName="logout"
-        text="just a little test"
-      />
-      <OptionsMenuItem
-        iconName="logout"
-        text="just a little test"
-      />
-      <OptionsMenuItem
-        iconName="test-tube"
-        text="just a little test"
-        onPress={testNotification}
-      />
+      <View style={styles.container}>
+        <OptionsMenuItem
+          iconName="target-variant"
+          text="Set daily goal"
+          first={true}
+          color={colors.INACTIVE_CONTRAST}
+          onPress={comingSoon}
+        />
+        <OptionsMenuItem
+          iconName="palette-outline"
+          text="Color scheme"
+          onPress={comingSoon}
+          color={colors.INACTIVE_CONTRAST}
+        />
+        <OptionsMenuItem
+          iconName="translate"
+          text="Choose language pair"
+          onPress={comingSoon}
+          color={colors.INACTIVE_CONTRAST}
+        />
+        <OptionsMenuItem
+          iconName="cash"
+          text="Contribute"
+          onPress={comingSoon}
+          color={colors.INACTIVE_CONTRAST}
+        />
+        <OptionsMenuItem
+          iconName="account-details"
+          text="Edit user details"
+          onPress={comingSoon}
+          color={colors.INACTIVE_CONTRAST}
+        />
+        <OptionsMenuItem
+          iconName="logout"
+          text="Logout"
+          onPress={logOut}
+        />
+      </View>
     </InnerTabBackground>
   );
 };
@@ -60,8 +79,9 @@ const Options = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "flex-end",
     alignItems: "center",
+    paddingBottom: 50,
   },
 });
 

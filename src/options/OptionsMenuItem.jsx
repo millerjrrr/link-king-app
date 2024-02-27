@@ -14,6 +14,7 @@ const OptionsMenuItem = ({
   text,
   onPress,
   first,
+  color,
 }) => {
   const { golden } = useSelector(getConsoleState);
   return (
@@ -21,7 +22,7 @@ const OptionsMenuItem = ({
       <MaterialCommunityIcons
         name={iconName}
         size={32}
-        color={colors.CONTRAST[golden]}
+        color={color ? color : colors.CONTRAST[golden]}
         style={styles.icon}
       />
       <TouchableOpacity
@@ -36,7 +37,11 @@ const OptionsMenuItem = ({
         <Text
           style={[
             styles.text,
-            { color: colors.CONTRAST[golden] },
+            {
+              color: color
+                ? color
+                : colors.CONTRAST[golden],
+            },
           ]}
         >
           {text}

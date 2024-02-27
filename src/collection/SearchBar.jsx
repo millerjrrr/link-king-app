@@ -57,9 +57,7 @@ const SearchBar = ({ navigation }) => {
       <GetLevelsBreakdownButton
         text={results}
         isText={true}
-        onPress={() =>
-          navigation.navigate("TemperaryAlternativeName")
-        }
+        onPress={() => navigation.navigate("StatsScreen")}
       />
     </View>
   );

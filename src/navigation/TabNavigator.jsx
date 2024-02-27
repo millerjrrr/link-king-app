@@ -11,6 +11,7 @@ import {
 import { Platform, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../store/console";
+import OptionsNavigator from "./subnavigators/OptionsNavigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -65,7 +66,7 @@ const TabNavigator = () => {
       />
       <Tab.Screen
         name="Options"
-        component={Options}
+        component={OptionsNavigator}
         options={{
           tabBarIcon: (props) => (
             <MaterialIcons

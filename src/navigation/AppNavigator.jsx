@@ -73,8 +73,11 @@ const AppNavigator = () => {
         >
           <Loader />
         </View>
-      ) : null}
-      {loggedIn ? <TabNavigator /> : <AuthNavigator />}
+      ) : loggedIn ? (
+        <TabNavigator />
+      ) : (
+        <AuthNavigator />
+      )}
     </NavigationContainer>
   );
 };

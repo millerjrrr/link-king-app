@@ -33,7 +33,7 @@ const CollectionNavigator = () => {
         component={LevelBreakdownScreen}
       />
       <CollectionStack.Screen
-        name="TemperaryAlternativeName"
+        name="StatsScreen"
         component={StatsScreen}
       />
     </CollectionStack.Navigator>
