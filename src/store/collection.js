@@ -8,6 +8,7 @@ const initialState = {
   tickets: [],
   page: 1,
   allDataLoaded: false,
+  results: 0,
   reload: true,
   busy: true,
   connected: true,

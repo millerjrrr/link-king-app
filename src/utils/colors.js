@@ -11,6 +11,7 @@ const colors = {
   LIGHTRED: "#ff939381",
   BLOOD: "rgba(243, 119, 119, 0.3)",
   GREENSHADOW: "rgba(59,239,30,0.5)",
+  GREENPROGRESS: "#2ecc71",
 };
 
 export default colors;

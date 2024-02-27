@@ -2,46 +2,38 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import CollectionNavigator from "./subnavigators/CollectionNavigator";
 import Options from "../views/Options";
 import Console from "../views/Console";
-import Stats from "../views/Stats";
 import colors from "../utils/colors";
 import {
   Entypo,
   Ionicons,
   MaterialIcons,
 } from "@expo/vector-icons";
+import { Platform, StyleSheet } from "react-native";
+import { useSelector } from "react-redux";
+import { getConsoleState } from "../store/console";
 
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
+  const { golden } = useSelector(getConsoleState);
   return (
     <Tab.Navigator
       screenOptions={{
+        tabBarShowLabel: false,
         headerShown: false,
-        tabBarStyle: {
-          backgroundColor: colors.PRIMARY,
-          height: 100,
-        },
+        tabBarStyle: [
+          styles.tabBarStyle,
+          {
+            color: colors.CONTRAST[golden],
+            shadowColor: colors.CONTRAST[golden],
+          },
+        ],
         tabBarLabelStyle: {
           fontSize: 15,
-          borderTopWidth: 0,
         },
       }}
-      // initialRouteName="ConsoleScreen"
+      initialRouteName="ConsoleScreen"
     >
-      <Tab.Screen
-        name="StatsScreen"
-        component={Stats}
-        options={{
-          tabBarIcon: (props) => (
-            <MaterialIcons
-              name="query-stats"
-              size={props.size + 15}
-              color={props.color}
-            />
-          ),
-          tabBarLabel: "Stats",
-        }}
-      />
       <Tab.Screen
         name="ConsoleScreen"
         component={Console}
@@ -88,5 +80,26 @@ const TabNavigator = () => {
     </Tab.Navigator>
   );
 };
+
+const styles = StyleSheet.create({
+  tabBarStyle: {
+    backgroundColor: colors.PRIMARY,
+    height: 80,
+    padding: 10,
+    borderTopWidth: 0,
+    ...Platform.select({
+      ios: {
+        shadowOffset: {
+          height: 1,
+        },
+        shadowOpacity: 0.5,
+        shadowRadius: 10,
+      },
+      android: {
+        elevation: 3,
+      },
+    }),
+  },
+});
 
 export default TabNavigator;

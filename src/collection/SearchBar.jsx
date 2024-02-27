@@ -1,4 +1,9 @@
-import { View, StyleSheet, Platform } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Platform,
+  Text,
+} from "react-native";
 import { Searchbar } from "react-native-paper";
 import colors from "../utils/colors";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,38 +12,54 @@ import {
   getCollectionState,
   updateCollection,
 } from "../store/collection";
+import GetLevelsBreakdownButton from "./GetLevelsBreakdownButton";
 
-const SearchBar = () => {
+const SearchBar = ({ navigation }) => {
   const { golden } = useSelector(getConsoleState);
-  const { searchKeyword } = useSelector(getCollectionState);
-  dispatch = useDispatch();
+  const { searchKeyword, results } = useSelector(
+    getCollectionState,
+  );
+  const dispatch = useDispatch();
   return (
-    <View
-      style={[
-        styles.container,
-        styles.commonProp,
-        { shadowColor: colors.CONTRAST[golden] },
-      ]}
-    >
-      <Searchbar
-        placeholder="Search Collected Words"
-        placeholderTextColor={colors.INACTIVE_CONTRAST}
-        textInputProps={{
-          caretColor: colors.CONTRAST[golden],
-          autoCapitalize: "none",
-          autoCorrect: false,
-          autoFocus: true,
-        }}
-        iconColor={colors.CONTRAST[golden]}
-        color={colors.CONTRAST[golden]}
-        value={searchKeyword}
-        onChangeText={(searchKeyword) => {
-          dispatch(updateCollection({ searchKeyword }));
-        }}
+    <View style={styles.container}>
+      <GetLevelsBreakdownButton
+        onPress={() =>
+          navigation.navigate("LevelBreakdown")
+        }
+      />
+      <View
         style={[
-          styles.searchBar,
-          { color: colors.CONTRAST[golden] },
+          styles.commonProp,
+          { shadowColor: colors.CONTRAST[golden] },
         ]}
+      >
+        <Searchbar
+          placeholder="Search Collected Words"
+          placeholderTextColor={colors.INACTIVE_CONTRAST}
+          textInputProps={{
+            caretColor: colors.CONTRAST[golden],
+            autoCapitalize: "none",
+            autoCorrect: false,
+            autoFocus: true,
+          }}
+          iconColor={colors.CONTRAST[golden]}
+          color={colors.CONTRAST[golden]}
+          value={searchKeyword}
+          onChangeText={(searchKeyword) => {
+            dispatch(updateCollection({ searchKeyword }));
+          }}
+          style={[
+            styles.searchBar,
+            { color: colors.CONTRAST[golden] },
+          ]}
+        />
+      </View>
+      <GetLevelsBreakdownButton
+        text={results}
+        isText={true}
+        onPress={() =>
+          navigation.navigate("TemperaryAlternativeName")
+        }
       />
     </View>
   );
@@ -48,9 +69,12 @@ const styles = StyleSheet.create({
   container: {
     top: 0,
     position: "absolute",
-    width: "80%",
+    width: "100%",
     padding: 10,
     zIndex: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row",
   },
   ...Platform.select({
     ios: {
@@ -72,6 +96,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.SECONDARY,
     textAlign: "center",
     zIndex: 10,
+    width: 250,
   },
 });
 

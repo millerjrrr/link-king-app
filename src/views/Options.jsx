@@ -8,12 +8,13 @@ import {
 } from "../store/auth";
 import InnerTabBackground from "../components/InnerTabBackground";
 import { updateNotification } from "../store/notification";
+import OptionsMenuItem from "../options/OptionsMenuItem";
 
 const Options = (props) => {
   const dispatch = useDispatch();
   // const navigation = useNavigation();
 
-  const onPress = () => {
+  const logOut = () => {
     dispatch(updateToken(""));
     dispatch(updateLoggedInState(false));
 
@@ -33,15 +34,25 @@ const Options = (props) => {
 
   return (
     <InnerTabBackground heading="Options">
-      <View style={styles.container}>
-        <AppButton onPress={onPress} title={"Logout"} />
-      </View>
-      <View style={styles.container}>
-        <AppButton
-          onPress={testNotification}
-          title={"Test"}
-        />
-      </View>
+      <OptionsMenuItem
+        iconName="logout"
+        text="Logout"
+        onPress={logOut}
+        first={true}
+      />
+      <OptionsMenuItem
+        iconName="logout"
+        text="just a little test"
+      />
+      <OptionsMenuItem
+        iconName="logout"
+        text="just a little test"
+      />
+      <OptionsMenuItem
+        iconName="test-tube"
+        text="just a little test"
+        onPress={testNotification}
+      />
     </InnerTabBackground>
   );
 };

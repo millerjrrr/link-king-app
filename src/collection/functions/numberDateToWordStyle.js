@@ -19,7 +19,7 @@ const numberDateToDashFormat = (date) => {
 export const numberDateToWordStyleDate = (date) => {
   const today = dateToNumberStyleDate(new Date());
   const gap = date - today;
-  if (gap === 0) return "today";
+  if (gap <= 0) return "today";
   if (gap === 1) return "tomorrow";
   return numberDateToDashFormat(date);
 };

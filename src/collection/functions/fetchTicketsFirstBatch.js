@@ -12,6 +12,7 @@ export const fetchTicketsFirstBatch = async (
   dispatch(
     updateCollection({
       page: 1,
+      results: 0,
       allDataLoaded: false,
       busy: true,
       connected: true,
@@ -24,6 +25,7 @@ export const fetchTicketsFirstBatch = async (
 
     dispatch(
       updateCollection({
+        results: data.results,
         tickets: data.data.tickets,
         busy: false,
         allDataLoaded: data.returned < 50,

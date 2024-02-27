@@ -8,6 +8,7 @@ const initialState = {
   userGameData: null,
   busy: true,
   connected: true,
+  page: true,
 };
 
 const slice = createSlice({
@@ -26,6 +27,9 @@ const slice = createSlice({
     updateConnectedState(statsState, { payload }) {
       statsState.connected = payload;
     },
+    updatePageState(statsState, { payload }) {
+      statsState.page = payload;
+    },
   },
 });
 
@@ -34,6 +38,7 @@ export const {
   updateUserGameData,
   updateBusyState,
   updateConnectedState,
+  updatePageState,
 } = slice.actions;
 
 export const getStatsState = createSelector(

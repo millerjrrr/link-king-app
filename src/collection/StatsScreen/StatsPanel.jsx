@@ -1,7 +1,7 @@
 import { StyleSheet, Platform, View } from "react-native";
-import colors from "../utils/colors";
+import colors from "../../utils/colors";
 import { useSelector } from "react-redux";
-import { getConsoleState } from "../store/console";
+import { getConsoleState } from "../../store/console";
 
 const StatsPanel = ({ children }) => {
   const { golden } = useSelector(getConsoleState);
@@ -24,11 +24,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     width: "90%",
-    marginLeft: 40,
-    marginRight: 40,
-    marginTop: 20,
-    marginBottom: 10,
-    borderRadius: 10,
+    margin: 40,
+    marginTop: 50,
+    borderRadius: 20,
     backgroundColor: colors.SECONDARY,
   },
   ...Platform.select({

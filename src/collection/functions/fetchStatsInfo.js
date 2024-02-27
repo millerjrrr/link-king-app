@@ -1,11 +1,11 @@
+import catchAsyncError from "../../api/catchError";
+import clientWithAuth from "../../api/clientWithAuth";
+import { updateStatsState } from "./updateStatsState";
+import { updateNotification } from "../../store/notification";
 import {
   updateBusyState,
   updateConnectedState,
 } from "../../store/stats";
-import { updateStatsState } from "./updateStatsState";
-import clientWithAuth from "../../api/clientWithAuth";
-import catchAsyncError from "../../api/catchError";
-import { updateNotification } from "../../store/notification";
 
 export const fetchStatsInfo = async (dispatch) => {
   dispatch(updateBusyState(true));

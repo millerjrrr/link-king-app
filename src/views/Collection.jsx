@@ -45,7 +45,7 @@ const Collection = ({ navigation }) => {
   return (
     <InnerTabBackground heading="Collection">
       <View style={styles.container}>
-        <SearchBar />
+        <SearchBar navigation={navigation} />
         <BusyWrapper
           busy={busy}
           connected={connected}

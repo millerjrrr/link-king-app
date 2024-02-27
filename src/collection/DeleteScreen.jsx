@@ -18,86 +18,79 @@ const DeleteScreen = ({ route }) => {
 
   const { ticket } = route.params;
 
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
   const deleteFunction = () => {
     deleteTicket(ticket._id, setBusy, setStatus, dispatch);
     setTicketDeleted(true);
   };
 
   return (
-    <View style={styles.container}>
-      <PopUpContainer>
+    <PopUpContainer>
+      <View
+        style={{
+          height: "100%",
+          width: "100%",
+          position: "absolute",
+          zIndex: 2,
+        }}
+      >
         <View
           style={{
+            backgroundColor: colors.BLOOD,
+            width: `${Math.min(elapsedTime / 3, 1) * 100}%`,
             height: "100%",
-            width: "100%",
             position: "absolute",
-            zIndex: 2,
+            top: 0,
+            bottom: 0,
           }}
-        >
-          <View
-            style={{
-              backgroundColor: colors.BLOOD,
-              width: `${Math.min(elapsedTime / 3, 1) * 100}%`,
-              height: "100%",
-              position: "absolute",
-              top: 0,
-              bottom: 0,
-            }}
-          />
-        </View>
-        {busy ? (
-          <Loader />
-        ) : (
-          <>
-            <WordCard ticket={ticket} />
-            {ticketDeleted ? (
-              <>
-                {status ? (
-                  <Text style={styles.questionStyle}>
-                    This word has been removed from your
-                    collection. You will no longer see it as
-                    part of your repetitions but you may see
-                    it again as a new word challenge at some
-                    point in the future
-                  </Text>
-                ) : (
-                  <Text style={styles.questionStyle}>
-                    ...something went wrong 😣 please check
-                    your internet connection and try
-                    again...
-                  </Text>
-                )}
-              </>
-            ) : (
-              <>
-                <View style={styles.questionContainer}>
-                  <Text style={styles.questionStyle}>
-                    Are you sure you want to permanently
-                    remove this word from your collection?
-                  </Text>
-                </View>
-                <Text style={styles.deleteText}>
-                  Press and hold to delete
+        />
+      </View>
+      {busy ? (
+        <Loader />
+      ) : (
+        <>
+          <WordCard ticket={ticket} />
+          {ticketDeleted ? (
+            <>
+              {status ? (
+                <Text style={styles.questionStyle}>
+                  This word has been removed from your
+                  collection. You will no longer see it as
+                  part of your repetitions but you may see
+                  it again as a new word challenge at some
+                  point in the future
                 </Text>
-                <DeleteForeverButton
-                  setElapsedTime={setElapsedTime}
-                  deleteFunction={deleteFunction}
-                />
-              </>
-            )}
-          </>
-        )}
-      </PopUpContainer>
-    </View>
+              ) : (
+                <Text style={styles.questionStyle}>
+                  ...something went wrong 😣 please check
+                  your internet connection and try again...
+                </Text>
+              )}
+            </>
+          ) : (
+            <>
+              <View style={styles.questionContainer}>
+                <Text style={styles.questionStyle}>
+                  Are you sure you want to permanently
+                  remove this word from your collection?
+                </Text>
+              </View>
+              <Text style={styles.deleteText}>
+                Press and hold to delete
+              </Text>
+              <DeleteForeverButton
+                setElapsedTime={setElapsedTime}
+                deleteFunction={deleteFunction}
+              />
+            </>
+          )}
+        </>
+      )}
+    </PopUpContainer>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-  },
   questionContainer: {
     padding: 15,
   },

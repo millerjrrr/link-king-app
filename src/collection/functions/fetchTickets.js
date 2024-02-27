@@ -19,6 +19,7 @@ export const fetchTickets = async (
     dispatch(
       updateCollection({
         tickets: [...ticketsd, ...data.data.tickets],
+        results: data.results,
         busy: false,
         allDataLoaded: data.returned < 50,
       }),
