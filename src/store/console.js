@@ -72,6 +72,9 @@ const slice = createSlice({
     updateIsPlaying(consoleState, { payload }) {
       consoleState.isPlaying = payload;
     },
+    resetTimer(consoleState) {
+      consoleState.key += 1;
+    },
     restartTheTimer(consoleState) {
       consoleState.key += 1;
       consoleState.isPlaying = true;
@@ -106,6 +109,7 @@ export const {
   incrementTimeOnThisWord,
   updateIsPlaying,
   restartTheTimer,
+  resetTimer,
   updateTimerIsOn,
   updateGolden,
   updateCSState,

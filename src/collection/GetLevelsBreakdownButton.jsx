@@ -1,5 +1,4 @@
 import {
-  View,
   StyleSheet,
   TouchableOpacity,
   Platform,
@@ -13,56 +12,33 @@ import Loader from "../ui/Loader";
 
 const GetLevelsBreakdownButton = ({
   onPress,
-  text,
-  isText = false,
+  iconName,
 }) => {
   const { golden } = useSelector(getConsoleState);
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity
-        onPress={onPress}
-        style={[
-          styles.button,
-          { shadowColor: colors.CONTRAST[golden] },
-        ]}
-      >
-        {!text ? (
-          !isText ? (
-            <AntDesign
-              name="barschart"
-              size={18}
-              color={colors.CONTRAST[golden]}
-            />
-          ) : (
-            <Loader size={12} />
-          )
-        ) : (
-          <Text
-            style={[
-              styles.text,
-              { color: colors.CONTRAST[golden] },
-            ]}
-          >
-            {text}
-          </Text>
-        )}
-      </TouchableOpacity>
-    </View>
+    <TouchableOpacity
+      onPress={onPress}
+      style={[
+        styles.button,
+        { shadowColor: colors.CONTRAST[golden] },
+      ]}
+    >
+      <AntDesign
+        name={iconName}
+        size={18}
+        color={colors.CONTRAST[golden]}
+      />
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    height: "100%",
-    alignItems: "flex-end",
-    justifyContent: "flex-end",
-    margin: 4,
-  },
   button: {
     width: 30,
     aspectRatio: 1,
-    margin: 3,
+    margin: 7,
+    marginBottom: 0,
     backgroundColor: colors.SECONDARY,
     alignItems: "center",
     justifyContent: "center",

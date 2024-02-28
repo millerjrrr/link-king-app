@@ -10,6 +10,7 @@ import Loader from "../ui/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getConsoleState,
+  resetTimer,
   updateFormValue,
   updateIsPlaying,
 } from "../store/console";
@@ -26,7 +27,6 @@ const ConsoleInput = ({ inputFieldRef }) => {
     showSolution,
     attempt,
     timeOnThisWord,
-    timerIsOn,
     tries,
     golden,
   } = useSelector(getConsoleState);

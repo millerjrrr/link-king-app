@@ -3,7 +3,7 @@ import InnerTabBackground from "../components/InnerTabBackground";
 import WordCollectionList from "../collection/WordCollectionList";
 import { useEffect } from "react";
 import { fetchTickets } from "../collection/functions/fetchTickets";
-import SearchBar from "../collection/SearchBar";
+import SearchBarContainer from "../collection/SearchBarContainer";
 import BusyWrapper from "../components/BusyWrapper";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -45,7 +45,7 @@ const Collection = ({ navigation }) => {
   return (
     <InnerTabBackground heading="Collection">
       <View style={styles.container}>
-        <SearchBar navigation={navigation} />
+        <SearchBarContainer navigation={navigation} />
         <BusyWrapper
           busy={busy}
           connected={connected}

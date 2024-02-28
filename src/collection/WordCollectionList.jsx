@@ -15,7 +15,7 @@ import {
 import Loader from "../ui/Loader";
 
 const ListHeaderComponent = () => {
-  return <View style={{ height: 70 }} />;
+  return <View style={{ height: 80 }} />;
 };
 const ListFooterComponent = () => {
   const { allDataLoaded } = useSelector(getCollectionState);
@@ -70,7 +70,6 @@ const styles = StyleSheet.create({
   flatList: {
     flex: 1,
     width: "100%",
-    // paddingTop: 70,
   },
 });
 

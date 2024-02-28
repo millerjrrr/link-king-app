@@ -5,6 +5,7 @@ import {
   updateIsPlaying,
   updateCSState,
   updateTimerIsOn,
+  resetTimer,
 } from "../../store/console";
 import * as Speech from "expo-speech";
 import { updateConsoleState } from "./updateConsoleState";
@@ -29,6 +30,7 @@ export const returnWrongAnswerToServer = async (
       },
     );
     updateConsoleState(data, dispatch);
+    dispatch(resetTimer());
     Speech.speak(data.gamePlay.target, {
       language: data.gamePlay.speechLang,
     });
@@ -49,4 +51,5 @@ export const returnWrongAnswerToServer = async (
     timeOnThisWord: 0,
   };
   dispatch(updateCSState(payload));
+  dispatch(resetTimer());
 };
