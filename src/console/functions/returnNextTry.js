@@ -1,11 +1,7 @@
 import { Vibration } from "react-native";
-import {
-  updateTries,
-  restartTheTimer,
-} from "../../store/console";
+import { updateTries } from "../../store/console";
 
-export const returnNextTry = async (dispatch, tries) => {
+export const returnNextTry = async (dispatch) => {
   Vibration.vibrate(200);
-  dispatch(updateTries(tries - 1));
-  dispatch(restartTheTimer());
+  dispatch(updateTries());
 };

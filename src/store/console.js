@@ -38,98 +38,90 @@ const slice = createSlice({
   name: "console",
   initialState,
   reducers: {
-    updateAttempt(consoleState, { payload }) {
-      consoleState.attempt = payload;
+    updateOptions(state, { payload }) {
+      state.options = payload;
+    }, //used in OptionsContainer
+    updateTries(state) {
+      state.tries -= 1;
+      state.key += 1;
+      state.isPlaying = true;
+    }, // used exclusively in returnNextTry
+    updateBusyState(state, { payload }) {
+      state.busy = payload;
     },
-    updateOptions(consoleState, { payload }) {
-      consoleState.options = payload;
-    },
-    updateStats(consoleState, { payload }) {
-      return { ...consoleState.stats, ...payload };
-    },
-    updateTail(consoleState, { payload }) {
-      consoleState.tail = payload;
-    },
-    updateTries(consoleState, { payload }) {
-      consoleState.tries = payload;
-    },
-    reloadPage(consoleState) {
-      consoleState.page = !consoleState.page;
-    },
-    updateBusyState(consoleState, { payload }) {
-      consoleState.busy = payload;
-    },
-    updateConnectedState(consoleState, { payload }) {
-      consoleState.connected = payload;
+    updateConnectedState(state, { payload }) {
+      state.connected = payload;
     },
     //CONSOLE STATE VARIABLES
-    updateFormValue(consoleState, { payload }) {
-      consoleState.formValue = payload;
+    updateFormValue(state, { payload }) {
+      state.formValue = payload;
+    }, //used in onChangeText
+    resetConsole(state) {
+      state.lastAttempt = state.formValue;
+      state.formValue = "";
+      state.showSolution = true;
+      state.isPlaying = false;
+      state.timeOnThisWord = 0;
+      state.key += 1;
+    }, //used at the end returnWrongAnswerToServer
+    updateShowSolution(state, { payload }) {
+      state.showSolution = payload;
     },
-    updateLastAttempt(consoleState) {
-      consoleState.lastAttempt = consoleState.formValue;
+    incrementTimeOnThisWord(state, { payload }) {
+      state.timeOnThisWord += payload;
+    }, //used to manage the timeplaying clock in StatsContainer
+    resetTimeOnThisWord(state) {
+      state.timeOnThisWord = 0;
+    }, //used in two separate instances
+    restartTheTimer(state) {
+      state.key += 1;
+      state.isPlaying = true;
+      state.startedThisWord = new Date().getTime();
+    }, //used after correct answer and when form field is focused
+    updateIsPlaying(state, { payload }) {
+      state.isPlaying = payload;
     },
-    updateShowSolution(consoleState, { payload }) {
-      consoleState.showSolution = payload;
+    resetTimer(state) {
+      state.key += 1;
     },
-    incrementTimeOnThisWord(consoleState, { payload }) {
-      consoleState.timeOnThisWord += payload;
+    updateTimerIsOn(state, { payload }) {
+      state.timerIsOn = payload;
     },
-    updateStartedThisWord(consoleState, { payload }) {
-      consoleState.startedThisWord = payload;
-    },
-    updateIsPlaying(consoleState, { payload }) {
-      consoleState.isPlaying = payload;
-    },
-    resetTimer(consoleState) {
-      consoleState.key += 1;
-    },
-    restartTheTimer(consoleState) {
-      consoleState.key += 1;
-      consoleState.isPlaying = true;
-    },
-    updateTimerIsOn(consoleState, { payload }) {
-      consoleState.timerIsOn = payload;
-    },
-    updateGolden(consoleState, { payload }) {
-      consoleState.golden = payload;
+    updateGolden(state, { payload }) {
+      state.golden = payload;
     },
     // Group updates
-    updateCSState(consoleState, { payload }) {
-      return { ...consoleState, ...payload };
+    updateCSState(state, { payload }) {
+      return { ...state, ...payload };
     },
     //TimeManagement
-    incrementStatsTime(consoleState, { payload }) {
-      consoleState.stats.time += payload;
-    },
+    incrementStatsTime(state, { payload }) {
+      state.stats.time += payload;
+    }, // helps to smooth the time handover to the server.important
   },
 });
 
 export const {
-  updateAttempt,
   updateOptions,
-  updateStats,
-  updateTail,
   updateTries,
   updateBusyState,
   updateConnectedState,
   updateFormValue,
-  updateLastAttempt,
+  resetConsole,
   updateShowSolution,
   incrementTimeOnThisWord,
-  updateStartedThisWord,
-  updateIsPlaying,
+  resetTimeOnThisWord,
   restartTheTimer,
+  updateIsPlaying,
   resetTimer,
   updateTimerIsOn,
   updateGolden,
   updateCSState,
   incrementStatsTime,
-  reloadPage,
 } = slice.actions;
 
 export const getConsoleState = createSelector(
-  (consoleState) => consoleState,
+  (state) => state,
   (state) => state.console,
 );
 

@@ -1,7 +1,6 @@
 import {
   updateLevelBreakdown,
   updateUserGameData,
-  updateBusyState,
 } from "../../store/stats";
 
 export const updateStatsState = (resData, dispatch) => {

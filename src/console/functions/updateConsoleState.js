@@ -5,9 +5,8 @@ export const updateConsoleState = async (
   dispatch,
 ) => {
   const { gamePlay, options, stats, display } = resData;
-  const { id, target, solutions, speechLang } = gamePlay;
   const payload = {
-    attempt: { id, target, solutions, speechLang },
+    attempt: gamePlay,
     options,
     stats,
     tail: display.tail,

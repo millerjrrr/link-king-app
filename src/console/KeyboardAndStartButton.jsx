@@ -18,6 +18,7 @@ import {
   updateTimerIsOn,
   updateIsPlaying,
   resetTimer,
+  resetTimeOnThisWord,
 } from "../store/console";
 import { returnWrongAnswerToServer } from "./functions/returnWrongAnswerToServer";
 
@@ -62,11 +63,12 @@ const KeyboardAndStartButton = ({ inputFieldRef }) => {
 
   const closeKeyboardSubmitAnswer = () => {
     if (!showSolution && isPlaying)
-      returnWrongAnswerToServer(dispatch, timeOnThisWord);
+      returnWrongAnswerToServer(dispatch, startedThisWord);
     else {
       dispatch(updateIsPlaying(false));
       dispatch(resetTimer());
       dispatch(updateTimerIsOn(false));
+      dispatch(resetTimeOnThisWord());
     }
     Keyboard.dismiss();
   };

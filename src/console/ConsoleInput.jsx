@@ -10,9 +10,9 @@ import Loader from "../ui/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getConsoleState,
+  restartTheTimer,
   updateFormValue,
   updateIsPlaying,
-  updateLastAttempt,
   updateStartedThisWord,
   updateTimerIsOn,
 } from "../store/console";
@@ -30,7 +30,6 @@ const ConsoleInput = ({ inputFieldRef }) => {
     options,
     showSolution,
     attempt,
-    timeOnThisWord,
     startedThisWord,
     tries,
     golden,
@@ -58,11 +57,16 @@ const ConsoleInput = ({ inputFieldRef }) => {
       returnCorrectAnswerToServer(
         dispatch,
         startedThisWord,
+        showSolution,
       );
     } else if (tries > 1) {
-      returnNextTry(dispatch, tries);
+      returnNextTry(dispatch);
     } else {
-      returnWrongAnswerToServer(dispatch, startedThisWord);
+      returnWrongAnswerToServer(
+        dispatch,
+        startedThisWord,
+        showSolution,
+      );
     }
     return false;
   };
@@ -71,10 +75,9 @@ const ConsoleInput = ({ inputFieldRef }) => {
     Speech.speak(attempt.target, {
       language: attempt.speechLang,
     });
-    dispatch(updateIsPlaying(true));
     dispatch(updateTimerIsOn(true));
-    dispatch(updateStartedThisWord(new Date().getTime()));
     dispatch(updateFormValue(""));
+    dispatch(restartTheTimer());
   };
 
   return (

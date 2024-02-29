@@ -5,10 +5,7 @@ import {
   View,
 } from "react-native";
 import ConsoleInput from "../console/ConsoleInput";
-import {
-  getConsoleState,
-  reloadPage,
-} from "../store/console";
+import { getConsoleState } from "../store/console";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import OptionsContainer from "../console/OptionsContainer";
@@ -49,22 +46,16 @@ const Console = ({ navigation }) => {
           Platform.OS === "ios" ? "padding" : undefined
         }
       >
-        <BusyWrapper
-          busy={false}
-          connected={connected}
-          refresh={() => dispatch(reloadPage())}
-        >
-          <View style={styles.content}>
-            <StatsContainer />
-            <OptionsContainer />
-            <ReadWordButton />
-            <ConsoleInput inputFieldRef={inputFieldRef} />
-            <Tail />
-            <KeyboardAndStartButton
-              inputFieldRef={inputFieldRef}
-            />
-          </View>
-        </BusyWrapper>
+        <View style={styles.content}>
+          <StatsContainer />
+          <OptionsContainer />
+          <ReadWordButton />
+          <ConsoleInput inputFieldRef={inputFieldRef} />
+          <Tail />
+          <KeyboardAndStartButton
+            inputFieldRef={inputFieldRef}
+          />
+        </View>
       </KeyboardAvoidingView>
     </InnerTabBackground>
   );

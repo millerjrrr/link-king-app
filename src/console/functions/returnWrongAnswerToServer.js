@@ -2,11 +2,11 @@ import clientWithAuth from "../../api/clientWithAuth";
 import {
   updateBusyState,
   updateConnectedState,
-  updateIsPlaying,
-  updateCSState,
   updateTimerIsOn,
   resetTimer,
-  updateLastAttempt,
+  resetTimeOnThisWord,
+  incrementStatsTime,
+  resetConsole,
 } from "../../store/console";
 import * as Speech from "expo-speech";
 import { updateConsoleState } from "./updateConsoleState";
@@ -17,17 +17,20 @@ import { updateNotification } from "../../store/notification";
 export const returnWrongAnswerToServer = async (
   dispatch,
   startedThisWord,
+  showSolution,
 ) => {
   Vibration.vibrate(3000);
   dispatch(updateTimerIsOn(false));
   dispatch(updateBusyState(true));
   try {
-    const time = startedThisWord
+    const time = !showSolution
       ? Math.min(
           new Date().getTime() - startedThisWord,
           30 * 1000,
         )
       : 0;
+    dispatch(resetTimeOnThisWord());
+    dispatch(incrementStatsTime(time));
     console.log(time);
     const { data } = await clientWithAuth.post(
       "/api/v1/gameData/submitAttempt",
@@ -51,13 +54,5 @@ export const returnWrongAnswerToServer = async (
     );
     dispatch(updateConnectedState(false));
   }
-  await dispatch(updateLastAttempt());
-  const payload = {
-    formValue: "",
-    showSolution: true,
-    isPlaying: false,
-    timeOnThisWord: 0,
-  };
-  dispatch(updateCSState(payload));
-  dispatch(resetTimer());
+  dispatch(resetConsole());
 };
