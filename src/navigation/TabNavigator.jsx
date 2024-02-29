@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import CollectionNavigator from "./subnavigators/CollectionNavigator";
-import Options from "../views/Options";
-import Console from "../views/Console";
+import OptionsNavigator from "./subnavigators/OptionsNavigator";
+import ConsoleNavigator from "./subnavigators/ConsoleNavigator";
 import colors from "../utils/colors";
 import {
   Entypo,
@@ -11,7 +11,6 @@ import {
 import { Platform, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../store/console";
-import OptionsNavigator from "./subnavigators/OptionsNavigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -33,11 +32,11 @@ const TabNavigator = () => {
           fontSize: 15,
         },
       }}
-      initialRouteName="ConsoleScreen"
+      initialRouteName="Console"
     >
       <Tab.Screen
-        name="ConsoleScreen"
-        component={Console}
+        name="Console"
+        component={ConsoleNavigator}
         options={{
           tabBarIcon: (props) => (
             <Ionicons

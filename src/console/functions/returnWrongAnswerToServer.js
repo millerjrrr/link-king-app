@@ -6,6 +6,7 @@ import {
   updateCSState,
   updateTimerIsOn,
   resetTimer,
+  updateLastAttempt,
 } from "../../store/console";
 import * as Speech from "expo-speech";
 import { updateConsoleState } from "./updateConsoleState";
@@ -15,13 +16,19 @@ import { updateNotification } from "../../store/notification";
 
 export const returnWrongAnswerToServer = async (
   dispatch,
-  timeOnThisWord,
+  startedThisWord,
 ) => {
   Vibration.vibrate(3000);
   dispatch(updateTimerIsOn(false));
   dispatch(updateBusyState(true));
   try {
-    const time = Math.min(timeOnThisWord, 30 * 1000);
+    const time = startedThisWord
+      ? Math.min(
+          new Date().getTime() - startedThisWord,
+          30 * 1000,
+        )
+      : 0;
+    console.log(time);
     const { data } = await clientWithAuth.post(
       "/api/v1/gameData/submitAttempt",
       {
@@ -44,6 +51,7 @@ export const returnWrongAnswerToServer = async (
     );
     dispatch(updateConnectedState(false));
   }
+  await dispatch(updateLastAttempt());
   const payload = {
     formValue: "",
     showSolution: true,

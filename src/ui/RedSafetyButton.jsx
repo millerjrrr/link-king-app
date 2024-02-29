@@ -7,11 +7,11 @@ import {
 import colors from "../utils/colors";
 import { AntDesign } from "@expo/vector-icons";
 
-const size = 300;
-
-const DeleteForeverButton = ({
+const RedSafetyButton = ({
   setElapsedTime,
-  deleteFunction,
+  completeFunction,
+  iconName,
+  size = 300,
 }) => {
   const [pressStartTime, setPressStartTime] = useState(0);
   const pressTimer = useRef(null);
@@ -30,7 +30,7 @@ const DeleteForeverButton = ({
 
   const handlePressIn = () => {
     pressTimer.current = setTimeout(() => {
-      deleteFunction();
+      completeFunction();
     }, 3100); //needs a little longer to ensure screen fills
     setPressStartTime(Date.now());
   };
@@ -47,10 +47,17 @@ const DeleteForeverButton = ({
         underlayColor={colors.SECONDARY}
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
-        style={styles.buttonContainer}
+        style={[
+          styles.buttonContainer,
+          {
+            height: size,
+            width: size,
+            borderRadius: size / 2,
+          },
+        ]}
       >
         <AntDesign
-          name="delete"
+          name={iconName}
           size={size / 2}
           color={colors.RED}
         />
@@ -70,9 +77,6 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
   buttonContainer: {
-    height: size,
-    width: size,
-    borderRadius: size / 2,
     borderColor: colors.RED,
     borderWidth: 1,
     justifyContent: "center",
@@ -80,4 +84,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DeleteForeverButton;
+export default RedSafetyButton;

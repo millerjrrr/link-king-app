@@ -13,12 +13,11 @@ import {
 import { useEffect, useState } from "react";
 import StartButton from "./StartButton";
 import { useDispatch, useSelector } from "react-redux";
-import * as Speech from "expo-speech";
 import {
   getConsoleState,
-  updateFormValue,
   updateTimerIsOn,
   updateIsPlaying,
+  resetTimer,
 } from "../store/console";
 import { returnWrongAnswerToServer } from "./functions/returnWrongAnswerToServer";
 
@@ -49,23 +48,16 @@ const KeyboardAndStartButton = ({ inputFieldRef }) => {
 
   const dispatch = useDispatch();
   const {
-    showSolution,
     isPlaying,
-    timeOnThisWord,
-    attempt,
+    startedThisWord,
+    showSolution,
     golden,
   } = useSelector(getConsoleState);
 
   const startFunction = async () => {
-    Speech.speak(attempt.target, {
-      language: attempt.speechLang,
-    });
     if (inputFieldRef.current) {
       inputFieldRef.current.focus();
     }
-    dispatch(updateIsPlaying(true));
-    dispatch(updateTimerIsOn(true));
-    dispatch(updateFormValue(""));
   };
 
   const closeKeyboardSubmitAnswer = () => {
@@ -73,13 +65,14 @@ const KeyboardAndStartButton = ({ inputFieldRef }) => {
       returnWrongAnswerToServer(dispatch, timeOnThisWord);
     else {
       dispatch(updateIsPlaying(false));
+      dispatch(resetTimer());
       dispatch(updateTimerIsOn(false));
     }
     Keyboard.dismiss();
   };
 
   const dontKnowFunction = () =>
-    returnWrongAnswerToServer(dispatch, timeOnThisWord);
+    returnWrongAnswerToServer(dispatch, startedThisWord);
 
   return isKeyboardVisible ? (
     <View style={styles.outerContainer}>

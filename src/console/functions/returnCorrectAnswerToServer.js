@@ -4,6 +4,7 @@ import {
   restartTheTimer,
   incrementStatsTime,
   updateCSState,
+  updateStartedThisWord,
 } from "../../store/console";
 import * as Speech from "expo-speech";
 import { updateConsoleState } from "./updateConsoleState";
@@ -12,19 +13,24 @@ import catchAsyncError from "../../api/catchError";
 
 export const returnCorrectAnswerToServer = async (
   dispatch,
-  timeOnThisWord,
+  startedThisWord,
 ) => {
   const payload = {
     timeOnThisWord: 0, // the clock is reset to zero, and starts counting the next timeOnThisWord to be sent to the server
+    startedThisWord: new Date(),
     timerIsOn: true, // the clock should still be running to count seconds playing the game
     busy: true,
     showSolution: false,
     formValue: "",
   };
   dispatch(updateCSState(payload));
-  dispatch(incrementStatsTime(timeOnThisWord));
   try {
-    const time = Math.min(timeOnThisWord, 30 * 1000);
+    const time = startedThisWord
+      ? Math.min(
+          new Date().getTime() - startedThisWord,
+          30 * 1000,
+        )
+      : 0;
     console.log(time);
     const { data } = await clientWithAuth.post(
       "/api/v1/gameData/submitAttempt",
@@ -38,6 +44,7 @@ export const returnCorrectAnswerToServer = async (
       language: data.gamePlay.speechLang,
     });
     dispatch(restartTheTimer());
+    dispatch(updateStartedThisWord(new Date().getTime()));
   } catch (error) {
     const errorMessage = catchAsyncError(error);
     dispatch(

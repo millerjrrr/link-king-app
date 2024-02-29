@@ -10,14 +10,18 @@ import Loader from "../ui/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getConsoleState,
-  resetTimer,
   updateFormValue,
   updateIsPlaying,
+  updateLastAttempt,
+  updateStartedThisWord,
+  updateTimerIsOn,
 } from "../store/console";
 import { acceptAnswer } from "./functions/acceptAnswer";
 import { returnCorrectAnswerToServer } from "./functions/returnCorrectAnswerToServer";
 import { returnWrongAnswerToServer } from "./functions/returnWrongAnswerToServer";
 import { returnNextTry } from "./functions/returnNextTry";
+import AnswerDetailsButton from "./AnswerDetailsButton";
+import * as Speech from "expo-speech";
 
 const ConsoleInput = ({ inputFieldRef }) => {
   const {
@@ -27,6 +31,7 @@ const ConsoleInput = ({ inputFieldRef }) => {
     showSolution,
     attempt,
     timeOnThisWord,
+    startedThisWord,
     tries,
     golden,
   } = useSelector(getConsoleState);
@@ -50,13 +55,26 @@ const ConsoleInput = ({ inputFieldRef }) => {
     );
 
     if (answerAccepted) {
-      returnCorrectAnswerToServer(dispatch, timeOnThisWord);
+      returnCorrectAnswerToServer(
+        dispatch,
+        startedThisWord,
+      );
     } else if (tries > 1) {
       returnNextTry(dispatch, tries);
     } else {
-      returnWrongAnswerToServer(dispatch, timeOnThisWord);
+      returnWrongAnswerToServer(dispatch, startedThisWord);
     }
     return false;
+  };
+
+  const onFocus = () => {
+    Speech.speak(attempt.target, {
+      language: attempt.speechLang,
+    });
+    dispatch(updateIsPlaying(true));
+    dispatch(updateTimerIsOn(true));
+    dispatch(updateStartedThisWord(new Date().getTime()));
+    dispatch(updateFormValue(""));
   };
 
   return (
@@ -74,11 +92,18 @@ const ConsoleInput = ({ inputFieldRef }) => {
           <Loader size={24} />
         </View>
       ) : null}
+      <AnswerDetailsButton
+        onPress={() => {
+          console.log("pressed");
+        }}
+      />
       <TextInput
         ref={inputFieldRef}
         onChangeText={(text) =>
           dispatch(updateFormValue(text))
         }
+        onSubmitEditing={submitAttempt}
+        onFocus={onFocus}
         placeholder={
           showSolution ? attempt.solutions[0] : null
         }
@@ -94,9 +119,7 @@ const ConsoleInput = ({ inputFieldRef }) => {
         style={[
           styles.input,
           { color: color, shadowColor: color },
-          styles.commonProp,
         ]}
-        onSubmitEditing={submitAttempt}
       />
     </View>
   );
@@ -117,23 +140,19 @@ const styles = StyleSheet.create({
     fontSize: 40,
     borderRadius: 35,
     backgroundColor: colors.SECONDARY,
-  },
-  ...Platform.select({
-    ios: {
-      commonProp: {
+    ...Platform.select({
+      ios: {
         shadowOffset: {
           height: 1,
         },
         shadowOpacity: 0.5,
         shadowRadius: 5,
       },
-    },
-    android: {
-      commonProp: {
+      android: {
         elevation: 3,
       },
-    },
-  }),
+    }),
+  },
 });
 
 export default ConsoleInput;

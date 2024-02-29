@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.SECONDARY,
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: "150%",
+    borderRadius: 1000,
     ...Platform.select({
       ios: {
         shadowOffset: {

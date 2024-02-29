@@ -3,16 +3,16 @@ import { View, StyleSheet, Text } from "react-native";
 import WordCard from "./WordCard";
 import PopUpContainer from "../components/PopUpContainer";
 import colors from "../utils/colors";
-import DeleteForeverButton from "./DeleteForeverButton";
+import RedSafetyButton from "../ui/RedSafetyButton";
 import { deleteTicket } from "./functions/deleteTicket";
 import Loader from "../ui/Loader";
 import { useDispatch } from "react-redux";
+import BloodRedCover from "../ui/BloodRedCover";
 
 const DeleteScreen = ({ route }) => {
   // ...loader management...
   const [busy, setBusy] = useState(false);
   const [status, setStatus] = useState(true);
-
   const [elapsedTime, setElapsedTime] = useState(0);
   const [ticketDeleted, setTicketDeleted] = useState(false);
 
@@ -25,26 +25,8 @@ const DeleteScreen = ({ route }) => {
   };
 
   return (
-    <PopUpContainer>
-      <View
-        style={{
-          height: "100%",
-          width: "100%",
-          position: "absolute",
-          zIndex: 2,
-        }}
-      >
-        <View
-          style={{
-            backgroundColor: colors.BLOOD,
-            width: `${Math.min(elapsedTime / 3, 1) * 100}%`,
-            height: "100%",
-            position: "absolute",
-            top: 0,
-            bottom: 0,
-          }}
-        />
-      </View>
+    <PopUpContainer heading="Delete One">
+      <BloodRedCover elapsedTime={elapsedTime} />
       {busy ? (
         <Loader />
       ) : (
@@ -78,9 +60,10 @@ const DeleteScreen = ({ route }) => {
               <Text style={styles.deleteText}>
                 Press and hold to delete
               </Text>
-              <DeleteForeverButton
+              <RedSafetyButton
                 setElapsedTime={setElapsedTime}
-                deleteFunction={deleteFunction}
+                completeFunction={deleteFunction}
+                iconName="delete"
               />
             </>
           )}

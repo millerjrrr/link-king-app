@@ -12,7 +12,7 @@ import ResultsCard from "./ResultsCard";
 
 const StatsScreen = () => {
   const { golden } = useSelector(getConsoleState);
-  const { userGameData, busy } = useSelector(getStatsState);
+  const { busy } = useSelector(getStatsState);
 
   const dispatch = useDispatch();
 

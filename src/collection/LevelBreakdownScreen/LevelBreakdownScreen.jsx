@@ -1,7 +1,5 @@
-import { Text, View, StyleSheet } from "react-native";
-import colors from "../../utils/colors";
+import { View, StyleSheet } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { getConsoleState } from "../../store/console";
 import { getStatsState } from "../../store/stats";
 import { fetchStatsInfo } from "../functions/fetchStatsInfo";
 import { useEffect } from "react";
@@ -10,7 +8,6 @@ import Loader from "../../ui/Loader";
 import PopUpContainer from "../../components/PopUpContainer";
 
 const Levels = () => {
-  const { golden } = useSelector(getConsoleState);
   const { levelBreakdown, busy } =
     useSelector(getStatsState);
 
@@ -21,19 +18,11 @@ const Levels = () => {
   }, []);
 
   return (
-    <PopUpContainer>
+    <PopUpContainer heading="Levels Breakdown">
       {busy ? (
         <Loader />
       ) : (
         <View style={styles.container}>
-          <Text
-            style={[
-              styles.title,
-              { color: colors.CONTRAST[golden] },
-            ]}
-          >
-            Levels Breakdown
-          </Text>
           <Histogram
             lbd={levelBreakdown}
             histHeight={400}
@@ -49,11 +38,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-start",
     alignItems: "center",
-  },
-  title: {
-    fontSize: 30,
-    marginTop: 20,
-    textAlign: "center",
   },
 });
 

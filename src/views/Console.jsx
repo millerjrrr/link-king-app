@@ -7,9 +7,7 @@ import {
 import ConsoleInput from "../console/ConsoleInput";
 import {
   getConsoleState,
-  incrementTimeOnThisWord,
   reloadPage,
-  updateTimerIsOn,
 } from "../store/console";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -24,8 +22,7 @@ import BusyWrapper from "../components/BusyWrapper";
 
 const Console = ({ navigation }) => {
   const inputFieldRef = useRef(null);
-  const { timeOnThisWord, timerIsOn, connected, page } =
-    useSelector(getConsoleState);
+  const { connected, page } = useSelector(getConsoleState);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -43,22 +40,6 @@ const Console = ({ navigation }) => {
     // reload page details on page refresh (after internet disconnect)
     fetchConsoleInfo(dispatch);
   }, [page]);
-
-  useEffect(() => {
-    const incrementTimer = () => {
-      if (timerIsOn)
-        dispatch(incrementTimeOnThisWord(1000));
-    };
-    const intervalId = setInterval(incrementTimer, 1000);
-    return () => clearInterval(intervalId);
-  }, [timerIsOn]);
-
-  useEffect(() => {
-    // Pause the clock after 30 seconds
-    if (timeOnThisWord >= 30 * 1000) {
-      dispatch(updateTimerIsOn(false));
-    }
-  }, [timeOnThisWord]);
 
   return (
     <InnerTabBackground heading="Console">

@@ -5,13 +5,15 @@ import consoleReducer from "./console";
 import statsReducer from "./stats";
 import collectionReducer from "./collection";
 import notificationReducer from "./notification";
+import connectionReducer from "./connection";
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  console: consoleReducer,
-  stats: statsReducer,
   collection: collectionReducer,
+  connection: connectionReducer,
+  console: consoleReducer,
   notification: notificationReducer,
+  stats: statsReducer,
 });
 
 const store = configureStore({

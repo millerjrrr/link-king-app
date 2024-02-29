@@ -5,6 +5,7 @@ import {
 
 const initialState = {
   attempt: {
+    id: "",
     target: "",
     solutions: [],
     speechLang: "en-US",
@@ -23,8 +24,10 @@ const initialState = {
   connected: true,
   page: true,
   formValue: "",
+  lastAttempt: "",
   showSolution: false,
   timeOnThisWord: 0,
+  startedThisWord: 0,
   isPlaying: false,
   key: 0,
   timerIsOn: false,
@@ -63,11 +66,17 @@ const slice = createSlice({
     updateFormValue(consoleState, { payload }) {
       consoleState.formValue = payload;
     },
+    updateLastAttempt(consoleState) {
+      consoleState.lastAttempt = consoleState.formValue;
+    },
     updateShowSolution(consoleState, { payload }) {
       consoleState.showSolution = payload;
     },
     incrementTimeOnThisWord(consoleState, { payload }) {
       consoleState.timeOnThisWord += payload;
+    },
+    updateStartedThisWord(consoleState, { payload }) {
+      consoleState.startedThisWord = payload;
     },
     updateIsPlaying(consoleState, { payload }) {
       consoleState.isPlaying = payload;
@@ -105,8 +114,10 @@ export const {
   updateBusyState,
   updateConnectedState,
   updateFormValue,
+  updateLastAttempt,
   updateShowSolution,
   incrementTimeOnThisWord,
+  updateStartedThisWord,
   updateIsPlaying,
   restartTheTimer,
   resetTimer,

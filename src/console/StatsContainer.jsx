@@ -1,14 +1,45 @@
 import { Text, View, StyleSheet } from "react-native";
 import colors from "../utils/colors";
 import { convertMsToTime } from "./functions/convertMsToTime";
-import { useSelector } from "react-redux";
-import { getConsoleState } from "../store/console";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getConsoleState,
+  incrementTimeOnThisWord,
+  updateTimerIsOn,
+} from "../store/console";
 import StatsIcon from "./StatsIcon";
+import { useEffect } from "react";
 
 const StatsContainer = () => {
-  const { stats, timeOnThisWord, golden } =
+  const { stats, timeOnThisWord, timerIsOn } =
     useSelector(getConsoleState);
   const { due, steps, time, streak, newWords } = stats;
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    let intervalId;
+    if (timerIsOn) {
+      intervalId = setInterval(() => {
+        dispatch(incrementTimeOnThisWord(1000));
+      }, 1000);
+    }
+    return () => clearInterval(intervalId);
+  }, [timerIsOn]);
+
+  useEffect(() => {
+    let timeoutId;
+
+    if (timerIsOn) {
+      timeoutId = setTimeout(() => {
+        dispatch(updateTimerIsOn(false));
+      }, 30 * 1000);
+    } else {
+      clearTimeout(timeoutId);
+    }
+
+    return () => clearTimeout(timeoutId);
+  }, [timerIsOn]);
 
   return (
     <View style={styles.container}>
