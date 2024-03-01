@@ -2,23 +2,23 @@ import catchAsyncError from "../../api/catchError";
 import clientWithAuth from "../../api/clientWithAuth";
 import { updateNotification } from "../../store/notification";
 
-export const deleteTicket = async (
+export const flagWordAndDeleteTicket = async (
   ticketId,
   setBusy,
   setStatus,
-  setTicketDeleted,
+  setWordFlagged,
   dispatch,
 ) => {
   try {
     setBusy(true);
     const { data } = await clientWithAuth.post(
-      "/api/v1/tickets/deleteOne",
+      "/api/v1/dictionary/flagWord",
       {
         ticketId,
       },
     );
     setStatus(data.status === "success");
-    setTicketDeleted(true);
+    setWordFlagged(true);
   } catch (error) {
     const errorMessage = catchAsyncError(error);
     dispatch(

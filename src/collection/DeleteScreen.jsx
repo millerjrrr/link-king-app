@@ -20,8 +20,13 @@ const DeleteScreen = ({ route }) => {
 
   const dispatch = useDispatch();
   const deleteFunction = () => {
-    deleteTicket(ticket._id, setBusy, setStatus, dispatch);
-    setTicketDeleted(true);
+    deleteTicket(
+      ticket._id,
+      setBusy,
+      setStatus,
+      setTicketDeleted,
+      dispatch,
+    );
   };
 
   return (

@@ -69,7 +69,6 @@ const RedSafetyButton = ({
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.RED,
-    marginTop: 20,
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
