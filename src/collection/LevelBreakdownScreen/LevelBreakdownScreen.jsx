@@ -4,8 +4,8 @@ import { getStatsState } from "../../store/stats";
 import { fetchStatsInfo } from "../functions/fetchStatsInfo";
 import { useEffect } from "react";
 import Histogram from "./Histogram";
-import Loader from "../../ui/Loader";
 import PopUpContainer from "../../components/PopUpContainer";
+import Loader from "../../ui/Loaders/Loader";
 
 const Levels = () => {
   const { levelBreakdown, busy } =

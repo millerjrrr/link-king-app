@@ -1,6 +1,6 @@
 import { Image, StyleSheet } from "react-native";
 
-const LinkKingIcon = (props) => {
+const LinkKingIcon = () => {
   return (
     <Image
       source={require("../../assets/link-king-header-logo.png")}

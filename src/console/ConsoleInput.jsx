@@ -6,14 +6,12 @@ import {
 } from "react-native";
 import Timer from "./Timer";
 import colors from "../utils/colors";
-import Loader from "../ui/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getConsoleState,
   restartTheTimer,
   updateFormValue,
   updateIsPlaying,
-  updateStartedThisWord,
   updateTimerIsOn,
 } from "../store/console";
 import { acceptAnswer } from "./functions/acceptAnswer";
@@ -22,6 +20,7 @@ import { returnWrongAnswerToServer } from "./functions/returnWrongAnswerToServer
 import { returnNextTry } from "./functions/returnNextTry";
 import AnswerDetailsButton from "./AnswerDetailsButton";
 import * as Speech from "expo-speech";
+import Loader from "../ui/Loaders/Loader";
 
 const ConsoleInput = ({ inputFieldRef }) => {
   const {
@@ -47,7 +46,6 @@ const ConsoleInput = ({ inputFieldRef }) => {
 
   const submitAttempt = async () => {
     dispatch(updateIsPlaying(false));
-
     const answerAccepted = acceptAnswer(
       formValue,
       attempt.solutions,

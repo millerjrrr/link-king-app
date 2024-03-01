@@ -3,7 +3,7 @@ import colors from "../utils/colors";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../store/console";
 import { getCollectionState } from "../store/collection";
-import Loader from "../ui/Loader";
+import Loader from "../ui/Loaders/Loader";
 
 const TicketsCount = () => {
   const { golden } = useSelector(getConsoleState);

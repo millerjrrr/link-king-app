@@ -6,9 +6,9 @@ import {
   Text,
 } from "react-native";
 import colors from "../utils/colors";
-import Loader from "./Loader";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../store/console";
+import Loader from "./Loaders/Loader";
 
 const AppButton = ({ title, busy, onPress }) => {
   const { golden } = useSelector(getConsoleState);

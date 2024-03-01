@@ -4,9 +4,9 @@ import {
   TransitionPresets,
 } from "@react-navigation/stack";
 import Collection from "../../views/Collection";
-import DeleteScreen from "../../collection/DeleteScreen";
 import LevelBreakdownScreen from "../../collection/LevelBreakdownScreen/LevelBreakdownScreen";
 import StatsScreen from "../../collection/StatsScreen/StatsScreen";
+import DeleteScreen from "../../collection/DeleteScreen/DeleteScreen";
 
 const CollectionStack = createStackNavigator();
 

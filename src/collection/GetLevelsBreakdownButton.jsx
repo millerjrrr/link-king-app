@@ -8,7 +8,7 @@ import colors from "../utils/colors";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../store/console";
 import { AntDesign } from "@expo/vector-icons";
-import Loader from "../ui/Loader";
+import Loader from "../ui/Loaders/Loader";
 
 const GetLevelsBreakdownButton = ({
   onPress,

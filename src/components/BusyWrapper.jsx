@@ -1,6 +1,6 @@
 import { View, StyleSheet } from "react-native";
-import Loader from "../ui/Loader";
 import InternetConnectionPage from "../errors/InternetConnectionPage";
+import Loader from "../ui/Loaders/Loader";
 
 const BusyWrapper = ({
   children,

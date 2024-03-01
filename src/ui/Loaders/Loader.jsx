@@ -8,9 +8,9 @@ import Animated, {
   Easing,
 } from "react-native-reanimated";
 import { AntDesign } from "@expo/vector-icons";
-import colors from "../utils/colors";
+import colors from "../../utils/colors";
 import { useSelector } from "react-redux";
-import { getConsoleState } from "../store/console";
+import { getConsoleState } from "../../store/console";
 
 const Loader = ({ color = 0, size = 24 }) => {
   const { golden } = useSelector(getConsoleState);

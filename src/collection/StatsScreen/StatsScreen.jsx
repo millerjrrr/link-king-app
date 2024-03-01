@@ -4,11 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getConsoleState } from "../../store/console";
 import { getStatsState } from "../../store/stats";
 import { useEffect } from "react";
-import Loader from "../../ui/Loader";
-import PopUpContainer from "../../components/PopUpContainer";
 import { fetchStatsInfo } from "../functions/fetchStatsInfo";
 import StatsPanel from "./StatsPanel";
 import ResultsCard from "./ResultsCard";
+import Loader from "../../ui/Loaders/Loader";
 
 const StatsScreen = () => {
   const { golden } = useSelector(getConsoleState);

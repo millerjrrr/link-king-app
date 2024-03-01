@@ -15,10 +15,10 @@ import { getFromAsyncStorage } from "../utils/asyncStorage";
 import { useEffect } from "react";
 import colors from "../utils/colors";
 import { View, StyleSheet } from "react-native";
-import Loader from "../ui/Loader";
 import { getConsoleState } from "../store/console";
 import catchAsyncError from "../api/catchError";
 import { updateNotification } from "../store/notification";
+import Loader from "../ui/Loaders/Loader";
 
 const AppNavigator = () => {
   const { golden } = useSelector(getConsoleState);
