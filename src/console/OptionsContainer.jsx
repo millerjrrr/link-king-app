@@ -14,6 +14,7 @@ import {
 import clientWithAuth from "../api/clientWithAuth";
 import { updateNotification } from "../store/notification";
 import catchAsyncError from "../api/catchError";
+import { errorHandler } from "../errors/errorHandler";
 
 const optionsSize = 36;
 
@@ -35,13 +36,7 @@ const OptionsContainer = () => {
       );
       dispatch(updateOptions(data.options));
     } catch (error) {
-      const errorMessage = catchAsyncError(error);
-      dispatch(
-        updateNotification({
-          message: errorMessage,
-          type: "error",
-        }),
-      );
+      errorHandler(error, dispatch);
     }
   };
 
@@ -57,13 +52,7 @@ const OptionsContainer = () => {
       );
       dispatch(updateOptions(data.options));
     } catch (error) {
-      const errorMessage = catchAsyncError(error);
-      dispatch(
-        updateNotification({
-          message: errorMessage,
-          type: "error",
-        }),
-      );
+      errorHandler(error, dispatch);
     }
   };
 
@@ -77,13 +66,7 @@ const OptionsContainer = () => {
       );
       dispatch(updateOptions(data.options));
     } catch (error) {
-      const errorMessage = catchAsyncError(error);
-      dispatch(
-        updateNotification({
-          message: errorMessage,
-          type: "error",
-        }),
-      );
+      errorHandler(error, dispatch);
     }
   };
 

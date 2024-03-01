@@ -1,5 +1,6 @@
 import catchAsyncError from "../../api/catchError";
 import clientWithAuth from "../../api/clientWithAuth";
+import { errorHandler } from "../../errors/errorHandler";
 import { updateCollection } from "../../store/collection";
 import { updateNotification } from "../../store/notification";
 import { semiNormalize } from "./semiNormalize";
@@ -25,13 +26,11 @@ export const fetchTickets = async (
       }),
     );
   } catch (error) {
-    const errorMessage = catchAsyncError(error);
     dispatch(
-      updateNotification({
-        message: errorMessage,
-        type: "error",
+      updateCollection({
+        busy: false,
       }),
     );
-    dispatch(updateCollection({ connected: false }));
+    errorHandler(error, dispatch);
   }
 };

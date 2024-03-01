@@ -19,6 +19,8 @@ import { getConsoleState } from "../store/console";
 import catchAsyncError from "../api/catchError";
 import { updateNotification } from "../store/notification";
 import Loader from "../ui/Loaders/Loader";
+import BusyWrapper from "../ui/Loaders/BusyWrapper";
+import ConnectedWrapper from "../errors/ConnectedWrapper";
 
 const AppNavigator = () => {
   const { golden } = useSelector(getConsoleState);
@@ -44,15 +46,8 @@ const AppNavigator = () => {
         dispatch(updateToken(token));
         dispatch(updateLoggedInState(true));
       } catch (error) {
-        const errorMessage = catchAsyncError(error);
-        dispatch(
-          updateNotification({
-            message: errorMessage,
-            type: "error",
-          }),
-        );
-      } finally {
         dispatch(updateBusyState(false));
+        errorHandler(error, dispatch);
       }
     };
 
@@ -61,23 +56,15 @@ const AppNavigator = () => {
 
   return (
     <NavigationContainer theme={AppTheme}>
-      {busy ? (
-        <View
-          style={{
-            ...StyleSheet.absoluteFillObject,
-            backgroundColor: colors.OVERLAY,
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: 999,
-          }}
-        >
-          <Loader />
-        </View>
-      ) : loggedIn ? (
-        <TabNavigator />
-      ) : (
-        <AuthNavigator />
-      )}
+      <BusyWrapper {...{ busy, color: "black", size: 96 }}>
+        {loggedIn ? (
+          <ConnectedWrapper>
+            <TabNavigator />
+          </ConnectedWrapper>
+        ) : (
+          <AuthNavigator />
+        )}
+      </BusyWrapper>
     </NavigationContainer>
   );
 };

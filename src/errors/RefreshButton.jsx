@@ -1,22 +1,25 @@
 import React from "react";
 import {
   TouchableOpacity,
-  Text,
   StyleSheet,
   View,
   Platform,
 } from "react-native";
 import colors from "../utils/colors";
 import { Ionicons } from "@expo/vector-icons";
+import { useDispatch } from "react-redux";
+import { refreshPage } from "../store/auth";
 
 const size = 200;
 
-const RefreshButton = ({ refresh }) => {
+const RefreshButton = () => {
+  const dispatch = useDispatch();
+
   return (
     <View style={styles.container}>
       <TouchableOpacity
-        onPress={refresh}
-        style={[styles.button, styles.commonProp]}
+        onPress={() => dispatch(refreshPage())}
+        style={styles.button}
       >
         <Ionicons
           size={96}
@@ -44,21 +47,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     shadowColor: colors.RED,
-  },
-  ...Platform.select({
-    ios: {
-      commonProp: {
+    ...Platform.select({
+      ios: {
         shadowOffset: {
           height: 1,
         },
         shadowOpacity: 0.5,
         shadowRadius: 5,
       },
-    },
-    android: {
-      commonProp: {
+      android: {
         elevation: 3,
       },
-    },
-  }),
+    }),
+  },
 });

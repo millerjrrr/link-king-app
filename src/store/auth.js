@@ -7,6 +7,8 @@ const initialState = {
   loggedIn: false,
   token: "",
   busy: false,
+  connected: true,
+  refresh: 0,
 };
 
 const slice = createSlice({
@@ -22,6 +24,13 @@ const slice = createSlice({
     updateBusyState(authState, { payload }) {
       authState.busy = payload;
     },
+    updateConnectedState(authState, { payload }) {
+      authState.connected = payload;
+    },
+    refreshPage(authState) {
+      authState.connected = true;
+      authState.refresh += 1;
+    },
   },
 });
 
@@ -29,6 +38,8 @@ export const {
   updateToken,
   updateLoggedInState,
   updateBusyState,
+  updateConnectedState,
+  refreshPage,
 } = slice.actions;
 
 export const getAuthState = createSelector(

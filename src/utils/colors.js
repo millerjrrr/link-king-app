@@ -12,6 +12,9 @@ const colors = {
   BLOOD: "rgba(243, 119, 119, 0.3)",
   GREENSHADOW: "rgba(59,239,30,0.5)",
   GREENPROGRESS: "#2ecc71",
+  //notifications
+  NOTIFICATION_RED: "rgb(92, 55, 55)",
+  NOTIFICATION_GREEN: " rgb(43, 133, 29)",
 };
 
 export default colors;

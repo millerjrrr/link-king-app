@@ -1,4 +1,4 @@
-import { Text, StyleSheet } from "react-native";
+import { Text } from "react-native";
 import colors from "../../utils/colors";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../../store/console";
@@ -48,9 +48,5 @@ const NoticeAndFlagButton = ({
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {},
-});
 
 export default NoticeAndFlagButton;

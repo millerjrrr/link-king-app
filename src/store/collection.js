@@ -11,7 +11,6 @@ const initialState = {
   results: 0,
   reload: true,
   busy: true,
-  connected: true,
 };
 
 const slice = createSlice({

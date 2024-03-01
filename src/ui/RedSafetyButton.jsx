@@ -3,6 +3,7 @@ import {
   TouchableHighlight,
   View,
   StyleSheet,
+  Platform,
 } from "react-native";
 import colors from "../utils/colors";
 import { AntDesign } from "@expo/vector-icons";
@@ -76,10 +77,22 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
   buttonContainer: {
-    borderColor: colors.RED,
-    borderWidth: 1,
+    backgroundColor: colors.SECONDARY,
     justifyContent: "center",
     alignItems: "center",
+    shadowColor: colors.RED,
+    ...Platform.select({
+      ios: {
+        shadowOffset: {
+          height: 1,
+        },
+        shadowOpacity: 1,
+        shadowRadius: 5,
+      },
+      android: {
+        elevation: 3,
+      },
+    }),
   },
 });
 

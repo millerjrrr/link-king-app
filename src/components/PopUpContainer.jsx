@@ -7,8 +7,12 @@ import {
 } from "react-native";
 import colors from "../utils/colors";
 import CrownUI from "../ui/CrownUI";
+import { useSelector } from "react-redux";
+import { getConsoleState } from "../store/console";
 
 const PopUpContainer = ({ children, heading }) => {
+  const { golden } = useSelector(getConsoleState);
+  const color = colors.CONTRAST[golden];
   return (
     <View style={styles.container}>
       <CrownUI
@@ -27,6 +31,7 @@ const PopUpContainer = ({ children, heading }) => {
         <Image
           source={require("../assets/link-king-header-logo.png")}
           resizeMode="contain"
+          tintColor={color}
           style={{
             width: 100,
             height: 30,
@@ -34,7 +39,9 @@ const PopUpContainer = ({ children, heading }) => {
             marginBottom: 0,
           }}
         />
-        <Text style={styles.heading}>{heading}</Text>
+        <Text style={[styles.heading, { color }]}>
+          {heading}
+        </Text>
       </View>
       {children}
     </View>
@@ -51,7 +58,6 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: 12,
     fontWeight: "bold",
-    color: colors.CONTRAST[0],
     transform: [
       {
         translateX: 0,

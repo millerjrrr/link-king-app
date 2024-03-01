@@ -12,6 +12,7 @@ import StatusBarFiller from "./StatusBarFiller";
 import AppNotification from "./AppNotification";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../store/console";
+import ConnectedWrapper from "../errors/ConnectedWrapper";
 
 const InnerTabBackground = ({ children, heading }) => {
   const { golden } = useSelector(getConsoleState);
@@ -71,9 +72,9 @@ const InnerTabBackground = ({ children, heading }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.PRIMARY,
+    width: "100%",
     alignItems: "center",
-    justifyContent: "top",
+    justifyContent: "flex-start",
   },
   heading: {
     fontSize: 12,
@@ -89,7 +90,6 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     alignItems: "center",
-    justifyContent: "top",
     zIndex: 10,
   },
 });

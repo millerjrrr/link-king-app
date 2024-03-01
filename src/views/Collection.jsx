@@ -1,27 +1,22 @@
-import { View, StyleSheet } from "react-native";
 import InnerTabBackground from "../components/InnerTabBackground";
 import WordCollectionList from "../collection/WordCollectionList";
 import { useEffect } from "react";
 import { fetchTickets } from "../collection/functions/fetchTickets";
 import SearchBarContainer from "../collection/SearchBarContainer";
-import BusyWrapper from "../components/BusyWrapper";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getCollectionState,
-  updateCollection,
-} from "../store/collection";
+import { getCollectionState } from "../store/collection";
 import { fetchTicketsFirstBatch } from "../collection/functions/fetchTicketsFirstBatch";
+import BusyWrapper from "../ui/Loaders/BusyWrapper";
+import {
+  getAuthState,
+  updateConnectedState,
+} from "../store/auth";
 
 const Collection = ({ navigation }) => {
   const dispatch = useDispatch();
-  const {
-    searchKeyword,
-    tickets,
-    page,
-    reload,
-    busy,
-    connected,
-  } = useSelector(getCollectionState);
+  const { searchKeyword, tickets, page, busy } =
+    useSelector(getCollectionState);
+  const { refresh } = useSelector(getAuthState);
 
   useEffect(() => {
     const unsubscribe = navigation.addListener(
@@ -31,7 +26,7 @@ const Collection = ({ navigation }) => {
       },
     );
     return unsubscribe;
-  }, [navigation, connected]);
+  }, [navigation, refresh]);
 
   useEffect(() => {
     if (page > 1)
@@ -44,33 +39,15 @@ const Collection = ({ navigation }) => {
 
   return (
     <InnerTabBackground heading="Collection">
-      <View style={styles.container}>
-        <SearchBarContainer navigation={navigation} />
-        <BusyWrapper
-          busy={busy}
-          connected={connected}
-          refresh={() =>
-            dispatch(updateCollection({ reload: !reload }))
-          }
-          style={styles.container}
-        >
-          <WordCollectionList
-            navigation={navigation}
-            tickets={tickets}
-          />
-        </BusyWrapper>
-      </View>
+      <SearchBarContainer navigation={navigation} />
+      <BusyWrapper {...{ busy, size: 96 }}>
+        <WordCollectionList
+          navigation={navigation}
+          tickets={tickets}
+        />
+      </BusyWrapper>
     </InnerTabBackground>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
 
 export default Collection;

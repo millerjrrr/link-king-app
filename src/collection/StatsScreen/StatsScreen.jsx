@@ -8,6 +8,7 @@ import { fetchStatsInfo } from "../functions/fetchStatsInfo";
 import StatsPanel from "./StatsPanel";
 import ResultsCard from "./ResultsCard";
 import Loader from "../../ui/Loaders/Loader";
+import BusyWrapper from "../../ui/Loaders/BusyWrapper";
 
 const StatsScreen = () => {
   const { golden } = useSelector(getConsoleState);
@@ -21,9 +22,7 @@ const StatsScreen = () => {
 
   return (
     <View style={styles.container}>
-      {busy ? (
-        <Loader />
-      ) : (
+      <BusyWrapper>
         <StatsPanel>
           <Text
             style={[
@@ -34,7 +33,7 @@ const StatsScreen = () => {
             <ResultsCard />
           </Text>
         </StatsPanel>
-      )}
+      </BusyWrapper>
     </View>
   );
 };

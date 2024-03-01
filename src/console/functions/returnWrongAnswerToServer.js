@@ -1,7 +1,6 @@
 import clientWithAuth from "../../api/clientWithAuth";
 import {
   updateBusyState,
-  updateConnectedState,
   updateTimerIsOn,
   resetTimer,
   resetTimeOnThisWord,
@@ -13,6 +12,7 @@ import { updateConsoleState } from "./updateConsoleState";
 import { Vibration } from "react-native";
 import catchAsyncError from "../../api/catchError";
 import { updateNotification } from "../../store/notification";
+import { errorHandler } from "../../errors/errorHandler";
 
 export const returnWrongAnswerToServer = async (
   dispatch,
@@ -44,15 +44,10 @@ export const returnWrongAnswerToServer = async (
     Speech.speak(data.gamePlay.target, {
       language: data.gamePlay.speechLang,
     });
+    dispatch(resetConsole());
   } catch (error) {
-    const errorMessage = catchAsyncError(error);
-    dispatch(
-      updateNotification({
-        message: errorMessage,
-        type: "error",
-      }),
-    );
-    dispatch(updateConnectedState(false));
+    dispatch(updateBusyState(false)); //important that this comes first
+    dispatch(resetConsole());
+    errorHandler(error, dispatch);
   }
-  dispatch(resetConsole());
 };

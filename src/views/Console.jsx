@@ -2,10 +2,8 @@ import {
   StyleSheet,
   Platform,
   KeyboardAvoidingView,
-  View,
 } from "react-native";
 import ConsoleInput from "../console/ConsoleInput";
-import { getConsoleState } from "../store/console";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import OptionsContainer from "../console/OptionsContainer";
@@ -15,11 +13,14 @@ import { fetchConsoleInfo } from "../console/functions/fetchConsoleInfo";
 import ReadWordButton from "../console/ReadWordButton";
 import StatsContainer from "../console/StatsContainer";
 import InnerTabBackground from "../components/InnerTabBackground";
-import BusyWrapper from "../components/BusyWrapper";
+import {
+  getAuthState,
+  updateConnectedState,
+} from "../store/auth";
 
 const Console = ({ navigation }) => {
   const inputFieldRef = useRef(null);
-  const { connected, page } = useSelector(getConsoleState);
+  const { refresh } = useSelector(getAuthState);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,12 +32,7 @@ const Console = ({ navigation }) => {
 
     fetchInfo();
     return unsubscribe;
-  }, [navigation]);
-
-  useEffect(() => {
-    // reload page details on page refresh (after internet disconnect)
-    fetchConsoleInfo(dispatch);
-  }, [page]);
+  }, [navigation, refresh]);
 
   return (
     <InnerTabBackground heading="Console">
@@ -46,16 +42,14 @@ const Console = ({ navigation }) => {
           Platform.OS === "ios" ? "padding" : undefined
         }
       >
-        <View style={styles.content}>
-          <StatsContainer />
-          <OptionsContainer />
-          <ReadWordButton />
-          <ConsoleInput inputFieldRef={inputFieldRef} />
-          <Tail />
-          <KeyboardAndStartButton
-            inputFieldRef={inputFieldRef}
-          />
-        </View>
+        <StatsContainer />
+        <OptionsContainer />
+        <ReadWordButton />
+        <ConsoleInput inputFieldRef={inputFieldRef} />
+        <Tail />
+        <KeyboardAndStartButton
+          inputFieldRef={inputFieldRef}
+        />
       </KeyboardAvoidingView>
     </InnerTabBackground>
   );
@@ -66,10 +60,8 @@ const styles = StyleSheet.create({
     flex: 1,
     width: "100%",
     paddingHorizontal: 15,
-  },
-  content: {
-    flex: 1,
     alignItems: "center",
+    zIndex: 1,
   },
 });
 

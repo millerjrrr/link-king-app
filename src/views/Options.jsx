@@ -1,4 +1,3 @@
-import { View, StyleSheet } from "react-native";
 import { clearAsyncStorage } from "../utils/asyncStorage";
 import { useDispatch } from "react-redux";
 import {
@@ -34,55 +33,44 @@ const Options = ({ navigation }) => {
 
   return (
     <InnerTabBackground heading="Options">
-      <View style={styles.container}>
-        <OptionsMenuItem
-          iconName="target-variant"
-          text="Set daily goal"
-          first={true}
-          color={colors.INACTIVE_CONTRAST}
-          onPress={comingSoon}
-        />
-        <OptionsMenuItem
-          iconName="palette-outline"
-          text="Color scheme"
-          onPress={comingSoon}
-          color={colors.INACTIVE_CONTRAST}
-        />
-        <OptionsMenuItem
-          iconName="translate"
-          text="Choose language pair"
-          onPress={comingSoon}
-          color={colors.INACTIVE_CONTRAST}
-        />
-        <OptionsMenuItem
-          iconName="cash"
-          text="Contribute"
-          onPress={comingSoon}
-          color={colors.INACTIVE_CONTRAST}
-        />
-        <OptionsMenuItem
-          iconName="account-details"
-          text="Edit user details"
-          onPress={comingSoon}
-          color={colors.INACTIVE_CONTRAST}
-        />
-        <OptionsMenuItem
-          iconName="logout"
-          text="Logout"
-          onPress={logOut}
-        />
-      </View>
+      <OptionsMenuItem
+        iconName="target-variant"
+        text="Set daily goal"
+        first={true}
+        color={colors.INACTIVE_CONTRAST}
+        onPress={comingSoon}
+      />
+      <OptionsMenuItem
+        iconName="palette-outline"
+        text="Color scheme"
+        onPress={comingSoon}
+        color={colors.INACTIVE_CONTRAST}
+      />
+      <OptionsMenuItem
+        iconName="translate"
+        text="Choose language pair"
+        onPress={comingSoon}
+        color={colors.INACTIVE_CONTRAST}
+      />
+      <OptionsMenuItem
+        iconName="cash"
+        text="Contribute"
+        onPress={comingSoon}
+        color={colors.INACTIVE_CONTRAST}
+      />
+      <OptionsMenuItem
+        iconName="account-details"
+        text="Edit user details"
+        onPress={comingSoon}
+        color={colors.INACTIVE_CONTRAST}
+      />
+      <OptionsMenuItem
+        iconName="logout"
+        text="Logout"
+        onPress={logOut}
+      />
     </InnerTabBackground>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "flex-end",
-    alignItems: "center",
-    paddingBottom: 100,
-  },
-});
 
 export default Options;

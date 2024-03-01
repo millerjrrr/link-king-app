@@ -1,6 +1,5 @@
 import clientWithAuth from "../../api/clientWithAuth";
 import {
-  updateConnectedState,
   restartTheTimer,
   updateCSState,
   incrementStatsTime,
@@ -9,6 +8,7 @@ import * as Speech from "expo-speech";
 import { updateConsoleState } from "./updateConsoleState";
 import { updateNotification } from "../../store/notification";
 import catchAsyncError from "../../api/catchError";
+import { errorHandler } from "../../errors/errorHandler";
 
 export const returnCorrectAnswerToServer = async (
   dispatch,
@@ -46,13 +46,7 @@ export const returnCorrectAnswerToServer = async (
     });
     dispatch(restartTheTimer());
   } catch (error) {
-    const errorMessage = catchAsyncError(error);
-    dispatch(
-      updateNotification({
-        message: errorMessage,
-        type: "error",
-      }),
-    );
-    dispatch(updateConnectedState(false));
+    dispatch(updateBusyState(false)); //important that this comes first
+    errorHandler(error, dispatch);
   }
 };

@@ -21,7 +21,6 @@ const initialState = {
   tail: [],
   tries: 1,
   busy: true,
-  connected: true,
   page: true,
   formValue: "",
   lastAttempt: "",
@@ -49,9 +48,6 @@ const slice = createSlice({
     updateBusyState(state, { payload }) {
       state.busy = payload;
     },
-    updateConnectedState(state, { payload }) {
-      state.connected = payload;
-    },
     //CONSOLE STATE VARIABLES
     updateFormValue(state, { payload }) {
       state.formValue = payload;
@@ -63,6 +59,7 @@ const slice = createSlice({
       state.isPlaying = false;
       state.timeOnThisWord = 0;
       state.key += 1;
+      state.busy = false;
     }, //used at the end returnWrongAnswerToServer
     updateShowSolution(state, { payload }) {
       state.showSolution = payload;
@@ -105,7 +102,6 @@ export const {
   updateOptions,
   updateTries,
   updateBusyState,
-  updateConnectedState,
   updateFormValue,
   resetConsole,
   updateShowSolution,

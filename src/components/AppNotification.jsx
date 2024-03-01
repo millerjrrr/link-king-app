@@ -28,19 +28,19 @@ const AppNotification = () => {
     };
   });
 
-  let backgroundColor = colors.BLOOD;
+  let backgroundColor = colors.NOTIFICATION_RED;
   let textColor = colors.CONTRAST[0];
 
   switch (type) {
     case "success":
-      backgroundColor = colors.GREENSHADOW;
+      backgroundColor = colors.NOTIFICATION_GREEN;
       break;
   }
 
   useEffect(() => {
     let timeOutId = 0;
     const performAnimation = () => {
-      height.value = withTiming(45, { duration: 150 });
+      height.value = withTiming(60, { duration: 150 });
 
       timeOutId = setTimeout(() => {
         height.value = withTiming(0, { duration: 150 });
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   message: {
-    fontSize: 18,
+    fontSize: 25,
     alignItems: "center",
   },
 });
