@@ -1,4 +1,4 @@
-import { View, StyleSheet } from "react-native";
+import { Text } from "react-native";
 import CircularProgress from "react-native-circular-progress-indicator";
 import colors from "../../utils/colors";
 import { useSelector } from "react-redux";
@@ -9,16 +9,27 @@ const RatingCircle = () => {
   const { golden } = useSelector(getConsoleState);
   const { userGameData } = useSelector(getStatsState);
   return (
-    <CircularProgress
-      value={userGameData.rating}
-      radius={100}
-      maxValue={2500}
-      progressValueColor={colors.CONTRAST[golden]}
-      activeStrokeColor={colors.GREENPROGRESS}
-      activeStrokeSecondaryColor={colors.CONTRAST[golden]}
-      inActiveStrokeColor={colors.GREENPROGRESS}
-      inActiveStrokeOpacity={0.2}
-    />
+    <>
+      <Text
+        style={{
+          fontSize: 20,
+          margin: 20,
+          color: colors.GREENPROGRESS,
+        }}
+      >
+        Your performance rating is
+      </Text>
+      <CircularProgress
+        value={userGameData.rating}
+        radius={100}
+        maxValue={2500}
+        progressValueColor={colors.CONTRAST[golden]}
+        activeStrokeColor={colors.GREENPROGRESS}
+        activeStrokeSecondaryColor={colors.CONTRAST[golden]}
+        inActiveStrokeColor={colors.GREENPROGRESS}
+        inActiveStrokeOpacity={0.2}
+      />
+    </>
   );
 };
 

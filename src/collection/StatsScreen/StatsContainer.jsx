@@ -17,27 +17,30 @@ const StatsContainer = () => {
 
   return (
     <View style={styles.container}>
-      <StatsIcon
-        iconName="basket-fill"
-        text={collectedWords}
-        size={size}
-      />
-
-      <StatsIcon
-        iconName="foot-print"
-        text={stepsTakenLifetime}
-        size={size}
-      />
-      <StatsIcon
-        iconName="clock-outline"
-        text={timeInStyle(timePlayingLifetime)}
-        size={size}
-      />
-      <StatsIcon
-        iconName="trophy-variant"
-        text={streakRecord}
-        size={size}
-      />
+      <View style={styles.rowContainer}>
+        <StatsIcon
+          iconName="clock-outline"
+          text={timeInStyle(timePlayingLifetime)}
+          size={size}
+        />
+        <StatsIcon
+          iconName="basket-fill"
+          text={collectedWords}
+          size={size}
+        />
+        <StatsIcon
+          iconName="foot-print"
+          text={stepsTakenLifetime}
+          size={size}
+        />
+      </View>
+      <View style={styles.rowContainer}>
+        <StatsIcon
+          iconName="trophy-variant"
+          text={streakRecord}
+          size={size}
+        />
+      </View>
     </View>
   );
 };
@@ -45,11 +48,16 @@ const StatsContainer = () => {
 const styles = StyleSheet.create({
   container: {
     marginTop: 30,
+    paddingHorizontal: 20,
     width: "80%",
-    flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     zIndex: 10,
+  },
+  rowContainer: {
+    width: "80%",
+    flexDirection: "row",
+    justifyContent: "center",
   },
 });
 

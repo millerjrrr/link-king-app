@@ -11,8 +11,7 @@ import {
 import { Platform, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../store/console";
-import { useNavigation } from "@react-navigation/native";
-import React, { useEffect } from "react";
+import React from "react";
 
 const Tab = createBottomTabNavigator();
 
@@ -36,7 +35,6 @@ const TabNavigator = () => {
         },
       }}
       initialRouteName="Console"
-      detachInactiveScreens={true}
     >
       <Tab.Screen
         name="Console"

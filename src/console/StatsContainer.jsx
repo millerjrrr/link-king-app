@@ -20,12 +20,15 @@ const StatsContainer = () => {
 
   const navigation = useNavigation();
 
-  // useEffect(() => {
-  //   if (newWords === 1)
-  //     navigation.navigate("Collection", {
-  //       screen: "StatsScreen",
-  //     });
-  // }, [newWords]);
+  useEffect(() => {
+    if (
+      (newWords === 1 && time > 3 * 60 * 1000) ||
+      newWords === 20
+    )
+      navigation.navigate("Collection", {
+        screen: "StatsScreen",
+      });
+  }, [newWords]);
 
   useEffect(() => {
     let intervalId;

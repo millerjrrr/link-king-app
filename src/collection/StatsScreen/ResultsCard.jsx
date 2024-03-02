@@ -6,10 +6,12 @@ import StatsContainer from "./StatsContainer";
 import RatingCircle from "./RatingCircle";
 import { getStatsState } from "../../store/stats";
 import LinkKingIcon from "./LinkKingIcon";
+import TitleAndSub from "./TitleAndSub";
 
 const ResultsCard = () => {
   const { golden } = useSelector(getConsoleState);
   const { userGameData } = useSelector(getStatsState);
+  const { collectedWords } = userGameData;
   return (
     <View
       style={{
@@ -18,23 +20,7 @@ const ResultsCard = () => {
       }}
     >
       <LinkKingIcon />
-      <Text
-        style={[
-          styles.title,
-          { color: colors.CONTRAST[golden] },
-        ]}
-      >
-        Congratulations!
-      </Text>
-      <Text
-        style={[
-          styles.text,
-          { color: colors.CONTRAST[golden] },
-        ]}
-      >
-        You've collected {userGameData.collectedWords} new
-        words!
-      </Text>
+      <TitleAndSub {...{ collectedWords }} />
       <Text
         style={[
           styles.text,
