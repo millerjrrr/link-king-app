@@ -17,7 +17,7 @@ export const returnCorrectAnswerToServer = async (
 ) => {
   const payload = {
     timeOnThisWord: 0, // the clock is reset to zero, and starts counting the next timeOnThisWord to be sent to the server
-    startedThisWord: new Date().getTime(),
+    startedThisWord: Date.now(),
     timerIsOn: true, // the clock should still be running to count seconds playing the game
     busy: true,
     showSolution: false,
@@ -26,10 +26,7 @@ export const returnCorrectAnswerToServer = async (
   dispatch(updateCSState(payload));
   try {
     const time = !showSolution
-      ? Math.min(
-          new Date().getTime() - startedThisWord,
-          30 * 1000,
-        )
+      ? Math.min(Date.now() - startedThisWord, 30 * 1000)
       : 0;
     dispatch(incrementStatsTime(time));
     console.log(time);

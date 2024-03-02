@@ -15,8 +15,7 @@ import {
 } from "../../store/auth";
 import { saveToAsyncStorage } from "../../utils/asyncStorage";
 import { useEffect, useState } from "react";
-import catchAsyncError from "../../api/catchError";
-import { updateNotification } from "../../store/notification";
+import { authErrorHandler } from "../../errors/authErrorHandler";
 
 const signUpSchema = yup.object({
   email: yup
@@ -83,13 +82,7 @@ const SignIn = () => {
       dispatch(updateToken(data.token));
       dispatch(updateLoggedInState(true));
     } catch (error) {
-      const errorMessage = catchAsyncError(error);
-      dispatch(
-        updateNotification({
-          message: errorMessage,
-          type: "error",
-        }),
-      );
+      authErrorHandler(error, dispatch);
     }
     actions.setSubmitting(false);
   };

@@ -14,7 +14,6 @@ const ResultsCard = () => {
     <View
       style={{
         flex: 1,
-        justifyContent: "top",
         alignItems: "center",
       }}
     >

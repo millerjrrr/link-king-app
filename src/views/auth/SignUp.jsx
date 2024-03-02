@@ -90,13 +90,7 @@ const SignUp = () => {
       if (data.status === "success")
         navigation.navigate("CheckYourEmail");
     } catch (error) {
-      const errorMessage = catchAsyncError(error);
-      dispatch(
-        updateNotification({
-          message: errorMessage,
-          type: "error",
-        }),
-      );
+      authErrorHandler(error, dispatch);
     }
     actions.setSubmitting(false);
   };

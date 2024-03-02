@@ -73,7 +73,7 @@ const slice = createSlice({
     restartTheTimer(state) {
       state.key += 1;
       state.isPlaying = true;
-      state.startedThisWord = new Date().getTime();
+      state.startedThisWord = Date.now();
     }, //used after correct answer and when form field is focused
     updateIsPlaying(state, { payload }) {
       state.isPlaying = payload;

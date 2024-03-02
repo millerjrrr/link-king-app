@@ -22,7 +22,7 @@ const StatsScreen = () => {
 
   return (
     <View style={styles.container}>
-      <BusyWrapper>
+      <BusyWrapper {...{ busy }}>
         <StatsPanel>
           <Text
             style={[

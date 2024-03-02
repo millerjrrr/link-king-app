@@ -59,7 +59,9 @@ const AuthFormContainer = ({
           </Text>
         </View>
         <AppNotification />
-        {children}
+        <View style={styles.childContainer}>
+          {children}
+        </View>
       </View>
     </View>
   );
@@ -69,8 +71,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "top",
-    paddingHorizontal: 15,
   },
   heading: {
     color: colors.CONTRAST[0],
@@ -89,6 +89,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "100%",
     marginBottom: 20,
+  },
+  childContainer: {
+    flex: 1,
+    alignItems: "center",
+    paddingHorizontal: 15,
   },
 });
 

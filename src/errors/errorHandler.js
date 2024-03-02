@@ -4,7 +4,7 @@ import { updateNotification } from "../store/notification";
 
 export const errorHandler = (error, dispatch) => {
   const errorMessage = catchAsyncError(error);
-  if (errorMessage.slice(0, 7) === "timeout")
+  if (errorMessage.startsWith("timeout"))
     dispatch(updateConnectedState(false));
   dispatch(
     updateNotification({

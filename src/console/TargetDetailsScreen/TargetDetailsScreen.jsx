@@ -46,7 +46,7 @@ const TargetDetailsScreen = () => {
   return (
     <PopUpContainer heading="Attempt Info">
       <BloodRedCover elapsedTime={elapsedTime} />
-      <BusyWrapper busy={busy} size={96}>
+      <BusyWrapper {...{ busy, size: 96 }}>
         <View style={styles.container}>
           <Target />
           <FakeInput />

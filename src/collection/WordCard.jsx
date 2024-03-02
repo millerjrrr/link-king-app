@@ -105,8 +105,7 @@ const styles = StyleSheet.create({
   infoContainer: {
     flex: 1,
     flexDirection: "column",
-    paddingRight: 15,
-    paddingLeft: 15,
+    paddingHorizontal: 15,
   },
   rowContainer: {
     width: "100%",

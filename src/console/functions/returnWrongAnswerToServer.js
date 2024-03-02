@@ -24,10 +24,7 @@ export const returnWrongAnswerToServer = async (
   dispatch(updateBusyState(true));
   try {
     const time = !showSolution
-      ? Math.min(
-          new Date().getTime() - startedThisWord,
-          30 * 1000,
-        )
+      ? Math.min(Date.now() - startedThisWord, 30 * 1000)
       : 0;
     dispatch(resetTimeOnThisWord());
     dispatch(incrementStatsTime(time));

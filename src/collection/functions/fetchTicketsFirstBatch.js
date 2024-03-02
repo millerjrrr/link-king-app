@@ -1,8 +1,6 @@
-import catchAsyncError from "../../api/catchError";
 import clientWithAuth from "../../api/clientWithAuth";
 import { errorHandler } from "../../errors/errorHandler";
 import { updateCollection } from "../../store/collection";
-import { updateNotification } from "../../store/notification";
 import { semiNormalize } from "./semiNormalize";
 
 export const fetchTicketsFirstBatch = async (
