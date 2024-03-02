@@ -6,6 +6,10 @@ import { useEffect } from "react";
 import Histogram from "./Histogram";
 import PopUpContainer from "../../components/PopUpContainer";
 import Loader from "../../ui/Loaders/Loader";
+import {
+  StackActions,
+  useNavigation,
+} from "@react-navigation/native";
 
 const Levels = () => {
   const { levelBreakdown, busy } =
@@ -16,6 +20,20 @@ const Levels = () => {
   useEffect(() => {
     fetchStatsInfo(dispatch);
   }, []);
+
+  //close this screen every time we change bottom tab
+  const navigation = useNavigation();
+  useEffect(() => {
+    const closeStackScreens = () => {
+      if (navigation.canGoBack())
+        navigation.dispatch(StackActions.popToTop());
+    };
+    const unsubscribe = navigation.addListener(
+      "blur",
+      closeStackScreens,
+    );
+    return unsubscribe;
+  }, [navigation]);
 
   return (
     <PopUpContainer heading="Levels Breakdown">

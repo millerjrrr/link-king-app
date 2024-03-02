@@ -7,8 +7,12 @@ import { useEffect } from "react";
 import { fetchStatsInfo } from "../functions/fetchStatsInfo";
 import StatsPanel from "./StatsPanel";
 import ResultsCard from "./ResultsCard";
-import Loader from "../../ui/Loaders/Loader";
 import BusyWrapper from "../../ui/Loaders/BusyWrapper";
+import {
+  StackActions,
+  useNavigation,
+} from "@react-navigation/native";
+import { getAuthState } from "../../store/auth";
 
 const StatsScreen = () => {
   const { golden } = useSelector(getConsoleState);
@@ -19,6 +23,20 @@ const StatsScreen = () => {
   useEffect(() => {
     fetchStatsInfo(dispatch);
   }, []);
+
+  //close this screen every time we change bottom tab
+  const navigation = useNavigation();
+  useEffect(() => {
+    const closeStackScreens = () => {
+      if (navigation.canGoBack())
+        navigation.dispatch(StackActions.popToTop());
+    };
+    const unsubscribe = navigation.addListener(
+      "blur",
+      closeStackScreens,
+    );
+    return unsubscribe;
+  }, [navigation]);
 
   return (
     <View style={styles.container}>

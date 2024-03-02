@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   createStackNavigator,
   TransitionPresets,
 } from "@react-navigation/stack";
 import Console from "../../views/Console";
 import TargetDetailsScreen from "../../console/TargetDetailsScreen/TargetDetailsScreen";
+import StatsScreen from "../../collection/StatsScreen/StatsScreen";
+import {
+  StackActions,
+  useNavigation,
+} from "@react-navigation/native";
+import { useSelector } from "react-redux";
+import { getAuthState } from "../../store/auth";
 
 const ConsoleStack = createStackNavigator();
 
@@ -16,6 +23,7 @@ const ConsoleNavigator = () => {
         headerTitleStyle: { color: "transparent" },
         ...TransitionPresets.ModalPresentationIOS,
       }}
+      initialRouteName="ConsoleStackScreen"
     >
       <ConsoleStack.Screen
         name="ConsoleStackScreen"
@@ -24,6 +32,10 @@ const ConsoleNavigator = () => {
       <ConsoleStack.Screen
         name="TargetDetailsScreen"
         component={TargetDetailsScreen}
+      />
+      <ConsoleStack.Screen
+        name="StatsScreen"
+        component={StatsScreen}
       />
     </ConsoleStack.Navigator>
   );

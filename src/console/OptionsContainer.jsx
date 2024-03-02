@@ -12,9 +12,8 @@ import {
   updateOptions,
 } from "../store/console";
 import clientWithAuth from "../api/clientWithAuth";
-import { updateNotification } from "../store/notification";
-import catchAsyncError from "../api/catchError";
 import { errorHandler } from "../errors/errorHandler";
+import { useNavigation } from "@react-navigation/native";
 
 const optionsSize = 36;
 
@@ -25,19 +24,23 @@ const OptionsContainer = () => {
 
   const dispatch = useDispatch();
 
+  const navigation = useNavigation();
+  ////////////remove after testing
   const soundButtonFunction = async () => {
-    try {
-      const newOptions = blurred
-        ? { sound: !sound, blurred: false }
-        : { sound: !sound };
-      const { data } = await clientWithAuth.post(
-        "/api/v1/gameData/updateGameSettings",
-        newOptions,
-      );
-      dispatch(updateOptions(data.options));
-    } catch (error) {
-      errorHandler(error, dispatch);
-    }
+    navigation.navigate("StatsScreen");
+
+    // try {
+    //   const newOptions = blurred
+    //     ? { sound: !sound, blurred: false }
+    //     : { sound: !sound };
+    //   const { data } = await clientWithAuth.post(
+    //     "/api/v1/gameData/updateGameSettings",
+    //     newOptions,
+    //   );
+    //   dispatch(updateOptions(data.options));
+    // } catch (error) {
+    //   errorHandler(error, dispatch);
+    // }
   };
 
   const blurredButtonFunction = async () => {

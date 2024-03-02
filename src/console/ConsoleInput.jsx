@@ -93,11 +93,7 @@ const ConsoleInput = ({ inputFieldRef }) => {
           <Loader size={24} />
         </View>
       ) : null}
-      <AnswerDetailsButton
-        onPress={() => {
-          console.log("pressed");
-        }}
-      />
+      <AnswerDetailsButton />
       <TextInput
         ref={inputFieldRef}
         onChangeText={(text) =>

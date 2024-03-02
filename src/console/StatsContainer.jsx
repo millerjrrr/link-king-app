@@ -9,6 +9,7 @@ import {
 } from "../store/console";
 import StatsIcon from "./StatsIcon";
 import { useEffect } from "react";
+import { useNavigation } from "@react-navigation/native";
 
 const StatsContainer = () => {
   const { stats, timeOnThisWord, timerIsOn } =
@@ -16,6 +17,15 @@ const StatsContainer = () => {
   const { due, steps, time, streak, newWords } = stats;
 
   const dispatch = useDispatch();
+
+  const navigation = useNavigation();
+
+  // useEffect(() => {
+  //   if (newWords === 1)
+  //     navigation.navigate("Collection", {
+  //       screen: "StatsScreen",
+  //     });
+  // }, [newWords]);
 
   useEffect(() => {
     let intervalId;
