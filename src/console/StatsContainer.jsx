@@ -21,13 +21,16 @@ const StatsContainer = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
+    const showResultsSummary = () => {
+      navigation.navigate("Collection");
+      navigation.navigate("StatsScreen");
+    };
+
     if (
       (newWords === 1 && time > 3 * 60 * 1000) ||
       newWords === 20
     )
-      navigation.navigate("Collection", {
-        screen: "StatsScreen",
-      });
+      setTimeout(showResultsSummary, 3000);
   }, [newWords]);
 
   useEffect(() => {

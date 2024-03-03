@@ -19,8 +19,9 @@ import {
   updateIsPlaying,
   resetTimer,
   resetTimeOnThisWord,
+  setTriesToOne,
 } from "../store/console";
-import { returnWrongAnswerToServer } from "./functions/returnWrongAnswerToServer";
+import { submitAnswer } from "./functions/submitAnswer";
 
 const KeyboardAndStartButton = ({ inputFieldRef }) => {
   const [isKeyboardVisible, setIsKeyboardVisible] =
@@ -49,9 +50,12 @@ const KeyboardAndStartButton = ({ inputFieldRef }) => {
 
   const dispatch = useDispatch();
   const {
-    isPlaying,
+    formValue,
+    attempt,
+    tries,
     startedThisWord,
     showSolution,
+    isPlaying,
     golden,
   } = useSelector(getConsoleState);
 
@@ -64,7 +68,14 @@ const KeyboardAndStartButton = ({ inputFieldRef }) => {
   const closeKeyboardSubmitAnswer = () => {
     if (!showSolution && isPlaying) {
       dispatch(updateIsPlaying(false));
-      returnWrongAnswerToServer(dispatch, startedThisWord);
+      submitAnswer(
+        dispatch,
+        formValue,
+        attempt.solutions,
+        tries,
+        startedThisWord,
+        false,
+      );
     } else {
       dispatch(updateIsPlaying(false));
       dispatch(resetTimer());
@@ -76,7 +87,15 @@ const KeyboardAndStartButton = ({ inputFieldRef }) => {
 
   const dontKnowFunction = () => {
     dispatch(updateIsPlaying(false));
-    returnWrongAnswerToServer(dispatch, startedThisWord);
+    dispatch(setTriesToOne());
+    submitAnswer(
+      dispatch,
+      formValue,
+      attempt.solutions,
+      tries,
+      startedThisWord,
+      false,
+    );
   };
 
   return isKeyboardVisible ? (

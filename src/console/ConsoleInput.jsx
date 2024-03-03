@@ -11,26 +11,22 @@ import {
   getConsoleState,
   restartTheTimer,
   updateFormValue,
-  updateIsPlaying,
   updateTimerIsOn,
 } from "../store/console";
-import { acceptAnswer } from "./functions/acceptAnswer";
-import { returnCorrectAnswerToServer } from "./functions/returnCorrectAnswerToServer";
-import { returnWrongAnswerToServer } from "./functions/returnWrongAnswerToServer";
-import { returnNextTry } from "./functions/returnNextTry";
 import AnswerDetailsButton from "./AnswerDetailsButton";
 import * as Speech from "expo-speech";
 import Loader from "../ui/Loaders/Loader";
+import { submitAnswer } from "./functions/submitAnswer";
 
 const ConsoleInput = ({ inputFieldRef }) => {
   const {
-    busy,
     formValue,
-    options,
-    showSolution,
     attempt,
-    startedThisWord,
     tries,
+    startedThisWord,
+    showSolution,
+    busy,
+    options,
     golden,
   } = useSelector(getConsoleState);
 
@@ -44,29 +40,15 @@ const ConsoleInput = ({ inputFieldRef }) => {
 
   const dispatch = useDispatch();
 
-  const submitAttempt = async () => {
-    dispatch(updateIsPlaying(false));
-    const answerAccepted = acceptAnswer(
+  const sendAnswer = () => {
+    submitAnswer(
+      dispatch,
       formValue,
       attempt.solutions,
+      tries,
+      startedThisWord,
+      showSolution,
     );
-
-    if (answerAccepted) {
-      returnCorrectAnswerToServer(
-        dispatch,
-        startedThisWord,
-        showSolution,
-      );
-    } else if (tries > 1) {
-      returnNextTry(dispatch);
-    } else {
-      returnWrongAnswerToServer(
-        dispatch,
-        startedThisWord,
-        showSolution,
-      );
-    }
-    return false;
   };
 
   const onFocus = () => {
@@ -81,7 +63,7 @@ const ConsoleInput = ({ inputFieldRef }) => {
   return (
     <View style={styles.formView}>
       {options.timer ? (
-        <Timer onComplete={submitAttempt} color={color} />
+        <Timer onComplete={sendAnswer} color={color} />
       ) : null}
       {busy ? (
         <View
@@ -99,7 +81,7 @@ const ConsoleInput = ({ inputFieldRef }) => {
         onChangeText={(text) =>
           dispatch(updateFormValue(text))
         }
-        onSubmitEditing={submitAttempt}
+        onSubmitEditing={sendAnswer}
         onFocus={onFocus}
         placeholder={
           showSolution ? attempt.solutions[0] : null

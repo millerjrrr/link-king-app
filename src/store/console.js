@@ -45,6 +45,9 @@ const slice = createSlice({
       state.key += 1;
       state.isPlaying = true;
     }, // used exclusively in returnNextTry
+    setTriesToOne(state) {
+      state.tries = 1;
+    },
     updateBusyState(state, { payload }) {
       state.busy = payload;
     },
@@ -101,6 +104,7 @@ const slice = createSlice({
 export const {
   updateOptions,
   updateTries,
+  setTriesToOne,
   updateBusyState,
   updateFormValue,
   resetConsole,

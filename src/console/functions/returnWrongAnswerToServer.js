@@ -10,8 +10,6 @@ import {
 import * as Speech from "expo-speech";
 import { updateConsoleState } from "./updateConsoleState";
 import { Vibration } from "react-native";
-import catchAsyncError from "../../api/catchError";
-import { updateNotification } from "../../store/notification";
 import { errorHandler } from "../../errors/errorHandler";
 
 export const returnWrongAnswerToServer = async (
