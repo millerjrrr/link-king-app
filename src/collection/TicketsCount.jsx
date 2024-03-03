@@ -3,25 +3,20 @@ import colors from "../utils/colors";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../store/console";
 import { getCollectionState } from "../store/collection";
-import Loader from "../ui/Loaders/Loader";
+import BusyWrapper from "../ui/Loaders/BusyWrapper";
 
 const TicketsCount = () => {
   const { golden } = useSelector(getConsoleState);
-  const { results } = useSelector(getCollectionState);
+  const color = colors.CONTRAST[golden];
+
+  const { results, busy } = useSelector(getCollectionState);
   return (
     <View style={styles.container}>
-      {!results ? (
-        <Loader size={10} />
-      ) : (
-        <Text
-          style={[
-            styles.text,
-            { color: colors.CONTRAST[golden] },
-          ]}
-        >
+      <BusyWrapper {...{ busy, size: 10 }}>
+        <Text style={[styles.text, { color }]}>
           {results}
         </Text>
-      )}
+      </BusyWrapper>
     </View>
   );
 };

@@ -1,6 +1,11 @@
 import { Image } from "react-native";
 
-const CrownUI = ({ size, position, rotation, color }) => {
+const CrownUI = ({
+  size = 96,
+  position,
+  rotation,
+  color,
+}) => {
   let viewPosition;
   let indent = 0.5;
 

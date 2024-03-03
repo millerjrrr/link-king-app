@@ -2,33 +2,27 @@ import {
   StyleSheet,
   TouchableOpacity,
   Platform,
-  Text,
 } from "react-native";
 import colors from "../utils/colors";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../store/console";
 import { AntDesign } from "@expo/vector-icons";
-import Loader from "../ui/Loaders/Loader";
 
 const GetLevelsBreakdownButton = ({
   onPress,
   iconName,
 }) => {
   const { golden } = useSelector(getConsoleState);
+  const color = colors.CONTRAST[golden];
 
   return (
     <TouchableOpacity
-      onPress={onPress}
-      style={[
-        styles.button,
-        { shadowColor: colors.CONTRAST[golden] },
-      ]}
+      {...{
+        style: [styles.button, { shadowColor: color }],
+        onPress,
+      }}
     >
-      <AntDesign
-        name={iconName}
-        size={18}
-        color={colors.CONTRAST[golden]}
-      />
+      <AntDesign {...{ name: iconName, size: 18, color }} />
     </TouchableOpacity>
   );
 };

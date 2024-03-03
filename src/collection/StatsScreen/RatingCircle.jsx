@@ -7,6 +7,8 @@ import { getStatsState } from "../../store/stats";
 
 const RatingCircle = () => {
   const { golden } = useSelector(getConsoleState);
+  const color = colors.CONTRAST[golden];
+  const green = colors.GREENPROGRESS;
   const { userGameData } = useSelector(getStatsState);
   return (
     <>
@@ -14,7 +16,7 @@ const RatingCircle = () => {
         style={{
           fontSize: 20,
           margin: 20,
-          color: colors.GREENPROGRESS,
+          color: green,
         }}
       >
         Your performance rating is
@@ -23,10 +25,10 @@ const RatingCircle = () => {
         value={userGameData.rating}
         radius={100}
         maxValue={2500}
-        progressValueColor={colors.CONTRAST[golden]}
-        activeStrokeColor={colors.GREENPROGRESS}
-        activeStrokeSecondaryColor={colors.CONTRAST[golden]}
-        inActiveStrokeColor={colors.GREENPROGRESS}
+        progressValueColor={color}
+        activeStrokeSecondaryColor={color}
+        activeStrokeColor={green}
+        inActiveStrokeColor={green}
         inActiveStrokeOpacity={0.2}
       />
     </>

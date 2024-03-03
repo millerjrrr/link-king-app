@@ -28,8 +28,8 @@ const AppNotification = () => {
     };
   });
 
+  const color = colors.CONTRAST[0];
   let backgroundColor = colors.NOTIFICATION_RED;
-  let textColor = colors.CONTRAST[0];
 
   switch (type) {
     case "success":
@@ -49,7 +49,6 @@ const AppNotification = () => {
     };
 
     if (message) performAnimation();
-    // else height.value = withTiming(0, { duration: 1 });
 
     return () => {
       clearTimeout(timeOutId);
@@ -65,9 +64,7 @@ const AppNotification = () => {
           heightStyle,
         ]}
       >
-        <Text
-          style={[styles.message, { color: textColor }]}
-        >
+        <Text style={[styles.message, { color }]}>
           {message}
         </Text>
       </Animated.View>

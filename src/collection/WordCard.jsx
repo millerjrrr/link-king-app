@@ -1,4 +1,4 @@
-import { AntDesign, Entypo } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
 import React from "react";
 import {
   View,
@@ -15,31 +15,18 @@ import { getConsoleState } from "../store/console";
 const WordCard = ({ navigation, ticket }) => {
   const levelArray = Array.from(new Array(ticket.level));
   const { golden } = useSelector(getConsoleState);
+  const color = colors.CONTRAST[golden];
 
   return (
     <View
-      style={[
-        styles.container,
-        styles.commonProp,
-        { shadowColor: colors.CONTRAST[golden] },
-      ]}
+      style={[styles.container, { shadowColor: color }]}
     >
       <View style={styles.infoContainer}>
         <View style={styles.rowContainer}>
-          <Text
-            style={[
-              styles.titleStyle,
-              { color: colors.CONTRAST[golden] },
-            ]}
-          >
+          <Text style={[styles.titleStyle, { color }]}>
             {ticket.dicEntry.target}
           </Text>
-          <Text
-            style={[
-              styles.ratingStyle,
-              { color: colors.CONTRAST[golden] },
-            ]}
-          >
+          <Text style={[styles.ratingStyle, { color }]}>
             {ticket.dicEntry.rating}
           </Text>
         </View>
@@ -48,19 +35,16 @@ const WordCard = ({ navigation, ticket }) => {
           <View style={styles.levelStarsContainer}>
             {levelArray.map((_, index) => (
               <Entypo
-                name="star"
-                key={`star-${ticket.dicEntry.target}-${index}`}
-                size={12}
-                color={colors.CONTRAST[golden]}
+                {...{
+                  name: "star",
+                  key: `star-${ticket.dicEntry.target}-${index}`,
+                  size: 12,
+                  color,
+                }}
               />
             ))}
           </View>
-          <Text
-            style={[
-              styles.dateStyle,
-              { color: colors.CONTRAST[golden] },
-            ]}
-          >
+          <Text style={[styles.dateStyle, { color }]}>
             {numberDateToWordStyleDate(ticket.dueDate)}
           </Text>
         </View>
@@ -68,7 +52,7 @@ const WordCard = ({ navigation, ticket }) => {
       <DeleteButton
         onPress={() =>
           navigation.navigate("WordDetails", {
-            ticket: ticket,
+            ticket,
           })
         }
       />
@@ -80,28 +64,24 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     margin: 10,
-    marginLeft: 15,
-    marginRight: 15,
+    marginLeft: 25,
+    marginRight: 25,
     borderRadius: 15,
     padding: 5,
     backgroundColor: colors.SECONDARY,
-  },
-  ...Platform.select({
-    ios: {
-      commonProp: {
+    ...Platform.select({
+      ios: {
         shadowOffset: {
           height: 1,
         },
         shadowOpacity: 0.5,
-        shadowRadius: 3,
+        shadowRadius: 5,
       },
-    },
-    android: {
-      commonProp: {
+      android: {
         elevation: 3,
       },
-    },
-  }),
+    }),
+  },
   infoContainer: {
     flex: 1,
     flexDirection: "column",

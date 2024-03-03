@@ -11,8 +11,10 @@ import { getConsoleState } from "../../store/console";
 import colors from "../../utils/colors";
 
 const Histogram = ({ lbd, histHeight }) => {
-  [selected, setSelected] = useState(1);
   const { golden } = useSelector(getConsoleState);
+  const color = colors.CONTRAST[golden];
+
+  [selected, setSelected] = useState(1);
   const heights = lbd.map((row) => row.frequency);
   let maxHeight = Math.max(...heights);
 
@@ -39,8 +41,8 @@ const Histogram = ({ lbd, histHeight }) => {
         style={[
           styles.text,
           {
-            color: colors.CONTRAST[golden],
-            shadowColor: colors.CONTRAST[golden],
+            color,
+            shadowColor: color,
           },
         ]}
       >

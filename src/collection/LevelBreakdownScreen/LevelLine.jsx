@@ -16,6 +16,8 @@ const LevelLine = ({
   onPress,
 }) => {
   const { golden } = useSelector(getConsoleState);
+  const color = colors.CONTRAST[golden];
+
   return (
     <TouchableOpacity
       style={{
@@ -29,8 +31,8 @@ const LevelLine = ({
       <View
         style={[
           {
-            backgroundColor: colors.CONTRAST[golden],
-            shadowColor: colors.CONTRAST[golden],
+            backgroundColor: color,
+            shadowColor: color,
             height: height,
           },
           styles.lineStyle,
@@ -39,7 +41,7 @@ const LevelLine = ({
       />
       <Text
         style={{
-          color: colors.CONTRAST[golden],
+          color,
           fontSize: 25,
         }}
       >

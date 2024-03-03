@@ -6,16 +6,12 @@ import { useSelector } from "react-redux";
 
 const DeleteButton = ({ onPress }) => {
   const { golden } = useSelector(getConsoleState);
+  const color = colors.CONTRAST[golden];
   return (
     <TouchableOpacity
-      style={styles.container}
-      onPress={onPress}
+      {...{ style: styles.container, onPress }}
     >
-      <AntDesign
-        name="delete"
-        size={32}
-        color={colors.CONTRAST[golden]}
-      />
+      <AntDesign {...{ name: "delete", size: 32, color }} />
     </TouchableOpacity>
   );
 };

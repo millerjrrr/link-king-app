@@ -10,6 +10,7 @@ import {
 
 const CollectionSearchbar = () => {
   const { golden } = useSelector(getConsoleState);
+  const color = colors.CONTRAST[golden];
   const { searchKeyword } = useSelector(getCollectionState);
 
   const dispatch = useDispatch();
@@ -19,13 +20,13 @@ const CollectionSearchbar = () => {
       placeholder="Search Collected Words"
       placeholderTextColor={colors.INACTIVE_CONTRAST}
       textInputProps={{
-        caretColor: colors.CONTRAST[golden],
+        caretColor: color,
         autoCapitalize: "none",
         autoCorrect: false,
         autoFocus: true,
       }}
-      iconColor={colors.CONTRAST[golden]}
-      color={colors.CONTRAST[golden]}
+      iconColor={color}
+      color={color}
       value={searchKeyword}
       onChangeText={(searchKeyword) => {
         dispatch(updateCollection({ searchKeyword }));
@@ -33,8 +34,8 @@ const CollectionSearchbar = () => {
       style={[
         styles.searchBar,
         {
-          color: colors.CONTRAST[golden],
-          shadowColor: colors.CONTRAST[golden],
+          color,
+          shadowColor: color,
         },
       ]}
     />

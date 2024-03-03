@@ -13,35 +13,31 @@ const AuthFormContainer = ({
   heading,
   subHeading,
 }) => {
+  const color = colors.INACTIVE_CONTRAST;
   return (
     <View
       style={{ flex: 1, backgroundColor: colors.PRIMARY }}
     >
       <CrownUI
-        position="top-left"
-        size="96"
-        rotation="135"
-        color={colors.INACTIVE_CONTRAST}
+        {...{ position: "top-left", rotation: 135, color }}
       />
       <CrownUI
-        position="top-right"
-        size="96"
-        rotation="225"
-        color={colors.INACTIVE_CONTRAST}
+        {...{ position: "top-right", rotation: 225, color }}
       />
       <CrownUI
-        position="bottom-left"
-        size="96"
-        rotation="45"
-        color={colors.INACTIVE_CONTRAST}
+        {...{
+          position: "bottom-left",
+          rotation: 45,
+          color,
+        }}
       />
       <CrownUI
-        position="bottom-right"
-        size="96"
-        rotation="315"
-        color={colors.INACTIVE_CONTRAST}
+        {...{
+          position: "bottom-right",
+          rotation: 315,
+          color,
+        }}
       />
-
       <View style={styles.container}>
         <View style={styles.headerContainer}>
           <Image
