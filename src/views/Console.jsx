@@ -3,7 +3,7 @@ import {
   Platform,
   KeyboardAvoidingView,
 } from "react-native";
-import ConsoleInput from "../console/ConsoleInput";
+import InputAndTimerContainer from "../console/InputAndTimerContainer";
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import OptionsContainer from "../console/OptionsContainer";
@@ -42,7 +42,9 @@ const Console = ({ navigation }) => {
         <StatsContainer />
         <OptionsContainer />
         <ReadWordButton />
-        <ConsoleInput inputFieldRef={inputFieldRef} />
+        <InputAndTimerContainer
+          inputFieldRef={inputFieldRef}
+        />
         <Tail />
         <KeyboardAndStartButton
           inputFieldRef={inputFieldRef}

@@ -4,41 +4,48 @@ import { getStatsState } from "../../store/stats";
 import { timeInStyle } from "../functions/timeInStyle";
 import StatsIcon from "../../console/StatsIcon";
 
-const StatsContainer = () => {
-  const { userGameData } = useSelector(getStatsState);
+const StatsContainer = ({ size = 22 }) => {
   const {
-    collectedWords,
-    timePlayingLifetime,
-    stepsTakenLifetime,
-    streakRecord,
-  } = userGameData;
-
-  const size = 22;
+    userGameData: {
+      collectedWords,
+      timePlayingLifetime,
+      stepsTakenLifetime,
+      streakRecord,
+    },
+  } = useSelector(getStatsState);
 
   return (
     <View style={styles.container}>
       <View style={styles.rowContainer}>
         <StatsIcon
-          iconName="clock-outline"
-          text={timeInStyle(timePlayingLifetime)}
-          size={size}
+          {...{
+            name: "clock-outline",
+            text: timeInStyle(timePlayingLifetime),
+            size,
+          }}
         />
         <StatsIcon
-          iconName="basket-fill"
-          text={collectedWords}
-          size={size}
+          {...{
+            name: "basket-fill",
+            text: collectedWords,
+            size,
+          }}
         />
         <StatsIcon
-          iconName="foot-print"
-          text={stepsTakenLifetime}
-          size={size}
+          {...{
+            name: "foot-print",
+            text: stepsTakenLifetime,
+            size,
+          }}
         />
       </View>
       <View style={styles.rowContainer}>
         <StatsIcon
-          iconName="trophy-variant"
-          text={streakRecord}
-          size={size}
+          {...{
+            name: "trophy-variant",
+            text: streakRecord,
+            size,
+          }}
         />
       </View>
     </View>
@@ -47,17 +54,11 @@ const StatsContainer = () => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 30,
-    paddingHorizontal: 20,
-    width: "80%",
-    justifyContent: "center",
     alignItems: "center",
-    zIndex: 10,
   },
   rowContainer: {
-    width: "80%",
     flexDirection: "row",
-    justifyContent: "center",
+    paddingVertical: 5,
   },
 });
 

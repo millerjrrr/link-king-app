@@ -5,10 +5,12 @@ import { useSelector } from "react-redux";
 import { getConsoleState } from "../store/console";
 
 const Timer = ({ onComplete, color }) => {
-  const { isPlaying, key } = useSelector(getConsoleState);
+  const { isPlaying, key, options } =
+    useSelector(getConsoleState);
+  const { timer } = options;
 
   const screenWidth = Dimensions.get("window").width;
-  return (
+  return timer ? (
     <View
       style={{
         position: "absolute",
@@ -28,7 +30,7 @@ const Timer = ({ onComplete, color }) => {
         updateInterval={0.1}
       ></CountdownCircleTimer>
     </View>
-  );
+  ) : null;
 };
 
 export default Timer;

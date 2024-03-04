@@ -1,11 +1,5 @@
-import {
-  View,
-  StyleSheet,
-  Platform,
-  TouchableOpacity,
-} from "react-native";
+import { View, StyleSheet } from "react-native";
 import colors from "../utils/colors";
-import { Entypo, MaterialIcons } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getConsoleState,
@@ -13,54 +7,14 @@ import {
 } from "../store/console";
 import clientWithAuth from "../api/clientWithAuth";
 import { errorHandler } from "../errors/errorHandler";
+import OptionsIcon from "./OptionsIcon";
 
-const Option = ({
-  onPress,
-  color,
-  size,
-  entypo,
-  option,
-  textTrue,
-  textFalse,
-}) => {
-  const height = (size * 80) / 50;
-
-  return (
-    <TouchableOpacity
-      {...{
-        onPress,
-        style: [
-          styles.option,
-          { shadowColor: color, height },
-        ],
-      }}
-    >
-      {entypo ? (
-        <Entypo
-          {...{
-            name: option ? textTrue : textFalse,
-            size,
-            color,
-          }}
-        />
-      ) : (
-        <MaterialIcons
-          {...{
-            name: option ? textTrue : textFalse,
-            size,
-            color,
-          }}
-        />
-      )}
-    </TouchableOpacity>
-  );
-};
-
-const OptionsContainer = ({ size = 36 }) => {
-  const { options, golden } = useSelector(getConsoleState);
+const OptionsContainer = ({ size = 40 }) => {
+  const {
+    options: { sound, blurred, timer },
+    golden,
+  } = useSelector(getConsoleState);
   const color = colors.CONTRAST[golden];
-
-  const { sound, blurred, timer } = options;
 
   const dispatch = useDispatch();
 
@@ -113,7 +67,7 @@ const OptionsContainer = ({ size = 36 }) => {
 
   return (
     <View style={styles.container}>
-      <Option
+      <OptionsIcon
         {...{
           onPress: soundButtonFunction,
           color,
@@ -123,7 +77,7 @@ const OptionsContainer = ({ size = 36 }) => {
           textFalse: "volume-off",
         }}
       />
-      <Option
+      <OptionsIcon
         {...{
           onPress: blurredButtonFunction,
           color,
@@ -134,7 +88,7 @@ const OptionsContainer = ({ size = 36 }) => {
           textFalse: "eye-with-line",
         }}
       />
-      <Option
+      <OptionsIcon
         {...{
           onPress: timerButtonFunction,
           color,
@@ -151,29 +105,8 @@ const OptionsContainer = ({ size = 36 }) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    justifyContent: "center",
+    paddingVertical: 3,
     zIndex: 10,
-  },
-  option: {
-    borderRadius: "100%",
-    aspectRatio: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: colors.SECONDARY,
-    margin: 5,
-    marginBottom: 0,
-    ...Platform.select({
-      ios: {
-        shadowOffset: {
-          height: 1,
-        },
-        shadowOpacity: 0.5,
-        shadowRadius: 3,
-      },
-      android: {
-        elevation: 3,
-      },
-    }),
   },
 });
 

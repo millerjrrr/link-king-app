@@ -5,21 +5,18 @@ import { useSelector } from "react-redux";
 import { getConsoleState } from "../store/console";
 
 const StatsIcon = ({
-  iconName = "clock-outline",
+  name = "clock-outline",
   text = "",
   size = 18,
 }) => {
   const { golden } = useSelector(getConsoleState);
+  const color = colors.CONTRAST[golden];
   return (
     <View style={styles.container}>
-      <MaterialCommunityIcons
-        name={iconName}
-        size={size}
-        color={colors.CONTRAST[golden]}
-      />
+      <MaterialCommunityIcons {...{ name, size, color }} />
       <Text
         style={{
-          color: colors.CONTRAST[golden],
+          color,
           fontSize: size,
           paddingLeft: 3,
         }}
@@ -32,13 +29,9 @@ const StatsIcon = ({
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: "center",
-    alignItems: "center",
     flexDirection: "row",
-    marginRight: 8,
-    marginLeft: 8,
-    marginTop: 2,
-    marginBottom: 2,
+    alignItems: "center",
+    paddingHorizontal: 8,
   },
 });
 

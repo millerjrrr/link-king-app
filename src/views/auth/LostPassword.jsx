@@ -2,7 +2,7 @@ import { Keyboard, StyleSheet, View } from "react-native";
 import SubmitBtn from "../../components/form/SubmitBtn";
 import AppLink from "../../ui/AppLink";
 import AuthInputField from "../../components/form/AuthInputField";
-import Form from "../../components/form/Form";
+import Form from "../../components/form";
 import * as yup from "yup";
 import AuthFormContainer from "../../components/AuthFormContainer";
 import { useNavigation } from "@react-navigation/native";

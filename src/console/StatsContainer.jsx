@@ -1,5 +1,4 @@
-import { Text, View, StyleSheet } from "react-native";
-import colors from "../utils/colors";
+import { View, StyleSheet } from "react-native";
 import { convertMsToTime } from "./functions/convertMsToTime";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -11,7 +10,7 @@ import StatsIcon from "./StatsIcon";
 import { useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 
-const StatsContainer = () => {
+const StatsContainer = ({ size = 22 }) => {
   const { stats, timeOnThisWord, timerIsOn } =
     useSelector(getConsoleState);
   const { due, steps, time, streak, newWords } = stats;
@@ -60,26 +59,36 @@ const StatsContainer = () => {
   return (
     <View style={styles.container}>
       {newWords ? (
-        <StatsIcon iconName="basket-fill" text={newWords} />
+        <StatsIcon
+          {...{ name: "basket-fill", text: newWords, size }}
+        />
       ) : (
-        <StatsIcon iconName="target" text={due} />
+        <StatsIcon
+          {...{ name: "target", text: due, size }}
+        />
       )}
-      <StatsIcon iconName="foot-print" text={steps} />
       <StatsIcon
-        iconName="clock-outline"
-        text={convertMsToTime(time + timeOnThisWord)}
+        {...{ name: "foot-print", text: steps, size }}
       />
-      <StatsIcon iconName="trophy-variant" text={streak} />
+      <StatsIcon
+        {...{
+          name: "clock-outline",
+          text: convertMsToTime(time + timeOnThisWord),
+          size,
+        }}
+      />
+      <StatsIcon
+        {...{ name: "trophy-variant", text: streak, size }}
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    width: "80%",
     flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
+    marginTop: 5,
+    paddingVertical: 3,
     zIndex: 10,
   },
 });

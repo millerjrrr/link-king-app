@@ -8,8 +8,9 @@ const TitleAndSub = () => {
   const { golden } = useSelector(getConsoleState);
   const color = colors.CONTRAST[golden];
 
-  const { userGameData } = useSelector(getStatsState);
-  const { collectedWords } = userGameData;
+  const {
+    userGameData: { collectedWords },
+  } = useSelector(getStatsState);
 
   return (
     <>

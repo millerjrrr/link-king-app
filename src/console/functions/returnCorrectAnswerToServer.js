@@ -6,8 +6,6 @@ import {
 } from "../../store/console";
 import * as Speech from "expo-speech";
 import { updateConsoleState } from "./updateConsoleState";
-import { updateNotification } from "../../store/notification";
-import catchAsyncError from "../../api/catchError";
 import { errorHandler } from "../../errors/errorHandler";
 
 export const returnCorrectAnswerToServer = async (

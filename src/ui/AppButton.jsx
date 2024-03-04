@@ -6,33 +6,35 @@ import {
   Text,
 } from "react-native";
 import colors from "../utils/colors";
-import { useSelector } from "react-redux";
-import { getConsoleState } from "../store/console";
-import Loader from "./Loaders/Loader";
+import BusyWrapper from ".//Loaders/BusyWrapper";
 
-const AppButton = ({ title, busy, onPress }) => {
-  const { golden } = useSelector(getConsoleState);
+const AppButton = ({
+  title,
+  color = colors.CONTRAST[0],
+  size = 200,
+  busy,
+  onPress,
+}) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity
         onPress={onPress}
         style={[
-          styles.buttonContainer,
-          { shadowColor: colors.CONTRAST[golden] },
+          styles.button,
+          { shadowColor: color, width: size },
         ]}
       >
-        {!busy ? (
+        <BusyWrapper {...{ busy, size: size / 3 }}>
           <Text
-            style={[
-              styles.text,
-              { color: colors.CONTRAST[golden] },
-            ]}
+            style={{
+              color,
+              fontSize: size / 5,
+              textAlign: "center",
+            }}
           >
             {title}
           </Text>
-        ) : (
-          <Loader />
-        )}
+        </BusyWrapper>
       </TouchableOpacity>
     </View>
   );
@@ -43,11 +45,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    zIndex: 10,
   },
-  buttonContainer: {
-    width: "60%",
+  button: {
     aspectRatio: 1,
-    margin: 20,
     backgroundColor: colors.SECONDARY,
     alignItems: "center",
     justifyContent: "center",
@@ -64,10 +65,6 @@ const styles = StyleSheet.create({
         elevation: 3,
       },
     }),
-  },
-  text: {
-    fontSize: 40,
-    textAlign: "center",
   },
 });
 

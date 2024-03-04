@@ -78,6 +78,12 @@ const slice = createSlice({
     stopPlaying(state) {
       state.isPlaying = false;
     },
+    backOut(state) {
+      state.isPlaying = false;
+      state.key += 1;
+      state.timerIsOn = false;
+      state.timeOnThisWord = 0;
+    },
     resetTimer(state) {
       state.key += 1;
     },
@@ -109,6 +115,7 @@ export const {
   resetTimeOnThisWord,
   restartTheTimer,
   stopPlaying,
+  backOut,
   resetTimer,
   updateTimerIsOn,
   updateGolden,

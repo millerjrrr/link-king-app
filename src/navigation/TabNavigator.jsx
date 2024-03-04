@@ -17,6 +17,7 @@ const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
   const { golden } = useSelector(getConsoleState);
+  const color = colors.CONTRAST[golden];
 
   return (
     <Tab.Navigator
@@ -26,13 +27,10 @@ const TabNavigator = () => {
         tabBarStyle: [
           styles.tabBarStyle,
           {
-            color: colors.CONTRAST[golden],
-            shadowColor: colors.CONTRAST[golden],
+            color,
+            shadowColor: color,
           },
         ],
-        tabBarLabelStyle: {
-          fontSize: 15,
-        },
       }}
       initialRouteName="Console"
     >
@@ -40,11 +38,13 @@ const TabNavigator = () => {
         name="Console"
         component={ConsoleNavigator}
         options={{
-          tabBarIcon: (props) => (
+          tabBarIcon: ({ color, size }) => (
             <Ionicons
-              name="game-controller"
-              size={props.size + 15}
-              color={props.color}
+              {...{
+                name: "game-controller",
+                size: size + 15,
+                color,
+              }}
             />
           ),
           tabBarLabel: "Console",
@@ -55,11 +55,13 @@ const TabNavigator = () => {
         name="Collection"
         component={CollectionNavigator}
         options={{
-          tabBarIcon: (props) => (
+          tabBarIcon: ({ color, size }) => (
             <Entypo
-              name="open-book"
-              size={props.size + 15}
-              color={props.color}
+              {...{
+                name: "open-book",
+                size: size + 15,
+                color,
+              }}
             />
           ),
           tabBarLabel: "Collection",
@@ -69,11 +71,13 @@ const TabNavigator = () => {
         name="Options"
         component={OptionsNavigator}
         options={{
-          tabBarIcon: (props) => (
+          tabBarIcon: ({ color, size }) => (
             <MaterialIcons
-              name="settings"
-              size={props.size + 15}
-              color={props.color}
+              {...{
+                name: "settings",
+                size: size + 15,
+                color,
+              }}
             />
           ),
           tabBarLabel: "Options",
