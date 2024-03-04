@@ -16,10 +16,9 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getConsoleState,
   updateTimerIsOn,
-  updateIsPlaying,
+  stopPlaying,
   resetTimer,
   resetTimeOnThisWord,
-  setTriesToOne,
 } from "../store/console";
 import { submitAnswer } from "./functions/submitAnswer";
 
@@ -67,7 +66,7 @@ const KeyboardAndStartButton = ({ inputFieldRef }) => {
 
   const closeKeyboardSubmitAnswer = () => {
     if (!showSolution && isPlaying) {
-      dispatch(updateIsPlaying(false));
+      dispatch(stopPlaying());
       submitAnswer(
         dispatch,
         formValue,
@@ -77,7 +76,7 @@ const KeyboardAndStartButton = ({ inputFieldRef }) => {
         false,
       );
     } else {
-      dispatch(updateIsPlaying(false));
+      dispatch(stopPlaying());
       dispatch(resetTimer());
       dispatch(updateTimerIsOn(false));
       dispatch(resetTimeOnThisWord());
@@ -86,13 +85,12 @@ const KeyboardAndStartButton = ({ inputFieldRef }) => {
   };
 
   const dontKnowFunction = () => {
-    dispatch(updateIsPlaying(false));
-    dispatch(setTriesToOne());
+    dispatch(stopPlaying());
     submitAnswer(
       dispatch,
       formValue,
       attempt.solutions,
-      tries,
+      1,
       startedThisWord,
       false,
     );

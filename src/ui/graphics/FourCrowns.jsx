@@ -17,6 +17,8 @@ const FourCrowns = ({ color, size = 96 }) => {
             size,
             rotation: rotations[index],
             color,
+            key: `crown-${index}`,
+            //key isnt a prop, its different
           }}
         />
       ))}

@@ -16,7 +16,7 @@ const Timer = ({ onComplete, color }) => {
       }}
     >
       <CountdownCircleTimer
-        key={key}
+        key={`timer-${key}`}
         isPlaying={isPlaying}
         onComplete={onComplete}
         duration={10}

@@ -1,4 +1,4 @@
-import { updateIsPlaying } from "../../store/console";
+import { stopPlaying } from "../../store/console";
 import { acceptAnswer } from "./acceptAnswer";
 import { returnCorrectAnswerToServer } from "./returnCorrectAnswerToServer";
 import { returnNextTry } from "./returnNextTry";
@@ -12,9 +12,9 @@ export const submitAnswer = (
   startedThisWord,
   showSolution,
 ) => {
-  dispatch(updateIsPlaying(false));
-
+  dispatch(stopPlaying());
   const answerAccepted = acceptAnswer(formValue, solutions);
+
   if (answerAccepted) {
     returnCorrectAnswerToServer(
       dispatch,

@@ -45,9 +45,6 @@ const slice = createSlice({
       state.key += 1;
       state.isPlaying = true;
     }, // used exclusively in returnNextTry
-    setTriesToOne(state) {
-      state.tries = 1;
-    },
     updateBusyState(state, { payload }) {
       state.busy = payload;
     },
@@ -78,8 +75,8 @@ const slice = createSlice({
       state.isPlaying = true;
       state.startedThisWord = Date.now();
     }, //used after correct answer and when form field is focused
-    updateIsPlaying(state, { payload }) {
-      state.isPlaying = payload;
+    stopPlaying(state) {
+      state.isPlaying = false;
     },
     resetTimer(state) {
       state.key += 1;
@@ -104,7 +101,6 @@ const slice = createSlice({
 export const {
   updateOptions,
   updateTries,
-  setTriesToOne,
   updateBusyState,
   updateFormValue,
   resetConsole,
@@ -112,7 +108,7 @@ export const {
   incrementTimeOnThisWord,
   resetTimeOnThisWord,
   restartTheTimer,
-  updateIsPlaying,
+  stopPlaying,
   resetTimer,
   updateTimerIsOn,
   updateGolden,

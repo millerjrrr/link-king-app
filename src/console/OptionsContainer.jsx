@@ -14,15 +14,58 @@ import {
 import clientWithAuth from "../api/clientWithAuth";
 import { errorHandler } from "../errors/errorHandler";
 
+const Option = ({
+  onPress,
+  color,
+  size,
+  entypo,
+  option,
+  textTrue,
+  textFalse,
+}) => {
+  const height = (size * 80) / 50;
+
+  return (
+    <TouchableOpacity
+      {...{
+        onPress,
+        style: [
+          styles.option,
+          { shadowColor: color, height },
+        ],
+      }}
+    >
+      {entypo ? (
+        <Entypo
+          {...{
+            name: option ? textTrue : textFalse,
+            size,
+            color,
+          }}
+        />
+      ) : (
+        <MaterialIcons
+          {...{
+            name: option ? textTrue : textFalse,
+            size,
+            color,
+          }}
+        />
+      )}
+    </TouchableOpacity>
+  );
+};
+
 const OptionsContainer = ({ size = 36 }) => {
   const { options, golden } = useSelector(getConsoleState);
   const color = colors.CONTRAST[golden];
-  const height = (size * 80) / 50;
 
   const { sound, blurred, timer } = options;
 
   const dispatch = useDispatch();
 
+  // These functions are slightly different
+  // and should be kept separate
   const soundButtonFunction = async () => {
     try {
       const newOptions = blurred
@@ -70,51 +113,37 @@ const OptionsContainer = ({ size = 36 }) => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        onPress={soundButtonFunction}
-        style={[
-          styles.option,
-          { shadowColor: color, height },
-        ]}
-      >
-        <MaterialIcons
-          {...{
-            name: sound ? "volume-up" : "volume-off",
-            size,
-            color,
-          }}
-        />
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={blurredButtonFunction}
-        style={[
-          styles.option,
-          { shadowColor: color, height },
-        ]}
-      >
-        <Entypo
-          {...{
-            name: blurred ? "eye" : "eye-with-line",
-            size,
-            color,
-          }}
-        />
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={timerButtonFunction}
-        style={[
-          styles.option,
-          { shadowColor: color, height },
-        ]}
-      >
-        <MaterialIcons
-          {...{
-            name: timer ? "timer" : "timer-off",
-            size,
-            color,
-          }}
-        />
-      </TouchableOpacity>
+      <Option
+        {...{
+          onPress: soundButtonFunction,
+          color,
+          size,
+          option: sound,
+          textTrue: "volume-up",
+          textFalse: "volume-off",
+        }}
+      />
+      <Option
+        {...{
+          onPress: blurredButtonFunction,
+          color,
+          size,
+          entypo: true,
+          option: !blurred,
+          textTrue: "eye",
+          textFalse: "eye-with-line",
+        }}
+      />
+      <Option
+        {...{
+          onPress: timerButtonFunction,
+          color,
+          size,
+          option: timer,
+          textTrue: "timer",
+          textFalse: "timer-off",
+        }}
+      />
     </View>
   );
 };
@@ -126,14 +155,12 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
   option: {
-    borderRadius: 300,
+    borderRadius: "100%",
     aspectRatio: 1,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: colors.SECONDARY,
-    marginTop: 5,
-    marginRight: 4,
-    marginLeft: 4,
+    margin: 5,
     marginBottom: 0,
     ...Platform.select({
       ios: {
