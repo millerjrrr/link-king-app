@@ -1,11 +1,6 @@
-import Loader from "./Loader";
+import Loader from ".";
 
-const BusyWrapper = ({
-  busy,
-  size = 24,
-  color = 0,
-  children,
-}) => {
+const BusyWrapper = ({ busy, size, color, children }) => {
   return (
     <>{busy ? <Loader {...{ color, size }} /> : children}</>
   );

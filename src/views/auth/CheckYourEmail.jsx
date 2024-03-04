@@ -6,7 +6,7 @@ import {
   View,
 } from "react-native";
 import colors from "../../utils/colors";
-import AuthFormContainer from "../../components/AuthFormContainer";
+import AuthFormContainer from "../../components/containers/AuthFormContainer";
 import { AntDesign } from "@expo/vector-icons";
 
 const size = 200;

@@ -5,12 +5,12 @@ import {
   StyleSheet,
   Image,
 } from "react-native";
-import colors from "../utils/colors";
-import CrownUI from "../ui/graphics/CrownUI";
+import colors from "../../utils/colors";
+import CrownUI from "../../ui/Graphics/CrownUI";
 import { useSelector } from "react-redux";
-import { getConsoleState } from "../store/console";
-import AppNotification from "./AppNotification";
-import LinkKingLogo from "../ui/graphics/LinkKingLogo";
+import { getConsoleState } from "../../store/console";
+import AppNotification from "../AppNotification";
+import LinkKingLogo from "../../ui/Graphics/LinkKingLogo";
 
 const PopUpContainer = ({ children, heading }) => {
   const { golden } = useSelector(getConsoleState);

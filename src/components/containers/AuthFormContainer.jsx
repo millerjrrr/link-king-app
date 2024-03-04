@@ -1,9 +1,9 @@
 import { View, StyleSheet, Text } from "react-native";
-import colors from "../utils/colors";
-import AppNotification from "./AppNotification";
-import FourCrowns from "../ui/graphics/FourCrowns";
-import LinkKingLogo from "../ui/graphics/LinkKingLogo";
-import StatusBarFiller from "../ui/StatusBarFiller";
+import colors from "../../utils/colors";
+import AppNotification from "../AppNotification";
+import FourCrowns from "../../ui/Graphics/FourCrowns";
+import LinkKingLogo from "../../ui/Graphics/LinkKingLogo";
+import StatusBarFiller from "../../ui/StatusBarFiller";
 
 const AuthFormContainer = ({
   children,

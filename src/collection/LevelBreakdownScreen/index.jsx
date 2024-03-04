@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { getStatsState } from "../../store/stats";
 import { fetchStatsInfo } from "../functions/fetchStatsInfo";
 import { useEffect } from "react";
-import Histogram from "./Histogram";
-import PopUpContainer from "../../components/PopUpContainer";
-import Loader from "../../ui/Loaders/Loader";
+import LevelHistogram from "./LevelHistogram";
+import PopUpContainer from "../../components/containers/PopUpContainer";
+import Loader from "../../ui/Loader";
 import {
   StackActions,
   useNavigation,
@@ -41,7 +41,7 @@ const Levels = () => {
         <Loader />
       ) : (
         <View style={styles.container}>
-          <Histogram
+          <LevelHistogram
             lbd={levelBreakdown}
             histHeight={400}
           />

@@ -3,7 +3,7 @@ import { getStatsState } from "../../store/stats";
 import { useEffect } from "react";
 import { fetchStatsInfo } from "../functions/fetchStatsInfo";
 import StatsPanel from "./StatsPanel";
-import BusyWrapper from "../../ui/Loaders/BusyWrapper";
+import BusyWrapper from "../../ui/Loader/BusyWrapper";
 import {
   StackActions,
   useNavigation,

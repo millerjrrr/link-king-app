@@ -12,7 +12,7 @@ import Tail from "../console/Tail";
 import { fetchConsoleInfo } from "../console/functions/fetchConsoleInfo";
 import ReadWordButton from "../console/ReadWordButton";
 import StatsContainer from "../console/StatsContainer";
-import InnerTabContainer from "../components/InnerTabContainer";
+import InnerTabContainer from "../components/containers/InnerTabContainer";
 import { getAuthState } from "../store/auth";
 
 const Console = ({ navigation }) => {

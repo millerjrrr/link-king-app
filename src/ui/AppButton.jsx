@@ -6,7 +6,7 @@ import {
   Text,
 } from "react-native";
 import colors from "../utils/colors";
-import BusyWrapper from ".//Loaders/BusyWrapper";
+import BusyWrapper from "./Loader/BusyWrapper";
 
 const AppButton = ({
   title,

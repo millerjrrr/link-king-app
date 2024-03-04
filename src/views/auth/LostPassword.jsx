@@ -4,7 +4,7 @@ import AppLink from "../../ui/AppLink";
 import AuthInputField from "../../components/form/AuthInputField";
 import Form from "../../components/form";
 import * as yup from "yup";
-import AuthFormContainer from "../../components/AuthFormContainer";
+import AuthFormContainer from "../../components/containers/AuthFormContainer";
 import { useNavigation } from "@react-navigation/native";
 import client from "../../api/client";
 import { useEffect, useState } from "react";

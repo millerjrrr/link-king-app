@@ -3,10 +3,10 @@ import Timer from "../Timer";
 import colors from "../../utils/colors";
 import { useDispatch, useSelector } from "react-redux";
 import { getConsoleState } from "../../store/console";
-import AnswerDetailsButton from "./AnswerDetailsButton";
+import TargetDetailsButton from "./TargetDetailsButton";
 import { submitAnswer } from "../functions/submitAnswer";
-import LoaderForConsoleInput from "./LoaderForConsoleInput";
-import ConsoleInput from "./ConsoleInput";
+import LoaderForTextInputForConsole from "./LoaderForTextInputForConsole";
+import TextInputForConsole from "./TextInputForConsole";
 
 const InputAndTimerContainer = ({ inputFieldRef }) => {
   const {
@@ -42,9 +42,9 @@ const InputAndTimerContainer = ({ inputFieldRef }) => {
   return (
     <View style={styles.formView}>
       <Timer onComplete={sendAnswer} {...{ color }} />
-      <LoaderForConsoleInput />
-      <AnswerDetailsButton />
-      <ConsoleInput
+      <LoaderForTextInputForConsole />
+      <TargetDetailsButton />
+      <TextInputForConsole
         onSubmitEditing={sendAnswer}
         {...{
           inputFieldRef,

@@ -11,15 +11,39 @@ import { numberDateToWordStyleDate } from "./functions/numberDateToWordStyle";
 import DeleteButton from "./DeleteButton";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../store/console";
+import styled from "styled-components";
 
 const WordCard = ({ navigation, ticket }) => {
+  // const Container = styled(View)`
+  //   flexdirection: "row";
+  //   margin: 10;
+  //   borderradius: 15;
+  //   padding: 5;
+  //   backgroundcolor: colors.SECONDARY;
+  //   ${Platform.select({
+  //     ios: `
+  //         shadowOffset: {
+  //           height: 1,
+  //         },
+  //         shadowOpacity: 0.5,
+  //         shadowRadius: 5,
+  //       `,
+  //     android: `
+  //         elevation: 3,
+  //       `,
+  //   })}
+  // `;
+
   const levelArray = Array.from(new Array(ticket.level));
   const { golden } = useSelector(getConsoleState);
   const color = colors.CONTRAST[golden];
 
   return (
     <View
-      style={[styles.container, { shadowColor: color }]}
+      style={[
+        styles.container,
+        { shadowColor: colors.RED },
+      ]}
     >
       <View style={styles.infoContainer}>
         <View style={styles.rowContainer}>

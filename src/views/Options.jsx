@@ -4,7 +4,7 @@ import {
   updateLoggedInState,
   updateToken,
 } from "../store/auth";
-import InnerTabContainer from "../components/InnerTabContainer";
+import InnerTabContainer from "../components/containers/InnerTabContainer";
 import { updateNotification } from "../store/notification";
 import OptionsMenuItem from "../options/OptionsMenuItem";
 import colors from "../utils/colors";

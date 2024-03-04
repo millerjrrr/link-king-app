@@ -15,7 +15,7 @@ import TabNavigator from "./TabNavigator";
 import { useEffect } from "react";
 import colors from "../utils/colors";
 import { getConsoleState } from "../store/console";
-import BusyWrapper from "../ui/Loaders/BusyWrapper";
+import BusyWrapper from "../ui/Loader/BusyWrapper";
 import ConnectedWrapper from "../errors/ConnectedWrapper";
 import client from "../api/client";
 import catchAsyncError from "../api/catchError";

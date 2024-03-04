@@ -3,7 +3,7 @@ import colors from "../utils/colors";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../store/console";
 import { getCollectionState } from "../store/collection";
-import BusyWrapper from "../ui/Loaders/BusyWrapper";
+import BusyWrapper from "../ui/Loader/BusyWrapper";
 
 const TicketsCount = () => {
   const { golden } = useSelector(getConsoleState);

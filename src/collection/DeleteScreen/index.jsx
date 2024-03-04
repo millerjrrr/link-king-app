@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import BusyWrapper from "../../ui/Loaders/BusyWrapper";
-import PopUpContainer from "../../components/PopUpContainer";
+import BusyWrapper from "../../ui/Loader/BusyWrapper";
+import PopUpContainer from "../../components/containers/PopUpContainer";
 import BloodRedCover from "../../ui/BloodRedCover";
 import WordCard from "../WordCard";
 import ResponseInformation from "./ResponseInformation";

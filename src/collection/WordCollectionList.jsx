@@ -12,7 +12,7 @@ import {
   getCollectionState,
   updateCollection,
 } from "../store/collection";
-import Loader from "../ui/Loaders/Loader";
+import Loader from "../ui/Loader";
 
 const ListHeaderComponent = () => {
   return <View style={{ height: 80 }} />;

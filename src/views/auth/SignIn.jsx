@@ -5,7 +5,7 @@ import AuthInputField from "../../components/form/AuthInputField";
 import Form from "../../components/form";
 import * as yup from "yup";
 import PasswordVisibilityIcon from "../../ui/PasswordVisibilityIcon";
-import AuthFormContainer from "../../components/AuthFormContainer";
+import AuthFormContainer from "../../components/containers/AuthFormContainer";
 import { useNavigation } from "@react-navigation/native";
 import client from "../../api/client";
 import { useDispatch } from "react-redux";

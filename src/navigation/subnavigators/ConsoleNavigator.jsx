@@ -1,17 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   createStackNavigator,
   TransitionPresets,
 } from "@react-navigation/stack";
 import Console from "../../views/Console";
-import TargetDetailsScreen from "../../console/TargetDetailsScreen/TargetDetailsScreen";
-import StatsScreen from "../../collection/StatsScreen/StatsScreen";
-import {
-  StackActions,
-  useNavigation,
-} from "@react-navigation/native";
-import { useSelector } from "react-redux";
-import { getAuthState } from "../../store/auth";
+import TargetDetailsScreen from "../../console/TargetDetailsScreen";
+import StatsScreen from "../../collection/StatsScreen";
 
 const ConsoleStack = createStackNavigator();
 

@@ -12,10 +12,11 @@ import colors from "../../utils/colors";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../../store/console";
 
-const Loader = ({ color = 0, size = 24 }) => {
+const Loader = ({ size = 24, color }) => {
   const { golden } = useSelector(getConsoleState);
-  const workingColor =
-    color === 0 ? colors.CONTRAST[golden] : color;
+  const workingColor = color
+    ? color
+    : colors.CONTRAST[golden];
 
   const initialRotation = useSharedValue(0);
 

@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 import { getConsoleState } from "../../store/console";
 import colors from "../../utils/colors";
 
-const Histogram = ({ lbd, histHeight }) => {
+const LevelHistogram = ({ lbd, histHeight }) => {
   const { golden } = useSelector(getConsoleState);
   const color = colors.CONTRAST[golden];
 
@@ -24,7 +24,7 @@ const Histogram = ({ lbd, histHeight }) => {
 
   return (
     <>
-      <View style={styles.histogram}>
+      <View style={styles.levelHistogram}>
         {normalizedHeights.map((_, index) => (
           <LevelLine
             key={index}
@@ -53,7 +53,7 @@ const Histogram = ({ lbd, histHeight }) => {
 };
 
 const styles = StyleSheet.create({
-  histogram: {
+  levelHistogram: {
     flexDirection: "row",
     alignItems: "flex-end",
     padding: 30,
@@ -76,4 +76,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Histogram;
+export default LevelHistogram;

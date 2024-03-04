@@ -5,13 +5,13 @@ import {
   Text,
   StatusBar,
 } from "react-native";
-import colors from "../utils/colors";
-import StatusBarFiller from "../ui/StatusBarFiller";
-import AppNotification from "./AppNotification";
+import colors from "../../utils/colors";
+import StatusBarFiller from "../../ui/StatusBarFiller";
+import AppNotification from "../AppNotification";
 import { useSelector } from "react-redux";
-import { getConsoleState } from "../store/console";
-import FourCrowns from "../ui/graphics/FourCrowns";
-import LinkKingLogo from "../ui/graphics/LinkKingLogo";
+import { getConsoleState } from "../../store/console";
+import FourCrowns from "../../ui/Graphics/FourCrowns";
+import LinkKingLogo from "../../ui/Graphics/LinkKingLogo";
 
 const InnerTabContainer = ({ children, heading }) => {
   const { golden } = useSelector(getConsoleState);

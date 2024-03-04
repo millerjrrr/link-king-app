@@ -13,7 +13,7 @@ import {
 } from "../../store/console";
 import * as Speech from "expo-speech";
 
-const ConsoleInput = ({
+const TextInputForConsole = ({
   inputFieldRef,
   onSubmitEditing,
   color,
@@ -86,4 +86,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ConsoleInput;
+export default TextInputForConsole;

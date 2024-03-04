@@ -8,7 +8,7 @@ import colors from "../../utils/colors";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../../store/console";
 
-const FakeInput = () => {
+const TargetScreenFakeInput = () => {
   const { lastAttempt } = useSelector(getConsoleState);
   return (
     <View style={styles.container}>
@@ -55,4 +55,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FakeInput;
+export default TargetScreenFakeInput;

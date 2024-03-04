@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../../store/console";
 
-const AnswerDetailsButton = () => {
+const TargetDetailsButton = () => {
   const { showSolution } = useSelector(getConsoleState);
   const navigation = useNavigation();
 
@@ -38,4 +38,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AnswerDetailsButton;
+export default TargetDetailsButton;

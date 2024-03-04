@@ -6,14 +6,14 @@ import {
 } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { getConsoleState } from "../../store/console";
-import PopUpContainer from "../../components/PopUpContainer";
+import PopUpContainer from "../../components/containers/PopUpContainer";
 import colors from "../../utils/colors";
 import React, { useState } from "react";
 import RedSafetyButton from "../../ui/RedSafetyButton";
 import BloodRedCover from "../../ui/BloodRedCover";
 import { flagAndDeleteTicket } from "../../utils/flagAndDeleteTicket";
-import BusyWrapper from "../../ui/Loaders/BusyWrapper";
-import FakeInput from "./FakeInput";
+import BusyWrapper from "../../ui/Loader/BusyWrapper";
+import TargetScreenFakeInput from "./TargetScreenFakeInput";
 import Target from "./Target";
 import Solutions from "./Solutions";
 import ResponseInformation from "./ResponseInformation";
@@ -49,7 +49,7 @@ const TargetDetailsScreen = () => {
       <BusyWrapper {...{ busy, size: 96 }}>
         <View style={styles.container}>
           <Target />
-          <FakeInput />
+          <TargetScreenFakeInput />
           <Solutions />
         </View>
         {pressed ? (

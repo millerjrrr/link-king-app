@@ -1,9 +1,9 @@
 import { View } from "react-native";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../../store/console";
-import Loader from "../../ui/Loaders/Loader";
+import Loader from "../../ui/Loader";
 
-const LoaderForConsoleInput = () => {
+const LoaderForTextInputForConsole = () => {
   const { busy } = useSelector(getConsoleState);
 
   return busy ? (
@@ -18,4 +18,4 @@ const LoaderForConsoleInput = () => {
   ) : null;
 };
 
-export default LoaderForConsoleInput;
+export default LoaderForTextInputForConsole;
