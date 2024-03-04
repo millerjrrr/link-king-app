@@ -2,7 +2,7 @@ import { Keyboard, StyleSheet, View } from "react-native";
 import SubmitBtn from "../../components/form/SubmitBtn";
 import AppLink from "../../ui/AppLink";
 import AuthInputField from "../../components/form/AuthInputField";
-import Form from "../../components/form/index";
+import Form from "../../components/form/Form";
 import * as yup from "yup";
 import AuthFormContainer from "../../components/AuthFormContainer";
 import { useNavigation } from "@react-navigation/native";
@@ -12,7 +12,7 @@ import { useDispatch } from "react-redux";
 import { updateNotification } from "../../store/notification";
 import catchAsyncError from "../../api/catchError";
 
-const signUpSchema = yup.object({
+const validationSchema = yup.object({
   email: yup
     .string()
     .trim("Email is missing!")
@@ -50,7 +50,7 @@ const LostPassword = () => {
 
   const navigation = useNavigation();
 
-  const handleSubmit = async (values, actions) => {
+  const onSubmit = async (values, actions) => {
     actions.setSubmitting(true);
     try {
       const res = await client.post(
@@ -74,9 +74,7 @@ const LostPassword = () => {
       }
     >
       <Form
-        onSubmit={handleSubmit}
-        initialValues={initialValues}
-        signUpSchema={signUpSchema}
+        {...{ onSubmit, initialValues, validationSchema }}
       >
         <View style={styles.formContainer}>
           <AuthInputField

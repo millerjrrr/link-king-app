@@ -2,7 +2,7 @@ import { Keyboard, StyleSheet, View } from "react-native";
 import SubmitBtn from "../../components/form/SubmitBtn";
 import AppLink from "../../ui/AppLink";
 import AuthInputField from "../../components/form/AuthInputField";
-import Form from "../../components/form/index";
+import Form from "../../components/form/Form";
 import * as yup from "yup";
 import PasswordVisibilityIcon from "../../ui/PasswordVisibilityIcon";
 import AuthFormContainer from "../../components/AuthFormContainer";
@@ -17,7 +17,7 @@ import { saveToAsyncStorage } from "../../utils/asyncStorage";
 import { useEffect, useState } from "react";
 import { authErrorHandler } from "../../errors/authErrorHandler";
 
-const signUpSchema = yup.object({
+const validationSchema = yup.object({
   email: yup
     .string()
     .trim("Email is missing!")
@@ -65,7 +65,7 @@ const SignIn = () => {
     setSecureEntry(!secureEntry);
   };
 
-  const handleSubmit = async (values, actions) => {
+  const onSubmit = async (values, actions) => {
     actions.setSubmitting(true);
     try {
       const { data } = await client.post(
@@ -90,9 +90,11 @@ const SignIn = () => {
   return (
     <AuthFormContainer heading="Welcome back!">
       <Form
-        onSubmit={handleSubmit}
-        initialValues={initialValues}
-        signUpSchema={signUpSchema}
+        {...{
+          onSubmit,
+          initialValues,
+          validationSchema,
+        }}
       >
         <View style={styles.formContainer}>
           <AuthInputField

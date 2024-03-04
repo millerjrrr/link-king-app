@@ -4,7 +4,7 @@ import {
   KeyboardAvoidingView,
 } from "react-native";
 import ConsoleInput from "../console/ConsoleInput";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import OptionsContainer from "../console/OptionsContainer";
 import KeyboardAndStartButton from "../console/KeyboardAndStartButton";
@@ -12,11 +12,8 @@ import Tail from "../console/Tail";
 import { fetchConsoleInfo } from "../console/functions/fetchConsoleInfo";
 import ReadWordButton from "../console/ReadWordButton";
 import StatsContainer from "../console/StatsContainer";
-import InnerTabBackground from "../components/InnerTabBackground";
-import {
-  getAuthState,
-  updateConnectedState,
-} from "../store/auth";
+import InnerTabContainer from "../components/InnerTabContainer";
+import { getAuthState } from "../store/auth";
 
 const Console = ({ navigation }) => {
   const inputFieldRef = useRef(null);
@@ -35,7 +32,7 @@ const Console = ({ navigation }) => {
   }, [navigation, refresh]);
 
   return (
-    <InnerTabBackground heading="Console">
+    <InnerTabContainer heading="Console">
       <KeyboardAvoidingView
         style={styles.container}
         behavior={
@@ -51,7 +48,7 @@ const Console = ({ navigation }) => {
           inputFieldRef={inputFieldRef}
         />
       </KeyboardAvoidingView>
-    </InnerTabBackground>
+    </InnerTabContainer>
   );
 };
 
@@ -59,7 +56,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: "100%",
-    paddingHorizontal: 15,
     alignItems: "center",
     zIndex: 1,
   },

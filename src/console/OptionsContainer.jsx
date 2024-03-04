@@ -14,10 +14,10 @@ import {
 import clientWithAuth from "../api/clientWithAuth";
 import { errorHandler } from "../errors/errorHandler";
 
-const optionsSize = 36;
-
-const OptionsContainer = () => {
+const OptionsContainer = ({ size = 36 }) => {
   const { options, golden } = useSelector(getConsoleState);
+  const color = colors.CONTRAST[golden];
+  const height = (size * 80) / 50;
 
   const { sound, blurred, timer } = options;
 
@@ -74,64 +74,46 @@ const OptionsContainer = () => {
         onPress={soundButtonFunction}
         style={[
           styles.option,
-          { shadowColor: colors.CONTRAST[golden] },
+          { shadowColor: color, height },
         ]}
       >
-        {sound ? (
-          <MaterialIcons
-            name="volume-up"
-            size={optionsSize}
-            color={colors.CONTRAST[golden]}
-          />
-        ) : (
-          <MaterialIcons
-            name="volume-off"
-            size={optionsSize}
-            color={colors.CONTRAST[golden]}
-          />
-        )}
+        <MaterialIcons
+          {...{
+            name: sound ? "volume-up" : "volume-off",
+            size,
+            color,
+          }}
+        />
       </TouchableOpacity>
       <TouchableOpacity
         onPress={blurredButtonFunction}
         style={[
           styles.option,
-          { shadowColor: colors.CONTRAST[golden] },
+          { shadowColor: color, height },
         ]}
       >
-        {!blurred ? (
-          <Entypo
-            name="eye"
-            size={optionsSize}
-            color={colors.CONTRAST[golden]}
-          />
-        ) : (
-          <Entypo
-            name="eye-with-line"
-            size={optionsSize}
-            color={colors.CONTRAST[golden]}
-          />
-        )}
+        <Entypo
+          {...{
+            name: blurred ? "eye" : "eye-with-line",
+            size,
+            color,
+          }}
+        />
       </TouchableOpacity>
       <TouchableOpacity
         onPress={timerButtonFunction}
         style={[
           styles.option,
-          { shadowColor: colors.CONTRAST[golden] },
+          { shadowColor: color, height },
         ]}
       >
-        {timer ? (
-          <MaterialIcons
-            name="timer"
-            size={optionsSize}
-            color={colors.CONTRAST[golden]}
-          />
-        ) : (
-          <MaterialIcons
-            name="timer-off"
-            size={optionsSize}
-            color={colors.CONTRAST[golden]}
-          />
-        )}
+        <MaterialIcons
+          {...{
+            name: timer ? "timer" : "timer-off",
+            size,
+            color,
+          }}
+        />
       </TouchableOpacity>
     </View>
   );
@@ -144,9 +126,8 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
   option: {
-    borderRadius: (optionsSize * 80) / 48 / 2,
-    width: (optionsSize * 80) / 48,
-    height: (optionsSize * 80) / 48,
+    borderRadius: 300,
+    aspectRatio: 1,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: colors.SECONDARY,

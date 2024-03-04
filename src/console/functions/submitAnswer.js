@@ -15,12 +15,6 @@ export const submitAnswer = (
   dispatch(updateIsPlaying(false));
 
   const answerAccepted = acceptAnswer(formValue, solutions);
-  console.log(
-    formValue,
-    solutions,
-    startedThisWord,
-    answerAccepted,
-  );
   if (answerAccepted) {
     returnCorrectAnswerToServer(
       dispatch,
@@ -30,7 +24,6 @@ export const submitAnswer = (
   } else if (tries > 1) {
     returnNextTry(dispatch);
   } else {
-    console.log("wroing");
     returnWrongAnswerToServer(
       dispatch,
       startedThisWord,

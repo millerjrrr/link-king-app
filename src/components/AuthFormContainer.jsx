@@ -1,12 +1,9 @@
-import {
-  View,
-  StyleSheet,
-  Text,
-  Image,
-} from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 import colors from "../utils/colors";
-import CrownUI from "../ui/CrownUI";
 import AppNotification from "./AppNotification";
+import FourCrowns from "../ui/graphics/FourCrowns";
+import LinkKingLogo from "../ui/graphics/LinkKingLogo";
+import StatusBarFiller from "../ui/StatusBarFiller";
 
 const AuthFormContainer = ({
   children,
@@ -15,50 +12,16 @@ const AuthFormContainer = ({
 }) => {
   const color = colors.INACTIVE_CONTRAST;
   return (
-    <View
-      style={{ flex: 1, backgroundColor: colors.PRIMARY }}
-    >
-      <CrownUI
-        {...{ position: "top-left", rotation: 135, color }}
-      />
-      <CrownUI
-        {...{ position: "top-right", rotation: 225, color }}
-      />
-      <CrownUI
-        {...{
-          position: "bottom-left",
-          rotation: 45,
-          color,
-        }}
-      />
-      <CrownUI
-        {...{
-          position: "bottom-right",
-          rotation: 315,
-          color,
-        }}
-      />
-      <View style={styles.container}>
-        <View style={styles.headerContainer}>
-          <Image
-            source={require("../assets/link-king-header-logo.png")}
-            resizeMode="contain"
-            style={{
-              marginTop: 50,
-              height: 50,
-              borderColor: colors.CONTRAST[0],
-            }}
-          />
-          <Text style={styles.heading}>{heading}</Text>
-          <Text style={styles.subHeading}>
-            {subHeading}
-          </Text>
-        </View>
-        <AppNotification />
-        <View style={styles.childContainer}>
-          {children}
-        </View>
-      </View>
+    <View style={styles.container}>
+      <StatusBarFiller />
+      <FourCrowns {...{ color }} />
+      <LinkKingLogo />
+      <Text style={styles.heading}>{heading}</Text>
+      {subHeading ? (
+        <Text style={styles.subHeading}>{subHeading}</Text>
+      ) : null}
+      <AppNotification />
+      {children}
     </View>
   );
 };
@@ -67,29 +30,20 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 15,
   },
   heading: {
     color: colors.CONTRAST[0],
-    fontSize: 15,
+    fontSize: 20,
     fontWeight: "bold",
     paddingVertical: 0,
-    transform: [{ translateY: -8 }],
   },
   subHeading: {
     color: colors.CONTRAST[0],
     fontSize: 13,
     textAlign: "center",
-  },
-  headerContainer: {
-    alignItems: "center",
-    justifyContent: "center",
-    width: "100%",
-    marginBottom: 20,
-  },
-  childContainer: {
-    flex: 1,
-    alignItems: "center",
-    paddingHorizontal: 15,
+    marginBottom: 10,
   },
 });
 

@@ -44,6 +44,7 @@ const WordCollectionList = ({ navigation }) => {
     <FlatList
       data={tickets}
       renderItem={({ item }) => {
+        //probably dont need the view, clean up
         return (
           <View>
             <WordCard

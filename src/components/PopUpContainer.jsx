@@ -6,9 +6,11 @@ import {
   Image,
 } from "react-native";
 import colors from "../utils/colors";
-import CrownUI from "../ui/CrownUI";
+import CrownUI from "../ui/graphics/CrownUI";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../store/console";
+import AppNotification from "./AppNotification";
+import LinkKingLogo from "../ui/graphics/LinkKingLogo";
 
 const PopUpContainer = ({ children, heading }) => {
   const { golden } = useSelector(getConsoleState);
@@ -28,21 +30,18 @@ const PopUpContainer = ({ children, heading }) => {
         color={colors.SECONDARY}
       />
       <View style={styles.headerContainer}>
-        <Image
-          source={require("../assets/link-king-header-logo.png")}
-          resizeMode="contain"
-          tintColor={color}
-          style={{
-            width: 100,
+        <LinkKingLogo
+          {...{
             height: 30,
             marginTop: 10,
-            marginBottom: 0,
+            tintColor: color,
           }}
         />
         <Text style={[styles.heading, { color }]}>
           {heading}
         </Text>
       </View>
+      <AppNotification />
       {children}
     </View>
   );
@@ -51,27 +50,12 @@ const PopUpContainer = ({ children, heading }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.PRIMARY,
     alignItems: "center",
-    justifyContent: "flex-start",
   },
   heading: {
     fontSize: 12,
     fontWeight: "bold",
-    transform: [
-      {
-        translateX: 0,
-      },
-      {
-        translateY: -6,
-      },
-    ],
-  },
-  headerContainer: {
-    alignItems: "center",
-    justifyContent: "tflex-start",
-    marginBottom: 15,
-    zIndex: 10,
+    textAlign: "center",
   },
 });
 

@@ -2,7 +2,7 @@ import { Keyboard, StyleSheet, View } from "react-native";
 import SubmitBtn from "../../components/form/SubmitBtn";
 import AppLink from "../../ui/AppLink";
 import AuthInputField from "../../components/form/AuthInputField";
-import Form from "../../components/form/index";
+import Form from "../../components/form/Form";
 import * as yup from "yup";
 import PasswordVisibilityIcon from "../../ui/PasswordVisibilityIcon";
 import AuthFormContainer from "../../components/AuthFormContainer";
@@ -10,10 +10,8 @@ import { useNavigation } from "@react-navigation/native";
 import client from "../../api/client";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { updateNotification } from "../../store/notification";
-import catchAsyncError from "../../api/catchError";
 
-const signUpSchema = yup.object({
+const validationSchema = yup.object({
   name: yup
     .string()
     .trim("Name is missing!")
@@ -72,7 +70,7 @@ const SignUp = () => {
     setSecureEntry(!secureEntry);
   };
 
-  const handleSubmit = async (values, actions) => {
+  const onSubmit = async (values, actions) => {
     values.passwordConfirm = values.password;
     values.username = values.name;
 
@@ -101,9 +99,7 @@ const SignUp = () => {
       subHeading="Let's get started by creating your account."
     >
       <Form
-        onSubmit={handleSubmit}
-        initialValues={initialValues}
-        signUpSchema={signUpSchema}
+        {...{ onSubmit, initialValues, validationSchema }}
       >
         <View style={styles.formContainer}>
           <AuthInputField

@@ -1,4 +1,4 @@
-import InnerTabBackground from "../components/InnerTabBackground";
+import InnerTabContainer from "../components/InnerTabContainer";
 import WordCollectionList from "../collection/WordCollectionList";
 import { useEffect } from "react";
 import { fetchTickets } from "../collection/functions/fetchTickets";
@@ -7,10 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCollectionState } from "../store/collection";
 import { fetchTicketsFirstBatch } from "../collection/functions/fetchTicketsFirstBatch";
 import BusyWrapper from "../ui/Loaders/BusyWrapper";
-import {
-  getAuthState,
-  updateConnectedState,
-} from "../store/auth";
+import { getAuthState } from "../store/auth";
 
 const Collection = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -38,7 +35,7 @@ const Collection = ({ navigation }) => {
   }, [searchKeyword]);
 
   return (
-    <InnerTabBackground heading="Collection">
+    <InnerTabContainer heading="Collection">
       <SearchBarContainer navigation={navigation} />
       <BusyWrapper {...{ busy, size: 96 }}>
         <WordCollectionList
@@ -46,7 +43,7 @@ const Collection = ({ navigation }) => {
           tickets={tickets}
         />
       </BusyWrapper>
-    </InnerTabBackground>
+    </InnerTabContainer>
   );
 };
 

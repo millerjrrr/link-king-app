@@ -4,7 +4,7 @@ import {
   updateLoggedInState,
   updateToken,
 } from "../store/auth";
-import InnerTabBackground from "../components/InnerTabBackground";
+import InnerTabContainer from "../components/InnerTabContainer";
 import { updateNotification } from "../store/notification";
 import OptionsMenuItem from "../options/OptionsMenuItem";
 import colors from "../utils/colors";
@@ -32,7 +32,7 @@ const Options = ({ navigation }) => {
   };
 
   return (
-    <InnerTabBackground heading="Options">
+    <InnerTabContainer heading="Options">
       <OptionsMenuItem
         iconName="target-variant"
         text="Set daily goal"
@@ -69,7 +69,7 @@ const Options = ({ navigation }) => {
         text="Logout"
         onPress={logOut}
       />
-    </InnerTabBackground>
+    </InnerTabContainer>
   );
 };
 

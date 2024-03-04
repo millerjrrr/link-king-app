@@ -4,11 +4,9 @@ import {
   TextInput,
 } from "react-native";
 import colors from "../utils/colors";
-import { useSelector } from "react-redux";
-import { getConsoleState } from "../store/console";
 
+//This may be used in some settings tabs in the future
 const AppInput = (props) => {
-  const { golden } = useSelector(getConsoleState);
   return (
     <TextInput
       {...props}
@@ -16,14 +14,7 @@ const AppInput = (props) => {
       autoCorrect={false}
       textContentType="none"
       placeholderTextColor={colors.INACTIVE_CONTRAST}
-      style={[
-        styles.input,
-        props.style,
-        {
-          color: colors.CONTRAST[golden],
-          shadowColor: colors.CONTRAST[golden],
-        },
-      ]}
+      style={[styles.input, props.style]}
     />
   );
 };
@@ -34,10 +25,10 @@ const styles = StyleSheet.create({
     borderColor: colors.SECONDARY,
     height: 45,
     borderRadius: 25,
-
     padding: 10,
     backgroundColor: colors.SECONDARY,
-
+    color: colors.CONTRAST[0],
+    shadowColor: colors.CONTRAST[0],
     ...Platform.select({
       ios: {
         shadowOffset: {

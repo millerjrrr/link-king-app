@@ -71,15 +71,19 @@ const AuthInputField = (props) => {
         <Text style={styles.errorMsg}>{errorMsg}</Text>
       </View>
       <View>
+        {/*This <View> holds both AppInput and*/}
+        {/*rightIcon and is necessary*/}
         <AppInput
-          style={containerStyle}
-          placeholder={placeholder}
-          keyboardType={keyboardType}
-          autoCapitalize={autoCapitalize}
-          secureTextEntry={secureTextEntry}
-          onChangeText={handleChange(name)}
-          value={values[name]}
-          onBlur={handleBlur(name)}
+          {...{
+            placeholder,
+            keyboardType,
+            autoCapitalize,
+            secureTextEntry,
+            style: containerStyle,
+            onChangeText: handleChange(name),
+            value: values[name],
+            onBlur: handleBlur(name),
+          }}
         />
         {rightIcon ? (
           <Pressable
