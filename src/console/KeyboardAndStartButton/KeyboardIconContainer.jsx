@@ -20,14 +20,14 @@ const KeyboardIconContainer = () => {
 
   const closeKeyboardSubmitAnswer = () => {
     if (!showSolution && isPlaying && tries === 1) {
-      submitAnswer(
+      submitAnswer({
         dispatch,
         formValue,
         solutions,
-        1,
+        tries: 1,
         startedThisWord,
-        false,
-      );
+        showSolution: false,
+      });
     } else {
       dispatch(backOut());
     }
@@ -35,14 +35,14 @@ const KeyboardIconContainer = () => {
   };
 
   const dontKnowFunction = () => {
-    submitAnswer(
+    submitAnswer({
       dispatch,
       formValue,
       solutions,
-      1,
+      tries: 1,
       startedThisWord,
-      false,
-    );
+      showSolution: false,
+    });
   };
 
   return (

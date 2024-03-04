@@ -8,11 +8,11 @@ import * as Speech from "expo-speech";
 import { updateConsoleState } from "./updateConsoleState";
 import { errorHandler } from "../../errors/errorHandler";
 
-export const returnCorrectAnswerToServer = async (
+export const returnCorrectAnswerToServer = async ({
   dispatch,
   startedThisWord,
   showSolution,
-) => {
+}) => {
   const payload = {
     timeOnThisWord: 0, // the clock is reset to zero, and starts counting the next timeOnThisWord to be sent to the server
     startedThisWord: Date.now(),

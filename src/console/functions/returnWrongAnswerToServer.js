@@ -12,11 +12,11 @@ import { updateConsoleState } from "./updateConsoleState";
 import { Vibration } from "react-native";
 import { errorHandler } from "../../errors/errorHandler";
 
-export const returnWrongAnswerToServer = async (
+export const returnWrongAnswerToServer = async ({
   dispatch,
   startedThisWord,
   showSolution,
-) => {
+}) => {
   Vibration.vibrate(3000);
   dispatch(updateTimerIsOn(false));
   dispatch(updateBusyState(true));

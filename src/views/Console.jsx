@@ -21,7 +21,7 @@ const Console = ({ navigation }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchInfo = () => fetchConsoleInfo(dispatch);
+    const fetchInfo = () => fetchConsoleInfo({ dispatch });
     const unsubscribe = navigation.addListener(
       "focus",
       fetchInfo,

@@ -6,7 +6,7 @@ import { updateConsoleState } from "./updateConsoleState";
 import clientWithAuth from "../../api/clientWithAuth";
 import { errorHandler } from "../../errors/errorHandler";
 
-export const fetchConsoleInfo = async (dispatch) => {
+export const fetchConsoleInfo = async ({ dispatch }) => {
   dispatch(updateBusyState(true));
   dispatch(updateShowSolution(false));
   try {

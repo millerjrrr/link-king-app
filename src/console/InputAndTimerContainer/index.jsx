@@ -29,14 +29,14 @@ const InputAndTimerContainer = ({ inputFieldRef }) => {
   const dispatch = useDispatch();
 
   const sendAnswer = () => {
-    submitAnswer(
+    submitAnswer({
       dispatch,
       formValue,
       solutions,
       tries,
       startedThisWord,
       showSolution,
-    );
+    });
   };
 
   return (

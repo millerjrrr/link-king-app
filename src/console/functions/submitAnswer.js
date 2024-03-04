@@ -4,31 +4,31 @@ import { returnCorrectAnswerToServer } from "./returnCorrectAnswerToServer";
 import { returnNextTry } from "./returnNextTry";
 import { returnWrongAnswerToServer } from "./returnWrongAnswerToServer";
 
-export const submitAnswer = (
+export const submitAnswer = ({
   dispatch,
   formValue,
   solutions,
   tries,
   startedThisWord,
   showSolution,
-) => {
+}) => {
   dispatch(stopPlaying());
   const answerAccepted = acceptAnswer(formValue, solutions);
 
   if (answerAccepted) {
-    returnCorrectAnswerToServer(
+    returnCorrectAnswerToServer({
       dispatch,
       startedThisWord,
       showSolution,
-    );
+    });
   } else if (tries > 1) {
-    returnNextTry(dispatch);
+    returnNextTry({ dispatch });
   } else {
-    returnWrongAnswerToServer(
+    returnWrongAnswerToServer({
       dispatch,
       startedThisWord,
       showSolution,
-    );
+    });
   }
   return false;
 };
