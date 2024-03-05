@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: 12,
     fontWeight: "bold",
+    paddingBottom: 5,
   },
 });
 

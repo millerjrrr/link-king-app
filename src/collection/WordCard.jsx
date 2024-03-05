@@ -1,96 +1,59 @@
-import { Entypo } from "@expo/vector-icons";
 import React from "react";
-import {
-  View,
-  StyleSheet,
-  Text,
-  Platform,
-} from "react-native";
+import { StyleSheet, Platform } from "react-native";
 import colors from "../utils/colors";
 import { numberDateToWordStyleDate } from "./functions/numberDateToWordStyle";
 import DeleteButton from "./DeleteButton";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../store/console";
-import styled from "styled-components";
+import WordCardLevelStars from "./WordCardLevelStars";
+import {
+  Container,
+  Date,
+  InfoContainer,
+  Rating,
+  RowContainer,
+  Title,
+} from "./WordCardStyledComponents";
 
-const WordCard = ({ navigation, ticket }) => {
-  // const Container = styled(View)`
-  //   flexdirection: "row";
-  //   margin: 10;
-  //   borderradius: 15;
-  //   padding: 5;
-  //   backgroundcolor: colors.SECONDARY;
-  //   ${Platform.select({
-  //     ios: `
-  //         shadowOffset: {
-  //           height: 1,
-  //         },
-  //         shadowOpacity: 0.5,
-  //         shadowRadius: 5,
-  //       `,
-  //     android: `
-  //         elevation: 3,
-  //       `,
-  //   })}
-  // `;
-
-  const levelArray = Array.from(new Array(ticket.level));
+const WordCard = ({
+  navigation,
+  ticket: {
+    dicEntry: { target, rating },
+    dueDate,
+    level,
+  },
+}) => {
   const { golden } = useSelector(getConsoleState);
   const color = colors.CONTRAST[golden];
 
-  return (
-    <View
-      style={[
-        styles.container,
-        { shadowColor: colors.RED },
-      ]}
-    >
-      <View style={styles.infoContainer}>
-        <View style={styles.rowContainer}>
-          <Text style={[styles.titleStyle, { color }]}>
-            {ticket.dicEntry.target}
-          </Text>
-          <Text style={[styles.ratingStyle, { color }]}>
-            {ticket.dicEntry.rating}
-          </Text>
-        </View>
+  const onPress = () =>
+    navigation.navigate("WordDetails", {
+      ticket,
+    });
 
-        <View style={styles.rowContainer}>
-          <View style={styles.levelStarsContainer}>
-            {levelArray.map((_, index) => (
-              <Entypo
-                {...{
-                  name: "star",
-                  key: `star-${ticket.dicEntry.target}-${index}`,
-                  size: 12,
-                  color,
-                }}
-              />
-            ))}
-          </View>
-          <Text style={[styles.dateStyle, { color }]}>
-            {numberDateToWordStyleDate(ticket.dueDate)}
-          </Text>
-        </View>
-      </View>
-      <DeleteButton
-        onPress={() =>
-          navigation.navigate("WordDetails", {
-            ticket,
-          })
-        }
-      />
-    </View>
+  return (
+    <Container {...{ color, style: styles.container }}>
+      <InfoContainer>
+        <RowContainer>
+          <Title {...{ color }}>{target}</Title>
+          <Rating {...{ color }}>{rating}</Rating>
+        </RowContainer>
+        <RowContainer>
+          <WordCardLevelStars
+            {...{ stars: level, target }}
+          />
+          <Date {...{ color }}>
+            {numberDateToWordStyleDate(dueDate)}
+          </Date>
+        </RowContainer>
+      </InfoContainer>
+      <DeleteButton {...{ onPress }} />
+    </Container>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
-    margin: 10,
-    borderRadius: 15,
-    padding: 5,
-    backgroundColor: colors.SECONDARY,
     ...Platform.select({
       ios: {
         shadowOffset: {
@@ -103,34 +66,6 @@ const styles = StyleSheet.create({
         elevation: 3,
       },
     }),
-  },
-  infoContainer: {
-    flex: 1,
-    flexDirection: "column",
-    paddingHorizontal: 15,
-  },
-  rowContainer: {
-    width: "100%",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  titleStyle: {
-    fontSize: 30,
-    fontWeight: "bold",
-    alignItems: "flex-start",
-  },
-  ratingStyle: {
-    fontSize: 20,
-  },
-  levelStarsContainer: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "left",
-  },
-  dateStyle: {
-    fontSize: 20,
-    fontStyle: "italic",
   },
 });
 
