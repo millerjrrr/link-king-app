@@ -12,16 +12,19 @@ import { useSelector } from "react-redux";
 import { getConsoleState } from "../../store/console";
 import FourCrowns from "../../ui/Graphics/FourCrowns";
 import LinkKingLogo from "../../ui/Graphics/LinkKingLogo";
+import HelpButton from "../../ui/HelpButton";
 
-const InnerTabContainer = ({ children, heading }) => {
+const InnerTabContainer = ({ children, heading, help }) => {
   const { golden } = useSelector(getConsoleState);
   const color = colors.CONTRAST[golden];
   const crownColor = colors.SECONDARY;
   const marginTop = StatusBar.currentHeight;
+
   return (
     <View style={styles.container}>
       <StatusBarFiller />
       <FourCrowns {...{ color: crownColor }} />
+      <HelpButton {...{ help }} />
       <LinkKingLogo
         {...{
           height: 30,

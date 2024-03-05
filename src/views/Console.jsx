@@ -31,8 +31,12 @@ const Console = ({ navigation }) => {
     return unsubscribe;
   }, [navigation, refresh]);
 
+  const help = () => {
+    console.log("help");
+  };
+
   return (
-    <InnerTabContainer heading="Console">
+    <InnerTabContainer {...{ heading: "Console", help }}>
       <KeyboardAvoidingView
         style={styles.container}
         behavior={

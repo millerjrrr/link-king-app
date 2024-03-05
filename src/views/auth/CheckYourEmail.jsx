@@ -40,12 +40,13 @@ const CheckYourEmail = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    margin: 10,
-    padding: 10,
+    flex: 1,
+    padding: 20,
+    margin: 20,
+    marginBottom: 100,
     borderRadius: 20,
     backgroundColor: colors.SECONDARY,
-    justifyContent: "center",
+    justifyContent: "flex-start",
     alignItems: "center",
     shadowColor: colors.CONTRAST[0],
     ...Platform.select({
@@ -62,12 +63,14 @@ const styles = StyleSheet.create({
     }),
   },
   text: {
+    flex: 1,
     color: colors.CONTRAST[0],
     fontSize: 30,
     textAlign: "center",
+    paddingVertical: 20,
   },
   loginContainer: {
-    margin: 20,
+    marginBottom: 30,
     borderRadius: size / 2,
     backgroundColor: colors.SECONDARY,
     height: size,

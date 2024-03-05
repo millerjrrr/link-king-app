@@ -15,16 +15,17 @@ import {
   Title,
 } from "./WordCardStyledComponents";
 
-const WordCard = ({
-  navigation,
-  ticket: {
+const WordCard = ({ navigation, ticket }) => {
+  const { golden } = useSelector(getConsoleState);
+  const color = colors.CONTRAST[golden];
+
+  const {
     dicEntry: { target, rating },
     dueDate,
     level,
-  },
-}) => {
-  const { golden } = useSelector(getConsoleState);
-  const color = colors.CONTRAST[golden];
+  } = ticket;
+  // important to do it like this so we still have access
+  // to ticket as a whole
 
   const onPress = () =>
     navigation.navigate("WordDetails", {

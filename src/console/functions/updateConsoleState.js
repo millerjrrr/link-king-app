@@ -12,7 +12,8 @@ export const updateConsoleState = async (
     tail: display.tail,
     tries: gamePlay.tries,
     busy: false,
-    golden: stats.newWords ? 1 : 0,
+    golden:
+      stats.newWords && stats.time > 3 * 60 * 1000 ? 1 : 0,
   };
   dispatch(updateCSState(payload));
 };

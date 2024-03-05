@@ -90,9 +90,6 @@ const slice = createSlice({
     updateTimerIsOn(state, { payload }) {
       state.timerIsOn = payload;
     },
-    updateGolden(state, { payload }) {
-      state.golden = payload;
-    },
     // Group updates
     updateCSState(state, { payload }) {
       return { ...state, ...payload };
@@ -118,7 +115,6 @@ export const {
   backOut,
   resetTimer,
   updateTimerIsOn,
-  updateGolden,
   updateCSState,
   incrementStatsTime,
 } = slice.actions;

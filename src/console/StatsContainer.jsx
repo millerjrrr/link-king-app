@@ -25,11 +25,8 @@ const StatsContainer = ({ size = 22 }) => {
       navigation.navigate("StatsScreen");
     };
 
-    if (
-      (newWords === 1 && time > 3 * 60 * 1000) ||
-      newWords === 20
-    )
-      setTimeout(showResultsSummary, 3000);
+    if (newWords === 1 && time > 3 * 60 * 1000)
+      setTimeout(showResultsSummary, 1500);
   }, [newWords]);
 
   useEffect(() => {
