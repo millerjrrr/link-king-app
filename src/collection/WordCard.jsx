@@ -28,7 +28,7 @@ const WordCard = ({ navigation, ticket }) => {
   // to ticket as a whole
 
   const onPress = () =>
-    navigation.navigate("WordDetails", {
+    navigation.navigate("DeleteScreen", {
       ticket,
     });
 

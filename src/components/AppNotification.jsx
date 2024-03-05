@@ -64,7 +64,7 @@ const AppNotification = () => {
           heightStyle,
         ]}
       >
-        <Text style={[styles.message, { color }]}>
+        <Text style={[styles.text, { color }]}>
           {message}
         </Text>
       </Animated.View>
@@ -83,9 +83,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  message: {
+  text: {
     fontSize: 25,
-    alignItems: "center",
+    textAlign: "center",
   },
 });
 

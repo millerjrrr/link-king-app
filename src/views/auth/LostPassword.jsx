@@ -9,8 +9,7 @@ import { useNavigation } from "@react-navigation/native";
 import client from "../../api/client";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { updateNotification } from "../../store/notification";
-import catchAsyncError from "../../api/catchError";
+import { authErrorHandler } from "../../errors/authErrorHandler";
 
 const validationSchema = yup.object({
   email: yup
@@ -53,13 +52,25 @@ const LostPassword = () => {
   const onSubmit = async (values, actions) => {
     actions.setSubmitting(true);
     try {
-      const res = await client.post(
+      const { data } = await client.post(
         "/api/v1/users/forgotPassword",
 
         {
           ...values,
         },
+        {
+          timeout: 3000,
+        },
       );
+      if (data.status === "success")
+        navigation.navigate("CheckYourEmail", {
+          heading: "Password Reset Email Sent",
+          subHeading:
+            "Use link in email to reset your password",
+          text:
+            "We've sent you an link which you can use to reset your password " +
+            "through our site!",
+        });
     } catch (error) {
       authErrorHandler(error, dispatch);
     }

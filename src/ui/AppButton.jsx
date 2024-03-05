@@ -7,9 +7,11 @@ import {
 } from "react-native";
 import colors from "../utils/colors";
 import BusyWrapper from "./Loader/BusyWrapper";
+import { AntDesign } from "@expo/vector-icons";
 
 const AppButton = ({
   title,
+  name,
   color = colors.CONTRAST[0],
   size = 200,
   busy,
@@ -25,15 +27,21 @@ const AppButton = ({
         ]}
       >
         <BusyWrapper {...{ busy, size: size / 3 }}>
-          <Text
-            style={{
-              color,
-              fontSize: size / 5,
-              textAlign: "center",
-            }}
-          >
-            {title}
-          </Text>
+          {title ? (
+            <Text
+              style={{
+                color,
+                fontSize: size / 5,
+                textAlign: "center",
+              }}
+            >
+              {title}
+            </Text>
+          ) : (
+            <AntDesign
+              {...{ name, size: size / 2, color }}
+            />
+          )}
         </BusyWrapper>
       </TouchableOpacity>
     </View>

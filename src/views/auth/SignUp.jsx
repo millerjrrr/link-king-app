@@ -86,7 +86,14 @@ const SignUp = () => {
         },
       );
       if (data.status === "success")
-        navigation.navigate("CheckYourEmail");
+        navigation.navigate("CheckYourEmail", {
+          heading: "Verification Email Sent",
+          subHeading: "Please verify your email",
+          text:
+            "We've sent you an email with a verification link. " +
+            "Please check your email then return " +
+            "to the app to log in!",
+        });
     } catch (error) {
       authErrorHandler(error, dispatch);
     }

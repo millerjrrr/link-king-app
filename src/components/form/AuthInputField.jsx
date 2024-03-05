@@ -19,7 +19,7 @@ import { useEffect } from "react";
 const AuthInputField = (props) => {
   const inputTransformValue = useSharedValue(0);
   const {
-    handleSubmit,
+    // handleSubmit,
     handleChange,
     values,
     errors,
@@ -76,7 +76,7 @@ const AuthInputField = (props) => {
         {/*rightIcon and is necessary*/}
         <AppInput
           {...{
-            onSubmitEditing: handleSubmit,
+            // onSubmitEditing: handleSubmit,
             placeholder,
             keyboardType,
             autoCapitalize,

@@ -44,14 +44,9 @@ const WordCollectionList = ({ navigation }) => {
     <FlatList
       data={tickets}
       renderItem={({ item }) => {
-        //probably dont need the view, clean up
+        // must be called item for FlatList to work
         return (
-          <View>
-            <WordCard
-              navigation={navigation}
-              ticket={item}
-            />
-          </View>
+          <WordCard {...{ navigation, ticket: item }} />
         );
       }}
       keyExtractor={(item) => item._id}

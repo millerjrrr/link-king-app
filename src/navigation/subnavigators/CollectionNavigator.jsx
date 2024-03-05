@@ -25,7 +25,7 @@ const CollectionNavigator = () => {
         component={Collection}
       />
       <CollectionStack.Screen
-        name="WordDetails"
+        name="DeleteScreen"
         component={DeleteScreen}
       />
       <CollectionStack.Screen
