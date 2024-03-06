@@ -14,7 +14,7 @@ export const fetchTickets = async (
   const normWord = semiNormalize(searchKeyword);
   try {
     const { data } = await clientWithAuth.get(
-      `/api/v1/tickets/collection?page=${page}&search=${normWord}`,
+      `/collection/tickets?page=${page}&search=${normWord}`,
     );
 
     dispatch(

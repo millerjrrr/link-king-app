@@ -18,7 +18,7 @@ export const fetchTicketsFirstBatch = async (
   );
   try {
     const { data } = await clientWithAuth.get(
-      `/api/v1/tickets/collection?page=${1}&search=${normWord}`,
+      `/collection/tickets?page=${1}&search=${normWord}`,
     );
 
     dispatch(

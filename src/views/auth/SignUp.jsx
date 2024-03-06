@@ -77,7 +77,7 @@ const SignUp = () => {
     actions.setSubmitting(true);
     try {
       const { data } = await client.post(
-        "/api/v1/users/signup",
+        "/users/sign-up",
         {
           ...values,
         },

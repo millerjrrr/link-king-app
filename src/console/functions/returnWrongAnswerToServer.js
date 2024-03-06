@@ -28,7 +28,7 @@ export const returnWrongAnswerToServer = async ({
     dispatch(incrementStatsTime(time));
     console.log(time);
     const { data } = await clientWithAuth.post(
-      "/api/v1/gameData/submitAttempt",
+      "/console/submit-attempt",
       {
         correct: false,
         time,

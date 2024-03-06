@@ -29,7 +29,7 @@ export const returnCorrectAnswerToServer = async ({
     dispatch(incrementStatsTime(time));
     console.log(time);
     const { data } = await clientWithAuth.post(
-      "/api/v1/gameData/submitAttempt",
+      "/console/submit-attempt",
       {
         correct: true,
         time,

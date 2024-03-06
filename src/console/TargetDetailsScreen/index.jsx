@@ -32,7 +32,6 @@ const TargetDetailsScreen = () => {
 
   const dispatch = useDispatch();
   const wordFlagFunction = () => {
-    console.log("Word Flagged!!");
     flagAndDeleteTicket(
       attempt.id,
       setBusy,

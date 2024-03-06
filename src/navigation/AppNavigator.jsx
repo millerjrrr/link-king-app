@@ -48,7 +48,7 @@ const AppNavigator = () => {
         // if there is no token stored on device exit
 
         const { data } = await client.get(
-          "/api/v1/users/loginConfirmation",
+          "/users/log-in-confirmation",
           {
             headers: {
               Authorization: "Bearer " + token,

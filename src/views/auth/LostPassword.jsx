@@ -53,7 +53,7 @@ const LostPassword = () => {
     actions.setSubmitting(true);
     try {
       const { data } = await client.post(
-        "/api/v1/users/forgotPassword",
+        "/users/forgot-password",
 
         {
           ...values,

@@ -20,49 +20,38 @@ const OptionsContainer = ({ size = 40 }) => {
 
   // These functions are slightly different
   // and should be kept separate
-  const soundButtonFunction = async () => {
+
+  const sendOptions = async ({ options }) => {
     try {
-      const newOptions = blurred
-        ? { sound: !sound, blurred: false }
-        : { sound: !sound };
       const { data } = await clientWithAuth.post(
-        "/api/v1/gameData/updateGameSettings",
-        newOptions,
+        "/console/update-game-settings",
+        options,
       );
       dispatch(updateOptions(data.options));
     } catch (error) {
       errorHandler(error, dispatch);
     }
+  };
+
+  const soundButtonFunction = async () => {
+    const options = blurred
+      ? { sound: !sound, blurred: false }
+      : { sound: !sound };
+    await sendOptions({ options });
   };
 
   const blurredButtonFunction = async () => {
-    try {
-      const newOptions = !blurred
-        ? { sound: true, blurred: !blurred }
-        : { blurred: !blurred };
-
-      const { data } = await clientWithAuth.post(
-        "/api/v1/gameData/updateGameSettings",
-        newOptions,
-      );
-      dispatch(updateOptions(data.options));
-    } catch (error) {
-      errorHandler(error, dispatch);
-    }
+    const options = !blurred
+      ? { sound: true, blurred: !blurred }
+      : { blurred: !blurred };
+    await sendOptions({ options });
   };
 
   const timerButtonFunction = async () => {
-    try {
-      const { data } = await clientWithAuth.post(
-        "/api/v1/gameData/updateGameSettings",
-        {
-          timer: !timer,
-        },
-      );
-      dispatch(updateOptions(data.options));
-    } catch (error) {
-      errorHandler(error, dispatch);
-    }
+    const options = {
+      timer: !timer,
+    };
+    await sendOptions({ options });
   };
 
   return (
