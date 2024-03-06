@@ -69,7 +69,7 @@ const SignIn = () => {
     actions.setSubmitting(true);
     try {
       const { data } = await client.post(
-        "/users/log-in",
+        "/api/users/log-in",
 
         {
           ...values,

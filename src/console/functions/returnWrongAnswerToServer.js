@@ -28,7 +28,7 @@ export const returnWrongAnswerToServer = async ({
     dispatch(incrementStatsTime(time));
     console.log(time);
     const { data } = await clientWithAuth.post(
-      "/console/submit-attempt",
+      "/api/console/submit-attempt",
       {
         correct: false,
         time,

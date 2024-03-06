@@ -24,7 +24,7 @@ const OptionsContainer = ({ size = 40 }) => {
   const sendOptions = async ({ options }) => {
     try {
       const { data } = await clientWithAuth.post(
-        "/console/update-game-settings",
+        "/api/console/update-game-settings",
         options,
       );
       dispatch(updateOptions(data.options));

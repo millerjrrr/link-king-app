@@ -11,7 +11,7 @@ export const fetchConsoleInfo = async ({ dispatch }) => {
   dispatch(updateShowSolution(false));
   try {
     const { data } = await clientWithAuth.get(
-      "/console/send-game-state",
+      "/api/console/send-game-state",
     );
     updateConsoleState(data, dispatch);
   } catch (error) {

@@ -14,11 +14,14 @@ export const flagAndDeleteTicket = async (
   setBusy(true);
   try {
     const { data } = flagWord
-      ? await clientWithAuth.post("/collection/flag-word", {
-          ticketId,
-        })
+      ? await clientWithAuth.post(
+          "/api/collection/flag-word",
+          {
+            ticketId,
+          },
+        )
       : await clientWithAuth.post(
-          "/collection/delete-ticket",
+          "/api/collection/delete-ticket",
           {
             ticketId,
           },
