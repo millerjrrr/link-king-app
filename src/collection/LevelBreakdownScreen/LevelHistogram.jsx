@@ -7,12 +7,13 @@ import {
 } from "react-native";
 import LevelLine from "./LevelLine";
 import { useSelector } from "react-redux";
-import { getConsoleState } from "../../store/console";
 import colors from "../../utils/colors";
+import { getColorsState } from "../../store/colors";
 
 const LevelHistogram = ({ lbd, histHeight }) => {
-  const { golden } = useSelector(getConsoleState);
-  const color = colors.CONTRAST[golden];
+  const { colorScheme, golden } =
+    useSelector(getColorsState);
+  const color = colors[colorScheme].CONTRAST[golden];
 
   [selected, setSelected] = useState(1);
   const heights = lbd.map((row) => row.frequency);

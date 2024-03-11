@@ -6,8 +6,8 @@ import {
   View,
 } from "react-native";
 import { useSelector } from "react-redux";
-import { getConsoleState } from "../store/console";
 import colors from "../utils/colors";
+import { getColorsState } from "../store/colors";
 
 const OptionsMenuItem = ({
   iconName,
@@ -16,18 +16,27 @@ const OptionsMenuItem = ({
   first,
   color,
 }) => {
-  const { golden } = useSelector(getConsoleState);
+  const { colorScheme, golden } =
+    useSelector(getColorsState);
+  const backgroundColor = colors[colorScheme].PRIMARY;
+  const borderTopColor = colors[colorScheme].SECONDARY;
+
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor }]}>
       <MaterialCommunityIcons
         name={iconName}
         size={32}
-        color={color ? color : colors.CONTRAST[golden]}
+        color={
+          color
+            ? color
+            : colors[colorScheme].CONTRAST[golden]
+        }
         style={styles.icon}
       />
       <TouchableOpacity
         style={[
           styles.option,
+          { borderTopColor },
           first
             ? { borderTopWidth: 0 }
             : { borderTopWidth: 1 },
@@ -40,7 +49,7 @@ const OptionsMenuItem = ({
             {
               color: color
                 ? color
-                : colors.CONTRAST[golden],
+                : colors[colorScheme].CONTRAST[golden],
             },
           ]}
         >
@@ -58,7 +67,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
-    backgroundColor: colors.PRIMARY,
     marginLeft: 10,
     marginRight: 10,
   },
@@ -68,7 +76,6 @@ const styles = StyleSheet.create({
   option: {
     flex: 1,
     height: "100%",
-    borderTopColor: colors.SECONDARY,
     justifyContent: "center",
     margin: 10,
   },

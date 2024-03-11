@@ -1,12 +1,19 @@
 import { Text, StyleSheet, View } from "react-native";
 import colors from "../utils/colors";
 import RefreshButton from "./RefreshButton";
+import { getColorsState } from "../store/colors";
+import { useSelector } from "react-redux";
 
 const InternetConnectionPage = ({ refresh }) => {
+  const { colorScheme } = useSelector(getColorsState);
+  const color = colors[colorScheme].RED;
+  const backgroundColor = colors[colorScheme].PRIMARY;
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Disconnected!</Text>
-      <Text style={styles.text}>
+    <View style={[styles.container, { backgroundColor }]}>
+      <Text style={[styles.title, { color }]}>
+        Disconnected!
+      </Text>
+      <Text style={[styles.text, { color }]}>
         ..looks like you are not connected to the internet.
         This app requires a stable internet connection...
       </Text>
@@ -20,15 +27,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: colors.PRIMARY,
   },
   title: {
-    color: colors.RED,
     fontSize: 40,
     textAlign: "center",
   },
   text: {
-    color: colors.RED,
     fontSize: 20,
     textAlign: "center",
   },

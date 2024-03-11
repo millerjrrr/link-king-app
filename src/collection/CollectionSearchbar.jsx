@@ -1,16 +1,18 @@
-import { Text, StyleSheet, Platform } from "react-native";
+import { StyleSheet, Platform } from "react-native";
 import { Searchbar } from "react-native-paper";
 import colors from "../utils/colors";
 import { useDispatch, useSelector } from "react-redux";
-import { getConsoleState } from "../store/console";
 import {
   getCollectionState,
   updateCollection,
 } from "../store/collection";
+import { getColorsState } from "../store/colors";
 
 const CollectionSearchbar = () => {
-  const { golden } = useSelector(getConsoleState);
-  const color = colors.CONTRAST[golden];
+  const { colorScheme, golden } =
+    useSelector(getColorsState);
+  const color = colors[colorScheme].CONTRAST[golden];
+
   const { searchKeyword } = useSelector(getCollectionState);
 
   const dispatch = useDispatch();
@@ -18,7 +20,9 @@ const CollectionSearchbar = () => {
   return (
     <Searchbar
       placeholder="Search Collected Words"
-      placeholderTextColor={colors.INACTIVE_CONTRAST}
+      placeholderTextColor={
+        colors[colorScheme].INACTIVE_CONTRAST
+      }
       textInputProps={{
         caretColor: color,
         autoCapitalize: "none",
@@ -36,6 +40,7 @@ const CollectionSearchbar = () => {
         {
           color,
           shadowColor: color,
+          backgroundColor: colors[colorScheme].SECONDARY,
         },
       ]}
     />
@@ -44,7 +49,6 @@ const CollectionSearchbar = () => {
 
 const styles = StyleSheet.create({
   searchBar: {
-    backgroundColor: colors.SECONDARY,
     textAlign: "center",
     zIndex: 10,
     width: "70%",

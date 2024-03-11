@@ -1,12 +1,16 @@
 import { View, StyleSheet } from "react-native";
 import colors from "../utils/colors";
+import { getColorsState } from "../store/colors";
+import { useSelector } from "react-redux";
 
 const BloodRedCover = ({ elapsedTime }) => {
+  const { colorScheme } = useSelector(getColorsState);
+  const backgroundColor = colors[colorScheme].LIGHTRED;
   return (
     <View style={styles.container}>
       <View
         style={{
-          backgroundColor: colors.LIGHTRED,
+          backgroundColor,
           width: `${Math.min(elapsedTime / 3, 1) * 100}%`,
           height: "100%",
           position: "absolute",

@@ -110,10 +110,10 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   label: {
-    color: colors.CONTRAST[0],
+    color: colors.default.CONTRAST[0],
   },
   errorMsg: {
-    color: colors.RED,
+    color: colors.default.RED,
   },
   rightIcon: {
     width: 45,

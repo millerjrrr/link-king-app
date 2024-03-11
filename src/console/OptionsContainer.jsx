@@ -8,13 +8,15 @@ import {
 import clientWithAuth from "../api/clientWithAuth";
 import { errorHandler } from "../errors/errorHandler";
 import OptionsIcon from "./OptionsIcon";
+import { getColorsState } from "../store/colors";
 
 const OptionsContainer = ({ size = 40 }) => {
   const {
     options: { sound, blurred, timer },
-    golden,
   } = useSelector(getConsoleState);
-  const color = colors.CONTRAST[golden];
+  const { colorScheme, golden } =
+    useSelector(getColorsState);
+  const color = colors[colorScheme].CONTRAST[golden];
 
   const dispatch = useDispatch();
 

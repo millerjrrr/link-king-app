@@ -9,7 +9,6 @@ const CheckYourEmail = ({
   size = 200,
   route,
 }) => {
-  const color = colors.CONTRAST[0];
   const { heading, subHeading, text } = route.params;
 
   const onPress = () => navigation.navigate("SignIn");
@@ -21,7 +20,6 @@ const CheckYourEmail = ({
         <AppButton
           {...{
             name: "login",
-            color,
             size,
             busy: false,
             onPress,
@@ -34,7 +32,7 @@ const CheckYourEmail = ({
 
 const styles = StyleSheet.create({
   text: {
-    color: colors.CONTRAST[0],
+    color: colors.default.CONTRAST[0],
     fontSize: 30,
     textAlign: "center",
   },

@@ -5,9 +5,11 @@ const SubmitBtn = ({ title }) => {
   const { handleSubmit, isSubmitting } = useFormikContext();
   return (
     <AppButton
-      title={title}
-      busy={isSubmitting}
-      onPress={handleSubmit}
+      {...{
+        title,
+        busy: isSubmitting,
+        onPress: handleSubmit,
+      }}
     />
   );
 };

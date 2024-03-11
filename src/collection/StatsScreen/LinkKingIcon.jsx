@@ -1,17 +1,21 @@
 import { Image } from "react-native";
-import { getConsoleState } from "../../store/console";
 import { useSelector } from "react-redux";
 import colors from "../../utils/colors";
+import { getColorsState } from "../../store/colors";
 
 const LinkKingIcon = () => {
-  const { golden } = useSelector(getConsoleState);
+  const { colorScheme, golden } =
+    useSelector(getColorsState);
+  const tintColor = colors[colorScheme].CONTRAST[golden];
   return (
     <Image
-      source={require("../../assets/link-king-header-logo.png")}
-      resizeMode="contain"
-      tintColor={colors.CONTRAST[golden]}
-      style={{
-        height: 60,
+      {...{
+        source: require("../../assets/link-king-header-logo.png"),
+        resizeMode: "contain",
+        tintColor,
+        style: {
+          height: 60,
+        },
       }}
     />
   );

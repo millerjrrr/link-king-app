@@ -1,5 +1,4 @@
 import { Text, View } from "react-native";
-import colors from "../utils/colors";
 import styled from "styled-components";
 
 export const Container = styled(View)`
@@ -7,7 +6,7 @@ export const Container = styled(View)`
   margin: 10px;
   border-radius: 15px;
   padding: 5px;
-  background-color: ${colors.SECONDARY};
+  background-color: ${(props) => props.backgroundColor};
   shadow-color: ${(props) => props.color};
 `;
 

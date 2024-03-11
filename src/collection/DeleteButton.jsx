@@ -1,15 +1,22 @@
 import { AntDesign } from "@expo/vector-icons";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import colors from "../utils/colors";
-import { getConsoleState } from "../store/console";
 import { useSelector } from "react-redux";
+import { getColorsState } from "../store/colors";
 
 const DeleteButton = ({ onPress }) => {
-  const { golden } = useSelector(getConsoleState);
-  const color = colors.CONTRAST[golden];
+  const { colorScheme, golden } =
+    useSelector(getColorsState);
+  const color = colors[colorScheme].CONTRAST[golden];
   return (
     <TouchableOpacity
-      {...{ style: styles.container, onPress }}
+      {...{
+        style: [
+          styles.container,
+          { backgroundColor: colors[colorScheme].PRIMARY },
+        ],
+        onPress,
+      }}
     >
       <AntDesign {...{ name: "delete", size: 32, color }} />
     </TouchableOpacity>
@@ -19,7 +26,6 @@ const DeleteButton = ({ onPress }) => {
 const styles = StyleSheet.create({
   container: {
     padding: 5,
-    backgroundColor: colors.PRIMARY,
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",

@@ -7,6 +7,7 @@ import TargetDetailsButton from "./TargetDetailsButton";
 import { submitAnswer } from "../functions/submitAnswer";
 import LoaderForTextInputForConsole from "./LoaderForTextInputForConsole";
 import TextInputForConsole from "./TextInputForConsole";
+import { getColorsState } from "../../store/colors";
 
 const InputAndTimerContainer = ({ inputFieldRef }) => {
   const {
@@ -15,14 +16,13 @@ const InputAndTimerContainer = ({ inputFieldRef }) => {
     tries,
     startedThisWord,
     showSolution,
-    golden,
   } = useSelector(getConsoleState);
 
-  const colorByTries = [
-    colors.RED,
-    colors.ORANGE,
-    colors.CONTRAST[golden],
-  ];
+  const { colorScheme, golden } =
+    useSelector(getColorsState);
+  const { RED, ORANGE, CONTRAST } = colors[colorScheme];
+
+  const colorByTries = [RED, ORANGE, CONTRAST[golden]];
 
   const color = colorByTries[tries - 1];
 

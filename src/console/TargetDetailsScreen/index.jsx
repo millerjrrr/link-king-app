@@ -1,15 +1,8 @@
-import {
-  Text,
-  StyleSheet,
-  View,
-  Platform,
-} from "react-native";
+import { StyleSheet, View } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { getConsoleState } from "../../store/console";
 import PopUpContainer from "../../components/containers/PopUpContainer";
-import colors from "../../utils/colors";
 import React, { useState } from "react";
-import RedSafetyButton from "../../ui/RedSafetyButton";
 import BloodRedCover from "../../ui/BloodRedCover";
 import { flagAndDeleteTicket } from "../../utils/flagAndDeleteTicket";
 import BusyWrapper from "../../ui/Loader/BusyWrapper";
@@ -20,9 +13,7 @@ import ResponseInformation from "./ResponseInformation";
 import NoticeAndFlagButton from "./NoticeAndFlagButton";
 
 const TargetDetailsScreen = () => {
-  const { golden, attempt, lastAttempt } =
-    useSelector(getConsoleState);
-  const color = colors.CONTRAST[golden];
+  const { attempt } = useSelector(getConsoleState);
 
   // ...loader management...
   const [busy, setBusy] = useState(false);

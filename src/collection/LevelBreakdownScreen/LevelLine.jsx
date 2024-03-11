@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import { useSelector } from "react-redux";
 import colors from "../../utils/colors";
-import { getConsoleState } from "../../store/console";
+import { getColorsState } from "../../store/colors";
 
 const LevelLine = ({
   level,
@@ -15,8 +15,9 @@ const LevelLine = ({
   touched = false,
   onPress,
 }) => {
-  const { golden } = useSelector(getConsoleState);
-  const color = colors.CONTRAST[golden];
+  const { colorScheme, golden } =
+    useSelector(getColorsState);
+  const color = colors[colorScheme].CONTRAST[golden];
 
   return (
     <TouchableOpacity

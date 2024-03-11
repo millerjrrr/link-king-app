@@ -1,33 +1,30 @@
 import React from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-  Image,
-} from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import colors from "../../utils/colors";
 import CrownUI from "../../ui/Graphics/CrownUI";
 import { useSelector } from "react-redux";
-import { getConsoleState } from "../../store/console";
 import AppNotification from "../AppNotification";
 import LinkKingLogo from "../../ui/Graphics/LinkKingLogo";
+import { getColorsState } from "../../store/colors";
 
 const PopUpContainer = ({ children, heading }) => {
-  const { golden } = useSelector(getConsoleState);
-  const color = colors.CONTRAST[golden];
+  const { colorScheme, golden } =
+    useSelector(getColorsState);
+  const { CONTRAST, SECONDARY } = colors[colorScheme];
+  const color = CONTRAST[golden];
   return (
     <View style={styles.container}>
       <CrownUI
         position="top-left"
         size="50"
         rotation="135"
-        color={colors.SECONDARY}
+        color={SECONDARY}
       />
       <CrownUI
         position="top-right"
         size="50"
         rotation="225"
-        color={colors.SECONDARY}
+        color={SECONDARY}
       />
       <View style={styles.headerContainer}>
         <LinkKingLogo

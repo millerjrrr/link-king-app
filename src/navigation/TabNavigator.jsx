@@ -10,24 +10,30 @@ import {
 } from "@expo/vector-icons";
 import { Platform, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
-import { getConsoleState } from "../store/console";
 import React from "react";
+import { getColorsState } from "../store/colors";
 
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
-  const { golden } = useSelector(getConsoleState);
-  const color = colors.CONTRAST[golden];
+  const { colorScheme, golden } =
+    useSelector(getColorsState);
+  const color = colors[colorScheme].CONTRAST[golden];
+  const backgroundColor = colors[colorScheme].PRIMARY;
+  const tabBarInactiveTintColor =
+    colors[colorScheme].INACTIVE_CONTRAST;
 
   return (
     <Tab.Navigator
       screenOptions={{
         tabBarShowLabel: false,
         headerShown: false,
+        tabBarInactiveTintColor,
         tabBarStyle: [
           styles.tabBarStyle,
           {
             color,
+            backgroundColor,
             shadowColor: color,
           },
         ],
@@ -89,7 +95,6 @@ const TabNavigator = () => {
 
 const styles = StyleSheet.create({
   tabBarStyle: {
-    backgroundColor: colors.PRIMARY,
     height: 80,
     padding: 10,
     borderTopWidth: 0,

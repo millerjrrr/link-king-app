@@ -5,6 +5,8 @@ import {
 } from "react-native";
 import { Entypo, MaterialIcons } from "@expo/vector-icons";
 import colors from "../utils/colors";
+import { getColorsState } from "../store/colors";
+import { useSelector } from "react-redux";
 
 const OptionsIcon = ({
   onPress,
@@ -17,13 +19,16 @@ const OptionsIcon = ({
 }) => {
   const height = (size * 80) / 50;
 
+  const { colorScheme } = useSelector(getColorsState);
+  const backgroundColor = colors[colorScheme].SECONDARY;
+
   return (
     <TouchableOpacity
       {...{
         onPress,
         style: [
           styles.option,
-          { shadowColor: color, height },
+          { shadowColor: color, height, backgroundColor },
         ],
       }}
     >
@@ -54,7 +59,6 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: colors.SECONDARY,
     margin: 5,
     marginBottom: 0,
     ...Platform.select({

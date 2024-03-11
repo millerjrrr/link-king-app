@@ -2,13 +2,14 @@ import { Text, View } from "react-native";
 import CircularProgress from "react-native-circular-progress-indicator";
 import colors from "../../utils/colors";
 import { useSelector } from "react-redux";
-import { getConsoleState } from "../../store/console";
 import { getStatsState } from "../../store/stats";
+import { getColorsState } from "../../store/colors";
 
 const RatingCircle = () => {
-  const { golden } = useSelector(getConsoleState);
-  const color = colors.CONTRAST[golden];
-  const green = colors.GREEN;
+  const { colorScheme, golden } =
+    useSelector(getColorsState);
+  const color = colors[colorScheme].CONTRAST[golden];
+  const green = colors[colorScheme].GREEN;
   const {
     userGameData: { rating },
   } = useSelector(getStatsState);

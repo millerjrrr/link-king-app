@@ -13,6 +13,7 @@ import {
   updateCollection,
 } from "../store/collection";
 import Loader from "../ui/Loader";
+import { getColorsState } from "../store/colors";
 
 const ListHeaderComponent = () => {
   return <View style={{ height: 80 }} />;
@@ -27,12 +28,13 @@ const WordCollectionList = ({ navigation }) => {
   const { tickets, page, allDataLoaded } = useSelector(
     getCollectionState,
   );
+  const { colorScheme } = useSelector(getColorsState);
 
   return tickets === null || tickets.length === 0 ? (
     <View style={{ flex: 1, paddingTop: 90, width: "80%" }}>
       <Text
         style={{
-          color: colors.RED,
+          color: colors[colorScheme].CONTRAST[0],
           fontSize: 30,
           textAlign: "center",
         }}

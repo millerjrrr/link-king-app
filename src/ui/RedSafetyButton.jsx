@@ -7,6 +7,8 @@ import {
 } from "react-native";
 import colors from "../utils/colors";
 import { AntDesign } from "@expo/vector-icons";
+import { useSelector } from "react-redux";
+import { getColorsState } from "../store/colors";
 
 const RedSafetyButton = ({
   setElapsedTime,
@@ -42,15 +44,21 @@ const RedSafetyButton = ({
     setElapsedTime(0);
   };
 
+  const { colorScheme } = useSelector(getColorsState);
+
+  const { SECONDARY, RED } = colors[colorScheme];
+
   return (
     <View style={styles.container}>
       <TouchableHighlight
-        underlayColor={colors.SECONDARY}
+        underlayColor={SECONDARY}
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
         style={[
           styles.buttonContainer,
           {
+            backgroundColor: SECONDARY,
+            shadowColor: RED,
             height: size,
             width: size,
             borderRadius: size / 2,
@@ -58,9 +66,11 @@ const RedSafetyButton = ({
         ]}
       >
         <AntDesign
-          name={iconName}
-          size={size / 2}
-          color={colors.RED}
+          {...{
+            name: iconName,
+            size: size / 2,
+            color: RED,
+          }}
         />
       </TouchableHighlight>
     </View>
@@ -69,18 +79,14 @@ const RedSafetyButton = ({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.RED,
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "transparent",
     zIndex: 10,
   },
   buttonContainer: {
-    backgroundColor: colors.SECONDARY,
     justifyContent: "center",
     alignItems: "center",
-    shadowColor: colors.RED,
     ...Platform.select({
       ios: {
         shadowOffset: {

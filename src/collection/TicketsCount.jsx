@@ -1,13 +1,14 @@
 import { StyleSheet, Text, View } from "react-native";
 import colors from "../utils/colors";
 import { useSelector } from "react-redux";
-import { getConsoleState } from "../store/console";
 import { getCollectionState } from "../store/collection";
 import BusyWrapper from "../ui/Loader/BusyWrapper";
+import { getColorsState } from "../store/colors";
 
 const TicketsCount = () => {
-  const { golden } = useSelector(getConsoleState);
-  const color = colors.CONTRAST[golden];
+  const { colorScheme, golden } =
+    useSelector(getColorsState);
+  const color = colors[colorScheme].CONTRAST[golden];
 
   const { results, busy } = useSelector(getCollectionState);
   return (

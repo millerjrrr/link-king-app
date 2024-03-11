@@ -9,15 +9,17 @@ import colors from "../../utils/colors";
 import StatusBarFiller from "../../ui/StatusBarFiller";
 import AppNotification from "../AppNotification";
 import { useSelector } from "react-redux";
-import { getConsoleState } from "../../store/console";
 import FourCrowns from "../../ui/Graphics/FourCrowns";
 import LinkKingLogo from "../../ui/Graphics/LinkKingLogo";
 import HelpButton from "../../ui/HelpButton";
+import { getColorsState } from "../../store/colors";
 
 const InnerTabContainer = ({ children, heading, help }) => {
-  const { golden } = useSelector(getConsoleState);
-  const color = colors.CONTRAST[golden];
-  const crownColor = colors.SECONDARY;
+  const { colorScheme, golden } =
+    useSelector(getColorsState);
+  const { CONTRAST, SECONDARY } = colors[colorScheme];
+  const color = CONTRAST[golden];
+  const crownColor = SECONDARY;
   const marginTop = StatusBar.currentHeight;
 
   return (

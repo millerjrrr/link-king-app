@@ -1,15 +1,16 @@
 import { Text } from "react-native";
 import colors from "../../utils/colors";
 import { useSelector } from "react-redux";
-import { getConsoleState } from "../../store/console";
 import RedSafetyButton from "../../ui/RedSafetyButton";
+import { getColorsState } from "../../store/colors";
 
 const NoticeAndFlagButton = ({
   completeFunction,
   setElapsedTime,
 }) => {
-  const { golden } = useSelector(getConsoleState);
-  const color = colors.CONTRAST[golden];
+  const { colorScheme, golden } =
+    useSelector(getColorsState);
+  const color = colors[colorScheme].CONTRAST[golden];
 
   return (
     <>
@@ -27,7 +28,7 @@ const NoticeAndFlagButton = ({
       </Text>
       <Text
         style={{
-          color: colors.RED,
+          color: colors[colorScheme].RED,
           fontSize: 15,
           marginLeft: 30,
           marginRight: 30,

@@ -11,6 +11,7 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from "react-native-reanimated";
+import { getColorsState } from "../store/colors";
 
 const AppNotification = () => {
   const { message, type } = useSelector(
@@ -28,12 +29,14 @@ const AppNotification = () => {
     };
   });
 
-  const color = colors.CONTRAST[0];
-  let backgroundColor = colors.RED;
+  const { colorScheme, golden } =
+    useSelector(getColorsState);
+  const color = colors[colorScheme].CONTRAST[golden];
+  let backgroundColor = colors[colorScheme].RED;
 
   switch (type) {
     case "success":
-      backgroundColor = colors.GREEN;
+      backgroundColor = colors[colorScheme].GREEN;
       break;
   }
 

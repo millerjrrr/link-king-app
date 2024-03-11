@@ -14,22 +14,26 @@ import {
 import TabNavigator from "./TabNavigator";
 import { useEffect } from "react";
 import colors from "../utils/colors";
-import { getConsoleState } from "../store/console";
 import BusyWrapper from "../ui/Loader/BusyWrapper";
 import ConnectedWrapper from "../errors/ConnectedWrapper";
 import client from "../api/client";
 import catchAsyncError from "../api/catchError";
 import { getFromAsyncStorage } from "../utils/asyncStorage";
+import { getColorsState } from "../store/colors";
 
 const AppNavigator = () => {
-  const { golden } = useSelector(getConsoleState);
+  const { colorScheme, golden } =
+    useSelector(getColorsState);
+  const background = colors[colorScheme].PRIMARY;
+  const primary = colors[colorScheme].CONTRAST[golden];
+
   const { refresh } = useSelector(getAuthState);
   const AppTheme = {
     ...DefaultTheme,
     colors: {
       ...DefaultTheme.colors,
-      background: colors.PRIMARY,
-      primary: colors.CONTRAST[golden],
+      background,
+      primary,
     },
   };
   const { loggedIn, busy } = useSelector(getAuthState);
@@ -76,7 +80,12 @@ const AppNavigator = () => {
 
   return (
     <NavigationContainer theme={AppTheme}>
-      <BusyWrapper {...{ busy, color: "black", size: 96 }}>
+      <BusyWrapper
+        {...{
+          busy,
+          size: 96,
+        }}
+      >
         <ConnectedWrapper>
           {loggedIn ? <TabNavigator /> : <AuthNavigator />}
         </ConnectedWrapper>

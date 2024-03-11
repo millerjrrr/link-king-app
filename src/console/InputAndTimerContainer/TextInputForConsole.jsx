@@ -12,6 +12,7 @@ import {
   updateTimerIsOn,
 } from "../../store/console";
 import * as Speech from "expo-speech";
+import { getColorsState } from "../../store/colors";
 
 const TextInputForConsole = ({
   inputFieldRef,
@@ -35,6 +36,10 @@ const TextInputForConsole = ({
 
   const { formValue, attempt, showSolution } =
     useSelector(getConsoleState);
+  const { colorScheme } = useSelector(getColorsState);
+  const placeholderTextColor = colors[colorScheme].RED;
+  const backgroundColor = colors[colorScheme].SECONDARY;
+
   const placeholder = showSolution
     ? attempt.solutions[0]
     : null;
@@ -47,9 +52,9 @@ const TextInputForConsole = ({
         onChangeText,
         onFocus,
         placeholder,
+        placeholderTextColor,
       }}
       value={formValue}
-      placeholderTextColor={colors.RED}
       autoFocus={false}
       blurOnSubmit={false}
       enterKeyHint="enter"
@@ -57,7 +62,10 @@ const TextInputForConsole = ({
       autoCompleteType="off"
       autoCorrect={false}
       selectionColor={color}
-      style={[styles.input, { color, shadowColor: color }]}
+      style={[
+        styles.input,
+        { color, shadowColor: color, backgroundColor },
+      ]}
     />
   );
 };
@@ -70,7 +78,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 48,
     borderRadius: 35,
-    backgroundColor: colors.SECONDARY,
     ...Platform.select({
       ios: {
         shadowOffset: {

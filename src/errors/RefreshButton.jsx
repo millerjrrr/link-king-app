@@ -7,24 +7,30 @@ import {
 } from "react-native";
 import colors from "../utils/colors";
 import { Ionicons } from "@expo/vector-icons";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { refreshPage } from "../store/auth";
+import { getColorsState } from "../store/colors";
 
 const size = 200;
 
 const RefreshButton = () => {
   const dispatch = useDispatch();
 
+  const { colorScheme } = useSelector(getColorsState);
+  const color = colors[colorScheme].RED;
+  const backgroundColor = colors[colorScheme].SECONDARY;
+
   return (
     <View style={styles.container}>
       <TouchableOpacity
         onPress={() => dispatch(refreshPage())}
-        style={styles.button}
+        style={[
+          styles.button,
+          { backgroundColor, shadowColor: color },
+        ]}
       >
         <Ionicons
-          size={96}
-          name="refresh"
-          color={colors.RED}
+          {...{ size: 96, name: "refresh", color }}
         />
       </TouchableOpacity>
     </View>
@@ -41,12 +47,10 @@ const styles = StyleSheet.create({
   },
   button: {
     borderRadius: size / 2,
-    backgroundColor: colors.SECONDARY,
     height: size,
     width: size,
     alignItems: "center",
     justifyContent: "center",
-    shadowColor: colors.RED,
     ...Platform.select({
       ios: {
         shadowOffset: {

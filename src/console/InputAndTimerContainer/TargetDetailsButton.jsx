@@ -4,9 +4,12 @@ import colors from "../../utils/colors";
 import { useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../../store/console";
+import { getColorsState } from "../../store/colors";
 
 const TargetDetailsButton = () => {
   const { showSolution } = useSelector(getConsoleState);
+  const { colorScheme } = useSelector(getColorsState);
+  const color = colors[colorScheme].RED;
   const navigation = useNavigation();
 
   return showSolution ? (
@@ -17,9 +20,7 @@ const TargetDetailsButton = () => {
       style={styles.container}
     >
       <MaterialCommunityIcons
-        name="progress-question"
-        size={24}
-        color={colors.RED}
+        {...{ name: "progress-question", size: 24, color }}
       />
     </TouchableOpacity>
   ) : null;

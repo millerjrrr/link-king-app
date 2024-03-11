@@ -6,11 +6,12 @@ import {
 } from "react-native";
 import colors from "../utils/colors";
 import { useSelector } from "react-redux";
-import { getConsoleState } from "../store/console";
+import { getColorsState } from "../store/colors";
 
 const HelpButton = ({ help }) => {
-  const { golden } = useSelector(getConsoleState);
-  const color = colors.CONTRAST[golden];
+  const { colorScheme, golden } =
+    useSelector(getColorsState);
+  const color = colors[colorScheme].CONTRAST[golden];
 
   return help ? (
     <View style={styles.makeRelative}>

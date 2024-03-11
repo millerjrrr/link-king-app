@@ -5,20 +5,28 @@ import {
 } from "react-native";
 import colors from "../utils/colors";
 import { useSelector } from "react-redux";
-import { getConsoleState } from "../store/console";
 import { AntDesign } from "@expo/vector-icons";
+import { getColorsState } from "../store/colors";
 
 const GetLevelsBreakdownButton = ({
   onPress,
   iconName,
 }) => {
-  const { golden } = useSelector(getConsoleState);
-  const color = colors.CONTRAST[golden];
+  const { colorScheme, golden } =
+    useSelector(getColorsState);
+  const { SECONDARY, CONTRAST } = colors[colorScheme];
+  const color = CONTRAST[golden];
 
   return (
     <TouchableOpacity
       {...{
-        style: [styles.button, { shadowColor: color }],
+        style: [
+          styles.button,
+          {
+            shadowColor: color,
+            backgroundColor: SECONDARY,
+          },
+        ],
         onPress,
       }}
     >
@@ -33,7 +41,6 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     margin: 7,
     marginBottom: 0,
-    backgroundColor: colors.SECONDARY,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 1000,

@@ -12,7 +12,8 @@ import { AntDesign } from "@expo/vector-icons";
 const AppButton = ({
   title,
   name,
-  color = colors.CONTRAST[0],
+  color = colors.default.CONTRAST[0],
+  backgroundColor = colors.default.SECONDARY,
   size = 200,
   busy,
   onPress,
@@ -23,16 +24,22 @@ const AppButton = ({
         onPress={onPress}
         style={[
           styles.button,
-          { shadowColor: color, width: size },
+          {
+            shadowColor: color,
+            width: size,
+            backgroundColor,
+          },
         ]}
       >
-        <BusyWrapper {...{ busy, size: size / 3 }}>
+        <BusyWrapper {...{ color, busy, size: size / 3 }}>
           {title ? (
             <Text
-              style={{
-                color,
-                fontSize: size / 5,
-                textAlign: "center",
+              {...{
+                style: {
+                  color,
+                  fontSize: size / 5,
+                  textAlign: "center",
+                },
               }}
             >
               {title}
@@ -57,7 +64,6 @@ const styles = StyleSheet.create({
   },
   button: {
     aspectRatio: 1,
-    backgroundColor: colors.SECONDARY,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 1000,

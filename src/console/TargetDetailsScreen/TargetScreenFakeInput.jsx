@@ -7,12 +7,25 @@ import {
 import colors from "../../utils/colors";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../../store/console";
+import { getColorsState } from "../../store/colors";
 
 const TargetScreenFakeInput = () => {
   const { lastAttempt } = useSelector(getConsoleState);
+  const { colorScheme } = useSelector(getColorsState);
+  const { SECONDARY, RED } = colors[colorScheme];
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>
+    <View
+      style={[
+        styles.container,
+        {
+          color: RED,
+          backgroundColor: SECONDARY,
+          shadowColor: RED,
+        },
+      ]}
+    >
+      <Text style={[styles.text, { color: RED }]}>
         {lastAttempt
           ? " " + lastAttempt + " "
           : "timed out!"}
@@ -31,9 +44,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     borderRadius: 35,
-    backgroundColor: colors.SECONDARY,
-    color: colors.RED,
-    shadowColor: colors.RED,
     ...Platform.select({
       ios: {
         shadowOffset: {
@@ -49,7 +59,6 @@ const styles = StyleSheet.create({
   },
   text: {
     zIndex: 1,
-    color: colors.RED,
     fontSize: 40,
     textDecorationLine: "line-through",
   },

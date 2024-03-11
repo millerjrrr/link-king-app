@@ -2,10 +2,13 @@ import { Text, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../../store/console";
 import colors from "../../utils/colors";
+import { getColorsState } from "../../store/colors";
 
 const Solutions = () => {
-  const { attempt, golden } = useSelector(getConsoleState);
-  const color = colors.CONTRAST[golden];
+  const { attempt } = useSelector(getConsoleState);
+  const { colorScheme, golden } =
+    useSelector(getColorsState);
+  const color = colors[colorScheme].CONTRAST[golden];
 
   let solutionString = "";
   attempt.solutions.forEach((solution, index) => {

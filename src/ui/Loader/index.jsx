@@ -10,13 +10,14 @@ import Animated, {
 import { AntDesign } from "@expo/vector-icons";
 import colors from "../../utils/colors";
 import { useSelector } from "react-redux";
-import { getConsoleState } from "../../store/console";
+import { getColorsState } from "../../store/colors";
 
 const Loader = ({ size = 24, color }) => {
-  const { golden } = useSelector(getConsoleState);
-  const workingColor = color
+  const { colorScheme, golden } =
+    useSelector(getColorsState);
+  const loaderColor = color
     ? color
-    : colors.CONTRAST[golden];
+    : colors[colorScheme].CONTRAST[golden];
 
   const initialRotation = useSharedValue(0);
 
@@ -54,9 +55,11 @@ const Loader = ({ size = 24, color }) => {
     >
       <Animated.View style={transform}>
         <AntDesign
-          name="loading1"
-          size={size}
-          color={workingColor}
+          {...{
+            name: "loading1",
+            size,
+            color: loaderColor,
+          }}
         />
       </Animated.View>
     </View>

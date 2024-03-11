@@ -1,9 +1,18 @@
 import { StyleSheet, Platform, View } from "react-native";
 import colors from "../utils/colors";
+import { getColorsState } from "../store/colors";
+import { useSelector } from "react-redux";
 
 const Panel = ({ shadowColor, children }) => {
+  const { colorScheme } = useSelector(getColorsState);
+  const backgroundColor = colors[colorScheme].SECONDARY;
   return (
-    <View style={[styles.container, { shadowColor }]}>
+    <View
+      style={[
+        styles.container,
+        { shadowColor, backgroundColor },
+      ]}
+    >
       {children}
     </View>
   );
@@ -18,7 +27,6 @@ const styles = StyleSheet.create({
     marginBottom: 100,
     padding: 20,
     borderRadius: 20,
-    backgroundColor: colors.SECONDARY,
     ...Platform.select({
       ios: {
         shadowOffset: {

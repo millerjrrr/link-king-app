@@ -1,12 +1,13 @@
 import { Text } from "react-native";
-import { getConsoleState } from "../../store/console";
 import colors from "../../utils/colors";
 import { useSelector } from "react-redux";
 import { getStatsState } from "../../store/stats";
+import { getColorsState } from "../../store/colors";
 
 const TitleAndSub = () => {
-  const { golden } = useSelector(getConsoleState);
-  const color = colors.CONTRAST[golden];
+  const { colorScheme, golden } =
+    useSelector(getColorsState);
+  const color = colors[colorScheme].CONTRAST[golden];
 
   const {
     userGameData: { collectedWords },

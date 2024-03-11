@@ -10,9 +10,10 @@ const AuthFormContainer = ({
   heading,
   subHeading,
 }) => {
-  const color = colors.INACTIVE_CONTRAST;
+  const color = colors.default.INACTIVE_CONTRAST;
+  const backgroundColor = colors.default.PRIMARY;
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor }]}>
       <StatusBarFiller />
       <FourCrowns {...{ color }} />
       <LinkKingLogo />
@@ -34,13 +35,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
   },
   heading: {
-    color: colors.CONTRAST[0],
+    color: colors.default.CONTRAST[0],
     fontSize: 20,
     fontWeight: "bold",
     paddingVertical: 0,
   },
   subHeading: {
-    color: colors.CONTRAST[0],
+    color: colors.default.CONTRAST[0],
     fontSize: 13,
     textAlign: "center",
     marginBottom: 10,

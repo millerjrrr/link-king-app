@@ -1,5 +1,5 @@
 import { clearAsyncStorage } from "../utils/asyncStorage";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   updateLoggedInState,
   updateToken,
@@ -8,9 +8,10 @@ import InnerTabContainer from "../components/containers/InnerTabContainer";
 import { updateNotification } from "../store/notification";
 import OptionsMenuItem from "../options/OptionsMenuItem";
 import colors from "../utils/colors";
+import { getColorsState } from "../store/colors";
 // import SetDailyGoalScreen from "../options/SetDailyGoalScreen";
 
-const Options = ({ navigation }) => {
+const Options = () => {
   const dispatch = useDispatch();
   // const navigation = useNavigation();
 
@@ -31,43 +32,58 @@ const Options = ({ navigation }) => {
     );
   };
 
+  const { colorScheme } = useSelector(getColorsState);
+  const color = colors[colorScheme].INACTIVE_CONTRAST;
+
   return (
     <InnerTabContainer heading="Options">
       <OptionsMenuItem
-        iconName="target-variant"
-        text="Set daily goal"
-        first={true}
-        color={colors.INACTIVE_CONTRAST}
-        onPress={comingSoon}
+        {...{
+          iconName: "target-variant",
+          text: "Set daily goal",
+          first: true,
+          color,
+          onPress: comingSoon,
+        }}
       />
       <OptionsMenuItem
-        iconName="palette-outline"
-        text="Color scheme"
-        onPress={comingSoon}
-        color={colors.INACTIVE_CONTRAST}
+        {...{
+          iconName: "palette-outline",
+          text: "Color scheme",
+          color,
+          onPress: comingSoon,
+        }}
       />
       <OptionsMenuItem
-        iconName="translate"
-        text="Choose language pair"
-        onPress={comingSoon}
-        color={colors.INACTIVE_CONTRAST}
+        {...{
+          iconName: "translate",
+          text: "Choose language pair",
+          color,
+          onPress: comingSoon,
+        }}
       />
       <OptionsMenuItem
-        iconName="cash"
-        text="Contribute"
-        onPress={comingSoon}
-        color={colors.INACTIVE_CONTRAST}
+        {...{
+          iconName: "cash",
+          text: "Contribute",
+          color,
+          onPress: comingSoon,
+        }}
       />
       <OptionsMenuItem
-        iconName="account-details"
-        text="Edit user details"
-        onPress={comingSoon}
-        color={colors.INACTIVE_CONTRAST}
+        {...{
+          iconName: "account-details",
+          text: "Edit user details",
+          color,
+          onPress: comingSoon,
+        }}
       />
       <OptionsMenuItem
-        iconName="logout"
-        text="Logout"
-        onPress={logOut}
+        {...{
+          iconName: "logout",
+          text: "Logout",
+          onPress: logOut,
+        }}
       />
     </InnerTabContainer>
   );

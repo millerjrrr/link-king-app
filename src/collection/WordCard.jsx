@@ -4,7 +4,6 @@ import colors from "../utils/colors";
 import { numberDateToWordStyleDate } from "./functions/numberDateToWordStyle";
 import DeleteButton from "./DeleteButton";
 import { useSelector } from "react-redux";
-import { getConsoleState } from "../store/console";
 import WordCardLevelStars from "./WordCardLevelStars";
 import {
   Container,
@@ -14,10 +13,14 @@ import {
   RowContainer,
   Title,
 } from "./WordCardStyledComponents";
+import { getColorsState } from "../store/colors";
 
 const WordCard = ({ navigation, ticket }) => {
-  const { golden } = useSelector(getConsoleState);
-  const color = colors.CONTRAST[golden];
+  const { colorScheme, golden } =
+    useSelector(getColorsState);
+  const { CONTRAST, SECONDARY } = colors[colorScheme];
+  const color = CONTRAST[golden];
+  const backgroundColor = SECONDARY;
 
   const {
     dicEntry: { target, rating },
@@ -33,7 +36,13 @@ const WordCard = ({ navigation, ticket }) => {
     });
 
   return (
-    <Container {...{ color, style: styles.container }}>
+    <Container
+      {...{
+        color,
+        backgroundColor,
+        style: styles.container,
+      }}
+    >
       <InfoContainer>
         <RowContainer>
           <Title {...{ color }}>{target}</Title>

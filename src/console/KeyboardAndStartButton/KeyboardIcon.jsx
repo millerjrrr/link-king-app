@@ -1,11 +1,11 @@
 import { TouchableOpacity } from "react-native";
 import { useSelector } from "react-redux";
-import { getConsoleState } from "../../store/console";
 import colors from "../../utils/colors";
 import {
   Entypo,
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
+import { getColorsState } from "../../store/colors";
 
 const KeyboardIcon = ({
   name,
@@ -13,8 +13,9 @@ const KeyboardIcon = ({
   size = 48,
   onPress,
 }) => {
-  const { golden } = useSelector(getConsoleState);
-  const color = colors.CONTRAST[golden];
+  const { colorScheme, golden } =
+    useSelector(getColorsState);
+  const color = colors[colorScheme].CONTRAST[golden];
   return (
     <TouchableOpacity
       {...{ onPress, style: { margin: 4 } }}
