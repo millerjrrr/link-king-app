@@ -49,7 +49,7 @@ const TextInputForConsole = ({
         placeholder,
       }}
       value={formValue}
-      placeholderTextColor={colors.LIGHTRED}
+      placeholderTextColor={colors.RED}
       autoFocus={false}
       blurOnSubmit={false}
       enterKeyHint="enter"

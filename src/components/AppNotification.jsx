@@ -29,11 +29,11 @@ const AppNotification = () => {
   });
 
   const color = colors.CONTRAST[0];
-  let backgroundColor = colors.NOTIFICATION_RED;
+  let backgroundColor = colors.RED;
 
   switch (type) {
     case "success":
-      backgroundColor = colors.NOTIFICATION_GREEN;
+      backgroundColor = colors.GREEN;
       break;
   }
 

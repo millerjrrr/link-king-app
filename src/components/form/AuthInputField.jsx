@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
     color: colors.CONTRAST[0],
   },
   errorMsg: {
-    color: colors.ERROR,
+    color: colors.RED,
   },
   rightIcon: {
     width: 45,

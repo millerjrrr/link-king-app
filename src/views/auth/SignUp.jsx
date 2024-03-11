@@ -10,6 +10,7 @@ import { useNavigation } from "@react-navigation/native";
 import client from "../../api/client";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { authErrorHandler } from "../../errors/authErrorHandler";
 
 const validationSchema = yup.object({
   name: yup

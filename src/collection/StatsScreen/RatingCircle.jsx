@@ -8,7 +8,7 @@ import { getStatsState } from "../../store/stats";
 const RatingCircle = () => {
   const { golden } = useSelector(getConsoleState);
   const color = colors.CONTRAST[golden];
-  const green = colors.GREENPROGRESS;
+  const green = colors.GREEN;
   const {
     userGameData: { rating },
   } = useSelector(getStatsState);

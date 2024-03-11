@@ -6,7 +6,7 @@ const BloodRedCover = ({ elapsedTime }) => {
     <View style={styles.container}>
       <View
         style={{
-          backgroundColor: colors.BLOOD,
+          backgroundColor: colors.LIGHTRED,
           width: `${Math.min(elapsedTime / 3, 1) * 100}%`,
           height: "100%",
           position: "absolute",
