@@ -11,9 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { refreshPage } from "../store/auth";
 import { getColorsState } from "../store/colors";
 
-const size = 200;
-
-const RefreshButton = () => {
+const RefreshButton = ({ size = 200 }) => {
   const dispatch = useDispatch();
 
   const { colorScheme } = useSelector(getColorsState);
@@ -26,7 +24,13 @@ const RefreshButton = () => {
         onPress={() => dispatch(refreshPage())}
         style={[
           styles.button,
-          { backgroundColor, shadowColor: color },
+          {
+            backgroundColor,
+            shadowColor: color,
+            borderRadius: size / 2,
+            height: size,
+            width: size,
+          },
         ]}
       >
         <Ionicons
@@ -46,9 +50,6 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
   button: {
-    borderRadius: size / 2,
-    height: size,
-    width: size,
     alignItems: "center",
     justifyContent: "center",
     ...Platform.select({

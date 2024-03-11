@@ -55,7 +55,7 @@ const OptionsIcon = ({
 
 const styles = StyleSheet.create({
   option: {
-    borderRadius: "100%",
+    borderRadius: 1000,
     aspectRatio: 1,
     justifyContent: "center",
     alignItems: "center",
