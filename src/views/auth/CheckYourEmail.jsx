@@ -32,7 +32,7 @@ const CheckYourEmail = ({
 
 const styles = StyleSheet.create({
   text: {
-    color: colors.default.CONTRAST[0],
+    color: colors.dark.CONTRAST[0],
     fontSize: 30,
     textAlign: "center",
   },

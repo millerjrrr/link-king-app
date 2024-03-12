@@ -37,7 +37,7 @@ const ColorSchemeScreen = () => {
       <Container>
         <TextBlock {...{ color }}>{textA}</TextBlock>
         <ColorsContainer>
-          <ColorSchemeButton cs="default" />
+          <ColorSchemeButton cs="dark" />
           <ColorSchemeButton cs="brasil" />
           <ColorSchemeButton cs="light" />
         </ColorsContainer>

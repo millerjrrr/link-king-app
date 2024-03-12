@@ -1,5 +1,5 @@
 const colors = {
-  default: {
+  dark: {
     PRIMARY: "#1b1b1b",
     SECONDARY: "#000000",
     CONTRAST: ["#ffffff", "#ffeeba"],

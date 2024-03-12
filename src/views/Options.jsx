@@ -1,4 +1,4 @@
-import { clearAsyncStorage } from "../utils/asyncStorage";
+import { removeFromAsyncStorage } from "../utils/asyncStorage";
 import { useDispatch, useSelector } from "react-redux";
 import {
   updateLoggedInState,
@@ -10,17 +10,15 @@ import OptionsMenuItem from "../options/OptionsMenuItem";
 import colors from "../utils/colors";
 import { getColorsState } from "../store/colors";
 import { useNavigation } from "@react-navigation/native";
-import VoiceSelectionScreen from "../options/VoiceSelectionScreen";
 
 const Options = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
-  const logOut = () => {
+  const logOut = async () => {
     dispatch(updateToken(""));
     dispatch(updateLoggedInState(false));
-
-    clearAsyncStorage();
+    removeFromAsyncStorage("auth-token");
   };
 
   const comingSoon = () => {

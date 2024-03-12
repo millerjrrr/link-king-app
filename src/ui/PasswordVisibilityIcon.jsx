@@ -6,13 +6,13 @@ const PasswordVisibilityIcon = ({ privateIcon }) => {
     <Entypo
       name="eye"
       size={16}
-      color={colors.default.CONTRAST[0]}
+      color={colors.dark.CONTRAST[0]}
     />
   ) : (
     <Entypo
       name="eye-with-line"
       size={16}
-      color={colors.default.CONTRAST[0]}
+      color={colors.dark.CONTRAST[0]}
     />
   );
 };

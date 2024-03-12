@@ -6,6 +6,7 @@ import {
   updateColors,
 } from "../../store/colors";
 import { StatusBar } from "react-native";
+import { saveToAsyncStorage } from "../../utils/asyncStorage";
 
 const ColorSchemeButton = ({ cs }) => {
   const backgroundColor = colors[cs].SECONDARY;
@@ -17,6 +18,7 @@ const ColorSchemeButton = ({ cs }) => {
   const statusBarColor = colors[cs].STATUSBAR;
 
   const onPress = () => {
+    saveToAsyncStorage("color-scheme", cs);
     dispatch(updateColors({ colorScheme: cs }));
     StatusBar.setBarStyle(statusBarColor);
   };

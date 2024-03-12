@@ -2,7 +2,7 @@ import { Text, Pressable } from "react-native";
 import colors from "../utils/colors";
 
 const AppLink = ({ title, onPress }) => {
-  const color = colors.default.INACTIVE_CONTRAST;
+  const color = colors.dark.INACTIVE_CONTRAST;
 
   return (
     <Pressable {...{ onPress, style: { margin: 5 } }}>

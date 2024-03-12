@@ -19,8 +19,12 @@ import ConnectedWrapper from "../errors/ConnectedWrapper";
 import client from "../api/client";
 import catchAsyncError from "../api/catchError";
 import { getFromAsyncStorage } from "../utils/asyncStorage";
-import { getColorsState } from "../store/colors";
+import {
+  getColorsState,
+  updateColors,
+} from "../store/colors";
 import { StatusBar } from "react-native";
+import { authErrorHandler } from "../errors/authErrorHandler";
 
 const AppNavigator = () => {
   const { colorScheme, golden } =
@@ -82,6 +86,22 @@ const AppNavigator = () => {
       }
     };
 
+    const fetchColorScheme = async () => {
+      dispatch(updateBusyState(true));
+      try {
+        const colorScheme =
+          await getFromAsyncStorage("color-scheme");
+        if (!colorScheme) {
+          dispatch(updateBusyState(false));
+          return;
+        }
+        dispatch(updateColors({ colorScheme }));
+      } catch (error) {
+        authErrorHandler(error, dispatch);
+      }
+    };
+
+    fetchColorScheme();
     fetchAuthInfo();
   }, [refresh]);
 

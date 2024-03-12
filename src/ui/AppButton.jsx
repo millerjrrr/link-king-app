@@ -12,8 +12,8 @@ import { AntDesign } from "@expo/vector-icons";
 const AppButton = ({
   title,
   name,
-  color = colors.default.CONTRAST[0],
-  backgroundColor = colors.default.SECONDARY,
+  color = colors.dark.CONTRAST[0],
+  backgroundColor = colors.dark.SECONDARY,
   size = 200,
   busy,
   onPress,

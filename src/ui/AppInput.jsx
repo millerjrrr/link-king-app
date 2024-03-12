@@ -13,9 +13,7 @@ const AppInput = (props) => {
       autoCompleteType="off"
       autoCorrect={false}
       textContentType="none"
-      placeholderTextColor={
-        colors.default.INACTIVE_CONTRAST
-      }
+      placeholderTextColor={colors.dark.INACTIVE_CONTRAST}
       style={[styles.input, props.style]}
     />
   );
@@ -24,13 +22,13 @@ const AppInput = (props) => {
 const styles = StyleSheet.create({
   input: {
     borderWidth: 2,
-    borderColor: colors.default.SECONDARY,
+    borderColor: colors.dark.SECONDARY,
     height: 45,
     borderRadius: 25,
     padding: 10,
-    backgroundColor: colors.default.SECONDARY,
-    color: colors.default.CONTRAST[0],
-    shadowColor: colors.default.CONTRAST[0],
+    backgroundColor: colors.dark.SECONDARY,
+    color: colors.dark.CONTRAST[0],
+    shadowColor: colors.dark.CONTRAST[0],
     ...Platform.select({
       ios: {
         shadowOffset: {
