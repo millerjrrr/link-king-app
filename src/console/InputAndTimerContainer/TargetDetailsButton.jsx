@@ -9,7 +9,7 @@ import { getColorsState } from "../../store/colors";
 const TargetDetailsButton = () => {
   const { showSolution } = useSelector(getConsoleState);
   const { colorScheme } = useSelector(getColorsState);
-  const color = colors[colorScheme].RED;
+  const color = colors[colorScheme].LIGHTRED;
   const navigation = useNavigation();
 
   return showSolution ? (

@@ -25,7 +25,7 @@ const TicketsCount = () => {
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
-    paddingBottom: 5,
+    marginBottom: 5,
     height: 15,
   },
   text: {

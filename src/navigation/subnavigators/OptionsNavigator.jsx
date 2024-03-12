@@ -6,6 +6,7 @@ import {
 import SetDailyGoalScreen from "../../options/SetDailyGoalScreen";
 import Options from "../../views/Options";
 import VoiceSelectionScreen from "../../options/VoiceSelectionScreen";
+import ColorSchemeScreen from "../../options/ColorSchemeScreen";
 
 const OptionsStack = createStackNavigator();
 
@@ -29,6 +30,10 @@ const OptionsNavigator = () => {
       <OptionsStack.Screen
         name="VoiceSelectionScreen"
         component={VoiceSelectionScreen}
+      />
+      <OptionsStack.Screen
+        name="ColorSchemeScreen"
+        component={ColorSchemeScreen}
       />
     </OptionsStack.Navigator>
   );

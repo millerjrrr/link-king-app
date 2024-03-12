@@ -15,6 +15,10 @@ const appTextContent = {
           "sounds quite different to english from the USA. " +
           "Choose the accent that's right for you!",
       },
+      colorSchemeScreen: {
+        title: "Color Scheme",
+        textA: "select a color scheme",
+      },
     },
   },
 };

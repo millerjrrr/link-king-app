@@ -61,8 +61,7 @@ const Options = () => {
         {...{
           iconName: "palette-outline",
           text: "Color scheme",
-          color,
-          onPress: comingSoon,
+          onPress: () => navigateTo("ColorSchemeScreen"),
         }}
       />
       <OptionsMenuItem
