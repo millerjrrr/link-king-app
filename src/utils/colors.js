@@ -8,16 +8,18 @@ const colors = {
     RED: "#f37777",
     LIGHTRED: "#f377774d",
     GREEN: "#2ecc71",
+    STATUSBAR: "light-content",
   },
   light: {
-    PRIMARY: "#f5f1e1",
+    PRIMARY: "#fffef7",
     SECONDARY: "#ffffff",
-    CONTRAST: ["#362718", "#a1945a"],
+    CONTRAST: ["#362718", "#6b653d"],
     INACTIVE_CONTRAST: "#36271880",
     ORANGE: "#f8ab54",
     RED: "#f37777",
     LIGHTRED: "#f377774d",
     GREEN: "#2ecc71",
+    STATUSBAR: "dark-content",
   },
   brasil: {
     PRIMARY: "#6EBE6A",
@@ -28,6 +30,7 @@ const colors = {
     RED: "#f37777",
     LIGHTRED: "#f377774d",
     GREEN: "#2ecc71",
+    STATUSBAR: "light-content",
   },
 };
 

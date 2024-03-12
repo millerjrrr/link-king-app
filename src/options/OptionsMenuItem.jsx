@@ -19,7 +19,7 @@ const OptionsMenuItem = ({
   const { colorScheme, golden } =
     useSelector(getColorsState);
   const backgroundColor = colors[colorScheme].PRIMARY;
-  const borderTopColor = colors[colorScheme].SECONDARY;
+  const borderColor = colors[colorScheme].INACTIVE_CONTRAST;
 
   return (
     <View style={[styles.container, { backgroundColor }]}>
@@ -36,7 +36,7 @@ const OptionsMenuItem = ({
       <TouchableOpacity
         style={[
           styles.option,
-          { borderTopColor },
+          { borderColor },
           first
             ? { borderTopWidth: 0 }
             : { borderTopWidth: 1 },

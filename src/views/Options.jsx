@@ -9,18 +9,18 @@ import { updateNotification } from "../store/notification";
 import OptionsMenuItem from "../options/OptionsMenuItem";
 import colors from "../utils/colors";
 import { getColorsState } from "../store/colors";
-// import SetDailyGoalScreen from "../options/SetDailyGoalScreen";
+import { useNavigation } from "@react-navigation/native";
+import VoiceSelectionScreen from "../options/VoiceSelectionScreen";
 
 const Options = () => {
   const dispatch = useDispatch();
-  // const navigation = useNavigation();
+  const navigation = useNavigation();
 
   const logOut = () => {
     dispatch(updateToken(""));
     dispatch(updateLoggedInState(false));
 
     clearAsyncStorage();
-    // navigation.navigate("SignIn");
   };
 
   const comingSoon = () => {
@@ -30,6 +30,10 @@ const Options = () => {
         type: "error",
       }),
     );
+  };
+
+  const navigateTo = (pageName) => {
+    navigation.navigate(pageName);
   };
 
   const { colorScheme } = useSelector(getColorsState);
@@ -44,6 +48,13 @@ const Options = () => {
           first: true,
           color,
           onPress: comingSoon,
+        }}
+      />
+      <OptionsMenuItem
+        {...{
+          iconName: "account-tie-voice",
+          text: "Voice settings",
+          onPress: () => navigateTo("VoiceSelectionScreen"),
         }}
       />
       <OptionsMenuItem

@@ -37,7 +37,7 @@ const TextInputForConsole = ({
   const { formValue, attempt, showSolution } =
     useSelector(getConsoleState);
   const { colorScheme } = useSelector(getColorsState);
-  const placeholderTextColor = colors[colorScheme].RED;
+  const placeholderTextColor = colors[colorScheme].LIGHTRED;
   const backgroundColor = colors[colorScheme].SECONDARY;
 
   const placeholder = showSolution
@@ -64,7 +64,12 @@ const TextInputForConsole = ({
       selectionColor={color}
       style={[
         styles.input,
-        { color, shadowColor: color, backgroundColor },
+        {
+          color,
+          shadowColor: color,
+          backgroundColor,
+          borderColor: color,
+        },
       ]}
     />
   );
@@ -88,6 +93,7 @@ const styles = StyleSheet.create({
       },
       android: {
         elevation: 3,
+        borderWidth: 2,
       },
     }),
   },

@@ -5,7 +5,7 @@ import {
 } from "@react-navigation/stack";
 import SetDailyGoalScreen from "../../options/SetDailyGoalScreen";
 import Options from "../../views/Options";
-// import EditUserDetailsScreen from "../../options/EditUserDetailsScreen";
+import VoiceSelectionScreen from "../../options/VoiceSelectionScreen";
 
 const OptionsStack = createStackNavigator();
 
@@ -26,10 +26,10 @@ const OptionsNavigator = () => {
         name="SetDailyGoalScreen"
         component={SetDailyGoalScreen}
       />
-      {/* <OptionsStack.Screen
-        name="EditUserDetailsScreen"
-        component={EditUserDetailsScreen}
-      /> */}
+      <OptionsStack.Screen
+        name="VoiceSelectionScreen"
+        component={VoiceSelectionScreen}
+      />
     </OptionsStack.Navigator>
   );
 };

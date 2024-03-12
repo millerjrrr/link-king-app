@@ -4,7 +4,7 @@ import {
 } from "@reduxjs/toolkit";
 
 const initialState = {
-  colorScheme: "default",
+  colorScheme: "light",
   golden: 0,
 };
 

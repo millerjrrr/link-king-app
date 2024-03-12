@@ -12,14 +12,13 @@ const KeyboardIconContainer = () => {
   const {
     showSolution,
     isPlaying,
-    tries,
     formValue,
     startedThisWord,
     attempt: { solutions },
   } = useSelector(getConsoleState);
 
-  const closeKeyboardSubmitAnswer = () => {
-    if (!showSolution && isPlaying && tries === 1) {
+  const closeKeyboard = () => {
+    if (!showSolution && isPlaying) {
       submitAnswer({
         dispatch,
         formValue,
@@ -53,14 +52,14 @@ const KeyboardIconContainer = () => {
             name: "back",
             entypo: true,
             size: 48,
-            onPress: closeKeyboardSubmitAnswer,
+            onPress: closeKeyboard,
           }}
         />
         <KeyboardIcon
           {...{
             name: "keyboard-off",
             size: 24,
-            onPress: closeKeyboardSubmitAnswer,
+            onPress: closeKeyboard,
           }}
         />
         <KeyboardIcon

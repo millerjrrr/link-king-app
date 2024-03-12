@@ -20,12 +20,19 @@ import client from "../api/client";
 import catchAsyncError from "../api/catchError";
 import { getFromAsyncStorage } from "../utils/asyncStorage";
 import { getColorsState } from "../store/colors";
+import { StatusBar } from "react-native";
 
 const AppNavigator = () => {
   const { colorScheme, golden } =
     useSelector(getColorsState);
   const background = colors[colorScheme].PRIMARY;
   const primary = colors[colorScheme].CONTRAST[golden];
+
+  const statusBarColor = colors[colorScheme].STATUSBAR;
+
+  useEffect(() => {
+    StatusBar.setBarStyle(statusBarColor);
+  }, []);
 
   const { refresh } = useSelector(getAuthState);
   const AppTheme = {
