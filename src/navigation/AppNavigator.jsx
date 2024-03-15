@@ -34,10 +34,6 @@ const AppNavigator = () => {
 
   const statusBarColor = colors[colorScheme].STATUSBAR;
 
-  useEffect(() => {
-    StatusBar.setBarStyle(statusBarColor);
-  }, []);
-
   const { refresh } = useSelector(getAuthState);
   const AppTheme = {
     ...DefaultTheme,
@@ -51,6 +47,7 @@ const AppNavigator = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    StatusBar.setBarStyle(statusBarColor);
     const fetchAuthInfo = async () => {
       dispatch(updateBusyState(true));
       try {

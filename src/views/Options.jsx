@@ -44,8 +44,7 @@ const Options = () => {
           iconName: "target-variant",
           text: "Set daily goal",
           first: true,
-          color,
-          onPress: comingSoon,
+          onPress: () => navigateTo("SetDailyGoalScreen"),
         }}
       />
       <OptionsMenuItem
@@ -62,18 +61,26 @@ const Options = () => {
           onPress: () => navigateTo("ColorSchemeScreen"),
         }}
       />
-      <OptionsMenuItem
+      {/* <OptionsMenuItem
         {...{
           iconName: "translate",
           text: "Choose language pair",
           color,
           onPress: comingSoon,
         }}
-      />
-      <OptionsMenuItem
+      /> */}
+      {/* <OptionsMenuItem
         {...{
           iconName: "cash",
           text: "Contribute",
+          color,
+          onPress: comingSoon,
+        }}
+      /> */}
+      <OptionsMenuItem
+        {...{
+          iconName: "contacts",
+          text: "Contact Details",
           color,
           onPress: comingSoon,
         }}

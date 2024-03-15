@@ -19,6 +19,14 @@ const appTextContent = {
         title: "Color Scheme",
         textA: "select a color scheme",
       },
+      setDailyGoal: {
+        title: "Daily Goal",
+        textA: "Time:",
+        textB: "New Words:",
+        textC: "Steps:",
+        textD: "Or",
+        textE: "restore default values",
+      },
     },
   },
 };

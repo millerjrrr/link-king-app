@@ -11,7 +11,7 @@ const colors = {
     STATUSBAR: "light-content",
   },
   light: {
-    PRIMARY: "#fffef7",
+    PRIMARY: "#f5f5f5",
     SECONDARY: "#ffffff",
     CONTRAST: ["#362718", "#6b653d"],
     INACTIVE_CONTRAST: "#36271880",
