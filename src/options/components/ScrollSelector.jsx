@@ -1,7 +1,7 @@
 import { Text, View } from "react-native";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { getColorsState } from "../../store/colors";
+import { getSettingsState } from "../../store/settings";
 import colors from "../../utils/colors";
 import { LinearGradient } from "expo-linear-gradient";
 import ScrollPicker from "react-native-wheel-scrollview-picker";
@@ -30,8 +30,9 @@ const BottomShadow = styled(LinearGradient)`
 `;
 
 const ScrollSelector = ({ onSelect, length, start }) => {
-  const { colorScheme, golden } =
-    useSelector(getColorsState);
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
   const backgroundColor = colors[colorScheme].PRIMARY;
   const color = colors[colorScheme].CONTRAST[golden];
 

@@ -6,14 +6,15 @@ import {
 import colors from "../utils/colors";
 import { useSelector } from "react-redux";
 import { AntDesign } from "@expo/vector-icons";
-import { getColorsState } from "../store/colors";
+import { getSettingsState } from "../store/settings";
 
 const GetLevelsBreakdownButton = ({
   onPress,
   iconName,
 }) => {
-  const { colorScheme, golden } =
-    useSelector(getColorsState);
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
   const { SECONDARY, CONTRAST } = colors[colorScheme];
   const color = CONTRAST[golden];
 

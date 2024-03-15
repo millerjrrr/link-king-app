@@ -8,7 +8,7 @@ import InnerTabContainer from "../components/containers/InnerTabContainer";
 import { updateNotification } from "../store/notification";
 import OptionsMenuItem from "../options/OptionsMenuItem";
 import colors from "../utils/colors";
-import { getColorsState } from "../store/colors";
+import { getSettingsState } from "../store/settings";
 import { useNavigation } from "@react-navigation/native";
 
 const Options = () => {
@@ -34,7 +34,7 @@ const Options = () => {
     navigation.navigate(pageName);
   };
 
-  const { colorScheme } = useSelector(getColorsState);
+  const { colorScheme } = useSelector(getSettingsState);
   const color = colors[colorScheme].INACTIVE_CONTRAST;
 
   return (

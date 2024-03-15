@@ -4,11 +4,11 @@ import colors from "../../utils/colors";
 import { useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../../store/console";
-import { getColorsState } from "../../store/colors";
+import { getSettingsState } from "../../store/settings";
 
 const TargetDetailsButton = () => {
   const { showSolution } = useSelector(getConsoleState);
-  const { colorScheme } = useSelector(getColorsState);
+  const { colorScheme } = useSelector(getSettingsState);
   const color = colors[colorScheme].LIGHTRED;
   const navigation = useNavigation();
 

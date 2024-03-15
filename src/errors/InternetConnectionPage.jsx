@@ -1,11 +1,11 @@
 import { Text, StyleSheet, View } from "react-native";
 import colors from "../utils/colors";
 import RefreshButton from "./RefreshButton";
-import { getColorsState } from "../store/colors";
+import { getSettingsState } from "../store/settings";
 import { useSelector } from "react-redux";
 
 const InternetConnectionPage = ({ refresh }) => {
-  const { colorScheme } = useSelector(getColorsState);
+  const { colorScheme } = useSelector(getSettingsState);
   const color = colors[colorScheme].RED;
   const backgroundColor = colors[colorScheme].PRIMARY;
   return (

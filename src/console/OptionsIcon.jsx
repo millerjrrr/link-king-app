@@ -5,7 +5,7 @@ import {
 } from "react-native";
 import { Entypo, MaterialIcons } from "@expo/vector-icons";
 import colors from "../utils/colors";
-import { getColorsState } from "../store/colors";
+import { getSettingsState } from "../store/settings";
 import { useSelector } from "react-redux";
 
 const OptionsIcon = ({
@@ -19,7 +19,7 @@ const OptionsIcon = ({
 }) => {
   const height = (size * 80) / 50;
 
-  const { colorScheme } = useSelector(getColorsState);
+  const { colorScheme } = useSelector(getSettingsState);
   const backgroundColor = colors[colorScheme].SECONDARY;
 
   return (

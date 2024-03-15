@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import { useSelector } from "react-redux";
 import colors from "../utils/colors";
-import { getColorsState } from "../store/colors";
+import { getSettingsState } from "../store/settings";
 
 const OptionsMenuItem = ({
   iconName,
@@ -16,8 +16,9 @@ const OptionsMenuItem = ({
   first,
   color,
 }) => {
-  const { colorScheme, golden } =
-    useSelector(getColorsState);
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
   const backgroundColor = colors[colorScheme].PRIMARY;
   const borderColor = colors[colorScheme].INACTIVE_CONTRAST;
 

@@ -2,7 +2,7 @@ import { Text, View, StyleSheet } from "react-native";
 import colors from "../utils/colors";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../store/console";
-import { getColorsState } from "../store/colors";
+import { getSettingsState } from "../store/settings";
 
 const TailEntry = ({ text, fontSize, opacity, color }) => {
   return (
@@ -17,8 +17,9 @@ const TailEntry = ({ text, fontSize, opacity, color }) => {
 const Tail = () => {
   const { tail, showSolution } =
     useSelector(getConsoleState);
-  const { colorScheme, golden } =
-    useSelector(getColorsState);
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
   const color = colors[colorScheme].CONTRAST[golden];
 
   return !showSolution ? (

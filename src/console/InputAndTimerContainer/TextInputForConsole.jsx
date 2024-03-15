@@ -12,7 +12,7 @@ import {
   updateTimerIsOn,
 } from "../../store/console";
 import * as Speech from "expo-speech";
-import { getColorsState } from "../../store/colors";
+import { getSettingsState } from "../../store/settings";
 
 const TextInputForConsole = ({
   inputFieldRef,
@@ -36,7 +36,7 @@ const TextInputForConsole = ({
 
   const { formValue, attempt, showSolution } =
     useSelector(getConsoleState);
-  const { colorScheme } = useSelector(getColorsState);
+  const { colorScheme } = useSelector(getSettingsState);
   const placeholderTextColor = colors[colorScheme].LIGHTRED;
   const backgroundColor = colors[colorScheme].SECONDARY;
 

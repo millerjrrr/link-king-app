@@ -2,14 +2,15 @@ import { Text, View } from "react-native";
 import { useSelector } from "react-redux";
 import colors from "../../utils/colors";
 import RedSafetyButton from "../../ui/RedSafetyButton";
-import { getColorsState } from "../../store/colors";
+import { getSettingsState } from "../../store/settings";
 
 const NoticeAndFlagButton = ({
   completeFunction,
   setElapsedTime,
 }) => {
-  const { colorScheme, golden } =
-    useSelector(getColorsState);
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
   const color = colors[colorScheme].CONTRAST[golden];
 
   return (

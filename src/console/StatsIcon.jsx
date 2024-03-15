@@ -2,15 +2,16 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Text, View, StyleSheet } from "react-native";
 import colors from "../utils/colors";
 import { useSelector } from "react-redux";
-import { getColorsState } from "../store/colors";
+import { getSettingsState } from "../store/settings";
 
 const StatsIcon = ({
   name = "clock-outline",
   text = "",
   size = 18,
 }) => {
-  const { colorScheme, golden } =
-    useSelector(getColorsState);
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
   const color = colors[colorScheme].CONTRAST[golden];
   return (
     <View style={styles.container}>

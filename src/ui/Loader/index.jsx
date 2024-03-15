@@ -10,11 +10,12 @@ import Animated, {
 import { AntDesign } from "@expo/vector-icons";
 import colors from "../../utils/colors";
 import { useSelector } from "react-redux";
-import { getColorsState } from "../../store/colors";
+import { getSettingsState } from "../../store/settings";
 
 const Loader = ({ size = 24, color }) => {
-  const { colorScheme, golden } =
-    useSelector(getColorsState);
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
   const loaderColor = color
     ? color
     : colors[colorScheme].CONTRAST[golden];

@@ -2,16 +2,17 @@ import { useDispatch, useSelector } from "react-redux";
 import AppButton from "../../ui/AppButton";
 import colors from "../../utils/colors";
 import {
-  getColorsState,
-  updateColors,
-} from "../../store/colors";
+  getSettingsState,
+  updateSettings,
+} from "../../store/settings";
 import { StatusBar } from "react-native";
 import { saveToAsyncStorage } from "../../utils/asyncStorage";
 
 const ColorSchemeButton = ({ cs }) => {
   const backgroundColor = colors[cs].SECONDARY;
-  const { colorScheme, golden } =
-    useSelector(getColorsState);
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
   const color = colors[colorScheme].CONTRAST[golden];
   const dispatch = useDispatch();
 
@@ -19,7 +20,7 @@ const ColorSchemeButton = ({ cs }) => {
 
   const onPress = () => {
     saveToAsyncStorage("color-scheme", cs);
-    dispatch(updateColors({ colorScheme: cs }));
+    dispatch(updateSettings({ colorScheme: cs }));
     StatusBar.setBarStyle(statusBarColor);
   };
 

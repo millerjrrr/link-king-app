@@ -8,11 +8,12 @@ import {
 import LevelLine from "./LevelLine";
 import { useSelector } from "react-redux";
 import colors from "../../utils/colors";
-import { getColorsState } from "../../store/colors";
+import { getSettingsState } from "../../store/settings";
 
 const LevelHistogram = ({ lbd, histHeight }) => {
-  const { colorScheme, golden } =
-    useSelector(getColorsState);
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
   const color = colors[colorScheme].CONTRAST[golden];
 
   [selected, setSelected] = useState(1);

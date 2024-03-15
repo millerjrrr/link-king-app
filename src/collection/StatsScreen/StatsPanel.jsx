@@ -2,11 +2,12 @@ import { StyleSheet, View } from "react-native";
 import colors from "../../utils/colors";
 import { useSelector } from "react-redux";
 import Panel from "../../ui/Panel";
-import { getColorsState } from "../../store/colors";
+import { getSettingsState } from "../../store/settings";
 
 const StatsPanel = ({ children }) => {
-  const { colorScheme, golden } =
-    useSelector(getColorsState);
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
   const shadowColor = colors[colorScheme].CONTRAST[golden];
   return (
     <View style={styles.container}>

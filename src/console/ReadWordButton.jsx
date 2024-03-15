@@ -9,15 +9,16 @@ import colors from "../utils/colors";
 import { speak } from "expo-speech";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../store/console";
-import { getColorsState } from "../store/colors";
+import { getSettingsState } from "../store/settings";
 
 const ReadWordButton = ({ size = 48 }) => {
   const {
     attempt: { target, speechLang },
     options: { blurred },
   } = useSelector(getConsoleState);
-  const { colorScheme, golden } =
-    useSelector(getColorsState);
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
   const color = colors[colorScheme].CONTRAST[golden];
 
   const onPress = async () => {

@@ -5,7 +5,7 @@ import {
   Entypo,
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
-import { getColorsState } from "../../store/colors";
+import { getSettingsState } from "../../store/settings";
 
 const KeyboardIcon = ({
   name,
@@ -13,8 +13,9 @@ const KeyboardIcon = ({
   size = 48,
   onPress,
 }) => {
-  const { colorScheme, golden } =
-    useSelector(getColorsState);
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
   const color = colors[colorScheme].CONTRAST[golden];
   return (
     <TouchableOpacity

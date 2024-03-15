@@ -5,11 +5,12 @@ import CrownUI from "../../ui/Graphics/CrownUI";
 import { useSelector } from "react-redux";
 import AppNotification from "../AppNotification";
 import LinkKingLogo from "../../ui/Graphics/LinkKingLogo";
-import { getColorsState } from "../../store/colors";
+import { getSettingsState } from "../../store/settings";
 
 const PopUpContainer = ({ children, heading }) => {
-  const { colorScheme, golden } =
-    useSelector(getColorsState);
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
   const { CONTRAST, SECONDARY } = colors[colorScheme];
   const color = CONTRAST[golden];
   return (

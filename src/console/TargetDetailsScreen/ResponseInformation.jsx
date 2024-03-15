@@ -1,11 +1,12 @@
 import { Text } from "react-native";
 import { useSelector } from "react-redux";
 import colors from "../../utils/colors";
-import { getColorsState } from "../../store/colors";
+import { getSettingsState } from "../../store/settings";
 
 const ResponseInformation = ({ status }) => {
-  const { colorScheme, golden } =
-    useSelector(getColorsState);
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
   const color = colors[colorScheme].CONTRAST[golden];
 
   return status ? (

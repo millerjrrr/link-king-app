@@ -13,11 +13,12 @@ import {
   RowContainer,
   Title,
 } from "./WordCardStyledComponents";
-import { getColorsState } from "../store/colors";
+import { getSettingsState } from "../store/settings";
 
 const WordCard = ({ navigation, ticket }) => {
-  const { colorScheme, golden } =
-    useSelector(getColorsState);
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
   const { CONTRAST, SECONDARY } = colors[colorScheme];
   const color = CONTRAST[golden];
   const backgroundColor = SECONDARY;

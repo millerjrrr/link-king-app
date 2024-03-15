@@ -20,15 +20,16 @@ import client from "../api/client";
 import catchAsyncError from "../api/catchError";
 import { getFromAsyncStorage } from "../utils/asyncStorage";
 import {
-  getColorsState,
-  updateColors,
-} from "../store/colors";
+  getSettingsState,
+  updateSettings,
+} from "../store/settings";
 import { StatusBar } from "react-native";
 import { authErrorHandler } from "../errors/authErrorHandler";
 
 const AppNavigator = () => {
-  const { colorScheme, golden } =
-    useSelector(getColorsState);
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
   const background = colors[colorScheme].PRIMARY;
   const primary = colors[colorScheme].CONTRAST[golden];
 
@@ -92,7 +93,7 @@ const AppNavigator = () => {
           dispatch(updateBusyState(false));
           return;
         }
-        dispatch(updateColors({ colorScheme }));
+        dispatch(updateSettings({ colorScheme }));
       } catch (error) {
         authErrorHandler(error, dispatch);
       }

@@ -12,11 +12,12 @@ import { useSelector } from "react-redux";
 import FourCrowns from "../../ui/Graphics/FourCrowns";
 import LinkKingLogo from "../../ui/Graphics/LinkKingLogo";
 import HelpButton from "../../ui/HelpButton";
-import { getColorsState } from "../../store/colors";
+import { getSettingsState } from "../../store/settings";
 
 const InnerTabContainer = ({ children, heading, help }) => {
-  const { colorScheme, golden } =
-    useSelector(getColorsState);
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
   const { CONTRAST, SECONDARY } = colors[colorScheme];
   const color = CONTRAST[golden];
   const crownColor = SECONDARY;

@@ -3,7 +3,7 @@ import PopUpContainer from "../components/containers/PopUpContainer";
 import appTextContent from "../utils/appTextContent";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
-import { getColorsState } from "../store/colors";
+import { getSettingsState } from "../store/settings";
 import colors from "../utils/colors";
 import ColorSchemeButton from "./components/ColorSchemeButton";
 
@@ -28,8 +28,9 @@ const TextBlock = styled(Text)`
 const ColorSchemeScreen = () => {
   const { title, textA } =
     appTextContent.english.options.colorSchemeScreen;
-  const { colorScheme, golden } =
-    useSelector(getColorsState);
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
   const color = colors[colorScheme].CONTRAST[golden];
 
   return (

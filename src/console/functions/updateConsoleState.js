@@ -1,4 +1,4 @@
-import { updateColors } from "../../store/colors";
+import { updateSettings } from "../../store/settings";
 import { updateCSState } from "../../store/console";
 
 export const updateConsoleState = async (
@@ -15,7 +15,7 @@ export const updateConsoleState = async (
     busy: false,
   };
   if (stats.newWords && stats.time > 3 * 60 * 1000)
-    dispatch(updateColors({ golden: 1 }));
-  else dispatch(updateColors({ golden: 0 }));
+    dispatch(updateSettings({ golden: 1 }));
+  else dispatch(updateSettings({ golden: 0 }));
   dispatch(updateCSState(payload));
 };

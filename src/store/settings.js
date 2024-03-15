@@ -6,23 +6,26 @@ import {
 const initialState = {
   colorScheme: "dark",
   golden: 0,
+  timeGoal: "",
+  newWordsGoal: 1,
+  stepsGoal: "",
 };
 
 const slice = createSlice({
   name: "colors",
   initialState,
   reducers: {
-    updateColors(state, { payload }) {
+    updateSettings(state, { payload }) {
       return { ...state, ...payload };
     },
   },
 });
 
-export const { updateColors } = slice.actions;
+export const { updateSettings } = slice.actions;
 
-export const getColorsState = createSelector(
+export const getSettingsState = createSelector(
   (state) => state,
-  (state) => state.colors,
+  (state) => state.settings,
 );
 
 export default slice.reducer;

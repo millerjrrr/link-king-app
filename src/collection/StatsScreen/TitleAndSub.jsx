@@ -2,11 +2,12 @@ import { Text } from "react-native";
 import colors from "../../utils/colors";
 import { useSelector } from "react-redux";
 import { getStatsState } from "../../store/stats";
-import { getColorsState } from "../../store/colors";
+import { getSettingsState } from "../../store/settings";
 
 const TitleAndSub = () => {
-  const { colorScheme, golden } =
-    useSelector(getColorsState);
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
   const color = colors[colorScheme].CONTRAST[golden];
 
   const {

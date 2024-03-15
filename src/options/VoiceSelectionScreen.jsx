@@ -3,7 +3,7 @@ import appTextContent from "./../utils/appTextContent";
 import styled from "styled-components";
 import PopUpContainer from "./../components/containers/PopUpContainer";
 import { useSelector } from "react-redux";
-import { getColorsState } from "../store/colors";
+import { getSettingsState } from "../store/settings";
 import colors from "../utils/colors";
 
 const Container = styled(View)`
@@ -22,8 +22,9 @@ const VoiceSelectionScreen = () => {
   const { title, textA, textB, tip } =
     appTextContent.english.options.voiceSelectionScreen;
 
-  const { colorScheme, golden } =
-    useSelector(getColorsState);
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
 
   const color = colors[colorScheme].CONTRAST[golden];
 

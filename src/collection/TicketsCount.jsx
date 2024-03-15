@@ -3,11 +3,12 @@ import colors from "../utils/colors";
 import { useSelector } from "react-redux";
 import { getCollectionState } from "../store/collection";
 import BusyWrapper from "../ui/Loader/BusyWrapper";
-import { getColorsState } from "../store/colors";
+import { getSettingsState } from "../store/settings";
 
 const TicketsCount = () => {
-  const { colorScheme, golden } =
-    useSelector(getColorsState);
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
   const color = colors[colorScheme].CONTRAST[golden];
 
   const { results, busy } = useSelector(getCollectionState);

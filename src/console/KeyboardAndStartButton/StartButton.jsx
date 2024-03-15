@@ -3,12 +3,13 @@ import colors from "../../utils/colors";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../../store/console";
 import AppButton from "../../ui/AppButton";
-import { getColorsState } from "../../store/colors";
+import { getSettingsState } from "../../store/settings";
 
 const StartButton = ({ inputFieldRef }) => {
   const { timerIsOn } = useSelector(getConsoleState);
-  const { colorScheme, golden } =
-    useSelector(getColorsState);
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
   const color = colors[colorScheme].CONTRAST[golden];
   const backgroundColor = colors[colorScheme].SECONDARY;
 

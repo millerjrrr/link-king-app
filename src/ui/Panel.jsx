@@ -1,10 +1,10 @@
 import { StyleSheet, Platform, View } from "react-native";
 import colors from "../utils/colors";
-import { getColorsState } from "../store/colors";
+import { getSettingsState } from "../store/settings";
 import { useSelector } from "react-redux";
 
 const Panel = ({ shadowColor, children }) => {
-  const { colorScheme } = useSelector(getColorsState);
+  const { colorScheme } = useSelector(getSettingsState);
   const backgroundColor = colors[colorScheme].SECONDARY;
   return (
     <View

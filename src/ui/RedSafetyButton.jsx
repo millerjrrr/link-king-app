@@ -8,7 +8,7 @@ import {
 import colors from "../utils/colors";
 import { AntDesign } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
-import { getColorsState } from "../store/colors";
+import { getSettingsState } from "../store/settings";
 
 const RedSafetyButton = ({
   setElapsedTime,
@@ -44,7 +44,7 @@ const RedSafetyButton = ({
     setElapsedTime(0);
   };
 
-  const { colorScheme } = useSelector(getColorsState);
+  const { colorScheme } = useSelector(getSettingsState);
 
   const { SECONDARY, RED } = colors[colorScheme];
 

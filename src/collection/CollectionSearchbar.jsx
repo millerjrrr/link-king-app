@@ -6,11 +6,12 @@ import {
   getCollectionState,
   updateCollection,
 } from "../store/collection";
-import { getColorsState } from "../store/colors";
+import { getSettingsState } from "../store/settings";
 
 const CollectionSearchbar = () => {
-  const { colorScheme, golden } =
-    useSelector(getColorsState);
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
   const color = colors[colorScheme].CONTRAST[golden];
 
   const { searchKeyword } = useSelector(getCollectionState);
