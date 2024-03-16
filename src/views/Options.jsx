@@ -10,6 +10,7 @@ import OptionsMenuItem from "../options/OptionsMenuItem";
 import colors from "../utils/colors";
 import { getSettingsState } from "../store/settings";
 import { useNavigation } from "@react-navigation/native";
+import ColorPickerMenuItem from "../options/ColorPickerMenuItem";
 
 const Options = () => {
   const dispatch = useDispatch();
@@ -54,29 +55,7 @@ const Options = () => {
           onPress: () => navigateTo("VoiceSelectionScreen"),
         }}
       />
-      <OptionsMenuItem
-        {...{
-          iconName: "palette-outline",
-          text: "Color scheme",
-          onPress: () => navigateTo("ColorSchemeScreen"),
-        }}
-      />
-      {/* <OptionsMenuItem
-        {...{
-          iconName: "translate",
-          text: "Choose language pair",
-          color,
-          onPress: comingSoon,
-        }}
-      /> */}
-      {/* <OptionsMenuItem
-        {...{
-          iconName: "cash",
-          text: "Contribute",
-          color,
-          onPress: comingSoon,
-        }}
-      /> */}
+      <ColorPickerMenuItem />
       <OptionsMenuItem
         {...{
           iconName: "contacts",
