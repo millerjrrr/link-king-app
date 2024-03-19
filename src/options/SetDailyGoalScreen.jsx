@@ -2,7 +2,6 @@ import {
   Text,
   View,
   TouchableOpacity,
-  ScrollView,
   Dimensions,
 } from "react-native";
 import PopUpContainer from "../components/containers/PopUpContainer";
@@ -35,18 +34,6 @@ const GoalContainer = styled(View)`
   align-items: center;
   justify-content: center;
   width: ${width - 30}px;
-`;
-
-const Info = styled(Text)`
-  font-size: 25px;
-  color: ${(props) => props.color};
-  text-align: center;
-`;
-
-const Units = styled(Text)`
-  font-size: 15px;
-  font-weight: bold;
-  color: ${(props) => props.color};
 `;
 
 const Icon = ({ name, message, color }) => {
