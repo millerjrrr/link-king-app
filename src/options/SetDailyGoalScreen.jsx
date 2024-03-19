@@ -1,37 +1,46 @@
-import { Text, View, TouchableOpacity } from "react-native";
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  ScrollView,
+  Dimensions,
+} from "react-native";
 import PopUpContainer from "../components/containers/PopUpContainer";
 import appTextContent from "../utils/appTextContent";
 import styled from "styled-components";
 import ScrollSelector from "./components/ScrollSelector";
-import { useSelector } from "react-redux";
-import { getSettingsState } from "../store/settings";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getSettingsState,
+  restoreDefaultGoals,
+  updateSettings,
+} from "../store/settings";
 import colors from "../utils/colors";
+import { saveToAsyncStorage } from "../utils/asyncStorage";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { updateNotification } from "../store/notification";
 
 const Container = styled(View)`
   flex: 1;
   width: 100%;
   align-items: center;
-  padding-horizontal: 15px;
+  justify-content: space-between;
+  padding: 15px;
 `;
+
+const { width } = Dimensions.get("window");
 
 const GoalContainer = styled(View)`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: ${width - 30}px;
 `;
 
-const Or = styled(Text)`
+const Info = styled(Text)`
   font-size: 25px;
-  font-weight: bold;
   color: ${(props) => props.color};
-  padding-top: 30px;
-`;
-
-const SubTitle = styled(Text)`
-  font-size: 25px;
-  font-weight: bold;
-  color: ${(props) => props.color};
+  text-align: center;
 `;
 
 const Units = styled(Text)`
@@ -40,58 +49,118 @@ const Units = styled(Text)`
   color: ${(props) => props.color};
 `;
 
-const SetDailyGoalScreen = () => {
+const Icon = ({ name, message, color }) => {
+  const dispatch = useDispatch();
+
+  return (
+    <TouchableOpacity
+      onPress={() =>
+        dispatch(
+          updateNotification({
+            message,
+            type: "info",
+          }),
+        )
+      }
+    >
+      <MaterialCommunityIcons
+        {...{
+          name,
+          color,
+          size: 96,
+        }}
+      />
+    </TouchableOpacity>
+  );
+};
+
+const SetDailyGoalScreen = ({ navigation }) => {
   const { title, textA, textB, textC, textD, textE } =
     appTextContent.english.options.setDailyGoal;
 
-  const { colorScheme, golden } = useSelector(
-    getSettingsState,
-  );
+  const {
+    colorScheme,
+    golden,
+    timeGoal,
+    newWordsGoal,
+    stepsGoal,
+  } = useSelector(getSettingsState);
   const color = colors[colorScheme].CONTRAST[golden];
 
-  const restoreDefaultValues = () => {
-    console.log("restoring");
+  const dispatch = useDispatch();
+
+  const updateTimeGoal = (value) => {
+    saveToAsyncStorage("time-goal", value + "");
+    dispatch(updateSettings({ timeGoal: value }));
+  };
+  const updateNewWordsGoal = (value) => {
+    saveToAsyncStorage("new-words-goal", value + "");
+    dispatch(updateSettings({ newWordsGoal: value }));
+  };
+  const updateStepsGoal = (value) => {
+    saveToAsyncStorage("steps-goal", value + "");
+    dispatch(updateSettings({ stepsGoal: value }));
+  };
+
+  const restoreGoalDefaults = () => {
+    dispatch(restoreDefaultGoals());
+    navigation.goBack();
   };
 
   return (
     <PopUpContainer heading={title}>
       <Container>
         <GoalContainer>
-          <SubTitle {...{ color }}>{textA}</SubTitle>
+          <Icon
+            {...{
+              name: "clock-outline",
+              message: textA,
+              color,
+            }}
+          />
           <ScrollSelector
             {...{
-              onSelect: () => console.log("time"),
+              onSelect: updateTimeGoal,
               length: 60,
-              start: 10,
+              start: timeGoal === "" ? 0 : timeGoal,
             }}
           />
-          <Units {...{ color }}>mins</Units>
         </GoalContainer>
-        <Or {...{ color }}>{textD}</Or>
         <GoalContainer>
-          <SubTitle {...{ color }}>{textB}</SubTitle>
+          <Icon
+            {...{
+              name: "basket-fill",
+              message: textB,
+              color,
+            }}
+          />
           <ScrollSelector
             {...{
-              onSelect: () => console.log("new words"),
+              onSelect: updateNewWordsGoal,
               length: 50,
-              start: 1,
+              start: newWordsGoal === "" ? 0 : newWordsGoal,
             }}
           />
         </GoalContainer>
-        <Or {...{ color }}>{textD}</Or>
         <GoalContainer>
-          <SubTitle {...{ color }}>{textC}</SubTitle>
+          <Icon
+            {...{
+              name: "foot-print",
+              message: textC,
+              color,
+            }}
+          />
           <ScrollSelector
             {...{
-              onSelect: () => console.log("selected"),
+              onSelect: updateStepsGoal,
               length: 500,
-              start: 100,
+              start: stepsGoal === "" ? 0 : stepsGoal,
             }}
           />
         </GoalContainer>
         <TouchableOpacity
           {...{
-            onPress: restoreDefaultValues,
+            onPress: restoreGoalDefaults,
             style: { marginTop: 35 },
           }}
         >
@@ -101,7 +170,7 @@ const SetDailyGoalScreen = () => {
               fontSize: 18,
             }}
           >
-            {textE}
+            {textD}
           </Text>
         </TouchableOpacity>
       </Container>

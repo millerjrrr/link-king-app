@@ -39,6 +39,9 @@ const AppNotification = () => {
     case "success":
       backgroundColor = colors[colorScheme].GREEN;
       break;
+    case "info":
+      backgroundColor = colors[colorScheme].SECONDARY;
+      break;
   }
 
   useEffect(() => {

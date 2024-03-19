@@ -14,8 +14,5 @@ export const updateConsoleState = async (
     tries: gamePlay.tries,
     busy: false,
   };
-  if (stats.newWords && stats.time > 3 * 60 * 1000)
-    dispatch(updateSettings({ golden: 1 }));
-  else dispatch(updateSettings({ golden: 0 }));
   dispatch(updateCSState(payload));
 };

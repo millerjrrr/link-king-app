@@ -9,11 +9,18 @@ import {
 import StatsIcon from "./StatsIcon";
 import { useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
+import {
+  getSettingsState,
+  updateSettings,
+} from "../store/settings";
 
 const StatsContainer = ({ size = 22 }) => {
   const { stats, timeOnThisWord, timerIsOn } =
     useSelector(getConsoleState);
   const { due, steps, time, streak, newWords } = stats;
+  const { timeGoal, newWordsGoal, stepsGoal } = useSelector(
+    getSettingsState,
+  );
 
   const dispatch = useDispatch();
 
@@ -28,6 +35,20 @@ const StatsContainer = ({ size = 22 }) => {
     if (newWords === 1 && time > 3 * 60 * 1000)
       setTimeout(showResultsSummary, 1500);
   }, [newWords]);
+
+  //goal management
+  useEffect(() => {
+    const timeGoalMet =
+      timeGoal !== "" && time > timeGoal * 60 * 1000;
+    const newWordsGoalMet =
+      newWordsGoal !== "" && newWords > newWordsGoal;
+    const stepsGoalMet =
+      stepsGoal !== "" && steps > stepsGoal;
+
+    if (timeGoalMet || newWordsGoalMet || stepsGoalMet)
+      dispatch(updateSettings({ golden: 1 }));
+    else dispatch(updateSettings({ golden: 0 }));
+  }, [steps]);
 
   useEffect(() => {
     let intervalId;
@@ -51,7 +72,7 @@ const StatsContainer = ({ size = 22 }) => {
     }
 
     return () => clearTimeout(timeoutId);
-  }, [timerIsOn]);
+  }, [timerIsOn, steps]);
 
   return (
     <View style={styles.container}>

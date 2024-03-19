@@ -33,8 +33,6 @@ const AppNavigator = () => {
   const background = colors[colorScheme].PRIMARY;
   const primary = colors[colorScheme].CONTRAST[golden];
 
-  const statusBarColor = colors[colorScheme].STATUSBAR;
-
   const { refresh } = useSelector(getAuthState);
   const AppTheme = {
     ...DefaultTheme,
@@ -48,7 +46,6 @@ const AppNavigator = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    StatusBar.setBarStyle(statusBarColor);
     const fetchAuthInfo = async () => {
       dispatch(updateBusyState(true));
       try {
@@ -84,22 +81,45 @@ const AppNavigator = () => {
       }
     };
 
-    const fetchColorScheme = async () => {
+    const fetchSettings = async () => {
       dispatch(updateBusyState(true));
       try {
         const colorScheme =
           await getFromAsyncStorage("color-scheme");
-        if (!colorScheme) {
-          dispatch(updateBusyState(false));
-          return;
-        }
-        dispatch(updateSettings({ colorScheme }));
+        StatusBar.setBarStyle(
+          colors[colorScheme].STATUSBAR,
+        );
+        let timeGoal =
+          await getFromAsyncStorage("time-goal");
+        timeGoal = "" ? "" : timeGoal * 1;
+        let newWordsGoal = await getFromAsyncStorage(
+          "new-words-goal",
+        );
+        newWordsGoal = "" ? "" : newWordsGoal * 1;
+        let stepsGoal =
+          await getFromAsyncStorage("steps-goal");
+        stepsGoal = "" ? "" : stepsGoal * 1;
+
+        const settings = {
+          colorScheme,
+          timeGoal,
+          newWordsGoal,
+          stepsGoal,
+        };
+
+        Object.keys(settings).forEach((key) => {
+          if (settings[key]) {
+            dispatch(
+              updateSettings({ [key]: settings[key] }),
+            );
+          }
+        });
       } catch (error) {
         authErrorHandler(error, dispatch);
       }
     };
 
-    fetchColorScheme();
+    fetchSettings();
     fetchAuthInfo();
   }, [refresh]);
 

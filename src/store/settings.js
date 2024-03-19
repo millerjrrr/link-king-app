@@ -18,10 +18,16 @@ const slice = createSlice({
     updateSettings(state, { payload }) {
       return { ...state, ...payload };
     },
+    restoreDefaultGoals(state) {
+      state.timeGoal = 3;
+      state.newWordsGoal = 1;
+      state.stepsGoal = 100;
+    },
   },
 });
 
-export const { updateSettings } = slice.actions;
+export const { updateSettings, restoreDefaultGoals } =
+  slice.actions;
 
 export const getSettingsState = createSelector(
   (state) => state,

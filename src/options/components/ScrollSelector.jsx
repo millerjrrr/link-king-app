@@ -5,6 +5,7 @@ import { getSettingsState } from "../../store/settings";
 import colors from "../../utils/colors";
 import { LinearGradient } from "expo-linear-gradient";
 import ScrollPicker from "react-native-wheel-scrollview-picker";
+import React from "react";
 
 const Column = styled(View)`
   position: relative;
@@ -82,7 +83,6 @@ const ScrollSelector = ({ onSelect, length, start }) => {
           );
         }}
         onValueChange={(data, selectedIndex) => {
-          console.log(data);
           onSelect(data);
         }}
         wrapperHeight={150}
