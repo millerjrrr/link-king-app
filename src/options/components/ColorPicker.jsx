@@ -12,7 +12,11 @@ const ColorPicker = () => {
   return (
     <Container>
       <ColorSchemeButton cs="dark" />
-      <ColorSchemeButton cs="brasil" />
+      <ColorSchemeButton cs="blue" />
+      <ColorSchemeButton cs="turquoise" />
+      <ColorSchemeButton cs="green" />
+      <ColorSchemeButton cs="gold" />
+      <ColorSchemeButton cs="pink" />
       <ColorSchemeButton cs="light" />
     </Container>
   );
