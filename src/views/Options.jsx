@@ -66,14 +66,6 @@ const Options = () => {
       />
       <OptionsMenuItem
         {...{
-          iconName: "account-details",
-          text: "Edit user details",
-          color,
-          onPress: comingSoon,
-        }}
-      />
-      <OptionsMenuItem
-        {...{
           iconName: "logout",
           text: "Logout",
           onPress: logOut,

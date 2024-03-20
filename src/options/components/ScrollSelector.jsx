@@ -88,6 +88,7 @@ const ScrollSelector = ({ onSelect, length, start }) => {
         wrapperHeight={150}
         wrapperBackground="none"
         itemHeight={25}
+        highlightColor={color}
       />
       <BottomShadow
         {...{

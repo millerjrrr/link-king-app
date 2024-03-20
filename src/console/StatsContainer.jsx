@@ -18,37 +18,34 @@ const StatsContainer = ({ size = 22 }) => {
   const { stats, timeOnThisWord, timerIsOn } =
     useSelector(getConsoleState);
   const { due, steps, time, streak, newWords } = stats;
-  const { timeGoal, newWordsGoal, stepsGoal } = useSelector(
-    getSettingsState,
-  );
+  const { timeGoal, newWordsGoal, stepsGoal, golden } =
+    useSelector(getSettingsState);
 
   const dispatch = useDispatch();
 
   const navigation = useNavigation();
 
+  //goal management
   useEffect(() => {
     const showResultsSummary = () => {
       navigation.navigate("Collection");
       navigation.navigate("StatsScreen");
     };
 
-    if (newWords === 1 && time > 3 * 60 * 1000)
-      setTimeout(showResultsSummary, 1500);
-  }, [newWords]);
-
-  //goal management
-  useEffect(() => {
     const timeGoalMet =
-      timeGoal !== "" && time > timeGoal * 60 * 1000;
+      timeGoal !== "" && time >= timeGoal * 60 * 1000;
     const newWordsGoalMet =
-      newWordsGoal !== "" && newWords > newWordsGoal;
+      newWordsGoal !== "" && newWords >= newWordsGoal;
     const stepsGoalMet =
-      stepsGoal !== "" && steps > stepsGoal;
+      stepsGoal !== "" && steps >= stepsGoal;
 
-    if (timeGoalMet || newWordsGoalMet || stepsGoalMet)
-      dispatch(updateSettings({ golden: 1 }));
-    else dispatch(updateSettings({ golden: 0 }));
-  }, [steps]);
+    if (timeGoalMet || newWordsGoalMet || stepsGoalMet) {
+      if (golden === 0) {
+        setTimeout(showResultsSummary, 1500);
+        dispatch(updateSettings({ golden: 1 }));
+      }
+    } else dispatch(updateSettings({ golden: 0 }));
+  }, [newWords, timerIsOn]);
 
   useEffect(() => {
     let intervalId;

@@ -3,18 +3,16 @@ import colors from "../utils/colors";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../store/console";
 import { getSettingsState } from "../store/settings";
+import styled from "styled-components";
 
-const TailEntry = ({ text, fontSize, opacity, color }) => {
-  return (
-    <Text
-      style={[styles.tail, { fontSize, opacity, color }]}
-    >
-      {text}
-    </Text>
-  );
-};
+const TailEntryText = styled(Text)`
+  color: ${(props) => props.color};
+  font-size: ${(props) => props.size}px;
+  opacity: ${(props) => props.opacity};
+  text-align: center;
+`;
 
-const Tail = () => {
+const TailEntry = ({ index }) => {
   const { tail, showSolution } =
     useSelector(getConsoleState);
   const { colorScheme, golden } = useSelector(
@@ -22,50 +20,35 @@ const Tail = () => {
   );
   const color = colors[colorScheme].CONTRAST[golden];
 
-  return !showSolution ? (
-    <View style={styles.container}>
-      {tail[0] ? (
-        <TailEntry
-          {...{
-            text: tail[0],
-            fontSize: 40,
-            opacity: 0.6,
-            color,
-          }}
-        />
-      ) : null}
-      {tail[1] ? (
-        <TailEntry
-          {...{
-            text: tail[1],
-            fontSize: 30,
-            opacity: 0.4,
-            color,
-          }}
-        />
-      ) : null}
-      {tail[2] ? (
-        <TailEntry
-          {...{
-            text: tail[2],
-            fontSize: 25,
-            opacity: 0.25,
-            color,
-          }}
-        />
-      ) : null}
-      {tail[3] ? (
-        <TailEntry
-          {...{
-            text: tail[3],
-            fontSize: 22,
-            opacity: 0.1,
-            color,
-          }}
-        />
-      ) : null}
-    </View>
+  //font-size management
+  let size = (4 - index) * 7 + 12;
+  const length = tail[index] ? tail[index].length : 0;
+  if (length > 16) size = (size * 16) / length;
+
+  const opacity = 1 / (index + 1) / 2;
+
+  return !showSolution && tail[index] ? (
+    <TailEntryText
+      {...{
+        color,
+        size,
+        opacity,
+      }}
+    >
+      {tail[index]}
+    </TailEntryText>
   ) : null;
+};
+
+const Tail = () => {
+  return (
+    <View style={styles.container}>
+      <TailEntry index={0} />
+      <TailEntry index={1} />
+      <TailEntry index={2} />
+      <TailEntry index={3} />
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
