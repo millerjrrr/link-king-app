@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 import { getConsoleState } from "../store/console";
 import { getSettingsState } from "../store/settings";
 
-const ReadWordButton = ({ size = 48 }) => {
+const ReadWordButton = () => {
   const {
     attempt: { target, speechLang },
     options: { blurred },
@@ -27,17 +27,24 @@ const ReadWordButton = ({ size = 48 }) => {
     });
   };
 
+  //font-size management
+  let fontSize = 48;
+  const length = target.length;
+  if (length > 12) fontSize = (fontSize * 12) / length;
+
   return (
     <View style={styles.container}>
       <TouchableOpacity {...{ onPress }}>
         {blurred ? (
-          <Feather {...{ name: "volume-2", size, color }} />
+          <Feather
+            {...{ name: "volume-2", size: 48, color }}
+          />
         ) : (
           <Text
             style={{
               textAlign: "center",
               paddingBottom: 10,
-              fontSize: size,
+              fontSize,
               color,
             }}
           >

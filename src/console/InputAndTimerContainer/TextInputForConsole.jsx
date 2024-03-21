@@ -44,6 +44,11 @@ const TextInputForConsole = ({
     ? attempt.solutions[0]
     : null;
 
+  //font-size management
+  let fontSize = 48;
+  const length = formValue.length;
+  if (length > 12) fontSize = (fontSize * 12) / length;
+
   return (
     <TextInput
       ref={inputFieldRef}
@@ -69,6 +74,7 @@ const TextInputForConsole = ({
           shadowColor: color,
           backgroundColor,
           borderColor: color,
+          fontSize,
         },
       ]}
     />
@@ -81,7 +87,6 @@ const styles = StyleSheet.create({
     height: 70,
     padding: 10,
     textAlign: "center",
-    fontSize: 48,
     borderRadius: 35,
     ...Platform.select({
       ios: {

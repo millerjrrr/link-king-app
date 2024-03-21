@@ -25,7 +25,7 @@ export const returnCorrectAnswerToServer = async ({
   try {
     const time = !showSolution
       ? Math.min(Date.now() - startedThisWord, 30 * 1000)
-      : 0;
+      : Math.min(Date.now() - startedThisWord, 10 * 1000);
     dispatch(incrementStatsTime(time));
     console.log(time);
     const { data } = await clientWithAuth.post(

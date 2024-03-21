@@ -23,7 +23,7 @@ const TailEntry = ({ index }) => {
   //font-size management
   let size = (4 - index) * 7 + 12;
   const length = tail[index] ? tail[index].length : 0;
-  if (length > 16) size = (size * 16) / length;
+  if (length > 12) size = (size * 12) / length;
 
   const opacity = 1 / (index + 1) / 2;
 

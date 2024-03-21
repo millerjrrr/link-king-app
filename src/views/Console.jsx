@@ -14,6 +14,7 @@ import ReadWordButton from "../console/ReadWordButton";
 import StatsContainer from "../console/StatsContainer";
 import InnerTabContainer from "../components/containers/InnerTabContainer";
 import { getAuthState } from "../store/auth";
+import UseEffects from "../console/UseEffects";
 
 const Console = ({ navigation }) => {
   const inputFieldRef = useRef(null);
@@ -53,6 +54,7 @@ const Console = ({ navigation }) => {
         <KeyboardAndStartButton
           inputFieldRef={inputFieldRef}
         />
+        <UseEffects />
       </KeyboardAvoidingView>
     </InnerTabContainer>
   );

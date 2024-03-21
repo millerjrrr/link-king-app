@@ -57,7 +57,6 @@ const slice = createSlice({
       state.formValue = "";
       state.showSolution = true;
       state.isPlaying = false;
-      state.timeOnThisWord = 0;
       state.key += 1;
       state.busy = false;
     }, //used at the end returnWrongAnswerToServer

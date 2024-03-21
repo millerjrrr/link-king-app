@@ -83,7 +83,7 @@ const ModalTypeMenuItem = ({ optionName }) => {
   switch (optionName) {
     case "Contact Us":
       onPress = handleSendEmail;
-      iconName = "contacts";
+      iconName = "email-outline";
       textA = "Contact Us";
       textB =
         "Please contact us by email and we will get back " +
