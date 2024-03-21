@@ -12,6 +12,11 @@ import { useState } from "react";
 import Modal from "react-native-modal";
 import OptionsMenuItemContainer from "./components/OptionsMenuItemContainer";
 import { updateNotification } from "../store/notification";
+import {
+  updateLoggedInState,
+  updateToken,
+} from "../store/auth";
+import { removeFromAsyncStorage } from "../utils/asyncStorage";
 
 const ModalContainer = styled(View)`
   background-color: ${(props) => props.backgroundColor};
@@ -40,7 +45,7 @@ const Button = ({ title, color, size, onPress }) => {
   );
 };
 
-const ContactDetailsMenuItem = () => {
+const ModalTypeMenuItem = ({ optionName }) => {
   const { colorScheme, golden } = useSelector(
     getSettingsState,
   );
@@ -53,14 +58,10 @@ const ContactDetailsMenuItem = () => {
   const dispatch = useDispatch();
 
   const handleSendEmail = () => {
-    // Define the email address, subject, and body
     const email = "info@linkoking.com";
     const subject = encodeURIComponent("General Inquiry");
-
-    // Create the URL
     const url = `mailto:${email}?subject=${subject}`;
 
-    // Use Linking API to open the email client
     Linking.openURL(url).catch((err) =>
       dispatch(
         updateNotification({
@@ -71,19 +72,50 @@ const ContactDetailsMenuItem = () => {
     );
   };
 
+  const logOut = async () => {
+    dispatch(updateToken(""));
+    dispatch(updateLoggedInState(false));
+    removeFromAsyncStorage("auth-token");
+  };
+
+  let onPress, textA, textB, title, iconName;
+
+  switch (optionName) {
+    case "Contact Us":
+      onPress = handleSendEmail;
+      iconName = "contacts";
+      textA = "Contact Us";
+      textB =
+        "Please contact us by email and we will get back " +
+        "to you as soon as possible.";
+      title = "Send Email";
+      break;
+    case "Log Out":
+      onPress = logOut;
+      iconName = "logout";
+      textA = "Log Out";
+      textB = "Are your sure you want to log out?";
+      title = "Log Out";
+      break;
+  }
+
   return (
-    <OptionsMenuItemContainer {...{ iconName: "contacts" }}>
+    <OptionsMenuItemContainer {...{ iconName }}>
       <TouchableOpacity
-        style={{ flex: 1, justifyContent: "center" }}
-        onPress={() => setIsModalVisible(true)}
+        {...{
+          style: { flex: 1, justifyContent: "center" },
+          onPress: () => setIsModalVisible(true),
+        }}
       >
         <Text
-          style={{
-            color,
-            fontSize: 20,
+          {...{
+            style: {
+              color,
+              fontSize: 20,
+            },
           }}
         >
-          Contact Us
+          {textA}
         </Text>
       </TouchableOpacity>
       <Modal
@@ -91,16 +123,13 @@ const ContactDetailsMenuItem = () => {
         onBackdropPress={() => setIsModalVisible(false)}
       >
         <ModalContainer {...{ backgroundColor }}>
-          <ModalText {...{ color }}>
-            Please contact us by email and we will get back
-            to you as soon as possible.
-          </ModalText>
+          <ModalText {...{ color }}>{textB}</ModalText>
           <Button
             {...{
-              title: "Send Email",
+              title,
               color,
               size: 20,
-              onPress: handleSendEmail,
+              onPress,
             }}
           />
           <Button
@@ -117,4 +146,4 @@ const ContactDetailsMenuItem = () => {
   );
 };
 
-export default ContactDetailsMenuItem;
+export default ModalTypeMenuItem;
