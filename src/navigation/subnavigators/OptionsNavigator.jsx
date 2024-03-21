@@ -9,7 +9,6 @@ import VoiceSelectionScreen from "../../options/VoiceSelectionScreen";
 import { useSelector } from "react-redux";
 import { getSettingsState } from "../../store/settings";
 import colors from "../../utils/colors";
-
 const OptionsStack = createStackNavigator();
 
 const OptionsNavigator = () => {

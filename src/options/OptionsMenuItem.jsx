@@ -1,88 +1,37 @@
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import {
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 import { useSelector } from "react-redux";
 import colors from "../utils/colors";
 import { getSettingsState } from "../store/settings";
+import OptionsMenuItemContainer from "./components/OptionsMenuItemContainer";
 
 const OptionsMenuItem = ({
   iconName,
+  first,
   text,
   onPress,
-  first,
-  color,
 }) => {
   const { colorScheme, golden } = useSelector(
     getSettingsState,
   );
-  const backgroundColor = colors[colorScheme].PRIMARY;
-  const borderColor = colors[colorScheme].INACTIVE_CONTRAST;
+  const color = colors[colorScheme].CONTRAST[golden];
 
   return (
-    <View style={[styles.container, { backgroundColor }]}>
-      <MaterialCommunityIcons
-        name={iconName}
-        size={32}
-        color={
-          color
-            ? color
-            : colors[colorScheme].CONTRAST[golden]
-        }
-        style={styles.icon}
-      />
+    <OptionsMenuItemContainer {...{ first, iconName }}>
       <TouchableOpacity
-        style={[
-          styles.option,
-          { borderColor },
-          first
-            ? { borderTopWidth: 0 }
-            : { borderTopWidth: 1 },
-        ]}
+        style={{ flex: 1, justifyContent: "center" }}
         onPress={onPress}
       >
         <Text
-          style={[
-            styles.text,
-            {
-              color: color
-                ? color
-                : colors[colorScheme].CONTRAST[golden],
-            },
-          ]}
+          style={{
+            color,
+            fontSize: 20,
+          }}
         >
           {text}
         </Text>
       </TouchableOpacity>
-    </View>
+    </OptionsMenuItemContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    // width: "100%",
-    height: 60,
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "row",
-    marginLeft: 10,
-    marginRight: 10,
-  },
-  icon: {
-    margin: 5,
-  },
-  option: {
-    flex: 1,
-    height: "100%",
-    justifyContent: "center",
-    margin: 10,
-  },
-  text: {
-    fontSize: 20,
-  },
-});
 
 export default OptionsMenuItem;

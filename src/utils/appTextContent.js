@@ -26,6 +26,10 @@ const appTextContent = {
         textC: "Steps Goal",
         textD: "restore default values",
       },
+      contactDetailsScreen: {
+        title: "Contail Details",
+        textA: "For all enquiries please email us at:",
+      },
     },
   },
 };

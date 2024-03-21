@@ -1,16 +1,14 @@
 import { removeFromAsyncStorage } from "../utils/asyncStorage";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   updateLoggedInState,
   updateToken,
 } from "../store/auth";
 import InnerTabContainer from "../components/containers/InnerTabContainer";
-import { updateNotification } from "../store/notification";
 import OptionsMenuItem from "../options/OptionsMenuItem";
-import colors from "../utils/colors";
-import { getSettingsState } from "../store/settings";
 import { useNavigation } from "@react-navigation/native";
 import ColorPickerMenuItem from "../options/ColorPickerMenuItem";
+import ContactDetailsMenuItem from "../options/ContactDetailsMenuItem";
 
 const Options = () => {
   const dispatch = useDispatch();
@@ -22,21 +20,9 @@ const Options = () => {
     removeFromAsyncStorage("auth-token");
   };
 
-  const comingSoon = () => {
-    dispatch(
-      updateNotification({
-        message: "...coming soon...",
-        type: "error",
-      }),
-    );
-  };
-
   const navigateTo = (pageName) => {
     navigation.navigate(pageName);
   };
-
-  const { colorScheme } = useSelector(getSettingsState);
-  const color = colors[colorScheme].INACTIVE_CONTRAST;
 
   return (
     <InnerTabContainer heading="Options">
@@ -56,14 +42,7 @@ const Options = () => {
         }}
       />
       <ColorPickerMenuItem />
-      <OptionsMenuItem
-        {...{
-          iconName: "contacts",
-          text: "Contact Details",
-          color,
-          onPress: comingSoon,
-        }}
-      />
+      <ContactDetailsMenuItem />
       <OptionsMenuItem
         {...{
           iconName: "logout",
