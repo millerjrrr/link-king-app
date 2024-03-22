@@ -3,6 +3,7 @@ import colors from "../../utils/colors";
 import { useSelector } from "react-redux";
 import { getStatsState } from "../../store/stats";
 import { getSettingsState } from "../../store/settings";
+import appTextContent from "../../utils/appTextContent";
 
 const TitleAndSub = () => {
   const { colorScheme, golden } = useSelector(
@@ -14,6 +15,8 @@ const TitleAndSub = () => {
     userGameData: { collectedWords },
   } = useSelector(getStatsState);
 
+  const { congratulations, textA, textB } =
+    appTextContent.english.collection.statsScreen;
   return (
     <>
       <Text
@@ -24,7 +27,7 @@ const TitleAndSub = () => {
           color,
         }}
       >
-        Congratulations!
+        {congratulations}
       </Text>
       <Text
         style={{
@@ -34,7 +37,7 @@ const TitleAndSub = () => {
           color,
         }}
       >
-        You've collected {collectedWords} new words!
+        {textA + " " + collectedWords + " " + textB}
       </Text>
     </>
   );

@@ -8,11 +8,15 @@ import colors from "../../utils/colors";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../../store/console";
 import { getSettingsState } from "../../store/settings";
+import appTextContent from "../../utils/appTextContent";
 
 const TargetScreenFakeInput = () => {
   const { lastAttempt } = useSelector(getConsoleState);
   const { colorScheme } = useSelector(getSettingsState);
   const { SECONDARY, RED } = colors[colorScheme];
+
+  const { timedOut } =
+    appTextContent.english.console.targetDetails;
 
   return (
     <View
@@ -26,9 +30,7 @@ const TargetScreenFakeInput = () => {
       ]}
     >
       <Text style={[styles.text, { color: RED }]}>
-        {lastAttempt
-          ? " " + lastAttempt + " "
-          : "timed out!"}
+        {lastAttempt ? lastAttempt : timedOut}
       </Text>
     </View>
   );

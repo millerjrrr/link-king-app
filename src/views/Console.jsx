@@ -15,6 +15,7 @@ import StatsContainer from "../console/StatsContainer";
 import InnerTabContainer from "../components/containers/InnerTabContainer";
 import { getAuthState } from "../store/auth";
 import UseEffects from "../console/UseEffects";
+import appTextContent from "../utils/appTextContent";
 
 const Console = ({ navigation }) => {
   const inputFieldRef = useRef(null);
@@ -36,8 +37,10 @@ const Console = ({ navigation }) => {
     console.log("help");
   };
 
+  const { heading } = appTextContent.english.console;
+
   return (
-    <InnerTabContainer {...{ heading: "Console", help }}>
+    <InnerTabContainer {...{ heading, help }}>
       <KeyboardAvoidingView
         style={styles.container}
         behavior={

@@ -10,6 +10,7 @@ import {
   StackActions,
   useNavigation,
 } from "@react-navigation/native";
+import appTextContent from "../../utils/appTextContent";
 
 const Levels = () => {
   const { levelBreakdown, busy } =
@@ -35,8 +36,10 @@ const Levels = () => {
     return unsubscribe;
   }, [navigation]);
 
+  const { heading } =
+    appTextContent.english.collection.levelsBreakdown;
   return (
-    <PopUpContainer heading="Levels Breakdown">
+    <PopUpContainer {...{ heading }}>
       {busy ? (
         <Loader />
       ) : (

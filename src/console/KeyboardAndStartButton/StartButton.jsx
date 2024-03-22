@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { getConsoleState } from "../../store/console";
 import AppButton from "../../ui/AppButton";
 import { getSettingsState } from "../../store/settings";
+import appTextContent from "../../utils/appTextContent";
 
 const StartButton = ({ inputFieldRef }) => {
   const { timerIsOn } = useSelector(getConsoleState);
@@ -12,6 +13,8 @@ const StartButton = ({ inputFieldRef }) => {
   );
   const color = colors[colorScheme].CONTRAST[golden];
   const backgroundColor = colors[colorScheme].SECONDARY;
+
+  const title = appTextContent.english.console.start;
 
   const { width } = Dimensions.get("window");
   const size = width / 1.5;
@@ -27,7 +30,7 @@ const StartButton = ({ inputFieldRef }) => {
   return !timerIsOn ? (
     <AppButton
       {...{
-        title: "Start",
+        title,
         busy: false,
         color,
         backgroundColor,

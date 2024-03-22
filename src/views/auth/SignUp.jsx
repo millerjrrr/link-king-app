@@ -11,35 +11,40 @@ import client from "../../api/client";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { authErrorHandler } from "../../errors/authErrorHandler";
-
-const validationSchema = yup.object({
-  name: yup
-    .string()
-    .trim("Name is missing!")
-    .min(3, "Name is too short!")
-    .required("Name is required!"),
-  email: yup
-    .string()
-    .trim("Email is missing!")
-    .email("Invalid email!")
-    .required("Email is required!"),
-  password: yup
-    .string()
-    .trim("Password is missing!")
-    .min(8, "Password is too short!")
-    // .matches(
-    //   /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#\$%\^&\*])[a-zA-Z\d!@#\$%\^&\*]+$/,
-    //   "Password is too simple!",
-    // )
-    .required("Password is required!"),
-});
-const initialValues = {
-  name: "",
-  email: "",
-  password: "",
-};
+import appTextContent from "../../utils/appTextContent";
 
 const SignUp = () => {
+  const { name, email, password } =
+    appTextContent.english.auth.forms;
+
+  const validationSchema = yup.object({
+    name: yup
+      .string()
+      .trim(name.trim)
+      .min(3, name.min)
+      .required(name.required),
+    email: yup
+      .string()
+      .trim(email.trim)
+      .email(email.email)
+      .required(email.required),
+    password: yup
+      .string()
+      .trim(password.trim)
+      .min(8, password.min)
+      .matches(
+        /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#\$%\^&\*])[a-zA-Z\d!@#\$%\^&\*]+$/,
+        password.matches,
+      )
+      .required(password.required),
+  });
+
+  const initialValues = {
+    name: "",
+    email: "",
+    password: "",
+  };
+
   const dispatch = useDispatch();
   //Keyboard Management
   const [isKeyboardShowing, setIsKeyboardShowing] =
@@ -88,12 +93,7 @@ const SignUp = () => {
       );
       if (data.status === "success")
         navigation.navigate("CheckYourEmail", {
-          heading: "Verification Email Sent",
-          subHeading: "Please verify your email",
-          text:
-            "We've sent you an email with a verification link. " +
-            "Please check your email then return " +
-            "to the app to log in!",
+          key: "verification",
         });
     } catch (error) {
       authErrorHandler(error, dispatch);
@@ -101,57 +101,68 @@ const SignUp = () => {
     actions.setSubmitting(false);
   };
 
+  const { heading, subHeading } =
+    appTextContent.english.auth.signUp;
+
+  const { signIn, signUp, lostPassword } =
+    appTextContent.english.auth.titles;
+
   return (
-    <AuthFormContainer
-      heading="Welcome!"
-      subHeading="Let's get started by creating your account."
-    >
+    <AuthFormContainer {...{ heading, subHeading }}>
       <Form
         {...{ onSubmit, initialValues, validationSchema }}
       >
         <View style={styles.formContainer}>
           <AuthInputField
-            name="name"
-            label="Name"
-            placeholder="Your Name"
-            containerStyle={styles.marginBottom}
+            {...{
+              name: "name",
+              label: name.label,
+              placeholder: name.placeholder,
+              containerStyle: styles.marginBottom,
+            }}
           />
           <AuthInputField
-            name="email"
-            label="Email"
-            placeholder="you@example.com"
-            keyboardType="email-address"
-            autoCapitalize="none"
-            containerStyle={styles.marginBottom}
+            {...{
+              name: "email",
+              label: email.label,
+              placeholder: email.placeholder,
+              keyboardType: "email-address",
+              autoCapitalize: "none",
+              containerStyle: styles.marginBottom,
+            }}
           />
           <AuthInputField
-            name="password"
-            label="Password"
-            placeholder="********"
-            autoCapitalize="none"
-            secureTextEntry={secureEntry}
-            containerStyle={styles.marginBottom}
-            rightIcon={
-              <PasswordVisibilityIcon
-                privateIcon={secureEntry}
-              />
-            }
-            onRightIconPress={togglePasswordView}
+            {...{
+              name: "password",
+              label: password.label,
+              placeholder: "********",
+              autoCapitalize: "none",
+              secureTextEntry: secureEntry,
+              containerStyle: styles.marginBottom,
+              rightIcon: (
+                <PasswordVisibilityIcon
+                  {...{ privateIcon: secureEntry }}
+                />
+              ),
+              onRightIconPress: togglePasswordView,
+            }}
           />
           {!isKeyboardShowing ? (
             <>
-              <SubmitBtn title="Sign Up" />
+              <SubmitBtn {...{ title: signUp }} />
               <View style={styles.linkContainer}>
                 <AppLink
-                  title="Sign in"
-                  onPress={() => {
-                    navigation.navigate("SignIn");
+                  {...{
+                    title: signIn,
+                    onPress: () =>
+                      navigation.navigate("SignIn"),
                   }}
                 />
                 <AppLink
-                  title="I lost my password"
-                  onPress={() => {
-                    navigation.navigate("LostPassword");
+                  {...{
+                    title: lostPassword,
+                    onPress: () =>
+                      navigation.navigate("LostPassword"),
                   }}
                 />
               </View>

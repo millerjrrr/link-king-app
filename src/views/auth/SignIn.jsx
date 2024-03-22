@@ -16,24 +16,28 @@ import {
 import { saveToAsyncStorage } from "../../utils/asyncStorage";
 import { useEffect, useState } from "react";
 import { authErrorHandler } from "../../errors/authErrorHandler";
-
-const validationSchema = yup.object({
-  email: yup
-    .string()
-    .trim("Email is missing!")
-    .email("Invalid email!")
-    .required("Email is required!"),
-  password: yup
-    .string()
-    .trim("Password is missing!")
-    .required("Password is required!"),
-});
-const initialValues = {
-  email: "",
-  password: "",
-};
+import appTextContent from "../../utils/appTextContent";
 
 const SignIn = () => {
+  const { email, password } =
+    appTextContent.english.auth.forms;
+
+  const validationSchema = yup.object({
+    email: yup
+      .string()
+      .trim(email.trim)
+      .email(email.email)
+      .required(email.required),
+    password: yup
+      .string()
+      .trim(password.trim)
+      .required(password.required),
+  });
+  const initialValues = {
+    email: "",
+    password: "",
+  };
+
   //Keyboard Management
   const [isKeyboardShowing, setIsKeyboardShowing] =
     useState(false);
@@ -87,8 +91,10 @@ const SignIn = () => {
     actions.setSubmitting(false);
   };
 
+  const { heading } = appTextContent.english.auth.signIn;
+
   return (
-    <AuthFormContainer heading="Welcome back!">
+    <AuthFormContainer {...{ heading }}>
       <Form
         {...{
           onSubmit,
@@ -98,26 +104,30 @@ const SignIn = () => {
       >
         <View style={styles.formContainer}>
           <AuthInputField
-            name="email"
-            label="Email"
-            placeholder="you@example.com"
-            keyboardType="email-address"
-            autoCapitalize="none"
-            containerStyle={styles.marginBottom}
+            {...{
+              name: "email",
+              label: email.label,
+              placeholder: email.placeholder,
+              keyboardType: "email-address",
+              autoCapitalize: "none",
+              containerStyle: styles.marginBottom,
+            }}
           />
           <AuthInputField
-            name="password"
-            label="Password"
-            placeholder="********"
-            autoCapitalize="none"
-            secureTextEntry={secureEntry}
-            containerStyle={styles.marginBottom}
-            rightIcon={
-              <PasswordVisibilityIcon
-                privateIcon={secureEntry}
-              />
-            }
-            onRightIconPress={togglePasswordView}
+            {...{
+              name: "password",
+              label: password.label,
+              placeholder: "********",
+              autoCapitalize: "none",
+              secureTextEntry: secureEntry,
+              containerStyle: styles.marginBottom,
+              rightIcon: (
+                <PasswordVisibilityIcon
+                  {...{ privateIcon: secureEntry }}
+                />
+              ),
+              onRightIconPress: togglePasswordView,
+            }}
           />
           {!isKeyboardShowing ? (
             <>

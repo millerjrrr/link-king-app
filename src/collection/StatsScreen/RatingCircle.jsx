@@ -4,6 +4,7 @@ import colors from "../../utils/colors";
 import { useSelector } from "react-redux";
 import { getStatsState } from "../../store/stats";
 import { getSettingsState } from "../../store/settings";
+import appTextContent from "../../utils/appTextContent";
 
 const RatingCircle = () => {
   const { colorScheme, golden } = useSelector(
@@ -14,6 +15,9 @@ const RatingCircle = () => {
   const {
     userGameData: { rating },
   } = useSelector(getStatsState);
+
+  const { textC } =
+    appTextContent.english.collection.statsScreen;
   return (
     <>
       <Text
@@ -23,7 +27,7 @@ const RatingCircle = () => {
           color: green,
         }}
       >
-        Your performance rating is
+        {textC}
       </Text>
       <View style={{ paddingVertical: 20 }}>
         <CircularProgress

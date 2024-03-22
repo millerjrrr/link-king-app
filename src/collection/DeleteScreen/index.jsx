@@ -7,6 +7,8 @@ import WordCard from "../WordCard";
 import ResponseInformation from "./ResponseInformation";
 import NoticeAndFlagButton from "./NoticeAndFlagButton";
 import { flagAndDeleteTicket } from "../../utils/flagAndDeleteTicket";
+import { View } from "react-native";
+import appTextContent from "../../utils/appTextContent";
 
 const DeleteScreen = ({ route }) => {
   const { ticket } = route.params;
@@ -29,18 +31,26 @@ const DeleteScreen = ({ route }) => {
     );
   };
 
+  const { heading } =
+    appTextContent.english.collection.deleteScreen;
+
   return (
-    <PopUpContainer heading="Delete One">
+    <PopUpContainer {...{ heading }}>
       <BloodRedCover elapsedTime={elapsedTime} />
       <BusyWrapper {...{ busy, size: 96 }}>
-        <WordCard ticket={ticket} />
-        {pressed ? (
-          <ResponseInformation {...{ status }} />
-        ) : (
+        <View
+          style={{ width: "100%", paddingHorizontal: 15 }}
+        >
+          <WordCard ticket={ticket} />
+          {pressed ? (
+            <ResponseInformation {...{ status }} />
+          ) : null}
+        </View>
+        {!pressed ? (
           <NoticeAndFlagButton
             {...{ completeFunction, setElapsedTime }}
           />
-        )}
+        ) : null}
       </BusyWrapper>
     </PopUpContainer>
   );

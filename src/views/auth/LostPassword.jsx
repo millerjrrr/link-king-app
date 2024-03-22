@@ -10,19 +10,21 @@ import client from "../../api/client";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { authErrorHandler } from "../../errors/authErrorHandler";
-
-const validationSchema = yup.object({
-  email: yup
-    .string()
-    .trim("Email is missing!")
-    .email("Invalid email!")
-    .required("Email is required!"),
-});
-const initialValues = {
-  email: "",
-};
+import appTextContent from "../../utils/appTextContent";
 
 const LostPassword = () => {
+  const { email } = appTextContent.english.auth.forms;
+
+  const validationSchema = yup.object({
+    email: yup
+      .string()
+      .trim(email.trim)
+      .email(email.email)
+      .required(email.required),
+  });
+  const initialValues = {
+    email: "",
+  };
   const dispatch = useDispatch();
   //Keyboard Management
   const [isKeyboardShowing, setIsKeyboardShowing] =
@@ -64,12 +66,7 @@ const LostPassword = () => {
       );
       if (data.status === "success")
         navigation.navigate("CheckYourEmail", {
-          heading: "Password Reset Email Sent",
-          subHeading:
-            "Use link in email to reset your password",
-          text:
-            "We've sent you an link which you can use to reset your password " +
-            "through our site!",
+          key: "passwordReset",
         });
     } catch (error) {
       authErrorHandler(error, dispatch);
@@ -77,39 +74,49 @@ const LostPassword = () => {
     actions.setSubmitting(false);
   };
 
+  const { sendLink, signIn, signUp } =
+    appTextContent.english.auth.titles;
+
+  const { heading, subHeading } =
+    appTextContent.english.auth.lostPassword;
+
   return (
     <AuthFormContainer
-      heading="Forgot password"
-      subHeading={
-        "Oops, did you forget your password? Don't worry, we'll help you get back in."
-      }
+      {...{
+        heading,
+        subHeading,
+      }}
     >
       <Form
         {...{ onSubmit, initialValues, validationSchema }}
       >
         <View style={styles.formContainer}>
           <AuthInputField
-            name="email"
-            label="Email"
-            placeholder="you@example.com"
-            keyboardType="email-address"
-            autoCapitalize="none"
-            containerStyle={styles.marginBottom}
+            {...{
+              name: "email",
+              label: email.label,
+              placeholder: email.placeholder,
+              keyboardType: "email-address",
+              autoCapitalize: "none",
+              containerStyle: styles.marginBottom,
+            }}
           />
           {!isKeyboardShowing ? (
             <>
-              <SubmitBtn title="Send link" />
+              <SubmitBtn {...{ title: sendLink }} />
               <View style={styles.linkContainer}>
                 <AppLink
-                  title="Sign in"
-                  onPress={() => {
-                    navigation.navigate("SignIn");
+                  {...{
+                    title: signIn,
+                    onPress: () =>
+                      navigation.navigate("SignIn"),
                   }}
                 />
                 <AppLink
-                  title="Sign up"
-                  onPress={() => {
-                    navigation.navigate("SignUp");
+                  {...{
+                    title: signUp,
+                    onPress: () =>
+                      navigation.navigate("SignUp"),
                   }}
                 />
               </View>

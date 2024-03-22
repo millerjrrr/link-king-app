@@ -8,6 +8,7 @@ import { getCollectionState } from "../store/collection";
 import { fetchTicketsFirstBatch } from "../collection/functions/fetchTicketsFirstBatch";
 import BusyWrapper from "../ui/Loader/BusyWrapper";
 import { getAuthState } from "../store/auth";
+import appTextContent from "../utils/appTextContent";
 
 const Collection = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -34,8 +35,10 @@ const Collection = ({ navigation }) => {
     fetchTicketsFirstBatch(dispatch, searchKeyword);
   }, [searchKeyword]);
 
+  const { heading } = appTextContent.english.collection;
+
   return (
-    <InnerTabContainer heading="Collection">
+    <InnerTabContainer {...{ heading }}>
       <SearchBarContainer navigation={navigation} />
       <BusyWrapper {...{ busy, size: 96 }}>
         <WordCollectionList

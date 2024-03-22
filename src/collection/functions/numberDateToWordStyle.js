@@ -1,3 +1,4 @@
+import appTextContent from "../../utils/appTextContent";
 import dateToNumberStyleDate from "./dateToNumberStyleDate";
 
 const numberDateToDashFormat = (date) => {
@@ -16,10 +17,13 @@ const numberDateToDashFormat = (date) => {
   return `${day}-${month}-${year}`;
 };
 
+const { today, tomorrow } =
+  appTextContent.english.collection;
+
 export const numberDateToWordStyleDate = (date) => {
-  const today = dateToNumberStyleDate(new Date());
-  const gap = date - today;
-  if (gap <= 0) return "today";
-  if (gap === 1) return "tomorrow";
+  const todaysDate = dateToNumberStyleDate(new Date());
+  const gap = date - todaysDate;
+  if (gap <= 0) return today;
+  if (gap === 1) return tomorrow;
   return numberDateToDashFormat(date);
 };

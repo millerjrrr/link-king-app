@@ -3,6 +3,7 @@ import colors from "../../utils/colors";
 import { useSelector } from "react-redux";
 import RedSafetyButton from "../../ui/RedSafetyButton";
 import { getSettingsState } from "../../store/settings";
+import appTextContent from "../../utils/appTextContent";
 
 const NoticeAndFlagButton = ({
   completeFunction,
@@ -13,19 +14,21 @@ const NoticeAndFlagButton = ({
   );
   const color = colors[colorScheme].CONTRAST[golden];
 
+  const { description, buttonTitle } =
+    appTextContent.english.console.targetDetails;
+
   return (
     <>
       <Text
         style={{
           color,
           fontSize: 25,
-          margin: 15,
+          marginHorizontal: 25,
+          marginBottom: 15,
           textAlign: "center",
         }}
       >
-        Think your answer should have been accepted? You can
-        flag this word for review and we will look into it
-        as quickly as possible.
+        {description}
       </Text>
       <Text
         style={{
@@ -36,8 +39,7 @@ const NoticeAndFlagButton = ({
           textAlign: "center",
         }}
       >
-        Press and hold to flag word and delete from
-        collected words
+        {buttonTitle}
       </Text>
       <RedSafetyButton
         {...{

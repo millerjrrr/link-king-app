@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import colors from "../../utils/colors";
 import RedSafetyButton from "../../ui/RedSafetyButton";
 import { getSettingsState } from "../../store/settings";
+import appTextContent from "../../utils/appTextContent";
 
 const NoticeAndFlagButton = ({
   completeFunction,
@@ -12,6 +13,9 @@ const NoticeAndFlagButton = ({
     getSettingsState,
   );
   const color = colors[colorScheme].CONTRAST[golden];
+
+  const { textA, textB } =
+    appTextContent.english.collection.deleteScreen;
 
   return (
     <>
@@ -23,12 +27,16 @@ const NoticeAndFlagButton = ({
             textAlign: "center",
           }}
         >
-          Are you sure you want to permanently remove this
-          word from your collection?
+          {textA}
         </Text>
       </View>
-      <Text style={{ color, textAlign: "center" }}>
-        Press and hold to delete
+      <Text
+        style={{
+          color: colors[colorScheme].RED,
+          textAlign: "center",
+        }}
+      >
+        {textB}
       </Text>
       <RedSafetyButton
         {...{

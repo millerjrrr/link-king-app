@@ -3,13 +3,16 @@ import colors from "../../utils/colors";
 import AuthFormContainer from "../../components/containers/AuthFormContainer";
 import AppButton from "../../ui/AppButton";
 import Panel from "../../ui/Panel";
+import appTextContent from "../../utils/appTextContent";
 
 const CheckYourEmail = ({
   navigation,
   size = 200,
   route,
 }) => {
-  const { heading, subHeading, text } = route.params;
+  const key = route.params;
+  const { heading, subHeading, text } =
+    appTextContent.english.auth[key];
 
   const onPress = () => navigation.navigate("SignIn");
 

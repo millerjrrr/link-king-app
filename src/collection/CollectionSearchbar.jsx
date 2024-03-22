@@ -7,6 +7,7 @@ import {
   updateCollection,
 } from "../store/collection";
 import { getSettingsState } from "../store/settings";
+import appTextContent from "../utils/appTextContent";
 
 const CollectionSearchbar = () => {
   const { colorScheme, golden } = useSelector(
@@ -18,9 +19,12 @@ const CollectionSearchbar = () => {
 
   const dispatch = useDispatch();
 
+  const { searchMessage } =
+    appTextContent.english.collection;
+
   return (
     <Searchbar
-      placeholder="Search Collected Words"
+      placeholder={searchMessage}
       placeholderTextColor={
         colors[colorScheme].INACTIVE_CONTRAST
       }

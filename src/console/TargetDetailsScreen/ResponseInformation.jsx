@@ -2,6 +2,7 @@ import { Text } from "react-native";
 import { useSelector } from "react-redux";
 import colors from "../../utils/colors";
 import { getSettingsState } from "../../store/settings";
+import appTextContent from "../../utils/appTextContent";
 
 const ResponseInformation = ({ status }) => {
   const { colorScheme, golden } = useSelector(
@@ -9,17 +10,19 @@ const ResponseInformation = ({ status }) => {
   );
   const color = colors[colorScheme].CONTRAST[golden];
 
+  const { responseA, responseB } =
+    appTextContent.english.console.targetDetails;
+
   return status ? (
     <Text
       style={{
         color,
         fontSize: 25,
-        margin: 15,
+        margin: 10,
         textAlign: "center",
       }}
     >
-      This word has been flagged for review and removed from
-      your collection. Thank you for your help!
+      {responseA}
     </Text>
   ) : (
     <Text
@@ -30,8 +33,7 @@ const ResponseInformation = ({ status }) => {
         textAlign: "center",
       }}
     >
-      ...something went wrong 😣 please check your internet
-      connection and try again...
+      {responseB}
     </Text>
   );
 };
