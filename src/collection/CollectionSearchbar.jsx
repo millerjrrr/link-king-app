@@ -7,10 +7,10 @@ import {
   updateCollection,
 } from "../store/collection";
 import { getSettingsState } from "../store/settings";
-import appTextContent from "../utils/appTextContent";
+import appTextSource from "../utils/appTextSource";
 
 const CollectionSearchbar = () => {
-  const { colorScheme, golden } = useSelector(
+  const { colorScheme, golden, appLang } = useSelector(
     getSettingsState,
   );
   const color = colors[colorScheme].CONTRAST[golden];
@@ -20,7 +20,7 @@ const CollectionSearchbar = () => {
   const dispatch = useDispatch();
 
   const { searchMessage } =
-    appTextContent.english.collection;
+    appTextSource[appLang].collection;
 
   return (
     <Searchbar

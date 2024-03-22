@@ -17,6 +17,7 @@ import {
   updateToken,
 } from "../store/auth";
 import { removeFromAsyncStorage } from "../utils/asyncStorage";
+import appTextSource from "./../utils/appTextSource/index";
 
 const ModalContainer = styled(View)`
   background-color: ${(props) => props.backgroundColor};
@@ -46,7 +47,7 @@ const Button = ({ title, color, size, onPress }) => {
 };
 
 const ModalTypeMenuItem = ({ optionName }) => {
-  const { colorScheme, golden } = useSelector(
+  const { colorScheme, golden, appLang } = useSelector(
     getSettingsState,
   );
   const color = colors[colorScheme].CONTRAST[golden];
@@ -57,9 +58,12 @@ const ModalTypeMenuItem = ({ optionName }) => {
 
   const dispatch = useDispatch();
 
+  const { subject: subjectText } =
+    appTextSource[appLang].options.contactUs;
+
   const handleSendEmail = () => {
     const email = "info@linkoking.com";
-    const subject = encodeURIComponent("General Inquiry");
+    const subject = encodeURIComponent(subjectText);
     const url = `mailto:${email}?subject=${subject}`;
 
     Linking.openURL(url).catch((err) =>
@@ -78,24 +82,17 @@ const ModalTypeMenuItem = ({ optionName }) => {
     removeFromAsyncStorage("auth-token");
   };
 
-  let onPress, textA, textB, title, iconName;
+  const { title, modalMessage, button } =
+    appTextSource[appLang].options[optionName];
 
   switch (optionName) {
-    case "Contact Us":
+    case "contactUs":
       onPress = handleSendEmail;
       iconName = "email-outline";
-      textA = "Contact Us";
-      textB =
-        "Please contact us by email and we will get back " +
-        "to you as soon as possible.";
-      title = "Send Email";
       break;
-    case "Log Out":
+    case "logOut":
       onPress = logOut;
       iconName = "logout";
-      textA = "Log Out";
-      textB = "Are your sure you want to log out?";
-      title = "Log Out";
       break;
   }
 
@@ -115,7 +112,7 @@ const ModalTypeMenuItem = ({ optionName }) => {
             },
           }}
         >
-          {textA}
+          {title}
         </Text>
       </TouchableOpacity>
       <Modal
@@ -123,10 +120,12 @@ const ModalTypeMenuItem = ({ optionName }) => {
         onBackdropPress={() => setIsModalVisible(false)}
       >
         <ModalContainer {...{ backgroundColor }}>
-          <ModalText {...{ color }}>{textB}</ModalText>
+          <ModalText {...{ color }}>
+            {modalMessage}
+          </ModalText>
           <Button
             {...{
-              title,
+              title: button,
               color,
               size: 20,
               onPress,

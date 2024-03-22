@@ -6,9 +6,10 @@ import { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import ColorPicker from "./components/ColorPicker";
 import OptionsMenuItemContainer from "./components/OptionsMenuItemContainer";
+import appTextSource from "./../utils/appTextSource/index";
 
 const ColorPickerMenuItem = () => {
-  const { colorScheme, golden } = useSelector(
+  const { colorScheme, golden, appLang } = useSelector(
     getSettingsState,
   );
   const color = colors[colorScheme].CONTRAST[golden];
@@ -27,6 +28,9 @@ const ColorPickerMenuItem = () => {
     return unsubscribe;
   }, [navigation]);
 
+  const { colorSchemeTitle } =
+    appTextSource[appLang].options;
+
   return (
     <OptionsMenuItemContainer iconName="palette-outline">
       {!showPalette ? (
@@ -35,7 +39,7 @@ const ColorPickerMenuItem = () => {
           onPress={() => setShowPallet(true)}
         >
           <Text {...{ style: { fontSize: 20, color } }}>
-            Color scheme
+            {colorSchemeTitle}
           </Text>
         </TouchableOpacity>
       ) : (

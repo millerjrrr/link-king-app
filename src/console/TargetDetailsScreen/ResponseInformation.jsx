@@ -2,16 +2,16 @@ import { Text } from "react-native";
 import { useSelector } from "react-redux";
 import colors from "../../utils/colors";
 import { getSettingsState } from "../../store/settings";
-import appTextContent from "../../utils/appTextContent";
+import appTextSource from "../../utils/appTextSource";
 
 const ResponseInformation = ({ status }) => {
-  const { colorScheme, golden } = useSelector(
+  const { colorScheme, golden, appLang } = useSelector(
     getSettingsState,
   );
   const color = colors[colorScheme].CONTRAST[golden];
 
   const { responseA, responseB } =
-    appTextContent.english.console.targetDetails;
+    appTextSource[appLang].console.targetDetails;
 
   return status ? (
     <Text

@@ -4,17 +4,17 @@ import { useSelector } from "react-redux";
 import { getConsoleState } from "../../store/console";
 import AppButton from "../../ui/AppButton";
 import { getSettingsState } from "../../store/settings";
-import appTextContent from "../../utils/appTextContent";
+import appTextSource from "../../utils/appTextSource";
 
 const StartButton = ({ inputFieldRef }) => {
   const { timerIsOn } = useSelector(getConsoleState);
-  const { colorScheme, golden } = useSelector(
+  const { colorScheme, golden, appLang } = useSelector(
     getSettingsState,
   );
   const color = colors[colorScheme].CONTRAST[golden];
   const backgroundColor = colors[colorScheme].SECONDARY;
 
-  const title = appTextContent.english.console.start;
+  const title = appTextSource[appLang].console.start;
 
   const { width } = Dimensions.get("window");
   const size = width / 1.5;

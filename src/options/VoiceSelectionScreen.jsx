@@ -1,10 +1,10 @@
 import { Text, View, StyleSheet } from "react-native";
-import appTextContent from "./../utils/appTextContent";
 import styled from "styled-components";
 import PopUpContainer from "./../components/containers/PopUpContainer";
 import { useSelector } from "react-redux";
 import { getSettingsState } from "../store/settings";
 import colors from "../utils/colors";
+import appTextSource from "../utils/appTextSource";
 
 const Container = styled(View)`
   align-items: center;
@@ -19,12 +19,12 @@ const TextBlock = styled(Text)`
 `;
 
 const VoiceSelectionScreen = () => {
-  const { title, textA, textB, tip } =
-    appTextContent.english.options.voiceSelectionScreen;
-
-  const { colorScheme, golden } = useSelector(
+  const { colorScheme, golden, appLang } = useSelector(
     getSettingsState,
   );
+
+  const { title, textA, textB, tip } =
+    appTextSource[appLang].options.voiceSelection;
 
   const color = colors[colorScheme].CONTRAST[golden];
 
@@ -38,9 +38,5 @@ const VoiceSelectionScreen = () => {
     </PopUpContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {},
-});
 
 export default VoiceSelectionScreen;

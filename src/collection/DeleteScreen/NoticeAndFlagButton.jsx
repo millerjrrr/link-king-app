@@ -3,19 +3,19 @@ import { useSelector } from "react-redux";
 import colors from "../../utils/colors";
 import RedSafetyButton from "../../ui/RedSafetyButton";
 import { getSettingsState } from "../../store/settings";
-import appTextContent from "../../utils/appTextContent";
+import appTextSource from "../../utils/appTextSource";
 
 const NoticeAndFlagButton = ({
   completeFunction,
   setElapsedTime,
 }) => {
-  const { colorScheme, golden } = useSelector(
+  const { colorScheme, golden, appLang } = useSelector(
     getSettingsState,
   );
   const color = colors[colorScheme].CONTRAST[golden];
 
   const { textA, textB } =
-    appTextContent.english.collection.deleteScreen;
+    appTextSource[appLang].collection.deleteScreen;
 
   return (
     <>

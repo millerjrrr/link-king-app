@@ -9,13 +9,16 @@ import AuthFormContainer from "../../components/containers/AuthFormContainer";
 import { useNavigation } from "@react-navigation/native";
 import client from "../../api/client";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { authErrorHandler } from "../../errors/authErrorHandler";
-import appTextContent from "../../utils/appTextContent";
+import { getSettingsState } from "../../store/settings";
+import appTextSource from "../../utils/appTextSource";
 
 const SignUp = () => {
+  const { appLang } = useSelector(getSettingsState);
+
   const { name, email, password } =
-    appTextContent.english.auth.forms;
+    appTextSource[appLang].auth.forms;
 
   const validationSchema = yup.object({
     name: yup
@@ -102,10 +105,10 @@ const SignUp = () => {
   };
 
   const { heading, subHeading } =
-    appTextContent.english.auth.signUp;
+    appTextSource[appLang].auth.signUp;
 
   const { signIn, signUp, lostPassword } =
-    appTextContent.english.auth.titles;
+    appTextSource[appLang].auth.titles;
 
   return (
     <AuthFormContainer {...{ heading, subHeading }}>

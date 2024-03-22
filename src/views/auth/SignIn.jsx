@@ -8,7 +8,7 @@ import PasswordVisibilityIcon from "../../ui/PasswordVisibilityIcon";
 import AuthFormContainer from "../../components/containers/AuthFormContainer";
 import { useNavigation } from "@react-navigation/native";
 import client from "../../api/client";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   updateLoggedInState,
   updateToken,
@@ -16,11 +16,13 @@ import {
 import { saveToAsyncStorage } from "../../utils/asyncStorage";
 import { useEffect, useState } from "react";
 import { authErrorHandler } from "../../errors/authErrorHandler";
-import appTextContent from "../../utils/appTextContent";
+import { getSettingsState } from "../../store/settings";
+import appTextSource from "../../utils/appTextSource";
 
 const SignIn = () => {
+  const { appLang } = useSelector(getSettingsState);
   const { email, password } =
-    appTextContent.english.auth.forms;
+    appTextSource[appLang].auth.forms;
 
   const validationSchema = yup.object({
     email: yup
@@ -91,7 +93,9 @@ const SignIn = () => {
     actions.setSubmitting(false);
   };
 
-  const { heading } = appTextContent.english.auth.signIn;
+  const { heading } = appTextSource[appLang].auth.signIn;
+  const { signIn, signUp, lostPassword } =
+    appTextSource[appLang].auth.titles;
 
   return (
     <AuthFormContainer {...{ heading }}>
@@ -131,18 +135,18 @@ const SignIn = () => {
           />
           {!isKeyboardShowing ? (
             <>
-              <SubmitBtn title={"Sign In"} />
+              <SubmitBtn title={signIn} />
               <View style={styles.linkContainer}>
                 <AppLink
-                  title="I lost my password"
+                  title={signUp}
                   onPress={() => {
-                    navigation.navigate("LostPassword");
+                    navigation.navigate("SignUp");
                   }}
                 />
                 <AppLink
-                  title="Sign up"
+                  title={lostPassword}
                   onPress={() => {
-                    navigation.navigate("SignUp");
+                    navigation.navigate("LostPassword");
                   }}
                 />
               </View>

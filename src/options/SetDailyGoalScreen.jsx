@@ -5,7 +5,6 @@ import {
   Dimensions,
 } from "react-native";
 import PopUpContainer from "../components/containers/PopUpContainer";
-import appTextContent from "../utils/appTextContent";
 import styled from "styled-components";
 import ScrollSelector from "./components/ScrollSelector";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,6 +17,7 @@ import colors from "../utils/colors";
 import { saveToAsyncStorage } from "../utils/asyncStorage";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { updateNotification } from "../store/notification";
+import appTextSource from "../utils/appTextSource";
 
 const Container = styled(View)`
   flex: 1;
@@ -62,17 +62,17 @@ const Icon = ({ name, message, color }) => {
 };
 
 const SetDailyGoalScreen = ({ navigation }) => {
-  const { title, textA, textB, textC, textD, textE } =
-    appTextContent.english.options.setDailyGoal;
-
   const {
     colorScheme,
     golden,
     timeGoal,
     newWordsGoal,
     stepsGoal,
+    appLang,
   } = useSelector(getSettingsState);
   const color = colors[colorScheme].CONTRAST[golden];
+  const { title, textA, textB, textC, textD } =
+    appTextSource[appLang].options.setDailyGoal;
 
   const dispatch = useDispatch();
 

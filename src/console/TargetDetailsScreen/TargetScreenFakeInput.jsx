@@ -8,15 +8,17 @@ import colors from "../../utils/colors";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../../store/console";
 import { getSettingsState } from "../../store/settings";
-import appTextContent from "../../utils/appTextContent";
+import appTextSource from "../../utils/appTextSource";
 
 const TargetScreenFakeInput = () => {
   const { lastAttempt } = useSelector(getConsoleState);
-  const { colorScheme } = useSelector(getSettingsState);
+  const { colorScheme, appLang } = useSelector(
+    getSettingsState,
+  );
   const { SECONDARY, RED } = colors[colorScheme];
 
   const { timedOut } =
-    appTextContent.english.console.targetDetails;
+    appTextSource[appLang].console.targetDetails;
 
   return (
     <View

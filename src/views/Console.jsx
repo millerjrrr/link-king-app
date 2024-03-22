@@ -15,11 +15,13 @@ import StatsContainer from "../console/StatsContainer";
 import InnerTabContainer from "../components/containers/InnerTabContainer";
 import { getAuthState } from "../store/auth";
 import UseEffects from "../console/UseEffects";
-import appTextContent from "../utils/appTextContent";
+import { getSettingsState } from "../store/settings";
+import appTextSource from "../utils/appTextSource";
 
 const Console = ({ navigation }) => {
   const inputFieldRef = useRef(null);
   const { refresh } = useSelector(getAuthState);
+  const { appLang } = useSelector(getSettingsState);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -37,7 +39,7 @@ const Console = ({ navigation }) => {
     console.log("help");
   };
 
-  const { heading } = appTextContent.english.console;
+  const { heading } = appTextSource[appLang].console;
 
   return (
     <InnerTabContainer {...{ heading, help }}>

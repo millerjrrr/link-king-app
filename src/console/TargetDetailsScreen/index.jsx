@@ -11,9 +11,12 @@ import Target from "./Target";
 import Solutions from "./Solutions";
 import ResponseInformation from "./ResponseInformation";
 import NoticeAndFlagButton from "./NoticeAndFlagButton";
+import appTextSource from "../../utils/appTextSource";
+import { getSettingsState } from "../../store/settings";
 
 const TargetDetailsScreen = () => {
   const { attempt } = useSelector(getConsoleState);
+  const { appLang } = useSelector(getSettingsState);
 
   // ...loader management...
   const [busy, setBusy] = useState(false);
@@ -32,9 +35,11 @@ const TargetDetailsScreen = () => {
       dispatch,
     );
   };
+  const { heading } =
+    appTextSource[appLang].console.targetDetails;
 
   return (
-    <PopUpContainer heading="Attempt Info">
+    <PopUpContainer {...{ heading }}>
       <BloodRedCover elapsedTime={elapsedTime} />
       <BusyWrapper {...{ busy, size: 96 }}>
         <View style={styles.container}>

@@ -3,10 +3,11 @@ import { useSelector } from "react-redux";
 import { getConsoleState } from "../../store/console";
 import colors from "../../utils/colors";
 import { getSettingsState } from "../../store/settings";
+import appTextSource from "../../utils/appTextSource";
 
 const Solutions = () => {
   const { attempt } = useSelector(getConsoleState);
-  const { colorScheme, golden } = useSelector(
+  const { colorScheme, golden, appLang } = useSelector(
     getSettingsState,
   );
   const color = colors[colorScheme].CONTRAST[golden];
@@ -18,6 +19,8 @@ const Solutions = () => {
       (index < attempt.solutions.length - 1 ? "; " : "");
   });
 
+  const { accepted } =
+    appTextSource[appLang].console.targetDetails;
   return (
     <>
       <Text
@@ -27,7 +30,7 @@ const Solutions = () => {
           marginTop: 10,
         }}
       >
-        Accepted Answers:
+        {accepted}
       </Text>
       <Text
         style={{

@@ -8,12 +8,14 @@ import AuthFormContainer from "../../components/containers/AuthFormContainer";
 import { useNavigation } from "@react-navigation/native";
 import client from "../../api/client";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { authErrorHandler } from "../../errors/authErrorHandler";
-import appTextContent from "../../utils/appTextContent";
+import appTextSource from "../../utils/appTextSource";
+import { getSettingsState } from "../../store/settings";
 
 const LostPassword = () => {
-  const { email } = appTextContent.english.auth.forms;
+  const { appLang } = useSelector(getSettingsState);
+  const { email } = appTextSource[appLang].auth.forms;
 
   const validationSchema = yup.object({
     email: yup
@@ -75,10 +77,10 @@ const LostPassword = () => {
   };
 
   const { sendLink, signIn, signUp } =
-    appTextContent.english.auth.titles;
+    appTextSource[appLang].auth.titles;
 
   const { heading, subHeading } =
-    appTextContent.english.auth.lostPassword;
+    appTextSource[appLang].auth.lostPassword;
 
   return (
     <AuthFormContainer

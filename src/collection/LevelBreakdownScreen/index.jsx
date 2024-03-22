@@ -10,11 +10,13 @@ import {
   StackActions,
   useNavigation,
 } from "@react-navigation/native";
-import appTextContent from "../../utils/appTextContent";
+import { getSettingsState } from "../../store/settings";
+import appTextSource from "../../utils/appTextSource";
 
 const Levels = () => {
   const { levelBreakdown, busy } =
     useSelector(getStatsState);
+  const { appLang } = useSelector(getSettingsState);
 
   const dispatch = useDispatch();
 
@@ -37,7 +39,8 @@ const Levels = () => {
   }, [navigation]);
 
   const { heading } =
-    appTextContent.english.collection.levelsBreakdown;
+    appTextSource[appLang].collection.levelsBreakdown;
+
   return (
     <PopUpContainer {...{ heading }}>
       {busy ? (

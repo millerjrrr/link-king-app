@@ -3,6 +3,9 @@ import OptionsMenuItem from "../options/OptionsMenuItem";
 import { useNavigation } from "@react-navigation/native";
 import ColorPickerMenuItem from "../options/ColorPickerMenuItem";
 import ModalTypeMenuItem from "../options/ModalTypeMenuItem";
+import appTextSource from "../utils/appTextSource";
+import { useSelector } from "react-redux";
+import { getSettingsState } from "../store/settings";
 
 const Options = () => {
   const navigation = useNavigation();
@@ -10,12 +13,16 @@ const Options = () => {
     navigation.navigate(pageName);
   };
 
+  const { appLang } = useSelector(getSettingsState);
+  const { setDailyGoal, voiceSelection } =
+    appTextSource[appLang].options;
+
   return (
     <InnerTabContainer heading="Options">
       <OptionsMenuItem
         {...{
           iconName: "target-variant",
-          text: "Set daily goal",
+          text: setDailyGoal.title,
           first: true,
           onPress: () => navigateTo("SetDailyGoalScreen"),
         }}
@@ -23,13 +30,13 @@ const Options = () => {
       <OptionsMenuItem
         {...{
           iconName: "account-tie-voice",
-          text: "Voice settings",
+          text: voiceSelection.title,
           onPress: () => navigateTo("VoiceSelectionScreen"),
         }}
       />
       <ColorPickerMenuItem />
-      <ModalTypeMenuItem optionName="Contact Us" />
-      <ModalTypeMenuItem optionName="Log Out" />
+      <ModalTypeMenuItem optionName="contactUs" />
+      <ModalTypeMenuItem optionName="logOut" />
     </InnerTabContainer>
   );
 };

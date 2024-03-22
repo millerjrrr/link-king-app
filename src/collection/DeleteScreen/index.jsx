@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import BusyWrapper from "../../ui/Loader/BusyWrapper";
 import PopUpContainer from "../../components/containers/PopUpContainer";
 import BloodRedCover from "../../ui/BloodRedCover";
@@ -8,10 +8,12 @@ import ResponseInformation from "./ResponseInformation";
 import NoticeAndFlagButton from "./NoticeAndFlagButton";
 import { flagAndDeleteTicket } from "../../utils/flagAndDeleteTicket";
 import { View } from "react-native";
-import appTextContent from "../../utils/appTextContent";
+import appTextSource from "../../utils/appTextSource";
+import { getSettingsState } from "../../store/settings";
 
 const DeleteScreen = ({ route }) => {
   const { ticket } = route.params;
+  const { appLang } = useSelector(getSettingsState);
 
   // ...loader management...
   const [busy, setBusy] = useState(false);
@@ -32,7 +34,7 @@ const DeleteScreen = ({ route }) => {
   };
 
   const { heading } =
-    appTextContent.english.collection.deleteScreen;
+    appTextSource[appLang].collection.deleteScreen;
 
   return (
     <PopUpContainer {...{ heading }}>

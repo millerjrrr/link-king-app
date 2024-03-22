@@ -16,7 +16,7 @@ import {
 import { getSettingsState } from "../store/settings";
 
 const WordCard = ({ navigation, ticket }) => {
-  const { colorScheme, golden } = useSelector(
+  const { colorScheme, golden, appLang } = useSelector(
     getSettingsState,
   );
   const { CONTRAST, SECONDARY } = colors[colorScheme];
@@ -54,7 +54,10 @@ const WordCard = ({ navigation, ticket }) => {
             {...{ stars: level, target }}
           />
           <Date {...{ color }}>
-            {numberDateToWordStyleDate(dueDate)}
+            {numberDateToWordStyleDate({
+              date: dueDate,
+              appLang,
+            })}
           </Date>
         </RowContainer>
       </InfoContainer>

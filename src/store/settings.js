@@ -9,6 +9,7 @@ const initialState = {
   timeGoal: "",
   newWordsGoal: 1,
   stepsGoal: "",
+  appLang: "en",
 };
 
 const slice = createSlice({

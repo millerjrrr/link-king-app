@@ -8,12 +8,14 @@ import { getCollectionState } from "../store/collection";
 import { fetchTicketsFirstBatch } from "../collection/functions/fetchTicketsFirstBatch";
 import BusyWrapper from "../ui/Loader/BusyWrapper";
 import { getAuthState } from "../store/auth";
-import appTextContent from "../utils/appTextContent";
+import appTextSource from "../utils/appTextSource";
+import { getSettingsState } from "../store/settings";
 
 const Collection = ({ navigation }) => {
   const dispatch = useDispatch();
   const { searchKeyword, tickets, page, busy } =
     useSelector(getCollectionState);
+  const { appLang } = useSelector(getSettingsState);
   const { refresh } = useSelector(getAuthState);
 
   useEffect(() => {
@@ -35,7 +37,7 @@ const Collection = ({ navigation }) => {
     fetchTicketsFirstBatch(dispatch, searchKeyword);
   }, [searchKeyword]);
 
-  const { heading } = appTextContent.english.collection;
+  const { heading } = appTextSource[appLang].collection;
 
   return (
     <InnerTabContainer {...{ heading }}>

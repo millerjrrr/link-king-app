@@ -3,7 +3,9 @@ import colors from "../../utils/colors";
 import AuthFormContainer from "../../components/containers/AuthFormContainer";
 import AppButton from "../../ui/AppButton";
 import Panel from "../../ui/Panel";
-import appTextContent from "../../utils/appTextContent";
+import appTextSource from "../../utils/appTextSource";
+import { useSelector } from "react-redux";
+import { getSettingsState } from "../../store/settings";
 
 const CheckYourEmail = ({
   navigation,
@@ -11,8 +13,9 @@ const CheckYourEmail = ({
   route,
 }) => {
   const key = route.params;
+  const { appLang } = useSelector(getSettingsState);
   const { heading, subHeading, text } =
-    appTextContent.english.auth[key];
+    appTextSource[appLang].auth[key];
 
   const onPress = () => navigation.navigate("SignIn");
 
