@@ -14,11 +14,11 @@ const Options = () => {
   };
 
   const { appLang } = useSelector(getSettingsState);
-  const { setDailyGoal, voiceSelection } =
+  const { heading, setDailyGoal, voiceSelection } =
     appTextSource[appLang].options;
 
   return (
-    <InnerTabContainer heading="Options">
+    <InnerTabContainer {...{ heading }}>
       <OptionsMenuItem
         {...{
           iconName: "target-variant",

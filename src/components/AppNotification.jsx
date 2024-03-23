@@ -29,10 +29,8 @@ const AppNotification = () => {
     };
   });
 
-  const { colorScheme, golden } = useSelector(
-    getSettingsState,
-  );
-  const color = colors[colorScheme].CONTRAST[golden];
+  const { colorScheme } = useSelector(getSettingsState);
+  const color = colors[colorScheme].CONTRAST[0];
   let backgroundColor = colors[colorScheme].RED;
 
   switch (type) {

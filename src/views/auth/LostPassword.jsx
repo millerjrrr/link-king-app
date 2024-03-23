@@ -58,12 +58,14 @@ const LostPassword = () => {
     try {
       const { data } = await client.post(
         "/api/users/forgot-password",
-
         {
           ...values,
         },
         {
           timeout: 3000,
+          headers: {
+            "Accept-Language": appLang,
+          },
         },
       );
       if (data.status === "success")

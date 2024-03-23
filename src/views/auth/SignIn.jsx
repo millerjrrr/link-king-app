@@ -82,6 +82,9 @@ const SignIn = () => {
         },
         {
           timeout: 3000,
+          headers: {
+            "Accept-Language": appLang,
+          },
         },
       );
       await saveToAsyncStorage("auth-token", data.token);

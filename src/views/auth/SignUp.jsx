@@ -92,6 +92,9 @@ const SignUp = () => {
         },
         {
           timeout: 3000,
+          headers: {
+            "Accept-Language": appLang,
+          },
         },
       );
       if (data.status === "success")

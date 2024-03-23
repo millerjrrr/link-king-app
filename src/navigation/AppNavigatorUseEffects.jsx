@@ -32,12 +32,16 @@ const AppNavigatorUseEffects = () => {
           return;
         }
         // if there is no token stored on device exit
+        const appLang =
+          Localization.getLocales()[0]?.languageCode ||
+          "en";
 
         const { data } = await client.get(
           "/api/users/log-in-confirmation",
           {
             headers: {
               Authorization: "Bearer " + token,
+              "Accept-Language": appLang,
             },
             timeout: 3000,
           },
@@ -77,7 +81,8 @@ const AppNavigatorUseEffects = () => {
         stepsGoal = "" ? "" : stepsGoal * 1;
 
         const appLang =
-          Localization.getLocales()[0].languageCode;
+          Localization.getLocales()[0]?.languageCode ||
+          "en";
 
         const settings = {
           colorScheme,
