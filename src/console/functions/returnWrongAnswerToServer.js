@@ -1,7 +1,6 @@
 import clientWithAuth from "../../api/clientWithAuth";
 import {
   updateBusyState,
-  updateTimerIsOn,
   resetTimer,
   resetTimeOnThisWord,
   incrementStatsTime,

@@ -12,10 +12,13 @@ const CheckYourEmail = ({
   size = 200,
   route,
 }) => {
-  const key = route.params;
-  const { appLang } = useSelector(getSettingsState);
+  const { key } = route.params;
+  const { appLang, colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
   const { heading, subHeading, text } =
     appTextSource[appLang].auth[key];
+  const color = colors[colorScheme].CONTRAST[golden];
 
   const onPress = () => navigation.navigate("SignIn");
 

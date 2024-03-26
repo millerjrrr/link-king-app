@@ -1,4 +1,10 @@
 export default {
+  internetConnectionPage: {
+    title: "Disconnected!",
+    message:
+      "...looks like you are not connected to the internet. " +
+      "This app requires a stable internet connection...",
+  },
   console: {
     heading: "Console",
     start: "Start",

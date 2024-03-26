@@ -1,4 +1,3 @@
-import { updateSettings } from "../../store/settings";
 import { updateCSState } from "../../store/console";
 
 export const updateConsoleState = async (

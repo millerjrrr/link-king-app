@@ -1,4 +1,10 @@
 export default {
+  internetConnectionPage: {
+    title: "Desconectado!",
+    message:
+      "...parece que você não está conectado à internet. " +
+      "Este aplicativo requer uma conexão estável com a Internet...",
+  },
   console: {
     heading: "Console",
     start: "Começar",
@@ -96,14 +102,14 @@ export default {
       name: {
         trim: "Falta o nome!",
         min: "Nome muito curto!",
-        required: "O nome é obrigatório!",
+        required: "Nome requerida!",
         label: "Nome",
         placeholder: "Seu Nome",
       },
       email: {
         trim: "O e-mail está faltando!",
         email: "E-mail inválido!",
-        required: "O e-mail é obrigatório!",
+        required: "E-mail requerida!",
         label: "E-mail",
         placeholder: "você@exemplo.com",
       },

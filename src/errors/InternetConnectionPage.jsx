@@ -3,19 +3,21 @@ import colors from "../utils/colors";
 import RefreshButton from "./RefreshButton";
 import { getSettingsState } from "../store/settings";
 import { useSelector } from "react-redux";
+import appTextSource from "./../utils/appTextSource/index";
 
 const InternetConnectionPage = ({ refresh }) => {
-  const { colorScheme } = useSelector(getSettingsState);
+  const { colorScheme, appLang } = useSelector(
+    getSettingsState,
+  );
   const color = colors[colorScheme].RED;
   const backgroundColor = colors[colorScheme].PRIMARY;
+  const { title, message } =
+    appTextSource[appLang].internetConnectionPage;
   return (
     <View style={[styles.container, { backgroundColor }]}>
-      <Text style={[styles.title, { color }]}>
-        Disconnected!
-      </Text>
+      <Text style={[styles.title, { color }]}>{title}</Text>
       <Text style={[styles.text, { color }]}>
-        ..looks like you are not connected to the internet.
-        This app requires a stable internet connection...
+        {message}
       </Text>
       <RefreshButton refresh={refresh} />
     </View>
