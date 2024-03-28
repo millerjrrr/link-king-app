@@ -49,6 +49,9 @@ const TextInputForConsole = ({
   const length = formValue.length;
   if (length > 12) fontSize = (fontSize * 12) / length;
 
+  if (placeholder && placeholder.length > 14)
+    fontSize = (fontSize * 14) / placeholder.length;
+
   return (
     <TextInput
       ref={inputFieldRef}

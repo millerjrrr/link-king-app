@@ -24,7 +24,7 @@ export const RowContainer = styled(View)`
 `;
 
 export const Title = styled(Text)`
-  font-size: 30px;
+  font-size: ${(props) => props.fontSize}px;
   font-weight: bold;
   align-items: flex-start;
   color: ${(props) => props.color};

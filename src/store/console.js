@@ -85,6 +85,7 @@ const slice = createSlice({
     },
     resetTimer(state) {
       state.key += 1;
+      state.startedThisWord = Date.now();
     },
     updateTimerIsOn(state, { payload }) {
       state.timerIsOn = payload;
