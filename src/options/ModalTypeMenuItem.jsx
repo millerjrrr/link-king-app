@@ -1,12 +1,16 @@
 import {
   Linking,
+  StatusBar,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
 import colors from "../utils/colors";
 import { useDispatch, useSelector } from "react-redux";
-import { getSettingsState } from "../store/settings";
+import {
+  getSettingsState,
+  updateSettings,
+} from "../store/settings";
 import styled from "styled-components";
 import { useState } from "react";
 import Modal from "react-native-modal";
@@ -79,7 +83,10 @@ const ModalTypeMenuItem = ({ optionName }) => {
   const logOut = async () => {
     dispatch(updateToken(""));
     dispatch(updateLoggedInState(false));
+    dispatch(updateSettings({ colorScheme: "dark" }));
     removeFromAsyncStorage("auth-token");
+    removeFromAsyncStorage("color-scheme");
+    StatusBar.setBarStyle(colors.dark.STATUSBAR);
   };
 
   const { title, modalMessage, button } =

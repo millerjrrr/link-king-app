@@ -3,6 +3,9 @@ import SignIn from "../views/auth/SignIn";
 import SignUp from "../views/auth/SignUp";
 import LostPassword from "../views/auth/LostPassword";
 import CheckYourEmail from "../views/auth/CheckYourEmail";
+import { StatusBar } from "react-native";
+import colors from "../utils/colors";
+import { useEffect } from "react";
 
 const Stack = createNativeStackNavigator();
 
