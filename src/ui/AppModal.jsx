@@ -45,6 +45,7 @@ const AppModal = ({
   onBackdropPress,
   modalName,
   onPress,
+  info,
 }) => {
   const { colorScheme, golden, appLang } = useSelector(
     getSettingsState,
@@ -52,29 +53,42 @@ const AppModal = ({
   const color = colors[colorScheme].CONTRAST[golden];
   const backgroundColor = colors[colorScheme].PRIMARY;
 
-  const { title, modalMessage } =
+  const { title, modalMessage, cancel } =
     appTextSource[appLang].modals[modalName];
 
   return (
     <Modal {...{ isVisible, onBackdropPress }}>
       <ModalContainer {...{ backgroundColor }}>
         <ModalText {...{ color }}>{modalMessage}</ModalText>
-        <Button
-          {...{
-            title,
-            color,
-            size: 20,
-            onPress,
-          }}
-        />
-        <Button
-          {...{
-            title: "Cancel",
-            color,
-            size: 15,
-            onPress: onBackdropPress,
-          }}
-        />
+        {info ? (
+          <Button
+            {...{
+              title: cancel,
+              color,
+              size: 20,
+              onPress,
+            }}
+          />
+        ) : (
+          <>
+            <Button
+              {...{
+                title,
+                color,
+                size: 20,
+                onPress,
+              }}
+            />
+            <Button
+              {...{
+                title: cancel,
+                color,
+                size: 15,
+                onPress: onBackdropPress,
+              }}
+            />
+          </>
+        )}
       </ModalContainer>
     </Modal>
   );

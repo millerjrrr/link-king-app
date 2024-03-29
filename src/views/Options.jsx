@@ -22,7 +22,7 @@ const Options = () => {
       <OptionsMenuItem
         {...{
           iconName: "target-variant",
-          name: setDailyGoal.title,
+          name: setDailyGoal.heading,
           first: true,
           onPress: () => navigateTo("SetDailyGoalScreen"),
         }}

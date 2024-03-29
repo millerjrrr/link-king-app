@@ -7,36 +7,39 @@ import {
 import colors from "../utils/colors";
 import { useSelector } from "react-redux";
 import { getSettingsState } from "../store/settings";
+import StatusBarFiller from "./StatusBarFiller";
 
-const HelpButton = ({ help }) => {
+const HelpButton = ({ help, padding }) => {
   const { colorScheme, golden } = useSelector(
     getSettingsState,
   );
   const color = colors[colorScheme].CONTRAST[golden];
 
   return help ? (
-    <View style={styles.makeRelative}>
+    <>
       <TouchableOpacity
         onPress={help}
-        style={styles.container}
+        style={[
+          styles.container,
+          { paddingVertical: padding ? 5 : 15 },
+        ]}
       >
+        {padding ? <StatusBarFiller /> : null}
         <Entypo {...{ name: "help", size: 24, color }} />
       </TouchableOpacity>
-    </View>
+    </>
   ) : null;
 };
 
 const styles = StyleSheet.create({
-  makeRelative: {
-    height: 0,
-    width: "100%",
-  },
   container: {
     position: "absolute",
-    top: 0,
+    top: 10,
     right: 0,
-    paddingVertical: 15,
-    paddingLeft: 50,
+    padding: 15,
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 10,
   },
 });
 

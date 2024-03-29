@@ -75,7 +75,7 @@ export default {
     },
     colorSchemeTitle: "Color Scheme",
     setDailyGoal: {
-      title: "Daily Goal",
+      heading: "Daily Goal",
       textA: "Time Goal",
       textB: "New Words Goal",
       textC: "Steps Goal",
@@ -153,15 +153,26 @@ export default {
       modalMessage:
         "Please contact us by email and we will get back " +
         "to you as soon as possible.",
+      cancel: "Cancel",
     },
     logOut: {
       title: "Log Out",
       modalMessage: "Are your sure you want to log out?",
+      cancel: "Cancel",
     },
     setDailyGoal: {
       title: "Restore Defaults",
       modalMessage:
         "Are your sure you want to restore defaults?",
+      cancel: "Cancel",
+    },
+    dailyGoalInfo: {
+      modalMessage:
+        "Here you can set daily goals for time, new words " +
+        "and steps. A notification will appear if any of " +
+        "these conditions are satisfied. You can set a goal " +
+        "to blank and it will not be considered.",
+      cancel: "Close",
     },
   },
 };

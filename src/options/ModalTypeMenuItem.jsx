@@ -33,6 +33,8 @@ const ModalTypeMenuItem = ({ optionName }) => {
     const subject = encodeURIComponent(subjectText);
     const url = `mailto:${email}?subject=${subject}`;
 
+    setIsModalVisible(false);
+
     Linking.openURL(url).catch((err) =>
       dispatch(
         updateNotification({
@@ -50,6 +52,7 @@ const ModalTypeMenuItem = ({ optionName }) => {
     removeFromAsyncStorage("auth-token");
     removeFromAsyncStorage("color-scheme");
     StatusBar.setBarStyle(colors.dark.STATUSBAR);
+    setIsModalVisible(false);
   };
 
   const { name } =

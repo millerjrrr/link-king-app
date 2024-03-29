@@ -71,7 +71,7 @@ export default {
     },
     colorSchemeTitle: "Esquema de Cores",
     setDailyGoal: {
-      title: "Meta Diária",
+      heading: "Meta Diária",
       textA: "Meta de Tempo",
       textB: "Meta de Novas Palavras",
       textC: "Meta de Passos",
@@ -147,15 +147,26 @@ export default {
       modalMessage:
         "Entre em contato conosco por e-mail e nós responderemos o mais breve " +
         "possível",
+      cancel: "Cancelar",
     },
     logOut: {
       title: "Sair",
       modalMessage: "Tem certeza de que deseja sair?",
+      cancel: "Cancelar",
     },
     setDailyGoal: {
       title: "Restaurar",
       modalMessage:
-        "Tem certeza de que deseja restaurar os padrões??",
+        "Tem certeza de que deseja restaurar os padrões?",
+      cancel: "Cancelar",
+    },
+    dailyGoalInfo: {
+      modalMessage:
+        "Aqui você pode definir metas diárias de tempo, novas palavras " +
+        "e etapas. Uma notificação aparecerá se uma destas " +
+        "condições foram satisfeitas. Você pode deixar uma meta " +
+        "em branco e não será considerado.",
+      cancel: "Fechar",
     },
   },
 };

@@ -20,6 +20,7 @@ import { updateNotification } from "../store/notification";
 import appTextSource from "../utils/appTextSource";
 import AppModal from "../ui/AppModal";
 import { useState } from "react";
+import BusyWrapper from "../ui/Loader/BusyWrapper";
 
 const Container = styled(View)`
   flex: 1;
@@ -73,7 +74,7 @@ const SetDailyGoalScreen = ({ navigation }) => {
     appLang,
   } = useSelector(getSettingsState);
   const color = colors[colorScheme].CONTRAST[golden];
-  const { title, textA, textB, textC, textD } =
+  const { heading, textA, textB, textC, textD } =
     appTextSource[appLang].options.setDailyGoal;
 
   const dispatch = useDispatch();
@@ -94,86 +95,112 @@ const SetDailyGoalScreen = ({ navigation }) => {
   const [isModalVisible, setIsModalVisible] =
     useState(false);
 
+  const [isModal2Visible, setIsModal2Visible] =
+    useState(false);
+
+  const [busy, setBusy] = useState(false);
+
   const restoreGoalDefaults = () => {
     dispatch(restoreDefaultGoals());
-    navigation.goBack();
+    setBusy(true);
+    setTimeout(() => setBusy(false), 50);
+    setIsModalVisible(false);
+  };
+
+  const help = () => {
+    setIsModal2Visible(true);
   };
 
   return (
-    <PopUpContainer heading={title}>
-      <Container>
-        <GoalContainer>
-          <Icon
+    <PopUpContainer {...{ heading, help }}>
+      <BusyWrapper {...{ busy }}>
+        <Container>
+          <GoalContainer>
+            <Icon
+              {...{
+                name: "clock-outline",
+                message: textA,
+                color,
+              }}
+            />
+            <ScrollSelector
+              {...{
+                onSelect: updateTimeGoal,
+                length: 60,
+                start: timeGoal === "" ? 0 : timeGoal,
+              }}
+            />
+          </GoalContainer>
+          <GoalContainer>
+            <Icon
+              {...{
+                name: "basket-fill",
+                message: textB,
+                color,
+              }}
+            />
+            <ScrollSelector
+              {...{
+                onSelect: updateNewWordsGoal,
+                length: 50,
+                start:
+                  newWordsGoal === "" ? 0 : newWordsGoal,
+              }}
+            />
+          </GoalContainer>
+          <GoalContainer>
+            <Icon
+              {...{
+                name: "foot-print",
+                message: textC,
+                color,
+              }}
+            />
+            <ScrollSelector
+              {...{
+                onSelect: updateStepsGoal,
+                length: 500,
+                start: stepsGoal === "" ? 0 : stepsGoal,
+              }}
+            />
+          </GoalContainer>
+          <TouchableOpacity
             {...{
-              name: "clock-outline",
-              message: textA,
-              color,
-            }}
-          />
-          <ScrollSelector
-            {...{
-              onSelect: updateTimeGoal,
-              length: 60,
-              start: timeGoal === "" ? 0 : timeGoal,
-            }}
-          />
-        </GoalContainer>
-        <GoalContainer>
-          <Icon
-            {...{
-              name: "basket-fill",
-              message: textB,
-              color,
-            }}
-          />
-          <ScrollSelector
-            {...{
-              onSelect: updateNewWordsGoal,
-              length: 50,
-              start: newWordsGoal === "" ? 0 : newWordsGoal,
-            }}
-          />
-        </GoalContainer>
-        <GoalContainer>
-          <Icon
-            {...{
-              name: "foot-print",
-              message: textC,
-              color,
-            }}
-          />
-          <ScrollSelector
-            {...{
-              onSelect: updateStepsGoal,
-              length: 500,
-              start: stepsGoal === "" ? 0 : stepsGoal,
-            }}
-          />
-        </GoalContainer>
-        <TouchableOpacity
-          {...{
-            onPress: () => setIsModalVisible(true),
-            style: { marginTop: 35 },
-          }}
-        >
-          <Text
-            style={{
-              color: colors[colorScheme].INACTIVE_CONTRAST,
-              fontSize: 18,
+              onPress: () => setIsModalVisible(true),
+              style: { marginTop: 35 },
             }}
           >
-            {textD}
-          </Text>
-        </TouchableOpacity>
-        <AppModal
-          {...{
-            isVisible: isModalVisible,
-            onBackdropPress: () => setIsModalVisible(false),
-            modalName: "setDailyGoal",
-            onPress: restoreGoalDefaults,
-          }}
-        />
-      </Container>
+            <Text
+              style={{
+                color:
+                  colors[colorScheme].INACTIVE_CONTRAST,
+                fontSize: 18,
+              }}
+            >
+              {textD}
+            </Text>
+          </TouchableOpacity>
+          <AppModal
+            {...{
+              isVisible: isModalVisible,
+              onBackdropPress: () =>
+                setIsModalVisible(false),
+              modalName: "setDailyGoal",
+              onPress: restoreGoalDefaults,
+            }}
+          />
+          <AppModal
+            {...{
+              isVisible: isModal2Visible,
+              onBackdropPress: () =>
+                setIsModal2Visible(false),
+              modalName: "dailyGoalInfo",
+              onPress: () => setIsModal2Visible(false),
+              info: true,
+            }}
+          />
+        </Container>
+      </BusyWrapper>
     </PopUpContainer>
   );
 };

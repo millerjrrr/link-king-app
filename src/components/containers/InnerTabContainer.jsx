@@ -27,7 +27,7 @@ const InnerTabContainer = ({ children, heading, help }) => {
     <View style={styles.container}>
       <StatusBarFiller />
       <FourCrowns {...{ color: crownColor }} />
-      <HelpButton {...{ help }} />
+      <HelpButton {...{ help, padding: true }} />
       <LinkKingLogo
         {...{
           height: 30,

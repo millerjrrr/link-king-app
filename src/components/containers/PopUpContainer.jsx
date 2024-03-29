@@ -6,8 +6,10 @@ import { useSelector } from "react-redux";
 import AppNotification from "../AppNotification";
 import LinkKingLogo from "../../ui/Graphics/LinkKingLogo";
 import { getSettingsState } from "../../store/settings";
+import HelpButton from "../../ui/HelpButton";
+import FourCrowns from "../../ui/Graphics/FourCrowns";
 
-const PopUpContainer = ({ children, heading }) => {
+const PopUpContainer = ({ children, heading, help }) => {
   const { colorScheme, golden } = useSelector(
     getSettingsState,
   );
@@ -15,18 +17,8 @@ const PopUpContainer = ({ children, heading }) => {
   const color = CONTRAST[golden];
   return (
     <View style={styles.container}>
-      <CrownUI
-        position="top-left"
-        size="50"
-        rotation="135"
-        color={SECONDARY}
-      />
-      <CrownUI
-        position="top-right"
-        size="50"
-        rotation="225"
-        color={SECONDARY}
-      />
+      <FourCrowns {...{ color: SECONDARY }} />
+      <HelpButton {...{ help }} />
       <View style={styles.headerContainer}>
         <LinkKingLogo
           {...{
