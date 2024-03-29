@@ -4,6 +4,11 @@ import ColorSchemeButton from "./ColorSchemeButton";
 
 const Container = styled(View)`
   flex: 1;
+  justify-content: center;
+`;
+
+const ColorPalette = styled(View)`
+  flex: 1;
   flex-direction: row;
   align-items: center;
 `;
@@ -11,13 +16,15 @@ const Container = styled(View)`
 const ColorPicker = () => {
   return (
     <Container>
-      <ColorSchemeButton cs="dark" />
-      <ColorSchemeButton cs="blue" />
-      {/* <ColorSchemeButton cs="turquoise" /> */}
-      <ColorSchemeButton cs="green" />
-      <ColorSchemeButton cs="orange" />
-      <ColorSchemeButton cs="pink" />
-      <ColorSchemeButton cs="light" />
+      <ColorPalette>
+        <ColorSchemeButton cs="dark" />
+        <ColorSchemeButton cs="blue" />
+        {/* <ColorSchemeButton cs="turquoise" /> */}
+        <ColorSchemeButton cs="green" />
+        <ColorSchemeButton cs="orange" />
+        <ColorSchemeButton cs="pink" />
+        <ColorSchemeButton cs="light" />
+      </ColorPalette>
     </Container>
   );
 };

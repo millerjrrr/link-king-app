@@ -82,17 +82,11 @@ export default {
       textD: "restore default values",
     },
     contactUs: {
-      title: "Contact Us",
+      name: "Contact Us",
       subject: "General Inquiry",
-      modalMessage:
-        "Please contact us by email and we will get back " +
-        "to you as soon as possible.",
-      button: "Send Email",
     },
     logOut: {
-      title: "Log Out",
-      modalMessage: "Are your sure you want to log out?",
-      button: "Log Out",
+      name: "Log Out",
     },
   },
   auth: {
@@ -151,6 +145,23 @@ export default {
       heading: "Welcome!",
       subHeading:
         "Let's get started by creating your account",
+    },
+  },
+  modals: {
+    contactUs: {
+      title: "Send Email",
+      modalMessage:
+        "Please contact us by email and we will get back " +
+        "to you as soon as possible.",
+    },
+    logOut: {
+      title: "Log Out",
+      modalMessage: "Are your sure you want to log out?",
+    },
+    setDailyGoal: {
+      title: "Restore Defaults",
+      modalMessage:
+        "Are your sure you want to restore defaults?",
     },
   },
 };

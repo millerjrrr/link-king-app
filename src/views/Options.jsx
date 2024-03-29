@@ -22,7 +22,7 @@ const Options = () => {
       <OptionsMenuItem
         {...{
           iconName: "target-variant",
-          text: setDailyGoal.title,
+          name: setDailyGoal.title,
           first: true,
           onPress: () => navigateTo("SetDailyGoalScreen"),
         }}
@@ -30,7 +30,7 @@ const Options = () => {
       <OptionsMenuItem
         {...{
           iconName: "account-tie-voice",
-          text: voiceSelection.title,
+          name: voiceSelection.title,
           onPress: () => navigateTo("VoiceSelectionScreen"),
         }}
       />

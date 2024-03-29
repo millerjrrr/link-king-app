@@ -78,17 +78,11 @@ export default {
       textD: "restaurar valores padrão",
     },
     contactUs: {
-      title: "Contatos",
+      name: "Contatos",
       subject: "Consulta Geral",
-      modalMessage:
-        "Entre em contato conosco por e-mail e nós responderemos o mais breve " +
-        "possível",
-      button: "Enviar E-mail",
     },
     logOut: {
-      title: "Sair",
-      modalMessage: "Tem certeza de que deseja sair?",
-      button: "Sair",
+      name: "Sair",
     },
   },
   auth: {
@@ -145,6 +139,23 @@ export default {
     signUp: {
       heading: "Bem-vindo!",
       subHeading: "Vamos começar criando sua conta",
+    },
+  },
+  modals: {
+    contactUs: {
+      title: "Enviar E-mail",
+      modalMessage:
+        "Entre em contato conosco por e-mail e nós responderemos o mais breve " +
+        "possível",
+    },
+    logOut: {
+      title: "Sair",
+      modalMessage: "Tem certeza de que deseja sair?",
+    },
+    setDailyGoal: {
+      title: "Restaurar",
+      modalMessage:
+        "Tem certeza de que deseja restaurar os padrões??",
     },
   },
 };

@@ -18,6 +18,8 @@ import { saveToAsyncStorage } from "../utils/asyncStorage";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { updateNotification } from "../store/notification";
 import appTextSource from "../utils/appTextSource";
+import AppModal from "../ui/AppModal";
+import { useState } from "react";
 
 const Container = styled(View)`
   flex: 1;
@@ -89,6 +91,9 @@ const SetDailyGoalScreen = ({ navigation }) => {
     dispatch(updateSettings({ stepsGoal: value }));
   };
 
+  const [isModalVisible, setIsModalVisible] =
+    useState(false);
+
   const restoreGoalDefaults = () => {
     dispatch(restoreDefaultGoals());
     navigation.goBack();
@@ -147,7 +152,7 @@ const SetDailyGoalScreen = ({ navigation }) => {
         </GoalContainer>
         <TouchableOpacity
           {...{
-            onPress: restoreGoalDefaults,
+            onPress: () => setIsModalVisible(true),
             style: { marginTop: 35 },
           }}
         >
@@ -160,6 +165,14 @@ const SetDailyGoalScreen = ({ navigation }) => {
             {textD}
           </Text>
         </TouchableOpacity>
+        <AppModal
+          {...{
+            isVisible: isModalVisible,
+            onBackdropPress: () => setIsModalVisible(false),
+            modalName: "setDailyGoal",
+            onPress: restoreGoalDefaults,
+          }}
+        />
       </Container>
     </PopUpContainer>
   );
