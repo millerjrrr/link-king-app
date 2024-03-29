@@ -24,7 +24,7 @@ const NoticeAndFlagButton = ({
           color,
           fontSize: 25,
           marginHorizontal: 25,
-          marginBottom: 15,
+          marginBottom: 10,
           textAlign: "center",
         }}
       >
@@ -46,7 +46,7 @@ const NoticeAndFlagButton = ({
           setElapsedTime,
           completeFunction,
           iconName: "flag",
-          size: 175,
+          size: 150,
         }}
       />
     </>

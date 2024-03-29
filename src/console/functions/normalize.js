@@ -25,7 +25,10 @@ export const normalize = (inputString) => {
   string = string.toLowerCase();
 
   return string
-    .replace(/to /g, "")
+    .replace(
+      /(?:to |the |a |an |de |para |á |o |um |uma )/g,
+      "",
+    )
     .replace(/[áéíóúàèìòùâêîôûãõñç]/gi, function (matched) {
       return accentsMap[matched];
     })

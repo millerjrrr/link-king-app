@@ -65,7 +65,8 @@ const AppNavigatorUseEffects = () => {
       dispatch(updateBusyState(true));
       try {
         const colorScheme =
-          await getFromAsyncStorage("color-scheme");
+          (await getFromAsyncStorage("color-scheme")) ||
+          "dark";
         StatusBar.setBarStyle(
           colors[colorScheme].STATUSBAR,
         );
