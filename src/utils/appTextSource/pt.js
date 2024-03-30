@@ -206,5 +206,15 @@ export default {
         "em branco e não será considerado.",
       cancel: "Fechar",
     },
+    collectionInfo: {
+      modalMessage:
+        "Aqui tem sua lista de coleção. Cada vez que você errar " +
+        "uma palavra, ela será adicionada à sua coleção. " +
+        "Depois, cada vez que você acertar, mais " +
+        "tempo levará até que você a veja novamente. Esse método é " +
+        "chamado de “repetição espaçada estruturada” e é uma " +
+        "poderosa ferramenta de aprendizagem.",
+      cancel: "Fechar",
+    },
   },
 };

@@ -209,5 +209,14 @@ export default {
         "to blank and it will not be considered.",
       cancel: "Close",
     },
+    collectionInfo: {
+      modalMessage:
+        "He is your collection list. Each time you get a word " +
+        "wrong it's added to your collection. After its added " +
+        "each time you get it right the longer it will be before " +
+        "you see it again. This is called “structured spaced " +
+        "repetition” and is a powerful learning tool.",
+      cancel: "Close",
+    },
   },
 };

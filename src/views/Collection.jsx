@@ -1,6 +1,6 @@
 import InnerTabContainer from "../components/containers/InnerTabContainer";
 import WordCollectionList from "../collection/WordCollectionList";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchTickets } from "../collection/functions/fetchTickets";
 import SearchBarContainer from "../collection/SearchBarContainer";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,6 +10,7 @@ import BusyWrapper from "../ui/Loader/BusyWrapper";
 import { getAuthState } from "../store/auth";
 import appTextSource from "../utils/appTextSource";
 import { getSettingsState } from "../store/settings";
+import AppModal from "../ui/AppModal";
 
 const Collection = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -39,8 +40,15 @@ const Collection = ({ navigation }) => {
 
   const { heading } = appTextSource[appLang].collection;
 
+  const [isModalVisible, setIsModalVisible] =
+    useState(false);
+
+  const help = () => {
+    setIsModalVisible(true);
+  };
+
   return (
-    <InnerTabContainer {...{ heading }}>
+    <InnerTabContainer {...{ heading, help }}>
       <SearchBarContainer navigation={navigation} />
       <BusyWrapper {...{ busy, size: 96 }}>
         <WordCollectionList
@@ -48,6 +56,15 @@ const Collection = ({ navigation }) => {
           tickets={tickets}
         />
       </BusyWrapper>
+      <AppModal
+        {...{
+          isVisible: isModalVisible,
+          onBackdropPress: () => setIsModalVisible(false),
+          modalName: "collectionInfo",
+          onPress: () => setIsModalVisible(false),
+          info: true,
+        }}
+      />
     </InnerTabContainer>
   );
 };
