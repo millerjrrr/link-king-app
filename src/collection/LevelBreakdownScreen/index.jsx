@@ -24,20 +24,6 @@ const Levels = () => {
     fetchStatsInfo(dispatch);
   }, []);
 
-  //close this screen every time we change bottom tab
-  const navigation = useNavigation();
-  useEffect(() => {
-    const closeStackScreens = () => {
-      if (navigation.canGoBack())
-        navigation.dispatch(StackActions.popToTop());
-    };
-    const unsubscribe = navigation.addListener(
-      "blur",
-      closeStackScreens,
-    );
-    return unsubscribe;
-  }, [navigation]);
-
   const { heading } =
     appTextSource[appLang].collection.levelsBreakdown;
 
