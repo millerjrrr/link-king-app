@@ -6,6 +6,7 @@ import {
 import Console from "../../views/Console";
 import TargetDetailsScreen from "../../console/TargetDetailsScreen";
 import StatsScreen from "../../collection/StatsScreen";
+import HelpScreen from "../../console/HelpScreen";
 
 const ConsoleStack = createStackNavigator();
 
@@ -26,6 +27,10 @@ const ConsoleNavigator = () => {
       <ConsoleStack.Screen
         name="TargetDetailsScreen"
         component={TargetDetailsScreen}
+      />
+      <ConsoleStack.Screen
+        name="HelpScreen"
+        component={HelpScreen}
       />
       <ConsoleStack.Screen
         name="StatsScreen"

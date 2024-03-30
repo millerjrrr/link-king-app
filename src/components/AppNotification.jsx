@@ -32,6 +32,7 @@ const AppNotification = () => {
   const { colorScheme } = useSelector(getSettingsState);
   const color = colors[colorScheme].CONTRAST[0];
   let backgroundColor = colors[colorScheme].RED;
+  let messageTime = 3000;
 
   switch (type) {
     case "success":
@@ -39,6 +40,7 @@ const AppNotification = () => {
       break;
     case "info":
       backgroundColor = colors[colorScheme].SECONDARY;
+      messageTime = 1000;
       break;
   }
 
@@ -50,7 +52,7 @@ const AppNotification = () => {
       timeOutId = setTimeout(() => {
         height.value = withTiming(0, { duration: 150 });
         dispatch(updateNotification({ message: "", type }));
-      }, 3000);
+      }, messageTime);
     };
 
     if (message) performAnimation();

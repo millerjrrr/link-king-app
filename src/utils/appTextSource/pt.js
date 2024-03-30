@@ -25,6 +25,44 @@ export default {
         "...algo deu errado 😣 por favor, certifique que você tem conexão " +
         "de internet e tente de novo... ",
     },
+    help: {
+      heading: "Ajuda",
+      howToPlay: {
+        title: "Como jogar",
+        description:
+          "Digite as palavras em português conforme elas são " +
+          "apresentadas.",
+      },
+      stats: {
+        title: "Estatisticas",
+        description:
+          "Toque nas estatísticas para ver o que elas representam!",
+      },
+      playingOptions: {
+        title: "Opções de jogo",
+        description:
+          "Você pode jogar sem som, onde apenas vê a palavra, " +
+          "mas não a ouve. Isto não é recomendado, mas pode ser " +
+          "apropriado em locais barulhentos ou se você esquecer " +
+          "seus fones de ouvido. \n \n" +
+          "Você também pode jogar apenas com som, onde a palavra " +
+          "está escondida. Esta é a abordagem recomendada, pois " +
+          "pode evitar o desenvolvimento de erros de pronúncia. " +
+          "(Confira nosso canal no Youtube para mais informações " +
+          "sobre isso) \n \n" +
+          "Finalmente você pode escolher jogar com ou " +
+          "sem o tempo limite de 10s. Seu tempo ainda será " +
+          "contado, mas você não será forçado a enviar respostas " +
+          "erradas após 10s",
+      },
+    },
+    statsMessages: {
+      "basket-fill": "New words collected today",
+      target: "Remaining words due today",
+      "foot-print": "Steps taken today",
+      "clock-outline": "Time playing today",
+      "trophy-variant": "Current streak",
+    },
   },
   collection: {
     heading: "Coleção",

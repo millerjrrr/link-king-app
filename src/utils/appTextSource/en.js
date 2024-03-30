@@ -26,6 +26,41 @@ export default {
         "...something went wrong 😣 please check your " +
         "internet connection and try again... ",
     },
+    help: {
+      heading: "Help",
+      howToPlay: {
+        title: "How to Play",
+        description:
+          "Type the words in English as they are presented.",
+      },
+      stats: {
+        title: "Statistics",
+        description:
+          "Touch statistics to see what they represent!",
+      },
+      playingOptions: {
+        title: "Playing Options",
+        description:
+          "You can choose to play with no sound where you " +
+          "only see the word but don't hear it. This is not " +
+          "recommended but might be appropriate in a noisy " +
+          "place or if you forget your headphones \n \n" +
+          "You can also play with sound only, where the word is " +
+          "hidden. This is the recommended approach as it can " +
+          "avoid the development of pronunciation mistakes." +
+          "(Check out our Youtube Channel for more info on this) \n \n" +
+          "Finally you can choose to play with or without the " +
+          "10s timeout. Your time will still be counted but you " +
+          "won't be forced to submit wrong answers after 10s. ",
+      },
+    },
+    statsMessages: {
+      "basket-fill": "New words collected today",
+      target: "Remaining words due today",
+      "foot-print": "Steps taken today",
+      "clock-outline": "Time playing today",
+      "trophy-variant": "Current streak",
+    },
   },
   collection: {
     heading: "Collection",

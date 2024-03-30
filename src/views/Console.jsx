@@ -36,7 +36,7 @@ const Console = ({ navigation }) => {
   }, [navigation, refresh]);
 
   const help = () => {
-    console.log("help");
+    navigation.navigate("HelpScreen");
   };
 
   const { heading } = appTextSource[appLang].console;
