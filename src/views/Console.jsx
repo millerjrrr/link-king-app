@@ -4,7 +4,7 @@ import {
   KeyboardAvoidingView,
 } from "react-native";
 import InputAndTimerContainer from "../console/InputAndTimerContainer";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import OptionsContainer from "../console/OptionsContainer";
 import KeyboardAndStartButton from "../console/KeyboardAndStartButton";
@@ -17,12 +17,35 @@ import { getAuthState } from "../store/auth";
 import UseEffects from "../console/UseEffects";
 import { getSettingsState } from "../store/settings";
 import appTextSource from "../utils/appTextSource";
+import {
+  getFromAsyncStorage,
+  saveToAsyncStorage,
+} from "../utils/asyncStorage";
+import AppModal from "../ui/AppModal";
+import { authErrorHandler } from "../errors/authErrorHandler";
 
 const Console = ({ navigation }) => {
   const inputFieldRef = useRef(null);
   const { refresh } = useSelector(getAuthState);
   const { appLang } = useSelector(getSettingsState);
   const dispatch = useDispatch();
+
+  const [isModalVisible, setIsModalVisible] =
+    useState(false);
+
+  const showWelcome = async () => {
+    try {
+      const firstTime =
+        (await getFromAsyncStorage("first-time")) || false;
+
+      if (!firstTime) {
+        setIsModalVisible(true);
+        await saveToAsyncStorage("first-time", "true");
+      }
+    } catch (error) {
+      authErrorHandler(error, dispatch);
+    }
+  };
 
   useEffect(() => {
     const fetchInfo = () => fetchConsoleInfo({ dispatch });
@@ -32,6 +55,7 @@ const Console = ({ navigation }) => {
     );
 
     fetchInfo();
+    showWelcome();
     return unsubscribe;
   }, [navigation, refresh]);
 
@@ -61,6 +85,15 @@ const Console = ({ navigation }) => {
         />
         <UseEffects />
       </KeyboardAvoidingView>
+      <AppModal
+        {...{
+          isVisible: isModalVisible,
+          onBackdropPress: () => setIsModalVisible(false),
+          modalName: "welcome",
+          onPress: () => setIsModalVisible(false),
+          info: true,
+        }}
+      />
     </InnerTabContainer>
   );
 };

@@ -218,5 +218,13 @@ export default {
         "repetition” and is a powerful learning tool.",
       cancel: "Close",
     },
+    welcome: {
+      modalMessage:
+        "Welcome to Link-King! \n" +
+        "Let's begin with a short test to assess your level. " +
+        "Type the words or short phrases in English and hit " +
+        "enter to submit!",
+      cancel: "Close",
+    },
   },
 };

@@ -34,6 +34,17 @@
     },
     "plugins": [
       "expo-localization"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "d3f81d37-8476-4818-9dc2-15ff6a7e1a63"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/d3f81d37-8476-4818-9dc2-15ff6a7e1a63"
+    }
   }
 }

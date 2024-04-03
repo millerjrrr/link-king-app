@@ -216,5 +216,13 @@ export default {
         "poderosa ferramenta de aprendizagem.",
       cancel: "Fechar",
     },
+    welcome: {
+      modalMessage:
+        "Bem-vindo ao Link-King! \n" +
+        "Vamos começar com um pequeno teste para avaliar seu nível. " +
+        "Digite as palavras ou frases curtas em portugues." +
+        "(não se preocupe com os diacráticos, eles são ignorados)",
+      cancel: "Fechar",
+    },
   },
 };
