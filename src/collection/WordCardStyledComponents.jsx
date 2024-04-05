@@ -8,6 +8,7 @@ export const Container = styled(View)`
   padding: 5px;
   background-color: ${(props) => props.backgroundColor};
   shadow-color: ${(props) => props.color};
+  border-color: ${(props) => props.color};
 `;
 
 export const InfoContainer = styled(View)`

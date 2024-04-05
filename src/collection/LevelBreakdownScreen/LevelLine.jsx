@@ -2,12 +2,12 @@ import {
   Text,
   View,
   StyleSheet,
-  Platform,
   TouchableOpacity,
 } from "react-native";
 import { useSelector } from "react-redux";
 import colors from "../../utils/colors";
 import { getSettingsState } from "../../store/settings";
+import appShadow from "../../utils/appShadow";
 
 const LevelLine = ({
   level,
@@ -35,6 +35,7 @@ const LevelLine = ({
           {
             backgroundColor: color,
             shadowColor: color,
+            borderColor: color,
             height: height,
           },
           styles.lineStyle,
@@ -60,18 +61,7 @@ const styles = StyleSheet.create({
   },
   touched: {
     width: 12,
-    ...Platform.select({
-      ios: {
-        shadowOffset: {
-          height: 1,
-        },
-        shadowOpacity: 0.5,
-        shadowRadius: 5,
-      },
-      android: {
-        elevation: 3,
-      },
-    }),
+    ...appShadow(7),
   },
 });
 

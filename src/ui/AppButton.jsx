@@ -2,12 +2,12 @@ import {
   View,
   StyleSheet,
   TouchableOpacity,
-  Platform,
   Text,
 } from "react-native";
 import colors from "../utils/colors";
 import BusyWrapper from "./Loader/BusyWrapper";
 import { AntDesign } from "@expo/vector-icons";
+import appShadow from "../utils/appShadow";
 
 const AppButton = ({
   title,
@@ -26,6 +26,7 @@ const AppButton = ({
           styles.button,
           {
             shadowColor: color,
+            borderColor: color,
             width: size,
             backgroundColor,
           },
@@ -67,18 +68,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 1000,
-    ...Platform.select({
-      ios: {
-        shadowOffset: {
-          height: 1,
-        },
-        shadowOpacity: 0.5,
-        shadowRadius: 10,
-      },
-      android: {
-        elevation: 3,
-      },
-    }),
+    ...appShadow(1),
   },
 });
 

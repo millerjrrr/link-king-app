@@ -1,9 +1,6 @@
-import {
-  Platform,
-  StyleSheet,
-  TextInput,
-} from "react-native";
+import { StyleSheet, TextInput } from "react-native";
 import colors from "../utils/colors";
+import appShadow from "../utils/appShadow";
 
 //This may be used in some settings tabs in the future
 const AppInput = (props) => {
@@ -29,18 +26,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.dark.SECONDARY,
     color: colors.dark.CONTRAST[0],
     shadowColor: colors.dark.CONTRAST[0],
-    ...Platform.select({
-      ios: {
-        shadowOffset: {
-          height: 1,
-        },
-        shadowOpacity: 0.5,
-        shadowRadius: 5,
-      },
-      android: {
-        elevation: 3,
-      },
-    }),
+    borderColor: colors.dark.CONTRAST[0],
+    ...appShadow(1),
   },
 });
 

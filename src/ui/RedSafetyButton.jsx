@@ -3,12 +3,12 @@ import {
   TouchableHighlight,
   View,
   StyleSheet,
-  Platform,
 } from "react-native";
 import colors from "../utils/colors";
 import { AntDesign } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
 import { getSettingsState } from "../store/settings";
+import appShadow from "./../utils/appShadow";
 
 const RedSafetyButton = ({
   setElapsedTime,
@@ -59,6 +59,7 @@ const RedSafetyButton = ({
           {
             backgroundColor: SECONDARY,
             shadowColor: RED,
+            borderColor: RED,
             height: size,
             width: size,
             borderRadius: size / 2,
@@ -88,18 +89,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     justifyContent: "center",
     alignItems: "center",
-    ...Platform.select({
-      ios: {
-        shadowOffset: {
-          height: 1,
-        },
-        shadowOpacity: 1,
-        shadowRadius: 5,
-      },
-      android: {
-        elevation: 3,
-      },
-    }),
+    ...appShadow(1),
   },
 });
 

@@ -1,4 +1,4 @@
-import { StyleSheet, Platform } from "react-native";
+import { StyleSheet } from "react-native";
 import { Searchbar } from "react-native-paper";
 import colors from "../utils/colors";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,6 +8,7 @@ import {
 } from "../store/collection";
 import { getSettingsState } from "../store/settings";
 import appTextSource from "../utils/appTextSource";
+import appShadow from "../utils/appShadow";
 
 const CollectionSearchbar = () => {
   const { colorScheme, golden, appLang } = useSelector(
@@ -45,6 +46,7 @@ const CollectionSearchbar = () => {
         {
           color,
           shadowColor: color,
+          borderColor: color,
           backgroundColor: colors[colorScheme].SECONDARY,
         },
       ]}
@@ -57,18 +59,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     zIndex: 10,
     width: "70%",
-    ...Platform.select({
-      ios: {
-        shadowOffset: {
-          height: 1,
-        },
-        shadowOpacity: 0.5,
-        shadowRadius: 3,
-      },
-      android: {
-        elevation: 3,
-      },
-    }),
+    ...appShadow(1),
   },
 });
 

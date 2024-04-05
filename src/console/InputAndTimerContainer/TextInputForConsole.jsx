@@ -1,8 +1,4 @@
-import {
-  Platform,
-  StyleSheet,
-  TextInput,
-} from "react-native";
+import { StyleSheet, TextInput } from "react-native";
 import colors from "../../utils/colors";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -13,6 +9,7 @@ import {
 } from "../../store/console";
 import * as Speech from "expo-speech";
 import { getSettingsState } from "../../store/settings";
+import appShadow from "../../utils/appShadow";
 
 const TextInputForConsole = ({
   inputFieldRef,
@@ -91,19 +88,7 @@ const styles = StyleSheet.create({
     padding: 10,
     textAlign: "center",
     borderRadius: 35,
-    ...Platform.select({
-      ios: {
-        shadowOffset: {
-          height: 1,
-        },
-        shadowOpacity: 0.5,
-        shadowRadius: 5,
-      },
-      android: {
-        elevation: 3,
-        borderWidth: 2,
-      },
-    }),
+    ...appShadow(2),
   },
 });
 

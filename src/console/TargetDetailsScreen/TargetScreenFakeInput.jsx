@@ -1,14 +1,10 @@
-import {
-  Text,
-  View,
-  StyleSheet,
-  Platform,
-} from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import colors from "../../utils/colors";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../../store/console";
 import { getSettingsState } from "../../store/settings";
 import appTextSource from "../../utils/appTextSource";
+import appShadow from "../../utils/appShadow";
 
 const TargetScreenFakeInput = () => {
   const { lastAttempt } = useSelector(getConsoleState);
@@ -28,6 +24,7 @@ const TargetScreenFakeInput = () => {
           color: RED,
           backgroundColor: SECONDARY,
           shadowColor: RED,
+          borderColor: RED,
         },
       ]}
     >
@@ -43,23 +40,11 @@ const styles = StyleSheet.create({
     zIndex: 1,
     width: "100%",
     height: 70,
-    padding: 10,
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
     borderRadius: 35,
-    ...Platform.select({
-      ios: {
-        shadowOffset: {
-          height: 1,
-        },
-        shadowOpacity: 0.5,
-        shadowRadius: 5,
-      },
-      android: {
-        elevation: 3,
-      },
-    }),
+    ...appShadow(),
   },
   text: {
     zIndex: 1,

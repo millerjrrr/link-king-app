@@ -3,13 +3,13 @@ import {
   TouchableOpacity,
   StyleSheet,
   View,
-  Platform,
 } from "react-native";
 import colors from "../utils/colors";
 import { Ionicons } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { refreshPage } from "../store/auth";
 import { getSettingsState } from "../store/settings";
+import appShadow from "../utils/appShadow";
 
 const RefreshButton = ({ size = 200 }) => {
   const dispatch = useDispatch();
@@ -27,6 +27,7 @@ const RefreshButton = ({ size = 200 }) => {
           {
             backgroundColor,
             shadowColor: color,
+            borderColor: color,
             borderRadius: size / 2,
             height: size,
             width: size,
@@ -52,17 +53,6 @@ const styles = StyleSheet.create({
   button: {
     alignItems: "center",
     justifyContent: "center",
-    ...Platform.select({
-      ios: {
-        shadowOffset: {
-          height: 1,
-        },
-        shadowOpacity: 0.5,
-        shadowRadius: 5,
-      },
-      android: {
-        elevation: 3,
-      },
-    }),
+    ...appShadow(1),
   },
 });

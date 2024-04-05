@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Platform } from "react-native";
+import { StyleSheet } from "react-native";
 import colors from "../utils/colors";
 import { numberDateToWordStyleDate } from "./functions/numberDateToWordStyle";
 import DeleteButton from "./DeleteButton";
@@ -14,6 +14,7 @@ import {
   Title,
 } from "./WordCardStyledComponents";
 import { getSettingsState } from "../store/settings";
+import appShadow from "../utils/appShadow";
 
 const WordCard = ({ navigation, ticket }) => {
   const { colorScheme, golden, appLang } = useSelector(
@@ -74,18 +75,7 @@ const WordCard = ({ navigation, ticket }) => {
 
 const styles = StyleSheet.create({
   container: {
-    ...Platform.select({
-      ios: {
-        shadowOffset: {
-          height: 1,
-        },
-        shadowOpacity: 0.5,
-        shadowRadius: 5,
-      },
-      android: {
-        elevation: 3,
-      },
-    }),
+    ...appShadow(1),
   },
 });
 

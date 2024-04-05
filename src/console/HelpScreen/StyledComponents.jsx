@@ -19,6 +19,7 @@ export const CardContainer = styled(View)`
   border-radius: 15px;
   background-color: ${(props) => props.backgroudColor};
   shadow-color: ${(props) => props.color};
+  border-color: ${(props) => props.color};
   ${Platform.select({
     ios: `
     shadow-offset: 1px 1px;
@@ -27,6 +28,7 @@ export const CardContainer = styled(View)`
   `,
     android: `
     elevation: 3;
+    border-width: 1px;
   `,
   })};
 `;

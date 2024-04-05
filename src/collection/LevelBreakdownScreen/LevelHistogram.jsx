@@ -1,10 +1,5 @@
 import { useState } from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-  Platform,
-} from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import LevelLine from "./LevelLine";
 import { useSelector } from "react-redux";
 import colors from "../../utils/colors";
@@ -63,18 +58,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 50,
     fontWeight: "bold",
-    ...Platform.select({
-      ios: {
-        shadowOffset: {
-          height: 1,
-        },
-        shadowOpacity: 0.5,
-        shadowRadius: 5,
-      },
-      android: {
-        elevation: 3,
-      },
-    }),
   },
 });
 

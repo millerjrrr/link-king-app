@@ -1,12 +1,9 @@
-import {
-  StyleSheet,
-  TouchableOpacity,
-  Platform,
-} from "react-native";
+import { StyleSheet, TouchableOpacity } from "react-native";
 import colors from "../utils/colors";
 import { useSelector } from "react-redux";
 import { AntDesign } from "@expo/vector-icons";
 import { getSettingsState } from "../store/settings";
+import appShadow from "../utils/appShadow";
 
 const GetLevelsBreakdownButton = ({
   onPress,
@@ -25,6 +22,7 @@ const GetLevelsBreakdownButton = ({
           styles.button,
           {
             shadowColor: color,
+            borderColor: color,
             backgroundColor: SECONDARY,
           },
         ],
@@ -45,18 +43,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 1000,
-    ...Platform.select({
-      ios: {
-        shadowOffset: {
-          height: 1,
-        },
-        shadowOpacity: 0.5,
-        shadowRadius: 3,
-      },
-      android: {
-        elevation: 3,
-      },
-    }),
+    ...appShadow(0.5),
   },
   text: {
     fontSize: 15,

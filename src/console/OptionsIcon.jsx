@@ -1,12 +1,9 @@
-import {
-  StyleSheet,
-  Platform,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, TouchableOpacity } from "react-native";
 import { Entypo, MaterialIcons } from "@expo/vector-icons";
 import colors from "../utils/colors";
 import { getSettingsState } from "../store/settings";
 import { useSelector } from "react-redux";
+import appShadow from "../utils/appShadow";
 
 const OptionsIcon = ({
   onPress,
@@ -28,7 +25,12 @@ const OptionsIcon = ({
         onPress,
         style: [
           styles.option,
-          { shadowColor: color, height, backgroundColor },
+          {
+            shadowColor: color,
+            borderColor: color,
+            height,
+            backgroundColor,
+          },
         ],
       }}
     >
@@ -61,18 +63,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     margin: 5,
     marginBottom: 0,
-    ...Platform.select({
-      ios: {
-        shadowOffset: {
-          height: 1,
-        },
-        shadowOpacity: 0.5,
-        shadowRadius: 3,
-      },
-      android: {
-        elevation: 3,
-      },
-    }),
+    ...appShadow(1),
   },
 });
 

@@ -36,6 +36,7 @@ const TabNavigator = () => {
             color,
             backgroundColor,
             shadowColor: color,
+            borderColor: color,
           },
         ],
       }}
@@ -98,17 +99,18 @@ const styles = StyleSheet.create({
   tabBarStyle: {
     height: 80,
     padding: 10,
-    borderTopWidth: 0,
     ...Platform.select({
       ios: {
         shadowOffset: {
           height: 1,
         },
+        borderTopWidth: 0,
         shadowOpacity: 0.5,
-        shadowRadius: 10,
+        shadowRadius: 5,
       },
       android: {
         elevation: 3,
+        borderTopWidth: 1,
       },
     }),
   },
