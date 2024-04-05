@@ -20,6 +20,10 @@ const AppNotification = () => {
 
   const dispatch = useDispatch();
 
+  const { length } = message;
+  const notificationHeight =
+    Math.ceil(length / 24) * 30 + 30;
+
   const height = useSharedValue(0);
   height.value = 0;
 
@@ -47,7 +51,9 @@ const AppNotification = () => {
   useEffect(() => {
     let timeOutId = 0;
     const performAnimation = () => {
-      height.value = withTiming(60, { duration: 150 });
+      height.value = withTiming(notificationHeight, {
+        duration: 150,
+      });
 
       timeOutId = setTimeout(() => {
         height.value = withTiming(0, { duration: 150 });
@@ -89,6 +95,7 @@ const styles = StyleSheet.create({
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
+    paddingHorizontal: 15,
   },
   text: {
     fontSize: 25,

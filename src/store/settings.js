@@ -6,9 +6,9 @@ import {
 const initialState = {
   colorScheme: "dark",
   golden: 0,
-  timeGoal: "",
-  newWordsGoal: 1,
-  stepsGoal: "",
+  timeGoal: 3,
+  newWordsGoal: "",
+  stepsGoal: 100,
   appLang: "en",
 };
 
