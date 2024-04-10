@@ -24,15 +24,16 @@ export const normalize = (inputString) => {
 
   string = string.toLowerCase();
 
-  return string
+  string = string
+    .replace(/[áéíóúàèìòùâêîôûãõñç]/g, function (matched) {
+      return accentsMap[matched];
+    })
+    .replace(/[^a-zA-Z0-9]/g, " ")
     .replace(
       /(?:to |the |a |an |de |para |á |o |um |uma )/g,
       "",
     )
-    .replace(/[áéíóúàèìòùâêîôûãõñç]/gi, function (matched) {
-      return accentsMap[matched];
-    })
-    .replace(/[^a-zA-Z0-9]/g, "")
-    .replace(/nt/g, "not")
-    .replace(/ /g, "");
+    .replace(/ /g, "")
+    .replace(/nt/g, "not");
+  return string;
 };
