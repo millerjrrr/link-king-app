@@ -12,7 +12,7 @@ import colors from "../../utils/colors";
 import { useSelector } from "react-redux";
 import { getSettingsState } from "../../store/settings";
 
-const Loader = ({ size = 24, color }) => {
+const Loader = ({ size = 24, color, backgroundColor }) => {
   const { colorScheme, golden } = useSelector(
     getSettingsState,
   );
@@ -52,6 +52,7 @@ const Loader = ({ size = 24, color }) => {
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
+        backgroundColor,
       }}
     >
       <Animated.View style={transform}>

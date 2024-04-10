@@ -102,12 +102,10 @@ const LostPassword = () => {
               placeholder: email.placeholder,
               keyboardType: "email-address",
               autoCapitalize: "none",
-              containerStyle: styles.marginBottom,
             }}
           />
           {!isKeyboardShowing ? (
             <>
-              <SubmitBtn {...{ title: sendLink }} />
               <View style={styles.linkContainer}>
                 <AppLink
                   {...{
@@ -124,6 +122,7 @@ const LostPassword = () => {
                   }}
                 />
               </View>
+              <SubmitBtn {...{ title: sendLink }} />
             </>
           ) : null}
         </View>
@@ -136,14 +135,10 @@ const styles = StyleSheet.create({
   formContainer: {
     flex: 1,
   },
-  marginBottom: {
-    marginBottom: 20,
-  },
   linkContainer: {
-    flex: 0.5,
+    flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
-    marginBottom: 30,
+    justifyContent: "space-between",
   },
 });
 

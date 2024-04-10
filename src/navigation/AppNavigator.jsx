@@ -36,6 +36,7 @@ const AppNavigator = () => {
         {...{
           busy,
           size: 96,
+          backgroundColor: background,
         }}
       >
         <ConnectedWrapper>

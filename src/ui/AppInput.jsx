@@ -18,8 +18,6 @@ const AppInput = (props) => {
 
 const styles = StyleSheet.create({
   input: {
-    borderWidth: 2,
-    borderColor: colors.dark.SECONDARY,
     height: 45,
     borderRadius: 25,
     padding: 10,

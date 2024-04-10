@@ -127,7 +127,6 @@ const SignIn = () => {
               placeholder: "********",
               autoCapitalize: "none",
               secureTextEntry: secureEntry,
-              containerStyle: styles.marginBottom,
               rightIcon: (
                 <PasswordVisibilityIcon
                   {...{ privateIcon: secureEntry }}
@@ -138,7 +137,6 @@ const SignIn = () => {
           />
           {!isKeyboardShowing ? (
             <>
-              <SubmitBtn title={signIn} />
               <View style={styles.linkContainer}>
                 <AppLink
                   title={signUp}
@@ -153,6 +151,7 @@ const SignIn = () => {
                   }}
                 />
               </View>
+              <SubmitBtn title={signIn} />
             </>
           ) : null}
         </View>
@@ -169,10 +168,9 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   linkContainer: {
-    flex: 0.5,
+    flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
-    marginBottom: 30,
+    justifyContent: "space-between",
   },
 });
 

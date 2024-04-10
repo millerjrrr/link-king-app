@@ -60,10 +60,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     zIndex: 10,
   },
   button: {
+    margin: 50,
     aspectRatio: 1,
     alignItems: "center",
     justifyContent: "center",

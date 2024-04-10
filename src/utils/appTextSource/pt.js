@@ -127,7 +127,7 @@ export default {
     titles: {
       signIn: "Entrar",
       signUp: "Inscreva-se",
-      lostPassword: "perdi minha senha",
+      lostPassword: "Perdi minha senha",
       sendLink: "Enviar Link",
     },
     forms: {
