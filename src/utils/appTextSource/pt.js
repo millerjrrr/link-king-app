@@ -57,11 +57,11 @@ export default {
       },
     },
     statsMessages: {
-      "basket-fill": "New words collected today",
-      target: "Remaining words due today",
-      "foot-print": "Steps taken today",
-      "clock-outline": "Time playing today",
-      "trophy-variant": "Current streak",
+      "basket-fill": "Novas palavras coletadas hoje",
+      target: "Palavras restantes para hoje",
+      "foot-print": "Avansos de hoje",
+      "clock-outline": "Tempo de estudo hoje",
+      "trophy-variant": "Sem erros",
     },
   },
   collection: {
