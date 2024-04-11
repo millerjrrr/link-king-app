@@ -18,6 +18,7 @@ const initialState = {
     streak: 0,
     newWords: 0,
   },
+  dictionary: "Brazil",
   tail: [],
   tries: 1,
   busy: true,
@@ -98,6 +99,10 @@ const slice = createSlice({
     incrementStatsTime(state, { payload }) {
       state.stats.time += payload;
     }, // helps to smooth the time handover to the server.important
+    //
+    updateDictionary(state, { payload }) {
+      state.dictionary = payload;
+    },
   },
 });
 
@@ -117,6 +122,7 @@ export const {
   updateTimerIsOn,
   updateCSState,
   incrementStatsTime,
+  updateDictionary,
 } = slice.actions;
 
 export const getConsoleState = createSelector(

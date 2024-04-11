@@ -62,11 +62,14 @@ const Console = ({ navigation }) => {
   const help = () => {
     navigation.navigate("HelpScreen");
   };
+  const dictionarySettings = () => console.log("test");
 
   const { heading } = appTextSource[appLang].console;
 
   return (
-    <InnerTabContainer {...{ heading, help }}>
+    <InnerTabContainer
+      {...{ heading, help, dictionarySettings }}
+    >
       <KeyboardAvoidingView
         style={styles.container}
         behavior={

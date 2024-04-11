@@ -13,8 +13,14 @@ import FourCrowns from "../../ui/Graphics/FourCrowns";
 import LinkKingLogo from "../../ui/Graphics/LinkKingLogo";
 import HelpButton from "../../ui/HelpButton";
 import { getSettingsState } from "../../store/settings";
+import FlagBook from "../../ui/FlagBook";
 
-const InnerTabContainer = ({ children, heading, help }) => {
+const InnerTabContainer = ({
+  children,
+  heading,
+  help,
+  dictionarySettings,
+}) => {
   const { colorScheme, golden } = useSelector(
     getSettingsState,
   );
@@ -28,6 +34,9 @@ const InnerTabContainer = ({ children, heading, help }) => {
       <StatusBarFiller />
       <FourCrowns {...{ color: crownColor }} />
       <HelpButton {...{ help, padding: true }} />
+      <FlagBook
+        {...{ dictionarySettings, padding: true }}
+      />
       <LinkKingLogo
         {...{
           height: 30,

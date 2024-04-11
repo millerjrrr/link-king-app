@@ -1,9 +1,5 @@
 import { Entypo } from "@expo/vector-icons";
-import {
-  View,
-  StyleSheet,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, TouchableOpacity } from "react-native";
 import colors from "../utils/colors";
 import { useSelector } from "react-redux";
 import { getSettingsState } from "../store/settings";
