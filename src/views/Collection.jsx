@@ -47,8 +47,12 @@ const Collection = ({ navigation }) => {
     setIsModalVisible(true);
   };
 
+  const dictionarySettings = () => console.log("test");
+
   return (
-    <InnerTabContainer {...{ heading, help }}>
+    <InnerTabContainer
+      {...{ heading, help, dictionarySettings }}
+    >
       <SearchBarContainer navigation={navigation} />
       <BusyWrapper {...{ busy, size: 96 }}>
         <WordCollectionList

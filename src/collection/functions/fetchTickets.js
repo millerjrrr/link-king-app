@@ -1,8 +1,6 @@
-import catchAsyncError from "../../api/catchError";
 import clientWithAuth from "../../api/clientWithAuth";
 import { errorHandler } from "../../errors/errorHandler";
 import { updateCollection } from "../../store/collection";
-import { updateNotification } from "../../store/notification";
 import { semiNormalize } from "./semiNormalize";
 
 export const fetchTickets = async (
@@ -16,7 +14,6 @@ export const fetchTickets = async (
     const { data } = await clientWithAuth.get(
       `/api/collection/tickets?page=${page}&search=${normWord}`,
     );
-
     dispatch(
       updateCollection({
         tickets: [...ticketsd, ...data.data.tickets],

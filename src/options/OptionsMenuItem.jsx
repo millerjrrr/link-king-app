@@ -6,9 +6,12 @@ const OptionsMenuItem = ({
   first,
   name,
   onPress,
+  selected,
 }) => {
   return (
-    <OptionsMenuItemContainer {...{ first, iconName }}>
+    <OptionsMenuItemContainer
+      {...{ first, iconName, selected }}
+    >
       <MenuItemLink {...{ name, onPress }} />
     </OptionsMenuItemContainer>
   );

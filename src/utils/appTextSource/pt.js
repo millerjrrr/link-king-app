@@ -95,6 +95,13 @@ export default {
   },
   options: {
     heading: "Opções",
+    setDailyGoal: {
+      heading: "Meta Diária",
+      textA: "Meta de Tempo",
+      textB: "Meta de Novas Palavras",
+      textC: "Meta de Passos",
+      textD: "restaurar valores padrão",
+    },
     voiceSelection: {
       title: "Seleção de Voz",
       textA:
@@ -104,17 +111,15 @@ export default {
         "de opções de voz. Para alterar a voz que você ouve, acesse as " +
         "configurações e escolha a opção que melhor funciona para você!",
       tip:
-        "DICA: Mude a voz para o sotaque da região que você mais gosta." +
+        "DICA: Mude a voz para o sotaque da região que você mais gosta. " +
         "Por exemplo, inglês Britanico, inglês Americano, inglês Australiano, etc.",
     },
-    colorSchemeTitle: "Esquema de Cores",
-    setDailyGoal: {
-      heading: "Meta Diária",
-      textA: "Meta de Tempo",
-      textB: "Meta de Novas Palavras",
-      textC: "Meta de Passos",
-      textD: "restaurar valores padrão",
+    chooseDictionary: {
+      title: "Selecionar um Dicionário",
+      titleA: "Inglês para falantes de português",
+      titleB: "Espanhol para falantes de inglês (BETA)",
     },
+    colorSchemeTitle: "Esquema de Cores",
     contactUs: {
       name: "Contatos",
       subject: "Consulta Geral",

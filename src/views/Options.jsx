@@ -14,8 +14,12 @@ const Options = () => {
   };
 
   const { appLang } = useSelector(getSettingsState);
-  const { heading, setDailyGoal, voiceSelection } =
-    appTextSource[appLang].options;
+  const {
+    heading,
+    setDailyGoal,
+    voiceSelection,
+    chooseDictionary,
+  } = appTextSource[appLang].options;
 
   return (
     <InnerTabContainer {...{ heading }}>
@@ -32,6 +36,14 @@ const Options = () => {
           iconName: "account-tie-voice",
           name: voiceSelection.title,
           onPress: () => navigateTo("VoiceSelectionScreen"),
+        }}
+      />
+      <OptionsMenuItem
+        {...{
+          iconName: "book-open-variant",
+          name: chooseDictionary.title,
+          onPress: () =>
+            navigateTo("DictionarySelectionScreen"),
         }}
       />
       <ColorPickerMenuItem />

@@ -9,6 +9,7 @@ import VoiceSelectionScreen from "../../options/VoiceSelectionScreen";
 import { useSelector } from "react-redux";
 import { getSettingsState } from "../../store/settings";
 import colors from "../../utils/colors";
+import DictionarySelectionScreen from "../../options/DictionarySelectionScreen";
 const OptionsStack = createStackNavigator();
 
 const OptionsNavigator = () => {
@@ -38,6 +39,10 @@ const OptionsNavigator = () => {
       <OptionsStack.Screen
         name="VoiceSelectionScreen"
         component={VoiceSelectionScreen}
+      />
+      <OptionsStack.Screen
+        name="DictionarySelectionScreen"
+        component={DictionarySelectionScreen}
       />
     </OptionsStack.Navigator>
   );

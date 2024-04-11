@@ -94,6 +94,13 @@ export default {
   },
   options: {
     heading: "Options",
+    setDailyGoal: {
+      heading: "Daily Goal",
+      textA: "Time Goal",
+      textB: "New Words Goal",
+      textC: "Steps Goal",
+      textD: "restore default values",
+    },
     voiceSelection: {
       title: "Voice Selection",
       textA: "Our app uses your devices preferred voice.",
@@ -108,14 +115,12 @@ export default {
         "sounds quite different to english from the USA. " +
         "Choose the accent that's right for you!",
     },
-    colorSchemeTitle: "Color Scheme",
-    setDailyGoal: {
-      heading: "Daily Goal",
-      textA: "Time Goal",
-      textB: "New Words Goal",
-      textC: "Steps Goal",
-      textD: "restore default values",
+    chooseDictionary: {
+      title: "Select Dictionary",
+      titleA: "English for Portuguese Speakers",
+      titleB: "Spanish for English Speakers (BETA)",
     },
+    colorSchemeTitle: "Color Scheme",
     contactUs: {
       name: "Contact Us",
       subject: "General Inquiry",
