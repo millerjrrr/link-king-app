@@ -25,7 +25,7 @@ const DictionarySelectionScreen = (props) => {
   };
 
   const setDictionaryToSpanish = () => {
-    sendDictionary({ dictionary: "Personal", dispatch });
+    sendDictionary({ dictionary: "Spanish", dispatch });
   };
 
   return (
