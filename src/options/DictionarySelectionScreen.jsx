@@ -3,13 +3,9 @@ import PopUpContainer from "../components/containers/PopUpContainer";
 import BusyWrapper from "../ui/Loader/BusyWrapper";
 import { useSelector, useDispatch } from "react-redux";
 import { getSettingsState } from "../store/settings";
-import colors from "../utils/colors";
 import appTextSource from "../utils/appTextSource";
 import OptionsMenuItem from "./OptionsMenuItem";
-import {
-  getConsoleState,
-  updateDictionary,
-} from "../store/console";
+import { getConsoleState } from "../store/console";
 import { sendDictionary } from "./components/sendDictionary";
 
 const DictionarySelectionScreen = (props) => {

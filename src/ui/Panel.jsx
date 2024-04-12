@@ -4,9 +4,11 @@ import { getSettingsState } from "../store/settings";
 import { useSelector } from "react-redux";
 import appShadow from "../utils/appShadow";
 
-const Panel = ({ shadowColor, children }) => {
+const Panel = ({ shadowColor, black, children }) => {
   const { colorScheme } = useSelector(getSettingsState);
-  const backgroundColor = colors[colorScheme].SECONDARY;
+  const backgroundColor = black
+    ? colors["dark"].SECONDARY
+    : colors[colorScheme].SECONDARY;
   return (
     <View
       style={[

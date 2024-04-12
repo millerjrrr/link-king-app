@@ -28,7 +28,7 @@ export const returnCorrectAnswerToServer = async ({
       ? Math.min(Date.now() - startedThisWord, 30 * 1000)
       : Math.min(Date.now() - startedThisWord, 10 * 1000);
     dispatch(incrementStatsTime(time));
-    console.log(time);
+    // console.log(time);
     const { data } = await clientWithAuth.post(
       "/api/console/submit-attempt",
       {

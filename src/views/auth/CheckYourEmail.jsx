@@ -24,7 +24,7 @@ const CheckYourEmail = ({
 
   return (
     <AuthFormContainer {...{ heading, subHeading }}>
-      <Panel {...{ shadowColor: color }}>
+      <Panel {...{ shadowColor: color, black: true }}>
         <Text style={styles.text}>{text}</Text>
         <AppButton
           {...{
