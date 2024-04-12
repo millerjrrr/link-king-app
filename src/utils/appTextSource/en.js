@@ -111,8 +111,8 @@ export default {
         "and choose the option that works best for you!",
       tip:
         "TIP: Try changing your voice to the accent that " +
-        "best suits you. For example, english from the UK " +
-        "sounds quite different to english from the USA. " +
+        "best suits you. For example, Spanish spoken in Mexico " +
+        "sounds quite different to Spanish spoken in Spain. " +
         "Choose the accent that's right for you!",
     },
     chooseDictionary: {

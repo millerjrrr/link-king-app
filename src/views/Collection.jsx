@@ -47,7 +47,10 @@ const Collection = ({ navigation }) => {
     setIsModalVisible(true);
   };
 
-  const dictionarySettings = () => console.log("test");
+  const dictionarySettings = () => {
+    navigation.navigate("Options");
+    navigation.navigate("DictionarySelectionScreen");
+  };
 
   return (
     <InnerTabContainer

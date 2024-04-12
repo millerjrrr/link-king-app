@@ -62,7 +62,11 @@ const Console = ({ navigation }) => {
   const help = () => {
     navigation.navigate("HelpScreen");
   };
-  const dictionarySettings = () => console.log("test");
+
+  const dictionarySettings = () => {
+    navigation.navigate("Options");
+    navigation.navigate("DictionarySelectionScreen");
+  };
 
   const { heading } = appTextSource[appLang].console;
 
