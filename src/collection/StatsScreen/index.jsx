@@ -41,7 +41,7 @@ const StatsScreen = () => {
         <LinkKingIcon />
         <TitleAndSub />
         <RatingCircle />
-        {/* <StatsContainer /> */}
+        <StatsContainer />
       </StatsPanel>
     </BusyWrapper>
   );
