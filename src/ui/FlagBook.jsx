@@ -28,7 +28,11 @@ const FlagBook = ({ dictionarySettings, padding }) => {
           {...{
             source,
             resizeMode: "contain",
-            style: { width: 48, height: 48 },
+            style: {
+              marginTop: 10,
+              height: 30,
+              width: 48,
+            },
           }}
         />
       </TouchableOpacity>

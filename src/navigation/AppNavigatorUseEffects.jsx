@@ -47,8 +47,6 @@ const AppNavigatorUseEffects = () => {
           },
         );
 
-        console.log("fetch auth info runs");
-
         if (data.status === "success") {
           dispatch(updateBusyState(false));
           dispatch(updateToken(token));

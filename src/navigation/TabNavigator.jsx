@@ -40,7 +40,7 @@ const TabNavigator = () => {
           },
         ],
       }}
-      initialRouteName="Options"
+      initialRouteName="Console"
     >
       <Tab.Screen
         name="Console"

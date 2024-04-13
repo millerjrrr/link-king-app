@@ -12,6 +12,7 @@ import LinkKingIcon from "./LinkKingIcon";
 import TitleAndSub from "./TitleAndSub";
 import RatingCircle from "./RatingCircle";
 import StatsContainer from "./StatsContainer";
+import FlagBookImage from "./FlagBookImage";
 
 const StatsScreen = () => {
   const { busy } = useSelector(getStatsState);
@@ -39,6 +40,7 @@ const StatsScreen = () => {
     <BusyWrapper {...{ busy }}>
       <StatsPanel>
         <LinkKingIcon />
+        <FlagBookImage />
         <TitleAndSub />
         <RatingCircle />
         <StatsContainer />
