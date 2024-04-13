@@ -6,7 +6,7 @@ import {
 const initialState = {
   attempt: {
     id: "",
-    target: "welcome back!",
+    target: "",
     solutions: [],
     speechLang: "en-US",
   },
