@@ -40,7 +40,7 @@ const StatsScreen = () => {
       <StatsPanel>
         <LinkKingIcon />
         <TitleAndSub />
-        {/* <RatingCircle /> */}
+        <RatingCircle />
         {/* <StatsContainer /> */}
       </StatsPanel>
     </BusyWrapper>
