@@ -22,7 +22,7 @@ import {
   saveToAsyncStorage,
 } from "../utils/asyncStorage";
 import AppModal from "../ui/AppModal";
-import { authErrorHandler } from "../errors/authErrorHandler";
+import { errorHandler } from "../errors/errorHandler";
 
 const Console = ({ navigation }) => {
   const inputFieldRef = useRef(null);
@@ -43,7 +43,7 @@ const Console = ({ navigation }) => {
         await saveToAsyncStorage("first-time", "no");
       }
     } catch (error) {
-      authErrorHandler(error, dispatch);
+      errorHandler(error, dispatch);
     }
   };
 
@@ -76,9 +76,10 @@ const Console = ({ navigation }) => {
     >
       <KeyboardAvoidingView
         style={styles.container}
-        behavior={
-          Platform.OS === "ios" ? "padding" : undefined
-        }
+        behavior={Platform.select({
+          ios: "padding",
+          android: undefined,
+        })}
       >
         <StatsContainer />
         <OptionsContainer />

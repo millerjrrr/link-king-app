@@ -6,7 +6,7 @@ import {
 const initialState = {
   levelBreakdown: [],
   userGameData: null,
-  busy: true,
+  busy: false,
   page: true,
 };
 

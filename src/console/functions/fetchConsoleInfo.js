@@ -7,9 +7,9 @@ import clientWithAuth from "../../api/clientWithAuth";
 import { errorHandler } from "../../errors/errorHandler";
 
 export const fetchConsoleInfo = async ({ dispatch }) => {
-  dispatch(updateBusyState(true));
-  dispatch(updateShowSolution(false));
   try {
+    dispatch(updateBusyState(true));
+    dispatch(updateShowSolution(false));
     const { data } = await clientWithAuth.get(
       "/api/console/send-game-state",
     );

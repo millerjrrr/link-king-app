@@ -21,7 +21,7 @@ const initialState = {
   dictionary: "Brazil",
   tail: [],
   tries: 1,
-  busy: true,
+  busy: false,
   page: true,
   formValue: "",
   lastAttempt: "",

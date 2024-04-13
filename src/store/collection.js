@@ -10,7 +10,7 @@ const initialState = {
   allDataLoaded: false,
   results: 0,
   reload: true,
-  busy: true,
+  busy: false,
 };
 
 const slice = createSlice({
