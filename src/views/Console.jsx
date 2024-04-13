@@ -36,11 +36,11 @@ const Console = ({ navigation }) => {
   const showWelcome = async () => {
     try {
       const firstTime =
-        (await getFromAsyncStorage("first-time")) || false;
+        (await getFromAsyncStorage("first-time")) || "yes";
 
-      if (!firstTime) {
+      if (firstTime !== "no") {
         setIsModalVisible(true);
-        await saveToAsyncStorage("first-time", "true");
+        await saveToAsyncStorage("first-time", "no");
       }
     } catch (error) {
       authErrorHandler(error, dispatch);

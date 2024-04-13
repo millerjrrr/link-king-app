@@ -46,6 +46,9 @@ const AppNavigatorUseEffects = () => {
             timeout: 3000,
           },
         );
+
+        console.log("fetch auth info runs");
+
         if (data.status === "success") {
           dispatch(updateBusyState(false));
           dispatch(updateToken(token));
@@ -58,6 +61,7 @@ const AppNavigatorUseEffects = () => {
         const errorMessage = catchAsyncError(error);
         if (errorMessage.startsWith("timeout"))
           dispatch(updateConnectedState(false));
+        else authErrorHandler(error, dispatch);
       }
     };
 
