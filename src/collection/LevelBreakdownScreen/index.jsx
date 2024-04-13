@@ -6,10 +6,6 @@ import { useEffect } from "react";
 import LevelHistogram from "./LevelHistogram";
 import PopUpContainer from "../../components/containers/PopUpContainer";
 import Loader from "../../ui/Loader";
-import {
-  StackActions,
-  useNavigation,
-} from "@react-navigation/native";
 import { getSettingsState } from "../../store/settings";
 import appTextSource from "../../utils/appTextSource";
 

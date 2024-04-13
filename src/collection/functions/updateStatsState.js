@@ -4,8 +4,8 @@ import {
   updateUserGameData,
 } from "../../store/stats";
 
-export const updateStatsState = (resData, dispatch) => {
-  const { levelBreakdown, userGameData } = resData;
+export const updateStatsState = ({ data, dispatch }) => {
+  const { levelBreakdown, userGameData } = data;
   dispatch(updateLevelBreakdown(levelBreakdown));
   dispatch(updateUserGameData(userGameData));
   dispatch(updateBusyState(false));

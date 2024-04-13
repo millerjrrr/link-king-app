@@ -5,7 +5,25 @@ import {
 
 const initialState = {
   levelBreakdown: [],
-  userGameData: null,
+  userGameData: {
+    blurred: true,
+    collectedWords: 0,
+    collectedWordsToday: 0,
+    dueToday: [],
+    playingMode: "ratings",
+    rating: 400,
+    ratingPeak: 400,
+    ratingPlays: 0,
+    sound: true,
+    stepsTakenLifetime: 0,
+    stepsTakenToday: 0,
+    streakCurrent: 0,
+    streakRecord: 0,
+    streakToday: 0,
+    timePlayingLifetime: 0,
+    timePlayingToday: 0,
+    timer: true,
+  },
   busy: false,
   page: true,
 };
