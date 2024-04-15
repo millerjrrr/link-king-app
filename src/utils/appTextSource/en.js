@@ -133,7 +133,7 @@ export default {
     titles: {
       signIn: "Sign In",
       signUp: "Sign Up",
-      lostPassword: "I lost my password",
+      lostPassword: "Forgot password",
       sendLink: "Send Link",
     },
     forms: {

@@ -1,4 +1,10 @@
-import { View, StyleSheet, Text } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Text,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from "react-native";
 import colors from "../../utils/colors";
 import AppNotification from "../AppNotification";
 import FourCrowns from "../../ui/Graphics/FourCrowns";
@@ -13,17 +19,23 @@ const AuthFormContainer = ({
   const color = colors.dark.INACTIVE_CONTRAST;
   const backgroundColor = colors.dark.PRIMARY;
   return (
-    <View style={[styles.container, { backgroundColor }]}>
-      <StatusBarFiller />
-      <FourCrowns {...{ color }} />
-      <LinkKingLogo />
-      <Text style={styles.heading}>{heading}</Text>
-      {subHeading ? (
-        <Text style={styles.subHeading}>{subHeading}</Text>
-      ) : null}
-      <AppNotification />
-      {children}
-    </View>
+    <TouchableWithoutFeedback
+      onPress={() => Keyboard.dismiss()}
+    >
+      <View style={[styles.container, { backgroundColor }]}>
+        <StatusBarFiller />
+        <FourCrowns {...{ color }} />
+        <LinkKingLogo />
+        <Text style={styles.heading}>{heading}</Text>
+        {subHeading ? (
+          <Text style={styles.subHeading}>
+            {subHeading}
+          </Text>
+        ) : null}
+        <AppNotification />
+        {children}
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 

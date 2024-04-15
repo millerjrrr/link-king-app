@@ -111,6 +111,7 @@ const styles = StyleSheet.create({
   },
   label: {
     color: colors.dark.CONTRAST[0],
+    fontSize: 15,
   },
   errorMsg: {
     color: colors.dark.RED,

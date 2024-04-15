@@ -1,4 +1,4 @@
-import { Keyboard, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import SubmitBtn from "../../components/form/SubmitBtn";
 import AppLink from "../../ui/AppLink";
 import AuthInputField from "../../components/form/AuthInputField";
@@ -8,7 +8,7 @@ import PasswordVisibilityIcon from "../../ui/PasswordVisibilityIcon";
 import AuthFormContainer from "../../components/containers/AuthFormContainer";
 import { useNavigation } from "@react-navigation/native";
 import client from "../../api/client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { authErrorHandler } from "../../errors/authErrorHandler";
 import { getSettingsState } from "../../store/settings";
@@ -36,7 +36,7 @@ const SignUp = () => {
       .trim(password.trim)
       .min(8, password.min)
       .matches(
-        /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#\$%\^&\*])[a-zA-Z\d!@#\$%\^&\*]+$/,
+        /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[^a-zA-Z\d]).*$/,
         password.matches,
       )
       .required(password.required),
@@ -49,28 +49,6 @@ const SignUp = () => {
   };
 
   const dispatch = useDispatch();
-  //Keyboard Management
-  const [isKeyboardShowing, setIsKeyboardShowing] =
-    useState(false);
-
-  useEffect(() => {
-    const keyboardDidShowListener = Keyboard.addListener(
-      "keyboardDidShow",
-      () => setIsKeyboardShowing(true),
-    );
-    const keyboardDidHideListener = Keyboard.addListener(
-      "keyboardDidHide",
-      () => setIsKeyboardShowing(false),
-    );
-
-    // Cleanup function to remove listeners
-    return () => {
-      keyboardDidShowListener.remove();
-      keyboardDidHideListener.remove();
-    };
-  }, []);
-
-  ////////////////////////////////////
 
   const [secureEntry, setSecureEntry] = useState(true);
   const navigation = useNavigation();
@@ -152,27 +130,23 @@ const SignUp = () => {
               onRightIconPress: togglePasswordView,
             }}
           />
-          {!isKeyboardShowing ? (
-            <>
-              <View style={styles.linkContainer}>
-                <AppLink
-                  {...{
-                    title: signIn,
-                    onPress: () =>
-                      navigation.navigate("SignIn"),
-                  }}
-                />
-                <AppLink
-                  {...{
-                    title: lostPassword,
-                    onPress: () =>
-                      navigation.navigate("LostPassword"),
-                  }}
-                />
-              </View>
-              <SubmitBtn {...{ title: signUp }} />
-            </>
-          ) : null}
+          <View style={styles.linkContainer}>
+            <AppLink
+              {...{
+                title: signIn,
+                onPress: () =>
+                  navigation.navigate("SignIn"),
+              }}
+            />
+            <AppLink
+              {...{
+                title: lostPassword,
+                onPress: () =>
+                  navigation.navigate("LostPassword"),
+              }}
+            />
+          </View>
+          <SubmitBtn {...{ title: signUp }} />
         </View>
       </Form>
     </AuthFormContainer>

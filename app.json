@@ -2,7 +2,7 @@
   "expo": {
     "name": "Link King",
     "slug": "LinkKingApp",
-    "version": "1.0.9",
+    "version": "1.0.10",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -15,7 +15,17 @@
     "ios": {
       "supportsTablet": true,
       "permissions": ["INTERNET"],
-      "bundleIdentifier": "com.linkoking.app"
+      "bundleIdentifier": "com.linkoking.app",
+      "infoPlist": {
+        "NSPrivacyAccessedAPITypes": [
+          {
+            "NSPrivacyAccessedAPICategoryDiskSpace": "Our app uses disk space to cache images and data to enhance performance.",
+            "NSPrivacyAccessedAPICategoryFileTimestamp": "We access file timestamps to provide version control and synchronization features.",
+            "NSPrivacyAccessedAPICategoryUserDefaults": "Our app customizes user experience by saving user preferences in UserDefaults.",
+            "NSPrivacyAccessedAPICategorySystemBootTime": "We use system boot time to ensure features dependent on system uptime work correctly."
+          }
+        ]
+      }
     },
     "android": {
       "adaptiveIcon": {

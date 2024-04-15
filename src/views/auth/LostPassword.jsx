@@ -1,4 +1,4 @@
-import { Keyboard, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import SubmitBtn from "../../components/form/SubmitBtn";
 import AppLink from "../../ui/AppLink";
 import AuthInputField from "../../components/form/AuthInputField";
@@ -7,7 +7,6 @@ import * as yup from "yup";
 import AuthFormContainer from "../../components/containers/AuthFormContainer";
 import { useNavigation } from "@react-navigation/native";
 import client from "../../api/client";
-import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { authErrorHandler } from "../../errors/authErrorHandler";
 import appTextSource from "../../utils/appTextSource";
@@ -28,28 +27,6 @@ const LostPassword = () => {
     email: "",
   };
   const dispatch = useDispatch();
-  //Keyboard Management
-  const [isKeyboardShowing, setIsKeyboardShowing] =
-    useState(false);
-
-  useEffect(() => {
-    const keyboardDidShowListener = Keyboard.addListener(
-      "keyboardDidShow",
-      () => setIsKeyboardShowing(true),
-    );
-    const keyboardDidHideListener = Keyboard.addListener(
-      "keyboardDidHide",
-      () => setIsKeyboardShowing(false),
-    );
-
-    // Cleanup function to remove listeners
-    return () => {
-      keyboardDidShowListener.remove();
-      keyboardDidHideListener.remove();
-    };
-  }, []);
-
-  ////////////////////////////////////
 
   const navigation = useNavigation();
 
@@ -104,27 +81,23 @@ const LostPassword = () => {
               autoCapitalize: "none",
             }}
           />
-          {!isKeyboardShowing ? (
-            <>
-              <View style={styles.linkContainer}>
-                <AppLink
-                  {...{
-                    title: signIn,
-                    onPress: () =>
-                      navigation.navigate("SignIn"),
-                  }}
-                />
-                <AppLink
-                  {...{
-                    title: signUp,
-                    onPress: () =>
-                      navigation.navigate("SignUp"),
-                  }}
-                />
-              </View>
-              <SubmitBtn {...{ title: sendLink }} />
-            </>
-          ) : null}
+          <View style={styles.linkContainer}>
+            <AppLink
+              {...{
+                title: signIn,
+                onPress: () =>
+                  navigation.navigate("SignIn"),
+              }}
+            />
+            <AppLink
+              {...{
+                title: signUp,
+                onPress: () =>
+                  navigation.navigate("SignUp"),
+              }}
+            />
+          </View>
+          <SubmitBtn {...{ title: sendLink }} />
         </View>
       </Form>
     </AuthFormContainer>

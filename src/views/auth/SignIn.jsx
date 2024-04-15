@@ -1,4 +1,4 @@
-import { Keyboard, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import SubmitBtn from "../../components/form/SubmitBtn";
 import AppLink from "../../ui/AppLink";
 import AuthInputField from "../../components/form/AuthInputField";
@@ -14,7 +14,7 @@ import {
   updateToken,
 } from "../../store/auth";
 import { saveToAsyncStorage } from "../../utils/asyncStorage";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { authErrorHandler } from "../../errors/authErrorHandler";
 import { getSettingsState } from "../../store/settings";
 import appTextSource from "../../utils/appTextSource";
@@ -39,29 +39,6 @@ const SignIn = () => {
     email: "",
     password: "",
   };
-
-  //Keyboard Management
-  const [isKeyboardShowing, setIsKeyboardShowing] =
-    useState(false);
-
-  useEffect(() => {
-    const keyboardDidShowListener = Keyboard.addListener(
-      "keyboardDidShow",
-      () => setIsKeyboardShowing(true),
-    );
-    const keyboardDidHideListener = Keyboard.addListener(
-      "keyboardDidHide",
-      () => setIsKeyboardShowing(false),
-    );
-
-    // Cleanup function to remove listeners
-    return () => {
-      keyboardDidShowListener.remove();
-      keyboardDidHideListener.remove();
-    };
-  }, []);
-
-  ////////////////////////////////////
 
   const [secureEntry, setSecureEntry] = useState(true);
   const navigation = useNavigation();
@@ -135,25 +112,22 @@ const SignIn = () => {
               onRightIconPress: togglePasswordView,
             }}
           />
-          {!isKeyboardShowing ? (
-            <>
-              <View style={styles.linkContainer}>
-                <AppLink
-                  title={signUp}
-                  onPress={() => {
-                    navigation.navigate("SignUp");
-                  }}
-                />
-                <AppLink
-                  title={lostPassword}
-                  onPress={() => {
-                    navigation.navigate("LostPassword");
-                  }}
-                />
-              </View>
-              <SubmitBtn title={signIn} />
-            </>
-          ) : null}
+
+          <View style={styles.linkContainer}>
+            <AppLink
+              title={signUp}
+              onPress={() => {
+                navigation.navigate("SignUp");
+              }}
+            />
+            <AppLink
+              title={lostPassword}
+              onPress={() => {
+                navigation.navigate("LostPassword");
+              }}
+            />
+          </View>
+          <SubmitBtn title={signIn} />
         </View>
       </Form>
     </AuthFormContainer>
@@ -171,6 +145,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+    paddingHorizontal: 5,
   },
 });
 
