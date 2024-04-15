@@ -21,9 +21,9 @@ const colors = {
     ...commonColors,
   },
   blue: {
-    PRIMARY: "#254270",
-    SECONDARY: "#51649c",
-    CONTRAST: ["#c9fffe", "#ffeeba"],
+    PRIMARY: "#0A1931",
+    SECONDARY: "#03080f",
+    CONTRAST: ["#FFFFE0", "#ffeeba"],
     INACTIVE_CONTRAST: "#ffffff80",
     STATUSBAR: "light-content",
     ...commonColors,
