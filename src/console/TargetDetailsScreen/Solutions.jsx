@@ -1,26 +1,29 @@
-import { Text, StyleSheet } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  ScrollView,
+  View,
+} from "react-native";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../../store/console";
 import colors from "../../utils/colors";
 import { getSettingsState } from "../../store/settings";
 import appTextSource from "../../utils/appTextSource";
+import appShadow from "./../../utils/appShadow";
 
 const Solutions = () => {
-  const { attempt } = useSelector(getConsoleState);
+  const {
+    attempt: { solutions },
+  } = useSelector(getConsoleState);
   const { colorScheme, golden, appLang } = useSelector(
     getSettingsState,
   );
   const color = colors[colorScheme].CONTRAST[golden];
-
-  let solutionString = "";
-  attempt.solutions.forEach((solution, index) => {
-    solutionString +=
-      solution +
-      (index < attempt.solutions.length - 1 ? "; " : "");
-  });
+  const backgroundColor = colors[colorScheme].SECONDARY;
 
   const { accepted } =
     appTextSource[appLang].console.targetDetails;
+
   return (
     <>
       <Text
@@ -33,16 +36,43 @@ const Solutions = () => {
       >
         {accepted}
       </Text>
-      <Text
+      <ScrollView
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
         style={{
-          textAlign: "center",
-          color,
-          fontSize: 25,
-          margin: 2,
+          height: 50,
+        }}
+        contentContainerStyle={{
+          padding: 5,
         }}
       >
-        {solutionString}
-      </Text>
+        {solutions.map((solution, index) => {
+          return (
+            <View
+              style={{
+                backgroundColor,
+                marginHorizontal: 8,
+                justifyContent: "center",
+                paddingHorizontal: 10,
+                borderRadius: 20,
+                shadowColor: color,
+                borderColor: color,
+                ...appShadow(1),
+              }}
+            >
+              <Text
+                style={{
+                  textAlign: "center",
+                  color,
+                  fontSize: 25,
+                }}
+              >
+                {solution}
+              </Text>
+            </View>
+          );
+        })}
+      </ScrollView>
     </>
   );
 };

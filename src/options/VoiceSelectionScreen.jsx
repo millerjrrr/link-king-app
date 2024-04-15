@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet } from "react-native";
+import { ScrollView, Text } from "react-native";
 import styled from "styled-components";
 import PopUpContainer from "./../components/containers/PopUpContainer";
 import { useSelector } from "react-redux";
@@ -6,8 +6,7 @@ import { getSettingsState } from "../store/settings";
 import colors from "../utils/colors";
 import appTextSource from "../utils/appTextSource";
 
-const Container = styled(View)`
-  align-items: center;
+const Container = styled(ScrollView)`
   margin: 15px;
 `;
 

@@ -17,7 +17,6 @@ const AppButton = ({
   size = 200,
   busy,
   onPress,
-  margin = 50,
 }) => {
   return (
     <View style={styles.container}>
@@ -29,7 +28,6 @@ const AppButton = ({
             shadowColor: color,
             borderColor: color,
             width: size,
-            margin,
             backgroundColor,
           },
         ]}

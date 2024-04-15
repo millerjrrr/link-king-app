@@ -81,9 +81,8 @@ const RedSafetyButton = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "top",
+    justifyContent: "center",
     alignItems: "center",
-    padding: 30,
     zIndex: 10,
   },
   buttonContainer: {

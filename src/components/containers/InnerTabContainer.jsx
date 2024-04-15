@@ -27,7 +27,6 @@ const InnerTabContainer = ({
   const { CONTRAST, SECONDARY } = colors[colorScheme];
   const color = CONTRAST[golden];
   const crownColor = SECONDARY;
-  const marginTop = StatusBar.currentHeight;
 
   return (
     <View style={styles.container}>
@@ -40,7 +39,7 @@ const InnerTabContainer = ({
       <LinkKingLogo
         {...{
           height: 30,
-          marginTop,
+          marginTop: 0,
           tintColor: color,
         }}
       />

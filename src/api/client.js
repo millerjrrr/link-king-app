@@ -7,6 +7,9 @@ const client = {
   l: axios.create({
     baseURL: "https://www.linkoking.com",
   }),
+  a: axios.create({
+    baseURL: "http://www.linkoking.com",
+  }),
 };
 
-export default client.l;
+export default client.a;

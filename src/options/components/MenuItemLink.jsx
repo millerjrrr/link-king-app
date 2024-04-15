@@ -18,7 +18,11 @@ const MenuItemLink = ({ name, onPress }) => {
   return (
     <TouchableOpacity
       {...{
-        style: { flex: 1, justifyContent: "center" },
+        style: {
+          flex: 1,
+          justifyContent: "center",
+          width: "100%",
+        },
         onPress,
       }}
     >

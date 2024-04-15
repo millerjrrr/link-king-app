@@ -19,7 +19,14 @@ const KeyboardIcon = ({
   const color = colors[colorScheme].CONTRAST[golden];
   return (
     <TouchableOpacity
-      {...{ onPress, style: { margin: 4 } }}
+      {...{
+        onPress,
+        style: {
+          padding: 4,
+          paddingBottom: 0,
+          zIndex: 1000,
+        },
+      }}
     >
       {entypo ? (
         <Entypo {...{ name, size, color }} />

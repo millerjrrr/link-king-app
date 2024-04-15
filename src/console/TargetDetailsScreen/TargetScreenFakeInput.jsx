@@ -16,6 +16,15 @@ const TargetScreenFakeInput = () => {
   const { timedOut } =
     appTextSource[appLang].console.targetDetails;
 
+  //font-size management
+  const fakeFormValue = lastAttempt
+    ? lastAttempt
+    : timedOut;
+
+  let fontSize = 40;
+  const length = fakeFormValue.length;
+  if (length > 12) fontSize = (fontSize * 12) / length;
+
   return (
     <View
       style={[
@@ -28,8 +37,8 @@ const TargetScreenFakeInput = () => {
         },
       ]}
     >
-      <Text style={[styles.text, { color: RED }]}>
-        {lastAttempt ? lastAttempt : timedOut}
+      <Text style={[styles.text, { color: RED, fontSize }]}>
+        {fakeFormValue}
       </Text>
     </View>
   );
@@ -48,7 +57,6 @@ const styles = StyleSheet.create({
   },
   text: {
     zIndex: 1,
-    fontSize: 40,
     textDecorationLine: "line-through",
     textAlign: "center",
   },

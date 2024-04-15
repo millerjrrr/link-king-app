@@ -14,6 +14,7 @@ import {
 } from "../store/collection";
 import Loader from "../ui/Loader";
 import { getSettingsState } from "../store/settings";
+import appTextSource from "../utils/appTextSource";
 
 const ListHeaderComponent = () => {
   return <View style={{ height: 80 }} />;
@@ -28,7 +29,11 @@ const WordCollectionList = ({ navigation }) => {
   const { tickets, page, allDataLoaded } = useSelector(
     getCollectionState,
   );
-  const { colorScheme } = useSelector(getSettingsState);
+  const { colorScheme, appLang } = useSelector(
+    getSettingsState,
+  );
+
+  const { noWords } = appTextSource[appLang].collection;
 
   return tickets === null || tickets.length === 0 ? (
     <View style={{ flex: 1, paddingTop: 90, width: "80%" }}>
@@ -39,7 +44,7 @@ const WordCollectionList = ({ navigation }) => {
           textAlign: "center",
         }}
       >
-        No words containing these letters
+        {noWords}
       </Text>
     </View>
   ) : (

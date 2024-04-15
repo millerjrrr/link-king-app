@@ -62,8 +62,9 @@ const OptionsMenuItemContainer = ({
             source,
             resizeMode: "contain",
             style: {
-              width: selected ? 96 : 48,
-              height: selected ? 96 : 48,
+              width: selected ? 64 : 48,
+              height: selected ? 64 : 48,
+              margin: 5,
             },
           }}
         />

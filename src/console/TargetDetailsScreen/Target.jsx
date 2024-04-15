@@ -11,11 +11,16 @@ const Target = () => {
   );
   const color = colors[colorScheme].CONTRAST[golden];
 
+  //font-size management
+  let fontSize = 40;
+  const length = attempt.target.length;
+  if (length > 12) fontSize = (fontSize * 12) / length;
+
   return (
     <Text
       style={{
         color,
-        fontSize: 40,
+        fontSize,
         margin: 5,
         zIndex: 1,
         textAlign: "center",

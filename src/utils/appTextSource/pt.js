@@ -67,6 +67,7 @@ export default {
   collection: {
     heading: "Coleção",
     searchMessage: "Pesquisar Coleção",
+    noWords: "Nenhuma palavra contendo essas letras",
     today: "hoje",
     tomorrow: "amanhã",
     levelsBreakdown: {

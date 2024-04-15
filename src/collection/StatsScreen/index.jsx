@@ -13,6 +13,7 @@ import TitleAndSub from "./TitleAndSub";
 import RatingCircle from "./RatingCircle";
 import StatsContainer from "./StatsContainer";
 import FlagBookImage from "./FlagBookImage";
+import { View } from "react-native";
 
 const StatsScreen = () => {
   const { busy } = useSelector(getStatsState);

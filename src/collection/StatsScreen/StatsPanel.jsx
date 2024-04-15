@@ -19,10 +19,10 @@ const StatsPanel = ({ children }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    height: "100%",
     alignItems: "center",
     justifyContent: "center",
-    margin: 15,
-    marginTop: 50,
+    padding: 15,
   },
 });
 

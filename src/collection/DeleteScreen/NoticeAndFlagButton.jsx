@@ -23,7 +23,7 @@ const NoticeAndFlagButton = ({
         <Text
           style={{
             color,
-            fontSize: 30,
+            fontSize: 25,
             textAlign: "center",
           }}
         >

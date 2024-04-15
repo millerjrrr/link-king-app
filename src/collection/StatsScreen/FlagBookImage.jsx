@@ -13,7 +13,7 @@ const FlagBookImage = () => {
       {...{
         source,
         resizeMode: "contain",
-        style: { height: 96 },
+        style: { height: 64 },
       }}
     />
   );

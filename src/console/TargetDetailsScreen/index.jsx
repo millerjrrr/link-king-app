@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { getConsoleState } from "../../store/console";
 import PopUpContainer from "../../components/containers/PopUpContainer";

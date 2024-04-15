@@ -36,6 +36,7 @@ const StartButton = ({ inputFieldRef }) => {
         backgroundColor,
         size,
         onPress,
+        margin: 0,
       }}
     />
   ) : null;
