@@ -38,7 +38,7 @@ const AppButton = ({
               {...{
                 style: {
                   color,
-                  fontSize: size / 5,
+                  fontSize: size / 7,
                   textAlign: "center",
                 },
               }}

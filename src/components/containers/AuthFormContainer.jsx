@@ -4,6 +4,7 @@ import {
   Text,
   TouchableWithoutFeedback,
   Keyboard,
+  Dimensions,
 } from "react-native";
 import colors from "../../utils/colors";
 import AppNotification from "../AppNotification";
@@ -41,7 +42,7 @@ const AuthFormContainer = ({
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: Dimensions.get("window").height,
     alignItems: "center",
     justifyContent: "flex-start",
     paddingHorizontal: 15,
