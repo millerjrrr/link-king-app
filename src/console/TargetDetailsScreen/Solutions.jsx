@@ -28,6 +28,7 @@ const Solutions = () => {
           color,
           fontSize: 20,
           marginTop: 10,
+          textAlign: "center",
         }}
       >
         {accepted}

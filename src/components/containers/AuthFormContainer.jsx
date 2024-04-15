@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     paddingVertical: 0,
+    textAlign: "center",
   },
   subHeading: {
     color: colors.dark.CONTRAST[0],

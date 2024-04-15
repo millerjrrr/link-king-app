@@ -26,7 +26,13 @@ const ColorSchemeButton = ({ cs }) => {
 
   return (
     <AppButton
-      {...{ backgroundColor, color, size: 30, onPress }}
+      {...{
+        backgroundColor,
+        color,
+        size: 30,
+        onPress,
+        margin: 0,
+      }}
     />
   );
 };

@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 50,
     fontWeight: "bold",
+    textAlign: "center",
   },
 });
 

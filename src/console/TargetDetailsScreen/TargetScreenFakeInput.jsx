@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
     fontSize: 40,
     textDecorationLine: "line-through",
+    textAlign: "center",
   },
 });
 

@@ -175,6 +175,7 @@ const SetDailyGoalScreen = ({ navigation }) => {
                 color:
                   colors[colorScheme].INACTIVE_CONTRAST,
                 fontSize: 18,
+                textAlign: "center",
               }}
             >
               {textD}

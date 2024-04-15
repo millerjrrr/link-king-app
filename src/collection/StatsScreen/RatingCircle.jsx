@@ -25,6 +25,7 @@ const RatingCircle = () => {
           fontSize: 20,
           paddingTop: 10,
           color: green,
+          textAlign: "center",
         }}
       >
         {textC}

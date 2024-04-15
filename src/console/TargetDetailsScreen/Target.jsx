@@ -13,7 +13,13 @@ const Target = () => {
 
   return (
     <Text
-      style={{ color, fontSize: 40, margin: 5, zIndex: 1 }}
+      style={{
+        color,
+        fontSize: 40,
+        margin: 5,
+        zIndex: 1,
+        textAlign: "center",
+      }}
     >
       {attempt.target}
     </Text>

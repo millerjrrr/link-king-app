@@ -46,6 +46,7 @@ const LevelLine = ({
         style={{
           color,
           fontSize: 25,
+          textAlign: "center",
         }}
       >
         {level}
