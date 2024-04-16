@@ -26,15 +26,15 @@ const CheckYourEmail = ({
     <AuthFormContainer {...{ heading, subHeading }}>
       <Panel {...{ shadowColor: color, black: true }}>
         <Text style={styles.text}>{text}</Text>
-        <AppButton
-          {...{
-            name: "login",
-            size,
-            busy: false,
-            onPress,
-          }}
-        />
       </Panel>
+      <AppButton
+        {...{
+          name: "login",
+          size,
+          busy: false,
+          onPress,
+        }}
+      />
     </AuthFormContainer>
   );
 };
