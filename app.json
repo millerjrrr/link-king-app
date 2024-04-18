@@ -13,6 +13,7 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
+      "buildNumber": "2",
       "supportsTablet": true,
       "permissions": ["INTERNET"],
       "bundleIdentifier": "com.linkoking.app",

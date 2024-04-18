@@ -86,7 +86,7 @@ const SignIn = () => {
           validationSchema,
         }}
       >
-        <View style={styles.formContainer}>
+        <>
           <AuthInputField
             {...{
               name: "email",
@@ -121,6 +121,14 @@ const SignIn = () => {
               }}
             />
             <AppLink
+              title="test"
+              onPress={() => {
+                navigation.navigate("CheckYourEmail", {
+                  key: "passwordReset",
+                });
+              }}
+            />
+            <AppLink
               title={lostPassword}
               onPress={() => {
                 navigation.navigate("LostPassword");
@@ -128,24 +136,21 @@ const SignIn = () => {
             />
           </View>
           <SubmitBtn title={signIn} />
-        </View>
+        </>
       </Form>
     </AuthFormContainer>
   );
 };
 
 const styles = StyleSheet.create({
-  formContainer: {
-    flex: 1,
-  },
   marginBottom: {
     marginBottom: 20,
   },
   linkContainer: {
+    width: "100%",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingHorizontal: 5,
   },
 });
 

@@ -132,8 +132,8 @@ export default {
   auth: {
     titles: {
       signIn: "Entrar",
-      signUp: "Inscreva-se",
-      lostPassword: "Esqueci a minha senha",
+      signUp: "Criar minha conta",
+      lostPassword: "Esqueceu a senha?",
       sendLink: "Enviar Link",
     },
     forms: {
@@ -160,24 +160,26 @@ export default {
       },
     },
     verification: {
-      heading: "E-mail de verificação enviado",
+      heading: "E-mail enviado",
       subHeading: "Verifique seu e-mail",
       text:
         "Enviamos a você um e-mail com um link de verificação. Verifique seu " +
         "e-mail e retorne ao aplicativo para entrar!",
+      returnToLogin: "Retornar à página de login",
     },
     passwordReset: {
-      heading: "E-mail de Redefinição de Senha Enviado",
+      heading: "E-mail Enviado",
       subHeading:
         "Use o link no e-mail para redefinir sua senha",
       text:
         "Enviamos a você um link que você pode usar para redefinir sua senha " +
         "através do nosso site!",
+      returnToLogin: "Retornar à página de login",
     },
     lostPassword: {
       heading: "Esqueceu sua senha?",
       subHeading:
-        "Opa, você esqueceu sua senha? Não se preocupe, nós ajudaremos você a voltar.",
+        "Não se preocupe, nós ajudaremos você a voltar.",
     },
     signIn: { heading: "Bem-vindo de volta!" },
     signUp: {

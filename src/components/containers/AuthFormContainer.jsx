@@ -33,6 +33,7 @@ const AuthFormContainer = ({
             {subHeading}
           </Text>
         ) : null}
+        <View style={{ height: 10 }} />
         <AppNotification />
         {children}
       </View>
@@ -43,6 +44,7 @@ const AuthFormContainer = ({
 const styles = StyleSheet.create({
   container: {
     height: Dimensions.get("window").height,
+    width: "100%",
     alignItems: "center",
     justifyContent: "flex-start",
     paddingHorizontal: 15,
@@ -51,14 +53,13 @@ const styles = StyleSheet.create({
     color: colors.dark.CONTRAST[0],
     fontSize: 20,
     fontWeight: "bold",
-    paddingVertical: 0,
     textAlign: "center",
   },
   subHeading: {
+    paddingTop: 5,
     color: colors.dark.CONTRAST[0],
     fontSize: 13,
     textAlign: "center",
-    marginBottom: 10,
   },
 });
 

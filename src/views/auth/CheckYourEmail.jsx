@@ -1,36 +1,33 @@
 import { StyleSheet, Text } from "react-native";
 import colors from "../../utils/colors";
 import AuthFormContainer from "../../components/containers/AuthFormContainer";
-import AppButton from "../../ui/AppButton";
-import Panel from "../../ui/Panel";
 import appTextSource from "../../utils/appTextSource";
 import { useSelector } from "react-redux";
 import { getSettingsState } from "../../store/settings";
+import AuthButton from "../../ui/AuthButton";
+import { Fontisto } from "@expo/vector-icons";
 
-const CheckYourEmail = ({
-  navigation,
-  size = 200,
-  route,
-}) => {
+const CheckYourEmail = ({ navigation, route }) => {
   const { key } = route.params;
-  const { appLang, colorScheme, golden } = useSelector(
-    getSettingsState,
-  );
-  const { heading, subHeading, text } =
+  const { appLang } = useSelector(getSettingsState);
+  const { heading, subHeading, text, returnToLogin } =
     appTextSource[appLang].auth[key];
-  const color = colors[colorScheme].CONTRAST[golden];
 
   const onPress = () => navigation.navigate("SignIn");
 
   return (
     <AuthFormContainer {...{ heading, subHeading }}>
-      <Panel {...{ shadowColor: color, black: true }}>
-        <Text style={styles.text}>{text}</Text>
-      </Panel>
-      <AppButton
+      <Fontisto
         {...{
-          name: "login",
-          size,
+          name: "email",
+          size: 100,
+          color: colors.dark.CONTRAST[0],
+        }}
+      />
+      <Text style={styles.text}>{text}</Text>
+      <AuthButton
+        {...{
+          title: returnToLogin,
           busy: false,
           onPress,
         }}
@@ -41,8 +38,10 @@ const CheckYourEmail = ({
 
 const styles = StyleSheet.create({
   text: {
+    marginTop: 15,
+    marginBottom: 40,
     color: colors.dark.CONTRAST[0],
-    fontSize: 30,
+    fontSize: 25,
     textAlign: "center",
   },
 });

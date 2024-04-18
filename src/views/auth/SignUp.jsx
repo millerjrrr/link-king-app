@@ -96,7 +96,7 @@ const SignUp = () => {
       <Form
         {...{ onSubmit, initialValues, validationSchema }}
       >
-        <View style={styles.formContainer}>
+        <>
           <AuthInputField
             {...{
               name: "name",
@@ -147,20 +147,18 @@ const SignUp = () => {
             />
           </View>
           <SubmitBtn {...{ title: signUp }} />
-        </View>
+        </>
       </Form>
     </AuthFormContainer>
   );
 };
 
 const styles = StyleSheet.create({
-  formContainer: {
-    flex: 1,
-  },
   marginBottom: {
     marginBottom: 20,
   },
   linkContainer: {
+    width: "100%",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",

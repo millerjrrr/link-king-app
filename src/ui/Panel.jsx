@@ -4,9 +4,9 @@ import { getSettingsState } from "../store/settings";
 import { useSelector } from "react-redux";
 import appShadow from "../utils/appShadow";
 
-const Panel = ({ shadowColor, black, children }) => {
+const Panel = ({ shadowColor, dark, children }) => {
   const { colorScheme } = useSelector(getSettingsState);
-  const backgroundColor = black
+  const backgroundColor = dark
     ? colors["dark"].SECONDARY
     : colors[colorScheme].SECONDARY;
   return (
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   container: {
     width: "100%",
     alignItems: "center",
-    padding: 20,
+    padding: 15,
     borderRadius: 20,
     ...appShadow(),
   },

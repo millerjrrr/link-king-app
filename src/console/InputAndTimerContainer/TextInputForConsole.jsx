@@ -35,7 +35,7 @@ const TextInputForConsole = ({
     useSelector(getConsoleState);
   const { colorScheme } = useSelector(getSettingsState);
   const placeholderTextColor = colors[colorScheme].LIGHTRED;
-  const backgroundColor = colors[colorScheme].SECONDARY;
+  const backgroundColor = colors[colorScheme].PRIMARY;
 
   const placeholder = showSolution
     ? attempt.solutions[0]

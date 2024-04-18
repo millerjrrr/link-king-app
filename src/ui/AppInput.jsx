@@ -19,9 +19,9 @@ const AppInput = (props) => {
 const styles = StyleSheet.create({
   input: {
     height: 45,
-    borderRadius: 25,
+    borderRadius: 15,
     padding: 10,
-    backgroundColor: colors.dark.SECONDARY,
+    backgroundColor: colors.dark.PRIMARY,
     color: colors.dark.CONTRAST[0],
     shadowColor: colors.dark.CONTRAST[0],
     borderColor: colors.dark.CONTRAST[0],

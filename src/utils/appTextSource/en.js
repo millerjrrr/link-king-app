@@ -161,20 +161,22 @@ export default {
       },
     },
     verification: {
-      heading: "Verification Email Sent",
+      heading: "Email Sent",
       subHeading: "Please verify your email",
       text:
         "We've sent you an email with a verification link. " +
         "Please check your email then return " +
         "to the app to log in!",
+      returnToLogin: "Return to login page",
     },
     passwordReset: {
-      heading: "Password Reset Email Sent",
+      heading: "Email Sent",
       subHeading:
         "Use link in email to reset your password",
       text:
         "We've sent you an link which you can use to " +
         "reset your password through our site!",
+      returnToLogin: "Return to login page",
     },
     lostPassword: {
       heading: "Forgot your password?",

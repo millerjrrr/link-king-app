@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     justifyContent: "center",
     alignItems: "center",
-    margin: 5,
+    margin: 8,
     marginBottom: 0,
     ...appShadow(1),
   },

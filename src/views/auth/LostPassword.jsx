@@ -71,7 +71,7 @@ const LostPassword = () => {
       <Form
         {...{ onSubmit, initialValues, validationSchema }}
       >
-        <View style={styles.formContainer}>
+        <>
           <AuthInputField
             {...{
               name: "email",
@@ -98,17 +98,15 @@ const LostPassword = () => {
             />
           </View>
           <SubmitBtn {...{ title: sendLink }} />
-        </View>
+        </>
       </Form>
     </AuthFormContainer>
   );
 };
 
 const styles = StyleSheet.create({
-  formContainer: {
-    flex: 1,
-  },
   linkContainer: {
+    width: "100%",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",

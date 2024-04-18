@@ -1,10 +1,10 @@
-import AppButton from "../../ui/AppButton";
 import { useFormikContext } from "formik";
+import AuthButton from "../../ui/AuthButton";
 
 const SubmitBtn = ({ title }) => {
   const { handleSubmit, isSubmitting } = useFormikContext();
   return (
-    <AppButton
+    <AuthButton
       {...{
         title,
         busy: isSubmitting,

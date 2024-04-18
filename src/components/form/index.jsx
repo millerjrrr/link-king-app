@@ -12,6 +12,8 @@ const Form = ({
         onSubmit,
         initialValues,
         validationSchema,
+        // validateOnBlur: true,
+        // validateOnChange: false,
         style: { flex: 1 },
       }}
     >

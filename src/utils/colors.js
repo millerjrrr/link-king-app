@@ -13,25 +13,26 @@ const darkText = {
 
 const colors = {
   dark: {
-    PRIMARY: "#1b1b1b",
-    SECONDARY: "#000000",
+    PRIMARY: "#000000",
+    SECONDARY: "#1b1b1b",
     CONTRAST: ["#ffffff", "#ffeeba"],
     INACTIVE_CONTRAST: "#ffffff80",
     STATUSBAR: "light-content",
     ...commonColors,
   },
   blue: {
-    PRIMARY: "#0A1931",
-    SECONDARY: "#03080f",
+    PRIMARY: "#03080f",
+    SECONDARY: "#0A1931",
     CONTRAST: ["#FFFFE0", "#ffeeba"],
     INACTIVE_CONTRAST: "#ffffff80",
     STATUSBAR: "light-content",
     ...commonColors,
   },
   green: {
-    PRIMARY: "#b2dbb2",
-    SECONDARY: "#c8e6be",
-    ...darkText,
+    PRIMARY: "#030f04",
+    SECONDARY: "#0a3114",
+    CONTRAST: ["#3dfc4d", "#ffeeba"],
+    INACTIVE_CONTRAST: "#0a3114",
     ...commonColors,
   },
   orange: {
