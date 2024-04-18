@@ -16,27 +16,54 @@ const AuthFormContainer = ({
   children,
   heading,
   subHeading,
+  nologo,
 }) => {
-  const color = colors.dark.INACTIVE_CONTRAST;
+  const color = colors.dark.SECONDARY;
   const backgroundColor = colors.dark.PRIMARY;
   return (
     <TouchableWithoutFeedback
       onPress={() => Keyboard.dismiss()}
     >
-      <View style={[styles.container, { backgroundColor }]}>
-        <StatusBarFiller />
-        <FourCrowns {...{ color }} />
-        <LinkKingLogo />
-        <Text style={styles.heading}>{heading}</Text>
-        {subHeading ? (
-          <Text style={styles.subHeading}>
-            {subHeading}
+      <>
+        <View
+          style={[
+            styles.container,
+            {
+              backgroundColor,
+              alignItems: !nologo ? "center" : "flex-start",
+            },
+          ]}
+        >
+          <StatusBarFiller />
+          <FourCrowns {...{ color }} />
+          {!nologo ? (
+            <LinkKingLogo />
+          ) : (
+            <View style={{ height: 60 }} />
+          )}
+          <Text
+            style={[
+              styles.heading,
+              { textAlign: !nologo ? "center" : "left" },
+            ]}
+          >
+            {heading}
           </Text>
-        ) : null}
-        <View style={{ height: 10 }} />
-        <AppNotification />
-        {children}
-      </View>
+          {subHeading ? (
+            <Text
+              style={[
+                styles.subHeading,
+                { textAlign: !nologo ? "center" : "left" },
+              ]}
+            >
+              {subHeading}
+            </Text>
+          ) : null}
+          <View style={{ height: 10 }} />
+          <AppNotification />
+          {children}
+        </View>
+      </>
     </TouchableWithoutFeedback>
   );
 };
@@ -51,15 +78,14 @@ const styles = StyleSheet.create({
   },
   heading: {
     color: colors.dark.CONTRAST[0],
-    fontSize: 20,
+    fontSize: 25,
     fontWeight: "bold",
-    textAlign: "center",
+    paddingHorizontal: 5,
   },
   subHeading: {
-    paddingTop: 5,
+    padding: 5,
     color: colors.dark.CONTRAST[0],
-    fontSize: 13,
-    textAlign: "center",
+    fontSize: 16,
   },
 });
 

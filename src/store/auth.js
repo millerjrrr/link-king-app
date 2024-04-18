@@ -9,6 +9,8 @@ const initialState = {
   busy: false,
   connected: true,
   refresh: 0,
+  name: "",
+  email: "",
 };
 
 const slice = createSlice({
@@ -27,6 +29,12 @@ const slice = createSlice({
     updateConnectedState(authState, { payload }) {
       authState.connected = payload;
     },
+    updateName(authState, { payload }) {
+      authState.formName = payload;
+    },
+    updateEmail(authState, { payload }) {
+      authState.formEmail = payload;
+    },
     refreshPage(authState) {
       authState.connected = true;
       authState.refresh += 1;
@@ -40,6 +48,8 @@ export const {
   updateBusyState,
   updateConnectedState,
   refreshPage,
+  updateName,
+  updateEmail,
 } = slice.actions;
 
 export const getAuthState = createSelector(

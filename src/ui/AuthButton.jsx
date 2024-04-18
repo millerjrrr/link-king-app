@@ -45,7 +45,7 @@ const AuthButton = ({ title, busy, onPress }) => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 30,
+    // paddingTop: 30,
     width: "100%",
     zIndex: 10,
   },

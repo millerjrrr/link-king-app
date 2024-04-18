@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import PopUpContainer from "../components/containers/PopUpContainer";
 import BusyWrapper from "../ui/Loader/BusyWrapper";
 import { useSelector, useDispatch } from "react-redux";
@@ -7,14 +7,29 @@ import appTextSource from "../utils/appTextSource";
 import OptionsMenuItem from "./OptionsMenuItem";
 import { getConsoleState } from "../store/console";
 import { sendDictionary } from "./components/sendDictionary";
+import colors from "../utils/colors";
+import styled from "styled-components";
+
+const TextBlock = styled(Text)`
+  padding-vertical: 20px;
+  padding-horizontal: 15px;
+  text-align: left;
+  font-size: 25px;
+  color: ${(props) => props.color};
+`;
 
 const DictionarySelectionScreen = (props) => {
-  const { appLang } = useSelector(getSettingsState);
+  const { colorScheme, golden, appLang } = useSelector(
+    getSettingsState,
+  );
   const {
     title: heading,
     titleA,
     titleB,
+    text,
   } = appTextSource[appLang].options.chooseDictionary;
+
+  const color = colors[colorScheme].CONTRAST[golden];
 
   const { dictionary, busy } = useSelector(getConsoleState);
 
@@ -50,12 +65,13 @@ const DictionarySelectionScreen = (props) => {
           }}
         />
       </BusyWrapper>
+      <TextBlock {...{ color }}>{text}</TextBlock>
     </PopUpContainer>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {},
+  text: {},
 });
 
 export default DictionarySelectionScreen;

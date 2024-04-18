@@ -1,9 +1,14 @@
-import { View, StatusBar, Platform } from "react-native";
+import { View, StatusBar } from "react-native";
 
-const StatusBarFiller = (props) => {
+const StatusBarFiller = ({ backgroundColor }) => {
   return (
     <View
-      style={{ height: StatusBar.currentHeight || 30 }}
+      style={{
+        height: StatusBar.currentHeight || 30,
+        width: "100%",
+        backgroundColor,
+        zIndex: 1000,
+      }}
     />
   );
 };

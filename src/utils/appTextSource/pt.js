@@ -119,6 +119,11 @@ export default {
       title: "Selecionar um Dicionário",
       titleA: "Inglês para falantes de português",
       titleB: "Espanhol para falantes de inglês (BETA)",
+      text:
+        "*Embora exista a opção de mudar para um " +
+        "dicionário Espanhol-Inglês (800 entradas), este é " +
+        "um dicionário muito pequeno cujo objetivo é " +
+        "ilustrar o conceito para falantes de inglês.",
     },
     colorSchemeTitle: "Esquema de Cores",
     contactUs: {
@@ -135,6 +140,7 @@ export default {
       signUp: "Criar minha conta",
       lostPassword: "Esqueceu a senha?",
       sendLink: "Enviar Link",
+      next: "Avançar",
     },
     forms: {
       name: {
@@ -183,8 +189,28 @@ export default {
     },
     signIn: { heading: "Bem-vindo de volta!" },
     signUp: {
-      heading: "Bem-vindo!",
-      subHeading: "Vamos começar criando sua conta",
+      welcome: {
+        heading: "Bem-vindo!",
+        subHeading: "Vamos começar criando sua conta",
+      },
+      name: {
+        heading: "Qual é seu nome?",
+        subHeading:
+          "Como você gostaria que chamássemos você?",
+      },
+      email: {
+        heading: "Qual é o seu email?",
+        subHeading:
+          "Precisaremos de um endereço de e-mail para " +
+          "configurar sua conta",
+      },
+      password: {
+        heading: "Crie uma senha",
+        subHeading:
+          "Crie uma senha com pelo menos 8 caracteres." +
+          "Sua senha deve conter pelo menos um dígito " +
+          "(0-9), uma letra e um caractere especial (!@#$%¨&*())",
+      },
     },
   },
   modals: {

@@ -1,4 +1,4 @@
-import { Image } from "react-native";
+import { Image, StatusBar } from "react-native";
 
 const CrownUI = ({
   size = 96,

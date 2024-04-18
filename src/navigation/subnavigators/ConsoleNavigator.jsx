@@ -7,18 +7,29 @@ import Console from "../../views/Console";
 import TargetDetailsScreen from "../../console/TargetDetailsScreen";
 import StatsScreen from "../../collection/StatsScreen";
 import HelpScreen from "../../console/HelpScreen";
+import { useSelector } from "react-redux";
+import { getSettingsState } from "../../store/settings";
+import colors from "../../utils/colors";
 
 const ConsoleStack = createStackNavigator();
 
 const ConsoleNavigator = () => {
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
+  const headerTintColor =
+    colors[colorScheme].CONTRAST[golden];
   return (
     <ConsoleStack.Navigator
       screenOptions={{
+        headerTintColor,
         headerTransparent: true,
-        headerTitleStyle: { color: "transparent" },
+        headerBackTitleVisible: false,
+        headerTitleStyle: {
+          color: "transparent",
+        },
         ...TransitionPresets.ModalPresentationIOS,
       }}
-      initialRouteName="ConsoleStackScreen"
     >
       <ConsoleStack.Screen
         name="ConsoleStackScreen"

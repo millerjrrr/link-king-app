@@ -120,6 +120,11 @@ export default {
       title: "Select Dictionary",
       titleA: "English for Portuguese Speakers",
       titleB: "Spanish for English Speakers (BETA)",
+      text:
+        "*While there is an option to switch to a " +
+        "Spanish-English dictionary (800 entries), this is a very small " +
+        "dictionary whose purpose is to illustrate the " +
+        "concept to English speakers.",
     },
     colorSchemeTitle: "Color Scheme",
     contactUs: {
@@ -136,6 +141,7 @@ export default {
       signUp: "Sign Up",
       lostPassword: "Forgot password",
       sendLink: "Send Link",
+      next: "Next",
     },
     forms: {
       name: {
@@ -185,9 +191,27 @@ export default {
     },
     signIn: { heading: "Welcome back!" },
     signUp: {
-      heading: "Welcome!",
-      subHeading:
-        "Let's get started by creating your account",
+      welcome: {
+        heading: "Welcome!",
+        subHeading:
+          "Let's get started by creating your account",
+      },
+      name: {
+        heading: "What's your name?",
+        subHeading: "What would you like us to call you?",
+      },
+      email: {
+        heading: "What's your email?",
+        subHeading:
+          "We'll need an email address to set up your account",
+      },
+      password: {
+        heading: "Create a password",
+        subHeading:
+          "Create a password with at least 8 characters. " +
+          "Your password must contain at least one digit " +
+          "(0-9), a letter and a special character (!@#$%¨&*())",
+      },
     },
   },
   modals: {
@@ -219,8 +243,8 @@ export default {
     },
     collectionInfo: {
       modalMessage:
-        "He is your collection list. Each time you get a word " +
-        "wrong it's added to your collection. After its added " +
+        "Here is your collection list. Each time you get a word " +
+        "wrong it's added to your collection. After its added, " +
         "each time you get it right the longer it will be before " +
         "you see it again. This is called “structured spaced " +
         "repetition” and is a powerful learning tool.",

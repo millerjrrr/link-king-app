@@ -21,11 +21,10 @@ const VoiceSelectionScreen = () => {
   const { colorScheme, golden, appLang } = useSelector(
     getSettingsState,
   );
+  const color = colors[colorScheme].CONTRAST[golden];
 
   const { title, textA, textB, tip } =
     appTextSource[appLang].options.voiceSelection;
-
-  const color = colors[colorScheme].CONTRAST[golden];
 
   return (
     <PopUpContainer heading={title}>

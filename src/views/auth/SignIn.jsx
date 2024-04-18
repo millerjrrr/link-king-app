@@ -117,15 +117,7 @@ const SignIn = () => {
             <AppLink
               title={signUp}
               onPress={() => {
-                navigation.navigate("SignUp");
-              }}
-            />
-            <AppLink
-              title="test"
-              onPress={() => {
-                navigation.navigate("CheckYourEmail", {
-                  key: "passwordReset",
-                });
+                navigation.navigate("Welcome");
               }}
             />
             <AppLink
@@ -151,6 +143,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+    marginBottom: 30,
   },
 });
 
