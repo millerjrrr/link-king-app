@@ -16,11 +16,12 @@ const Welcome = ({ route }) => {
     key === "start"
       ? "account-arrow-right-outline"
       : "account-arrow-left-outline";
+  const page = key === "start" ? "Name" : "SignIn";
 
   const navigation = useNavigation();
 
   const onPress = async () => {
-    navigation.navigate("Name");
+    navigation.navigate(page);
   };
 
   const { heading, subHeading, buttonTitle } =
