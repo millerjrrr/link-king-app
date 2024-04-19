@@ -16,9 +16,6 @@ import Loader from "../ui/Loader";
 import { getSettingsState } from "../store/settings";
 import appTextSource from "../utils/appTextSource";
 
-const ListHeaderComponent = () => {
-  return <View style={{ height: 80 }} />;
-};
 const ListFooterComponent = () => {
   const { allDataLoaded } = useSelector(getCollectionState);
   return !allDataLoaded ? <Loader /> : null;
@@ -48,24 +45,26 @@ const WordCollectionList = ({ navigation }) => {
       </Text>
     </View>
   ) : (
-    <FlatList
-      data={tickets}
-      renderItem={({ item }) => {
-        // must be called item for FlatList to work
-        return (
-          <WordCard {...{ navigation, ticket: item }} />
-        );
-      }}
-      keyExtractor={(item) => item._id}
-      style={styles.flatList}
-      ListHeaderComponent={ListHeaderComponent}
-      onEndReached={() => {
-        if (!allDataLoaded)
-          dispatch(updateCollection({ page: page + 1 }));
-      }}
-      onEndReachedThreshold={0.1}
-      ListFooterComponent={ListFooterComponent}
-    />
+    <>
+      <View style={{ height: 90 }} />
+      <FlatList
+        data={tickets}
+        renderItem={({ item }) => {
+          // must be called item for FlatList to work
+          return (
+            <WordCard {...{ navigation, ticket: item }} />
+          );
+        }}
+        keyExtractor={(item) => item._id}
+        style={styles.flatList}
+        onEndReached={() => {
+          if (!allDataLoaded)
+            dispatch(updateCollection({ page: page + 1 }));
+        }}
+        onEndReachedThreshold={0.1}
+        ListFooterComponent={ListFooterComponent}
+      />
+    </>
   );
 };
 
