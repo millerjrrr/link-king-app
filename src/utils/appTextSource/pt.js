@@ -164,6 +164,14 @@ export default {
         required: "Senha requerida!",
         label: "Senha",
       },
+      code: {
+        trim: "Digite o código aqui",
+        min: "Dígitos faltantes",
+        max: "código de 6 dígitos",
+        matches: "O código só pode conter dígitos",
+        required: "Código é obrigatório",
+        label: "Código de 6 dígitos",
+      },
     },
     verification: {
       heading: "E-mail enviado",
@@ -189,9 +197,10 @@ export default {
     },
     signIn: { heading: "Bem-vindo de volta!" },
     signUp: {
-      welcome: {
+      start: {
         heading: "Bem-vindo!",
         subHeading: "Vamos começar criando sua conta",
+        buttonTitle: "Criar conta",
       },
       name: {
         heading: "Qual é seu nome?",
@@ -211,6 +220,22 @@ export default {
           "Sua senha deve conter pelo menos um dígito " +
           "(0-9), uma letra e um caractere especial (!@#$%¨&*())",
       },
+      code: {
+        heading: "Digite seu código de verificação",
+        subHeading:
+          "Enviamos um código de 6 dígitos para seu e-mail." +
+          "Por favor insira seu código abaixo para confirmar seu endereço de e-mail",
+        verify: "Verificar",
+        resend: "Reenviar código de verificação",
+        cancel: "Cancelar",
+      },
+      finish: {
+        heading: "Bem-vindo!",
+        subHeading:
+          "Sua conta foi verificada. " +
+          "Retorne à nossa página inicial para fazer login",
+        buttonTitle: "Entrar",
+      },
     },
   },
   modals: {
@@ -220,6 +245,14 @@ export default {
         "Entre em contato conosco por e-mail e nós responderemos o mais breve " +
         "possível",
       cancel: "Cancelar",
+    },
+    signUp: {
+      title: "Sair do processo",
+      modalMessage:
+        "Tem certeza de que deseja encerrar o processo? \n\n" +
+        "Se você sair, não poderá concluir o processo de " +
+        "inscrição novamente por 10 minutos",
+      cancel: "Ficar aqui",
     },
     logOut: {
       title: "Sair",

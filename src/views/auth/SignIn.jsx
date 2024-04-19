@@ -94,7 +94,7 @@ const SignIn = () => {
               placeholder: email.placeholder,
               keyboardType: "email-address",
               autoCapitalize: "none",
-              containerStyle: styles.marginBottom,
+              containerStyle: { marginBottom: 20 },
             }}
           />
           <AuthInputField
@@ -117,7 +117,9 @@ const SignIn = () => {
             <AppLink
               title={signUp}
               onPress={() => {
-                navigation.navigate("Welcome");
+                navigation.navigate("Welcome", {
+                  key: "start",
+                });
               }}
             />
             <AppLink
@@ -135,9 +137,6 @@ const SignIn = () => {
 };
 
 const styles = StyleSheet.create({
-  marginBottom: {
-    marginBottom: 20,
-  },
   linkContainer: {
     width: "100%",
     flexDirection: "row",

@@ -11,6 +11,7 @@ const initialState = {
   refresh: 0,
   name: "",
   email: "",
+  unverifiedUserId: "",
 };
 
 const slice = createSlice({
@@ -35,6 +36,9 @@ const slice = createSlice({
     updateEmail(authState, { payload }) {
       authState.formEmail = payload;
     },
+    updateUnverifiedUserId(authState, { payload }) {
+      authState.unverifiedUserId = payload;
+    },
     refreshPage(authState) {
       authState.connected = true;
       authState.refresh += 1;
@@ -50,6 +54,7 @@ export const {
   refreshPage,
   updateName,
   updateEmail,
+  updateUnverifiedUserId,
 } = slice.actions;
 
 export const getAuthState = createSelector(

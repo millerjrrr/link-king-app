@@ -19,7 +19,6 @@ import { useEffect } from "react";
 const AuthInputField = (props) => {
   const inputTransformValue = useSharedValue(0);
   const {
-    // handleSubmit,
     handleChange,
     values,
     errors,

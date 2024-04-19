@@ -165,6 +165,14 @@ export default {
         required: "Password is required!",
         label: "Password",
       },
+      code: {
+        trim: "Enter code here",
+        min: "Missing digits",
+        max: "6 digit code",
+        matches: "Code can only contain digits",
+        required: "Code is required",
+        label: "6 Digit Code",
+      },
     },
     verification: {
       heading: "Email Sent",
@@ -191,10 +199,11 @@ export default {
     },
     signIn: { heading: "Welcome back!" },
     signUp: {
-      welcome: {
+      start: {
         heading: "Welcome!",
         subHeading:
           "Let's get started by creating your account",
+        buttonTitle: "Create account",
       },
       name: {
         heading: "What's your name?",
@@ -212,6 +221,22 @@ export default {
           "Your password must contain at least one digit " +
           "(0-9), a letter and a special character (!@#$%¨&*())",
       },
+      code: {
+        heading: "Enter your verification code",
+        subHeading:
+          "We sent a 6 digit code to your email." +
+          "Please enter your code below to confirm your email address",
+        verify: "Verify",
+        resend: "Resend verification code",
+        cancel: "Cancel",
+      },
+      finish: {
+        heading: "Welcome!",
+        subHeading:
+          "You're account has been verified. " +
+          "Return to our homepage to login",
+        buttonTitle: "Sign in",
+      },
     },
   },
   modals: {
@@ -221,6 +246,14 @@ export default {
         "Please contact us by email and we will get back " +
         "to you as soon as possible.",
       cancel: "Cancel",
+    },
+    signUp: {
+      title: "Quit process",
+      modalMessage:
+        "Are your sure you want to end the process?\n \n " +
+        "If you leave, you won't be able to complete " +
+        "the sign up process again for 10 minutes",
+      cancel: "Stay here",
     },
     logOut: {
       title: "Log Out",

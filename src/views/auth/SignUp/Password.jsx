@@ -1,6 +1,4 @@
-import { StyleSheet, View } from "react-native";
 import SubmitBtn from "../../../components/form/SubmitBtn";
-import AppLink from "../../../ui/AppLink";
 import AuthInputField from "../../../components/form/AuthInputField";
 import Form from "../../../components/form";
 import * as yup from "yup";
@@ -17,6 +15,7 @@ import {
   getAuthState,
   updateEmail,
   updateName,
+  updateUnverifiedUserId,
 } from "../../../store/auth";
 
 const Password = () => {
@@ -73,9 +72,10 @@ const Password = () => {
       if (data.status === "success") {
         dispatch(updateName(""));
         dispatch(updateEmail(""));
-        navigation.navigate("CheckYourEmail", {
-          key: "verification",
-        });
+        dispatch(
+          updateUnverifiedUserId(data.unverifiedUserId),
+        );
+        navigation.navigate("VerificationCode");
       }
     } catch (error) {
       authErrorHandler(error, dispatch);

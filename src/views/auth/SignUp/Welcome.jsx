@@ -1,14 +1,21 @@
-import { StyleSheet, View } from "react-native";
-import AppLink from "../../../ui/AppLink";
+import { View } from "react-native";
 import AuthFormContainer from "../../../components/containers/AuthFormContainer";
 import { useSelector } from "react-redux";
 import { getSettingsState } from "../../../store/settings";
 import appTextSource from "../../../utils/appTextSource";
 import AuthButton from "../../../ui/AuthButton";
 import { useNavigation } from "@react-navigation/native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import colors from "../../../utils/colors";
 
-const Welcome = () => {
+const Welcome = ({ route }) => {
+  const { key } = route.params;
   const { appLang } = useSelector(getSettingsState);
+  const color = colors.dark.CONTRAST[0];
+  const name =
+    key === "start"
+      ? "account-arrow-right-outline"
+      : "account-arrow-left-outline";
 
   const navigation = useNavigation();
 
@@ -16,43 +23,24 @@ const Welcome = () => {
     navigation.navigate("Name");
   };
 
-  const { signIn, lostPassword } =
-    appTextSource[appLang].auth.titles;
-  const { heading, subHeading } =
-    appTextSource[appLang].auth.signUp.welcome;
-  const { next } = appTextSource[appLang].auth.titles;
+  const { heading, subHeading, buttonTitle } =
+    appTextSource[appLang].auth.signUp[key];
 
   return (
     <AuthFormContainer {...{ heading, subHeading }}>
-      <AuthButton
-        {...{ title: next, busy: false, onPress }}
+      <MaterialCommunityIcons
+        {...{
+          name,
+          size: 100,
+          color,
+        }}
       />
-      <View style={styles.linkContainer}>
-        <AppLink
-          {...{
-            title: signIn,
-            onPress: () => navigation.navigate("SignIn"),
-          }}
-        />
-        <AppLink
-          {...{
-            title: lostPassword,
-            onPress: () =>
-              navigation.navigate("LostPassword"),
-          }}
-        />
-      </View>
+      <View style={{ height: 20 }} />
+      <AuthButton
+        {...{ title: buttonTitle, busy: false, onPress }}
+      />
     </AuthFormContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  linkContainer: {
-    width: "100%",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-});
 
 export default Welcome;

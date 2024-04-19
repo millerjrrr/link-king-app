@@ -1,17 +1,16 @@
 import { StyleSheet, Text } from "react-native";
-import colors from "../../utils/colors";
-import AuthFormContainer from "../../components/containers/AuthFormContainer";
-import appTextSource from "../../utils/appTextSource";
+import colors from "../../../utils/colors";
+import AuthFormContainer from "../../../components/containers/AuthFormContainer";
+import appTextSource from "../../../utils/appTextSource";
 import { useSelector } from "react-redux";
-import { getSettingsState } from "../../store/settings";
-import AuthButton from "../../ui/AuthButton";
+import { getSettingsState } from "../../../store/settings";
+import AuthButton from "../../../ui/AuthButton";
 import { Fontisto } from "@expo/vector-icons";
 
-const CheckYourEmail = ({ navigation, route }) => {
-  const { key } = route.params;
+const CheckYourEmail = ({ navigation }) => {
   const { appLang } = useSelector(getSettingsState);
   const { heading, subHeading, text, returnToLogin } =
-    appTextSource[appLang].auth[key];
+    appTextSource[appLang].auth.passwordReset;
 
   const onPress = () => navigation.navigate("SignIn");
 
