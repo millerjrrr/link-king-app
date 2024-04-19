@@ -28,7 +28,6 @@ const CollectionNavigator = () => {
         headerTitleStyle: {
           color: "transparent",
         },
-        ...TransitionPresets.ModalPresentationIOS,
       }}
     >
       <CollectionStack.Screen

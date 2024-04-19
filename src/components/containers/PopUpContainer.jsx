@@ -11,6 +11,7 @@ import {
   StackActions,
   useNavigation,
 } from "@react-navigation/native";
+import StatusBarFiller from "../../ui/StatusBarFiller";
 
 const PopUpContainer = ({ children, heading, help }) => {
   const { colorScheme, golden } = useSelector(
@@ -36,13 +37,14 @@ const PopUpContainer = ({ children, heading, help }) => {
 
   return (
     <View style={styles.container}>
+      <StatusBarFiller />
       <FourCrowns {...{ color: SECONDARY }} />
-      <HelpButton {...{ help }} />
+      <HelpButton {...{ help, padding: true }} />
       <View style={styles.headerContainer}>
         <LinkKingLogo
           {...{
             height: 30,
-            marginTop: 10,
+            marginTop: 0,
             tintColor: color,
           }}
         />

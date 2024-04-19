@@ -24,8 +24,8 @@ const OptionsNavigator = () => {
       screenOptions={{
         headerTintColor,
         headerTransparent: true,
+        headerBackTitleVisible: false,
         headerTitleStyle: { color: "transparent" },
-        ...TransitionPresets.ModalPresentationIOS,
       }}
     >
       <OptionsStack.Screen

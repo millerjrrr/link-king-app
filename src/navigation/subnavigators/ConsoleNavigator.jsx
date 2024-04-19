@@ -28,7 +28,6 @@ const ConsoleNavigator = () => {
         headerTitleStyle: {
           color: "transparent",
         },
-        ...TransitionPresets.ModalPresentationIOS,
       }}
     >
       <ConsoleStack.Screen
