@@ -4,11 +4,11 @@ import {
   View,
   StyleSheet,
 } from "react-native";
-import colors from "../utils/colors";
+import colors from "../../utils/colors";
 import { AntDesign } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
-import { getSettingsState } from "../store/settings";
-import appShadow from "./../utils/appShadow";
+import { getSettingsState } from "../../store/settings";
+import appShadow from "../../utils/appShadow";
 
 const RedSafetyButton = ({
   setElapsedTime,

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import AppButton from "../../ui/AppButton";
+import AppButton from "../../ui/Buttons/AppButton";
 import colors from "../../utils/colors";
 import {
   getSettingsState,

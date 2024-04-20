@@ -1,7 +1,7 @@
 import { Text, View } from "react-native";
 import { useSelector } from "react-redux";
 import colors from "../../utils/colors";
-import RedSafetyButton from "../../ui/RedSafetyButton";
+import RedSafetyButton from "../../ui/Buttons/RedSafetyButton";
 import { getSettingsState } from "../../store/settings";
 import appTextSource from "../../utils/appTextSource";
 

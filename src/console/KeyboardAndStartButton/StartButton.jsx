@@ -2,7 +2,7 @@ import { Dimensions } from "react-native";
 import colors from "../../utils/colors";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../../store/console";
-import AppButton from "../../ui/AppButton";
+import AppButton from "../../ui/Buttons/AppButton";
 import { getSettingsState } from "../../store/settings";
 import appTextSource from "../../utils/appTextSource";
 

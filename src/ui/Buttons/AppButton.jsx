@@ -4,10 +4,10 @@ import {
   TouchableOpacity,
   Text,
 } from "react-native";
-import colors from "../utils/colors";
-import BusyWrapper from "./Loader/BusyWrapper";
+import colors from "../../utils/colors";
+import BusyWrapper from "../Loader/BusyWrapper";
 import { AntDesign } from "@expo/vector-icons";
-import appShadow from "../utils/appShadow";
+import appShadow from "../../utils/appShadow";
 
 const AppButton = ({
   title,

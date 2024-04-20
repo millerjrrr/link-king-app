@@ -4,9 +4,9 @@ import {
   TouchableOpacity,
   Text,
 } from "react-native";
-import colors from "../utils/colors";
-import BusyWrapper from "./Loader/BusyWrapper";
-import appShadow from "../utils/appShadow";
+import colors from "../../utils/colors";
+import BusyWrapper from "../Loader/BusyWrapper";
+import appShadow from "../../utils/appShadow";
 
 const AuthButton = ({ title, busy, onPress }) => {
   const color = colors.dark.CONTRAST[0];

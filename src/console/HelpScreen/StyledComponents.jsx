@@ -37,6 +37,7 @@ export const CardContainer = styled(View)`
 export const ComponentTitle = styled(Text)`
   padding: 15px;
   font-size: 30px;
+  font-weight: bold;
   color: ${(props) => props.color};
   text-align: center;
 `;

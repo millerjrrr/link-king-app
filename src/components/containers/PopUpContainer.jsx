@@ -5,13 +5,14 @@ import { useSelector } from "react-redux";
 import AppNotification from "../AppNotification";
 import LinkKingLogo from "../../ui/Graphics/LinkKingLogo";
 import { getSettingsState } from "../../store/settings";
-import HelpButton from "../../ui/HelpButton";
+import HelpButton from "../../ui/Buttons/HelpButton";
 import FourCrowns from "../../ui/Graphics/FourCrowns";
 import {
   StackActions,
   useNavigation,
 } from "@react-navigation/native";
 import StatusBarFiller from "../../ui/StatusBarFiller";
+import BackButton from "../../ui/Buttons/BackButton";
 
 const PopUpContainer = ({ children, heading, help }) => {
   const { colorScheme, golden } = useSelector(
@@ -39,7 +40,8 @@ const PopUpContainer = ({ children, heading, help }) => {
     <View style={styles.container}>
       <StatusBarFiller />
       <FourCrowns {...{ color: SECONDARY }} />
-      <HelpButton {...{ help, padding: true }} />
+      <HelpButton {...{ help }} />
+      <BackButton />
       <View style={styles.headerContainer}>
         <LinkKingLogo
           {...{

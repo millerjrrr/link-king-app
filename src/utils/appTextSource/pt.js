@@ -287,7 +287,7 @@ export default {
       modalMessage:
         "Bem-vindo ao Link-King! \n" +
         "Vamos começar com um pequeno teste para avaliar seu nível. " +
-        "Digite as palavras ou frases curtas em portugues." +
+        "Digite as palavras ou frases curtas em portugues. \n" +
         "(não se preocupe com os diacráticos, eles são ignorados)",
       cancel: "Fechar",
     },

@@ -3,17 +3,17 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-import StatusBarFiller from "./StatusBarFiller";
+import StatusBarFiller from "../StatusBarFiller";
 import { useSelector } from "react-redux";
-import { getConsoleState } from "../store/console";
+import { getConsoleState } from "../../store/console";
 import { useNavigation } from "@react-navigation/native";
 
 const FlagBook = ({ noBook, padding }) => {
   const { dictionary } = useSelector(getConsoleState);
   const source =
     dictionary === "Brazil"
-      ? require("../assets/Brazil.png")
-      : require("../assets/Spanish.png");
+      ? require("../../assets/Brazil.png")
+      : require("../../assets/Spanish.png");
 
   const navigation = useNavigation();
   const onPress = () => {

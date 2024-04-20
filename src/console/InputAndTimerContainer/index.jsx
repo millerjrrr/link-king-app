@@ -9,7 +9,10 @@ import LoaderForTextInputForConsole from "./LoaderForTextInputForConsole";
 import TextInputForConsole from "./TextInputForConsole";
 import { getSettingsState } from "../../store/settings";
 
-const InputAndTimerContainer = ({ inputFieldRef }) => {
+const InputAndTimerContainer = ({
+  inputFieldRef,
+  setIsKeyboardVisible,
+}) => {
   const {
     formValue,
     attempt: { solutions },
@@ -46,9 +49,10 @@ const InputAndTimerContainer = ({ inputFieldRef }) => {
       <LoaderForTextInputForConsole />
       <TargetDetailsButton />
       <TextInputForConsole
-        onSubmitEditing={sendAnswer}
         {...{
+          onSubmitEditing: sendAnswer,
           inputFieldRef,
+          setIsKeyboardVisible,
           color,
         }}
       />

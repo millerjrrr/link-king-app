@@ -3,7 +3,7 @@ import AuthFormContainer from "../../../components/containers/AuthFormContainer"
 import { useSelector } from "react-redux";
 import { getSettingsState } from "../../../store/settings";
 import appTextSource from "../../../utils/appTextSource";
-import AuthButton from "../../../ui/AuthButton";
+import AuthButton from "../../../ui/Buttons/AuthButton";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "../../../utils/colors";

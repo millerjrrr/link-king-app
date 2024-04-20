@@ -4,7 +4,7 @@ import AuthFormContainer from "../../../components/containers/AuthFormContainer"
 import appTextSource from "../../../utils/appTextSource";
 import { useSelector } from "react-redux";
 import { getSettingsState } from "../../../store/settings";
-import AuthButton from "../../../ui/AuthButton";
+import AuthButton from "../../../ui/Buttons/AuthButton";
 import { Fontisto } from "@expo/vector-icons";
 
 const CheckYourEmail = ({ navigation }) => {

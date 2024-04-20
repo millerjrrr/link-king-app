@@ -6,26 +6,14 @@ import {
 import SetDailyGoalScreen from "../../options/SetDailyGoalScreen";
 import Options from "../../views/Options";
 import VoiceSelectionScreen from "../../options/VoiceSelectionScreen";
-import { useSelector } from "react-redux";
-import { getSettingsState } from "../../store/settings";
-import colors from "../../utils/colors";
 import DictionarySelectionScreen from "../../options/DictionarySelectionScreen";
 const OptionsStack = createStackNavigator();
 
 const OptionsNavigator = () => {
-  const { colorScheme, golden } = useSelector(
-    getSettingsState,
-  );
-  const headerTintColor =
-    colors[colorScheme].CONTRAST[golden];
-
   return (
     <OptionsStack.Navigator
       screenOptions={{
-        headerTintColor,
-        headerTransparent: true,
-        headerBackTitleVisible: false,
-        headerTitleStyle: { color: "transparent" },
+        headerShown: false,
         ...TransitionPresets.ModalPresentationIOS,
       }}
     >

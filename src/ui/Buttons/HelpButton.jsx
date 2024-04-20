@@ -1,9 +1,9 @@
 import { Entypo } from "@expo/vector-icons";
 import { StyleSheet, TouchableOpacity } from "react-native";
-import colors from "../utils/colors";
+import colors from "../../utils/colors";
 import { useSelector } from "react-redux";
-import { getSettingsState } from "../store/settings";
-import StatusBarFiller from "./StatusBarFiller";
+import { getSettingsState } from "../../store/settings";
+import StatusBarFiller from "../StatusBarFiller";
 
 const HelpButton = ({ help, padding }) => {
   const { colorScheme, golden } = useSelector(

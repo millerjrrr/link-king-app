@@ -14,6 +14,7 @@ import appShadow from "../../utils/appShadow";
 const TextInputForConsole = ({
   inputFieldRef,
   onSubmitEditing,
+  setIsKeyboardVisible,
   color,
 }) => {
   const dispatch = useDispatch();
@@ -23,12 +24,17 @@ const TextInputForConsole = ({
   };
 
   const onFocus = () => {
+    setIsKeyboardVisible(true);
     Speech.speak(attempt.target, {
       language: attempt.speechLang,
     });
     dispatch(updateTimerIsOn(true));
     dispatch(updateFormValue(""));
     dispatch(restartTheTimer());
+  };
+
+  const onBlur = () => {
+    setIsKeyboardVisible(false);
   };
 
   const { formValue, attempt, showSolution } =
@@ -56,6 +62,7 @@ const TextInputForConsole = ({
         onSubmitEditing,
         onChangeText,
         onFocus,
+        onBlur,
         placeholder,
         placeholderTextColor,
       }}

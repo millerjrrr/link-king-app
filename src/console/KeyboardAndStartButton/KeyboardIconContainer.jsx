@@ -78,10 +78,12 @@ const styles = StyleSheet.create({
   sendToEnd: {
     flex: 1,
     width: "100%",
-    justifyContent: "flex-end",
     zIndex: 1000,
   },
   container: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-between",

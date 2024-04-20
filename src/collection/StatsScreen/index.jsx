@@ -13,6 +13,7 @@ import TitleAndSub from "./TitleAndSub";
 import RatingCircle from "./RatingCircle";
 import StatsContainer from "./StatsContainer";
 import FlagBookImage from "./FlagBookImage";
+import BackButton from "../../ui/Buttons/BackButton";
 
 const StatsScreen = () => {
   const { busy } = useSelector(getStatsState);
@@ -38,6 +39,7 @@ const StatsScreen = () => {
 
   return (
     <BusyWrapper {...{ busy }}>
+      <BackButton />
       <StatsPanel>
         <LinkKingIcon />
         <FlagBookImage />

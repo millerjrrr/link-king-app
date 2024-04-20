@@ -6,9 +6,9 @@ import AppNotification from "../AppNotification";
 import { useSelector } from "react-redux";
 import FourCrowns from "../../ui/Graphics/FourCrowns";
 import LinkKingLogo from "../../ui/Graphics/LinkKingLogo";
-import HelpButton from "../../ui/HelpButton";
+import HelpButton from "../../ui/Buttons/HelpButton";
 import { getSettingsState } from "../../store/settings";
-import FlagBook from "../../ui/FlagBook";
+import FlagBook from "../../ui/Buttons/FlagBook";
 
 const InnerTabContainer = ({
   children,

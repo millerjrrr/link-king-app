@@ -33,6 +33,9 @@ const Console = ({ navigation }) => {
   const [isModalVisible, setIsModalVisible] =
     useState(false);
 
+  const [isKeyboardVisible, setIsKeyboardVisible] =
+    useState(false);
+
   const showWelcome = async () => {
     try {
       const firstTime =
@@ -78,11 +81,17 @@ const Console = ({ navigation }) => {
         <OptionsContainer />
         <ReadWordButton />
         <InputAndTimerContainer
-          inputFieldRef={inputFieldRef}
+          {...{
+            inputFieldRef: inputFieldRef,
+            setIsKeyboardVisible,
+          }}
         />
         <Tail />
         <KeyboardAndStartButton
-          inputFieldRef={inputFieldRef}
+          {...{
+            inputFieldRef: inputFieldRef,
+            isKeyboardVisible,
+          }}
         />
         <UseEffects />
       </KeyboardAvoidingView>
