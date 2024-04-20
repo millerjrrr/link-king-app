@@ -10,6 +10,7 @@ import DeleteScreen from "../../collection/DeleteScreen";
 import colors from "../../utils/colors";
 import { getSettingsState } from "../../store/settings";
 import { useSelector } from "react-redux";
+import DictionarySelectionScreen from "../../options/DictionarySelectionScreen";
 
 const CollectionStack = createStackNavigator();
 
@@ -28,6 +29,7 @@ const CollectionNavigator = () => {
         headerTitleStyle: {
           color: "transparent",
         },
+        ...TransitionPresets.ModalPresentationIOS,
       }}
     >
       <CollectionStack.Screen
@@ -45,6 +47,10 @@ const CollectionNavigator = () => {
       <CollectionStack.Screen
         name="StatsScreen"
         component={StatsScreen}
+      />
+      <CollectionStack.Screen
+        name="DictionarySelectionScreen"
+        component={DictionarySelectionScreen}
       />
     </CollectionStack.Navigator>
   );

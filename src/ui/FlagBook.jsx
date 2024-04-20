@@ -6,38 +6,44 @@ import {
 import StatusBarFiller from "./StatusBarFiller";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../store/console";
+import { useNavigation } from "@react-navigation/native";
 
-const FlagBook = ({ dictionarySettings, padding }) => {
+const FlagBook = ({ noBook, padding }) => {
   const { dictionary } = useSelector(getConsoleState);
   const source =
     dictionary === "Brazil"
       ? require("../assets/Brazil.png")
       : require("../assets/Spanish.png");
 
-  return dictionarySettings ? (
-    <>
-      <TouchableOpacity
-        onPress={dictionarySettings}
-        style={[
+  const navigation = useNavigation();
+  const onPress = () => {
+    navigation.navigate("DictionarySelectionScreen");
+  };
+
+  return noBook ? null : (
+    <TouchableOpacity
+      {...{
+        onPress,
+        style: [
           styles.container,
           { paddingVertical: padding ? 5 : 15 },
-        ]}
-      >
-        {padding ? <StatusBarFiller /> : null}
-        <Image
-          {...{
-            source,
-            resizeMode: "contain",
-            style: {
-              marginTop: 10,
-              height: 30,
-              width: 48,
-            },
-          }}
-        />
-      </TouchableOpacity>
-    </>
-  ) : null;
+        ],
+      }}
+    >
+      {padding ? <StatusBarFiller /> : null}
+      <Image
+        {...{
+          source,
+          resizeMode: "contain",
+          style: {
+            marginTop: 10,
+            height: 30,
+            width: 48,
+          },
+        }}
+      />
+    </TouchableOpacity>
+  );
 };
 
 const styles = StyleSheet.create({

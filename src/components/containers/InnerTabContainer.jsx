@@ -14,7 +14,7 @@ const InnerTabContainer = ({
   children,
   heading,
   help,
-  dictionarySettings,
+  noBook,
 }) => {
   const { colorScheme, golden } = useSelector(
     getSettingsState,
@@ -28,9 +28,7 @@ const InnerTabContainer = ({
       <StatusBarFiller />
       <FourCrowns {...{ color: crownColor }} />
       <HelpButton {...{ help, padding: true }} />
-      <FlagBook
-        {...{ dictionarySettings, padding: true }}
-      />
+      <FlagBook {...{ noBook, padding: true }} />
       <LinkKingLogo
         {...{
           height: 30,

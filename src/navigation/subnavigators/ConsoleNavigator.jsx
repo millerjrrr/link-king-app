@@ -10,6 +10,7 @@ import HelpScreen from "../../console/HelpScreen";
 import { useSelector } from "react-redux";
 import { getSettingsState } from "../../store/settings";
 import colors from "../../utils/colors";
+import DictionarySelectionScreen from "../../options/DictionarySelectionScreen";
 
 const ConsoleStack = createStackNavigator();
 
@@ -28,6 +29,7 @@ const ConsoleNavigator = () => {
         headerTitleStyle: {
           color: "transparent",
         },
+        ...TransitionPresets.ModalPresentationIOS,
       }}
     >
       <ConsoleStack.Screen
@@ -45,6 +47,10 @@ const ConsoleNavigator = () => {
       <ConsoleStack.Screen
         name="StatsScreen"
         component={StatsScreen}
+      />
+      <ConsoleStack.Screen
+        name="DictionarySelectionScreen"
+        component={DictionarySelectionScreen}
       />
     </ConsoleStack.Navigator>
   );

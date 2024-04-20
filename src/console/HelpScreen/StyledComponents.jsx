@@ -8,6 +8,7 @@ import styled from "styled-components";
 
 export const HelpScroll = styled(ScrollView)`
   width: 100%;
+  margin-top: 10px;
   padding: 30px;
   padding-bottom: 100px;
 `;

@@ -63,17 +63,10 @@ const Console = ({ navigation }) => {
     navigation.navigate("HelpScreen");
   };
 
-  const dictionarySettings = () => {
-    navigation.navigate("Options");
-    navigation.navigate("DictionarySelectionScreen");
-  };
-
   const { heading } = appTextSource[appLang].console;
 
   return (
-    <InnerTabContainer
-      {...{ heading, help, dictionarySettings }}
-    >
+    <InnerTabContainer {...{ heading, help }}>
       <KeyboardAvoidingView
         style={styles.container}
         behavior={Platform.select({

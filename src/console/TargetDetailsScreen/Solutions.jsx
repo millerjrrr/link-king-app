@@ -11,6 +11,38 @@ import { getSettingsState } from "../../store/settings";
 import appTextSource from "../../utils/appTextSource";
 import appShadow from "./../../utils/appShadow";
 
+const Solution = ({ solution, index }) => {
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
+  const color = colors[colorScheme].CONTRAST[golden];
+  const backgroundColor = colors[colorScheme].SECONDARY;
+  return (
+    <View
+      style={{
+        backgroundColor,
+        marginHorizontal: 8,
+        justifyContent: "center",
+        paddingHorizontal: 10,
+        borderRadius: 20,
+        shadowColor: color,
+        borderColor: color,
+        ...appShadow(1),
+      }}
+    >
+      <Text
+        style={{
+          textAlign: "center",
+          color,
+          fontSize: 25,
+        }}
+      >
+        {solution}
+      </Text>
+    </View>
+  );
+};
+
 const Solutions = () => {
   const {
     attempt: { solutions },
@@ -19,7 +51,6 @@ const Solutions = () => {
     getSettingsState,
   );
   const color = colors[colorScheme].CONTRAST[golden];
-  const backgroundColor = colors[colorScheme].SECONDARY;
 
   const { accepted } =
     appTextSource[appLang].console.targetDetails;
@@ -47,30 +78,7 @@ const Solutions = () => {
         }}
       >
         {solutions.map((solution, index) => {
-          return (
-            <View
-              style={{
-                backgroundColor,
-                marginHorizontal: 8,
-                justifyContent: "center",
-                paddingHorizontal: 10,
-                borderRadius: 20,
-                shadowColor: color,
-                borderColor: color,
-                ...appShadow(1),
-              }}
-            >
-              <Text
-                style={{
-                  textAlign: "center",
-                  color,
-                  fontSize: 25,
-                }}
-              >
-                {solution}
-              </Text>
-            </View>
-          );
+          return <Solution {...{ solution, key: index }} />;
         })}
       </ScrollView>
     </>

@@ -22,7 +22,7 @@ const Options = () => {
   } = appTextSource[appLang].options;
 
   return (
-    <InnerTabContainer {...{ heading }}>
+    <InnerTabContainer {...{ heading, noBook: true }}>
       <OptionsMenuItem
         {...{
           iconName: "target-variant",
