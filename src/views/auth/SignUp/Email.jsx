@@ -10,6 +10,7 @@ import { getSettingsState } from "../../../store/settings";
 import appTextSource from "../../../utils/appTextSource";
 import {
   getAuthState,
+  refreshPage,
   updateEmail,
 } from "../../../store/auth";
 

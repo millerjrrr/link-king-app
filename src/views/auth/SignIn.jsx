@@ -10,6 +10,8 @@ import { useNavigation } from "@react-navigation/native";
 import client from "../../api/client";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  getAuthState,
+  updateEmail,
   updateLoggedInState,
   updateToken,
 } from "../../store/auth";
@@ -35,8 +37,10 @@ const SignIn = () => {
       .trim(password.trim)
       .required(password.required),
   });
+  const { formEmail } = useSelector(getAuthState);
+
   const initialValues = {
-    email: "",
+    email: formEmail,
     password: "",
   };
 
@@ -67,6 +71,7 @@ const SignIn = () => {
       await saveToAsyncStorage("auth-token", data.token);
       dispatch(updateToken(data.token));
       dispatch(updateLoggedInState(true));
+      dispatch(updateEmail(""));
     } catch (error) {
       authErrorHandler(error, dispatch);
     }

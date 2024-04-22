@@ -20,7 +20,7 @@ const TargetDetailsButton = () => {
       style={styles.container}
     >
       <MaterialCommunityIcons
-        {...{ name: "progress-question", size: 24, color }}
+        {...{ name: "progress-question", size: 36, color }}
       />
     </TouchableOpacity>
   ) : null;

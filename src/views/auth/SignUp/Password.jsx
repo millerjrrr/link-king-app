@@ -13,7 +13,6 @@ import { getSettingsState } from "../../../store/settings";
 import appTextSource from "../../../utils/appTextSource";
 import {
   getAuthState,
-  updateEmail,
   updateName,
   updateUnverifiedUserId,
 } from "../../../store/auth";
@@ -71,7 +70,6 @@ const Password = () => {
 
       if (data.status === "success") {
         dispatch(updateName(""));
-        dispatch(updateEmail(""));
         dispatch(
           updateUnverifiedUserId(data.unverifiedUserId),
         );

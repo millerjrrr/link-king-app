@@ -35,7 +35,7 @@ export const normalize = (inputString) => {
       "",
     )
     .replace(/ /g, "")
-    .replace(/nt/g, "not");
-  // console.log(string);
+    .replace(/nt/g, "not")
+    .replace(/(as?|os?)\b$/, "o");
   return string;
 };

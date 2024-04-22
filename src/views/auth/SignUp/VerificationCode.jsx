@@ -9,7 +9,7 @@ import { getSettingsState } from "../../../store/settings";
 import appTextSource from "../../../utils/appTextSource";
 import {
   getAuthState,
-  updateEmail,
+  refreshPage,
   updateName,
   updateUnverifiedUserId,
 } from "../../../store/auth";
@@ -64,8 +64,8 @@ const VerificationCode = () => {
       );
       if (data.status === "success") {
         dispatch(updateName(""));
-        dispatch(updateEmail(""));
         dispatch(updateUnverifiedUserId(""));
+        dispatch(refreshPage());
         navigation.navigate("Welcome", { key: "finish" });
       }
     } catch (error) {

@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
   input: {
     height: 45,
     borderRadius: 15,
+    fontSize: 20,
     padding: 10,
     backgroundColor: colors.dark.PRIMARY,
     color: colors.dark.CONTRAST[0],

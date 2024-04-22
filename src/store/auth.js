@@ -9,8 +9,8 @@ const initialState = {
   busy: false,
   connected: true,
   refresh: 0,
-  name: "",
-  email: "",
+  formName: "",
+  formEmail: "",
   unverifiedUserId: "",
 };
 
