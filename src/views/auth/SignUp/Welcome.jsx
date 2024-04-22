@@ -1,12 +1,13 @@
 import { View } from "react-native";
 import AuthFormContainer from "../../../components/containers/AuthFormContainer";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getSettingsState } from "../../../store/settings";
 import appTextSource from "../../../utils/appTextSource";
 import AuthButton from "../../../ui/Buttons/AuthButton";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "../../../utils/colors";
+import { refreshPage } from "../../../store/auth";
 
 const Welcome = ({ route }) => {
   const { key } = route.params;
@@ -20,8 +21,11 @@ const Welcome = ({ route }) => {
 
   const navigation = useNavigation();
 
+  const dispatch = useDispatch();
+
   const onPress = async () => {
     navigation.navigate(page);
+    if (page === "SignIn") dispatch(refreshPage());
   };
 
   const { heading, subHeading, buttonTitle } =

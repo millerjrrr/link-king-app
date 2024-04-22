@@ -65,7 +65,6 @@ const VerificationCode = () => {
       if (data.status === "success") {
         dispatch(updateName(""));
         dispatch(updateUnverifiedUserId(""));
-        dispatch(refreshPage());
         navigation.navigate("Welcome", { key: "finish" });
       }
     } catch (error) {
