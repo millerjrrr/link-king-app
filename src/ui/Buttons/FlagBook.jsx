@@ -7,13 +7,13 @@ import StatusBarFiller from "../StatusBarFiller";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../../store/console";
 import { useNavigation } from "@react-navigation/native";
+import bookPictures from "../../utils/bookPictures";
 
 const FlagBook = ({ noBook, padding }) => {
   const { dictionary } = useSelector(getConsoleState);
   const source =
-    dictionary === "Brazil"
-      ? require("../../assets/Brazil.png")
-      : require("../../assets/Spanish.png");
+    bookPictures[dictionary] ||
+    bookPictures["Custom-Dictionary"];
 
   const navigation = useNavigation();
   const onPress = () => {

@@ -10,7 +10,7 @@ const OptionsMenuItem = ({
 }) => {
   return (
     <OptionsMenuItemContainer
-      {...{ first, iconName, selected }}
+      {...{ first, iconName, selected, onPress }}
     >
       <MenuItemLink {...{ name, onPress }} />
     </OptionsMenuItemContainer>

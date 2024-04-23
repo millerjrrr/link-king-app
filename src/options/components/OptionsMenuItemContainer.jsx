@@ -1,9 +1,22 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Image, View } from "react-native";
+import {
+  Image,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { useSelector } from "react-redux";
 import colors from "../../utils/colors";
 import { getSettingsState } from "../../store/settings";
 import styled from "styled-components";
+import bookPictures from "../../utils/bookPictures";
+
+const TouchableContainer = styled(TouchableOpacity)`
+  height: 60px;
+  align-items: center;
+  flex-direction: row;
+  margin-horizontal: 10px;
+  background-color: ${(props) => props.backgroundColor};
+`;
 
 const Container = styled(View)`
   height: 60px;
@@ -27,6 +40,7 @@ const OptionsMenuItemContainer = ({
   first,
   children,
   selected,
+  onPress,
 }) => {
   const { colorScheme, golden } = useSelector(
     getSettingsState,
@@ -35,46 +49,48 @@ const OptionsMenuItemContainer = ({
   const borderColor = colors[colorScheme].INACTIVE_CONTRAST;
   const color = colors[colorScheme].CONTRAST[golden];
 
-  const dictionaryList = ["Brazil", "Spanish"];
-  const typeIsImage = dictionaryList.includes(iconName);
+  const typeIsImage =
+    Object.keys(bookPictures).includes(iconName);
 
-  let source;
-  if (typeIsImage)
-    source =
-      iconName === "Brazil"
-        ? require("../../assets/Brazil.png")
-        : require("../../assets/Spanish.png");
+  const source =
+    bookPictures[iconName] ||
+    bookPictures["Custom-Dictionary"];
 
-  return (
+  return !typeIsImage ? (
     <Container {...{ backgroundColor }}>
-      {!typeIsImage ? (
-        <MaterialCommunityIcons
-          {...{
-            name: iconName,
-            size: 32,
-            color,
-            style: { margin: 5 },
-          }}
-        />
-      ) : (
-        <Image
-          {...{
-            source,
-            resizeMode: "contain",
-            style: {
-              width: selected ? 64 : 48,
-              height: selected ? 64 : 48,
-              margin: 5,
-            },
-          }}
-        />
-      )}
+      <MaterialCommunityIcons
+        {...{
+          name: iconName,
+          size: 32,
+          color,
+          style: { margin: 5 },
+        }}
+      />
       <OptionContainer
         {...{ borderColor, borderTopWidth: first ? 0 : 1 }}
       >
         {children}
       </OptionContainer>
     </Container>
+  ) : (
+    <TouchableContainer {...{ backgroundColor, onPress }}>
+      <Image
+        {...{
+          source,
+          resizeMode: "contain",
+          style: {
+            width: selected ? 64 : 48,
+            height: selected ? 64 : 48,
+            margin: 5,
+          },
+        }}
+      />
+      <OptionContainer
+        {...{ borderColor, borderTopWidth: first ? 0 : 1 }}
+      >
+        {children}
+      </OptionContainer>
+    </TouchableContainer>
   );
 };
 

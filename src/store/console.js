@@ -18,7 +18,7 @@ const initialState = {
     streak: 0,
     newWords: 0,
   },
-  dictionary: "Brazil",
+  dictionary: "Spanish-English",
   tail: [],
   tries: 1,
   busy: false,

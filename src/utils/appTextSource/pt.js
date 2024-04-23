@@ -117,8 +117,12 @@ export default {
     },
     chooseDictionary: {
       title: "Selecionar um Dicionário",
-      titleA: "Inglês para falantes de português",
-      titleB: "Espanhol para falantes de inglês (BETA)",
+      "English-Portuguese":
+        "Inglês para falantes de português",
+      "Spanish-English":
+        "Espanhol para falantes de inglês (BETA)",
+      "Custom-Dictionary":
+        "Um dicionário personalizado só para você!",
       text:
         "*Embora exista a opção de mudar para um " +
         "dicionário Espanhol-Inglês (800 entradas), este é " +

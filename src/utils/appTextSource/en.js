@@ -118,8 +118,11 @@ export default {
     },
     chooseDictionary: {
       title: "Select Dictionary",
-      titleA: "English for Portuguese Speakers",
-      titleB: "Spanish for English Speakers (BETA)",
+      "English-Portuguese":
+        "English for Portuguese Speakers",
+      "Spanish-English": "Spanish for English Speakers",
+      "Custom-Dictionary":
+        "A custom dictionary just for you!",
       text:
         "*While there is an option to switch to a " +
         "Spanish-English dictionary (800 entries), this is a very small " +

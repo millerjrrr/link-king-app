@@ -1,13 +1,15 @@
 import { Image } from "react-native";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../../store/console";
+import bookPictures from "../../utils/bookPictures";
 
 const FlagBookImage = () => {
   const { dictionary } = useSelector(getConsoleState);
+
   const source =
-    dictionary === "Brazil"
-      ? require("../../assets/Brazil.png")
-      : require("../../assets/Spanish.png");
+    bookPictures[dictionary] ||
+    bookPictures["Custom-Dictionary"];
+
   return (
     <Image
       {...{

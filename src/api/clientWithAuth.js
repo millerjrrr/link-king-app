@@ -13,7 +13,7 @@ const clientWithAuth = {
         Authorization: "Bearer " + token,
         "Accept-Language": appLang,
       },
-      timeout: 3000,
+      timeout: 5000,
     });
   },
   get: async (url) => {
@@ -26,7 +26,7 @@ const clientWithAuth = {
         Authorization: "Bearer " + token,
         "Accept-Language": appLang,
       },
-      timeout: 3000,
+      timeout: 5000,
     });
   },
 };
