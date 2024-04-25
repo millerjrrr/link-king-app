@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { getConsoleState } from "../store/console";
 import { getSettingsState } from "../store/settings";
 import styled from "styled-components";
+import SolutionItem from "./TargetDetailsScreen/SolutionItem";
+import SolutionsList from "./TargetDetailsScreen/SolutionsList";
 
 const TailEntryText = styled(Text)`
   color: ${(props) => props.color};
@@ -13,8 +15,11 @@ const TailEntryText = styled(Text)`
 `;
 
 const TailEntry = ({ index }) => {
-  const { tail, showSolution } =
-    useSelector(getConsoleState);
+  const {
+    tail,
+    showSolution,
+    attempt: { solutions },
+  } = useSelector(getConsoleState);
   const { colorScheme, golden } = useSelector(
     getSettingsState,
   );
@@ -37,6 +42,8 @@ const TailEntry = ({ index }) => {
     >
       {tail[index]}
     </TailEntryText>
+  ) : index === 0 ? (
+    <SolutionsList {...{ showTitle: false }} />
   ) : null;
 };
 
@@ -55,6 +62,7 @@ const styles = StyleSheet.create({
   container: {
     textAlign: "center",
     alignItems: "center",
+    zIndex: 5,
   },
 });
 

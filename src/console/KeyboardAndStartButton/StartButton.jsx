@@ -17,7 +17,7 @@ const StartButton = ({ inputFieldRef }) => {
   const title = appTextSource[appLang].console.start;
 
   const { width } = Dimensions.get("window");
-  const size = width / 1.5;
+  const size = width / 1.75;
 
   const onPress = async () => {
     if (inputFieldRef.current) {

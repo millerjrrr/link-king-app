@@ -48,7 +48,6 @@ const TextInputForConsole = ({
     : null;
 
   //font-size management
-  const shrinkLength = showSolution;
   let fontSize = 48;
   const length = formValue.length;
   if (length > 12) fontSize = (fontSize * 12) / length;
@@ -72,6 +71,7 @@ const TextInputForConsole = ({
       blurOnSubmit={false}
       enterKeyHint="enter"
       autoCapitalize={"none"}
+      returnKeyType={"next"}
       autoCompleteType="off"
       keyboardType="visible-password"
       autoCorrect={false}
