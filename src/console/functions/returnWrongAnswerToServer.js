@@ -16,7 +16,7 @@ export const returnWrongAnswerToServer = async ({
   startedThisWord,
   showSolution,
 }) => {
-  Vibration.vibrate(3000);
+  Vibration.vibrate(500);
   dispatch(updateBusyState(true));
   try {
     const time = !showSolution

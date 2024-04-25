@@ -73,6 +73,7 @@ const TextInputForConsole = ({
       enterKeyHint="enter"
       autoCapitalize={"none"}
       autoCompleteType="off"
+      keyboardType="visible-password"
       autoCorrect={false}
       selectionColor={color}
       style={[

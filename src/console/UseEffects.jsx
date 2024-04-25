@@ -4,12 +4,14 @@ import {
   incrementTimeOnThisWord,
   updateTimerIsOn,
 } from "../store/console";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import {
   getSettingsState,
   updateSettings,
 } from "../store/settings";
+import { AppState } from "react-native";
+import { fetchConsoleInfo } from "./functions/fetchConsoleInfo";
 
 const UseEffects = () => {
   const { stats, timerIsOn, showSolution } =
@@ -42,7 +44,7 @@ const UseEffects = () => {
         dispatch(updateSettings({ golden: 1 }));
       }
     } else dispatch(updateSettings({ golden: 0 }));
-  }, [newWords, timerIsOn]);
+  }, [newWords]);
 
   useEffect(() => {
     let intervalId;
@@ -69,6 +71,30 @@ const UseEffects = () => {
 
     return () => clearTimeout(timeoutId);
   }, [timerIsOn, steps, showSolution]);
+
+  const [appState, setAppState] = useState(
+    AppState.currentState,
+  );
+
+  useEffect(() => {
+    const subscription = AppState.addEventListener(
+      "change",
+      (nextAppState) => {
+        if (
+          appState.match(/inactive|background/) &&
+          nextAppState === "active"
+        ) {
+          console.log("App has come to the foreground!");
+          fetchConsoleInfo({ dispatch });
+        }
+        setAppState(nextAppState);
+      },
+    );
+
+    return () => {
+      subscription.remove();
+    };
+  }, [appState]);
 };
 
 export default UseEffects;
