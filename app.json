@@ -39,7 +39,7 @@
     },
     "android": {
       "package": "com.linkoking.app",
-      "versionCode": 4,
+      "versionCode": 5,
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon-android.png",
         "backgroundColor": "#000000"

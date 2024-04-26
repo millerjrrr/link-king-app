@@ -73,7 +73,7 @@ const Console = ({ navigation }) => {
       style={styles.container}
       behavior={Platform.select({
         ios: "padding",
-        android: undefined,
+        android: "height",
       })}
     >
       <InnerTabContainer {...{ heading, help }}>
