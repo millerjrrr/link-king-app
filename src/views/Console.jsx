@@ -69,14 +69,14 @@ const Console = ({ navigation }) => {
   const { heading } = appTextSource[appLang].console;
 
   return (
-    <InnerTabContainer {...{ heading, help }}>
-      <KeyboardAvoidingView
-        style={styles.container}
-        behavior={Platform.select({
-          ios: "padding",
-          android: undefined,
-        })}
-      >
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.select({
+        ios: "padding",
+        android: undefined,
+      })}
+    >
+      <InnerTabContainer {...{ heading, help }}>
         <StatsContainer />
         <OptionsContainer />
         <ReadWordButton />
@@ -94,17 +94,17 @@ const Console = ({ navigation }) => {
           }}
         />
         <UseEffects />
-      </KeyboardAvoidingView>
-      <AppModal
-        {...{
-          isVisible: isModalVisible,
-          onBackdropPress: () => setIsModalVisible(false),
-          modalName: "welcome",
-          onPress: () => setIsModalVisible(false),
-          info: true,
-        }}
-      />
-    </InnerTabContainer>
+        <AppModal
+          {...{
+            isVisible: isModalVisible,
+            onBackdropPress: () => setIsModalVisible(false),
+            modalName: "welcome",
+            onPress: () => setIsModalVisible(false),
+            info: true,
+          }}
+        />
+      </InnerTabContainer>
+    </KeyboardAvoidingView>
   );
 };
 

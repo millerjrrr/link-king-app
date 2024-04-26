@@ -39,14 +39,14 @@
     },
     "android": {
       "package": "com.linkoking.app",
-      "versionCode": 2,
+      "versionCode": 4,
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon-android.png",
         "backgroundColor": "#000000"
       }
     },
     "androidStatusBar": {
-      "backgroundColor": "transparent",
+      "backgroundColor": "#ffffff00",
       "translucent": true
     },
     "web": {

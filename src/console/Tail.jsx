@@ -60,9 +60,11 @@ const Tail = () => {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     textAlign: "center",
     alignItems: "center",
     zIndex: 5,
+    overflow: "hidden",
   },
 });
 

@@ -45,45 +45,39 @@ const KeyboardIconContainer = () => {
   };
 
   return (
-    <View style={styles.sendToEnd}>
-      <View style={styles.container}>
-        <KeyboardIcon
-          {...{
-            name: "back",
-            entypo: true,
-            size: 48,
-            onPress: closeKeyboard,
-          }}
-        />
-        <KeyboardIcon
-          {...{
-            name: "keyboard-off",
-            size: 24,
-            onPress: closeKeyboard,
-          }}
-        />
-        <KeyboardIcon
-          {...{
-            name: "skip-forward",
-            size: 48,
-            onPress: dontKnowFunction,
-          }}
-        />
-      </View>
+    <View style={styles.container}>
+      <KeyboardIcon
+        {...{
+          name: "back",
+          entypo: true,
+          size: 48,
+          onPress: closeKeyboard,
+        }}
+      />
+      <KeyboardIcon
+        {...{
+          name: "keyboard-off",
+          size: 24,
+          onPress: closeKeyboard,
+        }}
+      />
+      <KeyboardIcon
+        {...{
+          name: "skip-forward",
+          size: 48,
+          onPress: dontKnowFunction,
+        }}
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  sendToEnd: {
-    flex: 1,
-    width: "100%",
-    zIndex: 1000,
-  },
   container: {
     position: "absolute",
+    zIndex: 10,
     bottom: 0,
-    left: 0,
+    center: 0,
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-between",

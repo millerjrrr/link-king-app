@@ -19,7 +19,7 @@ const SolutionsList = ({ showTitle = true }) => {
     appTextSource[appLang].console.targetDetails;
 
   return (
-    <View style={{ height: 90 }}>
+    <View style={{ height: 90, alignItems: "center" }}>
       {showTitle ? (
         <Text
           style={{
