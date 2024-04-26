@@ -8,7 +8,7 @@ import { flagAndDeleteTicket } from "../../utils/flagAndDeleteTicket";
 import BusyWrapper from "../../ui/Loader/BusyWrapper";
 import TargetScreenFakeInput from "./TargetScreenFakeInput";
 import Target from "./Target";
-import SolutionsList from "./SolutionsList";
+import SolutionsList from "../SolutionsList";
 import ResponseInformation from "./ResponseInformation";
 import NoticeAndFlagButton from "./NoticeAndFlagButton";
 import appTextSource from "../../utils/appTextSource";

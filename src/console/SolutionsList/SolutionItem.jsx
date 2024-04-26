@@ -2,7 +2,7 @@ import { Text, View } from "react-native";
 import { useSelector } from "react-redux";
 import colors from "../../utils/colors";
 import { getSettingsState } from "../../store/settings";
-import appShadow from "./../../utils/appShadow";
+import appShadow from "../../utils/appShadow";
 
 const SolutionItem = ({ solution }) => {
   const { colorScheme, golden } = useSelector(

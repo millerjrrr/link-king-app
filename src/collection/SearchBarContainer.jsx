@@ -1,12 +1,38 @@
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet } from "react-native";
 import GetLevelsBreakdownButton from "./GetLevelsBreakdownButton";
 import CollectionSearchbar from "./CollectionSearchbar";
 import TicketsCount from "./TicketsCount";
+import { LinearGradient } from "expo-linear-gradient";
+import styled from "styled-components";
+import { useSelector } from "react-redux";
+import { getSettingsState } from "../store/settings";
+import colors from "../utils/colors";
+
+const FadeBackgroundView = styled(LinearGradient)`
+  position: absolute;
+  top: 0;
+  alignitems: center;
+  flexdirection: column;
+  width: 100%;
+  z-index: 20;
+`;
 
 const SearchBarContainer = ({ navigation }) => {
+  const { colorScheme } = useSelector(getSettingsState);
+  const backgroundColor = colors[colorScheme].PRIMARY;
+
   return (
     <View style={styles.container}>
-      <View style={styles.innerContainer}>
+      <FadeBackgroundView
+        {...{
+          colors: [
+            backgroundColor,
+            backgroundColor + "E6",
+            backgroundColor + "80",
+            backgroundColor + "00",
+          ],
+        }}
+      >
         <TicketsCount />
         <View style={styles.searchBarContainer}>
           <GetLevelsBreakdownButton
@@ -23,7 +49,7 @@ const SearchBarContainer = ({ navigation }) => {
             iconName={"linechart"}
           />
         </View>
-      </View>
+      </FadeBackgroundView>
     </View>
   );
 };
@@ -36,15 +62,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     zIndex: 10,
   },
-  innerContainer: {
-    top: 0,
-    position: "absolute",
-    alignItems: "center",
-    flexDirection: "column",
-  },
   searchBarContainer: {
+    justifyContent: "center",
     alignItems: "flex-end",
     flexDirection: "row",
+    paddingBottom: 10,
   },
 });
 

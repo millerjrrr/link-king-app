@@ -8,7 +8,7 @@ import { submitAnswer } from "../functions/submitAnswer";
 import LoaderForTextInputForConsole from "./LoaderForTextInputForConsole";
 import TextInputForConsole from "./TextInputForConsole";
 import { getSettingsState } from "../../store/settings";
-import SolutionsList from "../TargetDetailsScreen/SolutionsList";
+import SolutionsList from "../SolutionsList";
 
 const InputAndTimerContainer = ({
   inputFieldRef,

@@ -18,7 +18,7 @@ const ResponseInformation = ({ status }) => {
       style={{
         color,
         fontSize: 25,
-        margin: 10,
+        marginHorizontal: 10,
         textAlign: "center",
       }}
     >
@@ -29,7 +29,7 @@ const ResponseInformation = ({ status }) => {
       style={{
         color,
         fontSize: 25,
-        margin: 15,
+        marginHorizontal: 15,
         textAlign: "center",
       }}
     >

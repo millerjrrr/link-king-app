@@ -46,7 +46,6 @@ const WordCollectionList = ({ navigation }) => {
     </View>
   ) : (
     <>
-      <View style={{ height: 90 }} />
       <FlatList
         data={tickets}
         renderItem={({ item }) => {
@@ -71,6 +70,7 @@ const WordCollectionList = ({ navigation }) => {
 const styles = StyleSheet.create({
   flatList: {
     flex: 1,
+    paddingTop: 90,
     width: "100%",
   },
 });

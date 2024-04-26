@@ -4,8 +4,7 @@ import { useSelector } from "react-redux";
 import { getConsoleState } from "../store/console";
 import { getSettingsState } from "../store/settings";
 import styled from "styled-components";
-import SolutionItem from "./TargetDetailsScreen/SolutionItem";
-import SolutionsList from "./TargetDetailsScreen/SolutionsList";
+import SolutionsList from "./SolutionsList";
 
 const TailEntryText = styled(Text)`
   color: ${(props) => props.color};
