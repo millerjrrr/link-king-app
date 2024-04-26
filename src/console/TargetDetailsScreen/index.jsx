@@ -13,6 +13,7 @@ import ResponseInformation from "./ResponseInformation";
 import NoticeAndFlagButton from "./NoticeAndFlagButton";
 import appTextSource from "../../utils/appTextSource";
 import { getSettingsState } from "../../store/settings";
+import AcceptedAnswers from "./AcceptedAnswers";
 
 const TargetDetailsScreen = () => {
   const { attempt } = useSelector(getConsoleState);
@@ -45,6 +46,7 @@ const TargetDetailsScreen = () => {
         <View style={styles.container}>
           <Target />
           <TargetScreenFakeInput />
+          <AcceptedAnswers />
           <SolutionsList />
         </View>
         {pressed ? (

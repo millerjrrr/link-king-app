@@ -1,41 +1,17 @@
-import { Text, ScrollView, View } from "react-native";
+import { ScrollView, View } from "react-native";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../../store/console";
-import colors from "../../utils/colors";
-import { getSettingsState } from "../../store/settings";
-import appTextSource from "../../utils/appTextSource";
 import SolutionItem from "./SolutionItem";
 import HorizontalScrollFade from "./HorizonatalScrollFade";
 
-const SolutionsList = ({ showTitle = true }) => {
+const SolutionsList = () => {
   const {
     attempt: { solutions },
   } = useSelector(getConsoleState);
-  const { colorScheme, golden, appLang } = useSelector(
-    getSettingsState,
-  );
-  const color = colors[colorScheme].CONTRAST[golden];
-
-  const { accepted } =
-    appTextSource[appLang].console.targetDetails;
 
   return (
     <HorizontalScrollFade>
-      <View style={{ height: 90, alignItems: "center" }}>
-        {showTitle ? (
-          <Text
-            style={{
-              color,
-              fontSize: 20,
-              marginTop: 10,
-              textAlign: "center",
-            }}
-          >
-            {accepted}
-          </Text>
-        ) : (
-          <View style={{ height: 5 }} />
-        )}
+      <View style={{ height: 70, alignItems: "center" }}>
         <ScrollView
           horizontal={true}
           showsHorizontalScrollIndicator={false}

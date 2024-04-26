@@ -20,7 +20,7 @@ const AuthNavigator = () => {
         headerTransparent: true,
         headerBackTitleVisible: false,
         headerTitleStyle: {
-          color: "transparent",
+          color: "#ffffff00",
         },
       }}
     >

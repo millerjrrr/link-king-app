@@ -42,7 +42,7 @@ const TailEntry = ({ index }) => {
       {tail[index]}
     </TailEntryText>
   ) : index === 0 ? (
-    <SolutionsList {...{ showTitle: false }} />
+    <SolutionsList />
   ) : null;
 };
 

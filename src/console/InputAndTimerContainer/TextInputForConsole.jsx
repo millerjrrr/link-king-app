@@ -92,7 +92,7 @@ const TextInputForConsole = ({
 
 const styles = StyleSheet.create({
   input: {
-    margin: 3,
+    marginBottom: 10,
     width: "100%",
     height: 70,
     padding: 10,
