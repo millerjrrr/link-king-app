@@ -324,7 +324,9 @@ export default {
     collectionInfo: {
       modalMessage:
         "Here is your collection list. Each time you get a word " +
-        "wrong it's added to your collection. After its added, " +
+        "wrong we add it to your collection. (If you get it right, " +
+        "you already know it, so you don't need to see it again.) " +
+        "After its added, " +
         "each time you get it right the longer it will be before " +
         "you see it again. This is called “structured spaced " +
         "repetition” and is a powerful learning tool.",
