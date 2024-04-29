@@ -10,7 +10,7 @@ import { errorHandler } from "../errors/errorHandler";
 import OptionsIcon from "./OptionsIcon";
 import { getSettingsState } from "../store/settings";
 
-const OptionsContainer = ({ size = 40 }) => {
+const OptionsContainer = ({ size = 40, show = 0 }) => {
   const {
     options: { sound, blurred, timer },
   } = useSelector(getConsoleState);
@@ -59,37 +59,43 @@ const OptionsContainer = ({ size = 40 }) => {
 
   return (
     <View style={styles.container}>
-      <OptionsIcon
-        {...{
-          onPress: soundButtonFunction,
-          color,
-          size,
-          option: sound,
-          textTrue: "volume-up",
-          textFalse: "volume-off",
-        }}
-      />
-      <OptionsIcon
-        {...{
-          onPress: blurredButtonFunction,
-          color,
-          size,
-          entypo: true,
-          option: !blurred,
-          textTrue: "eye",
-          textFalse: "eye-with-line",
-        }}
-      />
-      <OptionsIcon
-        {...{
-          onPress: timerButtonFunction,
-          color,
-          size,
-          option: timer,
-          textTrue: "timer",
-          textFalse: "timer-off",
-        }}
-      />
+      {show === 0 || show === 1 ? (
+        <OptionsIcon
+          {...{
+            onPress: soundButtonFunction,
+            color,
+            size,
+            option: sound,
+            textTrue: "hearing",
+            textFalse: "hearing-disabled",
+          }}
+        />
+      ) : null}
+      {show === 0 || show === 2 ? (
+        <OptionsIcon
+          {...{
+            onPress: blurredButtonFunction,
+            color,
+            size,
+            entypo: true,
+            option: !blurred,
+            textTrue: "eye",
+            textFalse: "eye-with-line",
+          }}
+        />
+      ) : null}
+      {show === 0 || show === 3 ? (
+        <OptionsIcon
+          {...{
+            onPress: timerButtonFunction,
+            color,
+            size,
+            option: timer,
+            textTrue: "timer",
+            textFalse: "timer-off",
+          }}
+        />
+      ) : null}
     </View>
   );
 };

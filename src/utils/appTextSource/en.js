@@ -28,30 +28,68 @@ export default {
     },
     help: {
       heading: "Help",
+      gameDescription: {
+        title: "The Game",
+        description:
+          "This language learning game uses structured spaced repetition " +
+          "to teach you new words. The app will learn your ability and " +
+          "then present the most common words that you likely do not know yet. " +
+          "Our philosophy is to expand a students vocabulary as quickly as " +
+          "possible. ",
+      },
       howToPlay: {
         title: "How to Play",
         description:
           "Type the words in English as they are presented.",
       },
-      stats: {
-        title: "Statistics",
+      dueToday: {
+        title: "Due Today",
         description:
-          "Touch statistics to see what they represent!",
+          "These are the words that are due for revision today. " +
+          "Words accumulate fast when you miss days so try to " +
+          "keep on top of them",
       },
-      playingOptions: {
-        title: "Playing Options",
+      steps: {
+        title: "Steps Taken Today",
         description:
-          "You can choose to play with no sound where you " +
-          "only see the word but don't hear it. This is not " +
-          "recommended but might be appropriate in a noisy " +
-          "place or if you forget your headphones \n \n" +
+          "Your steps are the number of times you have attempted a word. " +
+          "Its a useful metric for setting daily goals",
+      },
+      time: {
+        title: "Time Playing",
+        description:
+          "This is simply the amount of time you have spent playing today. " +
+          "Its an active timer and it stop whenever you stop interacting " +
+          "with the console!",
+      },
+      streak: {
+        title: "Your Streak",
+        description:
+          "Your streak is how many words you got right in a row today. ",
+      },
+      listen: {
+        title: "Listening Mode",
+        description:
+          "You can choose to play with or without sound. " +
+          "We recommend playing with sound whenever possible but understand " +
+          "that sometimes this might not be an option. " +
+          "Use this icon to toggle between options.",
+      },
+      read: {
+        title: "Don't Look Mode",
+        description:
           "You can also play with sound only, where the word is " +
-          "hidden. This is the recommended approach as it can " +
-          "avoid the development of pronunciation mistakes." +
-          "(Check out our Youtube Channel for more info on this) \n \n" +
-          "Finally you can choose to play with or without the " +
+          "hidden. This is the recommended approach as it can help to " +
+          "avoid the development of pronunciation mistakes! " +
+          "Use this icon to toggle between options.",
+      },
+      countdown: {
+        title: "Countdown Mode",
+        description:
+          "You can also choose to play with or without the " +
           "10s timeout. Your time will still be counted but you " +
-          "won't be forced to submit wrong answers after 10s. ",
+          "won't be forced to submit wrong answers after 10s. " +
+          "Use this icon to toggle between options.",
       },
     },
     statsMessages: {
@@ -70,6 +108,11 @@ export default {
     tomorrow: "tomorrow",
     levelsBreakdown: {
       heading: "Levels Breakdown",
+      description:
+        'The "Level" of a word represents how many times you got ' +
+        "that word right. After you've collected words at different " +
+        "levels, this page will show a breakdown of how many words " +
+        "you have at each level.",
     },
     statsScreen: {
       congratulations: "Congratulations!",
@@ -115,6 +158,7 @@ export default {
         "best suits you. For example, Spanish spoken in Mexico " +
         "sounds quite different to Spanish spoken in Spain. " +
         "Choose the accent that's right for you!",
+      accessSettings: "Voice Settings",
     },
     chooseDictionary: {
       title: "Select Dictionary",

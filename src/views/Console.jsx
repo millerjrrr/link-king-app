@@ -97,7 +97,6 @@ const Console = ({ navigation }) => {
         <AppModal
           {...{
             isVisible: isModalVisible,
-            onBackdropPress: () => setIsModalVisible(false),
             modalName: "welcome",
             onPress: () => setIsModalVisible(false),
             info: true,

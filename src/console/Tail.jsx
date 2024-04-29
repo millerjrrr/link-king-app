@@ -14,11 +14,8 @@ const TailEntryText = styled(Text)`
 `;
 
 const TailEntry = ({ index }) => {
-  const {
-    tail,
-    showSolution,
-    attempt: { solutions },
-  } = useSelector(getConsoleState);
+  const { tail, showSolution } =
+    useSelector(getConsoleState);
   const { colorScheme, golden } = useSelector(
     getSettingsState,
   );
@@ -31,7 +28,7 @@ const TailEntry = ({ index }) => {
 
   const opacity = 1 / (index + 1) / 2;
 
-  return !showSolution && tail[index] ? (
+  return (
     <TailEntryText
       {...{
         color,
@@ -41,18 +38,23 @@ const TailEntry = ({ index }) => {
     >
       {tail[index]}
     </TailEntryText>
-  ) : index === 0 ? (
-    <SolutionsList />
-  ) : null;
+  );
 };
 
 const Tail = () => {
+  const { showSolution } = useSelector(getConsoleState);
   return (
     <View style={styles.container}>
-      <TailEntry index={0} />
-      <TailEntry index={1} />
-      <TailEntry index={2} />
-      <TailEntry index={3} />
+      {!showSolution ? (
+        <>
+          <TailEntry index={0} />
+          <TailEntry index={1} />
+          <TailEntry index={2} />
+          <TailEntry index={3} />
+        </>
+      ) : (
+        <SolutionsList />
+      )}
     </View>
   );
 };

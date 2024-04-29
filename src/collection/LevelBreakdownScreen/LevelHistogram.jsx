@@ -20,7 +20,7 @@ const LevelHistogram = ({ lbd, histHeight }) => {
   );
 
   return (
-    <>
+    <View style={styles.container}>
       <View style={styles.levelHistogram}>
         {normalizedHeights.map((_, index) => (
           <LevelLine
@@ -45,11 +45,16 @@ const LevelHistogram = ({ lbd, histHeight }) => {
       >
         {heights[selected - 1]}
       </Text>
-    </>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "flex-start",
+    alignItems: "center",
+  },
   levelHistogram: {
     flexDirection: "row",
     alignItems: "flex-end",

@@ -31,13 +31,13 @@ const Options = () => {
           onPress: () => navigateTo("SetDailyGoalScreen"),
         }}
       />
-      <OptionsMenuItem
+      {/* <OptionsMenuItem
         {...{
           iconName: "account-tie-voice",
           name: voiceSelection.title,
           onPress: () => navigateTo("VoiceSelectionScreen"),
         }}
-      />
+      /> */}
       <OptionsMenuItem
         {...{
           iconName: "book-open-variant",

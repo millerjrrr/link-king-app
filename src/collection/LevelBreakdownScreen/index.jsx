@@ -1,4 +1,3 @@
-import { View, StyleSheet } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { getStatsState } from "../../store/stats";
 import { fetchStatsInfo } from "../functions/fetchStatsInfo";
@@ -8,6 +7,7 @@ import PopUpContainer from "../../components/containers/PopUpContainer";
 import Loader from "../../ui/Loader";
 import { getSettingsState } from "../../store/settings";
 import appTextSource from "../../utils/appTextSource";
+import AppText from "../../ui/AppText";
 
 const Levels = () => {
   const { levelBreakdown, busy } =
@@ -20,31 +20,27 @@ const Levels = () => {
     fetchStatsInfo(dispatch);
   }, []);
 
-  const { heading } =
+  const showHist = levelBreakdown.length > 2;
+
+  const { heading, description } =
     appTextSource[appLang].collection.levelsBreakdown;
 
   return (
     <PopUpContainer {...{ heading }}>
-      {busy ? (
-        <Loader />
-      ) : (
-        <View style={styles.container}>
+      {showHist ? (
+        busy ? (
+          <Loader />
+        ) : (
           <LevelHistogram
             lbd={levelBreakdown}
             histHeight={400}
           />
-        </View>
+        )
+      ) : (
+        <AppText>{description}</AppText>
       )}
     </PopUpContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "flex-start",
-    alignItems: "center",
-  },
-});
 
 export default Levels;

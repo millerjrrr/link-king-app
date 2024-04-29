@@ -40,9 +40,7 @@ const DeleteScreen = ({ route }) => {
     <PopUpContainer {...{ heading }}>
       <BloodRedCover elapsedTime={elapsedTime} />
       <BusyWrapper {...{ busy, size: 96 }}>
-        <View
-          style={{ width: "100%", paddingHorizontal: 15 }}
-        >
+        <View style={{ width: "100%", padding: 15 }}>
           <WordCard ticket={ticket} />
           {pressed ? (
             <ResponseInformation {...{ status }} />

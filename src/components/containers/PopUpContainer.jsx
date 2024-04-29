@@ -38,14 +38,15 @@ const PopUpContainer = ({ children, heading, help }) => {
 
   return (
     <View style={styles.container}>
-      <StatusBarFiller />
       <FourCrowns {...{ color: SECONDARY }} />
       <HelpButton {...{ help }} />
       <BackButton />
-      <View style={styles.headerContainer}>
+      <View
+        style={{ borderBottomWidth: 1, borderColor: color }}
+      >
         <LinkKingLogo
           {...{
-            height: 30,
+            height: 40,
             marginTop: 0,
             tintColor: color,
           }}
@@ -66,9 +67,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   heading: {
-    fontSize: 12,
+    fontSize: 15,
     fontWeight: "bold",
     textAlign: "center",
+    paddingBottom: 15,
   },
 });
 

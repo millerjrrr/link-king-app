@@ -1,19 +1,24 @@
-import { Text, StyleSheet, Platform } from "react-native";
+import { Text } from "react-native";
+import { useSelector } from "react-redux";
+import styled from "styled-components";
+import { getSettingsState } from "../store/settings";
+import colors from "../utils/colors";
 
-const AppText = (props) => {
+const TextBlock = styled(Text)`
+  font-size: ${(props) => props.size}px;
+  color: ${(props) => props.color};
+  text-align: center;
+  padding: 15px;
+`;
+const AppText = ({ size = 30, children }) => {
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
+  const color = colors[colorScheme].CONTRAST[golden];
+
   return (
-    <Text style={[props.style, styles.font]}>AppText</Text>
+    <TextBlock {...{ size, color }}>{children}</TextBlock>
   );
 };
-
-const styles = StyleSheet.create({
-  font: {
-    fontFamily: Platform.select({
-      ios: "font for ios",
-      android: "font for android",
-      default: "default font",
-    }),
-  },
-});
 
 export default AppText;

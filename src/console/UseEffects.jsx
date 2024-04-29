@@ -26,25 +26,27 @@ const UseEffects = () => {
 
   //goal management
   useEffect(() => {
-    const showResultsSummary = () => {
-      navigation.navigate("Collection");
-      navigation.navigate("StatsScreen");
-    };
+    if (showSolution) {
+      const showResultsSummary = () => {
+        navigation.navigate("Collection");
+        navigation.navigate("StatsScreen");
+      };
 
-    const timeGoalMet =
-      timeGoal !== "" && time >= timeGoal * 60 * 1000;
-    const newWordsGoalMet =
-      newWordsGoal !== "" && newWords >= newWordsGoal;
-    const stepsGoalMet =
-      stepsGoal !== "" && steps >= stepsGoal;
+      const timeGoalMet =
+        timeGoal !== "" && time >= timeGoal * 60 * 1000;
+      const newWordsGoalMet =
+        newWordsGoal !== "" && newWords >= newWordsGoal;
+      const stepsGoalMet =
+        stepsGoal !== "" && steps >= stepsGoal;
 
-    if (timeGoalMet || newWordsGoalMet || stepsGoalMet) {
-      if (golden === 0) {
-        setTimeout(showResultsSummary, 1500);
-        dispatch(updateSettings({ golden: 1 }));
-      }
-    } else dispatch(updateSettings({ golden: 0 }));
-  }, [newWords]);
+      if (timeGoalMet || newWordsGoalMet || stepsGoalMet) {
+        if (golden === 0) {
+          setTimeout(showResultsSummary, 1500);
+          dispatch(updateSettings({ golden: 1 }));
+        }
+      } else dispatch(updateSettings({ golden: 0 }));
+    }
+  }, [showSolution]);
 
   useEffect(() => {
     let intervalId;

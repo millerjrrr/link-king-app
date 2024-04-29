@@ -1,13 +1,15 @@
-import { ScrollView, Text } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import styled from "styled-components";
 import PopUpContainer from "./../components/containers/PopUpContainer";
 import { useSelector } from "react-redux";
 import { getSettingsState } from "../store/settings";
 import colors from "../utils/colors";
 import appTextSource from "../utils/appTextSource";
+import AuthButton from "../ui/Buttons/AuthButton";
+import { Linking } from "react-native";
 
 const Container = styled(ScrollView)`
-  margin: 15px;
+  margin-horizontal: 15px;
 `;
 
 const TextBlock = styled(Text)`
@@ -23,8 +25,12 @@ const VoiceSelectionScreen = () => {
   );
   const color = colors[colorScheme].CONTRAST[golden];
 
-  const { title, textA, textB, tip } =
+  const { title, textA, textB, tip, accessSettings } =
     appTextSource[appLang].options.voiceSelection;
+
+  const onPress = () => {
+    console.log("not working yet");
+  };
 
   return (
     <PopUpContainer heading={title}>
@@ -32,6 +38,11 @@ const VoiceSelectionScreen = () => {
         <TextBlock {...{ color }}>{textA}</TextBlock>
         <TextBlock {...{ color }}>{textB}</TextBlock>
         <TextBlock {...{ color }}>{tip}</TextBlock>
+        <View style={{ padding: 20, paddingBottom: 60 }}>
+          <AuthButton
+            {...{ title: accessSettings, onPress }}
+          />
+        </View>
       </Container>
     </PopUpContainer>
   );

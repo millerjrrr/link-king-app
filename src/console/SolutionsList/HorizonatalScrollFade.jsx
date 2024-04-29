@@ -15,7 +15,7 @@ const Fade = styled(LinearGradient)`
   position: absolute;
   ${(props) => props.side}: 0;
   height: 100%;
-  width: 10%;
+  width: 30px;
   z-index: 20;
 `;
 

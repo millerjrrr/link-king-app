@@ -1,3 +1,5 @@
+import { KeyboardAvoidingView } from "react-native";
+
 export default {
   internetConnectionPage: {
     title: "Desconectado!",
@@ -27,33 +29,68 @@ export default {
     },
     help: {
       heading: "Ajuda",
+      gameDescription: {
+        title: "O Jogo",
+        description:
+          "Este jogo de idiomas, usa repetição como metodo de aprendezagem " +
+          "de novas palavras. O aplicativo ira avaliar " +
+          "o seu nível de conhecimento e apresentará as palavras mais comuns que você " +
+          "provavelmente ainda não conhece. " +
+          "Nossa filosofia é expandir o vocabulário do aluno o mais rápido " +
+          "possível. ",
+      },
       howToPlay: {
-        title: "Como jogar",
+        title: "Como Jogar",
         description:
           "Digite as palavras em português conforme elas são " +
           "apresentadas.",
       },
-      stats: {
-        title: "Estatisticas",
+      dueToday: {
+        title: "Palavras de Hoje",
         description:
-          "Toque nas estatísticas para ver o que elas representam!",
+          "Estas são as palavras que devem ser revisadas hoje. " +
+          "As palavras se acumulam rapidamente quando você não pratica. Então " +
+          "jogue todo dia!",
       },
-      playingOptions: {
-        title: "Opções de jogo",
+      steps: {
+        title: "Passos",
         description:
-          "Você pode jogar sem som, onde apenas vê a palavra, " +
-          "mas não a ouve. Isto não é recomendado, mas pode ser " +
-          "apropriado em locais barulhentos ou se você esquecer " +
-          "seus fones de ouvido. \n \n" +
-          "Você também pode jogar apenas com som, onde a palavra " +
-          "está escondida. Esta é a abordagem recomendada, pois " +
-          "pode evitar o desenvolvimento de erros de pronúncia. " +
-          "(Confira nosso canal no Youtube para mais informações " +
-          "sobre isso) \n \n" +
-          "Finalmente você pode escolher jogar com ou " +
-          "sem o tempo limite de 10s. Seu tempo ainda será " +
-          "contado, mas você não será forçado a enviar respostas " +
-          "erradas após 10s",
+          "Seus passos são o número de vezes que você submeteu uma resposta. " +
+          "É uma métrica útil para definir metas diárias.",
+      },
+      time: {
+        title: "Tempo",
+        description:
+          "É a quantidade de tempo que você passou jogando no dia, " +
+          "um cronômetro ativo, que pausa sempre que você não estiver jogando. " +
+          "Desse modo, você saberá o tempo total de dedicação no jogo.",
+      },
+      streak: {
+        title: "Sua Sequência",
+        description:
+          "Sua sequência é o número de palavras que você acertou em seguida.",
+      },
+      listen: {
+        title: "Modo de Escuta",
+        description:
+          "Você pode escolher jogar com ou sem som " +
+          "(recomendamos jogar com som, para melhor aprendizagem). " +
+          "Use esse icone para habilitar ou desabilitar essa função.",
+      },
+      read: {
+        title: 'Modo "Não Olhe"',
+        description:
+          "Você também pode jogar apenas com som, ocultando a palavra. " +
+          "Esta abordagem é recomendada pois pode ajudar a " +
+          "evitar o desenvolvimento de erros de pronúncia. " +
+          "Use esse icone para habilitar ou desabilitar essa função.",
+      },
+      countdown: {
+        title: "Modo de contagem regressiva",
+        description:
+          "Você também pode optar por jogar com ou sem o " +
+          "tempo limite de 10s, para escrever a palavra. " +
+          "Use esse icone para habilitar ou desabilitar essa função.",
       },
     },
     statsMessages: {
@@ -72,6 +109,8 @@ export default {
     tomorrow: "amanhã",
     levelsBreakdown: {
       heading: "Divisão de Níveis",
+      description:
+        'O "Nível" de uma palavra representa quantas vezes você acertou a palavra. Depois de coletar palavras em diferentes níveis, esta página mostrará quantas palavras você tem em cada nível.',
     },
     statsScreen: {
       congratulations: "Parabéns!",
@@ -114,6 +153,7 @@ export default {
       tip:
         "DICA: Mude a voz para o sotaque da região que você mais gosta. " +
         "Por exemplo, inglês Britanico, inglês Americano, inglês Australiano, etc.",
+      accessSettings: "Configurações de Voz",
     },
     chooseDictionary: {
       title: "Selecionar um Dicionário",

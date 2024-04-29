@@ -10,7 +10,10 @@ import { useEffect } from "react";
 import colors from "../utils/colors";
 import client from "../api/client";
 import catchAsyncError from "../api/catchError";
-import { getFromAsyncStorage } from "../utils/asyncStorage";
+import {
+  getFromAsyncStorage,
+  removeFromAsyncStorage,
+} from "../utils/asyncStorage";
 import { updateSettings } from "../store/settings";
 import { StatusBar } from "react-native";
 import { authErrorHandler } from "../errors/authErrorHandler";
@@ -59,7 +62,10 @@ const AppNavigatorUseEffects = () => {
         const errorMessage = catchAsyncError(error);
         if (errorMessage.startsWith("timeout"))
           dispatch(updateConnectedState(false));
-        else authErrorHandler(error, dispatch);
+        else {
+          authErrorHandler(error, dispatch);
+          removeFromAsyncStorage("auth-token");
+        }
       }
     };
 
