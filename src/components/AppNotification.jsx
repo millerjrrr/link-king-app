@@ -43,7 +43,7 @@ const AppNotification = () => {
       backgroundColor = colors[colorScheme].GREEN;
       break;
     case "info":
-      backgroundColor = colors[colorScheme].SECONDARY;
+      backgroundColor = colors[colorScheme].RED;
       messageTime = 1000;
       break;
   }
@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 15,
+    borderRadius: 7,
   },
   text: {
     fontSize: 25,

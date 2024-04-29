@@ -11,15 +11,28 @@ import {
   StackActions,
   useNavigation,
 } from "@react-navigation/native";
-import StatusBarFiller from "../../ui/StatusBarFiller";
 import BackButton from "../../ui/Buttons/BackButton";
+import { LinearGradient } from "expo-linear-gradient";
+import styled from "styled-components";
+
+export const FadeBackgroundView = styled(LinearGradient)`
+  position: absolute;
+  top: 0;
+  alignitems: center;
+  flexdirection: column;
+  width: 100%;
+  height: 20px;
+  z-index: 20;
+`;
 
 const PopUpContainer = ({ children, heading, help }) => {
   const { colorScheme, golden } = useSelector(
     getSettingsState,
   );
-  const { CONTRAST, SECONDARY } = colors[colorScheme];
+  const { CONTRAST, SECONDARY, PRIMARY } =
+    colors[colorScheme];
   const color = CONTRAST[golden];
+  const backgroundColor = PRIMARY;
 
   //close this screen every time we change bottom tab
   const navigation = useNavigation();
@@ -41,22 +54,30 @@ const PopUpContainer = ({ children, heading, help }) => {
       <FourCrowns {...{ color: SECONDARY }} />
       <HelpButton {...{ help }} />
       <BackButton />
-      <View
-        style={{ borderBottomWidth: 1, borderColor: color }}
-      >
-        <LinkKingLogo
+      <LinkKingLogo
+        {...{
+          height: 40,
+          marginTop: 0,
+          tintColor: color,
+        }}
+      />
+      <Text style={[styles.heading, { color }]}>
+        {heading}
+      </Text>
+      <AppNotification />
+      <View style={styles.container}>
+        <FadeBackgroundView
           {...{
-            height: 40,
-            marginTop: 0,
-            tintColor: color,
+            colors: [
+              backgroundColor,
+              backgroundColor + "E6",
+              backgroundColor + "80",
+              backgroundColor + "00",
+            ],
           }}
         />
-        <Text style={[styles.heading, { color }]}>
-          {heading}
-        </Text>
+        {children}
       </View>
-      <AppNotification />
-      {children}
     </View>
   );
 };
@@ -65,6 +86,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
+    width: "100%",
   },
   heading: {
     fontSize: 15,

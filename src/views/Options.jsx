@@ -27,6 +27,7 @@ const Options = () => {
         {...{
           iconName: "target-variant",
           name: setDailyGoal.heading,
+          selected: true,
           first: true,
           onPress: () => navigateTo("SetDailyGoalScreen"),
         }}
@@ -42,6 +43,7 @@ const Options = () => {
         {...{
           iconName: "book-open-variant",
           name: chooseDictionary.title,
+          selected: true,
           onPress: () =>
             navigateTo("DictionarySelectionScreen"),
         }}

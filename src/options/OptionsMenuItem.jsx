@@ -12,7 +12,9 @@ const OptionsMenuItem = ({
     <OptionsMenuItemContainer
       {...{ first, iconName, selected, onPress }}
     >
-      <MenuItemLink {...{ name, onPress }} />
+      <MenuItemLink
+        {...{ name, onPress, gray: !selected }}
+      />
     </OptionsMenuItemContainer>
   );
 };

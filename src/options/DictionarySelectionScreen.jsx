@@ -5,6 +5,7 @@ import { getSettingsState } from "../store/settings";
 import appTextSource from "../utils/appTextSource";
 import { getConsoleState } from "../store/console";
 import DictionarySelectorMenuItem from "./components/DictionarySelectorMenuItem";
+import { View } from "react-native";
 
 const DictionarySelectionScreen = () => {
   const { appLang } = useSelector(getSettingsState);
@@ -22,6 +23,7 @@ const DictionarySelectionScreen = () => {
         <DictionarySelectorMenuItem name="Custom-Dictionary" />
       ) : (
         <BusyWrapper {...{ busy }}>
+          <View style={{ height: 30 }} />
           <DictionarySelectorMenuItem name="English-Portuguese" />
           <DictionarySelectorMenuItem name="Spanish-English" />
         </BusyWrapper>

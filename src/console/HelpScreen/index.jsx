@@ -3,10 +3,14 @@ import PopUpContainer from "../../components/containers/PopUpContainer";
 import { useSelector } from "react-redux";
 import { getSettingsState } from "../../store/settings";
 import appTextSource from "../../utils/appTextSource";
-import { HelpScroll } from "./StyledComponents";
+import {
+  FadeBackgroundView,
+  HelpScroll,
+} from "./StyledComponents";
 import DescriptionWrapper from "./DescriptionWrapper";
 import StatsIcon from "../StatsIcon";
 import OptionsContainer from "../OptionsContainer";
+import colors from "../../utils/colors";
 
 const HelpForStats = ({ name }) => {
   const lookup = {
@@ -40,7 +44,9 @@ const HelpForOptions = ({ name }) => {
 };
 
 const HelpScreen = () => {
-  const { appLang } = useSelector(getSettingsState);
+  const { appLang, colorScheme } = useSelector(
+    getSettingsState,
+  );
   const { heading } = appTextSource[appLang].console.help;
 
   return (

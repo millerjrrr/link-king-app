@@ -159,8 +159,7 @@ export default {
       title: "Selecionar um Dicionário",
       "English-Portuguese":
         "Inglês para falantes de português",
-      "Spanish-English":
-        "Espanhol para falantes de inglês (BETA)",
+      "Spanish-English": "Espanhol para falantes de inglês",
       "Custom-Dictionary":
         "Um dicionário personalizado só para você!",
       text:

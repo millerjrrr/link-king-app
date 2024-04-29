@@ -9,11 +9,13 @@ const MenuItemName = styled(Text)`
   font-size: 20px;
 `;
 
-const MenuItemLink = ({ name, onPress }) => {
+const MenuItemLink = ({ name, onPress, gray }) => {
   const { colorScheme, golden } = useSelector(
     getSettingsState,
   );
-  const color = colors[colorScheme].CONTRAST[golden];
+  const color = gray
+    ? colors[colorScheme].INACTIVE_CONTRAST
+    : colors[colorScheme].CONTRAST[golden];
 
   return (
     <TouchableOpacity
