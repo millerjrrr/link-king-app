@@ -29,6 +29,12 @@ export default {
     },
     help: {
       heading: "Ajuda",
+      howToPlay: {
+        title: "Como Jogar",
+        description:
+          "Digite as palavras em português conforme elas são " +
+          "apresentadas.",
+      },
       gameDescription: {
         title: "O Jogo",
         description:
@@ -39,11 +45,11 @@ export default {
           "Nossa filosofia é expandir o vocabulário do aluno o mais rápido " +
           "possível. ",
       },
-      howToPlay: {
-        title: "Como Jogar",
+      giveUp: {
+        title: "Desistir!",
         description:
-          "Digite as palavras em português conforme elas são " +
-          "apresentadas.",
+          "Este botão é usado para enviar rapidamente uma resposta errada e " +
+          "ir imediatamente para as soluções",
       },
       dueToday: {
         title: "Palavras de Hoje",

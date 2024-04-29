@@ -6,6 +6,8 @@ import {
   backOut,
 } from "../../store/console";
 import { submitAnswer } from "../functions/submitAnswer";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import colors from "../../utils/colors";
 
 const KeyboardIconContainer = () => {
   const dispatch = useDispatch();
@@ -15,7 +17,10 @@ const KeyboardIconContainer = () => {
     formValue,
     startedThisWord,
     attempt: { solutions },
+    tries,
   } = useSelector(getConsoleState);
+
+  const color = colors.dark.INACTIVE_CONTRAST;
 
   const closeKeyboard = () => {
     if (!showSolution && isPlaying) {
@@ -61,13 +66,19 @@ const KeyboardIconContainer = () => {
           onPress: closeKeyboard,
         }}
       />
-      <KeyboardIcon
-        {...{
-          name: "skip-forward",
-          size: 48,
-          onPress: dontKnowFunction,
-        }}
-      />
+      {tries > 1 ? (
+        <KeyboardIcon
+          {...{
+            name: "skip-forward",
+            size: 48,
+            onPress: dontKnowFunction,
+          }}
+        />
+      ) : (
+        <MaterialCommunityIcons
+          {...{ name: "skip-forward", size: 48, color }}
+        />
+      )}
     </View>
   );
 };

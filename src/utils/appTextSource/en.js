@@ -28,6 +28,11 @@ export default {
     },
     help: {
       heading: "Help",
+      howToPlay: {
+        title: "How to Play",
+        description:
+          "Type the words in English as they are presented.",
+      },
       gameDescription: {
         title: "The Game",
         description:
@@ -37,10 +42,11 @@ export default {
           "Our philosophy is to expand a students vocabulary as quickly as " +
           "possible. ",
       },
-      howToPlay: {
-        title: "How to Play",
+      giveUp: {
+        title: "Give Up!",
         description:
-          "Type the words in English as they are presented.",
+          "This button is used to quickly submit a wrong answer " +
+          "and skip straight to the solutions",
       },
       dueToday: {
         title: "Due Today",
