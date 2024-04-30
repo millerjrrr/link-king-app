@@ -35,6 +35,7 @@ const AuthFormContainer = ({
           ]}
         >
           <StatusBarFiller />
+          <AppNotification />
           <FourCrowns {...{ color }} />
           {!nologo ? (
             <LinkKingLogo />
@@ -60,7 +61,6 @@ const AuthFormContainer = ({
             </Text>
           ) : null}
           <View style={{ height: 10 }} />
-          <AppNotification />
           {children}
         </View>
       </>

@@ -14,6 +14,7 @@ export const Container = styled(View)`
 export const InfoContainer = styled(View)`
   flex: 1;
   flex-direction: column;
+  justify-content: space-between;
   padding-horizontal: 15px;
 `;
 
@@ -25,6 +26,7 @@ export const RowContainer = styled(View)`
 `;
 
 export const Title = styled(Text)`
+  height: 40px;
   font-size: ${(props) => props.fontSize}px;
   font-weight: bold;
   align-items: flex-start;

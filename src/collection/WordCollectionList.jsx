@@ -18,7 +18,16 @@ import appTextSource from "../utils/appTextSource";
 
 const ListFooterComponent = () => {
   const { allDataLoaded } = useSelector(getCollectionState);
-  return !allDataLoaded ? <Loader /> : null;
+  return (
+    <>
+      {!allDataLoaded ? (
+        <View style={{ height: 100 }}>
+          <Loader {...{ size: 50 }} />
+        </View>
+      ) : null}
+      <View style={{ height: 100 }} />
+    </>
+  );
 };
 
 const WordCollectionList = ({ navigation }) => {

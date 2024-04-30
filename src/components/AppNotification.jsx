@@ -43,7 +43,7 @@ const AppNotification = () => {
       backgroundColor = colors[colorScheme].GREEN;
       break;
     case "info":
-      backgroundColor = colors[colorScheme].RED;
+      backgroundColor = colors[colorScheme].PRIMARY;
       messageTime = 1000;
       break;
   }
@@ -73,13 +73,15 @@ const AppNotification = () => {
       <Animated.View
         style={[
           styles.container,
-          { backgroundColor },
+          { backgroundColor: color },
           heightStyle,
         ]}
       >
-        <Text style={[styles.text, { color }]}>
-          {message}
-        </Text>
+        <View style={[styles.border, { backgroundColor }]}>
+          <Text style={[styles.text, { color }]}>
+            {message}
+          </Text>
+        </View>
       </Animated.View>
     </View>
   );
@@ -93,10 +95,15 @@ const styles = StyleSheet.create({
   container: {
     position: "absolute",
     width: "100%",
+    borderRadius: 7,
+  },
+  border: {
+    flex: 1,
+    margin: 3,
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 15,
-    borderRadius: 7,
+    borderRadius: 4,
   },
   text: {
     fontSize: 25,

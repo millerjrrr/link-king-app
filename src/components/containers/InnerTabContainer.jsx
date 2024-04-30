@@ -26,6 +26,7 @@ const InnerTabContainer = ({
   return (
     <View style={styles.container}>
       <StatusBarFiller />
+      <AppNotification />
       <FourCrowns {...{ color: crownColor }} />
       <HelpButton {...{ help, padding: true }} />
       <FlagBook {...{ noBook, padding: true }} />
@@ -39,7 +40,6 @@ const InnerTabContainer = ({
       <Text style={[styles.heading, { color }]}>
         {heading}
       </Text>
-      <AppNotification />
       {children}
     </View>
   );

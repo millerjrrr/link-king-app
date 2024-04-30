@@ -39,7 +39,8 @@ const WordCard = ({ navigation, ticket }) => {
 
   let fontSize = 30;
   const length = target.length;
-  if (length > 15) fontSize = (fontSize * 15) / length;
+  if (length > 10)
+    fontSize = (fontSize * 10) / (10 + (length - 10) * 0.7);
 
   return (
     <Container
@@ -53,7 +54,7 @@ const WordCard = ({ navigation, ticket }) => {
         <RowContainer>
           <Title {...{ color, fontSize }}>{target}</Title>
           <Rating {...{ color }}>
-            {Math.round(rating * 10) / 10}
+            {Math.round(rating)}
           </Rating>
         </RowContainer>
         <RowContainer>

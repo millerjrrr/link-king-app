@@ -52,6 +52,7 @@ const PopUpContainer = ({ children, heading, help }) => {
   return (
     <View style={styles.container}>
       <FourCrowns {...{ color: SECONDARY }} />
+      <AppNotification />
       <HelpButton {...{ help }} />
       <BackButton />
       <LinkKingLogo
@@ -64,7 +65,6 @@ const PopUpContainer = ({ children, heading, help }) => {
       <Text style={[styles.heading, { color }]}>
         {heading}
       </Text>
-      <AppNotification />
       <View style={styles.container}>
         <FadeBackgroundView
           {...{

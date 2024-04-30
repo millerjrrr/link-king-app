@@ -18,7 +18,7 @@ const WordCardLevelStars = ({ stars, target }) => {
           {...{
             name: "star",
             key: `star-${target}-${index}`,
-            size: 12,
+            size: 15,
             color,
           }}
         />
