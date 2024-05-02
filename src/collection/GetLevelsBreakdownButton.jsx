@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 1000,
-    ...appShadow(0.5),
+    ...appShadow(1),
   },
   text: {
     fontSize: 15,

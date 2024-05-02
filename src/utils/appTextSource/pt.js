@@ -1,11 +1,8 @@
-import { KeyboardAvoidingView } from "react-native";
-
 export default {
   internetConnectionPage: {
     title: "Desconectado!",
     message:
-      "...parece que você não está conectado à internet. " +
-      "Este aplicativo requer uma conexão estável com a Internet...",
+      "...parece que você não está conectado à internet. Este aplicativo requer uma conexão estável com a Internet...",
   },
   console: {
     heading: "Console",
@@ -15,61 +12,45 @@ export default {
       timedOut: "tempo esgotado!",
       accepted: "Respostas aceitáveis:",
       description:
-        "Você acha que a sua resposta devia ser aceita? Você pode " +
-        "marcar essa palavra e a gente vai investigar se a sua resposta é " +
-        "apropriada o mais breve possível",
+        "Você acha que a sua resposta devia ser aceita? Você pode marcar essa palavra e a gente vai investigar se a sua resposta é apropriada o mais breve possível",
       buttonTitle:
         "Pressione e segure para marcar a palavra e a apagar da sua colleção",
       responseA:
-        "Essa palavra tem sido marcada e apagada da sua colleção. " +
-        "\n \n Agradecemos a sua ajuda!",
+        "Essa palavra tem sido marcada e apagada da sua colleção. \n\nAgradecemos a sua ajuda!",
       responseB:
-        "...algo deu errado 😣 por favor, certifique que você tem conexão " +
-        "de internet e tente de novo... ",
+        "...algo deu errado 😣 por favor, certifique que você tem conexão de internet e tente de novo... ",
     },
     help: {
       heading: "Ajuda",
       howToPlay: {
         title: "Como Jogar",
         description:
-          "Digite as palavras em português conforme elas são " +
-          "apresentadas.",
+          "Digite as palavras em português conforme elas são apresentadas.",
       },
       gameDescription: {
         title: "O Jogo",
         description:
-          "Este jogo de idiomas, usa repetição como metodo de aprendezagem " +
-          "de novas palavras. O aplicativo ira avaliar " +
-          "o seu nível de conhecimento e apresentará as palavras mais comuns que você " +
-          "provavelmente ainda não conhece. " +
-          "Nossa filosofia é expandir o vocabulário do aluno o mais rápido " +
-          "possível. ",
+          "Este jogo de idiomas, usa repetição como metodo de aprendezagem de novas palavras. O aplicativo ira avaliar o seu nível de conhecimento e apresentará as palavras mais comuns que você provavelmente ainda não conhece. Nossa filosofia é expandir o vocabulário do aluno o mais rápido possível. ",
       },
       giveUp: {
         title: "Desistir!",
         description:
-          "Este botão é usado para enviar rapidamente uma resposta errada e " +
-          "ir imediatamente para as soluções",
+          "Este botão é usado para enviar rapidamente uma resposta errada e ir imediatamente para as soluções",
       },
       dueToday: {
         title: "Palavras de Hoje",
         description:
-          "Estas são as palavras que devem ser revisadas hoje. " +
-          "As palavras se acumulam rapidamente quando você não pratica. Então " +
-          "jogue todo dia!",
+          "Estas são as palavras que devem ser revisadas hoje. As palavras se acumulam rapidamente quando você não pratica. Então jogue todo dia!",
       },
       steps: {
         title: "Passos",
         description:
-          "Seus passos são o número de vezes que você submeteu uma resposta. " +
-          "É uma métrica útil para definir metas diárias.",
+          "Seus passos são o número de vezes que você submeteu uma resposta. É uma métrica útil para definir metas diárias.",
       },
       time: {
         title: "Tempo",
         description:
-          "É a quantidade de tempo que você passou jogando no dia, " +
-          "um cronômetro ativo, que pausa sempre que você não estiver jogando. " +
-          "Desse modo, você saberá o tempo total de dedicação no jogo.",
+          "É a quantidade de tempo que você passou jogando no dia, um cronômetro ativo, que pausa sempre que você não estiver jogando. Desse modo, você saberá o tempo total de dedicação no jogo.",
       },
       streak: {
         title: "Sua Sequência",
@@ -79,24 +60,17 @@ export default {
       listen: {
         title: "Modo de Escuta",
         description:
-          "Você pode escolher jogar com ou sem som " +
-          "(recomendamos jogar com som, para melhor aprendizagem). " +
-          "Use esse icone para habilitar ou desabilitar essa função.",
+          "Você pode escolher jogar com ou sem som (recomendamos jogar com som, para melhor aprendizagem). Use esse icone para habilitar ou desabilitar essa função.",
       },
       read: {
         title: 'Modo "Não Olhe"',
         description:
-          "Você também pode jogar apenas com som, ocultando a palavra. " +
-          "Esta abordagem é recomendada pois pode ajudar a " +
-          "evitar o desenvolvimento de erros de pronúncia. " +
-          "Use esse icone para habilitar ou desabilitar essa função.",
+          "Você também pode jogar apenas com som, ocultando a palavra. Esta abordagem é recomendada pois pode ajudar a evitar o desenvolvimento de erros de pronúncia. Use esse icone para habilitar ou desabilitar essa função.",
       },
       countdown: {
         title: "Modo de contagem regressiva",
         description:
-          "Você também pode optar por jogar com ou sem o " +
-          "tempo limite de 10s, para escrever a palavra. " +
-          "Use esse icone para habilitar ou desabilitar essa função.",
+          "Você também pode optar por jogar com ou sem o tempo limite de 10s, para escrever a palavra. Use esse icone para habilitar ou desabilitar essa função.",
       },
     },
     statsMessages: {
@@ -127,16 +101,10 @@ export default {
     deleteScreen: {
       heading: "Excluir uma Palavra",
       textA:
-        "Tem certeza de que deseja remover permanentemente esta palavra da " +
-        "sua coleção?",
+        "Tem certeza de que deseja remover permanentemente esta palavra da sua coleção?",
       textB: "Pressione e segure para excluir",
-      resA:
-        "Esta palavra foi removida da sua coleção. Você não a verá mais como " +
-        "parte de suas repetições, mas poderá vê-la novamente como um novo desafio " +
-        "de palavras em algum momento no futuro",
-      resB:
-        "...algo deu errado 😣 por favor, certifique que você tem conexão " +
-        "de internet e tente de novo... ",
+      resA: "Esta palavra foi removida da sua coleção. Você não a verá mais como parte de suas repetições, mas poderá vê-la novamente como um novo desafio de palavras em algum momento no futuro",
+      resB: "...algo deu errado 😣 por favor, certifique que você tem conexão de internet e tente de novo... ",
     },
   },
   options: {
@@ -153,12 +121,8 @@ export default {
       textA:
         "Nosso aplicativo usa a voz preferida do seu dispositivo.",
       textB:
-        "Tanto os dispositivos Android quanto os IOS oferecem uma ampla gama " +
-        "de opções de voz. Para alterar a voz que você ouve, acesse as " +
-        "configurações e escolha a opção que melhor funciona para você!",
-      tip:
-        "DICA: Mude a voz para o sotaque da região que você mais gosta. " +
-        "Por exemplo, inglês Britanico, inglês Americano, inglês Australiano, etc.",
+        "Tanto os dispositivos Android quanto os IOS oferecem uma ampla gama de opções de voz. Para alterar a voz que você ouve, acesse as configurações e escolha a opção que melhor funciona para você!",
+      tip: "DICA: Mude a voz para o sotaque da região que você mais gosta. Por exemplo, inglês Britanico, inglês Americano, inglês Australiano, etc.",
       accessSettings: "Configurações de Voz",
     },
     chooseDictionary: {
@@ -168,11 +132,7 @@ export default {
       "Spanish-English": "Espanhol para falantes de inglês",
       "Custom-Dictionary":
         "Um dicionário personalizado só para você!",
-      text:
-        "*Embora exista a opção de mudar para um " +
-        "dicionário Espanhol-Inglês (800 entradas), este é " +
-        "um dicionário muito pequeno cujo objetivo é " +
-        "ilustrar o conceito para falantes de inglês.",
+      text: "*Embora exista a opção de mudar para um dicionário Espanhol-Inglês (800 entradas), este é um dicionário muito pequeno cujo objetivo é ilustrar o conceito para falantes de inglês.",
     },
     colorSchemeTitle: "Esquema de Cores",
     contactUs: {
@@ -225,18 +185,14 @@ export default {
     verification: {
       heading: "E-mail enviado",
       subHeading: "Verifique seu e-mail",
-      text:
-        "Enviamos a você um e-mail com um link de verificação. Verifique seu " +
-        "e-mail e retorne ao aplicativo para entrar!",
+      text: "Enviamos a você um e-mail com um link de verificação. Verifique seu e-mail e retorne ao aplicativo para entrar!",
       returnToLogin: "Retornar à página de login",
     },
     passwordReset: {
       heading: "E-mail Enviado",
       subHeading:
         "Use o link no e-mail para redefinir sua senha",
-      text:
-        "Enviamos a você um link que você pode usar para redefinir sua senha " +
-        "através do nosso site!",
+      text: "Enviamos a você um link que você pode usar para redefinir sua senha através do nosso site!",
       returnToLogin: "Retornar à página de login",
     },
     lostPassword: {
@@ -259,21 +215,17 @@ export default {
       email: {
         heading: "Qual é o seu email?",
         subHeading:
-          "Precisaremos de um endereço de e-mail para " +
-          "configurar sua conta",
+          "Precisaremos de um endereço de e-mail para configurar sua conta",
       },
       password: {
         heading: "Crie uma senha",
         subHeading:
-          "Crie uma senha com pelo menos 8 caracteres." +
-          "Sua senha deve conter pelo menos um dígito " +
-          "(0-9), uma letra e um caractere especial (!@#$%¨&*())",
+          "Crie uma senha com pelo menos 8 caracteres.Sua senha deve conter pelo menos um dígito (0-9), uma letra e um caractere especial (!@#$%¨&*())",
       },
       code: {
         heading: "Digite seu código de verificação",
         subHeading:
-          "Enviamos um código de 6 dígitos para seu e-mail." +
-          "Por favor insira seu código abaixo para confirmar seu endereço de e-mail",
+          "Enviamos um código de 6 dígitos para seu e-mail. Por favor insira seu código abaixo para confirmar seu endereço de e-mail",
         verify: "Verificar",
         resend: "Reenviar código de verificação",
         cancel: "Cancelar",
@@ -281,8 +233,7 @@ export default {
       finish: {
         heading: "Bem-vindo!",
         subHeading:
-          "Sua conta foi verificada. " +
-          "Retorne à nossa página inicial para fazer login",
+          "Sua conta foi verificada. Retorne à nossa página inicial para fazer login",
         buttonTitle: "Entrar",
       },
     },
@@ -291,16 +242,13 @@ export default {
     contactUs: {
       title: "Enviar E-mail",
       modalMessage:
-        "Entre em contato conosco por e-mail e nós responderemos o mais breve " +
-        "possível",
+        "Entre em contato conosco por e-mail e nós responderemos o mais breve possível",
       cancel: "Cancelar",
     },
     signUp: {
       title: "Sair do processo",
       modalMessage:
-        "Tem certeza de que deseja encerrar o processo? \n\n" +
-        "Se você sair, não poderá concluir o processo de " +
-        "inscrição novamente por 10 minutos",
+        "Tem certeza de que deseja encerrar o processo? \n\nSe você sair, não poderá concluir o processo de inscrição novamente por 10 minutos",
       cancel: "Ficar aqui",
     },
     logOut: {
@@ -316,28 +264,17 @@ export default {
     },
     dailyGoalInfo: {
       modalMessage:
-        "Aqui você pode definir metas diárias de tempo, novas palavras " +
-        "e etapas. Uma notificação aparecerá se uma destas " +
-        "condições foram satisfeitas. Você pode deixar uma meta " +
-        "em branco e não será considerado.",
+        "Aqui você pode definir metas diárias de tempo, novas palavras e etapas. Uma notificação aparecerá se uma destas condições foram satisfeitas. Você pode deixar uma meta em branco e não será considerado.",
       cancel: "Fechar",
     },
     collectionInfo: {
       modalMessage:
-        "Aqui tem sua lista de coleção. Cada vez que você errar " +
-        "uma palavra, ela será adicionada à sua coleção. " +
-        "Depois, cada vez que você acertar, mais " +
-        "tempo levará até que você a veja novamente. Esse método é " +
-        "chamado de “repetição espaçada estruturada” e é uma " +
-        "poderosa ferramenta de aprendizagem.",
+        "Aqui tem sua lista de coleção. Cada vez que você errar uma palavra, ela será adicionada à sua coleção. Depois, cada vez que você acertar, mais tempo levará até que você a veja novamente. Esse método é chamado de “repetição espaçada estruturada” e é uma poderosa ferramenta de aprendizagem.",
       cancel: "Fechar",
     },
     welcome: {
       modalMessage:
-        "Bem-vindo ao Link-King! \n" +
-        "Vamos começar com um pequeno teste para avaliar seu nível. " +
-        "Digite as palavras ou frases curtas em portugues. \n" +
-        "(não se preocupe com os diacráticos, eles são ignorados)",
+        "Bem-vindo ao Link-King! \nVamos começar com um pequeno teste para avaliar seu nível. Digite as palavras ou frases curtas em portugues. \n (não se preocupe com os diacráticos, eles são ignorados)",
       cancel: "Fechar",
     },
   },
