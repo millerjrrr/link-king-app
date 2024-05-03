@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { getStatsState } from "../../store/stats";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { fetchStatsInfo } from "../functions/fetchStatsInfo";
 import StatsPanel from "./StatsPanel";
 import BusyWrapper from "../../ui/Loader/BusyWrapper";
@@ -12,9 +12,9 @@ import LinkKingIcon from "./LinkKingIcon";
 import RatingCircle from "./RatingCircle";
 import FlagBookImage from "./FlagBookImage";
 import BackButton from "../../ui/Buttons/BackButton";
-import ShareButton from "../../ui/Buttons/ShareButton";
+import ShareButton from "./ShareButton";
 import CongratsAndName from "./CongratsAndName";
-import ChallengeFriends from "./ChallengeFriends";
+import ViewShot from "react-native-view-shot";
 
 const ProgressScreen = () => {
   const { busy } = useSelector(getStatsState);
@@ -38,17 +38,25 @@ const ProgressScreen = () => {
     return unsubscribe;
   }, [navigation]);
 
+  const statsPanelRef = useRef();
+
   return (
     <BusyWrapper {...{ busy }}>
       <BackButton />
-      <ShareButton />
-      <StatsPanel>
-        <LinkKingIcon />
-        <FlagBookImage />
-        <CongratsAndName />
-        <RatingCircle />
-        <ChallengeFriends />
-      </StatsPanel>
+      <ShareButton shareRef={statsPanelRef} />
+      <ViewShot
+        {...{
+          ref: statsPanelRef,
+          style: { flex: 1, width: "100%" },
+        }}
+      >
+        <StatsPanel>
+          <LinkKingIcon />
+          <FlagBookImage />
+          <CongratsAndName />
+          <RatingCircle />
+        </StatsPanel>
+      </ViewShot>
     </BusyWrapper>
   );
 };

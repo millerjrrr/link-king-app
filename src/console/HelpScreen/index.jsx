@@ -52,6 +52,7 @@ const HelpScreen = () => {
   const { heading } = appTextSource[appLang].console.help;
 
   const color = colors[colorScheme].CONTRAST[1];
+  const backgroundColor = colors.dark.PRIMARY;
   const video = useRef(null);
 
   const demos = {
@@ -69,8 +70,9 @@ const HelpScreen = () => {
             {...{
               ref: video,
               style: {
+                backgroundColor,
                 height: 500,
-                width: 240,
+                width: 230,
                 borderRadius: 20,
                 shadowColor: color,
                 borderColor: color,

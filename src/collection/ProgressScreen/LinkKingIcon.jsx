@@ -15,7 +15,7 @@ const LinkKingIcon = () => {
         resizeMode: "contain",
         tintColor,
         style: {
-          height: 60,
+          height: 100,
         },
       }}
     />

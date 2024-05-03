@@ -18,7 +18,7 @@ const CongratsAndName = () => {
     username,
   } = useSelector(getStatsState);
 
-  const { congratulations, textA, textB } =
+  const { congratulations, collected } =
     appTextSource[appLang].collection.progressScreen;
   return (
     <>
@@ -41,6 +41,15 @@ const CongratsAndName = () => {
         }}
       >
         {username.split(" ")[0]}
+      </Text>
+      <Text
+        style={{
+          fontSize: 20,
+          textAlign: "center",
+          color,
+        }}
+      >
+        {collected.A + collectedWords + collected.B}
       </Text>
     </>
   );

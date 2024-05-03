@@ -2,7 +2,7 @@
   "expo": {
     "name": "Link King",
     "slug": "LinkKingApp",
-    "version": "1.0.12",
+    "version": "1.0.13",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -13,7 +13,7 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "buildNumber": "7",
+      "buildNumber": "1",
       "supportsTablet": false,
       "bundleIdentifier": "com.linkoking.app",
       "privacyManifests": {
@@ -40,7 +40,7 @@
     "android": {
       "icon": "./assets/adaptive-icon.png",
       "package": "com.linkoking.app",
-      "versionCode": 15,
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon-android.png",
         "backgroundColor": "#000000"

@@ -88,19 +88,21 @@ export default {
     today: "hoje",
     tomorrow: "amanhã",
     statistics: {
-      heading: "Divisão de Níveis",
+      heading: "Estatisticas",
       description:
         'O "Nível" de uma palavra representa quantas vezes você acertou a palavra. Depois de coletar palavras em diferentes níveis, esta página mostrará quantas palavras você tem em cada nível.',
     },
     progressScreen: {
       congratulations: "Parabéns!",
+      collected: {
+        A: "Você collectou ",
+        B: " novas palavras!",
+      },
       textA: "Sua ",
       textB: " classificação de desempenho é:",
       challenge: {
-        A: "Você pode vencer esse ",
-        B: " pontuação de vocabulário? Baixe nosso aplicativo e faça nosso ",
-        C: "TESTE GRATUITO DE 3 MINUTOS",
-        D: " para descobrir!",
+        A: "Baixe esse applicativo para avaliar seu vocabulário ",
+        B: " e descubra se você consegue bater minha pontuação!",
       },
     },
     deleteScreen: {

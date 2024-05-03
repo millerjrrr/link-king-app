@@ -88,19 +88,21 @@ export default {
     today: "today",
     tomorrow: "tomorrow",
     statistics: {
-      heading: "Levels Breakdown",
+      heading: "Statistics",
       description:
         'The "Level" of a word represents how many times you got that word right. After you\'ve collected words at different levels, this page will show a breakdown of how many words you have at each level.',
     },
     progressScreen: {
       congratulations: "Congratulations!",
+      collected: {
+        A: "You've collected ",
+        B: " new words!",
+      },
       textA: "Your ",
       textB: " performance rating is:",
       challenge: {
-        A: "Think you can beat this ",
-        B: " vocabulary score? Download our app and take our ",
-        C: "FREE 3 MINUTE TEST",
-        D: " to find out!",
+        A: "Download this ",
+        B: " fluency app and see if you can beat my score!",
       },
     },
     deleteScreen: {
