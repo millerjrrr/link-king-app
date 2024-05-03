@@ -4,10 +4,10 @@ import {
   TransitionPresets,
 } from "@react-navigation/stack";
 import Collection from "../../views/Collection";
-import LevelBreakdownScreen from "../../collection/LevelBreakdownScreen";
 import StatsScreen from "../../collection/StatsScreen";
 import DeleteScreen from "../../collection/DeleteScreen";
 import DictionarySelectionScreen from "../../options/DictionarySelectionScreen";
+import ProgressScreen from "../../collection/ProgressScreen";
 
 const CollectionStack = createStackNavigator();
 
@@ -28,12 +28,12 @@ const CollectionNavigator = () => {
         component={DeleteScreen}
       />
       <CollectionStack.Screen
-        name="LevelBreakdown"
-        component={LevelBreakdownScreen}
-      />
-      <CollectionStack.Screen
         name="StatsScreen"
         component={StatsScreen}
+      />
+      <CollectionStack.Screen
+        name="ProgressScreen"
+        component={ProgressScreen}
       />
       <CollectionStack.Screen
         name="DictionarySelectionScreen"

@@ -29,7 +29,7 @@ const UseEffects = () => {
     if (showSolution) {
       const showResultsSummary = () => {
         navigation.navigate("Collection");
-        navigation.navigate("StatsScreen");
+        navigation.navigate("ProgressScreen");
       };
 
       const timeGoalMet =

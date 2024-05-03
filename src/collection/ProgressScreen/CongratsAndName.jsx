@@ -5,18 +5,21 @@ import { getStatsState } from "../../store/stats";
 import { getSettingsState } from "../../store/settings";
 import appTextSource from "../../utils/appTextSource";
 
-const TitleAndSub = () => {
+const CongratsAndName = () => {
   const { colorScheme, golden, appLang } = useSelector(
     getSettingsState,
   );
   const color = colors[colorScheme].CONTRAST[golden];
+  const nameColor =
+    colors[colorScheme].CONTRAST[(golden + 1) % 2];
 
   const {
     userGameData: { collectedWords },
+    username,
   } = useSelector(getStatsState);
 
   const { congratulations, textA, textB } =
-    appTextSource[appLang].collection.statsScreen;
+    appTextSource[appLang].collection.progressScreen;
   return (
     <>
       <Text
@@ -31,16 +34,16 @@ const TitleAndSub = () => {
       </Text>
       <Text
         style={{
-          fontSize: 20,
-          margin: 5,
+          fontWeight: "bold",
+          fontSize: 30,
           textAlign: "center",
-          color,
+          color: nameColor,
         }}
       >
-        {textA + " " + collectedWords + " " + textB}
+        {username.split(" ")[0]}
       </Text>
     </>
   );
 };
 
-export default TitleAndSub;
+export default CongratsAndName;

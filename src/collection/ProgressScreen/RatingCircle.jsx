@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { getStatsState } from "../../store/stats";
 import { getSettingsState } from "../../store/settings";
 import appTextSource from "../../utils/appTextSource";
+import { getConsoleState } from "../../store/console";
 
 const RatingCircle = () => {
   const { colorScheme, golden, appLang } = useSelector(
@@ -15,9 +16,10 @@ const RatingCircle = () => {
   const {
     userGameData: { rating },
   } = useSelector(getStatsState);
+  const { dictionary } = useSelector(getConsoleState);
 
-  const { textC } =
-    appTextSource[appLang].collection.statsScreen;
+  const { textA, textB } =
+    appTextSource[appLang].collection.progressScreen;
   return (
     <>
       <Text
@@ -28,9 +30,9 @@ const RatingCircle = () => {
           textAlign: "center",
         }}
       >
-        {textC}
+        {textA + dictionary + textB}
       </Text>
-      <View style={{ paddingVertical: 20 }}>
+      <View style={{ paddingVertical: 15 }}>
         <CircularProgress
           value={rating}
           radius={100}

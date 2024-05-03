@@ -74,11 +74,11 @@ export default {
       },
     },
     statsMessages: {
-      "basket-fill": "New words collected today",
+      "basket-fill": "New Words Collected",
       target: "Remaining words due today",
-      "foot-print": "Steps taken today",
-      "clock-outline": "Time playing today",
-      "trophy-variant": "Current streak",
+      "foot-print": "Steps Taken",
+      "clock-outline": "Time Playing",
+      "trophy-variant": "Streak",
     },
   },
   collection: {
@@ -87,16 +87,21 @@ export default {
     noWords: "No words containing these letters",
     today: "today",
     tomorrow: "tomorrow",
-    levelsBreakdown: {
+    statistics: {
       heading: "Levels Breakdown",
       description:
         'The "Level" of a word represents how many times you got that word right. After you\'ve collected words at different levels, this page will show a breakdown of how many words you have at each level.',
     },
-    statsScreen: {
+    progressScreen: {
       congratulations: "Congratulations!",
-      textA: "You've collected",
-      textB: "new words!",
-      textC: "Your performance rating is",
+      textA: "Your ",
+      textB: " performance rating is:",
+      challenge: {
+        A: "Think you can beat this ",
+        B: " vocabulary score? Download our app and take our ",
+        C: "FREE 3 MINUTE TEST",
+        D: " to find out!",
+      },
     },
     deleteScreen: {
       heading: "Delete One",

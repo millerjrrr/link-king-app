@@ -1,5 +1,5 @@
 import { View, StyleSheet } from "react-native";
-import GetLevelsBreakdownButton from "./GetLevelsBreakdownButton";
+import CollectionScreenButton from "./CollectionScreenButton";
 import CollectionSearchbar from "./CollectionSearchbar";
 import TicketsCount from "./TicketsCount";
 import { LinearGradient } from "expo-linear-gradient";
@@ -35,18 +35,18 @@ const SearchBarContainer = ({ navigation }) => {
       >
         <TicketsCount />
         <View style={styles.searchBarContainer}>
-          <GetLevelsBreakdownButton
+          <CollectionScreenButton
             onPress={() =>
-              navigation.navigate("LevelBreakdown")
+              navigation.navigate("StatsScreen")
             }
             iconName={"barschart"}
           />
           <CollectionSearchbar />
-          <GetLevelsBreakdownButton
+          <CollectionScreenButton
             onPress={() =>
-              navigation.navigate("StatsScreen")
+              navigation.navigate("ProgressScreen")
             }
-            iconName={"linechart"}
+            iconName={"sharealt"}
           />
         </View>
       </FadeBackgroundView>

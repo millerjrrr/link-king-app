@@ -74,11 +74,11 @@ export default {
       },
     },
     statsMessages: {
-      "basket-fill": "Novas palavras coletadas hoje",
+      "basket-fill": "Novas Palavras Coletadas",
       target: "Palavras restantes para hoje",
-      "foot-print": "Avansos de hoje",
-      "clock-outline": "Tempo de estudo hoje",
-      "trophy-variant": "Sem erros",
+      "foot-print": "Avansos",
+      "clock-outline": "Tempo de Estudo",
+      "trophy-variant": "Sem Erros",
     },
   },
   collection: {
@@ -87,16 +87,21 @@ export default {
     noWords: "Nenhuma palavra contendo essas letras",
     today: "hoje",
     tomorrow: "amanhã",
-    levelsBreakdown: {
+    statistics: {
       heading: "Divisão de Níveis",
       description:
         'O "Nível" de uma palavra representa quantas vezes você acertou a palavra. Depois de coletar palavras em diferentes níveis, esta página mostrará quantas palavras você tem em cada nível.',
     },
-    statsScreen: {
+    progressScreen: {
       congratulations: "Parabéns!",
-      textA: "Você coletou",
-      textB: "novas palavras!",
-      textC: "Sua classificação de desempenho é",
+      textA: "Sua ",
+      textB: " classificação de desempenho é:",
+      challenge: {
+        A: "Você pode vencer esse ",
+        B: " pontuação de vocabulário? Baixe nosso aplicativo e faça nosso ",
+        C: "TESTE GRATUITO DE 3 MINUTOS",
+        D: " para descobrir!",
+      },
     },
     deleteScreen: {
       heading: "Excluir uma Palavra",

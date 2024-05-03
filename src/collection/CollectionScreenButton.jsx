@@ -5,10 +5,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { getSettingsState } from "../store/settings";
 import appShadow from "../utils/appShadow";
 
-const GetLevelsBreakdownButton = ({
-  onPress,
-  iconName,
-}) => {
+const CollectionScreenButton = ({ onPress, iconName }) => {
   const { colorScheme, golden } = useSelector(
     getSettingsState,
   );
@@ -51,4 +48,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default GetLevelsBreakdownButton;
+export default CollectionScreenButton;

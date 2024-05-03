@@ -24,6 +24,7 @@ const initialState = {
     timePlayingToday: 0,
     timer: true,
   },
+  username: "anonymous",
   busy: false,
   page: true,
 };
@@ -38,6 +39,9 @@ const slice = createSlice({
     updateUserGameData(statsState, { payload }) {
       statsState.userGameData = payload;
     },
+    updateUserName(statsState, { payload }) {
+      statsState.username = payload;
+    },
     updateBusyState(statsState, { payload }) {
       statsState.busy = payload;
     },
@@ -50,6 +54,7 @@ const slice = createSlice({
 export const {
   updateLevelBreakdown,
   updateUserGameData,
+  updateUserName,
   updateBusyState,
   updatePageState,
 } = slice.actions;

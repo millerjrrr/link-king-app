@@ -8,16 +8,24 @@ const TextBlock = styled(Text)`
   font-size: ${(props) => props.size}px;
   color: ${(props) => props.color};
   text-align: center;
-  padding: 15px;
+  padding: ${(props) => props.padding}px;
+  font-weight: ${(props) => props.weight};
 `;
-const AppText = ({ size = 30, children }) => {
+const AppText = ({
+  size = 30,
+  children,
+  weight = "normal",
+  padding = 0,
+}) => {
   const { colorScheme, golden } = useSelector(
     getSettingsState,
   );
   const color = colors[colorScheme].CONTRAST[golden];
 
   return (
-    <TextBlock {...{ size, color }}>{children}</TextBlock>
+    <TextBlock {...{ size, color, weight, padding }}>
+      {children}
+    </TextBlock>
   );
 };
 

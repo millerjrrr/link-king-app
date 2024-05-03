@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { getStatsState } from "../../store/stats";
 import { timeInStyle } from "../functions/timeInStyle";
 import StatsIcon from "../../console/StatsIcon";
+import { getSettingsState } from "../../store/settings";
+import colors from "../../utils/colors";
 
 const StatsContainer = ({ size = 22 }) => {
   const {
@@ -14,8 +16,21 @@ const StatsContainer = ({ size = 22 }) => {
     },
   } = useSelector(getStatsState);
 
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
+
+  const color = colors[colorScheme].CONTRAST[golden];
+
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        styles.container,
+        {
+          borderColor: color,
+        },
+      ]}
+    >
       <View style={styles.rowContainer}>
         <StatsIcon
           {...{
@@ -31,6 +46,8 @@ const StatsContainer = ({ size = 22 }) => {
             size,
           }}
         />
+      </View>
+      <View style={styles.rowContainer}>
         <StatsIcon
           {...{
             name: "foot-print",
@@ -38,8 +55,6 @@ const StatsContainer = ({ size = 22 }) => {
             size,
           }}
         />
-      </View>
-      <View style={styles.rowContainer}>
         <StatsIcon
           {...{
             name: "trophy-variant",
@@ -54,10 +69,16 @@ const StatsContainer = ({ size = 22 }) => {
 
 const styles = StyleSheet.create({
   container: {
+    margin: 15,
+    padding: 10,
     alignItems: "center",
+    borderRadius: 10,
+    borderWidth: 1,
   },
   rowContainer: {
+    width: "100%",
     flexDirection: "row",
+    justifyContent: "space-between",
     paddingVertical: 5,
   },
 });

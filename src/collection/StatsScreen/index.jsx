@@ -1,22 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
 import { getStatsState } from "../../store/stats";
-import { useEffect } from "react";
 import { fetchStatsInfo } from "../functions/fetchStatsInfo";
-import StatsPanel from "./StatsPanel";
-import BusyWrapper from "../../ui/Loader/BusyWrapper";
-import {
-  StackActions,
-  useNavigation,
-} from "@react-navigation/native";
-import LinkKingIcon from "./LinkKingIcon";
-import TitleAndSub from "./TitleAndSub";
-import RatingCircle from "./RatingCircle";
+import { useEffect } from "react";
+import LevelHistogram from "./LevelHistogram";
+import PopUpContainer from "../../components/containers/PopUpContainer";
+import Loader from "../../ui/Loader";
+import { getSettingsState } from "../../store/settings";
+import appTextSource from "../../utils/appTextSource";
+import AppText from "../../ui/AppText";
 import StatsContainer from "./StatsContainer";
-import FlagBookImage from "./FlagBookImage";
-import BackButton from "../../ui/Buttons/BackButton";
 
 const StatsScreen = () => {
-  const { busy } = useSelector(getStatsState);
+  const { levelBreakdown, busy } =
+    useSelector(getStatsState);
+  const { appLang } = useSelector(getSettingsState);
 
   const dispatch = useDispatch();
 
@@ -24,30 +21,29 @@ const StatsScreen = () => {
     fetchStatsInfo(dispatch);
   }, []);
 
-  //close this screen every time we change bottom tab
-  const navigation = useNavigation();
-  useEffect(() => {
-    const closeStackScreens = () => {
-      navigation.dispatch(StackActions.popToTop());
-    };
-    const unsubscribe = navigation.addListener(
-      "blur",
-      closeStackScreens,
-    );
-    return unsubscribe;
-  }, [navigation]);
+  const showHist = levelBreakdown.length > 2;
+
+  const { heading, description } =
+    appTextSource[appLang].collection.statistics;
 
   return (
-    <BusyWrapper {...{ busy }}>
-      <BackButton />
-      <StatsPanel>
-        <LinkKingIcon />
-        <FlagBookImage />
-        <TitleAndSub />
-        <RatingCircle />
-        <StatsContainer />
-      </StatsPanel>
-    </BusyWrapper>
+    <PopUpContainer {...{ heading }}>
+      {showHist ? (
+        busy ? (
+          <Loader />
+        ) : (
+          <LevelHistogram
+            lbd={levelBreakdown}
+            histHeight={300}
+          />
+        )
+      ) : (
+        <AppText {...{ padding: 15 }}>
+          {description}
+        </AppText>
+      )}
+      <StatsContainer />
+    </PopUpContainer>
   );
 };
 
