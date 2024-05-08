@@ -18,6 +18,7 @@ import { updateSettings } from "../store/settings";
 import { StatusBar } from "react-native";
 import { authErrorHandler } from "../errors/authErrorHandler";
 import * as Localization from "expo-localization";
+import logOut from "../utils/logOut";
 
 const AppNavigatorUseEffects = () => {
   const { refresh } = useSelector(getAuthState);
@@ -64,7 +65,7 @@ const AppNavigatorUseEffects = () => {
           dispatch(updateConnectedState(false));
         else {
           authErrorHandler(error, dispatch);
-          removeFromAsyncStorage("auth-token");
+          logOut(dispatch);
         }
       }
     };

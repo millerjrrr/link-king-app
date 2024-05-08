@@ -1,21 +1,13 @@
 import { Linking, StatusBar } from "react-native";
-import colors from "../utils/colors";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getSettingsState,
-  updateSettings,
-} from "../store/settings";
+import { getSettingsState } from "../store/settings";
 import { useState } from "react";
 import OptionsMenuItemContainer from "./components/OptionsMenuItemContainer";
 import { updateNotification } from "../store/notification";
-import {
-  updateLoggedInState,
-  updateToken,
-} from "../store/auth";
-import { removeFromAsyncStorage } from "../utils/asyncStorage";
 import appTextSource from "./../utils/appTextSource/index";
 import AppModal from "../ui/AppModal";
 import MenuItemLink from "./components/MenuItemLink";
+import logOut from "../utils/logOut";
 
 const ModalTypeMenuItem = ({ optionName }) => {
   const { appLang } = useSelector(getSettingsState);
@@ -45,13 +37,8 @@ const ModalTypeMenuItem = ({ optionName }) => {
     );
   };
 
-  const logOut = async () => {
-    dispatch(updateToken(""));
-    dispatch(updateLoggedInState(false));
-    dispatch(updateSettings({ colorScheme: "dark" }));
-    removeFromAsyncStorage("auth-token");
-    removeFromAsyncStorage("color-scheme");
-    StatusBar.setBarStyle(colors.dark.STATUSBAR);
+  const logOutNow = async () => {
+    logOut(dispatch);
     setIsModalVisible(false);
   };
 
@@ -64,7 +51,7 @@ const ModalTypeMenuItem = ({ optionName }) => {
       iconName = "email-outline";
       break;
     case "logOut":
-      onPress = logOut;
+      onPress = logOutNow;
       iconName = "logout";
       break;
   }
