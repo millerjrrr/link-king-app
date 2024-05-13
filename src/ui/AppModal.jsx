@@ -6,6 +6,8 @@ import styled from "styled-components";
 import Modal from "react-native-modal";
 import appTextSource from "./../utils/appTextSource/index";
 import appShadow from "./../utils/appShadow";
+import { useRef } from "react";
+import YoutubePlayer from "react-native-youtube-iframe";
 
 const ModalContainer = styled(View)`
   background-color: ${(props) => props.backgroundColor};
@@ -48,6 +50,7 @@ const AppModal = ({
   onBackdropPress,
   modalName,
   onPress,
+  videoId,
   info,
 }) => {
   const { colorScheme, golden, appLang } = useSelector(
@@ -70,6 +73,25 @@ const AppModal = ({
           },
         }}
       >
+        {videoId ? (
+          <View
+            style={{
+              borderRadius: 50,
+              width: "100%",
+              overflow: "hidden",
+            }}
+          >
+            <YoutubePlayer
+              {...{
+                height: 195,
+                width: "100%",
+                play: true,
+                videoId,
+                webViewStyle: { margin: 10, marginTop: 15 },
+              }}
+            />
+          </View>
+        ) : null}
         <ModalText {...{ color }}>{modalMessage}</ModalText>
         {info ? (
           <Button

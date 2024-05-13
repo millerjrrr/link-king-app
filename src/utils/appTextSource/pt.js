@@ -281,7 +281,7 @@ export default {
     },
     welcome: {
       modalMessage:
-        "Bem-vindo ao Link-King! \nVamos começar com um pequeno teste para avaliar seu nível. Digite as palavras ou frases curtas em portugues. \n (não se preocupe com os diacráticos, eles são ignorados)",
+        "Bem-vindo ao Link-King!\nO vídeo acima fala um pouco sobre o conceito do aplicativo. Se você já conhece seu funcionamento, pode pular o vídeo e ir direto para o console!",
       cancel: "Fechar",
     },
   },

@@ -98,6 +98,8 @@ const Console = ({ navigation }) => {
           {...{
             isVisible: isModalVisible,
             modalName: "welcome",
+            videoId:
+              appLang === "pt" ? "lfc3MTUbbWU" : false,
             onPress: () => setIsModalVisible(false),
             info: true,
           }}
