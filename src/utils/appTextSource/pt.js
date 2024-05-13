@@ -30,7 +30,7 @@ export default {
       gameDescription: {
         title: "O Jogo",
         description:
-          "Este jogo de idiomas, usa repetição como metodo de aprendezagem de novas palavras. O aplicativo ira avaliar o seu nível de conhecimento e apresentará as palavras mais comuns que você provavelmente ainda não conhece. Nossa filosofia é expandir o vocabulário do aluno o mais rápido possível. ",
+          "Pressione o botão acima para visitar nosso canal no YouTube e saber mais sobre nosso jogo de aprendizagem",
       },
       giveUp: {
         title: "Desistir!",
