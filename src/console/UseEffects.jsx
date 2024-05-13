@@ -28,7 +28,6 @@ const UseEffects = () => {
   useEffect(() => {
     if (showSolution) {
       const showResultsSummary = () => {
-        navigation.navigate("Collection");
         navigation.navigate("ProgressScreen");
       };
 
