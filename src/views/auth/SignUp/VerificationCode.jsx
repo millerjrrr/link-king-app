@@ -9,7 +9,6 @@ import { getSettingsState } from "../../../store/settings";
 import appTextSource from "../../../utils/appTextSource";
 import {
   getAuthState,
-  refreshPage,
   updateName,
   updateUnverifiedUserId,
 } from "../../../store/auth";
@@ -73,15 +72,29 @@ const VerificationCode = () => {
     actions.setSubmitting(false);
   };
 
-  const { heading, subHeading, verify, cancel, resend } =
-    appTextSource[appLang].auth.signUp.code;
+  const {
+    heading,
+    subHeading,
+    subHeading2,
+    verify,
+    cancel,
+  } = appTextSource[appLang].auth.signUp.code;
 
   const [isModalVisible, setIsModalVisible] =
     useState(false);
 
+  const { formEmail } = useSelector(getAuthState);
+
+  const newSubHeading =
+    subHeading + "(" + formEmail + "). " + subHeading2;
+
   return (
     <AuthFormContainer
-      {...{ heading, subHeading, nologo: true }}
+      {...{
+        heading,
+        subHeading: newSubHeading,
+        nologo: true,
+      }}
     >
       <Form
         {...{ onSubmit, initialValues, validationSchema }}

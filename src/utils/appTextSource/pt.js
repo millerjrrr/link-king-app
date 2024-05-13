@@ -232,7 +232,9 @@ export default {
       code: {
         heading: "Digite seu código de verificação",
         subHeading:
-          "Enviamos um código de 6 dígitos para seu e-mail. Por favor insira seu código abaixo para confirmar seu endereço de e-mail",
+          "Enviamos um código de 6 dígitos para seu e-mail.",
+        subHeading2:
+          "Por favor insira seu código abaixo para confirmar seu endereço de e-mail",
         verify: "Verificar",
         resend: "Reenviar código de verificação",
         cancel: "Cancelar",

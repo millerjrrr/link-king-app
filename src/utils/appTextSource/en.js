@@ -230,8 +230,9 @@ export default {
       },
       code: {
         heading: "Enter your verification code",
-        subHeading:
-          "We sent a 6 digit code to your email.Please enter your code below to confirm your email address",
+        subHeading: "We sent a 6 digit code to your email.",
+        subHeading2:
+          "Please enter your code below to confirm your email address",
         verify: "Verify",
         resend: "Resend verification code",
         cancel: "Cancel",
