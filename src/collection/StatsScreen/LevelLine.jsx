@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import colors from "../../utils/colors";
 import { getSettingsState } from "../../store/settings";
 import appShadow from "../../utils/appShadow";
+import AppText from "../../ui/AppText";
 
 const LevelLine = ({
   level,
@@ -41,15 +42,7 @@ const LevelLine = ({
           touched ? styles.touched : null,
         ]}
       />
-      <Text
-        style={{
-          color,
-          fontSize: 25,
-          textAlign: "center",
-        }}
-      >
-        {level}
-      </Text>
+      <AppText>{level}</AppText>
     </TouchableOpacity>
   );
 };

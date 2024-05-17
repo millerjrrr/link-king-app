@@ -1,8 +1,9 @@
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import { useSelector } from "react-redux";
 import colors from "../../utils/colors";
 import { getSettingsState } from "../../store/settings";
 import appShadow from "../../utils/appShadow";
+import AppText from "../../ui/AppText";
 
 const SolutionItem = ({ solution }) => {
   const { colorScheme, golden } = useSelector(
@@ -25,15 +26,7 @@ const SolutionItem = ({ solution }) => {
         ...appShadow(1),
       }}
     >
-      <Text
-        style={{
-          textAlign: "center",
-          color,
-          fontSize: 25,
-        }}
-      >
-        {solution}
-      </Text>
+      <AppText>{solution}</AppText>
     </View>
   );
 };

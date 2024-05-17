@@ -1,15 +1,7 @@
-import { Text, StyleSheet } from "react-native";
+import AppText from "../../../ui/AppText";
 
 const DeleteAccountScreen = (props) => {
-  return (
-    <Text style={{ color: "white", fontSize: 30 }}>
-      DeleteAccountScreen
-    </Text>
-  );
+  return <AppText>DeleteAccountScreen</AppText>;
 };
-
-const styles = StyleSheet.create({
-  container: {},
-});
 
 export default DeleteAccountScreen;

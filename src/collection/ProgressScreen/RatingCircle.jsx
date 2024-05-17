@@ -6,6 +6,7 @@ import { getStatsState } from "../../store/stats";
 import { getSettingsState } from "../../store/settings";
 import appTextSource from "../../utils/appTextSource";
 import { getConsoleState } from "../../store/console";
+import AppText from "../../ui/AppText";
 
 const RatingCircle = () => {
   const { colorScheme, golden, appLang } = useSelector(
@@ -22,16 +23,15 @@ const RatingCircle = () => {
     appTextSource[appLang].collection.progressScreen;
   return (
     <>
-      <Text
+      <AppText
         style={{
           fontSize: 20,
           paddingTop: 10,
           color: green,
-          textAlign: "center",
         }}
       >
         {textA + dictionary + textB}
-      </Text>
+      </AppText>
       <View style={{ paddingVertical: 15 }}>
         <CircularProgress
           value={rating}

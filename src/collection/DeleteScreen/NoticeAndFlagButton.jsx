@@ -1,18 +1,19 @@
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import { useSelector } from "react-redux";
 import colors from "../../utils/colors";
 import RedSafetyButton from "../../ui/Buttons/RedSafetyButton";
 import { getSettingsState } from "../../store/settings";
 import appTextSource from "../../utils/appTextSource";
+import AppText from "../../ui/AppText";
 
 const NoticeAndFlagButton = ({
   completeFunction,
   setElapsedTime,
 }) => {
-  const { colorScheme, golden, appLang } = useSelector(
+  const { colorScheme, appLang } = useSelector(
     getSettingsState,
   );
-  const color = colors[colorScheme].CONTRAST[golden];
+  const color = colors[colorScheme].RED;
 
   const { textA, textB } =
     appTextSource[appLang].collection.deleteScreen;
@@ -20,24 +21,15 @@ const NoticeAndFlagButton = ({
   return (
     <>
       <View style={{ padding: 15 }}>
-        <Text
-          style={{
-            color,
-            fontSize: 25,
-            textAlign: "center",
-          }}
-        >
-          {textA}
-        </Text>
+        <AppText>{textA}</AppText>
       </View>
-      <Text
+      <AppText
         style={{
-          color: colors[colorScheme].RED,
-          textAlign: "center",
+          color,
         }}
       >
         {textB}
-      </Text>
+      </AppText>
       <RedSafetyButton
         {...{
           setElapsedTime,

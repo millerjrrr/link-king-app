@@ -1,38 +1,18 @@
-import { Text } from "react-native";
 import { useSelector } from "react-redux";
-import colors from "../../utils/colors";
 import { getSettingsState } from "../../store/settings";
 import appTextSource from "../../utils/appTextSource";
+import AppText from "../../ui/AppText";
 
 const ResponseInformation = ({ status }) => {
-  const { colorScheme, golden, appLang } = useSelector(
-    getSettingsState,
-  );
-  const color = colors[colorScheme].CONTRAST[golden];
+  const { appLang } = useSelector(getSettingsState);
 
   const { resA, resB } =
     appTextSource[appLang].collection.deleteScreen;
 
   return status ? (
-    <Text
-      style={{
-        color,
-        fontSize: 30,
-        textAlign: "center",
-      }}
-    >
-      {resA}
-    </Text>
+    <AppText>{resA}</AppText>
   ) : (
-    <Text
-      style={{
-        color,
-        fontSize: 30,
-        textAlign: "center",
-      }}
-    >
-      {resB}
-    </Text>
+    <AppText>{resB}</AppText>
   );
 };
 

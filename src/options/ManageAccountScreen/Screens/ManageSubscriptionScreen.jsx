@@ -1,8 +1,8 @@
-import { Text, StyleSheet } from "react-native";
 import PopUpContainer from "../../../components/containers/PopUpContainer";
 import appTextSource from "../../../utils/appTextSource";
 import { useSelector } from "react-redux";
 import { getSettingsState } from "../../../store/settings";
+import AppText from "../../../ui/AppText";
 
 const ManageSubscriptionScreen = (props) => {
   const { appLang } = useSelector(getSettingsState);
@@ -12,15 +12,8 @@ const ManageSubscriptionScreen = (props) => {
 
   return (
     <PopUpContainer {...{ heading, blockPopToTop: true }}>
-      <Text style={{ color: "white", fontSize: 30 }}>
-        ManageSubscriptionScreen
-      </Text>
+      <AppText>ManageSubscriptionScreen</AppText>
     </PopUpContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {},
-});
-
 export default ManageSubscriptionScreen;

@@ -14,6 +14,7 @@ import {
 import BackButton from "../../ui/Buttons/BackButton";
 import { LinearGradient } from "expo-linear-gradient";
 import styled from "styled-components";
+import AppText from "../../ui/AppText";
 
 export const FadeBackgroundView = styled(LinearGradient)`
   position: absolute;
@@ -69,9 +70,7 @@ const PopUpContainer = ({
           tintColor: color,
         }}
       />
-      <Text style={[styles.heading, { color }]}>
-        {heading}
-      </Text>
+      <AppText style={styles.heading}>{heading}</AppText>
       <View style={styles.container}>
         <FadeBackgroundView
           {...{
@@ -98,7 +97,6 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: 15,
     fontWeight: "bold",
-    textAlign: "center",
     paddingBottom: 15,
   },
 });

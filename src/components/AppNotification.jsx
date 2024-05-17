@@ -12,6 +12,7 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import { getSettingsState } from "../store/settings";
+import AppText from "../ui/AppText";
 
 const AppNotification = () => {
   const { message, type } = useSelector(
@@ -78,9 +79,7 @@ const AppNotification = () => {
         ]}
       >
         <View style={[styles.border, { backgroundColor }]}>
-          <Text style={[styles.text, { color }]}>
-            {message}
-          </Text>
+          <AppText>{message}</AppText>
         </View>
       </Animated.View>
     </View>
@@ -104,10 +103,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 15,
     borderRadius: 4,
-  },
-  text: {
-    fontSize: 25,
-    textAlign: "center",
   },
 });
 

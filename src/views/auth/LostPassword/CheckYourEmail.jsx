@@ -1,20 +1,16 @@
-import { StyleSheet, Text } from "react-native";
-import colors from "../../../utils/colors";
+import { StyleSheet } from "react-native";
 import AuthFormContainer from "../../../components/containers/AuthFormContainer";
 import appTextSource from "../../../utils/appTextSource";
 import { useSelector } from "react-redux";
 import { getSettingsState } from "../../../store/settings";
 import AuthButton from "../../../ui/Buttons/AuthButton";
 import { Fontisto } from "@expo/vector-icons";
+import AppText from "../../../ui/AppText";
 
 const CheckYourEmail = ({ navigation }) => {
-  const { colorScheme, appLang } = useSelector(
-    getSettingsState,
-  );
+  const { appLang } = useSelector(getSettingsState);
   const { heading, subHeading, text, returnToLogin } =
     appTextSource[appLang].auth.passwordReset;
-
-  const color = colors[colorScheme].CONTRAST[0];
 
   const onPress = () => navigation.navigate("SignIn");
 
@@ -27,7 +23,7 @@ const CheckYourEmail = ({ navigation }) => {
           color,
         }}
       />
-      <Text style={[styles.text, { color }]}>{text}</Text>
+      <AppText style={styles.text}>{text}</AppText>
       <AuthButton
         {...{
           title: returnToLogin,
@@ -43,8 +39,6 @@ const styles = StyleSheet.create({
   text: {
     marginTop: 15,
     marginBottom: 40,
-    fontSize: 25,
-    textAlign: "center",
   },
 });
 

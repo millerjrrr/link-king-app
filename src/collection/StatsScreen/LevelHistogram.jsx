@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import LevelLine from "./LevelLine";
 import { useSelector } from "react-redux";
 import colors from "../../utils/colors";
 import { getSettingsState } from "../../store/settings";
+import AppText from "../../ui/AppText";
 
 const LevelHistogram = ({ lbd, histHeight }) => {
   const { colorScheme, golden } = useSelector(
@@ -34,17 +35,15 @@ const LevelHistogram = ({ lbd, histHeight }) => {
           />
         ))}
       </View>
-      <Text
-        style={[
-          styles.text,
-          {
-            color,
-            shadowColor: color,
-          },
-        ]}
+      <AppText
+        style={{
+          fontSize: 50,
+          fontWeight: "bold",
+          shadowColor: color,
+        }}
       >
         {heights[selected - 1]}
-      </Text>
+      </AppText>
     </View>
   );
 };
@@ -58,11 +57,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "flex-end",
     padding: 30,
-  },
-  text: {
-    fontSize: 50,
-    fontWeight: "bold",
-    textAlign: "center",
   },
 });
 

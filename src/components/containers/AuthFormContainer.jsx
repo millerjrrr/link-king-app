@@ -1,7 +1,6 @@
 import {
   View,
   StyleSheet,
-  Text,
   TouchableWithoutFeedback,
   Keyboard,
   Dimensions,
@@ -13,6 +12,7 @@ import LinkKingLogo from "../../ui/Graphics/LinkKingLogo";
 import StatusBarFiller from "../../ui/StatusBarFiller";
 import { useSelector } from "react-redux";
 import { getSettingsState } from "../../store/settings";
+import AppText from "../../ui/AppText";
 
 const AuthFormContainer = ({
   children,
@@ -47,29 +47,27 @@ const AuthFormContainer = ({
           ) : (
             <View style={{ height: 60 }} />
           )}
-          <Text
-            style={[
-              styles.heading,
-              {
-                textAlign: !nologo ? "center" : "left",
-                color: tintColor,
-              },
-            ]}
+          <AppText
+            style={{
+              textAlign: !nologo ? "center" : "left",
+              color: tintColor,
+              fontWeight: "bold",
+              paddingHorizontal: 5,
+            }}
           >
             {heading}
-          </Text>
+          </AppText>
           {subHeading ? (
-            <Text
-              style={[
-                styles.subHeading,
-                {
-                  textAlign: !nologo ? "center" : "left",
-                  color: tintColor,
-                },
-              ]}
+            <AppText
+              style={{
+                padding: 5,
+                fontSize: 16,
+                textAlign: !nologo ? "center" : "left",
+                color: tintColor,
+              }}
             >
               {subHeading}
-            </Text>
+            </AppText>
           ) : null}
           <View style={{ height: 10 }} />
           {children}
@@ -86,15 +84,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-start",
     paddingHorizontal: 15,
-  },
-  heading: {
-    fontSize: 25,
-    fontWeight: "bold",
-    paddingHorizontal: 5,
-  },
-  subHeading: {
-    padding: 5,
-    fontSize: 16,
   },
 });
 

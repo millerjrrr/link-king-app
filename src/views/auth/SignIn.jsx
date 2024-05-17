@@ -123,7 +123,7 @@ const SignIn = () => {
               title={signUp}
               onPress={() => {
                 navigation.navigate("Welcome", {
-                  key: "finish",
+                  key: "start",
                 });
               }}
             />

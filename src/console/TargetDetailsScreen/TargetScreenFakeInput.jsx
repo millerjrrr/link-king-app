@@ -5,6 +5,7 @@ import { getConsoleState } from "../../store/console";
 import { getSettingsState } from "../../store/settings";
 import appTextSource from "../../utils/appTextSource";
 import appShadow from "../../utils/appShadow";
+import AppText from "../../ui/AppText";
 
 const TargetScreenFakeInput = () => {
   const { lastAttempt } = useSelector(getConsoleState);
@@ -37,9 +38,11 @@ const TargetScreenFakeInput = () => {
         },
       ]}
     >
-      <Text style={[styles.text, { color: RED, fontSize }]}>
+      <AppText
+        style={[styles.text, { color: RED, fontSize }]}
+      >
         {fakeFormValue}
-      </Text>
+      </AppText>
     </View>
   );
 };
@@ -58,7 +61,6 @@ const styles = StyleSheet.create({
   text: {
     zIndex: 1,
     textDecorationLine: "line-through",
-    textAlign: "center",
   },
 });
 

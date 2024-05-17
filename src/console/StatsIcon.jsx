@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSettingsState } from "../store/settings";
 import { updateNotification } from "../store/notification";
 import appTextSource from "../utils/appTextSource";
+import AppText from "../ui/AppText";
 
 const StatsIcon = ({
   name = "clock-outline",
@@ -38,15 +39,14 @@ const StatsIcon = ({
       {...{ onPress, style: styles.container }}
     >
       <MaterialCommunityIcons {...{ name, size, color }} />
-      <Text
+      <AppText
         style={{
-          color,
           fontSize: size,
           paddingLeft: 3,
         }}
       >
         {text}
-      </Text>
+      </AppText>
     </TouchableOpacity>
   );
 };

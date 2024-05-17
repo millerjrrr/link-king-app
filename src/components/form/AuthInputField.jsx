@@ -1,9 +1,4 @@
-import {
-  View,
-  StyleSheet,
-  Text,
-  Pressable,
-} from "react-native";
+import { View, StyleSheet, Pressable } from "react-native";
 import AppInput from "../../ui/AppInput";
 import colors from "../../utils/colors";
 import { useFormikContext } from "formik";
@@ -17,6 +12,7 @@ import Animated, {
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { getSettingsState } from "../../store/settings";
+import AppText from "../../ui/AppText";
 
 const AuthInputField = (props) => {
   const { colorScheme } = useSelector(getSettingsState);
@@ -73,8 +69,8 @@ const AuthInputField = (props) => {
   return (
     <Animated.View style={[styles.container, inputStyle]}>
       <View style={styles.labelContainer}>
-        <Text style={{ fontSize: 15, color }}>{label}</Text>
-        <Text style={{ color: red }}>{errorMsg}</Text>
+        <AppText style={{ fontSize: 15 }}>{label}</AppText>
+        <AppText style={{ color: red }}>{errorMsg}</AppText>
       </View>
       <View>
         {/*This <View> holds both AppInput and*/}

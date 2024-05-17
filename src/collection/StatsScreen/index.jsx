@@ -38,7 +38,7 @@ const StatsScreen = () => {
           />
         )
       ) : (
-        <AppText {...{ padding: 15 }}>
+        <AppText {...{ style: { padding: 15 } }}>
           {description}
         </AppText>
       )}

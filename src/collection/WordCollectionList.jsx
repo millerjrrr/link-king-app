@@ -1,12 +1,6 @@
 import React from "react";
-import {
-  FlatList,
-  View,
-  StyleSheet,
-  Text,
-} from "react-native";
+import { FlatList, View, StyleSheet } from "react-native";
 import WordCard from "./WordCard";
-import colors from "../utils/colors";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getCollectionState,
@@ -15,6 +9,7 @@ import {
 import Loader from "../ui/Loader";
 import { getSettingsState } from "../store/settings";
 import appTextSource from "../utils/appTextSource";
+import AppText from "../ui/AppText";
 
 const ListFooterComponent = () => {
   const { allDataLoaded } = useSelector(getCollectionState);
@@ -35,23 +30,13 @@ const WordCollectionList = ({ navigation }) => {
   const { tickets, page, allDataLoaded } = useSelector(
     getCollectionState,
   );
-  const { colorScheme, appLang } = useSelector(
-    getSettingsState,
-  );
+  const { appLang } = useSelector(getSettingsState);
 
   const { noWords } = appTextSource[appLang].collection;
 
   return tickets === null || tickets.length === 0 ? (
     <View style={{ flex: 1, paddingTop: 90, width: "80%" }}>
-      <Text
-        style={{
-          color: colors[colorScheme].CONTRAST[0],
-          fontSize: 30,
-          textAlign: "center",
-        }}
-      >
-        {noWords}
-      </Text>
+      <AppText>{noWords}</AppText>
     </View>
   ) : (
     <>

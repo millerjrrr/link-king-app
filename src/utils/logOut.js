@@ -2,6 +2,7 @@ import {
   updateLoggedInState,
   updateToken,
 } from "../store/auth";
+import { updateSettings } from "../store/settings";
 import { removeFromAsyncStorage } from "./asyncStorage";
 
 const logOut = async (dispatch) => {
