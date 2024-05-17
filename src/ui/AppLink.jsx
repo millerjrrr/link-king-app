@@ -1,8 +1,11 @@
 import { Text, TouchableOpacity } from "react-native";
 import colors from "../utils/colors";
+import { useSelector } from "react-redux";
+import { getSettingsState } from "../store/settings";
 
 const AppLink = ({ title, onPress }) => {
-  const color = colors.dark.INACTIVE_CONTRAST;
+  const { colorScheme } = useSelector(getSettingsState);
+  const color = colors[colorScheme].INACTIVE_CONTRAST;
 
   return (
     <TouchableOpacity

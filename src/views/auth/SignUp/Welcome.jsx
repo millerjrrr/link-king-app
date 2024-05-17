@@ -11,8 +11,12 @@ import { refreshPage } from "../../../store/auth";
 
 const Welcome = ({ route }) => {
   const { key } = route.params;
-  const { appLang } = useSelector(getSettingsState);
-  const color = colors.dark.CONTRAST[0];
+  const { colorScheme, appLang } = useSelector(
+    getSettingsState,
+  );
+
+  const color = colors[colorScheme].CONTRAST[0];
+
   const name =
     key === "start"
       ? "account-arrow-right-outline"

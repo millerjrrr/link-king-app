@@ -142,6 +142,16 @@ export default {
       text: "*Embora exista a opção de mudar para um dicionário Espanhol-Inglês (800 entradas), este é um dicionário muito pequeno cujo objetivo é ilustrar o conceito para falantes de inglês.",
     },
     colorSchemeTitle: "Esquema de Cores",
+    manageAccount: {
+      title: "Gerenciamento de Conta",
+      name: "Nome",
+      email: "E-mail",
+      save: "Salvar",
+      subscription: "Assinatura",
+      deleteAccount: "Apagar Conta",
+      usernameUpdated:
+        "O nome de usuário da conta foi atualizado com sucesso",
+    },
     contactUs: {
       name: "Contatos",
       subject: "Consulta Geral",

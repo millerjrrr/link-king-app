@@ -8,9 +8,13 @@ import AuthButton from "../../../ui/Buttons/AuthButton";
 import { Fontisto } from "@expo/vector-icons";
 
 const CheckYourEmail = ({ navigation }) => {
-  const { appLang } = useSelector(getSettingsState);
+  const { colorScheme, appLang } = useSelector(
+    getSettingsState,
+  );
   const { heading, subHeading, text, returnToLogin } =
     appTextSource[appLang].auth.passwordReset;
+
+  const color = colors[colorScheme].CONTRAST[0];
 
   const onPress = () => navigation.navigate("SignIn");
 
@@ -20,10 +24,10 @@ const CheckYourEmail = ({ navigation }) => {
         {...{
           name: "email",
           size: 100,
-          color: colors.dark.CONTRAST[0],
+          color,
         }}
       />
-      <Text style={styles.text}>{text}</Text>
+      <Text style={[styles.text, { color }]}>{text}</Text>
       <AuthButton
         {...{
           title: returnToLogin,
@@ -39,7 +43,6 @@ const styles = StyleSheet.create({
   text: {
     marginTop: 15,
     marginBottom: 40,
-    color: colors.dark.CONTRAST[0],
     fontSize: 25,
     textAlign: "center",
   },

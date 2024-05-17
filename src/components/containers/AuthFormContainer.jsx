@@ -11,6 +11,8 @@ import AppNotification from "../AppNotification";
 import FourCrowns from "../../ui/Graphics/FourCrowns";
 import LinkKingLogo from "../../ui/Graphics/LinkKingLogo";
 import StatusBarFiller from "../../ui/StatusBarFiller";
+import { useSelector } from "react-redux";
+import { getSettingsState } from "../../store/settings";
 
 const AuthFormContainer = ({
   children,
@@ -18,8 +20,11 @@ const AuthFormContainer = ({
   subHeading,
   nologo,
 }) => {
-  const color = colors.dark.SECONDARY;
-  const backgroundColor = colors.dark.PRIMARY;
+  const { colorScheme } = useSelector(getSettingsState);
+
+  const tintColor = colors[colorScheme].CONTRAST[0];
+  const color = colors[colorScheme].SECONDARY;
+  const backgroundColor = colors[colorScheme].PRIMARY;
   return (
     <TouchableWithoutFeedback
       onPress={() => Keyboard.dismiss()}
@@ -38,14 +43,17 @@ const AuthFormContainer = ({
           <AppNotification />
           <FourCrowns {...{ color }} />
           {!nologo ? (
-            <LinkKingLogo />
+            <LinkKingLogo {...{ tintColor }} />
           ) : (
             <View style={{ height: 60 }} />
           )}
           <Text
             style={[
               styles.heading,
-              { textAlign: !nologo ? "center" : "left" },
+              {
+                textAlign: !nologo ? "center" : "left",
+                color: tintColor,
+              },
             ]}
           >
             {heading}
@@ -54,7 +62,10 @@ const AuthFormContainer = ({
             <Text
               style={[
                 styles.subHeading,
-                { textAlign: !nologo ? "center" : "left" },
+                {
+                  textAlign: !nologo ? "center" : "left",
+                  color: tintColor,
+                },
               ]}
             >
               {subHeading}
@@ -77,14 +88,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
   },
   heading: {
-    color: colors.dark.CONTRAST[0],
     fontSize: 25,
     fontWeight: "bold",
     paddingHorizontal: 5,
   },
   subHeading: {
     padding: 5,
-    color: colors.dark.CONTRAST[0],
     fontSize: 16,
   },
 });

@@ -17,8 +17,8 @@ const Options = () => {
   const {
     heading,
     setDailyGoal,
-    voiceSelection,
     chooseDictionary,
+    manageAccount,
   } = appTextSource[appLang].options;
 
   return (
@@ -49,6 +49,15 @@ const Options = () => {
         }}
       />
       <ColorPickerMenuItem />
+      <OptionsMenuItem
+        {...{
+          iconName: "account-cog-outline",
+          name: manageAccount.title,
+          selected: true,
+          onPress: () =>
+            navigateTo("ManageAccountNavigator"),
+        }}
+      />
       <ModalTypeMenuItem optionName="contactUs" />
       <ModalTypeMenuItem optionName="logOut" />
     </InnerTabContainer>

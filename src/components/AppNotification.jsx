@@ -44,7 +44,7 @@ const AppNotification = () => {
       break;
     case "info":
       backgroundColor = colors[colorScheme].PRIMARY;
-      messageTime = 1000;
+      messageTime = 2000;
       break;
   }
 

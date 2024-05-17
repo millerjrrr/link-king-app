@@ -73,6 +73,7 @@ const TabNavigator = () => {
             />
           ),
           tabBarLabel: "Collection",
+          tabBarHideOnKeyboard: true,
         }}
       />
       <Tab.Screen
@@ -89,6 +90,7 @@ const TabNavigator = () => {
             />
           ),
           tabBarLabel: "Options",
+          tabBarHideOnKeyboard: true,
         }}
       />
     </Tab.Navigator>

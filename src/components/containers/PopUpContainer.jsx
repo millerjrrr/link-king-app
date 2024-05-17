@@ -25,7 +25,12 @@ export const FadeBackgroundView = styled(LinearGradient)`
   z-index: 20;
 `;
 
-const PopUpContainer = ({ children, heading, help }) => {
+const PopUpContainer = ({
+  children,
+  heading,
+  help,
+  blockPopToTop,
+}) => {
   const { colorScheme, golden } = useSelector(
     getSettingsState,
   );
@@ -38,15 +43,17 @@ const PopUpContainer = ({ children, heading, help }) => {
   const navigation = useNavigation();
 
   useEffect(() => {
-    const closeStackScreens = () => {
-      if (navigation.canGoBack())
-        navigation.dispatch(StackActions.popToTop());
-    };
-    const unsubscribe = navigation.addListener(
-      "blur",
-      closeStackScreens,
-    );
-    return unsubscribe;
+    if (!blockPopToTop) {
+      const closeStackScreens = () => {
+        if (navigation.canGoBack())
+          navigation.dispatch(StackActions.popToTop());
+      };
+      const unsubscribe = navigation.addListener(
+        "blur",
+        closeStackScreens,
+      );
+      return unsubscribe;
+    }
   }, [navigation]);
 
   return (

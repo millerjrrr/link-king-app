@@ -8,6 +8,7 @@ import {
 import { submitAnswer } from "../functions/submitAnswer";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "../../utils/colors";
+import { getSettingsState } from "../../store/settings";
 
 const KeyboardIconContainer = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,8 @@ const KeyboardIconContainer = () => {
     tries,
   } = useSelector(getConsoleState);
 
-  const color = colors.dark.INACTIVE_CONTRAST;
+  const { colorScheme } = useSelector(getSettingsState);
+  const color = colors[colorScheme].INACTIVE_CONTRAST;
 
   const closeKeyboard = () => {
     if (!showSolution && isPlaying) {

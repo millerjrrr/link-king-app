@@ -11,8 +11,9 @@ import {
   getAuthState,
   updateName,
 } from "../../../store/auth";
+import updateNameOnServer from "../../../options/ManageAccountScreen/functions/updateNameOnServer";
 
-const Name = () => {
+const Name = ({ updateNameFunction, buttonTitle }) => {
   const { appLang } = useSelector(getSettingsState);
   const { name } = appTextSource[appLang].auth.forms;
 
@@ -34,12 +35,24 @@ const Name = () => {
 
   const navigation = useNavigation();
 
-  const onSubmit = async (values, actions) => {
-    actions.setSubmitting(true);
-    dispatch(updateName(values.name));
-    navigation.navigate("Email");
-    actions.setSubmitting(false);
-  };
+  const onSubmit = updateNameFunction
+    ? async (values, actions) => {
+        actions.setSubmitting(true);
+        dispatch(updateName(values.name));
+        updateNameOnServer({
+          username: values.name,
+          dispatch,
+          navigation,
+          appLang,
+        });
+        actions.setSubmitting(false);
+      }
+    : async (values, actions) => {
+        actions.setSubmitting(true);
+        dispatch(updateName(values.name));
+        navigation.navigate("Email");
+        actions.setSubmitting(false);
+      };
 
   const { heading, subHeading } =
     appTextSource[appLang].auth.signUp.name;
@@ -61,7 +74,7 @@ const Name = () => {
               containerStyle: { marginBottom: 20 },
             }}
           />
-          <SubmitBtn {...{ title: next }} />
+          <SubmitBtn {...{ title: buttonTitle || next }} />
         </>
       </Form>
     </AuthFormContainer>

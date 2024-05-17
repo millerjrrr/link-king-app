@@ -38,6 +38,7 @@
       }
     },
     "android": {
+      "permissions": ["INTERNET"],
       "icon": "./assets/adaptive-icon.png",
       "package": "com.linkoking.app",
       "versionCode": 19,

@@ -4,7 +4,6 @@ import {
   TouchableOpacity,
   Text,
 } from "react-native";
-import colors from "../../utils/colors";
 import BusyWrapper from "../Loader/BusyWrapper";
 import { AntDesign } from "@expo/vector-icons";
 import appShadow from "../../utils/appShadow";
@@ -12,9 +11,9 @@ import appShadow from "../../utils/appShadow";
 const AppButton = ({
   title,
   name,
-  color = colors.dark.CONTRAST[0],
-  backgroundColor = colors.dark.SECONDARY,
-  size = 200,
+  color,
+  backgroundColor,
+  size,
   busy,
   onPress,
 }) => {

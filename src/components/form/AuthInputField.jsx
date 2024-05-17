@@ -15,8 +15,14 @@ import Animated, {
   withSpring,
 } from "react-native-reanimated";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { getSettingsState } from "../../store/settings";
 
 const AuthInputField = (props) => {
+  const { colorScheme } = useSelector(getSettingsState);
+  const color = colors[colorScheme].CONTRAST[0];
+  const red = colors[colorScheme].RED;
+
   const inputTransformValue = useSharedValue(0);
   const {
     handleChange,
@@ -67,8 +73,8 @@ const AuthInputField = (props) => {
   return (
     <Animated.View style={[styles.container, inputStyle]}>
       <View style={styles.labelContainer}>
-        <Text style={styles.label}>{label}</Text>
-        <Text style={styles.errorMsg}>{errorMsg}</Text>
+        <Text style={{ fontSize: 15, color }}>{label}</Text>
+        <Text style={{ color: red }}>{errorMsg}</Text>
       </View>
       <View>
         {/*This <View> holds both AppInput and*/}
@@ -107,13 +113,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     padding: 5,
-  },
-  label: {
-    color: colors.dark.CONTRAST[0],
-    fontSize: 15,
-  },
-  errorMsg: {
-    color: colors.dark.RED,
   },
   rightIcon: {
     width: 45,

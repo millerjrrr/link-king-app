@@ -24,9 +24,8 @@ const LevelLine = ({
     <TouchableOpacity
       style={{
         flex: 1,
-        justifyContent: "center",
+        justifyContent: "flex-end",
         alignItems: "center",
-        margin: "auto",
       }}
       onPress={onPress}
     >

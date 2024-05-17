@@ -7,10 +7,14 @@ import {
 import colors from "../../utils/colors";
 import BusyWrapper from "../Loader/BusyWrapper";
 import appShadow from "../../utils/appShadow";
+import { useSelector } from "react-redux";
+import { getSettingsState } from "../../store/settings";
 
 const AuthButton = ({ title, busy, onPress }) => {
-  const color = colors.dark.CONTRAST[0];
-  const backgroundColor = colors.dark.SECONDARY;
+  const { colorScheme } = useSelector(getSettingsState);
+
+  const color = colors[colorScheme].CONTRAST[0];
+  const backgroundColor = colors[colorScheme].SECONDARY;
 
   return (
     <View style={styles.container}>

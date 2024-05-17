@@ -7,6 +7,7 @@ import SetDailyGoalScreen from "../../options/SetDailyGoalScreen";
 import Options from "../../views/Options";
 import VoiceSelectionScreen from "../../options/VoiceSelectionScreen";
 import DictionarySelectionScreen from "../../options/DictionarySelectionScreen";
+import ManageAccountNavigator from "./ManageAccountNavigator";
 const OptionsStack = createStackNavigator();
 
 const OptionsNavigator = () => {
@@ -32,6 +33,10 @@ const OptionsNavigator = () => {
       <OptionsStack.Screen
         name="DictionarySelectionScreen"
         component={DictionarySelectionScreen}
+      />
+      <OptionsStack.Screen
+        name="ManageAccountNavigator"
+        component={ManageAccountNavigator}
       />
     </OptionsStack.Navigator>
   );

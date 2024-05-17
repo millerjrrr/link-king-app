@@ -141,6 +141,16 @@ export default {
       text: "*While there is an option to switch to a Spanish-English dictionary (800 entries), this is a very small dictionary whose purpose is to illustrate the concept to English speakers.",
     },
     colorSchemeTitle: "Color Scheme",
+    manageAccount: {
+      title: "Account Management",
+      name: "Name",
+      email: "Email",
+      subscription: "Subscription",
+      deleteAccount: "Delete Account",
+      save: "Save",
+      usernameUpdated:
+        "Account username has been updated successfully",
+    },
     contactUs: {
       name: "Contact Us",
       subject: "General Inquiry",
