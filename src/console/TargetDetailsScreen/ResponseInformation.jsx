@@ -1,8 +1,8 @@
-import { Text } from "react-native";
 import { useSelector } from "react-redux";
 import colors from "../../utils/colors";
 import { getSettingsState } from "../../store/settings";
 import appTextSource from "../../utils/appTextSource";
+import AppText from "../../ui/AppText";
 
 const ResponseInformation = ({ status }) => {
   const { colorScheme, golden, appLang } = useSelector(
@@ -14,27 +14,21 @@ const ResponseInformation = ({ status }) => {
     appTextSource[appLang].console.targetDetails;
 
   return status ? (
-    <Text
+    <AppText
       style={{
-        color,
-        fontSize: 25,
         marginHorizontal: 10,
-        textAlign: "center",
       }}
     >
       {responseA}
-    </Text>
+    </AppText>
   ) : (
-    <Text
+    <AppText
       style={{
-        color,
-        fontSize: 25,
         marginHorizontal: 15,
-        textAlign: "center",
       }}
     >
       {responseB}
-    </Text>
+    </AppText>
   );
 };
 

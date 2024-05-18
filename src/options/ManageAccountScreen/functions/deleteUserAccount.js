@@ -1,21 +1,21 @@
 import clientWithAuth from "../../../api/clientWithAuth";
 import { errorHandler } from "../../../errors/errorHandler";
 import { updateNotification } from "../../../store/notification";
-import appTextSource from "./../../../utils/appTextSource/index";
+import appTextSource from "../../../utils/appTextSource/index";
+import logOut from "../../../utils/logOut";
 
-const updateNameOnServer = async ({
-  username,
+const deleteUserAccount = async ({
+  password,
   dispatch,
-  navigation,
   appLang,
 }) => {
   const message =
     appTextSource[appLang].options.manageAccount
-      .usernameUpdated;
+      .accountDeleted;
   try {
     const { data } = await clientWithAuth.post(
-      "/api/users/change-username",
-      { username },
+      "/api/users/delete-account",
+      { password },
     );
     if (data.status === "success") {
       dispatch(
@@ -24,14 +24,11 @@ const updateNameOnServer = async ({
           type: "info",
         }),
       );
-      setTimeout(
-        () => navigation.navigate("ManageAccountScreen"),
-        2000,
-      );
+      setTimeout(() => logOut(dispatch), 2000);
     }
   } catch (error) {
     errorHandler(error, dispatch);
   }
 };
 
-export default updateNameOnServer;
+export default deleteUserAccount;

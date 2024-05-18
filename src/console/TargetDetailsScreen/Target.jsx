@@ -3,13 +3,10 @@ import { useSelector } from "react-redux";
 import { getConsoleState } from "../../store/console";
 import colors from "../../utils/colors";
 import { getSettingsState } from "../../store/settings";
+import AppText from "../../ui/AppText";
 
 const Target = () => {
   const { attempt } = useSelector(getConsoleState);
-  const { colorScheme, golden } = useSelector(
-    getSettingsState,
-  );
-  const color = colors[colorScheme].CONTRAST[golden];
 
   //font-size management
   let fontSize = 40;
@@ -17,17 +14,15 @@ const Target = () => {
   if (length > 12) fontSize = (fontSize * 12) / length;
 
   return (
-    <Text
+    <AppText
       style={{
-        color,
         fontSize,
         margin: 5,
         zIndex: 1,
-        textAlign: "center",
       }}
     >
       {attempt.target}
-    </Text>
+    </AppText>
   );
 };
 

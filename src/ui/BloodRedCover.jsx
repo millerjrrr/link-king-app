@@ -3,11 +3,13 @@ import colors from "../utils/colors";
 import { getSettingsState } from "../store/settings";
 import { useSelector } from "react-redux";
 
-const BloodRedCover = ({ elapsedTime }) => {
+const BloodRedCover = ({ elapsedTime, coverZIndex }) => {
   const { colorScheme } = useSelector(getSettingsState);
   const backgroundColor = colors[colorScheme].LIGHTRED;
   return (
-    <View style={styles.container}>
+    <View
+      style={[styles.container, { zIndex: coverZIndex }]}
+    >
       <View
         style={{
           backgroundColor,
@@ -27,7 +29,6 @@ const styles = StyleSheet.create({
     height: "100%",
     width: "100%",
     position: "absolute",
-    zIndex: 1,
   },
 });
 

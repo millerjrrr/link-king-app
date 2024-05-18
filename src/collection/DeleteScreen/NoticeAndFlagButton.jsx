@@ -9,6 +9,7 @@ import AppText from "../../ui/AppText";
 const NoticeAndFlagButton = ({
   completeFunction,
   setElapsedTime,
+  setCoverZIndex,
 }) => {
   const { colorScheme, appLang } = useSelector(
     getSettingsState,
@@ -34,6 +35,7 @@ const NoticeAndFlagButton = ({
         {...{
           setElapsedTime,
           completeFunction,
+          setCoverZIndex,
           iconName: "delete",
         }}
       />

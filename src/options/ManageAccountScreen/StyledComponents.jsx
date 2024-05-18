@@ -1,5 +1,6 @@
-import { Text, TouchableOpacity, View } from "react-native";
+import { View } from "react-native";
 import styled from "styled-components";
+import AppText from "../../ui/AppText";
 
 export const Container = styled(View)`
   height: 90px;
@@ -19,14 +20,13 @@ export const OptionContainer = styled(View)`
   margin: 10px;
 `;
 
-export const Title = styled(Text)`
+export const Title = styled(AppText)`
   color: ${(props) => props.color};
-  font-size: 25px;
   font-weight: bold;
   padding-vertical: 5px;
 `;
 
-export const SubTitle = styled(Text)`
+export const SubTitle = styled(AppText)`
   color: ${(props) => props.color};
   font-size: 20px;
 `;

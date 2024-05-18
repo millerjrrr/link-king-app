@@ -37,9 +37,8 @@ const Email = () => {
 
   const onSubmit = async (values, actions) => {
     actions.setSubmitting(true);
-    dispatch(updateEmail(values.email));
-    navigation.navigate("Password");
-
+    await dispatch(updateEmail(values.email));
+    await navigation.navigate("Password");
     actions.setSubmitting(false);
   };
 

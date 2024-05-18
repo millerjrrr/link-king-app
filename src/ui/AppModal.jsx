@@ -1,4 +1,4 @@
-import { Text, TouchableOpacity, View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import colors from "../utils/colors";
 import { useSelector } from "react-redux";
 import { getSettingsState } from "../store/settings";
@@ -6,8 +6,8 @@ import styled from "styled-components";
 import Modal from "react-native-modal";
 import appTextSource from "./../utils/appTextSource/index";
 import appShadow from "./../utils/appShadow";
-import { useRef } from "react";
 import YoutubePlayer from "react-native-youtube-iframe";
+import AppText from "./AppText";
 
 const ModalContainer = styled(View)`
   background-color: ${(props) => props.backgroundColor};
@@ -17,16 +17,13 @@ const ModalContainer = styled(View)`
   border-radius: 10px;
   align-items: center;
 `;
-const ModalText = styled(Text)`
-  font-size: 25px;
+const ModalText = styled(AppText)`
   margin: 20px;
-  text-align: center;
   color: ${(props) => props.color};
 `;
 
-const ButtonText = styled(Text)`
+const ButtonText = styled(AppText)`
   margin: 15px;
-  text-align: center;
   font-size: ${(props) => props.size}px;
   color: ${(props) => props.color};
 `;

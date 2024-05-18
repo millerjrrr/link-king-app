@@ -23,6 +23,7 @@ const TargetDetailsScreen = () => {
   const [busy, setBusy] = useState(false);
   const [status, setStatus] = useState(true);
   const [elapsedTime, setElapsedTime] = useState(0);
+  const [coverZIndex, setCoverZIndex] = useState(1);
   const [pressed, setPressed] = useState(false);
 
   const dispatch = useDispatch();
@@ -41,7 +42,7 @@ const TargetDetailsScreen = () => {
 
   return (
     <PopUpContainer {...{ heading }}>
-      <BloodRedCover elapsedTime={elapsedTime} />
+      <BloodRedCover {...{ elapsedTime, coverZIndex }} />
       <BusyWrapper {...{ busy, size: 96 }}>
         <View style={styles.container}>
           <Target />
@@ -53,8 +54,11 @@ const TargetDetailsScreen = () => {
           <ResponseInformation status={status} />
         ) : (
           <NoticeAndFlagButton
-            completeFunction={wordFlagFunction}
-            setElapsedTime={setElapsedTime}
+            {...{
+              completeFunction: wordFlagFunction,
+              setElapsedTime,
+              setCoverZIndex,
+            }}
           />
         )}
       </BusyWrapper>

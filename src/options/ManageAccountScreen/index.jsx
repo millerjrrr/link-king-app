@@ -47,7 +47,6 @@ const ManageAccountScreen = () => {
 
   useEffect(() => {
     updateAccountDetails();
-    console.log("update");
   }, [navigation, refresh]);
 
   return (

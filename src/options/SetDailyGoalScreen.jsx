@@ -1,5 +1,4 @@
 import {
-  Text,
   View,
   TouchableOpacity,
   Dimensions,
@@ -21,6 +20,7 @@ import appTextSource from "../utils/appTextSource";
 import AppModal from "../ui/AppModal";
 import { useState } from "react";
 import BusyWrapper from "../ui/Loader/BusyWrapper";
+import AppText from "../ui/AppText";
 
 const Container = styled(View)`
   flex: 1;
@@ -170,16 +170,15 @@ const SetDailyGoalScreen = ({ navigation }) => {
               style: { marginTop: 35 },
             }}
           >
-            <Text
+            <AppText
               style={{
                 color:
                   colors[colorScheme].INACTIVE_CONTRAST,
                 fontSize: 18,
-                textAlign: "center",
               }}
             >
               {textD}
-            </Text>
+            </AppText>
           </TouchableOpacity>
           <AppModal
             {...{

@@ -1,4 +1,4 @@
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { getSettingsState } from "../../store/settings";
@@ -6,6 +6,7 @@ import colors from "../../utils/colors";
 import { LinearGradient } from "expo-linear-gradient";
 import ScrollPicker from "react-native-wheel-scrollview-picker";
 import React from "react";
+import AppText from "../../ui/AppText";
 
 const Column = styled(View)`
   position: relative;
@@ -68,17 +69,16 @@ const ScrollSelector = ({ onSelect, length, start }) => {
                 justifyContent: "center",
               }}
             >
-              <Text
+              <AppText
                 style={{
                   fontSize: 20,
-                  color,
                   fontWeight: isSelected
                     ? "bold"
                     : "normal",
                 }}
               >
                 {data}
-              </Text>
+              </AppText>
             </View>
           );
         }}

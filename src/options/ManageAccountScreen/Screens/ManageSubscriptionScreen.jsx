@@ -4,15 +4,16 @@ import { useSelector } from "react-redux";
 import { getSettingsState } from "../../../store/settings";
 import AppText from "../../../ui/AppText";
 
-const ManageSubscriptionScreen = (props) => {
+const ManageSubscriptionScreen = () => {
   const { appLang } = useSelector(getSettingsState);
-  const heading =
-    appTextSource[appLang].options.manageAccount
-      .subscription;
+  const { subscription: heading, subscriptionDetails } =
+    appTextSource[appLang].options.manageAccount;
 
   return (
     <PopUpContainer {...{ heading, blockPopToTop: true }}>
-      <AppText>ManageSubscriptionScreen</AppText>
+      <AppText style={{ padding: 15 }}>
+        {subscriptionDetails}
+      </AppText>
     </PopUpContainer>
   );
 };

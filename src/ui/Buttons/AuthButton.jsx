@@ -2,13 +2,13 @@ import {
   View,
   StyleSheet,
   TouchableOpacity,
-  Text,
 } from "react-native";
 import colors from "../../utils/colors";
 import BusyWrapper from "../Loader/BusyWrapper";
 import appShadow from "../../utils/appShadow";
 import { useSelector } from "react-redux";
 import { getSettingsState } from "../../store/settings";
+import AppText from "../AppText";
 
 const AuthButton = ({ title, busy, onPress }) => {
   const { colorScheme } = useSelector(getSettingsState);
@@ -30,17 +30,7 @@ const AuthButton = ({ title, busy, onPress }) => {
         ]}
       >
         <BusyWrapper {...{ color, busy, size: 25 }}>
-          <Text
-            {...{
-              style: {
-                color,
-                fontSize: 25,
-                textAlign: "center",
-              },
-            }}
-          >
-            {title}
-          </Text>
+          <AppText>{title}</AppText>
         </BusyWrapper>
       </TouchableOpacity>
     </View>

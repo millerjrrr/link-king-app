@@ -1,5 +1,6 @@
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import styled from "styled-components";
+import AppText from "../ui/AppText";
 
 export const Container = styled(View)`
   flex-direction: row;
@@ -25,7 +26,7 @@ export const RowContainer = styled(View)`
   align-items: center;
 `;
 
-export const Title = styled(Text)`
+export const Title = styled(AppText)`
   height: 40px;
   font-size: ${(props) => props.fontSize}px;
   font-weight: bold;
@@ -33,12 +34,12 @@ export const Title = styled(Text)`
   color: ${(props) => props.color};
 `;
 
-export const Rating = styled(Text)`
+export const Rating = styled(AppText)`
   font-size: 20px;
   color: ${(props) => props.color};
 `;
 
-export const Date = styled(Text)`
+export const Date = styled(AppText)`
   font-size: 20px;
   font-style: italic;
   color: ${(props) => props.color};

@@ -2,11 +2,11 @@ import {
   View,
   StyleSheet,
   TouchableOpacity,
-  Text,
 } from "react-native";
 import BusyWrapper from "../Loader/BusyWrapper";
 import { AntDesign } from "@expo/vector-icons";
 import appShadow from "../../utils/appShadow";
+import AppText from "../AppText";
 
 const AppButton = ({
   title,
@@ -33,17 +33,16 @@ const AppButton = ({
       >
         <BusyWrapper {...{ color, busy, size: size / 3 }}>
           {title ? (
-            <Text
+            <AppText
               {...{
                 style: {
                   color,
                   fontSize: size / 7,
-                  textAlign: "center",
                 },
               }}
             >
               {title}
-            </Text>
+            </AppText>
           ) : (
             <AntDesign
               {...{ name, size: size / 2, color }}

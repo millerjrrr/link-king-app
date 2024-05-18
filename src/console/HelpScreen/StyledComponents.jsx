@@ -1,10 +1,6 @@
-import {
-  Platform,
-  ScrollView,
-  Text,
-  View,
-} from "react-native";
+import { Platform, ScrollView, View } from "react-native";
 import styled from "styled-components";
+import AppText from "../../ui/AppText";
 
 export const HelpScroll = styled(ScrollView)`
   width: 100%;
@@ -32,16 +28,13 @@ export const CardContainer = styled(View)`
   })};
 `;
 
-export const ComponentTitle = styled(Text)`
+export const ComponentTitle = styled(AppText)`
   padding: 15px;
   font-size: 30px;
   font-weight: bold;
   color: ${(props) => props.color};
-  text-align: center;
 `;
 
-export const ComponentDesc = styled(Text)`
-  font-size: 25px;
+export const ComponentDesc = styled(AppText)`
   color: ${(props) => props.color};
-  text-align: center;
 `;

@@ -3,7 +3,6 @@ import {
   View,
   StyleSheet,
   TouchableOpacity,
-  Text,
 } from "react-native";
 import colors from "../../utils/colors";
 import { useSelector } from "react-redux";
@@ -11,6 +10,7 @@ import { getConsoleState } from "../../store/console";
 import { getSettingsState } from "../../store/settings";
 import appTextSource from "../../utils/appTextSource";
 import appShadow from "../../utils/appShadow";
+import AppText from "../../ui/AppText";
 
 const StartButton = ({ inputFieldRef }) => {
   const { timerIsOn } = useSelector(getConsoleState);
@@ -47,17 +47,15 @@ const StartButton = ({ inputFieldRef }) => {
           },
         ]}
       >
-        <Text
+        <AppText
           {...{
             style: {
-              color,
               fontSize: size / 7,
-              textAlign: "center",
             },
           }}
         >
           {title}
-        </Text>
+        </AppText>
       </TouchableOpacity>
     </View>
   ) : null;

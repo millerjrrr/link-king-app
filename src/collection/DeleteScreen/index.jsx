@@ -19,6 +19,7 @@ const DeleteScreen = ({ route }) => {
   const [busy, setBusy] = useState(false);
   const [status, setStatus] = useState(true);
   const [elapsedTime, setElapsedTime] = useState(0);
+  const [coverZIndex, setCoverZIndex] = useState(1);
   const [pressed, setPressed] = useState(false);
 
   const dispatch = useDispatch();
@@ -38,7 +39,7 @@ const DeleteScreen = ({ route }) => {
 
   return (
     <PopUpContainer {...{ heading }}>
-      <BloodRedCover elapsedTime={elapsedTime} />
+      <BloodRedCover {...{ elapsedTime, coverZIndex }} />
       <BusyWrapper {...{ busy, size: 96 }}>
         <View style={{ width: "100%", padding: 15 }}>
           <WordCard ticket={ticket} />
@@ -48,7 +49,11 @@ const DeleteScreen = ({ route }) => {
         </View>
         {!pressed ? (
           <NoticeAndFlagButton
-            {...{ completeFunction, setElapsedTime }}
+            {...{
+              completeFunction,
+              setElapsedTime,
+              setCoverZIndex,
+            }}
           />
         ) : null}
       </BusyWrapper>

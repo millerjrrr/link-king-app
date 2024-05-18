@@ -1,12 +1,13 @@
-import { Text, View, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import colors from "../utils/colors";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../store/console";
 import { getSettingsState } from "../store/settings";
 import styled from "styled-components";
 import SolutionsList from "./SolutionsList";
+import AppText from "../ui/AppText";
 
-const TailEntryText = styled(Text)`
+const TailEntryText = styled(AppText)`
   color: ${(props) => props.color};
   font-size: ${(props) => props.size}px;
   opacity: ${(props) => props.opacity};

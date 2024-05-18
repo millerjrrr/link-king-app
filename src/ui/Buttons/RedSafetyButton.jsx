@@ -15,6 +15,7 @@ const RedSafetyButton = ({
   completeFunction,
   iconName,
   size = 250,
+  setCoverZIndex,
 }) => {
   const [pressStartTime, setPressStartTime] = useState(0);
   const pressTimer = useRef(null);
@@ -36,12 +37,14 @@ const RedSafetyButton = ({
       completeFunction();
     }, 3100); //needs a little longer to ensure screen fills
     setPressStartTime(Date.now());
+    setCoverZIndex(5);
   };
 
   const handlePressOut = () => {
     clearTimeout(pressTimer.current);
     setPressStartTime(0);
     setElapsedTime(0);
+    setCoverZIndex(1);
   };
 
   const { colorScheme } = useSelector(getSettingsState);

@@ -1,4 +1,4 @@
-import { ScrollView, Text, View } from "react-native";
+import { ScrollView, View } from "react-native";
 import styled from "styled-components";
 import PopUpContainer from "./../components/containers/PopUpContainer";
 import { useSelector } from "react-redux";
@@ -6,13 +6,13 @@ import { getSettingsState } from "../store/settings";
 import colors from "../utils/colors";
 import appTextSource from "../utils/appTextSource";
 import AuthButton from "../ui/Buttons/AuthButton";
-import { Linking } from "react-native";
+import AppText from "../ui/AppText";
 
 const Container = styled(ScrollView)`
   margin-horizontal: 15px;
 `;
 
-const TextBlock = styled(Text)`
+const TextBlock = styled(AppText)`
   padding-vertical: 20px;
   text-align: center;
   font-size: 30px;

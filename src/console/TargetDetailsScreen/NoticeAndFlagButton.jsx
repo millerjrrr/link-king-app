@@ -1,50 +1,48 @@
-import { Text } from "react-native";
 import colors from "../../utils/colors";
 import { useSelector } from "react-redux";
 import RedSafetyButton from "../../ui/Buttons/RedSafetyButton";
 import { getSettingsState } from "../../store/settings";
 import appTextSource from "../../utils/appTextSource";
+import AppText from "../../ui/AppText";
 
 const NoticeAndFlagButton = ({
   completeFunction,
   setElapsedTime,
+  setCoverZIndex,
 }) => {
-  const { colorScheme, golden, appLang } = useSelector(
+  const { colorScheme, appLang } = useSelector(
     getSettingsState,
   );
-  const color = colors[colorScheme].CONTRAST[golden];
 
   const { description, buttonTitle } =
     appTextSource[appLang].console.targetDetails;
 
   return (
     <>
-      <Text
+      <AppText
         style={{
-          color,
           fontSize: 20,
           marginHorizontal: 25,
           marginBottom: 10,
-          textAlign: "center",
         }}
       >
         {description}
-      </Text>
-      <Text
+      </AppText>
+      <AppText
         style={{
           color: colors[colorScheme].RED,
           fontSize: 15,
           marginLeft: 30,
           marginRight: 30,
-          textAlign: "center",
         }}
       >
         {buttonTitle}
-      </Text>
+      </AppText>
       <RedSafetyButton
         {...{
           setElapsedTime,
           completeFunction,
+          setCoverZIndex,
           iconName: "flag",
           size: 150,
         }}

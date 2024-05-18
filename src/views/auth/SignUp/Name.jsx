@@ -38,8 +38,8 @@ const Name = ({ updateNameFunction, buttonTitle }) => {
   const onSubmit = updateNameFunction
     ? async (values, actions) => {
         actions.setSubmitting(true);
-        dispatch(updateName(values.name));
-        updateNameOnServer({
+        await dispatch(updateName(values.name));
+        await updateNameOnServer({
           username: values.name,
           dispatch,
           navigation,
@@ -49,8 +49,8 @@ const Name = ({ updateNameFunction, buttonTitle }) => {
       }
     : async (values, actions) => {
         actions.setSubmitting(true);
-        dispatch(updateName(values.name));
-        navigation.navigate("Email");
+        await dispatch(updateName(values.name));
+        await navigation.navigate("Email");
         actions.setSubmitting(false);
       };
 

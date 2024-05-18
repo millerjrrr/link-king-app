@@ -16,7 +16,6 @@ import AppText from "../../ui/AppText";
 
 const AuthInputField = (props) => {
   const { colorScheme } = useSelector(getSettingsState);
-  const color = colors[colorScheme].CONTRAST[0];
   const red = colors[colorScheme].RED;
 
   const inputTransformValue = useSharedValue(0);
@@ -70,7 +69,9 @@ const AuthInputField = (props) => {
     <Animated.View style={[styles.container, inputStyle]}>
       <View style={styles.labelContainer}>
         <AppText style={{ fontSize: 15 }}>{label}</AppText>
-        <AppText style={{ color: red }}>{errorMsg}</AppText>
+        <AppText style={{ fontSize: 15, color: red }}>
+          {errorMsg}
+        </AppText>
       </View>
       <View>
         {/*This <View> holds both AppInput and*/}

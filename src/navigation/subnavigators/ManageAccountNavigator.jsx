@@ -21,6 +21,7 @@ const ManageAccountNavigator = () => {
   return (
     <ManageAccountStack.Navigator
       screenOptions={{
+        tabBarVisible: false,
         headerTintColor,
         headerTransparent: true,
         headerBackTitleVisible: false,

@@ -148,7 +148,12 @@ export default {
       email: "E-mail",
       save: "Salvar",
       subscription: "Assinatura",
+      subscriptionDetails:
+        "O Link-King é atualmente 100% gratuito!\nInfelizmente, não podemos mantê-lo assim para sempre. Não executaremos anúncios, pois é uma maneira desagradável de pagar por um aplicativo.\nGostaríamos que nossos usuários soubessem que nos próximos meses planejamos introduzir uma taxa de assinatura mensal de R$15/mês para nos ajudar a cobrir nossas despesas.",
       deleteAccount: "Apagar Conta",
+      deleteAccountDetails:
+        "Tem certeza de que deseja excluir permanentemente sua conta e todos os dados associados?\n\nPara excluir sua conta, digite sua senha e mantenha pressionado o botão.",
+      accountDeleted: "Sua conta foi deletada!",
       usernameUpdated:
         "O nome de usuário da conta foi atualizado com sucesso",
     },

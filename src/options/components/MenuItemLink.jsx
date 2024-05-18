@@ -1,10 +1,11 @@
-import { Text, TouchableOpacity } from "react-native";
+import { TouchableOpacity } from "react-native";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { getSettingsState } from "../../store/settings";
 import colors from "../../utils/colors";
+import AppText from "../../ui/AppText";
 
-const MenuItemName = styled(Text)`
+const MenuItemName = styled(AppText)`
   color: ${(props) => props.color};
   font-size: 20px;
 `;
