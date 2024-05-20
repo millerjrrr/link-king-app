@@ -14,21 +14,25 @@ export const submitAnswer = ({
 }) => {
   dispatch(stopPlaying());
   const answerAccepted = acceptAnswer(formValue, solutions);
-
-  if (answerAccepted) {
-    returnCorrectAnswerToServer({
-      dispatch,
-      startedThisWord,
-      showSolution,
-    });
-  } else if (tries > 1) {
-    returnNextTry({ dispatch });
-  } else {
+  if (formValue === "")
     returnWrongAnswerToServer({
       dispatch,
       startedThisWord,
       showSolution,
     });
-  }
+  else if (answerAccepted)
+    returnCorrectAnswerToServer({
+      dispatch,
+      startedThisWord,
+      showSolution,
+    });
+  else if (tries > 1) returnNextTry({ dispatch });
+  else
+    returnWrongAnswerToServer({
+      dispatch,
+      startedThisWord,
+      showSolution,
+    });
+
   return false;
 };

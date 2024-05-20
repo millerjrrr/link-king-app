@@ -11,9 +11,11 @@ import { getSettingsState } from "../../store/settings";
 import AppText from "../AppText";
 
 const AuthButton = ({ title, busy, onPress }) => {
-  const { colorScheme } = useSelector(getSettingsState);
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
 
-  const color = colors[colorScheme].CONTRAST[0];
+  const color = colors[colorScheme].CONTRAST[golden];
   const backgroundColor = colors[colorScheme].SECONDARY;
 
   return (

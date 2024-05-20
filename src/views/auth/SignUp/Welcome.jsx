@@ -11,11 +11,11 @@ import { refreshPage } from "../../../store/auth";
 
 const Welcome = ({ route }) => {
   const { key } = route.params;
-  const { colorScheme, appLang } = useSelector(
+  const { colorScheme, golden, appLang } = useSelector(
     getSettingsState,
   );
 
-  const color = colors[colorScheme].CONTRAST[0];
+  const color = colors[colorScheme].CONTRAST[golden];
 
   const name =
     key === "start"

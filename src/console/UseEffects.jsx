@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
+  backOut,
   getConsoleState,
   incrementTimeOnThisWord,
   updateTimerIsOn,
@@ -10,12 +11,18 @@ import {
   getSettingsState,
   updateSettings,
 } from "../store/settings";
-import { AppState } from "react-native";
+import { AppState, Keyboard } from "react-native";
 import { fetchConsoleInfo } from "./functions/fetchConsoleInfo";
+import { returnWrongAnswerToServer } from "./functions/returnWrongAnswerToServer";
 
 const UseEffects = () => {
-  const { stats, timerIsOn, showSolution } =
-    useSelector(getConsoleState);
+  const {
+    stats,
+    timerIsOn,
+    showSolution,
+    startedThisWord,
+    isPlaying,
+  } = useSelector(getConsoleState);
   const { timeGoal, newWordsGoal, stepsGoal, golden } =
     useSelector(getSettingsState);
   const { steps, time, newWords } = stats;
@@ -95,6 +102,44 @@ const UseEffects = () => {
       subscription.remove();
     };
   }, [appState]);
+
+  const closeKeyboard = () => {
+    if (!showSolution && isPlaying) {
+      returnWrongAnswerToServer({
+        dispatch,
+        startedThisWord,
+        showSolution,
+      });
+    } else {
+      dispatch(backOut());
+    }
+  };
+
+  useEffect(() => {
+    const handleAppStateChange = (nextAppState) => {
+      if (nextAppState === "background") {
+        closeKeyboard();
+      }
+    };
+    const subscription = AppState.addEventListener(
+      "change",
+      handleAppStateChange,
+    );
+
+    return () => {
+      subscription.remove();
+    };
+  }, [showSolution, isPlaying]);
+
+  useEffect(() => {
+    const keyboardDidHideListener = Keyboard.addListener(
+      "keyboardDidHide",
+      closeKeyboard,
+    );
+    return () => {
+      keyboardDidHideListener.remove();
+    };
+  }, [showSolution, isPlaying]);
 };
 
 export default UseEffects;

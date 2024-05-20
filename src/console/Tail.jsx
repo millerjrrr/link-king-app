@@ -1,4 +1,9 @@
-import { View, StyleSheet } from "react-native";
+import {
+  View,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from "react-native";
 import colors from "../utils/colors";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../store/console";
@@ -15,8 +20,7 @@ const TailEntryText = styled(AppText)`
 `;
 
 const TailEntry = ({ index }) => {
-  const { tail, showSolution } =
-    useSelector(getConsoleState);
+  const { tail } = useSelector(getConsoleState);
   const { colorScheme, golden } = useSelector(
     getSettingsState,
   );
@@ -29,7 +33,7 @@ const TailEntry = ({ index }) => {
 
   const opacity = 1 / (index + 1) / 2;
 
-  return (
+  return tail[index] ? (
     <TailEntryText
       {...{
         color,
@@ -39,11 +43,16 @@ const TailEntry = ({ index }) => {
     >
       {tail[index]}
     </TailEntryText>
-  );
+  ) : null;
 };
 
 const Tail = () => {
   const { showSolution } = useSelector(getConsoleState);
+
+  const onPress = () => {
+    Keyboard.dismiss();
+  };
+
   return (
     <View style={styles.container}>
       {!showSolution ? (
@@ -56,6 +65,14 @@ const Tail = () => {
       ) : (
         <SolutionsList />
       )}
+      <TouchableWithoutFeedback {...{ onPress }}>
+        <View
+          style={{
+            height: 100,
+            width: "100%",
+          }}
+        />
+      </TouchableWithoutFeedback>
     </View>
   );
 };
@@ -63,6 +80,7 @@ const Tail = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: "100%",
     textAlign: "center",
     alignItems: "center",
     zIndex: 5,

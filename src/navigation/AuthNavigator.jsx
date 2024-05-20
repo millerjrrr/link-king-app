@@ -14,9 +14,12 @@ import { getSettingsState } from "../store/settings";
 const Stack = createNativeStackNavigator();
 
 const AuthNavigator = () => {
-  const { colorScheme } = useSelector(getSettingsState);
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
 
-  const headerTintColor = colors[colorScheme].CONTRAST[0];
+  const headerTintColor =
+    colors[colorScheme].CONTRAST[golden];
 
   return (
     <Stack.Navigator

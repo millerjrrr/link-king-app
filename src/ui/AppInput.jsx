@@ -1,4 +1,4 @@
-import { StyleSheet, TextInput } from "react-native";
+import { TextInput } from "react-native";
 import colors from "../utils/colors";
 import appShadow from "../utils/appShadow";
 import { useSelector } from "react-redux";
@@ -6,8 +6,10 @@ import { getSettingsState } from "../store/settings";
 
 //This may be used in some settings tabs in the future
 const AppInput = (props) => {
-  const { colorScheme } = useSelector(getSettingsState);
-  const color = colors[colorScheme].CONTRAST[0];
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
+  const color = colors[colorScheme].CONTRAST[golden];
   const backgroundColor = colors[colorScheme].PRIMARY;
 
   return (

@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  createStackNavigator,
-  TransitionPresets,
-} from "@react-navigation/stack";
+import { createStackNavigator } from "@react-navigation/stack";
 import ManageAccountScreen from "../../options/ManageAccountScreen";
 import DeleteAccountScreen from "../../options/ManageAccountScreen/Screens/DeleteAccountScreen";
 import ChangeNameScreen from "../../options/ManageAccountScreen/Screens/ChangeNameScreen";
@@ -14,14 +11,16 @@ import { getSettingsState } from "../../store/settings";
 const ManageAccountStack = createStackNavigator();
 
 const ManageAccountNavigator = () => {
-  const { colorScheme } = useSelector(getSettingsState);
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
 
-  const headerTintColor = colors[colorScheme].CONTRAST[0];
+  const headerTintColor =
+    colors[colorScheme].CONTRAST[golden];
 
   return (
     <ManageAccountStack.Navigator
       screenOptions={{
-        tabBarVisible: false,
         headerTintColor,
         headerTransparent: true,
         headerBackTitleVisible: false,
@@ -35,6 +34,7 @@ const ManageAccountNavigator = () => {
         component={ManageAccountScreen}
         options={{
           headerShown: false,
+          tabBarStyle: false,
         }}
       />
       <ManageAccountStack.Screen

@@ -8,6 +8,7 @@ import AppText from "../../ui/AppText";
 const MenuItemName = styled(AppText)`
   color: ${(props) => props.color};
   font-size: 20px;
+  text-align: flex-start;
 `;
 
 const MenuItemLink = ({ name, onPress, gray }) => {

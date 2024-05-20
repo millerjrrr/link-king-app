@@ -4,8 +4,10 @@ import { useSelector } from "react-redux";
 import { getSettingsState } from "../store/settings";
 
 const PasswordVisibilityIcon = ({ privateIcon }) => {
-  const { colorScheme } = useSelector(getSettingsState);
-  const color = colors[colorScheme].CONTRAST[0];
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
+  const color = colors[colorScheme].CONTRAST[golden];
 
   return privateIcon ? (
     <Entypo {...{ name: "eye", size: 16, color }} />

@@ -49,16 +49,17 @@ const Password = () => {
   const { formName, formEmail } = useSelector(getAuthState);
 
   const onSubmit = async (values, actions) => {
-    values.passwordConfirm = values.password;
-    values.username = formName;
-    values.email = formEmail;
+    const { password } = values;
 
     actions.setSubmitting(true);
     try {
       const { data } = await client.post(
         "/api/users/sign-up",
         {
-          ...values,
+          username: formName,
+          email: formEmail,
+          password,
+          passwordConfirm: password,
         },
         {
           timeout: 3000,
@@ -77,6 +78,11 @@ const Password = () => {
       }
     } catch (error) {
       authErrorHandler(error, dispatch);
+      if (error?.response?.data?.message?.includes("[#1]"))
+        setTimeout(
+          () => navigation.navigate("VerificationCode"),
+          2100,
+        );
     }
     actions.setSubmitting(false);
   };

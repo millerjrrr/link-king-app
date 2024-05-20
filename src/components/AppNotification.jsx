@@ -34,8 +34,10 @@ const AppNotification = () => {
     };
   });
 
-  const { colorScheme } = useSelector(getSettingsState);
-  const color = colors[colorScheme].CONTRAST[0];
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
+  const color = colors[colorScheme].CONTRAST[golden];
   let backgroundColor = colors[colorScheme].RED;
   let messageTime = 3000;
 

@@ -8,7 +8,7 @@ import { submitAnswer } from "../functions/submitAnswer";
 import LoaderForTextInputForConsole from "./LoaderForTextInputForConsole";
 import TextInputForConsole from "./TextInputForConsole";
 import { getSettingsState } from "../../store/settings";
-import SolutionsList from "../SolutionsList";
+import { useState } from "react";
 
 const InputAndTimerContainer = ({
   inputFieldRef,
@@ -33,15 +33,21 @@ const InputAndTimerContainer = ({
 
   const dispatch = useDispatch();
 
+  const [isDisabled, setIsDisabled] = useState(false);
+
   const sendAnswer = () => {
-    submitAnswer({
-      dispatch,
-      formValue,
-      solutions,
-      tries,
-      startedThisWord,
-      showSolution,
-    });
+    if (!isDisabled) {
+      setIsDisabled(true);
+      submitAnswer({
+        dispatch,
+        formValue,
+        solutions,
+        tries,
+        startedThisWord,
+        showSolution,
+      });
+      setTimeout(() => setIsDisabled(false), 400);
+    }
   };
 
   return (

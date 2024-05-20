@@ -38,8 +38,8 @@ const Console = ({ navigation }) => {
 
   const showWelcome = async () => {
     try {
-      const firstTime =
-        (await getFromAsyncStorage("first-time")) || "yes";
+      const firstTime = "yes";
+      // (await getFromAsyncStorage("first-time")) || "yes";
 
       if (firstTime !== "no") {
         setIsModalVisible(true);
@@ -69,43 +69,34 @@ const Console = ({ navigation }) => {
   const { heading } = appTextSource[appLang].console;
 
   return (
-    <KeyboardAvoidingView
-      style={styles.container}
-      behavior={Platform.select({
-        ios: "padding",
-        android: "height",
-      })}
-    >
-      <InnerTabContainer {...{ heading, help }}>
-        <StatsContainer />
-        <OptionsContainer />
-        <ReadWordButton />
-        <InputAndTimerContainer
-          {...{
-            inputFieldRef: inputFieldRef,
-            setIsKeyboardVisible,
-          }}
-        />
-        <Tail />
-        <KeyboardAndStartButton
-          {...{
-            inputFieldRef: inputFieldRef,
-            isKeyboardVisible,
-          }}
-        />
-        <UseEffects />
-        <AppModal
-          {...{
-            isVisible: isModalVisible,
-            modalName: "welcome",
-            videoId:
-              appLang === "pt" ? "lfc3MTUbbWU" : false,
-            onPress: () => setIsModalVisible(false),
-            info: true,
-          }}
-        />
-      </InnerTabContainer>
-    </KeyboardAvoidingView>
+    <InnerTabContainer {...{ heading, help }}>
+      <StatsContainer />
+      <OptionsContainer />
+      <ReadWordButton />
+      <InputAndTimerContainer
+        {...{
+          inputFieldRef: inputFieldRef,
+          setIsKeyboardVisible,
+        }}
+      />
+      <Tail />
+      <KeyboardAndStartButton
+        {...{
+          inputFieldRef: inputFieldRef,
+          isKeyboardVisible,
+        }}
+      />
+      <UseEffects />
+      <AppModal
+        {...{
+          isVisible: isModalVisible,
+          modalName: "welcome",
+          videoId: appLang === "pt" ? "lfc3MTUbbWU" : false,
+          onPress: () => setIsModalVisible(false),
+          info: true,
+        }}
+      />
+    </InnerTabContainer>
   );
 };
 

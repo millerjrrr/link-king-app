@@ -25,18 +25,6 @@ const KeyboardIconContainer = () => {
   const color = colors[colorScheme].INACTIVE_CONTRAST;
 
   const closeKeyboard = () => {
-    if (!showSolution && isPlaying) {
-      submitAnswer({
-        dispatch,
-        formValue,
-        solutions,
-        tries: 1,
-        startedThisWord,
-        showSolution: false,
-      });
-    } else {
-      dispatch(backOut());
-    }
     Keyboard.dismiss();
   };
 
@@ -53,22 +41,22 @@ const KeyboardIconContainer = () => {
 
   return (
     <View style={styles.container}>
-      <KeyboardIcon
+      {/* <KeyboardIcon
         {...{
           name: "back",
           entypo: true,
           size: 48,
           onPress: closeKeyboard,
         }}
-      />
+      /> */}
       <KeyboardIcon
         {...{
           name: "keyboard-off",
-          size: 24,
+          size: 18,
           onPress: closeKeyboard,
         }}
       />
-      {tries > 1 ? (
+      {/* {tries > 1 ? (
         <KeyboardIcon
           {...{
             name: "skip-forward",
@@ -80,7 +68,7 @@ const KeyboardIconContainer = () => {
         <MaterialCommunityIcons
           {...{ name: "skip-forward", size: 48, color }}
         />
-      )}
+      )} */}
     </View>
   );
 };

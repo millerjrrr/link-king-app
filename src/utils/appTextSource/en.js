@@ -35,7 +35,7 @@ export default {
       giveUp: {
         title: "Give Up!",
         description:
-          "This button is used to quickly submit a wrong answer and skip straight to the solutions",
+          "To give up and immediately see solutions, simply enter a blank value.",
       },
       dueToday: {
         title: "Due Today",
@@ -245,7 +245,7 @@ export default {
       },
       code: {
         heading: "Enter your verification code",
-        subHeading: "We sent a 6 digit code to your email.",
+        subHeading: "We sent a 6 digit code to your email ",
         subHeading2:
           "Please enter your code below to confirm your email address",
         verify: "Verify",
@@ -270,7 +270,7 @@ export default {
     signUp: {
       title: "Quit process",
       modalMessage:
-        "Are your sure you want to end the process?\n \n If you leave, you won't be able to complete the sign up process again for 10 minutes",
+        "Are your sure you want to end the process?",
       cancel: "Stay here",
     },
     logOut: {
@@ -286,7 +286,7 @@ export default {
     },
     dailyGoalInfo: {
       modalMessage:
-        "Here you can set daily goals for time, new words and steps. A notification will appear if any of these conditions are satisfied. You can set a goal to blank and it will not be considered.",
+        "Here you can set daily goals for time, new words and steps. You’ll be notified when you reach your goal for the day while playing. You can set a goal to blank and it will not be considered.",
       cancel: "Close",
     },
     collectionInfo: {

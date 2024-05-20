@@ -5,9 +5,8 @@ const KeyboardAndStartButton = ({
   inputFieldRef,
   isKeyboardVisible,
 }) => {
-  return isKeyboardVisible ? (
-    <KeyboardIconContainer />
-  ) : (
+  return isKeyboardVisible ? null : (
+    // <KeyboardIconContainer />
     <StartButton {...{ inputFieldRef }} />
   );
 };

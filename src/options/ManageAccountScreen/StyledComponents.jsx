@@ -24,9 +24,11 @@ export const Title = styled(AppText)`
   color: ${(props) => props.color};
   font-weight: bold;
   padding-vertical: 5px;
+  text-align: flex-start;
 `;
 
 export const SubTitle = styled(AppText)`
   color: ${(props) => props.color};
   font-size: 20px;
+  text-align: flex-start;
 `;

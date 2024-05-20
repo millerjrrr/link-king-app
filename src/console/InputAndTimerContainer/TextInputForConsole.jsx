@@ -74,7 +74,7 @@ const TextInputForConsole = ({
       returnKeyType={"next"}
       autoCompleteType="off"
       keyboardType="visible-password"
-      autoCorrect={false}
+      autoCorrect={true}
       selectionColor={color}
       style={[
         styles.input,

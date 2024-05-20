@@ -35,7 +35,7 @@ export default {
       giveUp: {
         title: "Desistir!",
         description:
-          "Este botão é usado para enviar rapidamente uma resposta errada e ir imediatamente para as soluções",
+          "Para desistir e ver soluções imediatamente, só aperta enter",
       },
       dueToday: {
         title: "Palavras de Hoje",
@@ -247,7 +247,7 @@ export default {
       code: {
         heading: "Digite seu código de verificação",
         subHeading:
-          "Enviamos um código de 6 dígitos para seu e-mail.",
+          "Enviamos um código de 6 dígitos para seu e-mail ",
         subHeading2:
           "Por favor insira seu código abaixo para confirmar seu endereço de e-mail",
         verify: "Verificar",
@@ -272,7 +272,7 @@ export default {
     signUp: {
       title: "Sair do processo",
       modalMessage:
-        "Tem certeza de que deseja encerrar o processo? \n\nSe você sair, não poderá concluir o processo de inscrição novamente por 10 minutos",
+        "Tem certeza de que deseja encerrar o processo?",
       cancel: "Ficar aqui",
     },
     logOut: {

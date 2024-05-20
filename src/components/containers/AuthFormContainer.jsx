@@ -20,9 +20,11 @@ const AuthFormContainer = ({
   subHeading,
   nologo,
 }) => {
-  const { colorScheme } = useSelector(getSettingsState);
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
 
-  const tintColor = colors[colorScheme].CONTRAST[0];
+  const tintColor = colors[colorScheme].CONTRAST[golden];
   const color = colors[colorScheme].SECONDARY;
   const backgroundColor = colors[colorScheme].PRIMARY;
   return (
