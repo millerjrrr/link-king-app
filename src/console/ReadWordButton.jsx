@@ -8,6 +8,8 @@ import { speak } from "expo-speech";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../store/console";
 import AppText from "../ui/AppText";
+import { getSettingsState } from "../store/settings";
+import colors from "../utils/colors";
 
 const ReadWordButton = () => {
   const {
@@ -25,6 +27,11 @@ const ReadWordButton = () => {
   let fontSize = 48;
   const length = target.length;
   if (length > 12) fontSize = (fontSize * 12) / length;
+
+  const { colorScheme, golden } = useSelector(
+    getSettingsState,
+  );
+  const color = colors[colorScheme].CONTRAST[golden];
 
   return (
     <View style={styles.container}>

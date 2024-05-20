@@ -68,7 +68,7 @@ const Tail = () => {
       <TouchableWithoutFeedback {...{ onPress }}>
         <View
           style={{
-            height: 100,
+            flex: 1,
             width: "100%",
           }}
         />
