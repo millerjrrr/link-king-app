@@ -38,8 +38,8 @@ const Console = ({ navigation }) => {
 
   const showWelcome = async () => {
     try {
-      const firstTime = "yes";
-      // (await getFromAsyncStorage("first-time")) || "yes";
+      const firstTime =
+        (await getFromAsyncStorage("first-time")) || "yes";
 
       if (firstTime !== "no") {
         setIsModalVisible(true);
