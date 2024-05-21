@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { getSettingsState } from "../../store/settings";
 import { useNavigation } from "@react-navigation/native";
 
-const BackButton = () => {
+const BackButton = ({ extraPadding }) => {
   const { colorScheme, golden } = useSelector(
     getSettingsState,
   );
@@ -16,7 +16,13 @@ const BackButton = () => {
     <>
       <TouchableOpacity
         onPress={() => navigation.goBack()}
-        style={[styles.container, { paddingVertical: 15 }]}
+        style={[
+          styles.container,
+          {
+            paddingVertical: extraPadding ? 45 : 15,
+            paddingRight: 15,
+          },
+        ]}
       >
         <Entypo
           {...{

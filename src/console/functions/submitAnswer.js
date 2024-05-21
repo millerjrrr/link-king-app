@@ -11,10 +11,11 @@ export const submitAnswer = ({
   tries,
   startedThisWord,
   showSolution,
+  timeUp,
 }) => {
   dispatch(stopPlaying());
   const answerAccepted = acceptAnswer(formValue, solutions);
-  if (formValue === "")
+  if (formValue === "" && !timeUp)
     returnWrongAnswerToServer({
       dispatch,
       startedThisWord,

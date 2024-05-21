@@ -14,8 +14,14 @@ import {
 import { AppState, Keyboard } from "react-native";
 import { fetchConsoleInfo } from "./functions/fetchConsoleInfo";
 import { returnWrongAnswerToServer } from "./functions/returnWrongAnswerToServer";
+import { getAuthState } from "../store/auth";
+import { errorHandler } from "../errors/errorHandler";
+import {
+  getFromAsyncStorage,
+  saveToAsyncStorage,
+} from "../utils/asyncStorage";
 
-const UseEffects = () => {
+const UseEffects = ({ setIsModalVisible }) => {
   const {
     stats,
     timerIsOn,
@@ -140,6 +146,35 @@ const UseEffects = () => {
       keyboardDidHideListener.remove();
     };
   }, [showSolution, isPlaying]);
+
+  const showWelcome = async () => {
+    try {
+      const firstTime =
+        (await getFromAsyncStorage("first-time")) || "yes";
+
+      if (firstTime !== "no") {
+        setIsModalVisible(true);
+        await saveToAsyncStorage("first-time", "no");
+      }
+    } catch (error) {
+      errorHandler(error, dispatch);
+    }
+  };
+
+  const fetchInfo = () => fetchConsoleInfo({ dispatch });
+
+  const { refresh } = useSelector(getAuthState);
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener(
+      "focus",
+      fetchInfo,
+    );
+
+    fetchInfo();
+    showWelcome();
+    return unsubscribe;
+  }, [navigation, refresh]);
 };
 
 export default UseEffects;

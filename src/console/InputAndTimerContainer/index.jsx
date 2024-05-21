@@ -35,7 +35,7 @@ const InputAndTimerContainer = ({
 
   const [isDisabled, setIsDisabled] = useState(false);
 
-  const sendAnswer = () => {
+  const sendAnswer = ({ timeUp }) => {
     if (!isDisabled) {
       setIsDisabled(true);
       submitAnswer({
@@ -45,19 +45,24 @@ const InputAndTimerContainer = ({
         tries,
         startedThisWord,
         showSolution,
+        timeUp,
       });
       setTimeout(() => setIsDisabled(false), 400);
     }
   };
 
+  const onComplete = () => sendAnswer({ timeUp: true });
+  const onSubmitEditing = () =>
+    sendAnswer({ timeUp: false });
+
   return (
     <View style={styles.formView}>
-      <Timer onComplete={sendAnswer} {...{ color }} />
+      <Timer {...{ onComplete, color }} />
       <LoaderForTextInputForConsole />
       <TargetDetailsButton />
       <TextInputForConsole
         {...{
-          onSubmitEditing: sendAnswer,
+          onSubmitEditing,
           inputFieldRef,
           setIsKeyboardVisible,
           color,
@@ -73,6 +78,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     zIndex: 1,
+    marginBottom: 10,
   },
 });
 

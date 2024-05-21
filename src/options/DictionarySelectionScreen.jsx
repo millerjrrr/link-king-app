@@ -20,7 +20,10 @@ const DictionarySelectionScreen = () => {
   return (
     <PopUpContainer {...{ heading }}>
       {customDictionary ? (
-        <DictionarySelectorMenuItem name="Custom-Dictionary" />
+        <>
+          <View style={{ height: 30 }} />
+          <DictionarySelectorMenuItem name="Custom-Dictionary" />
+        </>
       ) : (
         <BusyWrapper {...{ busy }}>
           <View style={{ height: 30 }} />

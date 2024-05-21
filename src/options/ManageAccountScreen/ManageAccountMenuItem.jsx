@@ -23,7 +23,6 @@ const ManageAccountMenuItem = ({
     getSettingsState,
   );
   const backgroundColor = colors[colorScheme].PRIMARY;
-  const borderColor = colors[colorScheme].SECONDARY;
   const color = colors[colorScheme].CONTRAST[golden];
 
   const title =
@@ -35,7 +34,7 @@ const ManageAccountMenuItem = ({
     <Container
       {...{
         backgroundColor,
-        borderColor,
+        borderColor: color,
         borderTopWidth: first ? 0 : 1,
       }}
     >

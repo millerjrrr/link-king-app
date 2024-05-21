@@ -14,29 +14,13 @@ import { getSettingsState } from "../store/settings";
 const Stack = createNativeStackNavigator();
 
 const AuthNavigator = () => {
-  const { colorScheme, golden } = useSelector(
-    getSettingsState,
-  );
-
-  const headerTintColor =
-    colors[colorScheme].CONTRAST[golden];
-
   return (
     <Stack.Navigator
       screenOptions={{
-        headerTintColor,
-        headerTransparent: true,
-        headerBackTitleVisible: false,
-        headerTitleStyle: {
-          color: "#ffffff00",
-        },
+        headerShown: false,
       }}
     >
-      <Stack.Screen
-        name="SignIn"
-        component={SignIn}
-        options={{ headerShown: false }}
-      />
+      <Stack.Screen name="SignIn" component={SignIn} />
       <Stack.Screen name="Welcome" component={Welcome} />
       <Stack.Screen name="Name" component={Name} />
       <Stack.Screen name="Email" component={Email} />
@@ -44,7 +28,6 @@ const AuthNavigator = () => {
       <Stack.Screen
         name="VerificationCode"
         component={VerificationCode}
-        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="LostPassword"
@@ -53,7 +36,6 @@ const AuthNavigator = () => {
       <Stack.Screen
         name="CheckYourEmail"
         component={CheckYourEmail}
-        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );

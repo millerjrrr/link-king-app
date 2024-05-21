@@ -15,12 +15,14 @@ import HelpButton from "../../ui/Buttons/HelpButton";
 import { getSettingsState } from "../../store/settings";
 import FlagBook from "../../ui/Buttons/FlagBook";
 import AppText from "../../ui/AppText";
+import BackButton from "../../ui/Buttons/BackButton";
 
 const InnerTabContainer = ({
   children,
   heading,
   help,
   noBook,
+  back,
 }) => {
   const { colorScheme, golden } = useSelector(
     getSettingsState,
@@ -33,6 +35,7 @@ const InnerTabContainer = ({
     <View style={styles.container}>
       <StatusBarFiller />
       <AppNotification />
+      {back ? <BackButton extraPadding={true} /> : null}
       <FourCrowns {...{ color }} />
       <HelpButton {...{ help, padding: true }} />
       <FlagBook {...{ noBook, padding: true }} />
@@ -51,7 +54,7 @@ const InnerTabContainer = ({
 
 const styles = StyleSheet.create({
   container: {
-    height: Dimensions.get("window").height,
+    flex: 1,
     width: "100%",
     alignItems: "center",
     justifyContent: "flex-start",

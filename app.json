@@ -13,7 +13,7 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "buildNumber": "3",
+      "buildNumber": "4",
       "supportsTablet": false,
       "bundleIdentifier": "com.linkoking.app",
       "privacyManifests": {
@@ -41,7 +41,7 @@
       "permissions": ["INTERNET"],
       "icon": "./assets/adaptive-icon.png",
       "package": "com.linkoking.app",
-      "versionCode": 22,
+      "versionCode": 23,
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon-android.png",
         "backgroundColor": "#000000"

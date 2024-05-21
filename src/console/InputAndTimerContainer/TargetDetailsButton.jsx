@@ -29,6 +29,7 @@ const TargetDetailsButton = () => {
 const styles = StyleSheet.create({
   container: {
     width: 60,
+    height: "100%",
     aspectRatio: 1,
     borderRadius: 1000,
     position: "absolute",

@@ -18,6 +18,7 @@ const AppInput = (props) => {
       autoCompleteType="off"
       autoCorrect={false}
       textContentType="none"
+      underlineColorAndroid="transparent"
       placeholderTextColor={
         colors[colorScheme].INACTIVE_CONTRAST
       }

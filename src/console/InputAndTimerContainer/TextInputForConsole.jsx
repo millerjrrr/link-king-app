@@ -42,6 +42,10 @@ const TextInputForConsole = ({
   const { colorScheme } = useSelector(getSettingsState);
   const placeholderTextColor = colors[colorScheme].LIGHTRED;
   const backgroundColor = colors[colorScheme].PRIMARY;
+  const keyboardAppearance =
+    colors[colorScheme].STATUSBAR.split("-")[0] === "dark"
+      ? "light"
+      : "dark";
 
   const placeholder = showSolution
     ? attempt.solutions[0]
@@ -63,19 +67,26 @@ const TextInputForConsole = ({
         onChangeText,
         onFocus,
         onBlur,
-        placeholder,
         placeholderTextColor,
       }}
+      placeholder={
+        inputFieldRef.current?.isFocused()
+          ? undefined
+          : placeholder
+      }
       value={formValue}
-      autoFocus={false}
       blurOnSubmit={false}
       enterKeyHint="enter"
       autoCapitalize={"none"}
       returnKeyType={"next"}
       autoCompleteType="off"
-      keyboardType="visible-password"
-      autoCorrect={true}
-      selectionColor={color}
+      spellCheck={true}
+      selectionColor={color + "55"}
+      underlineColorAndroid="transparent"
+      textContentType="none"
+      keyboardType="default"
+      allowFontScaling={false}
+      keyboardAppearance={keyboardAppearance}
       style={[
         styles.input,
         {
@@ -92,11 +103,10 @@ const TextInputForConsole = ({
 
 const styles = StyleSheet.create({
   input: {
-    marginBottom: 10,
     width: "100%",
     height: 70,
-    padding: 10,
     textAlign: "center",
+    paddingBottom: 7,
     borderRadius: 35,
     ...appShadow(2),
   },

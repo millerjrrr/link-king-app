@@ -71,23 +71,18 @@ const AppModal = ({
         }}
       >
         {videoId ? (
-          <View
-            style={{
-              borderRadius: 50,
+          <YoutubePlayer
+            {...{
+              height: 195,
               width: "100%",
-              overflow: "hidden",
+              play: true,
+              videoId,
+              webViewStyle: {
+                margin: 10,
+                marginTop: 15,
+              },
             }}
-          >
-            <YoutubePlayer
-              {...{
-                height: 195,
-                width: "100%",
-                play: true,
-                videoId,
-                webViewStyle: { margin: 10, marginTop: 15 },
-              }}
-            />
-          </View>
+          />
         ) : null}
         <ModalText {...{ color }}>{modalMessage}</ModalText>
         {info ? (

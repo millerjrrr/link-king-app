@@ -13,12 +13,14 @@ import StatusBarFiller from "../../ui/StatusBarFiller";
 import { useSelector } from "react-redux";
 import { getSettingsState } from "../../store/settings";
 import AppText from "../../ui/AppText";
+import BackButton from "../../ui/Buttons/BackButton";
 
 const AuthFormContainer = ({
   children,
   heading,
   subHeading,
   nologo,
+  back = true,
 }) => {
   const { colorScheme, golden } = useSelector(
     getSettingsState,
@@ -43,6 +45,7 @@ const AuthFormContainer = ({
         >
           <StatusBarFiller />
           <AppNotification />
+          {back ? <BackButton extraPadding={true} /> : null}
           <FourCrowns {...{ color }} />
           {!nologo ? (
             <LinkKingLogo {...{ tintColor }} />

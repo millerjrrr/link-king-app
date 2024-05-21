@@ -46,11 +46,12 @@ const TailEntry = ({ index }) => {
   ) : null;
 };
 
-const Tail = () => {
+const Tail = ({ setIsKeyboardVisible }) => {
   const { showSolution } = useSelector(getConsoleState);
 
   const onPress = () => {
     Keyboard.dismiss();
+    setIsKeyboardVisible(false);
   };
 
   return (

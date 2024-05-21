@@ -12,6 +12,7 @@ import { Platform, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import React from "react";
 import { getSettingsState } from "../store/settings";
+import { useNavigation } from "@react-navigation/native";
 
 const Tab = createBottomTabNavigator();
 
@@ -91,6 +92,9 @@ const TabNavigator = () => {
           ),
           tabBarLabel: "Options",
           tabBarHideOnKeyboard: true,
+          tabBarStyle: {
+            display: "none",
+          },
         }}
       />
     </Tab.Navigator>

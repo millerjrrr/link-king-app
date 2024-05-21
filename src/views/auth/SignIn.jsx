@@ -83,7 +83,7 @@ const SignIn = () => {
     appTextSource[appLang].auth.titles;
 
   return (
-    <AuthFormContainer {...{ heading }}>
+    <AuthFormContainer {...{ heading, back: false }}>
       <Form
         {...{
           onSubmit,
