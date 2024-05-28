@@ -11,6 +11,7 @@ import BusyWrapper from "../ui/Loader/BusyWrapper";
 import ConnectedWrapper from "../errors/ConnectedWrapper";
 import { getSettingsState } from "../store/settings";
 import AppNavigatorUseEffects from "./AppNavigatorUseEffects";
+// import IsSubscribedWrapper from "../subscription/IsSubscribedWrapper";
 
 const AppNavigator = () => {
   const { colorScheme, golden } = useSelector(
@@ -40,7 +41,9 @@ const AppNavigator = () => {
         }}
       >
         <ConnectedWrapper>
+          {/* <IsSubscribedWrapper> */}
           {loggedIn ? <TabNavigator /> : <AuthNavigator />}
+          {/* </IsSubscribedWrapper> */}
         </ConnectedWrapper>
       </BusyWrapper>
     </NavigationContainer>

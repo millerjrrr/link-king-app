@@ -58,7 +58,7 @@ const PopUpContainer = ({
   }, [navigation]);
 
   return (
-    <View style={styles.container}>
+    <View style={[{ backgroundColor }, styles.container]}>
       <FourCrowns {...{ color: SECONDARY }} />
       <AppNotification />
       <HelpButton {...{ help }} />

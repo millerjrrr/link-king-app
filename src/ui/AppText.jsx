@@ -15,8 +15,8 @@ const AppText = ({ style, children }) => {
         style: {
           fontSize: 25,
           textAlign: "center",
-          ...style,
           color,
+          ...style,
         },
         allowFontScaling: false,
       }}

@@ -260,6 +260,10 @@ export default {
       },
     },
   },
+  paywall: {
+    heading: "Join the Link-King Community",
+    title: "Try 3 days for free",
+  },
   modals: {
     contactUs: {
       title: "Send Email",

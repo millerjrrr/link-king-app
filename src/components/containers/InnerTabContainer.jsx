@@ -27,12 +27,18 @@ const InnerTabContainer = ({
   const { colorScheme, golden } = useSelector(
     getSettingsState,
   );
-  const { CONTRAST, SECONDARY } = colors[colorScheme];
+  const { CONTRAST, SECONDARY, PRIMARY } =
+    colors[colorScheme];
   const tintColor = CONTRAST[golden];
   const color = SECONDARY;
 
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        { backgroundColor: PRIMARY },
+        styles.container,
+      ]}
+    >
       <StatusBarFiller />
       <AppNotification />
       {back ? <BackButton extraPadding={true} /> : null}

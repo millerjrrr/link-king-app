@@ -38,7 +38,11 @@
       }
     },
     "android": {
-      "permissions": ["INTERNET"],
+      "permissions": [
+        "INTERNET",
+        "com.android.vending.BILLING",
+        "ACCESS_NETWORK_STATE"
+      ],
       "icon": "./assets/adaptive-icon.png",
       "package": "com.linkoking.app",
       "versionCode": 23,

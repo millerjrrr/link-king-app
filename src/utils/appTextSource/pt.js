@@ -262,6 +262,10 @@ export default {
       },
     },
   },
+  paywall: {
+    heading: "Junte-se à comunidade Link-King",
+    title: "Experimente 3 dias grátis",
+  },
   modals: {
     contactUs: {
       title: "Enviar E-mail",
