@@ -4,23 +4,21 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
-import { speak } from "expo-speech";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../store/console";
 import AppText from "../ui/AppText";
 import { getSettingsState } from "../store/settings";
 import colors from "../utils/colors";
+import { speak } from "./functions/speak";
 
 const ReadWordButton = () => {
   const {
-    attempt: { target, speechLang },
+    attempt: { target, speechLang: language },
     options: { blurred },
   } = useSelector(getConsoleState);
 
   const onPress = async () => {
-    speak(target, {
-      language: speechLang,
-    });
+    speak({ target, language });
   };
 
   //font-size management

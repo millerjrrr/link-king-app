@@ -12,6 +12,7 @@ import {
   getAuthState,
   updateEmail,
 } from "../../../store/auth";
+import SignUpAppLink from "../../../ui/SignUpAppLink";
 
 const Email = () => {
   const { appLang } = useSelector(getSettingsState);
@@ -68,6 +69,7 @@ const Email = () => {
           <SubmitBtn {...{ title: next }} />
         </>
       </Form>
+      <SignUpAppLink />
     </AuthFormContainer>
   );
 };

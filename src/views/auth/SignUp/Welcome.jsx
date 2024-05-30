@@ -1,45 +1,40 @@
 import { View } from "react-native";
 import AuthFormContainer from "../../../components/containers/AuthFormContainer";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { getSettingsState } from "../../../store/settings";
 import appTextSource from "../../../utils/appTextSource";
 import AuthButton from "../../../ui/Buttons/AuthButton";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "../../../utils/colors";
-import { refreshPage } from "../../../store/auth";
+import SignUpAppLink from "../../../ui/SignUpAppLink";
 
-const Welcome = ({ route }) => {
-  const { key } = route.params;
+const Welcome = () => {
   const { colorScheme, golden, appLang } = useSelector(
     getSettingsState,
   );
-
   const color = colors[colorScheme].CONTRAST[golden];
-
-  const name =
-    key === "start"
-      ? "account-arrow-right-outline"
-      : "account-arrow-left-outline";
-  const page = key === "start" ? "Name" : "SignIn";
 
   const navigation = useNavigation();
 
-  const dispatch = useDispatch();
-
   const onPress = async () => {
-    navigation.navigate(page);
-    if (page === "SignIn") dispatch(refreshPage());
+    navigation.navigate("Name");
   };
 
   const { heading, subHeading, buttonTitle } =
-    appTextSource[appLang].auth.signUp[key];
+    appTextSource[appLang].auth.signUp.start;
 
   return (
-    <AuthFormContainer {...{ heading, subHeading }}>
+    <AuthFormContainer
+      {...{
+        heading,
+        subHeading,
+        back: false,
+      }}
+    >
       <MaterialCommunityIcons
         {...{
-          name,
+          name: "account-arrow-right-outline",
           size: 100,
           color,
         }}
@@ -48,6 +43,7 @@ const Welcome = ({ route }) => {
       <AuthButton
         {...{ title: buttonTitle, busy: false, onPress }}
       />
+      <SignUpAppLink />
     </AuthFormContainer>
   );
 };

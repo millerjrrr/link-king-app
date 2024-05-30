@@ -20,8 +20,8 @@ const AuthNavigator = () => {
         headerShown: false,
       }}
     >
-      <Stack.Screen name="SignIn" component={SignIn} />
       <Stack.Screen name="Welcome" component={Welcome} />
+      <Stack.Screen name="SignIn" component={SignIn} />
       <Stack.Screen name="Name" component={Name} />
       <Stack.Screen name="Email" component={Email} />
       <Stack.Screen name="Password" component={Password} />

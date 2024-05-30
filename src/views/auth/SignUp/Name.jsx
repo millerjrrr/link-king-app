@@ -12,6 +12,7 @@ import {
   updateName,
 } from "../../../store/auth";
 import updateNameOnServer from "../../../options/ManageAccountScreen/functions/updateNameOnServer";
+import SignUpAppLink from "../../../ui/SignUpAppLink";
 
 const Name = ({ updateNameFunction, buttonTitle }) => {
   const { appLang } = useSelector(getSettingsState);
@@ -77,6 +78,7 @@ const Name = ({ updateNameFunction, buttonTitle }) => {
           <SubmitBtn {...{ title: buttonTitle || next }} />
         </>
       </Form>
+      <SignUpAppLink />
     </AuthFormContainer>
   );
 };

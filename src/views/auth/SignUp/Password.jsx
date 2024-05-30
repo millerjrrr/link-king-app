@@ -16,6 +16,7 @@ import {
   updateName,
   updateUnverifiedUserId,
 } from "../../../store/auth";
+import SignUpAppLink from "../../../ui/SignUpAppLink";
 
 const Password = () => {
   const { appLang } = useSelector(getSettingsState);
@@ -81,7 +82,7 @@ const Password = () => {
       if (error?.response?.data?.message?.includes("[#1]"))
         setTimeout(
           () => navigation.navigate("VerificationCode"),
-          2100,
+          3000,
         );
     }
     actions.setSubmitting(false);
@@ -119,6 +120,7 @@ const Password = () => {
           <SubmitBtn {...{ title: signUp }} />
         </>
       </Form>
+      <SignUpAppLink />
     </AuthFormContainer>
   );
 };

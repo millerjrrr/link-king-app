@@ -171,6 +171,7 @@ export default {
       lostPassword: "Forgot password",
       sendLink: "Send Link",
       next: "Next",
+      goToSignIn: "Already have an account? Sign In",
     },
     forms: {
       name: {

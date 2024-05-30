@@ -5,9 +5,9 @@ import {
   incrementStatsTime,
   updateBusyState,
 } from "../../store/console";
-import * as Speech from "expo-speech";
 import { updateConsoleState } from "./updateConsoleState";
 import { errorHandler } from "../../errors/errorHandler";
+import { speak } from "./speak";
 
 export const returnCorrectAnswerToServer = async ({
   dispatch,
@@ -28,7 +28,6 @@ export const returnCorrectAnswerToServer = async ({
       ? Math.min(Date.now() - startedThisWord, 30 * 1000)
       : Math.min(Date.now() - startedThisWord, 10 * 1000);
     dispatch(incrementStatsTime(time));
-    // console.log(time);
     const { data } = await clientWithAuth.post(
       "/api/console/submit-attempt",
       {
@@ -36,10 +35,11 @@ export const returnCorrectAnswerToServer = async ({
         time,
       },
     );
+    const {
+      gamePlay: { target, speechLang: language },
+    } = data;
     updateConsoleState(data, dispatch);
-    Speech.speak(data.gamePlay.target, {
-      language: data.gamePlay.speechLang,
-    });
+    speak({ target, language });
     dispatch(restartTheTimer());
   } catch (error) {
     dispatch(updateBusyState(false)); //important that this comes first

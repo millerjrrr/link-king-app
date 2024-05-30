@@ -1,7 +1,8 @@
-import { Text, TouchableOpacity } from "react-native";
+import { TouchableOpacity } from "react-native";
 import colors from "../utils/colors";
 import { useSelector } from "react-redux";
 import { getSettingsState } from "../store/settings";
+import AppText from "./AppText";
 
 const AppLink = ({ title, onPress }) => {
   const { colorScheme } = useSelector(getSettingsState);
@@ -14,7 +15,9 @@ const AppLink = ({ title, onPress }) => {
         style: { padding: 5, paddingTop: 10 },
       }}
     >
-      <Text style={{ color, fontSize: 15 }}>{title}</Text>
+      <AppText style={{ color, fontSize: 15 }}>
+        {title}
+      </AppText>
     </TouchableOpacity>
   );
 };

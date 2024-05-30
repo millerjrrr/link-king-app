@@ -6,10 +6,10 @@ import {
   incrementStatsTime,
   resetConsole,
 } from "../../store/console";
-import * as Speech from "expo-speech";
 import { updateConsoleState } from "./updateConsoleState";
 import { Vibration } from "react-native";
 import { errorHandler } from "../../errors/errorHandler";
+import { speak } from "./speak";
 
 export const returnWrongAnswerToServer = async ({
   dispatch,
@@ -24,7 +24,6 @@ export const returnWrongAnswerToServer = async ({
       : Math.min(Date.now() - startedThisWord, 10 * 1000);
     dispatch(resetTimeOnThisWord());
     dispatch(incrementStatsTime(time));
-    // console.log(time);
     const { data } = await clientWithAuth.post(
       "/api/console/submit-attempt",
       {
@@ -32,11 +31,12 @@ export const returnWrongAnswerToServer = async ({
         time,
       },
     );
+    const {
+      gamePlay: { target, speechLang: language },
+    } = data;
     updateConsoleState(data, dispatch);
     dispatch(resetTimer());
-    Speech.speak(data.gamePlay.target, {
-      language: data.gamePlay.speechLang,
-    });
+    speak({ target, language });
     dispatch(resetConsole());
   } catch (error) {
     dispatch(updateBusyState(false)); //important that this comes first

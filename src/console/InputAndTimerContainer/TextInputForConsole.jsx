@@ -10,6 +10,7 @@ import {
 import * as Speech from "expo-speech";
 import { getSettingsState } from "../../store/settings";
 import appShadow from "../../utils/appShadow";
+import { speak } from "../functions/speak";
 
 const TextInputForConsole = ({
   inputFieldRef,
@@ -19,15 +20,24 @@ const TextInputForConsole = ({
 }) => {
   const dispatch = useDispatch();
 
+  const { formValue, attempt, showSolution } =
+    useSelector(getConsoleState);
+  const { target, speechLang: language } = attempt;
+  const { colorScheme } = useSelector(getSettingsState);
+  const placeholderTextColor = colors[colorScheme].LIGHTRED;
+  const backgroundColor = colors[colorScheme].PRIMARY;
+  const keyboardAppearance =
+    colors[colorScheme].STATUSBAR.split("-")[0] === "dark"
+      ? "light"
+      : "dark";
+
   const onChangeText = (text) => {
     dispatch(updateFormValue(text));
   };
 
-  const onFocus = () => {
+  const onFocus = async () => {
     setIsKeyboardVisible(true);
-    Speech.speak(attempt.target, {
-      language: attempt.speechLang,
-    });
+    speak({ target, language });
     dispatch(updateTimerIsOn(true));
     dispatch(updateFormValue(""));
     dispatch(restartTheTimer());
@@ -36,16 +46,6 @@ const TextInputForConsole = ({
   const onBlur = () => {
     setIsKeyboardVisible(false);
   };
-
-  const { formValue, attempt, showSolution } =
-    useSelector(getConsoleState);
-  const { colorScheme } = useSelector(getSettingsState);
-  const placeholderTextColor = colors[colorScheme].LIGHTRED;
-  const backgroundColor = colors[colorScheme].PRIMARY;
-  const keyboardAppearance =
-    colors[colorScheme].STATUSBAR.split("-")[0] === "dark"
-      ? "light"
-      : "dark";
 
   const placeholder = showSolution
     ? attempt.solutions[0]

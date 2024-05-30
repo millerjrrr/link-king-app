@@ -122,9 +122,7 @@ const SignIn = () => {
             <AppLink
               title={signUp}
               onPress={() => {
-                navigation.navigate("Welcome", {
-                  key: "start",
-                });
+                navigation.navigate("Welcome");
               }}
             />
             <AppLink
