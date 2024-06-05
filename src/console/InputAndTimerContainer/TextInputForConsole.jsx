@@ -20,8 +20,12 @@ const TextInputForConsole = ({
 }) => {
   const dispatch = useDispatch();
 
-  const { formValue, attempt, showSolution } =
-    useSelector(getConsoleState);
+  const {
+    formValue,
+    attempt,
+    showSolution,
+    options: { sound },
+  } = useSelector(getConsoleState);
   const { target, speechLang: language } = attempt;
   const { colorScheme } = useSelector(getSettingsState);
   const placeholderTextColor = colors[colorScheme].LIGHTRED;
@@ -37,7 +41,7 @@ const TextInputForConsole = ({
 
   const onFocus = async () => {
     setIsKeyboardVisible(true);
-    speak({ target, language });
+    speak({ target, language, sound });
     dispatch(updateTimerIsOn(true));
     dispatch(updateFormValue(""));
     dispatch(restartTheTimer());

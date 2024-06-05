@@ -37,9 +37,10 @@ export const returnCorrectAnswerToServer = async ({
     );
     const {
       gamePlay: { target, speechLang: language },
+      options: { sound },
     } = data;
     updateConsoleState(data, dispatch);
-    speak({ target, language });
+    speak({ target, language, sound });
     dispatch(restartTheTimer());
   } catch (error) {
     dispatch(updateBusyState(false)); //important that this comes first

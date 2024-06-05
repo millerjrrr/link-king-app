@@ -39,7 +39,12 @@ const TargetScreenFakeInput = () => {
       ]}
     >
       <AppText
-        style={[styles.text, { color: RED, fontSize }]}
+        style={{
+          color: RED,
+          fontSize,
+          zIndex: 1,
+          textDecorationLine: "line-through",
+        }}
       >
         {fakeFormValue}
       </AppText>
@@ -57,10 +62,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     borderRadius: 35,
     ...appShadow(),
-  },
-  text: {
-    zIndex: 1,
-    textDecorationLine: "line-through",
   },
 });
 

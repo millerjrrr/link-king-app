@@ -1,8 +1,5 @@
-import { Text } from "react-native";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../../store/console";
-import colors from "../../utils/colors";
-import { getSettingsState } from "../../store/settings";
 import AppText from "../../ui/AppText";
 
 const Target = () => {

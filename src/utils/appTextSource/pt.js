@@ -79,6 +79,8 @@ export default {
       "foot-print": "Avansos",
       "clock-outline": "Tempo de Estudo",
       "trophy-variant": "Sem Erros",
+      sound:
+        "Ative a audição novamente para ouvir palavras",
     },
   },
   collection: {

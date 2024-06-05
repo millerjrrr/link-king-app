@@ -79,6 +79,7 @@ export default {
       "foot-print": "Steps Taken",
       "clock-outline": "Time Playing",
       "trophy-variant": "Streak",
+      sound: "Turn listening back on to hear words",
     },
   },
   collection: {
