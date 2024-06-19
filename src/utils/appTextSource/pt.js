@@ -141,7 +141,9 @@ export default {
       "Spanish-English": "Espanhol para falantes de inglês",
       "Custom-Dictionary":
         "Um dicionário personalizado só para você!",
-      text: "*Embora exista a opção de mudar para um dicionário Espanhol-Inglês (800 entradas), este é um dicionário muito pequeno cujo objetivo é ilustrar o conceito para falantes de inglês.",
+      textA: "Atualmente oferecemos dois dicionários:",
+      textB:
+        "Muitos aplicativos de aprendizagem de idiomas tentam oferecer todos os idiomas imediatamente e substituir qualidade por quantidade. Embora esperemos oferecer mais cursos no futuro, estamos atualmente focados na otimização destes dois dicionários.",
     },
     colorSchemeTitle: "Esquema de Cores",
     manageAccount: {

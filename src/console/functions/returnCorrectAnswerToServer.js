@@ -8,6 +8,7 @@ import {
 import { updateConsoleState } from "./updateConsoleState";
 import { errorHandler } from "../../errors/errorHandler";
 import { speak } from "./speak";
+import returnReversoData from "./reverso";
 
 export const returnCorrectAnswerToServer = async ({
   dispatch,
@@ -28,7 +29,7 @@ export const returnCorrectAnswerToServer = async ({
       ? Math.min(Date.now() - startedThisWord, 30 * 1000)
       : Math.min(Date.now() - startedThisWord, 10 * 1000);
     dispatch(incrementStatsTime(time));
-    const { data } = await clientWithAuth.post(
+    let { data } = await clientWithAuth.post(
       "/api/console/submit-attempt",
       {
         correct: true,
@@ -39,6 +40,7 @@ export const returnCorrectAnswerToServer = async ({
       gamePlay: { target, speechLang: language },
       options: { sound },
     } = data;
+    // data = await returnReversoData({ data });
     updateConsoleState(data, dispatch);
     speak({ target, language, sound });
     dispatch(restartTheTimer());

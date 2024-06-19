@@ -72,6 +72,7 @@ const TextInputForConsole = ({
         onFocus,
         onBlur,
         placeholderTextColor,
+        keyboardAppearance,
       }}
       placeholder={
         inputFieldRef.current?.isFocused()
@@ -90,7 +91,6 @@ const TextInputForConsole = ({
       textContentType="none"
       keyboardType="default"
       allowFontScaling={false}
-      keyboardAppearance={keyboardAppearance}
       style={[
         styles.input,
         {

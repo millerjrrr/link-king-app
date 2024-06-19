@@ -139,7 +139,9 @@ export default {
       "Spanish-English": "Spanish for English Speakers",
       "Custom-Dictionary":
         "A custom dictionary just for you!",
-      text: "*While there is an option to switch to a Spanish-English dictionary (800 entries), this is a very small dictionary whose purpose is to illustrate the concept to English speakers.",
+      textA: "We currently offer two dictionaries:",
+      textB:
+        "Too many language learning apps try to offer all languages immediately and substitute quality for quantity. While we do hope to offer more courses in the future we are currently focused on optimizing these two dictionaries.",
     },
     colorSchemeTitle: "Color Scheme",
     manageAccount: {

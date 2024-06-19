@@ -12,6 +12,11 @@ const AppInput = (props) => {
   const color = colors[colorScheme].CONTRAST[golden];
   const backgroundColor = colors[colorScheme].PRIMARY;
 
+  const keyboardAppearance =
+    colors[colorScheme].STATUSBAR.split("-")[0] === "dark"
+      ? "light"
+      : "dark";
+
   return (
     <TextInput
       {...props}
@@ -22,6 +27,7 @@ const AppInput = (props) => {
       placeholderTextColor={
         colors[colorScheme].INACTIVE_CONTRAST
       }
+      keyboardAppearance={keyboardAppearance}
       style={[
         props.style,
         {

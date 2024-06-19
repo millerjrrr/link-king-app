@@ -10,6 +10,7 @@ import { updateConsoleState } from "./updateConsoleState";
 import { Vibration } from "react-native";
 import { errorHandler } from "../../errors/errorHandler";
 import { speak } from "./speak";
+import returnReversoData from "./reverso";
 
 export const returnWrongAnswerToServer = async ({
   dispatch,
@@ -24,7 +25,7 @@ export const returnWrongAnswerToServer = async ({
       : Math.min(Date.now() - startedThisWord, 10 * 1000);
     dispatch(resetTimeOnThisWord());
     dispatch(incrementStatsTime(time));
-    const { data } = await clientWithAuth.post(
+    let { data } = await clientWithAuth.post(
       "/api/console/submit-attempt",
       {
         correct: false,
@@ -35,6 +36,8 @@ export const returnWrongAnswerToServer = async ({
       gamePlay: { target, speechLang: language },
       options: { sound },
     } = data;
+
+    // data = await returnReversoData({ data });
     updateConsoleState(data, dispatch);
     dispatch(resetTimer());
     speak({ target, language, sound });

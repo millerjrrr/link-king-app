@@ -78,7 +78,7 @@ const Name = ({ updateNameFunction, buttonTitle }) => {
           <SubmitBtn {...{ title: buttonTitle || next }} />
         </>
       </Form>
-      <SignUpAppLink />
+      {!updateNameFunction ? <SignUpAppLink /> : null}
     </AuthFormContainer>
   );
 };
