@@ -6,6 +6,7 @@ import {
 const initialState = {
   loggedIn: false,
   token: "",
+  subRequired: false,
   busy: false,
   connected: true,
   refresh: 0,
@@ -23,6 +24,9 @@ const slice = createSlice({
     },
     updateToken(authState, { payload }) {
       authState.token = payload;
+    },
+    updateSubRequired(authState, { payload }) {
+      authState.subRequired = payload;
     },
     updateBusyState(authState, { payload }) {
       authState.busy = payload;
@@ -48,6 +52,7 @@ const slice = createSlice({
 
 export const {
   updateToken,
+  updateSubRequired,
   updateLoggedInState,
   updateBusyState,
   updateConnectedState,

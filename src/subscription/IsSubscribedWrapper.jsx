@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Platform } from "react-native";
 import Purchases from "react-native-purchases";
 import Paywall from "./Paywall";
+import { useSelector } from "react-redux";
+import { getAuthState } from "../store/auth";
 
 const IsSubscribedWrapper = ({ children }) => {
   const APIKeys = {
@@ -10,6 +12,7 @@ const IsSubscribedWrapper = ({ children }) => {
   };
 
   const [access, setAccess] = useState(false);
+  const { subRequired } = useSelector(getAuthState);
 
   useEffect(() => {
     const setup = async () => {
@@ -27,8 +30,9 @@ const IsSubscribedWrapper = ({ children }) => {
         await Purchases.getCustomerInfo();
 
       setAccess(
-        customerInfo.entitlements.active["Standard"] !==
-          undefined,
+        !subRequired ||
+          customerInfo.entitlements.active["Standard"] !==
+            undefined,
       );
     };
 

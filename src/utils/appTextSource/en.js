@@ -148,9 +148,6 @@ export default {
       title: "Account Management",
       name: "Name",
       email: "Email",
-      subscription: "Subscription",
-      subscriptionDetails:
-        "Link-King is currently 100% free!\nUnfortunately, we can't keep it that way forever. We won't run adds as its an unpleasant way to pay for an application.\nWe'd like our users to know that over the next few months we plan to introduce a monthly subscription fee of $3/month to help us cover our expenses.",
       deleteAccount: "Delete Account",
       deleteAccountDetails:
         "Are you sure you want to permanently delete your account and all associated data?\n\nTo delete your account, enter your password and press and hold the delete button.",
@@ -265,8 +262,16 @@ export default {
     },
   },
   paywall: {
-    heading: "Join the Link-King Community",
-    title: "Try 3 days for free",
+    heading: "Subscribe",
+    notice:
+      "Hello,\n\nWe hope you're enjoying Link-King and making great strides in your Spanish learning journey!\n\nYour free trial has now come to an end. While we aspire to one day offer Link-King for free, we currently have various expenses that need to be covered.\n\nTo continue using the app and keep advancing your Spanish skills, we invite you to subscribe. Mastering a new language takes time, and investing in a powerful tool like Link-King can make all the difference.\n\n It’s a small investment for a huge return in your language journey!\n\nThank you for being part of the Link-King community.\n\nKind regards,\nThe Link-King Team",
+    terms: [
+      "By making this purchase you accept our ",
+      "Terms and Conditions",
+      " and ",
+      "Privacy Policy",
+    ],
+    title: "Subscribe",
   },
   modals: {
     contactUs: {

@@ -4,6 +4,7 @@ import {
   updateBusyState,
   updateConnectedState,
   updateLoggedInState,
+  updateSubRequired,
   updateToken,
 } from "../store/auth";
 import { useEffect } from "react";
@@ -21,6 +22,13 @@ const AppNavigatorUseEffects = () => {
   const { refresh } = useSelector(getAuthState);
 
   const dispatch = useDispatch();
+
+  const checkDate = (date) => {
+    const today = new Date();
+    today.setDate(today.getDate() - 7);
+    const inputDate = new Date(date);
+    return inputDate < today;
+  };
 
   useEffect(() => {
     const fetchAuthInfo = async () => {
@@ -49,6 +57,11 @@ const AppNavigatorUseEffects = () => {
         );
 
         if (data.status === "success") {
+          dispatch(
+            updateSubRequired(
+              checkDate(data.userCreationDate),
+            ),
+          );
           dispatch(updateBusyState(false));
           dispatch(updateToken(token));
           dispatch(updateLoggedInState(true));
