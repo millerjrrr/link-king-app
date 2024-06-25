@@ -16,6 +16,11 @@ const CollectionSearchbar = () => {
   );
   const color = colors[colorScheme].CONTRAST[golden];
 
+  const keyboardAppearance =
+    colors[colorScheme].STATUSBAR.split("-")[0] === "dark"
+      ? "light"
+      : "dark";
+
   const { searchKeyword } = useSelector(getCollectionState);
 
   const dispatch = useDispatch();
@@ -29,12 +34,8 @@ const CollectionSearchbar = () => {
       placeholderTextColor={
         colors[colorScheme].INACTIVE_CONTRAST
       }
-      textInputProps={{
-        caretColor: color,
-        autoCapitalize: "none",
-        autoCorrect: false,
-        autoFocus: true,
-      }}
+      keyboardAppearance={keyboardAppearance}
+      caretColor={color}
       iconColor={color}
       color={color}
       value={searchKeyword}

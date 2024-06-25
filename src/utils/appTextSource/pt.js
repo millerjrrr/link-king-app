@@ -318,5 +318,11 @@ export default {
         "Bem-vindo ao Link-King!\nO vídeo acima fala um pouco sobre o conceito do aplicativo. Se você já conhece seu funcionamento, pode pular o vídeo e ir direto para o console!",
       cancel: "Fechar",
     },
+    trialNotice: {
+      modalMessage: "Bem-vindo de volta!\n\n Você tem ",
+      modalMessage2:
+        " dias restantes para seu teste gratuito.\n\nAtenciosamente,\nO time Link-King",
+      cancel: "Fechar",
+    },
   },
 };

@@ -49,6 +49,7 @@ const AppModal = ({
   onPress,
   videoId,
   info,
+  variable,
 }) => {
   const { colorScheme, golden, appLang } = useSelector(
     getSettingsState,
@@ -56,7 +57,7 @@ const AppModal = ({
   const color = colors[colorScheme].CONTRAST[golden];
   const backgroundColor = colors[colorScheme].PRIMARY;
 
-  const { title, modalMessage, cancel } =
+  const { title, modalMessage, modalMessage2, cancel } =
     appTextSource[appLang].modals[modalName];
 
   return (
@@ -84,7 +85,10 @@ const AppModal = ({
             }}
           />
         ) : null}
-        <ModalText {...{ color }}>{modalMessage}</ModalText>
+        <ModalText {...{ color }}>
+          {modalMessage +
+            (variable ? variable + modalMessage2 : "")}
+        </ModalText>
         {info ? (
           <Button
             {...{

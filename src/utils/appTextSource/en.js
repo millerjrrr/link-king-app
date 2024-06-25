@@ -312,5 +312,11 @@ export default {
         "Welcome to Link-King!\nLet's begin with a short test to assess your level. Type the words or short phrases in English and hit enter to submit!",
       cancel: "Close",
     },
+    trialNotice: {
+      modalMessage: "Welcome back!\n\n You have ",
+      modalMessage2:
+        " days remaining on your free trial.\n\nKind regards,\nThe Link-King Team",
+      cancel: "Close",
+    },
   },
 };

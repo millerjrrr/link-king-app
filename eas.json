@@ -13,6 +13,12 @@
       "channel": "preview"
     },
     "production": {
+      "android": {
+        "buildType": "apk"
+      },
+      "ios": {
+        "simulator": true
+      },
       "channel": "production"
     }
   },

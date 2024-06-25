@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import React from "react";
 import { getSettingsState } from "../store/settings";
 import { useNavigation } from "@react-navigation/native";
+import IsSubscribedWrapper from "../subscription/IsSubscribedWrapper";
 
 const Tab = createBottomTabNavigator();
 
@@ -26,78 +27,80 @@ const TabNavigator = () => {
     colors[colorScheme].INACTIVE_CONTRAST;
 
   return (
-    <Tab.Navigator
-      screenOptions={{
-        tabBarShowLabel: false,
-        headerShown: false,
-        tabBarInactiveTintColor,
-        tabBarStyle: [
-          styles.tabBarStyle,
-          {
-            color,
-            backgroundColor,
-            shadowColor: color,
-            borderColor: color,
-          },
-        ],
-      }}
-      initialRouteName="Console"
-    >
-      <Tab.Screen
-        name="Console"
-        component={ConsoleNavigator}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons
-              {...{
-                name: "game-controller",
-                size: size + 15,
-                color,
-              }}
-            />
-          ),
-          tabBarLabel: "Console",
-          tabBarHideOnKeyboard: true,
+    <IsSubscribedWrapper>
+      <Tab.Navigator
+        screenOptions={{
+          tabBarShowLabel: false,
+          headerShown: false,
+          tabBarInactiveTintColor,
+          tabBarStyle: [
+            styles.tabBarStyle,
+            {
+              color,
+              backgroundColor,
+              shadowColor: color,
+              borderColor: color,
+            },
+          ],
         }}
-      />
-      <Tab.Screen
-        name="Collection"
-        component={CollectionNavigator}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Entypo
-              {...{
-                name: "open-book",
-                size: size + 15,
-                color,
-              }}
-            />
-          ),
-          tabBarLabel: "Collection",
-          tabBarHideOnKeyboard: true,
-        }}
-      />
-      <Tab.Screen
-        name="Options"
-        component={OptionsNavigator}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <MaterialIcons
-              {...{
-                name: "settings",
-                size: size + 15,
-                color,
-              }}
-            />
-          ),
-          tabBarLabel: "Options",
-          tabBarHideOnKeyboard: true,
-          tabBarStyle: {
-            display: "none",
-          },
-        }}
-      />
-    </Tab.Navigator>
+        initialRouteName="Console"
+      >
+        <Tab.Screen
+          name="Console"
+          component={ConsoleNavigator}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <Ionicons
+                {...{
+                  name: "game-controller",
+                  size: size + 15,
+                  color,
+                }}
+              />
+            ),
+            tabBarLabel: "Console",
+            tabBarHideOnKeyboard: true,
+          }}
+        />
+        <Tab.Screen
+          name="Collection"
+          component={CollectionNavigator}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <Entypo
+                {...{
+                  name: "open-book",
+                  size: size + 15,
+                  color,
+                }}
+              />
+            ),
+            tabBarLabel: "Collection",
+            tabBarHideOnKeyboard: true,
+          }}
+        />
+        <Tab.Screen
+          name="Options"
+          component={OptionsNavigator}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <MaterialIcons
+                {...{
+                  name: "settings",
+                  size: size + 15,
+                  color,
+                }}
+              />
+            ),
+            tabBarLabel: "Options",
+            tabBarHideOnKeyboard: true,
+            tabBarStyle: {
+              display: "none",
+            },
+          }}
+        />
+      </Tab.Navigator>
+    </IsSubscribedWrapper>
   );
 };
 

@@ -4,8 +4,8 @@ import {
   updateBusyState,
   updateConnectedState,
   updateLoggedInState,
-  updateSubRequired,
   updateToken,
+  updateTrialDays,
 } from "../store/auth";
 import { useEffect } from "react";
 import colors from "../utils/colors";
@@ -23,11 +23,14 @@ const AppNavigatorUseEffects = () => {
 
   const dispatch = useDispatch();
 
-  const checkDate = (date) => {
+  const daysLeft = (date) => {
     const today = new Date();
-    today.setDate(today.getDate() - 7);
-    const inputDate = new Date(date);
-    return inputDate < today;
+    const input = new Date(date);
+    const timeDif = Math.abs(today - input);
+    const daysDif = Math.floor(
+      timeDif / (1000 * 60 * 60 * 24),
+    );
+    return 7 - daysDif;
   };
 
   useEffect(() => {
@@ -58,8 +61,8 @@ const AppNavigatorUseEffects = () => {
 
         if (data.status === "success") {
           dispatch(
-            updateSubRequired(
-              checkDate(data.userCreationDate),
+            updateTrialDays(
+              daysLeft(data.userCreationDate),
             ),
           );
           dispatch(updateBusyState(false));

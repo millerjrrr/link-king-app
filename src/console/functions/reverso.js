@@ -1,4 +1,5 @@
 import axios from "axios";
+import { errorHandler } from "./../../errors/errorHandler";
 
 const reversoTranslate = async ({ word, from, to }) => {
   try {
@@ -32,7 +33,7 @@ const reversoTranslate = async ({ word, from, to }) => {
     });
     return translations;
   } catch (error) {
-    console.log(error);
+    errorHandler(error, dispatch);
   }
 };
 

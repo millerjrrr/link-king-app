@@ -15,13 +15,11 @@ import AppText from "../ui/AppText";
 import { refreshPage } from "../store/auth";
 import AuthFormContainer from "../components/containers/AuthFormContainer";
 import colors from "../utils/colors";
+import APIKeys from "./APIKeys";
+import { errorHandler } from "../errors/errorHandler";
+import { updateNotification } from "../store/notification";
 
 const Paywall = () => {
-  const APIKeys = {
-    apple: "appl_QgfQKNSmxGdAVCVMrVwEwRigqrx",
-    google: "your_revenuecat_google_api_key",
-  };
-
   const [busy, setBusy] = useState(false);
   const dispatch = useDispatch();
 
@@ -29,7 +27,7 @@ const Paywall = () => {
     try {
       setBusy(true);
 
-      if (Platform.OS == "android") {
+      if (Platform.OS === "android") {
         await Purchases.configure({
           apiKey: APIKeys.google,
         });
@@ -41,11 +39,23 @@ const Paywall = () => {
 
       const offerings = await Purchases.getOfferings();
 
-      await Purchases.purchasePackage(
-        offerings.current.availablePackages[0],
-      );
+      if (
+        offerings.current &&
+        offerings.current.availablePackages.length > 0
+      ) {
+        await Purchases.purchasePackage(
+          offerings.current.availablePackages[0],
+        );
+      } else {
+        dispatch(
+          updateNotification({
+            message: "No available packages",
+            type: "info",
+          }),
+        );
+      }
     } catch (e) {
-      console.log(e);
+      errorHandler(e, dispatch);
     } finally {
       setBusy(false);
       dispatch(refreshPage());
