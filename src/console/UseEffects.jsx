@@ -21,7 +21,10 @@ import {
   saveToAsyncStorage,
 } from "../utils/asyncStorage";
 
-const UseEffects = ({ setIsModalVisible }) => {
+const UseEffects = ({
+  setIsModalVisible,
+  setIsModalVisible2,
+}) => {
   const {
     stats,
     timerIsOn,
@@ -32,6 +35,8 @@ const UseEffects = ({ setIsModalVisible }) => {
   const { timeGoal, newWordsGoal, stepsGoal, golden } =
     useSelector(getSettingsState);
   const { steps, time, newWords } = stats;
+
+  const { trialDays, refresh } = useSelector(getAuthState);
 
   const dispatch = useDispatch();
 
@@ -155,15 +160,14 @@ const UseEffects = ({ setIsModalVisible }) => {
       if (firstTime !== "no") {
         setIsModalVisible(true);
         await saveToAsyncStorage("first-time", "no");
-      }
+      } else if (trialDays >= 0 && refresh === 0)
+        setIsModalVisible2(true);
     } catch (error) {
       errorHandler(error, dispatch);
     }
   };
 
   const fetchInfo = () => fetchConsoleInfo({ dispatch });
-
-  const { refresh } = useSelector(getAuthState);
 
   useEffect(() => {
     const unsubscribe = navigation.addListener(

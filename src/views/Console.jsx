@@ -16,14 +16,12 @@ import { getAuthState } from "../store/auth";
 const Console = ({ navigation }) => {
   const inputFieldRef = useRef(null);
   const { appLang } = useSelector(getSettingsState);
-  const { trialDays, refresh } = useSelector(getAuthState);
+  const { trialDays } = useSelector(getAuthState);
 
   const [isModalVisible, setIsModalVisible] =
     useState(false);
-
-  const [isModalVisible2, setIsModalVisible2] = useState(
-    trialDays >= 0 && refresh === 0,
-  );
+  const [isModalVisible2, setIsModalVisible2] =
+    useState(false);
 
   const [isKeyboardVisible, setIsKeyboardVisible] =
     useState(false);
@@ -52,7 +50,9 @@ const Console = ({ navigation }) => {
           isKeyboardVisible,
         }}
       />
-      <UseEffects {...{ setIsModalVisible }} />
+      <UseEffects
+        {...{ setIsModalVisible, setIsModalVisible2 }}
+      />
       <AppModal
         {...{
           isVisible: isModalVisible,

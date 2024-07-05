@@ -26,7 +26,6 @@ const Paywall = () => {
   const onPress = async () => {
     try {
       setBusy(true);
-
       if (Platform.OS === "android") {
         await Purchases.configure({
           apiKey: APIKeys.google,
@@ -38,6 +37,7 @@ const Paywall = () => {
       }
 
       const offerings = await Purchases.getOfferings();
+      console.log(offerings.current);
 
       if (
         offerings.current &&

@@ -5,24 +5,26 @@
   "build": {
     "development": {
       "developmentClient": true,
-      "distribution": "internal",
-      "channel": "development"
+      "distribution": "internal"
     },
     "preview": {
-      "distribution": "internal",
-      "channel": "preview"
+      "distribution": "internal"
     },
     "production": {
       "android": {
-        "buildType": "apk"
+        "buildType": "app-bundle"
       },
       "ios": {
-        "simulator": true
-      },
-      "channel": "production"
+        "simulator": false
+      }
     }
   },
   "submit": {
-    "production": {}
+    "production": {
+      "android": {
+        "serviceAccountKeyPath": "../link-king-submit-api-4f509eefdcb1.json",
+        "track": "internal"
+      }
+    }
   }
 }
