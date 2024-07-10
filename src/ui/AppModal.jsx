@@ -61,7 +61,13 @@ const AppModal = ({
     appTextSource[appLang].modals[modalName];
 
   return (
-    <Modal {...{ isVisible, onBackdropPress }}>
+    <Modal
+      {...{
+        isVisible,
+        onBackdropPress,
+        backdropColor: "transparent",
+      }}
+    >
       <ModalContainer
         {...{
           backgroundColor,

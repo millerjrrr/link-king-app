@@ -160,7 +160,7 @@ const UseEffects = ({
       if (firstTime !== "no") {
         setIsModalVisible(true);
         await saveToAsyncStorage("first-time", "no");
-      } else if (trialDays >= 0 && time <= 30 * 1000)
+      } else if (trialDays >= 0 && steps <= 5)
         setIsModalVisible2(true);
     } catch (error) {
       errorHandler(error, dispatch);

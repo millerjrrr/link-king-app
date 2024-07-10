@@ -94,9 +94,8 @@ const AppNavigatorUseEffects = () => {
         const colorScheme =
           (await getFromAsyncStorage("color-scheme")) ||
           "dark";
-        StatusBar.setBarStyle(
-          colors[colorScheme].STATUSBAR,
-        );
+        const { STATUSBAR } = colors[colorScheme];
+        StatusBar.setBarStyle(STATUSBAR);
         let timeGoal =
           await getFromAsyncStorage("time-goal");
         timeGoal = "" ? "" : timeGoal * 1;
