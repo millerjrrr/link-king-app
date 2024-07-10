@@ -148,13 +148,25 @@ export default {
       title: "Account Management",
       name: "Name",
       email: "Email",
+      subscription: "Subscription",
+      save: "Save",
       deleteAccount: "Delete Account",
       deleteAccountDetails:
         "Are you sure you want to permanently delete your account and all associated data?\n\nTo delete your account, enter your password and press and hold the delete button.",
       accountDeleted: "Your account has been deleted!",
-      save: "Save",
       usernameUpdated:
         "Account username has been updated successfully",
+      subscriptionPage: {
+        heading: "Subscription",
+        status: "Status",
+        subscribed: "Subscribed",
+        notSubscribed: "Not subscribed",
+        yourSubscription: "Your subscription",
+        manage: "Manage",
+        appStore: "AppStore",
+        playStore: "Play Store",
+        subscribe: "Subscribe",
+      },
     },
     contactUs: {
       name: "Contact Us",

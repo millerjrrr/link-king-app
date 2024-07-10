@@ -13,7 +13,7 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "buildNumber": "2",
+      "buildNumber": "3",
       "supportsTablet": false,
       "bundleIdentifier": "com.linkoking.app",
       "config": {
@@ -51,19 +51,14 @@
       ],
       "icon": "./assets/adaptive-icon.png",
       "package": "com.linkoking.app",
-      "versionCode": 26,
+      "versionCode": 27,
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon-android.png",
         "backgroundColor": "#000000"
       },
       "blockedPermissions": [
         "android.permission.RECORD_AUDIO"
-      ],
-      "config": {
-        "googlePlayBilling": {
-          "apiKey": "goog_JjbneAASzihqWIqEMWWBLdBkoyf"
-        }
-      }
+      ]
     },
     "androidStatusBar": {
       "translucent": true

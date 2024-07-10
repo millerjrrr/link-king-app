@@ -160,23 +160,25 @@ const UseEffects = ({
       if (firstTime !== "no") {
         setIsModalVisible(true);
         await saveToAsyncStorage("first-time", "no");
-      } else if (trialDays >= 0 && refresh === 0)
+      } else if (trialDays >= 0 && time <= 30 * 1000)
         setIsModalVisible2(true);
     } catch (error) {
       errorHandler(error, dispatch);
     }
   };
 
-  const fetchInfo = () => fetchConsoleInfo({ dispatch });
+  const fetchInfoAndShowWelcome = () => {
+    fetchConsoleInfo({ dispatch });
+    showWelcome();
+  };
 
   useEffect(() => {
     const unsubscribe = navigation.addListener(
       "focus",
-      fetchInfo,
+      fetchInfoAndShowWelcome,
     );
 
-    fetchInfo();
-    showWelcome();
+    fetchInfoAndShowWelcome();
     return unsubscribe;
   }, [navigation, refresh]);
 };

@@ -4,6 +4,8 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   Dimensions,
+  Platform,
+  StatusBar,
 } from "react-native";
 import colors from "../../utils/colors";
 import AppNotification from "../AppNotification";
@@ -84,7 +86,12 @@ const AuthFormContainer = ({
 
 const styles = StyleSheet.create({
   container: {
-    height: Dimensions.get("window").height,
+    height:
+      Dimensions.get("window").height +
+      Platform.select({
+        ios: 0,
+        android: StatusBar.currentHeight + 20,
+      }),
     width: "100%",
     alignItems: "center",
     justifyContent: "flex-start",

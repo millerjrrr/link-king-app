@@ -19,9 +19,15 @@ const ManageAccountScreen = () => {
   const { appLang } = useSelector(getSettingsState);
   const { title: heading } =
     appTextSource[appLang].options.manageAccount;
+  const { subscribed, notSubscribed } =
+    appTextSource[appLang].options.manageAccount
+      .subscriptionPage;
 
-  const { formName: name, formEmail: email } =
-    useSelector(getAuthState);
+  const {
+    formName: name,
+    formEmail: email,
+    subscribed: userIsSubscribed,
+  } = useSelector(getAuthState);
 
   const dispatch = useDispatch();
   const [busy, setBusy] = useState(false);
@@ -71,6 +77,9 @@ const ManageAccountScreen = () => {
           {...{
             iconName: "information",
             heading: "subscription",
+            data: userIsSubscribed
+              ? subscribed
+              : notSubscribed,
             targetScreen: "ManageSubscriptionScreen",
           }}
         />

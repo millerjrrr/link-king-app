@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  View,
-  StyleSheet,
-  Text,
-  Dimensions,
-} from "react-native";
+import { View, StyleSheet } from "react-native";
 import colors from "../../utils/colors";
 import StatusBarFiller from "../../ui/StatusBarFiller";
 import AppNotification from "../AppNotification";

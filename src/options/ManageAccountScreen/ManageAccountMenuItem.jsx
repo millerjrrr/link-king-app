@@ -10,7 +10,6 @@ import {
   Title,
 } from "./StyledComponents";
 import { useNavigation } from "@react-navigation/native";
-import { TouchableOpacity } from "react-native";
 
 const ManageAccountMenuItem = ({
   first,
@@ -30,9 +29,14 @@ const ManageAccountMenuItem = ({
 
   const navigation = useNavigation();
 
+  const onPress = !first
+    ? () => navigation.navigate(targetScreen)
+    : null;
+
   return (
     <Container
       {...{
+        onPress,
         backgroundColor,
         borderColor: color,
         borderTopWidth: first ? 0 : 1,
@@ -43,17 +47,13 @@ const ManageAccountMenuItem = ({
         <SubTitle {...{ color }}>{data}</SubTitle>
       </OptionContainer>
       {iconName ? (
-        <TouchableOpacity
-          onPress={() => navigation.navigate(targetScreen)}
-        >
-          <MaterialCommunityIcons
-            {...{
-              name: iconName,
-              size: 48,
-              color,
-            }}
-          />
-        </TouchableOpacity>
+        <MaterialCommunityIcons
+          {...{
+            name: iconName,
+            size: 48,
+            color,
+          }}
+        />
       ) : null}
     </Container>
   );

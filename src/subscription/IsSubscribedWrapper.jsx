@@ -2,15 +2,19 @@ import React, { useEffect, useState } from "react";
 import { Platform } from "react-native";
 import Purchases from "react-native-purchases";
 import Paywall from "./Paywall";
-import { useSelector } from "react-redux";
-import { getAuthState } from "../store/auth";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getAuthState,
+  updateSubscribed,
+} from "../store/auth";
 import APIKeys from "./APIKeys";
 import { errorHandler } from "../errors/errorHandler";
 
 const IsSubscribedWrapper = ({ children }) => {
-  const [access, setAccess] = useState(false);
+  const [access, setAccess] = useState(true);
   const { refresh, trialDays } = useSelector(getAuthState);
   const subRequired = trialDays < 0;
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const setup = async () => {
@@ -32,6 +36,12 @@ const IsSubscribedWrapper = ({ children }) => {
           !subRequired ||
             customerInfo.entitlements.active["Standard"] !==
               undefined,
+        );
+        dispatch(
+          updateSubscribed(
+            customerInfo.entitlements.active["Standard"] !==
+              undefined,
+          ),
         );
       } catch (e) {
         errorHandler(e, dispatch);

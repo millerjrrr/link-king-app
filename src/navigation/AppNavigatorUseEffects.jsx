@@ -7,21 +7,26 @@ import {
   updateToken,
   updateTrialDays,
 } from "../store/auth";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import colors from "../utils/colors";
 import client from "../api/client";
 import catchAsyncError from "../api/catchError";
 import { getFromAsyncStorage } from "../utils/asyncStorage";
 import { updateSettings } from "../store/settings";
-import { StatusBar } from "react-native";
+import { AppState, StatusBar } from "react-native";
 import { authErrorHandler } from "../errors/authErrorHandler";
 import * as Localization from "expo-localization";
 import logOut from "../utils/logOut";
+import { useNavigation } from "@react-navigation/native";
 
 const AppNavigatorUseEffects = () => {
   const { refresh } = useSelector(getAuthState);
 
   const dispatch = useDispatch();
+  const navigation = useNavigation();
+  const [appState, setAppState] = useState(
+    AppState.currentState,
+  );
 
   const daysLeft = (date) => {
     const today = new Date();
@@ -129,7 +134,7 @@ const AppNavigatorUseEffects = () => {
 
     fetchSettings();
     fetchAuthInfo();
-  }, [refresh]);
+  }, [appState, navigation, refresh]);
 };
 
 export default AppNavigatorUseEffects;

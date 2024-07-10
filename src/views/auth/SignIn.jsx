@@ -11,6 +11,7 @@ import client from "../../api/client";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getAuthState,
+  refreshPage,
   updateEmail,
   updateLoggedInState,
   updateToken,
@@ -72,6 +73,7 @@ const SignIn = () => {
       dispatch(updateToken(data.token));
       dispatch(updateLoggedInState(true));
       dispatch(updateEmail(""));
+      dispatch(refreshPage());
     } catch (error) {
       authErrorHandler(error, dispatch);
     }

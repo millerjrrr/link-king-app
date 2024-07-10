@@ -1,8 +1,8 @@
-import { View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import styled from "styled-components";
 import AppText from "../../ui/AppText";
 
-export const Container = styled(View)`
+export const Container = styled(TouchableOpacity)`
   height: 90px;
   align-items: center;
   justify-content: center;

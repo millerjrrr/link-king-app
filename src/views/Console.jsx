@@ -1,6 +1,6 @@
 import InputAndTimerContainer from "../console/InputAndTimerContainer";
 import { useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import OptionsContainer from "../console/OptionsContainer";
 import KeyboardAndStartButton from "../console/KeyboardAndStartButton";
 import Tail from "../console/Tail";
@@ -11,9 +11,11 @@ import UseEffects from "../console/UseEffects";
 import { getSettingsState } from "../store/settings";
 import appTextSource from "../utils/appTextSource";
 import AppModal from "../ui/AppModal";
-import { getAuthState } from "../store/auth";
+import { getAuthState, refreshPage } from "../store/auth";
 
 const Console = ({ navigation }) => {
+  const dispatch = useDispatch();
+
   const inputFieldRef = useRef(null);
   const { appLang } = useSelector(getSettingsState);
   const { trialDays } = useSelector(getAuthState);
@@ -51,14 +53,21 @@ const Console = ({ navigation }) => {
         }}
       />
       <UseEffects
-        {...{ setIsModalVisible, setIsModalVisible2 }}
+        {...{
+          setIsModalVisible,
+          setIsModalVisible2,
+        }}
       />
       <AppModal
         {...{
           isVisible: isModalVisible,
           modalName: "welcome",
           videoId: appLang === "pt" ? "lfc3MTUbbWU" : false,
-          onPress: () => setIsModalVisible(false),
+          onPress: () => {
+            setIsModalVisible(false);
+            dispatch(refreshPage());
+            setIsModalVisible2(true);
+          },
           info: true,
         }}
       />
