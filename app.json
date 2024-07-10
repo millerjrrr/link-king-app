@@ -16,9 +16,6 @@
       "buildNumber": "3",
       "supportsTablet": false,
       "bundleIdentifier": "com.linkoking.app",
-      "config": {
-        "usesPushNotifications": true
-      },
       "entitlements": {
         "aps-environment": "production"
       },
@@ -43,6 +40,10 @@
         ]
       }
     },
+    "androidStatusBar": {
+      "backgroundColor": "#00000000",
+      "translucent": true
+    },
     "android": {
       "permissions": [
         "INTERNET",
@@ -51,7 +52,7 @@
       ],
       "icon": "./assets/adaptive-icon.png",
       "package": "com.linkoking.app",
-      "versionCode": 27,
+      "versionCode": 29,
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon-android.png",
         "backgroundColor": "#000000"
@@ -59,9 +60,6 @@
       "blockedPermissions": [
         "android.permission.RECORD_AUDIO"
       ]
-    },
-    "androidStatusBar": {
-      "translucent": true
     },
     "web": {
       "favicon": "./assets/favicon.png"

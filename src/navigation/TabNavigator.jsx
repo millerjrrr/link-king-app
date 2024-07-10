@@ -12,7 +12,6 @@ import { Platform, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import React from "react";
 import { getSettingsState } from "../store/settings";
-import { useNavigation } from "@react-navigation/native";
 import IsSubscribedWrapper from "../subscription/IsSubscribedWrapper";
 
 const Tab = createBottomTabNavigator();

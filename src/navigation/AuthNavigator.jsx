@@ -7,9 +7,6 @@ import Name from "../views/auth/SignUp/Name";
 import Email from "../views/auth/SignUp/Email";
 import Password from "../views/auth/SignUp/Password";
 import VerificationCode from "../views/auth/SignUp/VerificationCode";
-import colors from "../utils/colors";
-import { useSelector } from "react-redux";
-import { getSettingsState } from "../store/settings";
 
 const Stack = createNativeStackNavigator();
 

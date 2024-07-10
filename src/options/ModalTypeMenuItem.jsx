@@ -1,4 +1,4 @@
-import { Linking, StatusBar } from "react-native";
+import { Linking } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { getSettingsState } from "../store/settings";
 import { useState } from "react";
