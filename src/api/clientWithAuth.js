@@ -12,6 +12,9 @@ const clientWithAuth = {
       headers: {
         Authorization: "Bearer " + token,
         "Accept-Language": appLang,
+        "Local-Time": new Date().toLocaleString("en-GB", {
+          hour12: false,
+        }),
       },
       timeout: 5000,
     });
@@ -25,6 +28,9 @@ const clientWithAuth = {
       headers: {
         Authorization: "Bearer " + token,
         "Accept-Language": appLang,
+        "Local-Time": new Date().toLocaleString("en-GB", {
+          hour12: false,
+        }),
       },
       timeout: 5000,
     });

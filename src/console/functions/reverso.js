@@ -38,10 +38,13 @@ const reversoTranslate = async ({ word, from, to }) => {
 };
 
 const returnReversoData = async ({ data }) => {
-  const {
+  let {
     dictionary,
-    gamePlay: { target },
+    gamePlay: { target, solutions },
   } = data;
+
+  if (dictionary === "Personal")
+    dictionary = "Portuguese-English";
 
   const [fromLang, toLang] = dictionary.split("-");
 
@@ -54,11 +57,16 @@ const returnReversoData = async ({ data }) => {
     to,
   });
 
+  reversoData.forEach((solution) => {
+    if (!solutions.includes(solution) && solution !== "")
+      solutions.push(solution);
+  });
+
   return {
     ...data,
     gamePlay: {
       ...data.gamePlay,
-      solutions: reversoData,
+      solutions,
     },
   };
 };
