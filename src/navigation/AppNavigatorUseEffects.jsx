@@ -6,6 +6,7 @@ import {
   updateLoggedInState,
   updateToken,
   updateTrialDays,
+  updateVip,
 } from "../store/auth";
 import { useEffect, useState } from "react";
 import colors from "../utils/colors";
@@ -64,12 +65,11 @@ const AppNavigatorUseEffects = () => {
           },
         );
 
+        const { userCreationDate: ucd, vip } = data;
+
         if (data.status === "success") {
-          dispatch(
-            updateTrialDays(
-              daysLeft(data.userCreationDate),
-            ),
-          );
+          dispatch(updateTrialDays(daysLeft(ucd)));
+          dispatch(updateVip(vip));
           dispatch(updateBusyState(false));
           dispatch(updateToken(token));
           dispatch(updateLoggedInState(true));

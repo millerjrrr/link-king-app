@@ -36,7 +36,7 @@ const UseEffects = ({
     useSelector(getSettingsState);
   const { steps, time, newWords } = stats;
 
-  const { subscribed, trialDays, refresh } =
+  const { subscribed, trialDays, vip, refresh } =
     useSelector(getAuthState);
 
   const dispatch = useDispatch();
@@ -162,6 +162,7 @@ const UseEffects = ({
         setIsModalVisible(true);
         await saveToAsyncStorage("first-time", "no");
       } else if (
+        !vip &&
         !subscribed &&
         trialDays >= 0 &&
         steps <= 5

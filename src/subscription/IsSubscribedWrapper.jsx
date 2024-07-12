@@ -12,8 +12,9 @@ import { errorHandler } from "../errors/errorHandler";
 
 const IsSubscribedWrapper = ({ children }) => {
   const [access, setAccess] = useState(true);
-  const { refresh, trialDays } = useSelector(getAuthState);
-  const subRequired = trialDays < 0;
+  const { refresh, trialDays, vip } =
+    useSelector(getAuthState);
+  const subRequired = !vip && trialDays < 0;
   const dispatch = useDispatch();
 
   useEffect(() => {

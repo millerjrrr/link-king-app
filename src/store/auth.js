@@ -8,6 +8,7 @@ const initialState = {
   token: "",
   trialDays: 7,
   subscribed: false,
+  vip: true,
   busy: false,
   connected: true,
   refresh: 0,
@@ -31,6 +32,9 @@ const slice = createSlice({
     },
     updateSubscribed(authState, { payload }) {
       authState.subscribed = payload;
+    },
+    updateVip(authState, { payload }) {
+      authState.vip = payload;
     },
     updateBusyState(authState, { payload }) {
       authState.busy = payload;
@@ -58,6 +62,7 @@ export const {
   updateToken,
   updateTrialDays,
   updateSubscribed,
+  updateVip,
   updateLoggedInState,
   updateBusyState,
   updateConnectedState,
