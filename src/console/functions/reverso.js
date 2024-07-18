@@ -53,6 +53,10 @@ const returnReversoData = async ({ data }) => {
       to,
     });
 
+    solutions = solutions.map((solution) =>
+      solution.trim(),
+    );
+
     reversoData.forEach((solution) => {
       if (!solutions.includes(solution) && solution !== "")
         solutions.push(solution);

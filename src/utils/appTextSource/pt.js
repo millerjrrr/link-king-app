@@ -279,14 +279,15 @@ export default {
   paywall: {
     heading: "Inscrever-se",
     notice:
-      "Olá,\n\nEsperamos que você esteja gostando do Link-King e fazendo grandes progressos em sua jornada de aprendizado de inglês!\n\nSeu período de teste gratuito chegou ao fim. Embora desejemos um dia oferecer o Link-King para gratuitamente, atualmente temos diversas despesas que precisam ser cobertas.\n\nPara continuar usando o aplicativo e aprimorar seus conhecimentos de inglês, convidamos você a se inscrever. Dominar um novo idioma leva tempo e investir em uma ferramenta poderosa como o Link-King pode fazer toda a diferença.\n\nÉ um pequeno investimento para um enorme retorno em sua jornada linguística!\n\nObrigado por fazer parte da comunidade Link-King.\n\nAtenciosamente\nO Time Link-King",
+      "Olá,\n\nEsperamos que você esteja gostando do Link-King e fazendo grandes progressos em sua jornada de aprendizado de inglês!\n\nSeu período de teste gratuito chegou ao fim. Embora desejemos um dia oferecer o Link-King gratuitamente, atualmente temos diversas despesas que precisam ser cobertas.\n\nPara continuar usando o aplicativo e aprimorar seus conhecimentos de inglês, convidamos você a se inscrever. Dominar um novo idioma leva tempo e investir em uma ferramenta poderosa como o Link-King pode fazer toda a diferença.\n\nÉ um pequeno investimento para um enorme retorno em sua jornada linguística!\n\nObrigado por fazer parte da comunidade Link-King.\n\nAtenciosamente\nO Time Link-King",
     terms: [
       "Ao fazer esta compra você aceita nossos ",
       "Termos e Condições",
       " e ",
       "Política de Privacidade",
     ],
-    title: "Inscrever-se",
+    priceDescription: "Acesso total por ",
+    perYear: "/ano",
   },
   modals: {
     contactUs: {

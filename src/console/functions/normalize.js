@@ -1,3 +1,16 @@
+const removeRepeatedLetters = (string) => {
+  const result = [];
+  let prevChar = null;
+  for (const char of string) {
+    if (char !== prevChar) {
+      result.push(char);
+    }
+    prevChar = char;
+  }
+
+  return result.join("");
+};
+
 export const normalize = (inputString) => {
   let string = inputString + "";
   const accentsMap = {
@@ -37,5 +50,7 @@ export const normalize = (inputString) => {
     .replace(/ /g, "")
     .replace(/nt/g, "not")
     .replace(/(as?|os?)\b$/, "o");
+
+  string = removeRepeatedLetters(string);
   return string;
 };

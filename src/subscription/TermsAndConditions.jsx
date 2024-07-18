@@ -8,12 +8,11 @@ import appTextSource from "../utils/appTextSource";
 
 const Container = styled(View)`
   width: 100%;
-  padding-vertical: 20px;
+  padding-vertical: 10px;
 `;
 
 const TextComponent = styled(AppText)`
   font-size: 15px;
-  text-align: left;
   color: ${(props) => props.color};
 `;
 

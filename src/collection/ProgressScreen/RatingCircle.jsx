@@ -42,6 +42,7 @@ const RatingCircle = () => {
           activeStrokeColor={green}
           inActiveStrokeColor={green}
           inActiveStrokeOpacity={0.2}
+          allowFontScaling={false}
         />
       </View>
     </>

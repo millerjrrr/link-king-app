@@ -276,14 +276,15 @@ export default {
   paywall: {
     heading: "Subscribe",
     notice:
-      "Hello,\n\nWe hope you're enjoying Link-King and making great strides in your Spanish learning journey!\n\nYour free trial has now come to an end. While we aspire to one day offer Link-King for free, we currently have various expenses that need to be covered.\n\nTo continue using the app and keep advancing your Spanish skills, we invite you to subscribe. Mastering a new language takes time, and investing in a powerful tool like Link-King can make all the difference.\n\n It’s a small investment for a huge return in your language journey!\n\nThank you for being part of the Link-King community.\n\nKind regards,\nThe Link-King Team",
+      "Hello,\n\nWe hope you're enjoying Link-King and making great strides in your language learning journey!\n\nYour free trial has now come to an end. While we aspire to one day offer Link-King for free, we currently have various expenses that need to be covered.\n\nTo continue using the app and keep expanding your vocabulary, we invite you to subscribe. Mastering a new language takes time, and investing in a powerful tool like Link-King can make all the difference.\n\nIt’s a small investment for a huge return in your language journey!\n\nThank you for being part of the Link-King community.\n\nKind regards,\nThe Link-King Team",
     terms: [
       "By making this purchase you accept our ",
       "Terms and Conditions",
       " and ",
       "Privacy Policy",
     ],
-    title: "Subscribe",
+    priceDescription: "Full access for just ",
+    perYear: "/yr",
   },
   modals: {
     contactUs: {

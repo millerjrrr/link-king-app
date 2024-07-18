@@ -35,6 +35,7 @@ const CollectionSearchbar = () => {
         colors[colorScheme].INACTIVE_CONTRAST
       }
       keyboardAppearance={keyboardAppearance}
+      allowFontScaling={false}
       caretColor={color}
       iconColor={color}
       color={color}
