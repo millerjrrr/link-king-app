@@ -9,7 +9,7 @@ import {
 import { updateConsoleState } from "./updateConsoleState";
 import { Vibration } from "react-native";
 import { errorHandler } from "../../errors/errorHandler";
-import { speak } from "./speak";
+import { speak } from "../../utils/speak";
 import returnReversoData from "./reverso";
 
 export const returnWrongAnswerToServer = async ({

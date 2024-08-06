@@ -9,7 +9,7 @@ import { getConsoleState } from "../store/console";
 import AppText from "../ui/AppText";
 import { getSettingsState } from "../store/settings";
 import colors from "../utils/colors";
-import { speak } from "./functions/speak";
+import { speak } from "../utils/speak";
 import { updateNotification } from "../store/notification";
 import appTextSource from "./../utils/appTextSource/index";
 

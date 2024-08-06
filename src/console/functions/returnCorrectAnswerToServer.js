@@ -7,7 +7,7 @@ import {
 } from "../../store/console";
 import { updateConsoleState } from "./updateConsoleState";
 import { errorHandler } from "../../errors/errorHandler";
-import { speak } from "./speak";
+import { speak } from "../../utils/speak";
 import returnReversoData from "./reverso";
 
 export const returnCorrectAnswerToServer = async ({
