@@ -31,7 +31,7 @@ const DictionarySelectionScreen = () => {
       ) : (
         <>
           <View style={{ height: 15 }} />
-          <AppText
+          {/* <AppText
             {...{
               style: {
                 fontSize: 20,
@@ -42,14 +42,14 @@ const DictionarySelectionScreen = () => {
             }}
           >
             {textA}
-          </AppText>
+          </AppText> */}
           <DictionarySelectorMenuItem
             {...{ name: "English-Portuguese", busy }}
           />
           <DictionarySelectorMenuItem
             {...{ name: "Spanish-English", busy }}
           />
-          <AppText
+          {/* <AppText
             {...{
               style: {
                 fontSize: 20,
@@ -59,7 +59,7 @@ const DictionarySelectionScreen = () => {
             }}
           >
             {textB}
-          </AppText>
+          </AppText> */}
         </>
       )}
     </PopUpContainer>

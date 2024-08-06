@@ -7,13 +7,13 @@ import StatusBarFiller from "../StatusBarFiller";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "../../store/console";
 import { useNavigation } from "@react-navigation/native";
-import bookPictures from "../../utils/bookPictures";
+import FlagImage from "../Graphics/FlagImage";
 
 const FlagBook = ({ noBook, padding }) => {
   const { dictionary } = useSelector(getConsoleState);
-  const source =
-    bookPictures[dictionary] ||
-    bookPictures["Custom-Dictionary"];
+  const [flag1, flag2] = dictionary.includes("-")
+    ? dictionary.split("-") || ["Portuguese", "English"]
+    : ["Portuguese", "English"];
 
   const navigation = useNavigation();
   const onPress = () => {
@@ -31,17 +31,7 @@ const FlagBook = ({ noBook, padding }) => {
       }}
     >
       {padding ? <StatusBarFiller /> : null}
-      <Image
-        {...{
-          source,
-          resizeMode: "contain",
-          style: {
-            marginTop: 10,
-            height: 30,
-            width: 48,
-          },
-        }}
-      />
+      <FlagImage {...{ flag1, flag2 }} />
     </TouchableOpacity>
   );
 };

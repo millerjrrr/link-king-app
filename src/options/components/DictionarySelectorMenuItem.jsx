@@ -10,19 +10,19 @@ import BusyWrapper from "../../ui/Loader/BusyWrapper";
 import { View } from "react-native";
 
 const DictionarySelectorMenuItem = ({
-  name: iconName,
+  name: dictionary,
   busy,
 }) => {
   const { appLang } = useSelector(getSettingsState);
 
   const name =
     appTextSource[appLang].options.chooseDictionary[
-      iconName
+      dictionary
     ];
   const dispatch = useDispatch();
 
   const onPress =
-    iconName === "Custom-Dictionary"
+    dictionary === "Custom-Dictionary"
       ? () => {
           dispatch(
             updateNotification({
@@ -33,22 +33,23 @@ const DictionarySelectorMenuItem = ({
         }
       : () => {
           sendDictionary({
-            dictionary: iconName,
+            dictionary,
             dispatch,
           });
         };
 
-  const { dictionary } = useSelector(getConsoleState);
+  const { dictionary: currentDictionary } =
+    useSelector(getConsoleState);
 
   return (
     <View {...{ style: { height: 70, width: "100%" } }}>
       <BusyWrapper {...{ busy }}>
         <OptionsMenuItem
           {...{
-            iconName,
+            dictionary,
             name,
             onPress,
-            selected: dictionary === iconName,
+            selected: dictionary === currentDictionary,
             first: true,
           }}
         />

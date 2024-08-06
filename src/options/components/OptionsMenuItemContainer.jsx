@@ -1,14 +1,10 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import {
-  Image,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import { useSelector } from "react-redux";
 import colors from "../../utils/colors";
 import { getSettingsState } from "../../store/settings";
 import styled from "styled-components";
-import bookPictures from "../../utils/bookPictures";
+import FlagImage from "../../ui/Graphics/FlagImage";
 
 const TouchableContainer = styled(TouchableOpacity)`
   height: 60px;
@@ -37,6 +33,7 @@ const OptionContainer = styled(View)`
 
 const OptionsMenuItemContainer = ({
   iconName,
+  dictionary,
   first,
   children,
   selected,
@@ -49,14 +46,14 @@ const OptionsMenuItemContainer = ({
   const borderColor = colors[colorScheme].INACTIVE_CONTRAST;
   const color = colors[colorScheme].CONTRAST[golden];
 
-  const typeIsImage =
-    Object.keys(bookPictures).includes(iconName);
+  const alteredDictionary = dictionary
+    ? dictionary === "Custom-Dictionary"
+      ? "Portuguese-English"
+      : dictionary
+    : "Portuguese-English";
+  const [flag1, flag2] = alteredDictionary.split("-");
 
-  const source =
-    bookPictures[iconName] ||
-    bookPictures["Custom-Dictionary"];
-
-  return !typeIsImage ? (
+  return !dictionary ? (
     <Container {...{ backgroundColor }}>
       <MaterialCommunityIcons
         {...{
@@ -74,17 +71,7 @@ const OptionsMenuItemContainer = ({
     </Container>
   ) : (
     <TouchableContainer {...{ backgroundColor, onPress }}>
-      <Image
-        {...{
-          source,
-          resizeMode: "contain",
-          style: {
-            width: 48,
-            height: 48,
-            margin: 5,
-          },
-        }}
-      />
+      <FlagImage {...{ flag1, flag2 }} />
       <OptionContainer
         {...{ borderColor, borderTopWidth: first ? 0 : 1 }}
       >

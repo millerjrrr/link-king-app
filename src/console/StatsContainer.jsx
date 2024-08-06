@@ -11,7 +11,7 @@ const StatsContainer = ({ size = 22 }) => {
 
   return (
     <View style={styles.container}>
-      {newWords ? (
+      {due === 0 ? (
         <StatsIcon
           {...{ name: "basket-fill", text: newWords, size }}
         />
