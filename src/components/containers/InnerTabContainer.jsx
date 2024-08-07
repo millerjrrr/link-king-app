@@ -11,6 +11,7 @@ import { getSettingsState } from "../../store/settings";
 import FlagBook from "../../ui/Buttons/FlagBook";
 import AppText from "../../ui/AppText";
 import BackButton from "../../ui/Buttons/BackButton";
+import { LinearGradient } from "expo-linear-gradient";
 
 const InnerTabContainer = ({
   children,
@@ -28,28 +29,40 @@ const InnerTabContainer = ({
   const color = SECONDARY;
 
   return (
-    <View
-      style={[
-        { backgroundColor: PRIMARY },
-        styles.container,
-      ]}
-    >
-      <StatusBarFiller />
-      <AppNotification />
-      {back ? <BackButton extraPadding={true} /> : null}
-      <FourCrowns {...{ color }} />
-      <HelpButton {...{ help, padding: true }} />
-      <FlagBook {...{ noBook, padding: true }} />
-      <LinkKingLogo
-        {...{
-          height: 30,
-          marginTop: 0,
-          tintColor,
+    <>
+      <LinearGradient //bottomTab shadow for android
+        style={{
+          position: "absolute",
+          bottom: 0,
+          width: "100%",
+          height: 5,
+          zIndex: 10,
         }}
+        colors={[tintColor + "00", tintColor + "60"]}
       />
-      <AppText style={styles.heading}>{heading}</AppText>
-      {children}
-    </View>
+      <View
+        style={[
+          { backgroundColor: PRIMARY },
+          styles.container,
+        ]}
+      >
+        <StatusBarFiller />
+        <AppNotification />
+        {back ? <BackButton extraPadding={true} /> : null}
+        <FourCrowns {...{ color }} />
+        <HelpButton {...{ help, padding: true }} />
+        <FlagBook {...{ noBook, padding: true }} />
+        <LinkKingLogo
+          {...{
+            height: 30,
+            marginTop: 0,
+            tintColor,
+          }}
+        />
+        <AppText style={styles.heading}>{heading}</AppText>
+        {children}
+      </View>
+    </>
   );
 };
 

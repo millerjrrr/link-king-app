@@ -10,7 +10,7 @@ const appShadow = (borderWidth = 2) =>
       shadowRadius: 5,
     },
     android: {
-      borderWidth,
+      elevation: 5,
     },
   });
 

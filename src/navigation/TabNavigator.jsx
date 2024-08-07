@@ -110,15 +110,15 @@ const styles = StyleSheet.create({
     ...Platform.select({
       ios: {
         shadowOffset: {
-          height: 1,
+          height: -2,
         },
         borderTopWidth: 0,
         shadowOpacity: 0.5,
         shadowRadius: 5,
       },
       android: {
-        elevation: 3,
-        borderTopWidth: 1,
+        elevation: 10,
+        borderTopWidth: 0,
       },
     }),
   },

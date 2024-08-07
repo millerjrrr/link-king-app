@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     zIndex: 10,
     width: "70%",
-    ...appShadow(1),
+    ...appShadow(),
   },
 });
 
