@@ -325,6 +325,12 @@ export default {
         "Welcome to Link-King!\nLet's begin with a short test to assess your level. Type the words or short phrases in English and hit enter to submit!",
       cancel: "Close",
     },
+    repeatRepeats: {
+      modalMessage:
+        "Would you like to repeat all the words you got wrong today?",
+      title: "Yes, let's go!",
+      cancel: "No. Close",
+    },
     trialNotice: {
       modalMessage: "Welcome back!\n\n You have ",
       modalMessage2:

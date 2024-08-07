@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { getConsoleState } from "../store/console";
 import StatsIcon from "./StatsIcon";
 
+import RepeatRepeatsIcon from "./RepeatRepeatsIcon";
+
 const StatsContainer = ({ size = 22 }) => {
   const { stats, timeOnThisWord } =
     useSelector(getConsoleState);
@@ -33,6 +35,11 @@ const StatsContainer = ({ size = 22 }) => {
       <StatsIcon
         {...{ name: "trophy-variant", text: streak, size }}
       />
+      {due === 0 ? (
+        <RepeatRepeatsIcon
+          {...{ name: "stop", size: 32 }}
+        />
+      ) : null}
     </View>
   );
 };

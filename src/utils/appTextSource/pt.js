@@ -328,6 +328,12 @@ export default {
         "Bem-vindo ao Link-King!\nO vídeo acima fala um pouco sobre o conceito do aplicativo. Se você já conhece seu funcionamento, pode pular o vídeo e ir direto para o console!",
       cancel: "Fechar",
     },
+    repeatRepeats: {
+      modalMessage:
+        "Você gostaria de repetir todas as palavras que errou hoje?",
+      title: "Sim, vamos lá!",
+      cancel: "Não. Fechar",
+    },
     trialNotice: {
       modalMessage: "Bem-vindo de volta!\n\n Você tem ",
       modalMessage2:

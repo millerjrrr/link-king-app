@@ -1,9 +1,5 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import {
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, TouchableOpacity } from "react-native";
 import colors from "../utils/colors";
 import { useDispatch, useSelector } from "react-redux";
 import { getSettingsState } from "../store/settings";

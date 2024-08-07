@@ -7,13 +7,17 @@ import clientWithAuth from "../../api/clientWithAuth";
 import { errorHandler } from "../../errors/errorHandler";
 import returnReversoData from "./reverso";
 
-export const fetchConsoleInfo = async ({ dispatch }) => {
+export const fetchConsoleInfo = async ({
+  dispatch,
+  repeatRepeats = false,
+}) => {
+  const url = repeatRepeats
+    ? "/api/console/repeat-repeats"
+    : "/api/console/send-game-state";
   try {
     dispatch(updateBusyState(true));
     dispatch(updateShowSolution(false));
-    let { data } = await clientWithAuth.get(
-      "/api/console/send-game-state",
-    );
+    let { data } = await clientWithAuth.get(url);
     const { dictionary } = data;
 
     if (dictionary === "Personal")
