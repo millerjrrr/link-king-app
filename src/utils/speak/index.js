@@ -26,7 +26,7 @@ export const speak = async ({
         Speech.stop().then(
           await Speech.speak(target, {
             language,
-            pitch: 0.75 + Math.random() * 0.5,
+            pitch: 1 + Math.random() * 0.5,
             // voice,
           }),
         ),

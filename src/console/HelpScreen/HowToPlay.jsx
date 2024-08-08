@@ -5,6 +5,7 @@ import { Video, ResizeMode } from "expo-av";
 import { useRef } from "react";
 import colors from "../../utils/colors";
 import { getConsoleState } from "../../store/console";
+import { Image, View } from "react-native";
 
 const HowToPlay = () => {
   const { colorScheme } = useSelector(getSettingsState);
@@ -22,28 +23,55 @@ const HowToPlay = () => {
   const source =
     demos[dictionary] || demos["English-Portuguese"];
 
+  const image = require("../../assets/status-bar-filler.png");
+
   return (
     <DescriptionWrapper {...{ name: "howToPlay" }}>
-      <Video
+      <View
         {...{
-          ref: video,
-          style: {
-            backgroundColor,
-            height: 250,
-            width: 115,
-            borderRadius: 20,
-            shadowColor: color,
-            borderColor: color,
-            borderWidth: 3,
-            margin: 15,
-          },
-          source,
-          isMuted: true,
-          resizeMode: ResizeMode.CONTAIN,
-          isLooping: true,
-          shouldPlay: true,
+          backgroundColor,
+          borderRadius: 20,
+          shadowColor: color,
+          borderColor: color,
+          borderWidth: 3,
+          margin: 15,
+          overflow: "hidden",
+          justifyContent: "center",
+          alignItems: "center",
         }}
-      />
+      >
+        <Image
+          {...{
+            source: image,
+            resizeMode: "repeat",
+            style: {
+              margin: 1,
+              top: 0,
+              center: 0,
+              width: 100,
+              height: 12,
+              position: "absolute",
+              borderRadius: 20,
+              zIndex: 2,
+            },
+          }}
+        />
+        <Video
+          {...{
+            ref: video,
+            style: {
+              height: 250,
+              width: 115,
+              borderRadius: 20,
+            },
+            source,
+            isMuted: true,
+            resizeMode: ResizeMode.CONTAIN,
+            isLooping: true,
+            shouldPlay: true,
+          }}
+        />
+      </View>
     </DescriptionWrapper>
   );
 };
