@@ -162,7 +162,7 @@ const UseEffects = ({
         setIsModalVisible(true);
         await saveToAsyncStorage("first-time", "no");
       } else if (
-        !vip &&
+        !(vip > Date.now()) &&
         !subscribed &&
         trialDays >= 0 &&
         steps <= 5

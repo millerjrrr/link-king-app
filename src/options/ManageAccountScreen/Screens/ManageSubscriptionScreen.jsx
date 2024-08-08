@@ -67,6 +67,8 @@ const ManageSubscriptionScreen = () => {
     status,
     subscribed,
     notSubscribed,
+    vipMessage,
+    vipExpires,
     yourSubscription,
     manage,
     appStore,
@@ -81,10 +83,21 @@ const ManageSubscriptionScreen = () => {
     CONTRAST,
   } = colors[colorScheme];
 
-  const { subscribed: userIsSubscribed } =
+  const { subscribed: userIsSubscribed, vip } =
     useSelector(getAuthState);
-
   const dispatch = useDispatch();
+
+  const date = new Date(vip);
+  const options = {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  };
+
+  const expires = new Intl.DateTimeFormat(
+    appLang,
+    options,
+  ).format(date);
 
   const [busy, setBusy] = useState(false);
 
@@ -109,16 +122,31 @@ const ManageSubscriptionScreen = () => {
       <Container>
         <Tag>{status}</Tag>
         <Panel {...{ backgroundColor }}>
-          <AppText>
-            {userIsSubscribed ? subscribed : notSubscribed}
-          </AppText>
-          <FontAwesome5
-            {...{
-              name: userIsSubscribed ? "check" : "times",
-              size: 24,
-              color: CONTRAST[(golden + 1) % 2],
-            }}
-          />
+          {!(vip > Date.now()) ? (
+            <>
+              <AppText>
+                {userIsSubscribed
+                  ? subscribed
+                  : notSubscribed}
+              </AppText>
+              <FontAwesome5
+                {...{
+                  name: userIsSubscribed
+                    ? "check"
+                    : "times",
+                  size: 24,
+                  color: CONTRAST[(golden + 1) % 2],
+                }}
+              />
+            </>
+          ) : (
+            <>
+              <AppText>{vipMessage}</AppText>
+              <AppText {...{ style: { fontSize: 15 } }}>
+                {vipExpires + expires}
+              </AppText>
+            </>
+          )}
         </Panel>
         <Tag>{yourSubscription}</Tag>
         <Panel

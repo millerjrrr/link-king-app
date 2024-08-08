@@ -69,7 +69,7 @@ const AppNavigatorUseEffects = () => {
 
         if (data.status === "success") {
           dispatch(updateTrialDays(daysLeft(ucd)));
-          dispatch(updateVip(vip));
+          dispatch(updateVip(new Date(vip).getTime() || 0));
           dispatch(updateBusyState(false));
           dispatch(updateToken(token));
           dispatch(updateLoggedInState(true));

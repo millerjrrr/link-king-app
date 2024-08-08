@@ -164,6 +164,8 @@ export default {
         status: "Status",
         subscribed: "Subscribed",
         notSubscribed: "Not subscribed",
+        vipMessage: "VIP",
+        vipExpires: "expires ",
         yourSubscription: "Your subscription",
         manage: "Manage",
         appStore: "AppStore",

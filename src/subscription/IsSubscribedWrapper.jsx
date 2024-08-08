@@ -14,7 +14,7 @@ const IsSubscribedWrapper = ({ children }) => {
   const [access, setAccess] = useState(true);
   const { refresh, trialDays, vip } =
     useSelector(getAuthState);
-  const subRequired = !vip && trialDays < 0;
+  const subRequired = !(vip > Date.now()) && trialDays < 0;
   const dispatch = useDispatch();
 
   useEffect(() => {

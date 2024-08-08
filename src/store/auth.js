@@ -8,7 +8,7 @@ const initialState = {
   token: "",
   trialDays: 7,
   subscribed: false,
-  vip: true,
+  vip: 4070919600000,
   busy: false,
   connected: true,
   refresh: 0,
