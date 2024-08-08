@@ -1,17 +1,17 @@
 import { useSelector } from "react-redux";
-import colors from "../../utils/colors";
 import { getSettingsState } from "../../store/settings";
 import appTextSource from "../../utils/appTextSource";
 import AppText from "../../ui/AppText";
 
-const ResponseInformation = ({ status }) => {
-  const { colorScheme, golden, appLang } = useSelector(
-    getSettingsState,
-  );
-  const color = colors[colorScheme].CONTRAST[golden];
+const ResponseInformation = ({
+  status,
+  wrongAnswerReturned,
+}) => {
+  const { appLang } = useSelector(getSettingsState);
 
-  const { responseA, responseB } =
-    appTextSource[appLang].console.targetDetails;
+  const { responseA, responseB } = wrongAnswerReturned
+    ? appTextSource[appLang].console.targetDetails
+    : appTextSource[appLang].collection.wordInfoScreen;
 
   return status ? (
     <AppText

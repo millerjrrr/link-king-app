@@ -58,10 +58,10 @@ const TextInputForConsole = ({
   //font-size management
   let fontSize = 48;
   const length = formValue.length;
-  if (length > 12) fontSize = (fontSize * 12) / length;
+  if (length > 11) fontSize = (fontSize * 11) / length;
 
-  if (placeholder && placeholder.length > 12)
-    fontSize = (fontSize * 12) / placeholder.length;
+  if (placeholder && placeholder.length > 11)
+    fontSize = (fontSize * 11) / placeholder.length;
 
   return (
     <TextInput

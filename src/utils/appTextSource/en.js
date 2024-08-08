@@ -106,13 +106,16 @@ export default {
         B: " fluency app and see if you can beat my score!",
       },
     },
-    deleteScreen: {
-      heading: "Delete One",
-      textA:
-        "Are you sure you want to permanently remove this word from your collection?",
-      textB: "Press and hold to delete",
-      resA: "This word has been removed from your collection. You will no longer see it as part of your repetitions but you may see it again as a new word challenge at some point in the future",
-      resB: "...something went wrong 😣 please check your internet connection and try again...",
+    wordInfoScreen: {
+      heading: "Description",
+      description:
+        "Do you want to permanently remove this word from your collection?",
+      buttonTitle:
+        "Press and hold this button to delete this word from your collection",
+      responseA:
+        "This word has been removed from your collection. You will no longer see it as part of your repetitions but you may see it again as a new word challenge at some point in the future",
+      responseB:
+        "...something went wrong 😣 please check your internet connection and try again...",
     },
   },
   options: {

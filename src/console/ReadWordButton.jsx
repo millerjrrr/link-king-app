@@ -13,7 +13,11 @@ import { speak } from "../utils/speak";
 import { updateNotification } from "../store/notification";
 import appTextSource from "./../utils/appTextSource/index";
 
-const ReadWordButton = () => {
+const ReadWordButton = ({
+  showSpeaker,
+  speakWord,
+  height = 75,
+}) => {
   const {
     attempt: { target, speechLang: language },
     options: { blurred, sound },
@@ -25,8 +29,10 @@ const ReadWordButton = () => {
   const { sound: message } =
     appTextSource[appLang].console.statsMessages;
 
+  const newTarget = speakWord ? speakWord : target;
   const onPress = async () => {
-    if (sound) speak({ target, language, sound });
+    if (sound)
+      speak({ target: newTarget, language, sound });
     else
       dispatch(
         updateNotification({
@@ -47,11 +53,21 @@ const ReadWordButton = () => {
   const color = colors[colorScheme].CONTRAST[golden];
 
   return (
-    <View style={styles.container}>
+    <View
+      style={{
+        height,
+        justifyContent: "center",
+        zIndex: 10,
+      }}
+    >
       <TouchableOpacity {...{ onPress }}>
-        {blurred ? (
+        {blurred || showSpeaker ? (
           <Feather
-            {...{ name: "volume-2", size: 48, color }}
+            {...{
+              name: "volume-2",
+              size: 0.66 * height,
+              color,
+            }}
           />
         ) : (
           <AppText
@@ -67,13 +83,5 @@ const ReadWordButton = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    height: 75,
-    justifyContent: "center",
-    zIndex: 10,
-  },
-});
 
 export default ReadWordButton;

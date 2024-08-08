@@ -5,11 +5,13 @@ import { getSettingsState } from "../../store/settings";
 import appShadow from "../../utils/appShadow";
 import AppText from "../../ui/AppText";
 
-const SolutionItem = ({ solution }) => {
+const SolutionItem = ({ solution, red }) => {
   const { colorScheme, golden } = useSelector(
     getSettingsState,
   );
-  const color = colors[colorScheme].CONTRAST[golden];
+  const color = red
+    ? colors[colorScheme].RED
+    : colors[colorScheme].CONTRAST[golden];
   const backgroundColor = colors[colorScheme].SECONDARY;
   return (
     <View
@@ -26,7 +28,15 @@ const SolutionItem = ({ solution }) => {
         ...appShadow(1),
       }}
     >
-      <AppText>{solution}</AppText>
+      <AppText
+        {...{
+          style: red
+            ? { color: colors[colorScheme].RED }
+            : null,
+        }}
+      >
+        {solution}
+      </AppText>
     </View>
   );
 };

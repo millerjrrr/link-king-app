@@ -14,7 +14,7 @@ const RedSafetyButton = ({
   setElapsedTime,
   completeFunction,
   iconName,
-  size = 250,
+  size = 60,
   setCoverZIndex,
 }) => {
   const [pressStartTime, setPressStartTime] = useState(0);
@@ -65,6 +65,7 @@ const RedSafetyButton = ({
             borderColor: RED,
             height: size,
             width: size,
+            margin: size / 5,
             borderRadius: size / 2,
           },
         ]}
@@ -83,12 +84,10 @@ const RedSafetyButton = ({
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
     zIndex: 10,
   },
   buttonContainer: {
+    flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     ...appShadow(1),

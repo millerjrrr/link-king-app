@@ -5,9 +5,9 @@ import {
 } from "@react-navigation/stack";
 import Collection from "../../views/Collection";
 import StatsScreen from "../../collection/StatsScreen";
-import DeleteScreen from "../../collection/DeleteScreen";
 import DictionarySelectionScreen from "../../options/DictionarySelectionScreen";
 import ProgressScreen from "../../collection/ProgressScreen";
+import WordInfoScreen from "../../collection/WordInfoScreen";
 
 const CollectionStack = createStackNavigator();
 
@@ -24,8 +24,8 @@ const CollectionNavigator = () => {
         component={Collection}
       />
       <CollectionStack.Screen
-        name="DeleteScreen"
-        component={DeleteScreen}
+        name="WordInfoScreen"
+        component={WordInfoScreen}
       />
       <CollectionStack.Screen
         name="StatsScreen"

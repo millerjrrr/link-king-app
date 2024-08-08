@@ -1,22 +1,21 @@
 import { ScrollView, StyleSheet, View } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
-import { getConsoleState } from "../../store/console";
 import PopUpContainer from "../../components/containers/PopUpContainer";
 import React, { useState } from "react";
 import BloodRedCover from "../../ui/BloodRedCover";
 import { flagAndDeleteTicket } from "../../utils/flagAndDeleteTicket";
 import BusyWrapper from "../../ui/Loader/BusyWrapper";
-import TargetScreenFakeInput from "./TargetScreenFakeInput";
-import Target from "./Target";
-import SolutionsList from "../SolutionsList";
+import SolutionsList from "../../console/SolutionsList";
 import ResponseInformation from "./ResponseInformation";
 import NoticeAndFlagButton from "./NoticeAndFlagButton";
 import appTextSource from "../../utils/appTextSource";
 import { getSettingsState } from "../../store/settings";
 import AcceptedAnswers from "./AcceptedAnswers";
+import WordCard from "../WordCard";
+import UserAttempt from "./UserAttempt";
 
-const TargetDetailsScreen = () => {
-  const { attempt } = useSelector(getConsoleState);
+const WordInfoScreen = ({ route }) => {
+  const { ticket, wrongAnswerReturned } = route.params;
   const { appLang } = useSelector(getSettingsState);
 
   // ...loader management...
@@ -27,37 +26,43 @@ const TargetDetailsScreen = () => {
   const [pressed, setPressed] = useState(false);
 
   const dispatch = useDispatch();
-  const wordFlagFunction = () => {
+  const completeFunction = () => {
     flagAndDeleteTicket(
-      attempt.id,
+      ticket._id,
       setBusy,
       setStatus,
       setPressed,
-      true,
+      wrongAnswerReturned,
       dispatch,
     );
   };
   const { heading } =
     appTextSource[appLang].console.targetDetails;
 
+  const onPress = () => null;
+
   return (
     <PopUpContainer {...{ heading }}>
       <BloodRedCover {...{ elapsedTime, coverZIndex }} />
       <BusyWrapper {...{ busy, size: 96 }}>
         <View style={styles.container}>
-          <Target />
-          <TargetScreenFakeInput />
+          <View {...{ style: { height: 8 } }} />
+          <WordCard {...{ ticket, onPress }} />
           <AcceptedAnswers />
-          <SolutionsList />
+          <SolutionsList {...{ ticket }} />
+          {wrongAnswerReturned ? <UserAttempt /> : null}
         </View>
         {pressed ? (
-          <ResponseInformation status={status} />
+          <ResponseInformation
+            {...{ status, wrongAnswerReturned }}
+          />
         ) : (
           <NoticeAndFlagButton
             {...{
-              completeFunction: wordFlagFunction,
+              completeFunction,
               setElapsedTime,
               setCoverZIndex,
+              wrongAnswerReturned,
             }}
           />
         )}
@@ -76,4 +81,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TargetDetailsScreen;
+export default WordInfoScreen;

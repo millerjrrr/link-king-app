@@ -1,8 +1,7 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-import colors from "../utils/colors";
-import { numberDateToWordStyleDate } from "./functions/numberDateToWordStyle";
-import DeleteButton from "./DeleteButton";
+import colors from "../../utils/colors";
+import { numberDateToWordStyleDate } from "../functions/numberDateToWordStyle";
 import { useSelector } from "react-redux";
 import WordCardLevelStars from "./WordCardLevelStars";
 import {
@@ -13,10 +12,19 @@ import {
   RowContainer,
   Title,
 } from "./WordCardStyledComponents";
-import { getSettingsState } from "../store/settings";
-import appShadow from "../utils/appShadow";
+import { getSettingsState } from "../../store/settings";
+import appShadow from "../../utils/appShadow";
+import appTextSource from "../../utils/appTextSource";
+import SpeakButton from "./SpeakButton";
 
-const WordCard = ({ navigation, ticket }) => {
+const WordCard = ({
+  navigation,
+  ticket,
+  onPress = () =>
+    navigation.navigate("WordInfoScreen", {
+      ticket,
+    }),
+}) => {
   const { colorScheme, golden, appLang } = useSelector(
     getSettingsState,
   );
@@ -24,18 +32,12 @@ const WordCard = ({ navigation, ticket }) => {
   const color = CONTRAST[golden];
   const backgroundColor = SECONDARY;
 
+  const { tomorrow } = appTextSource[appLang].collection;
+
   const {
     dicEntry: { target, rating },
-    dueDate,
     level,
   } = ticket;
-  // important to do it like this so we still have access
-  // to ticket as a whole
-
-  const onPress = () =>
-    navigation.navigate("DeleteScreen", {
-      ticket,
-    });
 
   let fontSize = 30;
   const length = target.length;
@@ -50,26 +52,34 @@ const WordCard = ({ navigation, ticket }) => {
         style: styles.container,
       }}
     >
-      <InfoContainer>
+      <InfoContainer {...{ onPress }}>
         <RowContainer>
           <Title {...{ color, fontSize }}>{target}</Title>
-          <Rating {...{ color }}>
-            {Math.round(rating)}
-          </Rating>
+          {ticket?.dicEntry.rating ? (
+            <Rating {...{ color }}>
+              {Math.round(rating)}
+            </Rating>
+          ) : null}
         </RowContainer>
         <RowContainer>
           <WordCardLevelStars
             {...{ stars: level, target }}
           />
           <Date {...{ color }}>
-            {numberDateToWordStyleDate({
-              date: dueDate,
-              appLang,
-            })}
+            {ticket.dueDate
+              ? numberDateToWordStyleDate({
+                  date: ticket.dueDate,
+                  appLang,
+                })
+              : tomorrow}
           </Date>
         </RowContainer>
       </InfoContainer>
-      <DeleteButton {...{ onPress }} />
+      <SpeakButton
+        {...{
+          speakWord: target,
+        }}
+      />
     </Container>
   );
 };

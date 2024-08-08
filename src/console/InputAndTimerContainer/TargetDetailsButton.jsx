@@ -7,15 +7,26 @@ import { getConsoleState } from "../../store/console";
 import { getSettingsState } from "../../store/settings";
 
 const TargetDetailsButton = () => {
-  const { showSolution } = useSelector(getConsoleState);
+  const {
+    showSolution,
+    attempt: { id, target, solutions },
+  } = useSelector(getConsoleState);
   const { colorScheme } = useSelector(getSettingsState);
   const color = colors[colorScheme].LIGHTRED;
   const navigation = useNavigation();
 
+  const ticket = {
+    _id: id,
+    dicEntry: { target, solutions },
+    level: 1,
+  };
   return showSolution ? (
     <TouchableOpacity
       onPress={() =>
-        navigation.navigate("TargetDetailsScreen")
+        navigation.navigate("WordInfoScreen", {
+          ticket,
+          wrongAnswerReturned: true,
+        })
       }
       style={styles.container}
     >

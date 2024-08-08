@@ -14,9 +14,9 @@ export default {
       description:
         "Você acha que a sua resposta devia ser aceita? Você pode marcar essa palavra e a gente vai investigar se a sua resposta é apropriada o mais breve possível",
       buttonTitle:
-        "Pressione e segure para marcar a palavra e a apagar da sua colleção",
+        "Pressione e segure para marcar a palavra e a apagar da sua coleção",
       responseA:
-        "Essa palavra tem sido marcada e apagada da sua colleção. \n\nAgradecemos a sua ajuda!",
+        "Essa palavra tem sido marcada e apagada da sua coleção. \n\nAgradecemos a sua ajuda!",
       responseB:
         "...algo deu errado 😣 por favor, certifique que você tem conexão de internet e tente de novo... ",
     },
@@ -97,7 +97,7 @@ export default {
     progressScreen: {
       congratulations: "Parabéns!",
       collected: {
-        A: "Você collectou ",
+        A: "Você colectou ",
         B: " novas palavras!",
       },
       textA: "Sua ",
@@ -107,13 +107,16 @@ export default {
         B: " e descubra se você consegue bater minha pontuação!",
       },
     },
-    deleteScreen: {
-      heading: "Excluir uma Palavra",
-      textA:
-        "Tem certeza de que deseja remover permanentemente esta palavra da sua coleção?",
-      textB: "Pressione e segure para excluir",
-      resA: "Esta palavra foi removida da sua coleção. Você não a verá mais como parte de suas repetições, mas poderá vê-la novamente como um novo desafio de palavras em algum momento no futuro",
-      resB: "...algo deu errado 😣 por favor, certifique que você tem conexão de internet e tente de novo... ",
+    wordInfoScreen: {
+      heading: "Descrição",
+      description:
+        "Você quer remover permanentemente esta palavra da sua coleção?",
+      buttonTitle:
+        "Pressione e segure para excluir esta palavra da sua coleção",
+      responseA:
+        "Esta palavra foi removida da sua coleção. Você não a verá mais como parte de suas repetições, mas poderá vê-la novamente como um novo desafio de palavras em algum momento no futuro",
+      responseB:
+        "...algo deu errado 😣 por favor, certifique que você tem conexão de internet e tente de novo... ",
     },
   },
   options: {

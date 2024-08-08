@@ -33,15 +33,23 @@ const FormikSafetyButton = ({
 
   return (
     <BusyWrapper {...{ busy: isSubmitting }}>
-      <RedSafetyButton
-        {...{
-          setElapsedTime,
-          completeFunction,
-          setCoverZIndex,
-          iconName: "delete",
-          size: 150,
+      <View
+        style={{
+          width: "100%",
+          alignItems: "center",
+          padding: 15,
         }}
-      />
+      >
+        <RedSafetyButton
+          {...{
+            setElapsedTime,
+            completeFunction,
+            setCoverZIndex,
+            iconName: "delete",
+            size: 100,
+          }}
+        />
+      </View>
     </BusyWrapper>
   );
 };

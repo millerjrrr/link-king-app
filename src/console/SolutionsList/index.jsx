@@ -1,15 +1,12 @@
 import { ScrollView, View } from "react-native";
 import { useSelector } from "react-redux";
-import { getConsoleState } from "../../store/console";
 import SolutionItem from "./SolutionItem";
 import HorizontalScrollFade from "./HorizonatalScrollFade";
 import { getSettingsState } from "../../store/settings";
 import colors from "../../utils/colors";
 
-const SolutionsList = () => {
-  const {
-    attempt: { solutions },
-  } = useSelector(getConsoleState);
+const SolutionsList = ({ ticket }) => {
+  const { solutions } = ticket.dicEntry;
 
   const { colorScheme } = useSelector(getSettingsState);
   const backgroundColor = colors[colorScheme].PRIMARY;

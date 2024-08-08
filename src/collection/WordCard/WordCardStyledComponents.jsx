@@ -1,6 +1,6 @@
-import { View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import styled from "styled-components";
-import AppText from "../ui/AppText";
+import AppText from "../../ui/AppText";
 
 export const Container = styled(View)`
   flex-direction: row;
@@ -12,11 +12,11 @@ export const Container = styled(View)`
   border-color: ${(props) => props.color};
 `;
 
-export const InfoContainer = styled(View)`
+export const InfoContainer = styled(TouchableOpacity)`
   flex: 1;
   flex-direction: column;
   justify-content: space-between;
-  padding-horizontal: 15px;
+  margin-horizontal: 15px;
 `;
 
 export const RowContainer = styled(View)`

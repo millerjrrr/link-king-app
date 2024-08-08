@@ -47,7 +47,10 @@ const TailEntry = ({ index }) => {
 };
 
 const Tail = ({ setIsKeyboardVisible }) => {
-  const { showSolution } = useSelector(getConsoleState);
+  const {
+    showSolution,
+    attempt: { solutions },
+  } = useSelector(getConsoleState);
 
   const onPress = () => {
     Keyboard.dismiss();
@@ -64,7 +67,9 @@ const Tail = ({ setIsKeyboardVisible }) => {
           <TailEntry index={3} />
         </>
       ) : (
-        <SolutionsList />
+        <SolutionsList
+          {...{ ticket: { dicEntry: { solutions } } }}
+        />
       )}
       <TouchableWithoutFeedback {...{ onPress }}>
         <View

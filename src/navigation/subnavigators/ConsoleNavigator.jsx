@@ -4,10 +4,10 @@ import {
   TransitionPresets,
 } from "@react-navigation/stack";
 import Console from "../../views/Console";
-import TargetDetailsScreen from "../../console/TargetDetailsScreen";
 import ProgressScreen from "../../collection/ProgressScreen";
 import HelpScreen from "../../console/HelpScreen";
 import DictionarySelectionScreen from "../../options/DictionarySelectionScreen";
+import WordInfoScreen from "../../collection/WordInfoScreen";
 
 const ConsoleStack = createStackNavigator();
 
@@ -24,8 +24,8 @@ const ConsoleNavigator = () => {
         component={Console}
       />
       <ConsoleStack.Screen
-        name="TargetDetailsScreen"
-        component={TargetDetailsScreen}
+        name="WordInfoScreen"
+        component={WordInfoScreen}
       />
       <ConsoleStack.Screen
         name="HelpScreen"
