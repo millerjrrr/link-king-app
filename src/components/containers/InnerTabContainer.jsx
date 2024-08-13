@@ -51,7 +51,9 @@ const InnerTabContainer = ({
         {back ? <BackButton extraPadding={true} /> : null}
         <FourCrowns {...{ color }} />
         <HelpButton {...{ help, padding: true }} />
-        <FlagBook {...{ noBook, padding: true }} />
+        {!noBook ? (
+          <FlagBook {...{ padding: true }} />
+        ) : null}
         <LinkKingLogo
           {...{
             height: 30,

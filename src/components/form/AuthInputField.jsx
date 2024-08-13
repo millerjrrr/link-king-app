@@ -43,7 +43,7 @@ const AuthInputField = (props) => {
 
   const shakeUI = () => {
     inputTransformValue.value = withSequence(
-      withTiming(-10, { durationg: 50 }),
+      withTiming(-10, { duration: 50 }),
       withSpring(0, {
         damping: 8,
         mass: 0.5,
