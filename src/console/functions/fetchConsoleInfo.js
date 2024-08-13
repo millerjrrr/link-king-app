@@ -18,10 +18,10 @@ export const fetchConsoleInfo = async ({
     dispatch(updateBusyState(true));
     dispatch(updateShowSolution(false));
     let { data } = await clientWithAuth.get(url);
-    const { dictionary } = data;
+    // const { dictionary } = data;
 
-    if (dictionary === "Personal")
-      data = await returnReversoData({ data });
+    // if (dictionary === "Personal")
+    //   data = await returnReversoData({ data });
     updateConsoleState(data, dispatch);
   } catch (error) {
     dispatch(updateBusyState(false)); //important that this comes first

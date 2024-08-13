@@ -39,11 +39,11 @@ export const returnCorrectAnswerToServer = async ({
     const {
       gamePlay: { target, speechLang: language },
       options: { sound },
-      dictionary,
+      // dictionary,
     } = data;
 
-    if (dictionary === "Personal")
-      data = await returnReversoData({ data });
+    // if (dictionary === "Personal")
+    //   data = await returnReversoData({ data });
     updateConsoleState(data, dispatch);
     speak({ target, language, sound });
     dispatch(restartTheTimer());
