@@ -19,6 +19,7 @@ export default {
         "Essa palavra tem sido marcada e apagada da sua coleção. \n\nAgradecemos a sua ajuda!",
       responseB:
         "...algo deu errado 😣 por favor, certifique que você tem conexão de internet e tente de novo... ",
+      userResponse: "Sua resposta:",
     },
     help: {
       heading: "Ajuda",

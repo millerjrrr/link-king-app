@@ -19,6 +19,7 @@ export default {
         "This word has been flagged for review and removed from your collection. \n \n Thank you for your help!",
       responseB:
         "...something went wrong 😣 please check your internet connection and try again... ",
+      userResponse: "Your response:",
     },
     help: {
       heading: "Help",

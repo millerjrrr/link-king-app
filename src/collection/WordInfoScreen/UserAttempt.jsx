@@ -10,13 +10,13 @@ import SolutionItem from "../../console/SolutionsList/SolutionItem";
 
 const UserAttempt = () => {
   const { lastAttempt } = useSelector(getConsoleState);
-  const { colorScheme } = useSelector(getSettingsState);
-  const userResponse = "Your response:";
-  // appTextSource[appLang].console.targetDetails;
+  const { colorScheme, appLang } = useSelector(
+    getSettingsState,
+  );
+  const { userResponse } =
+    appTextSource[appLang].console.targetDetails;
 
-  //font-size management
-  const solution = "testtest";
-  // lastAttempt;
+  const solution = lastAttempt;
 
   return (
     <View style={styles.container}>
