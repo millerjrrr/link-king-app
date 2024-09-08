@@ -1,4 +1,9 @@
-import { ScrollView, StyleSheet, View } from "react-native";
+import {
+  Linking,
+  ScrollView,
+  StyleSheet,
+  View,
+} from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import PopUpContainer from "../../components/containers/PopUpContainer";
 import React, { useState } from "react";
@@ -13,10 +18,17 @@ import { getSettingsState } from "../../store/settings";
 import AcceptedAnswers from "./AcceptedAnswers";
 import WordCard from "../WordCard";
 import UserAttempt from "./UserAttempt";
+import { getConsoleState } from "../../store/console";
 
 const WordInfoScreen = ({ route }) => {
   const { ticket, wrongAnswerReturned } = route.params;
   const { appLang } = useSelector(getSettingsState);
+  const {
+    attempt: { speechLang },
+  } = useSelector(getConsoleState);
+  const languageCode = speechLang.slice(0, 2);
+  const url = `https://www.google.com/search?q=define+${ticket.dicEntry.target}&hl=${languageCode}`;
+  const onPress = () => Linking.openURL(url);
 
   // ...loader management...
   const [busy, setBusy] = useState(false);
@@ -38,8 +50,6 @@ const WordInfoScreen = ({ route }) => {
   };
   const { heading } =
     appTextSource[appLang].console.targetDetails;
-
-  const onPress = () => null;
 
   return (
     <PopUpContainer {...{ heading }}>

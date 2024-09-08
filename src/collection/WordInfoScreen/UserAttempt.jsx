@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   container: {
     zIndex: 1,
     width: "50%",
-    height: 70,
+    height: 50,
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",

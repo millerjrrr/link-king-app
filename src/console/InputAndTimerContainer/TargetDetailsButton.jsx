@@ -9,7 +9,7 @@ import { getSettingsState } from "../../store/settings";
 const TargetDetailsButton = () => {
   const {
     showSolution,
-    attempt: { id, target, solutions },
+    attempt: { id, target, solutions, rating },
   } = useSelector(getConsoleState);
   const { colorScheme } = useSelector(getSettingsState);
   const color = colors[colorScheme].LIGHTRED;
@@ -17,7 +17,7 @@ const TargetDetailsButton = () => {
 
   const ticket = {
     _id: id,
-    dicEntry: { target, solutions },
+    dicEntry: { target, solutions, rating },
     level: 1,
   };
   return showSolution ? (
