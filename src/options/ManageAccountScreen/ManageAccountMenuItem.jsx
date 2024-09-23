@@ -10,6 +10,7 @@ import {
   Title,
 } from "./StyledComponents";
 import { useNavigation } from "@react-navigation/native";
+import FlagImage from "../../ui/Graphics/FlagImage";
 
 const ManageAccountMenuItem = ({
   first,
@@ -25,7 +26,7 @@ const ManageAccountMenuItem = ({
   const color = colors[colorScheme].CONTRAST[golden];
 
   const title =
-    appTextSource[appLang].options.manageAccount[heading];
+    appTextSource(appLang).options.manageAccount[heading];
 
   const navigation = useNavigation();
 
@@ -47,13 +48,17 @@ const ManageAccountMenuItem = ({
         <SubTitle {...{ color }}>{data}</SubTitle>
       </OptionContainer>
       {iconName ? (
-        <MaterialCommunityIcons
-          {...{
-            name: iconName,
-            size: 48,
-            color,
-          }}
-        />
+        iconName === "flag" ? (
+          <FlagImage {...{ flag1: appLang, scale: 1.1 }} />
+        ) : (
+          <MaterialCommunityIcons
+            {...{
+              name: iconName,
+              size: 48,
+              color,
+            }}
+          />
+        )
       ) : null}
     </Container>
   );

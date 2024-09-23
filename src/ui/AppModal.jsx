@@ -58,7 +58,7 @@ const AppModal = ({
   const backgroundColor = colors[colorScheme].PRIMARY;
 
   const { title, modalMessage, modalMessage2, cancel } =
-    appTextSource[appLang].modals[modalName];
+    appTextSource(appLang).modals[modalName];
 
   return (
     <Modal

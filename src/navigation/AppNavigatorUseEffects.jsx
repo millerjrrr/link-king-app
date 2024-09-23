@@ -12,7 +12,10 @@ import { useEffect, useState } from "react";
 import colors from "../utils/colors";
 import client from "../api/client";
 import catchAsyncError from "../api/catchError";
-import { getFromAsyncStorage } from "../utils/asyncStorage";
+import {
+  getFromAsyncStorage,
+  saveToAsyncStorage,
+} from "../utils/asyncStorage";
 import { updateSettings } from "../store/settings";
 import { AppState, StatusBar } from "react-native";
 import { authErrorHandler } from "../errors/authErrorHandler";
@@ -50,12 +53,20 @@ const AppNavigatorUseEffects = () => {
           return;
         }
         // if there is no token stored on device exit
-        const appLang =
-          Localization.getLocales()[0]?.languageCode ||
-          "en";
+
+        let appLang =
+          (await getFromAsyncStorage("app-lang")) || false;
+
+        if (!appLang) {
+          appLang =
+            Localization.getLocales()[0]?.languageCode ||
+            "en";
+          await saveToAsyncStorage("app-lang", appLang);
+          dispatch(updateSettings({ appLang }));
+        }
 
         const { data } = await client.get(
-          "/api/users/log-in-confirmation",
+          "/api/v1/users/log-in-confirmation",
           {
             headers: {
               Authorization: "Bearer " + token,
@@ -65,7 +76,11 @@ const AppNavigatorUseEffects = () => {
           },
         );
 
-        const { userCreationDate: ucd, vip } = data;
+        const {
+          userCreationDate: ucd,
+          vip,
+          homeLanguage,
+        } = data;
 
         if (data.status === "success") {
           dispatch(updateTrialDays(daysLeft(ucd)));
@@ -73,6 +88,12 @@ const AppNavigatorUseEffects = () => {
           dispatch(updateBusyState(false));
           dispatch(updateToken(token));
           dispatch(updateLoggedInState(true));
+          if (appLang !== homeLanguage) {
+            saveToAsyncStorage("app-lang", homeLanguage);
+            dispatch(
+              updateSettings({ appLang: homeLanguage }),
+            );
+          }
         }
       } catch (error) {
         dispatch(updateBusyState(false));
@@ -107,16 +128,11 @@ const AppNavigatorUseEffects = () => {
           await getFromAsyncStorage("steps-goal");
         stepsGoal = "" ? "" : stepsGoal * 1;
 
-        const appLang =
-          Localization.getLocales()[0]?.languageCode ||
-          "en";
-
         const settings = {
           colorScheme,
           timeGoal,
           newWordsGoal,
           stepsGoal,
-          appLang,
         };
 
         Object.keys(settings).forEach((key) => {

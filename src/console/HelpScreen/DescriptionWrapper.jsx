@@ -16,7 +16,7 @@ const DescriptionWrapper = ({ name, children }) => {
   const backgroudColor = colors[colorScheme].PRIMARY;
 
   const { title, description } =
-    appTextSource[appLang].console.help[name];
+    appTextSource(appLang).console.help[name];
 
   return (
     <CardContainer {...{ backgroudColor, color }}>

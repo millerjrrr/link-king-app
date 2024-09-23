@@ -67,9 +67,7 @@ const Tail = ({ setIsKeyboardVisible }) => {
           <TailEntry index={3} />
         </>
       ) : (
-        <SolutionsList
-          {...{ ticket: { dicEntry: { solutions } } }}
-        />
+        <SolutionsList {...{ ticket: { solutions } }} />
       )}
       <TouchableWithoutFeedback {...{ onPress }}>
         <View

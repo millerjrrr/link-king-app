@@ -7,7 +7,7 @@ export const fetchStatsInfo = async (dispatch) => {
   dispatch(updateBusyState(true));
   try {
     const { data } = await clientWithAuth.get(
-      "/api/collection/statistics",
+      "/api/v1/collection/statistics",
     );
     updateStatsState({ data, dispatch });
   } catch (error) {

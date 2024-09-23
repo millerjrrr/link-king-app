@@ -20,7 +20,7 @@ const RatingCircle = () => {
   const { dictionary } = useSelector(getConsoleState);
 
   const { textA, textB } =
-    appTextSource[appLang].collection.progressScreen;
+    appTextSource(appLang).collection.progressScreen;
   return (
     <>
       <AppText

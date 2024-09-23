@@ -10,11 +10,11 @@ const updateNameOnServer = async ({
   appLang,
 }) => {
   const message =
-    appTextSource[appLang].options.manageAccount
+    appTextSource(appLang).options.manageAccount
       .usernameUpdated;
   try {
     const { data } = await clientWithAuth.post(
-      "/api/users/change-username",
+      "/api/v1/users/change-username",
       { username },
     );
     if (data.status === "success") {

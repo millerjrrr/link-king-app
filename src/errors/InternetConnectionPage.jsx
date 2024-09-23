@@ -13,7 +13,7 @@ const InternetConnectionPage = ({ refresh }) => {
   const color = colors[colorScheme].RED;
   const backgroundColor = colors[colorScheme].PRIMARY;
   const { title, message } =
-    appTextSource[appLang].internetConnectionPage;
+    appTextSource(appLang).internetConnectionPage;
   return (
     <View style={[styles.container, { backgroundColor }]}>
       <AppText style={{ fontsize: 40, color }}>

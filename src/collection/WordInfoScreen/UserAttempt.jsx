@@ -14,7 +14,7 @@ const UserAttempt = () => {
     getSettingsState,
   );
   const { userResponse } =
-    appTextSource[appLang].console.targetDetails;
+    appTextSource(appLang).console.targetDetails;
 
   const solution = lastAttempt;
 

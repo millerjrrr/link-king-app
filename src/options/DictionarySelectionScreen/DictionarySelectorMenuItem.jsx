@@ -1,10 +1,9 @@
 import { useSelector } from "react-redux";
-import OptionsMenuItem from "../OptionsMenuItem";
+import OptionsMenuItem from "../components/OptionsMenuItem";
 import { getSettingsState } from "../../store/settings";
 import appTextSource from "../../utils/appTextSource";
 import { useDispatch } from "react-redux";
-import { updateNotification } from "../../store/notification";
-import { sendDictionary } from "./sendDictionary";
+import { sendDictionary } from "../components/sendDictionary";
 import { getConsoleState } from "../../store/console";
 import BusyWrapper from "../../ui/Loader/BusyWrapper";
 import { View } from "react-native";
@@ -16,30 +15,24 @@ const DictionarySelectorMenuItem = ({
   const { appLang } = useSelector(getSettingsState);
 
   const name =
-    appTextSource[appLang].options.chooseDictionary[
+    appTextSource(appLang).options.chooseDictionary[
       dictionary
-    ];
+    ] || dictionary;
   const dispatch = useDispatch();
-
-  const onPress =
-    dictionary === "Custom-Dictionary"
-      ? () => {
-          dispatch(
-            updateNotification({
-              message: name,
-              type: "info",
-            }),
-          );
-        }
-      : () => {
-          sendDictionary({
-            dictionary,
-            dispatch,
-          });
-        };
 
   const { dictionary: currentDictionary } =
     useSelector(getConsoleState);
+
+  const selected = dictionary === currentDictionary;
+
+  const onPress = selected
+    ? null
+    : () => {
+        sendDictionary({
+          dictionary,
+          dispatch,
+        });
+      };
 
   return (
     <View {...{ style: { height: 70, width: "100%" } }}>
@@ -49,7 +42,7 @@ const DictionarySelectorMenuItem = ({
             dictionary,
             name,
             onPress,
-            selected: dictionary === currentDictionary,
+            selected,
             first: true,
           }}
         />

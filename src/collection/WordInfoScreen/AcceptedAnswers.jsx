@@ -7,7 +7,7 @@ const AcceptedAnswers = () => {
   const { appLang } = useSelector(getSettingsState);
 
   const { accepted } =
-    appTextSource[appLang].console.targetDetails;
+    appTextSource(appLang).console.targetDetails;
 
   return (
     <AppText

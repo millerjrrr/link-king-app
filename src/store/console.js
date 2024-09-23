@@ -8,7 +8,7 @@ const initialState = {
     id: "",
     target: "",
     solutions: [],
-    speechLang: "en-US",
+    speechLang: "es-ES",
   },
   options: { sound: true, blurred: false, timer: true },
   stats: {
@@ -18,7 +18,7 @@ const initialState = {
     streak: 0,
     newWords: 0,
   },
-  dictionary: "Spanish-English",
+  dictionary: "Spanish",
   tail: [],
   tries: 1,
   busy: false,

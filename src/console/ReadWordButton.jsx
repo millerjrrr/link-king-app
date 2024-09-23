@@ -27,7 +27,7 @@ const ReadWordButton = ({
   const dispatch = useDispatch();
 
   const { sound: message } =
-    appTextSource[appLang].console.statsMessages;
+    appTextSource(appLang).console.statsMessages;
 
   const newTarget = speakWord ? speakWord : target;
   const onPress = async () => {

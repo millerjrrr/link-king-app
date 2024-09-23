@@ -10,11 +10,11 @@ const deleteUserAccount = async ({
   appLang,
 }) => {
   const message =
-    appTextSource[appLang].options.manageAccount
+    appTextSource(appLang).options.manageAccount
       .accountDeleted;
   try {
     const { data } = await clientWithAuth.post(
-      "/api/users/delete-account",
+      "/api/v1/users/delete-account",
       { password },
     );
     if (data.status === "success") {

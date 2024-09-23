@@ -10,8 +10,8 @@ const ResponseInformation = ({
   const { appLang } = useSelector(getSettingsState);
 
   const { responseA, responseB } = wrongAnswerReturned
-    ? appTextSource[appLang].console.targetDetails
-    : appTextSource[appLang].collection.wordInfoScreen;
+    ? appTextSource(appLang).console.targetDetails
+    : appTextSource(appLang).collection.wordInfoScreen;
 
   return status ? (
     <AppText

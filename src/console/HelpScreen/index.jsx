@@ -12,7 +12,7 @@ import GameDescription from "./GameDescription";
 
 const HelpScreen = () => {
   const { appLang } = useSelector(getSettingsState);
-  const { heading } = appTextSource[appLang].console.help;
+  const { heading } = appTextSource(appLang).console.help;
 
   return (
     <PopUpContainer {...{ heading }}>

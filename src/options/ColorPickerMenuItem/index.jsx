@@ -1,16 +1,16 @@
 import { useSelector } from "react-redux";
-import { getSettingsState } from "../store/settings";
+import { getSettingsState } from "../../store/settings";
 import { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import ColorPicker from "./components/ColorPicker";
-import OptionsMenuItemContainer from "./components/OptionsMenuItemContainer";
-import appTextSource from "./../utils/appTextSource/index";
-import MenuItemLink from "./components/MenuItemLink";
+import ColorPicker from "./ColorPicker";
+import OptionsMenuItemContainer from "../components/OptionsMenuItemContainer";
+import appTextSource from "../../utils/appTextSource/index";
+import MenuItemLink from "../components/MenuItemLink";
 
 const ColorPickerMenuItem = () => {
   const { appLang } = useSelector(getSettingsState);
   const { colorSchemeTitle } =
-    appTextSource[appLang].options;
+    appTextSource(appLang).options;
 
   const [showPalette, setShowPallet] = useState(false);
 

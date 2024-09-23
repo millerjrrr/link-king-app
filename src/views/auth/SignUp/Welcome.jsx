@@ -22,7 +22,7 @@ const Welcome = () => {
   };
 
   const { heading, subHeading, buttonTitle } =
-    appTextSource[appLang].auth.signUp.start;
+    appTextSource(appLang).auth.signUp.start;
 
   return (
     <AuthFormContainer

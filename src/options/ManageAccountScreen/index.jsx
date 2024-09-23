@@ -17,10 +17,10 @@ import clientWithAuth from "../../api/clientWithAuth";
 
 const ManageAccountScreen = () => {
   const { appLang } = useSelector(getSettingsState);
-  const { title: heading } =
-    appTextSource[appLang].options.manageAccount;
+  const { title: heading, changeHomeLanguage } =
+    appTextSource(appLang).options.manageAccount;
   const { subscribed, notSubscribed, vipMessage } =
-    appTextSource[appLang].options.manageAccount
+    appTextSource(appLang).options.manageAccount
       .subscriptionPage;
 
   const {
@@ -39,7 +39,7 @@ const ManageAccountScreen = () => {
       const {
         data: { username, email },
       } = await clientWithAuth.get(
-        "/api/users/user-details",
+        "/api/v1/users/user-details",
       );
       dispatch(updateName(username));
       dispatch(updateEmail(email));
@@ -85,6 +85,14 @@ const ManageAccountScreen = () => {
                   ? subscribed
                   : notSubscribed,
             targetScreen: "ManageSubscriptionScreen",
+          }}
+        />
+        <ManageAccountMenuItem
+          {...{
+            iconName: "flag",
+            heading: "homeLanguage",
+            data: changeHomeLanguage,
+            targetScreen: "ChangeHomeLanguageWarningScreen",
           }}
         />
         <ManageAccountMenuItem

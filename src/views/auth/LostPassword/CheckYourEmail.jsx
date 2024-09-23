@@ -10,7 +10,7 @@ import AppText from "../../../ui/AppText";
 const CheckYourEmail = ({ navigation }) => {
   const { appLang } = useSelector(getSettingsState);
   const { heading, subHeading, text, returnToLogin } =
-    appTextSource[appLang].auth.passwordReset;
+    appTextSource(appLang).auth.passwordReset;
 
   const onPress = () => navigation.navigate("SignIn");
 

@@ -26,7 +26,7 @@ export const returnWrongAnswerToServer = async ({
     dispatch(resetTimeOnThisWord());
     dispatch(incrementStatsTime(time));
     let { data } = await clientWithAuth.post(
-      "/api/console/submit-attempt",
+      "/api/v1/console/submit-attempt",
       {
         correct: false,
         time,

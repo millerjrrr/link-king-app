@@ -1,5 +1,5 @@
-import OptionsMenuItemContainer from "./components/OptionsMenuItemContainer";
-import MenuItemLink from "./components/MenuItemLink";
+import OptionsMenuItemContainer from "./OptionsMenuItemContainer";
+import MenuItemLink from "./MenuItemLink";
 
 const OptionsMenuItem = ({
   iconName,

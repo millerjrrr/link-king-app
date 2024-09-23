@@ -7,7 +7,7 @@ const ChangeNameScreen = () => {
   const { appLang } = useSelector(getSettingsState);
 
   const buttonTitle =
-    appTextSource[appLang].options.manageAccount.save;
+    appTextSource(appLang).options.manageAccount.save;
 
   return (
     <Name {...{ updateNameFunction: true, buttonTitle }} />

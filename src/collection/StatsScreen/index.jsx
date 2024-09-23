@@ -24,7 +24,7 @@ const StatsScreen = () => {
   const showHist = levelBreakdown.length > 2;
 
   const { heading, description } =
-    appTextSource[appLang].collection.statistics;
+    appTextSource(appLang).collection.statistics;
 
   return (
     <PopUpContainer {...{ heading }}>

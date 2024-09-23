@@ -6,7 +6,7 @@ import { getSettingsState } from "../../store/settings";
 import colors from "../../utils/colors";
 
 const SolutionsList = ({ ticket }) => {
-  const { solutions } = ticket.dicEntry;
+  const { solutions } = ticket;
 
   const { colorScheme } = useSelector(getSettingsState);
   const backgroundColor = colors[colorScheme].PRIMARY;

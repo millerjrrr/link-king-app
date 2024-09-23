@@ -16,7 +16,7 @@ import SignUpAppLink from "../../../ui/SignUpAppLink";
 
 const Email = () => {
   const { appLang } = useSelector(getSettingsState);
-  const { email } = appTextSource[appLang].auth.forms;
+  const { email } = appTextSource(appLang).auth.forms;
 
   const validationSchema = yup.object({
     email: yup
@@ -44,9 +44,9 @@ const Email = () => {
   };
 
   const { heading, subHeading } =
-    appTextSource[appLang].auth.signUp.email;
+    appTextSource(appLang).auth.signUp.email;
 
-  const { next } = appTextSource[appLang].auth.titles;
+  const { next } = appTextSource(appLang).auth.titles;
 
   return (
     <AuthFormContainer

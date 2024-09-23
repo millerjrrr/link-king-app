@@ -18,7 +18,7 @@ const CongratsAndName = () => {
   } = useSelector(getStatsState);
 
   const { congratulations, collected } =
-    appTextSource[appLang].collection.progressScreen;
+    appTextSource(appLang).collection.progressScreen;
   return (
     <>
       <AppText

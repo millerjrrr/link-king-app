@@ -19,7 +19,7 @@ import { saveToAsyncStorage } from "../../../utils/asyncStorage";
 
 const VerificationCode = () => {
   const { appLang } = useSelector(getSettingsState);
-  const { code } = appTextSource[appLang].auth.forms;
+  const { code } = appTextSource(appLang).auth.forms;
 
   const validationSchema = yup.object({
     code: yup
@@ -46,7 +46,7 @@ const VerificationCode = () => {
 
     try {
       const { data } = await client.post(
-        "/api/users/sign-up-verification",
+        "/api/v1/users/sign-up-verification",
         {
           ...values,
         },
@@ -68,7 +68,7 @@ const VerificationCode = () => {
   };
 
   const { heading, subHeading, subHeading2, verify } =
-    appTextSource[appLang].auth.signUp.code;
+    appTextSource(appLang).auth.signUp.code;
 
   const { formEmail } = useSelector(getAuthState);
 

@@ -27,7 +27,7 @@ const WordInfoScreen = ({ route }) => {
     attempt: { speechLang },
   } = useSelector(getConsoleState);
   const languageCode = speechLang.slice(0, 2);
-  const url = `https://www.google.com/search?q=define+${ticket.dicEntry.target}&hl=${languageCode}`;
+  const url = `https://www.google.com/search?q=define+${ticket.target}&hl=${languageCode}`;
   const onPress = () => Linking.openURL(url);
 
   // ...loader management...
@@ -49,7 +49,7 @@ const WordInfoScreen = ({ route }) => {
     );
   };
   const { heading } =
-    appTextSource[appLang].console.targetDetails;
+    appTextSource(appLang).console.targetDetails;
 
   return (
     <PopUpContainer {...{ heading }}>

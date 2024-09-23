@@ -14,7 +14,7 @@ import { getSettingsState } from "../../../store/settings";
 
 const LostPassword = () => {
   const { appLang } = useSelector(getSettingsState);
-  const { email } = appTextSource[appLang].auth.forms;
+  const { email } = appTextSource(appLang).auth.forms;
 
   const validationSchema = yup.object({
     email: yup
@@ -34,7 +34,7 @@ const LostPassword = () => {
     actions.setSubmitting(true);
     try {
       const { data } = await client.post(
-        "/api/users/forgot-password",
+        "/api/v1/users/forgot-password",
         {
           ...values,
         },
@@ -54,10 +54,10 @@ const LostPassword = () => {
   };
 
   const { sendLink, signIn, signUp } =
-    appTextSource[appLang].auth.titles;
+    appTextSource(appLang).auth.titles;
 
   const { heading, subHeading } =
-    appTextSource[appLang].auth.lostPassword;
+    appTextSource(appLang).auth.lostPassword;
 
   return (
     <AuthFormContainer

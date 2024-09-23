@@ -21,7 +21,9 @@ const HowToPlay = () => {
     "Spanish-English": require("../../assets/demo-Spanish-English.mp4"),
   };
   const source =
-    demos[dictionary] || demos["English-Portuguese"];
+    dictionary === "English"
+      ? demos["English-Portuguese"]
+      : demos["Spanish-English"];
 
   const image = require("../../assets/status-bar-filler.png");
 

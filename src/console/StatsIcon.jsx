@@ -20,7 +20,7 @@ const StatsIcon = ({
 
   const dispatch = useDispatch();
   const message =
-    appTextSource[appLang].console.statsMessages[name];
+    appTextSource(appLang).console.statsMessages[name];
 
   const onPress = () =>
     dispatch(

@@ -3,67 +3,26 @@ import { useDispatch, useSelector } from "react-redux";
 import PopUpContainer from "../../../components/containers/PopUpContainer";
 import BloodRedCover from "../../../ui/BloodRedCover";
 import { getSettingsState } from "../../../store/settings";
-import RedSafetyButton from "../../../ui/Buttons/RedSafetyButton";
 import AuthInputField from "../../../components/form/AuthInputField";
 import Form from "../../../components/form";
 import * as yup from "yup";
 import PasswordVisibilityIcon from "../../../ui/PasswordVisibilityIcon";
-import { useNavigation } from "@react-navigation/native";
-import { authErrorHandler } from "../../../errors/authErrorHandler";
 import appTextSource from "../../../utils/appTextSource";
-import { useFormikContext } from "formik";
-import BusyWrapper from "../../../ui/Loader/BusyWrapper";
 import AppText from "../../../ui/AppText";
 import { View } from "react-native";
 import deleteUserAccount from "../functions/deleteUserAccount";
-
-const FormikSafetyButton = ({
-  setElapsedTime,
-  setCoverZIndex,
-}) => {
-  const { handleSubmit, isSubmitting } = useFormikContext();
-
-  const completeFunction = () => {
-    handleSubmit();
-    setTimeout(() => {
-      setElapsedTime(0);
-      setCoverZIndex(1);
-    }, 2000);
-  };
-
-  return (
-    <BusyWrapper {...{ busy: isSubmitting }}>
-      <View
-        style={{
-          width: "100%",
-          alignItems: "center",
-          padding: 15,
-        }}
-      >
-        <RedSafetyButton
-          {...{
-            setElapsedTime,
-            completeFunction,
-            setCoverZIndex,
-            iconName: "delete",
-            size: 100,
-          }}
-        />
-      </View>
-    </BusyWrapper>
-  );
-};
+import FormikSafetyButton from "../../../ui/Buttons/FormikSafetyButton";
 
 const DeleteAccountScreen = () => {
   const { appLang } = useSelector(getSettingsState);
   const { deleteAccount: heading, deleteAccountDetails } =
-    appTextSource[appLang].options.manageAccount;
+    appTextSource(appLang).options.manageAccount;
 
   // ...loader management...
   const [elapsedTime, setElapsedTime] = useState(0);
   const [coverZIndex, setCoverZIndex] = useState(1);
 
-  const { password } = appTextSource[appLang].auth.forms;
+  const { password } = appTextSource(appLang).auth.forms;
 
   const validationSchema = yup.object({
     password: yup

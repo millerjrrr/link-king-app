@@ -5,6 +5,7 @@ import colors from "../../utils/colors";
 import { getSettingsState } from "../../store/settings";
 import styled from "styled-components";
 import FlagImage from "../../ui/Graphics/FlagImage";
+import languageNameCodeMap from "../../utils/languageNameCodeMap";
 
 const TouchableContainer = styled(TouchableOpacity)`
   height: 60px;
@@ -36,22 +37,19 @@ const OptionsMenuItemContainer = ({
   dictionary,
   first,
   children,
-  selected,
   onPress,
 }) => {
-  const { colorScheme, golden } = useSelector(
+  const { colorScheme, golden, appLang } = useSelector(
     getSettingsState,
   );
   const backgroundColor = colors[colorScheme].PRIMARY;
   const borderColor = colors[colorScheme].INACTIVE_CONTRAST;
   const color = colors[colorScheme].CONTRAST[golden];
 
-  const alteredDictionary = dictionary
-    ? dictionary === "Custom-Dictionary"
-      ? "Portuguese-English"
-      : dictionary
-    : "Portuguese-English";
-  const [flag1, flag2] = alteredDictionary.split("-");
+  const [flag1, flag2] = [
+    appLang,
+    languageNameCodeMap[dictionary],
+  ];
 
   return !dictionary ? (
     <Container {...{ backgroundColor }}>

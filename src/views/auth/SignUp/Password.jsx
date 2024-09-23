@@ -20,7 +20,7 @@ import SignUpAppLink from "../../../ui/SignUpAppLink";
 
 const Password = () => {
   const { appLang } = useSelector(getSettingsState);
-  const { password } = appTextSource[appLang].auth.forms;
+  const { password } = appTextSource(appLang).auth.forms;
 
   const validationSchema = yup.object({
     password: yup
@@ -55,7 +55,7 @@ const Password = () => {
     actions.setSubmitting(true);
     try {
       const { data } = await client.post(
-        "/api/users/sign-up",
+        "/api/v1/users/sign-up",
         {
           username: formName,
           email: formEmail,
@@ -89,9 +89,9 @@ const Password = () => {
   };
 
   const { heading, subHeading } =
-    appTextSource[appLang].auth.signUp.password;
+    appTextSource(appLang).auth.signUp.password;
 
-  const { signUp } = appTextSource[appLang].auth.titles;
+  const { signUp } = appTextSource(appLang).auth.titles;
 
   return (
     <AuthFormContainer

@@ -75,7 +75,7 @@ const ManageSubscriptionScreen = () => {
     playStore,
     subscribe,
   } =
-    appTextSource[appLang].options.manageAccount
+    appTextSource(appLang).options.manageAccount
       .subscriptionPage;
   const {
     PRIMARY: buttonColor,

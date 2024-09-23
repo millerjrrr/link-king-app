@@ -20,7 +20,7 @@ const StartButton = ({ inputFieldRef }) => {
   const color = colors[colorScheme].CONTRAST[golden];
   const backgroundColor = colors[colorScheme].SECONDARY;
 
-  const title = appTextSource[appLang].console.start;
+  const title = appTextSource(appLang).console.start;
 
   const { width } = Dimensions.get("window");
   const size = width / 1.75;

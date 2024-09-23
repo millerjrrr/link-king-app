@@ -2,7 +2,7 @@ import appTextSource from "../../utils/appTextSource";
 import dateToNumberStyleDate from "./dateToNumberStyleDate";
 
 const numberDateToDashFormat = (date) => {
-  const workingDate = new Date("1899-12-30");
+  const workingDate = new Date("1899-12-31");
   workingDate.setDate(workingDate.getDate() + date);
 
   const day = String(workingDate.getDate()).padStart(
@@ -22,7 +22,7 @@ export const numberDateToWordStyleDate = ({
   appLang,
 }) => {
   const { today, tomorrow } =
-    appTextSource[appLang].collection;
+    appTextSource(appLang).collection;
   const todaysDate = dateToNumberStyleDate(new Date());
   const gap = date - todaysDate;
   if (gap <= 0) return today;

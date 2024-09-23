@@ -21,7 +21,7 @@ const Paywall = () => {
 
   const { appLang } = useSelector(getSettingsState);
   const { heading, notice, priceDescription, perYear } =
-    appTextSource[appLang].paywall;
+    appTextSource(appLang).paywall;
 
   const update = setSubscriptionPrice({ setPrice });
 

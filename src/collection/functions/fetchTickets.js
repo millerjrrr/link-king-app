@@ -12,7 +12,7 @@ export const fetchTickets = async (
   const normWord = semiNormalize(searchKeyword);
   try {
     const { data } = await clientWithAuth.get(
-      `/api/collection/tickets?page=${page}&search=${normWord}`,
+      `/api/v1/collection/tickets?page=${page}&search=${normWord}`,
     );
     dispatch(
       updateCollection({

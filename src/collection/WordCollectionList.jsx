@@ -32,7 +32,7 @@ const WordCollectionList = ({ navigation }) => {
   );
   const { appLang } = useSelector(getSettingsState);
 
-  const { noWords } = appTextSource[appLang].collection;
+  const { noWords } = appTextSource(appLang).collection;
 
   return tickets === null || tickets.length === 0 ? (
     <View style={{ flex: 1, paddingTop: 90, width: "80%" }}>

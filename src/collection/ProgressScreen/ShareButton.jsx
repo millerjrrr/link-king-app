@@ -20,7 +20,7 @@ const ShareButton = ({ shareRef }) => {
 
   const color = colors[colorScheme].CONTRAST[golden];
   const { challenge } =
-    appTextSource[appLang].collection.progressScreen;
+    appTextSource(appLang).collection.progressScreen;
 
   const message =
     challenge.A +

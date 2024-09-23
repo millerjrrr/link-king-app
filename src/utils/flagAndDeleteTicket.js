@@ -15,13 +15,13 @@ export const flagAndDeleteTicket = async (
   try {
     const { data } = flagWord
       ? await clientWithAuth.post(
-          "/api/collection/flag-word",
+          "/api/v1/collection/flag-word",
           {
             ticketId,
           },
         )
       : await clientWithAuth.post(
-          "/api/collection/delete-ticket",
+          "/api/v1/collection/delete-ticket",
           {
             ticketId,
           },

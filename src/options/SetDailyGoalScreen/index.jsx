@@ -1,26 +1,25 @@
+import { useState } from "react";
 import {
   View,
   TouchableOpacity,
   Dimensions,
 } from "react-native";
-import PopUpContainer from "../components/containers/PopUpContainer";
 import styled from "styled-components";
-import ScrollSelector from "./components/ScrollSelector";
 import { useDispatch, useSelector } from "react-redux";
+import { updateNotification } from "../../store/notification";
 import {
   getSettingsState,
   restoreDefaultGoals,
   updateSettings,
-} from "../store/settings";
-import colors from "../utils/colors";
-import { saveToAsyncStorage } from "../utils/asyncStorage";
+} from "../../store/settings";
+import colors from "../../utils/colors";
+import appTextSource from "../../utils/appTextSource";
+import PopUpContainer from "../../components/containers/PopUpContainer";
+import BusyWrapper from "../../ui/Loader/BusyWrapper";
+import AppText from "../../ui/AppText";
+import AppModal from "../../ui/AppModal";
+import ScrollSelector from "./ScrollSelector";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { updateNotification } from "../store/notification";
-import appTextSource from "../utils/appTextSource";
-import AppModal from "../ui/AppModal";
-import { useState } from "react";
-import BusyWrapper from "../ui/Loader/BusyWrapper";
-import AppText from "../ui/AppText";
 
 const Container = styled(View)`
   flex: 1;
@@ -75,7 +74,7 @@ const SetDailyGoalScreen = ({ navigation }) => {
   } = useSelector(getSettingsState);
   const color = colors[colorScheme].CONTRAST[golden];
   const { heading, textA, textB, textC, textD } =
-    appTextSource[appLang].options.setDailyGoal;
+    appTextSource(appLang).options.setDailyGoal;
 
   const dispatch = useDispatch();
 

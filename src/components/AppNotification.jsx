@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Text, StyleSheet, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -47,29 +47,39 @@ const AppNotification = () => {
       break;
     case "info":
       backgroundColor = colors[colorScheme].PRIMARY;
-      messageTime = 2000;
+      messageTime = 3000;
       break;
   }
 
+  const timeOutIdRef = useRef(null);
   useEffect(() => {
-    let timeOutId = 0;
     const performAnimation = () => {
       height.value = withTiming(notificationHeight, {
         duration: 150,
       });
 
-      timeOutId = setTimeout(() => {
+      timeOutIdRef.current = setTimeout(() => {
         height.value = withTiming(0, { duration: 150 });
         dispatch(updateNotification({ message: "", type }));
       }, messageTime);
     };
 
-    if (message) performAnimation();
+    if (message) {
+      performAnimation();
+    }
 
     return () => {
-      clearTimeout(timeOutId);
+      if (timeOutIdRef.current) {
+        clearTimeout(timeOutIdRef.current);
+      }
     };
-  }, [message]);
+  }, [
+    message,
+    messageTime,
+    height,
+    notificationHeight,
+    type,
+  ]);
 
   return (
     <View style={styles.inlineContainer}>

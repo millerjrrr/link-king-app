@@ -138,11 +138,9 @@ export default {
     },
     chooseDictionary: {
       title: "Select Dictionary",
-      "English-Portuguese":
-        "English for Portuguese Speakers",
-      "Spanish-English": "Spanish for English Speakers",
-      "Custom-Dictionary":
-        "A custom dictionary just for you!",
+      English: "English",
+      Spanish: "Spanish",
+      Portuguese: "Portuguese",
       textA: "We currently offer two dictionaries:",
       textB:
         "Too many language learning apps try to offer all languages immediately and substitute quality for quantity. While we do hope to offer more courses in the future we are currently focused on optimizing these two dictionaries.",
@@ -152,6 +150,17 @@ export default {
       title: "Account Management",
       name: "Name",
       email: "Email",
+      homeLanguage: "Home Language",
+      changeHomeLanguage: "Change home language",
+      changeHomeLanguageWarning:
+        "This is your native language and should not be changed regularly.\nChanging this language will reset your account and all learning data.",
+      continue: "Continue",
+      languageAlreadySelected:
+        "This is your current home language!",
+      changeHomeLanguageDetails:
+        "This is your native language and should not be changed regularly.\nChanging this language will reset your account and all learning data.\n\nTo change your home language and reset your account, enter your password and press and hold the red button.",
+      homeLanguageUpdated:
+        "Your home language has been updated and your learning data has been reset.",
       subscription: "Subscription",
       save: "Save",
       deleteAccount: "Delete Account",

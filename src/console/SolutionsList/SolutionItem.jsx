@@ -1,23 +1,16 @@
-import {
-  Linking,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Linking, TouchableOpacity } from "react-native";
 import { useSelector } from "react-redux";
 import colors from "../../utils/colors";
 import { getSettingsState } from "../../store/settings";
 import appShadow from "../../utils/appShadow";
 import AppText from "../../ui/AppText";
-import { getConsoleState } from "../../store/console";
 
 const SolutionItem = ({ solution, red }) => {
-  const { colorScheme, golden } = useSelector(
+  const { colorScheme, golden, appLang } = useSelector(
     getSettingsState,
   );
-  const {
-    attempt: { speechLang },
-  } = useSelector(getConsoleState);
-  const languageCode = speechLang.slice(0, 2);
+  const languageCode = "test";
+  appLang.slice(0, 2);
 
   const color = red
     ? colors[colorScheme].RED

@@ -19,7 +19,7 @@ export const fetchTicketsFirstBatch = async (
   );
   try {
     const { data } = await clientWithAuth.get(
-      `/api/collection/tickets?page=${1}&search=${normWord}`,
+      `/api/v1/collection/tickets?page=${1}&search=${normWord}`,
     );
 
     dispatch(updateDictionary(data.dictionary));

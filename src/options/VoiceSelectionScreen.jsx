@@ -26,7 +26,7 @@ const VoiceSelectionScreen = () => {
   const color = colors[colorScheme].CONTRAST[golden];
 
   const { title, textA, textB, tip, accessSettings } =
-    appTextSource[appLang].options.voiceSelection;
+    appTextSource(appLang).options.voiceSelection;
 
   const onPress = () => {
     console.log("not working yet");

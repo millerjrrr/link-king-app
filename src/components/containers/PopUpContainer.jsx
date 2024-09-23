@@ -1,5 +1,11 @@
 import React, { useEffect } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from "react-native";
 import colors from "../../utils/colors";
 import { useSelector } from "react-redux";
 import AppNotification from "../AppNotification";
@@ -31,6 +37,7 @@ const PopUpContainer = ({
   heading,
   help,
   blockPopToTop,
+  padding,
 }) => {
   const { colorScheme, golden } = useSelector(
     getSettingsState,
@@ -58,33 +65,45 @@ const PopUpContainer = ({
   }, [navigation]);
 
   return (
-    <View style={[{ backgroundColor }, styles.container]}>
-      <FourCrowns {...{ color: SECONDARY }} />
-      <AppNotification />
-      <HelpButton {...{ help }} />
-      <BackButton />
-      <LinkKingLogo
-        {...{
-          height: 40,
-          marginTop: 0,
-          tintColor: color,
-        }}
-      />
-      <AppText style={styles.heading}>{heading}</AppText>
-      <View style={styles.container}>
-        <FadeBackgroundView
+    <TouchableWithoutFeedback
+      onPress={() => Keyboard.dismiss()}
+    >
+      <View
+        style={[
+          {
+            backgroundColor,
+            paddingHorizontal: padding || 0,
+          },
+          styles.container,
+        ]}
+      >
+        <FourCrowns {...{ color: SECONDARY }} />
+        <AppNotification />
+        <HelpButton {...{ help }} />
+        <BackButton />
+        <LinkKingLogo
           {...{
-            colors: [
-              backgroundColor,
-              backgroundColor + "E6",
-              backgroundColor + "80",
-              backgroundColor + "00",
-            ],
+            height: 40,
+            marginTop: 0,
+            tintColor: color,
           }}
         />
-        {children}
+        <AppText style={styles.heading}>{heading}</AppText>
+        <View style={styles.container}>
+          <FadeBackgroundView
+            {...{
+              colors: [
+                backgroundColor,
+                backgroundColor + "E6",
+                backgroundColor + "80",
+                backgroundColor + "00",
+              ],
+            }}
+          />
+          {children}
+        </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 
@@ -93,6 +112,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     width: "100%",
+    paddingTop: 10,
   },
   heading: {
     fontSize: 15,

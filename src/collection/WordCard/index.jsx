@@ -32,12 +32,9 @@ const WordCard = ({
   const color = CONTRAST[golden];
   const backgroundColor = SECONDARY;
 
-  const { tomorrow } = appTextSource[appLang].collection;
+  const { tomorrow } = appTextSource(appLang).collection;
 
-  const {
-    dicEntry: { target, rating },
-    level,
-  } = ticket;
+  const { target, rating, level } = ticket;
 
   let fontSize = 30;
   const length = target.length;
@@ -55,11 +52,9 @@ const WordCard = ({
       <InfoContainer {...{ onPress }}>
         <RowContainer>
           <Title {...{ color, fontSize }}>{target}</Title>
-          {ticket?.dicEntry.rating ? (
-            <Rating {...{ color }}>
-              {Math.round(rating)}
-            </Rating>
-          ) : null}
+          <Rating {...{ color }}>
+            {Math.round(rating)}
+          </Rating>
         </RowContainer>
         <RowContainer>
           <WordCardLevelStars

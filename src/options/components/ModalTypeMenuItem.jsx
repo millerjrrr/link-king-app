@@ -1,13 +1,13 @@
 import { Linking } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { getSettingsState } from "../store/settings";
 import { useState } from "react";
-import OptionsMenuItemContainer from "./components/OptionsMenuItemContainer";
-import { updateNotification } from "../store/notification";
-import appTextSource from "./../utils/appTextSource/index";
-import AppModal from "../ui/AppModal";
-import MenuItemLink from "./components/MenuItemLink";
-import logOut from "../utils/logOut";
+import OptionsMenuItemContainer from "./OptionsMenuItemContainer";
+import { updateNotification } from "../../store/notification";
+import appTextSource from "../../utils/appTextSource/index";
+import AppModal from "../../ui/AppModal";
+import MenuItemLink from "./MenuItemLink";
+import logOut from "../../utils/logOut";
+import { getSettingsState } from "../../store/settings";
 
 const ModalTypeMenuItem = ({ optionName }) => {
   const { appLang } = useSelector(getSettingsState);
@@ -18,7 +18,7 @@ const ModalTypeMenuItem = ({ optionName }) => {
   const dispatch = useDispatch();
 
   const { subject: subjectText } =
-    appTextSource[appLang].options.contactUs;
+    appTextSource(appLang).options.contactUs;
 
   const handleSendEmail = () => {
     const email = "info@linkoking.com";
@@ -43,7 +43,7 @@ const ModalTypeMenuItem = ({ optionName }) => {
   };
 
   const { name } =
-    appTextSource[appLang].options[optionName];
+    appTextSource(appLang).options[optionName];
 
   switch (optionName) {
     case "contactUs":

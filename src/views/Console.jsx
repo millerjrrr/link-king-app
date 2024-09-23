@@ -32,7 +32,7 @@ const Console = ({ navigation }) => {
     navigation.navigate("HelpScreen");
   };
 
-  const { heading } = appTextSource[appLang].console;
+  const { heading } = appTextSource(appLang).console;
 
   return (
     <InnerTabContainer {...{ heading, help }}>

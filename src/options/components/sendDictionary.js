@@ -12,7 +12,7 @@ export const sendDictionary = async ({
   dispatch(updateBusyState(true));
   try {
     const { data } = await clientWithAuth.post(
-      "/api/users/change-dictionary",
+      "/api/v1/users/change-dictionary",
       {
         dictionary,
       },

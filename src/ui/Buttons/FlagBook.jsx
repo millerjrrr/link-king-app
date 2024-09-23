@@ -4,13 +4,16 @@ import { useSelector } from "react-redux";
 import { getConsoleState } from "../../store/console";
 import { useNavigation } from "@react-navigation/native";
 import FlagImage from "../Graphics/FlagImage";
+import { getSettingsState } from "../../store/settings";
+import languageNameCodeMap from "../../utils/languageNameCodeMap";
 
 const FlagBook = ({ padding }) => {
   const { dictionary } = useSelector(getConsoleState);
-  const [flag1, flag2] = dictionary.includes("-")
-    ? dictionary.split("-") || ["Portuguese", "English"]
-    : ["Portuguese", "English"];
-
+  const { appLang } = useSelector(getSettingsState);
+  const [flag1, flag2] = [
+    appLang,
+    languageNameCodeMap[dictionary],
+  ];
   const navigation = useNavigation();
   const onPress = () => {
     navigation.navigate("DictionarySelectionScreen");

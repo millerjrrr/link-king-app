@@ -17,7 +17,9 @@ const TargetDetailsButton = () => {
 
   const ticket = {
     _id: id,
-    dicEntry: { target, solutions, rating },
+    target,
+    solutions,
+    rating,
     level: 1,
   };
   return showSolution ? (

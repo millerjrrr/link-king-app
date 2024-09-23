@@ -25,7 +25,7 @@ import appTextSource from "../../utils/appTextSource";
 const SignIn = () => {
   const { appLang } = useSelector(getSettingsState);
   const { email, password } =
-    appTextSource[appLang].auth.forms;
+    appTextSource(appLang).auth.forms;
 
   const validationSchema = yup.object({
     email: yup
@@ -57,7 +57,7 @@ const SignIn = () => {
     actions.setSubmitting(true);
     try {
       const { data } = await client.post(
-        "/api/users/log-in",
+        "/api/v1/users/log-in",
 
         {
           ...values,
@@ -80,9 +80,9 @@ const SignIn = () => {
     actions.setSubmitting(false);
   };
 
-  const { heading } = appTextSource[appLang].auth.signIn;
+  const { heading } = appTextSource(appLang).auth.signIn;
   const { signIn, signUp, lostPassword } =
-    appTextSource[appLang].auth.titles;
+    appTextSource(appLang).auth.titles;
 
   return (
     <AuthFormContainer {...{ heading, back: false }}>

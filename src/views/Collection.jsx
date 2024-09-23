@@ -38,7 +38,7 @@ const Collection = ({ navigation }) => {
     fetchTicketsFirstBatch(dispatch, searchKeyword);
   }, [searchKeyword]);
 
-  const { heading } = appTextSource[appLang].collection;
+  const { heading } = appTextSource(appLang).collection;
 
   const [isModalVisible, setIsModalVisible] =
     useState(false);

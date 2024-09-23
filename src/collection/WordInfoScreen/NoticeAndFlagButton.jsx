@@ -17,8 +17,8 @@ const NoticeAndFlagButton = ({
   );
 
   const { description, buttonTitle } = wrongAnswerReturned
-    ? appTextSource[appLang].console.targetDetails
-    : appTextSource[appLang].collection.wordInfoScreen;
+    ? appTextSource(appLang).console.targetDetails
+    : appTextSource(appLang).collection.wordInfoScreen;
 
   return (
     <>

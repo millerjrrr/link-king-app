@@ -30,7 +30,7 @@ export const returnCorrectAnswerToServer = async ({
       : Math.min(Date.now() - startedThisWord, 10 * 1000);
     dispatch(incrementStatsTime(time));
     let { data } = await clientWithAuth.post(
-      "/api/console/submit-attempt",
+      "/api/v1/console/submit-attempt",
       {
         correct: true,
         time,

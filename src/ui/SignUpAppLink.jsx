@@ -13,7 +13,7 @@ const SignUpAppLink = ({}) => {
 
   const { appLang } = useSelector(getSettingsState);
   const { goToSignIn: title } =
-    appTextSource[appLang].auth.titles;
+    appTextSource(appLang).auth.titles;
 
   return (
     <View

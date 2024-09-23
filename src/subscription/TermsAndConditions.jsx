@@ -28,7 +28,7 @@ const TermsAndConditions = () => {
   const { CONTRAST, INACTIVE_CONTRAST } =
     colors[colorScheme];
 
-  const { terms } = appTextSource[appLang].paywall;
+  const { terms } = appTextSource(appLang).paywall;
 
   return (
     <Container>

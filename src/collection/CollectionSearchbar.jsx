@@ -26,7 +26,7 @@ const CollectionSearchbar = () => {
   const dispatch = useDispatch();
 
   const { searchMessage } =
-    appTextSource[appLang].collection;
+    appTextSource(appLang).collection;
 
   return (
     <Searchbar
