@@ -160,7 +160,7 @@ export default {
       languageAlreadySelected:
         "Este é seu idioma nativo atual!",
       changeHomeLanguageDetails:
-        "Este é seu idioma nativo e não deve ser alterado regularmente.\nAlterar este idioma redefinirá sua conta e todos os dados de aprendizagem.\n\nPara alterar seu idioma nativo e redefinir sua conta, insira sua senha e pressione e segure o botão vermelho.",
+        "Para alterar seu idioma nativo e redefinir sua conta, insira sua senha e pressione e segure o botão vermelho.",
       homeLanguageUpdated:
         "Seu idioma nativo foi atualizado e seus dados de aprendizagem foram redefinidos.",
       subscription: "Assinatura",

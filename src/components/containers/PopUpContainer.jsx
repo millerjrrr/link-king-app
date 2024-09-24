@@ -65,45 +65,41 @@ const PopUpContainer = ({
   }, [navigation]);
 
   return (
-    <TouchableWithoutFeedback
-      onPress={() => Keyboard.dismiss()}
+    <View
+      style={[
+        {
+          backgroundColor,
+          paddingHorizontal: padding || 0,
+        },
+        styles.container,
+      ]}
     >
-      <View
-        style={[
-          {
-            backgroundColor,
-            paddingHorizontal: padding || 0,
-          },
-          styles.container,
-        ]}
-      >
-        <FourCrowns {...{ color: SECONDARY }} />
-        <AppNotification />
-        <HelpButton {...{ help }} />
-        <BackButton />
-        <LinkKingLogo
+      <FourCrowns {...{ color: SECONDARY }} />
+      <AppNotification />
+      <HelpButton {...{ help }} />
+      <BackButton />
+      <LinkKingLogo
+        {...{
+          height: 40,
+          marginTop: 0,
+          tintColor: color,
+        }}
+      />
+      <AppText style={styles.heading}>{heading}</AppText>
+      <View style={styles.container}>
+        <FadeBackgroundView
           {...{
-            height: 40,
-            marginTop: 0,
-            tintColor: color,
+            colors: [
+              backgroundColor,
+              backgroundColor + "E6",
+              backgroundColor + "80",
+              backgroundColor + "00",
+            ],
           }}
         />
-        <AppText style={styles.heading}>{heading}</AppText>
-        <View style={styles.container}>
-          <FadeBackgroundView
-            {...{
-              colors: [
-                backgroundColor,
-                backgroundColor + "E6",
-                backgroundColor + "80",
-                backgroundColor + "00",
-              ],
-            }}
-          />
-          {children}
-        </View>
+        {children}
       </View>
-    </TouchableWithoutFeedback>
+    </View>
   );
 };
 

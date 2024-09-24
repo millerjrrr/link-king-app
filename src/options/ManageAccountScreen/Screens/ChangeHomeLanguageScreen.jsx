@@ -9,7 +9,11 @@ import * as yup from "yup";
 import PasswordVisibilityIcon from "../../../ui/PasswordVisibilityIcon";
 import appTextSource from "../../../utils/appTextSource";
 import AppText from "../../../ui/AppText";
-import { View } from "react-native";
+import {
+  Keyboard,
+  TouchableWithoutFeedback,
+  View,
+} from "react-native";
 import FormikSafetyButton from "../../../ui/Buttons/FormikSafetyButton";
 import changeUserHomeLanguage from "../functions/changeUserHomeLanguage";
 import FlagImage from "../../../ui/Graphics/FlagImage";
@@ -124,15 +128,19 @@ const ChangeHomeLanguageScreen = ({ route }) => {
               onRightIconPress: togglePasswordView,
             }}
           />
-          <View style={{ height: 250 }}>
-            <FormikSafetyButton
-              {...{
-                setElapsedTime,
-                setCoverZIndex,
-                iconName: "sync",
-              }}
-            />
-          </View>
+          <TouchableWithoutFeedback
+            onPress={() => Keyboard.dismiss()}
+          >
+            <View style={{ height: 250 }}>
+              <FormikSafetyButton
+                {...{
+                  setElapsedTime,
+                  setCoverZIndex,
+                  iconName: "sync",
+                }}
+              />
+            </View>
+          </TouchableWithoutFeedback>
         </View>
       </Form>
     </PopUpContainer>

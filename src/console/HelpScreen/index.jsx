@@ -9,8 +9,9 @@ import SkipButtonDescription from "./SkipButtonDescription";
 import HelpForStats from "./HelpForStats";
 import HelpForOptions from "./HelpForOptions";
 import GameDescription from "./GameDescription";
+import React from "react";
 
-const HelpScreen = () => {
+const HelpScreen = React.memo(() => {
   const { appLang } = useSelector(getSettingsState);
   const { heading } = appTextSource(appLang).console.help;
 
@@ -31,6 +32,6 @@ const HelpScreen = () => {
       </HelpScroll>
     </PopUpContainer>
   );
-};
+});
 
 export default HelpScreen;

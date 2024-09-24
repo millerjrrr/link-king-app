@@ -158,7 +158,7 @@ export default {
       languageAlreadySelected:
         "This is your current home language!",
       changeHomeLanguageDetails:
-        "This is your native language and should not be changed regularly.\nChanging this language will reset your account and all learning data.\n\nTo change your home language and reset your account, enter your password and press and hold the red button.",
+        "To change your home language and reset your account, enter your password and press and hold the red button.",
       homeLanguageUpdated:
         "Your home language has been updated and your learning data has been reset.",
       subscription: "Subscription",
