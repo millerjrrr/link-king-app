@@ -55,6 +55,7 @@ const slice = createSlice({
     }, //used in onChangeText
     resetConsole(state) {
       state.lastAttempt = state.formValue;
+      state.tail = [];
       state.formValue = "";
       state.showSolution = true;
       state.isPlaying = false;

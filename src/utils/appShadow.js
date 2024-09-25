@@ -1,6 +1,6 @@
 import { Platform } from "react-native";
 
-const appShadow = (borderWidth = 2) =>
+const appShadow = () =>
   Platform.select({
     ios: {
       shadowOffset: {

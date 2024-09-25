@@ -11,6 +11,7 @@ import BusyWrapper from "../ui/Loader/BusyWrapper";
 import ConnectedWrapper from "../errors/ConnectedWrapper";
 import { getSettingsState } from "../store/settings";
 import AppNavigatorUseEffects from "./AppNavigatorUseEffects";
+import { StatusBar } from "expo-status-bar";
 
 const AppNavigator = () => {
   const { colorScheme, golden } = useSelector(
@@ -18,6 +19,7 @@ const AppNavigator = () => {
   );
   const background = colors[colorScheme].PRIMARY;
   const primary = colors[colorScheme].CONTRAST[golden];
+  const { STATUSBAR } = colors[colorScheme];
 
   const AppTheme = {
     ...DefaultTheme,
@@ -32,6 +34,12 @@ const AppNavigator = () => {
   return (
     <NavigationContainer theme={AppTheme}>
       <AppNavigatorUseEffects />
+      <StatusBar
+        style={STATUSBAR}
+        translucent={true}
+        backgroundColor="#00000000"
+      />
+      {/* important for production build */}
       <BusyWrapper
         {...{
           busy,

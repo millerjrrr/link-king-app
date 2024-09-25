@@ -8,7 +8,7 @@ const commonColors = {
 const darkText = {
   CONTRAST: ["#362718", "#8a793e"],
   INACTIVE_CONTRAST: "#36271880",
-  STATUSBAR: "dark-content",
+  STATUSBAR: "dark",
 };
 
 const colors = {
@@ -17,7 +17,7 @@ const colors = {
     SECONDARY: "#000000",
     CONTRAST: ["#ffffff", "#ffeeba"],
     INACTIVE_CONTRAST: "#ffffff80",
-    STATUSBAR: "light-content",
+    STATUSBAR: "light",
     ...commonColors,
   },
   blue: {

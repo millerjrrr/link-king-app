@@ -10,7 +10,6 @@ import { updateConsoleState } from "./updateConsoleState";
 import { Vibration } from "react-native";
 import { errorHandler } from "../../errors/errorHandler";
 import { speak } from "../../utils/speak";
-import returnReversoData from "./reverso";
 
 export const returnWrongAnswerToServer = async ({
   dispatch,
@@ -35,16 +34,13 @@ export const returnWrongAnswerToServer = async ({
     const {
       gamePlay: { target, speechLang: language },
       options: { sound },
-      // dictionary,
     } = data;
-    // if (dictionary === "Personal")
-    //   data = await returnReversoData({ data });
     updateConsoleState(data, dispatch);
     dispatch(resetTimer());
     speak({ target, language, sound });
     dispatch(resetConsole());
   } catch (error) {
-    dispatch(updateBusyState(false)); //important that this comes first
+    dispatch(updateBusyState(false));
     dispatch(resetConsole());
     errorHandler(error, dispatch);
   }
