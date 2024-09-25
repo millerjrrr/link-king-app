@@ -20,6 +20,7 @@ import AppText from "../../ui/AppText";
 import AppModal from "../../ui/AppModal";
 import ScrollSelector from "./ScrollSelector";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { saveToAsyncStorage } from "../../utils/asyncStorage";
 
 const Container = styled(View)`
   flex: 1;
@@ -63,7 +64,7 @@ const Icon = ({ name, message, color }) => {
   );
 };
 
-const SetDailyGoalScreen = ({ navigation }) => {
+const SetDailyGoalScreen = ({}) => {
   const {
     colorScheme,
     golden,

@@ -22,16 +22,15 @@ const changeUserHomeLanguage = async ({
       { password, newLanguage },
     );
     if (data.status === "success") {
-      dispatch(
-        updateNotification({
-          message,
-          type: "info",
-        }),
-      );
-      setTimeout(
-        () => navigation.navigate("ManageAccountScreen"),
-        3000,
-      );
+      setTimeout(() => {
+        dispatch(
+          updateNotification({
+            message,
+            type: "info",
+          }),
+        );
+        navigation.navigate("ManageAccountScreen");
+      }, 1000);
       dispatch(updateSettings({ appLang: newLanguage }));
       saveToAsyncStorage("app-lang", newLanguage);
     }
