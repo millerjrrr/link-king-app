@@ -153,6 +153,8 @@ export default {
       textA: "Atualmente oferecemos dois dicionários:",
       textB:
         "Muitos aplicativos de aprendizagem de idiomas tentam oferecer todos os idiomas imediatamente e substituir qualidade por quantidade. Embora esperemos oferecer mais cursos no futuro, estamos atualmente focados na otimização destes dois dicionários.",
+      dictionaryError:
+        "Não foi possível conectar. Nenhum dicionário para exibir.",
     },
     colorSchemeTitle: "Esquema de Cores",
     manageAccount: {

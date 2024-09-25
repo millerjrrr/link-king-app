@@ -49,6 +49,8 @@ const AppNavigatorUseEffects = () => {
         let appLang =
           (await getFromAsyncStorage("app-lang")) || false;
 
+        if (appLang) dispatch(updateSettings({ appLang }));
+
         if (!appLang) {
           appLang =
             Localization.getLocales()[0]?.languageCode ||

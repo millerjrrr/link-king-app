@@ -17,8 +17,7 @@ const getAvailableDictionaries = async ({
       (item) => item.name,
     );
   } catch (e) {
-    console.log("error");
-    dictionaries = ["English", "Portuguese", "Spanish"];
+    dictionaries = [];
   }
   setDictionaries(
     dictionaries.filter(

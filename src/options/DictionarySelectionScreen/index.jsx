@@ -9,20 +9,17 @@ import DictionarySelectorMenuItem from "./DictionarySelectorMenuItem";
 import BusyWrapper from "../../ui/Loader/BusyWrapper";
 import { useEffect, useState } from "react";
 import getAvailableDictionaries from "./getAvailableDictionaries";
+import AppText from "../../ui/AppText";
 
 const DictionarySelectionScreen = ({ navigation }) => {
   const { appLang } = useSelector(getSettingsState);
-  const { title: heading } =
+  const { title: heading, dictionaryError } =
     appTextSource(appLang).options.chooseDictionary;
 
   const { busy } = useSelector(getConsoleState);
 
   const [apiBusy, setApiBusy] = useState(false);
-  const [dictionaries, setDictionaries] = useState([
-    "English",
-    "Portuguese",
-    "Spanish",
-  ]);
+  const [dictionaries, setDictionaries] = useState([]);
 
   useEffect(() => {
     const fetchDictionaries = async () => {
@@ -40,22 +37,40 @@ const DictionarySelectionScreen = ({ navigation }) => {
   return (
     <PopUpContainer {...{ heading }}>
       <BusyWrapper {...{ busy: apiBusy }}>
-        <FlatList
-          data={dictionaries}
-          renderItem={({ item }) => {
-            // must be called item for FlatList to work
-            return (
-              <DictionarySelectorMenuItem
-                {...{ name: item, busy }}
-              />
-            );
-          }}
-          keyExtractor={(item) => item.name}
-          style={styles.flatList}
-          ListFooterComponent={
-            <View style={{ height: 100 }} />
-          }
-        />
+        {dictionaries.length === 0 ? (
+          <AppText
+            {...{
+              style: {
+                textAlign: "left",
+                fontSize: 15,
+                padding: 20,
+              },
+            }}
+          >
+            {dictionaryError}
+          </AppText>
+        ) : (
+          <FlatList
+            data={dictionaries}
+            renderItem={({ item }) => {
+              // must be called item for FlatList to work
+              return (
+                <DictionarySelectorMenuItem
+                  {...{
+                    name: item,
+                    busy,
+                    key: `${item}:key`,
+                  }}
+                />
+              );
+            }}
+            keyExtractor={(item) => item.name}
+            style={styles.flatList}
+            ListFooterComponent={
+              <View style={{ height: 100 }} />
+            }
+          />
+        )}
       </BusyWrapper>
     </PopUpContainer>
   );

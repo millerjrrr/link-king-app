@@ -7,19 +7,6 @@ export const speak = async ({
   sound,
 }) => {
   if (sound) {
-    // const availableVoices = (
-    //   await Speech.getAvailableVoicesAsync()
-    // ).filter(
-    //   (voice) =>
-    //     voice.language.slice(0, 2) === language.slice(0, 2),
-    // );
-    // const index = Math.floor(
-    //   Math.min(availableVoices.length, 5) * Math.random(),
-    // );
-    // const voice = availableVoices[index].identifier;
-
-    // console.log(availableVoices, availableVoices.length);
-
     checkTTSDataAndPerformAction({
       language,
       callback: async () =>

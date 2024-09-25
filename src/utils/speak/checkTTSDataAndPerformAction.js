@@ -1,5 +1,6 @@
 import { Alert, Linking, Platform } from "react-native";
 import * as Speech from "expo-speech";
+import languageNameCodeMap from "./../languageNameCodeMap";
 
 const openTTSSettings = () => {
   if (Platform.OS === "android") {
@@ -35,23 +36,15 @@ const checkTTSDataAndPerformAction = async ({
         (voice) => voice.language.slice(0, 2) === code,
       );
 
-      const languageMap = {
-        en: "English",
-        es: "Spanish",
-        fr: "French",
-        de: "German",
-        it: "Italian",
-        pt: "Portuguese",
-        zh: "Chinese",
-        ja: "Japanese",
-        ru: "Russian",
-        ar: "Arabic",
-        hi: "Hindi",
+      const lookupLanguageByCode = (code) => {
+        return Object.keys(languageNameCodeMap).find(
+          (key) => languageNameCodeMap[key] === code,
+        );
       };
 
-      const languageName = languageMap[code]
-        ? `${languageMap[code]} (${code})`
-        : code;
+      const languageName =
+        `${lookupLanguageByCode(code)} (${code})` ||
+        `'${code}'`;
 
       if (!voice) {
         Alert.alert(
