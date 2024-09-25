@@ -46,14 +46,6 @@ const AppNavigatorUseEffects = () => {
     const fetchAuthInfo = async () => {
       dispatch(updateBusyState(true));
       try {
-        const token =
-          await getFromAsyncStorage("auth-token");
-        if (!token) {
-          dispatch(updateBusyState(false));
-          return;
-        }
-        // if there is no token stored on device exit
-
         let appLang =
           (await getFromAsyncStorage("app-lang")) || false;
 
@@ -64,6 +56,14 @@ const AppNavigatorUseEffects = () => {
           await saveToAsyncStorage("app-lang", appLang);
           dispatch(updateSettings({ appLang }));
         }
+
+        const token =
+          await getFromAsyncStorage("auth-token");
+        if (!token) {
+          dispatch(updateBusyState(false));
+          return;
+        }
+        // if there is no token stored on device exit
 
         const { data } = await client.get(
           "/api/v1/users/log-in-confirmation",
