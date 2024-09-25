@@ -21,6 +21,13 @@ export default {
         "...something went wrong 😣 please check your internet connection and try again... ",
       userResponse: "Your response:",
     },
+    editTicketScreen: {
+      subHeading:
+        "Save new personalized solutions for this word",
+      solutionName: "Solution",
+      save: "Save",
+      message: "New solutions added!",
+    },
     help: {
       heading: "Help",
       howToPlay: {

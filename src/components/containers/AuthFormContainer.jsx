@@ -22,6 +22,7 @@ const AuthFormContainer = ({
   heading,
   subHeading,
   nologo,
+  popUp,
   back = true,
 }) => {
   const { colorScheme, golden } = useSelector(
@@ -51,8 +52,8 @@ const AuthFormContainer = ({
           <FourCrowns {...{ color }} />
           {!nologo ? (
             <LinkKingLogo {...{ tintColor }} />
-          ) : (
-            <View style={{ height: 60 }} />
+          ) : popUp ? null : (
+            <View {...{ style: { height: 60 } }} />
           )}
           <AppText
             style={{
@@ -60,6 +61,7 @@ const AuthFormContainer = ({
               color: tintColor,
               fontWeight: "bold",
               paddingHorizontal: 5,
+              paddingLeft: popUp ? 40 : 5,
             }}
           >
             {heading}
@@ -68,6 +70,7 @@ const AuthFormContainer = ({
             <AppText
               style={{
                 padding: 5,
+                paddingLeft: popUp ? 40 : 5,
                 fontSize: 16,
                 textAlign: !nologo ? "center" : "left",
                 color: tintColor,

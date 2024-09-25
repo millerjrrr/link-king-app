@@ -1,9 +1,4 @@
-import {
-  Linking,
-  ScrollView,
-  StyleSheet,
-  View,
-} from "react-native";
+import { Linking, StyleSheet, View } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import PopUpContainer from "../../components/containers/PopUpContainer";
 import React, { useState } from "react";
@@ -52,14 +47,14 @@ const WordInfoScreen = ({ route }) => {
     appTextSource(appLang).console.targetDetails;
 
   return (
-    <PopUpContainer {...{ heading }}>
+    <PopUpContainer {...{ heading, blockPopToTop: true }}>
       <BloodRedCover {...{ elapsedTime, coverZIndex }} />
       <BusyWrapper {...{ busy, size: 96 }}>
         <View style={styles.container}>
           <View {...{ style: { height: 8 } }} />
           <WordCard {...{ ticket, onPress }} />
           <AcceptedAnswers />
-          <SolutionsList {...{ ticket }} />
+          <SolutionsList {...{ ticket, plus: true }} />
           {wrongAnswerReturned ? <UserAttempt /> : null}
         </View>
         {pressed ? (

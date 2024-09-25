@@ -4,8 +4,14 @@ import colors from "../../utils/colors";
 import { getSettingsState } from "../../store/settings";
 import appShadow from "../../utils/appShadow";
 import AppText from "../../ui/AppText";
+import { useNavigation } from "@react-navigation/native";
 
-const SolutionItem = ({ solution, red }) => {
+const SolutionItem = ({
+  solution,
+  red,
+  ticket,
+  target,
+}) => {
   const { colorScheme, golden, appLang } = useSelector(
     getSettingsState,
   );
@@ -17,8 +23,16 @@ const SolutionItem = ({ solution, red }) => {
     : colors[colorScheme].CONTRAST[golden];
   const backgroundColor = colors[colorScheme].SECONDARY;
 
+  const navigation = useNavigation();
+
   const url = `https://www.google.com/search?q=define+${solution}&hl=${languageCode}`;
-  const onPress = () => Linking.openURL(url);
+  const onPress = ticket
+    ? () =>
+        navigation.navigate("EditTicketScreen", {
+          ticket,
+          target,
+        })
+    : () => Linking.openURL(url);
 
   return (
     <TouchableOpacity
@@ -28,7 +42,7 @@ const SolutionItem = ({ solution, red }) => {
           marginHorizontal: 5,
           justifyContent: "center",
           alignItems: "center",
-          paddingHorizontal: 10,
+          paddingHorizontal: 13,
           borderRadius: 20,
           shadowColor: color,
           borderColor: color,

@@ -8,6 +8,7 @@ import ProgressScreen from "../../collection/ProgressScreen";
 import HelpScreen from "../../console/HelpScreen";
 import DictionarySelectionScreen from "../../options/DictionarySelectionScreen";
 import WordInfoScreen from "../../collection/WordInfoScreen";
+import EditTicketScreen from "../../collection/WordInfoScreen/EditTicketScreen";
 
 const ConsoleStack = createStackNavigator();
 
@@ -26,6 +27,10 @@ const ConsoleNavigator = () => {
       <ConsoleStack.Screen
         name="WordInfoScreen"
         component={WordInfoScreen}
+      />
+      <ConsoleStack.Screen
+        name="EditTicketScreen"
+        component={EditTicketScreen}
       />
       <ConsoleStack.Screen
         name="HelpScreen"

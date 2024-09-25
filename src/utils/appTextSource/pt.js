@@ -21,6 +21,13 @@ export default {
         "...algo deu errado 😣 por favor, certifique que você tem conexão de internet e tente de novo... ",
       userResponse: "Sua resposta:",
     },
+    editTicketScreen: {
+      subHeading:
+        "Salvar novas soluções personalizadas para esta palavra",
+      solutionName: "Solução",
+      save: "Salvar",
+      message: "Novas soluções adicionadas!",
+    },
     help: {
       heading: "Ajuda",
       howToPlay: {

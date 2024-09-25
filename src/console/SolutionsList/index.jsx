@@ -5,8 +5,8 @@ import HorizontalScrollFade from "./HorizonatalScrollFade";
 import { getSettingsState } from "../../store/settings";
 import colors from "../../utils/colors";
 
-const SolutionsList = ({ ticket }) => {
-  const { solutions } = ticket;
+const SolutionsList = ({ ticket, plus }) => {
+  const { solutions, target } = ticket;
 
   const { colorScheme } = useSelector(getSettingsState);
   const backgroundColor = colors[colorScheme].PRIMARY;
@@ -29,6 +29,16 @@ const SolutionsList = ({ ticket }) => {
             alignItems: "center",
           }}
         >
+          {plus ? (
+            <SolutionItem
+              {...{
+                solution: "+",
+                key: "+",
+                ticket,
+                target,
+              }}
+            />
+          ) : null}
           {solutions.map((solution, index) => {
             return (
               <SolutionItem {...{ solution, key: index }} />
