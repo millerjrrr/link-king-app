@@ -13,9 +13,13 @@ const getAvailableDictionaries = async ({
     } = await clientWithAuth.get(
       "/api/v1/collection/get-dictionaries",
     );
-    dictionaries = availableDictionaries.map(
-      (item) => item.name,
-    );
+    dictionaries = availableDictionaries
+      .map((item) => item.name)
+      .sort((a, b) => {
+        if (a === "English") return -1; // 'en' should come first
+        if (b === "English") return 1; // 'en' should come first
+        return a.localeCompare(b); // Sort alphabetically for other values
+      });
   } catch (e) {
     dictionaries = [];
   }
