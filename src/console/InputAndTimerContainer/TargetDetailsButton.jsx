@@ -9,6 +9,7 @@ import { getSettingsState } from "../../store/settings";
 const TargetDetailsButton = () => {
   const {
     timerIsOn,
+    showSolution,
     attempt: { id, target, solutions, rating },
   } = useSelector(getConsoleState);
 
@@ -24,7 +25,7 @@ const TargetDetailsButton = () => {
     level: 1,
   };
 
-  return !timerIsOn ? (
+  return !timerIsOn || showSolution ? (
     <TouchableOpacity
       onPress={() =>
         navigation.navigate("WordInfoScreen", {
