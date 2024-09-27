@@ -31,9 +31,9 @@ const SolutionsList = ({ ticket, plus }) => {
         >
           {plus ? (
             <SolutionItem
+              key="+"
               {...{
                 solution: "+",
-                key: "+",
                 ticket,
                 target,
               }}
@@ -41,7 +41,7 @@ const SolutionsList = ({ ticket, plus }) => {
           ) : null}
           {solutions.map((solution, index) => {
             return (
-              <SolutionItem {...{ solution, key: index }} />
+              <SolutionItem key={index} {...{ solution }} />
             );
           })}
         </ScrollView>

@@ -35,7 +35,7 @@ const WordInfoScreen = ({ route }) => {
   const dispatch = useDispatch();
   const completeFunction = () => {
     flagAndDeleteTicket(
-      ticket._id,
+      ticket.id,
       setBusy,
       setStatus,
       setPressed,

@@ -27,7 +27,6 @@ const AuthInputField = (props) => {
     touched,
   } = useFormikContext();
   const {
-    key,
     label,
     placeholder,
     autoCapitalize,
@@ -67,10 +66,7 @@ const AuthInputField = (props) => {
   }, [errorMsg]);
 
   return (
-    <Animated.View
-      key={key || null}
-      style={[styles.container, inputStyle]}
-    >
+    <Animated.View style={[styles.container, inputStyle]}>
       <View style={styles.labelContainer}>
         <AppText style={{ fontSize: 15 }}>{label}</AppText>
         <AppText style={{ fontSize: 15, color: red }}>

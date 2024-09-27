@@ -10,12 +10,16 @@ import { View } from "react-native";
 import { normalize } from "./../../../console/functions/normalize";
 import appTextSource from "../../../utils/appTextSource";
 import { saveTicket } from "./saveTicket";
-import { useNavigation } from "@react-navigation/native";
+import {
+  StackActions,
+  useNavigation,
+} from "@react-navigation/native";
+import { useEffect } from "react";
 
 const EditTicketScreen = ({ route }) => {
   const { appLang } = useSelector(getSettingsState);
   const {
-    ticket: { solutions, _id },
+    ticket: { solutions, id },
     target,
   } = route.params;
   const { subHeading, solutionName, save, message } =
@@ -58,17 +62,29 @@ const EditTicketScreen = ({ route }) => {
       (solution) => solution !== "",
     );
     await saveTicket({
-      _id,
+      id,
       newSolutions,
       message,
       dispatch,
     });
     actions.setSubmitting(false);
     setTimeout(
-      () => navigation.navigate("ConsoleStackScreen"),
+      () => navigation.dispatch(StackActions.popToTop()),
       1000,
     );
   };
+
+  useEffect(() => {
+    const closeStackScreens = () => {
+      if (navigation.canGoBack())
+        navigation.dispatch(StackActions.popToTop());
+    };
+    const unsubscribe = navigation.addListener(
+      "blur",
+      closeStackScreens,
+    );
+    return unsubscribe;
+  }, [navigation]);
 
   return (
     <AuthFormContainer
@@ -95,11 +111,13 @@ const EditTicketScreen = ({ route }) => {
           >
             {Array.from({ length: 5 }).map((_, index) => (
               <AuthInputField
+                key={index}
                 {...{
                   name: `newSolutions${index + 1}`,
                   label: solutionName + " " + (index + 1),
                   placeholder: "",
                   containerStyle: { marginBottom: 10 },
+                  autoCapitalize: false,
                 }}
               />
             ))}
@@ -107,13 +125,12 @@ const EditTicketScreen = ({ route }) => {
           <View
             style={{
               padding: 30,
-              paddingVertical: 50,
               width: "100%",
             }}
           >
             <SubmitBtn {...{ title: save }} />
           </View>
-          <View {...{ style: { height: 100 } }} />
+          <View {...{ style: { height: 150 } }} />
         </>
       </Form>
     </AuthFormContainer>

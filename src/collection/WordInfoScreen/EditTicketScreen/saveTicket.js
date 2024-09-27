@@ -3,7 +3,7 @@ import clientWithAuth from "../../../api/clientWithAuth";
 import { updateNotification } from "../../../store/notification";
 
 export const saveTicket = async ({
-  _id,
+  id,
   newSolutions,
   dispatch,
   message,
@@ -12,7 +12,7 @@ export const saveTicket = async ({
     const { data } = await clientWithAuth.post(
       "/api/v1/collection/tickets/update-one",
       {
-        ticketId: _id,
+        ticketId: id,
         newSolutions,
       },
     );

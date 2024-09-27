@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     borderRadius: 35,
-    ...appShadow(),
   },
 });
 

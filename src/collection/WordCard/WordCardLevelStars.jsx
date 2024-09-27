@@ -15,9 +15,9 @@ const WordCardLevelStars = ({ stars, target }) => {
     <LevelStarsContainer>
       {levelArray.map((_, index) => (
         <Entypo
+          key={`star-${target}-${index}`}
           {...{
             name: "star",
-            key: `star-${target}-${index}`,
             size: 15,
             color,
           }}

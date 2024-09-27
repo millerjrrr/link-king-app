@@ -56,15 +56,14 @@ const DictionarySelectionScreen = ({ navigation }) => {
               // must be called item for FlatList to work
               return (
                 <DictionarySelectorMenuItem
+                  key={`${item}:key`}
                   {...{
                     name: item,
                     busy,
-                    key: `${item}:key`,
                   }}
                 />
               );
             }}
-            keyExtractor={(item) => item.name}
             style={styles.flatList}
             ListFooterComponent={
               <View style={{ height: 100 }} />

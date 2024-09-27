@@ -4,7 +4,11 @@ import colors from "../../utils/colors";
 import { getSettingsState } from "../../store/settings";
 import appShadow from "../../utils/appShadow";
 import AppText from "../../ui/AppText";
-import { useNavigation } from "@react-navigation/native";
+import {
+  StackActions,
+  useNavigation,
+} from "@react-navigation/native";
+import { useEffect, useState } from "react";
 
 const SolutionItem = ({
   solution,
@@ -26,12 +30,31 @@ const SolutionItem = ({
   const navigation = useNavigation();
 
   const url = `https://www.google.com/search?q=define+${solution}&hl=${languageCode}`;
+
+  const [popToTop, setPopToTop] = useState(true);
+
+  useEffect(() => {
+    if (popToTop && ticket) {
+      const closeStackScreens = () => {
+        if (navigation.canGoBack())
+          navigation.dispatch(StackActions.popToTop());
+      };
+      const unsubscribe = navigation.addListener(
+        "blur",
+        closeStackScreens,
+      );
+      return unsubscribe;
+    }
+  }, [navigation, popToTop]);
+
   const onPress = ticket
-    ? () =>
+    ? () => {
+        setPopToTop(false);
         navigation.navigate("EditTicketScreen", {
           ticket,
           target,
-        })
+        });
+      }
     : () => Linking.openURL(url);
 
   return (
