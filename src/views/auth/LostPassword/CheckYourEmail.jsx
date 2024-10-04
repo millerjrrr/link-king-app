@@ -20,7 +20,7 @@ const CheckYourEmail = ({ navigation }) => {
         {...{
           name: "email",
           size: 100,
-          color,
+          color: "white",
         }}
       />
       <AppText style={styles.text}>{text}</AppText>
