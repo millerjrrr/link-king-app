@@ -129,6 +129,8 @@ export default {
   },
   options: {
     heading: "Opções",
+    pressAndHold:
+      "Pressione e segure o botão de segurança vermelho",
     setDailyGoal: {
       heading: "Meta Diária",
       textA: "Meta de Tempo",
@@ -155,6 +157,7 @@ export default {
         "Muitos aplicativos de aprendizagem de idiomas tentam oferecer todos os idiomas imediatamente e substituir qualidade por quantidade. Embora esperemos oferecer mais cursos no futuro, estamos atualmente focados na otimização destes dois dicionários.",
       dictionaryError:
         "Não foi possível conectar. Nenhum dicionário para exibir.",
+      changeHomeLanguage: "Altere seu idioma nativo aqui",
     },
     colorSchemeTitle: "Esquema de Cores",
     manageAccount: {

@@ -4,12 +4,18 @@ import appTextSource from "../../utils/appTextSource";
 import { getConsoleState } from "../../store/console";
 import languageNameCodeMap from "../../utils/languageNameCodeMap";
 import PopUpContainer from "../../components/containers/PopUpContainer";
-import { FlatList, StyleSheet, View } from "react-native";
+import {
+  FlatList,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import DictionarySelectorMenuItem from "./DictionarySelectorMenuItem";
 import BusyWrapper from "../../ui/Loader/BusyWrapper";
 import { useEffect, useState } from "react";
 import getAvailableDictionaries from "./getAvailableDictionaries";
 import AppText from "../../ui/AppText";
+import ChangeHomeLanguageLabel from "./ChangeHomeLanguageLabel";
 
 const DictionarySelectionScreen = ({ navigation }) => {
   const { appLang } = useSelector(getSettingsState);
@@ -50,25 +56,28 @@ const DictionarySelectionScreen = ({ navigation }) => {
             {dictionaryError}
           </AppText>
         ) : (
-          <FlatList
-            data={dictionaries}
-            renderItem={({ item }) => {
-              // must be called item for FlatList to work
-              return (
-                <DictionarySelectorMenuItem
-                  key={`${item}:key`}
-                  {...{
-                    name: item,
-                    busy,
-                  }}
-                />
-              );
-            }}
-            style={styles.flatList}
-            ListFooterComponent={
-              <View style={{ height: 100 }} />
-            }
-          />
+          <>
+            <FlatList
+              data={dictionaries}
+              renderItem={({ item }) => {
+                // must be called item for FlatList to work
+                return (
+                  <DictionarySelectorMenuItem
+                    key={`${item}:key`}
+                    {...{
+                      name: item,
+                      busy,
+                    }}
+                  />
+                );
+              }}
+              style={styles.flatList}
+              ListFooterComponent={
+                <View style={{ height: 100 }} />
+              }
+            />
+            <ChangeHomeLanguageLabel />
+          </>
         )}
       </BusyWrapper>
     </PopUpContainer>

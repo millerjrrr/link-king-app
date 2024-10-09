@@ -128,6 +128,7 @@ export default {
   },
   options: {
     heading: "Options",
+    pressAndHold: "Press and hold the red safety button",
     setDailyGoal: {
       heading: "Daily Goal",
       textA: "Time Goal",
@@ -153,6 +154,7 @@ export default {
         "Too many language learning apps try to offer all languages immediately and substitute quality for quantity. While we do hope to offer more courses in the future we are currently focused on optimizing these two dictionaries.",
       dictionaryError:
         "Could not connect. No dictionaries to display.",
+      changeHomeLanguage: "Change your home language here",
     },
     colorSchemeTitle: "Color Scheme",
     manageAccount: {

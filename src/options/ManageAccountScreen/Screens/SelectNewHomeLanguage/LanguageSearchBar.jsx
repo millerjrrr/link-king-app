@@ -8,7 +8,6 @@ import AppSearchBar from "../../../../ui/AppSearchBar";
 
 const FadeBackgroundView = styled(LinearGradient)`
   position: absolute;
-  top: 0;
   alignitems: center;
   flexdirection: column;
   width: 100%;

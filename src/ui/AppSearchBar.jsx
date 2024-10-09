@@ -49,6 +49,7 @@ const AppSearchBar = ({
 
 const styles = StyleSheet.create({
   searchBar: {
+    marginTop: 8,
     textAlign: "center",
     zIndex: 10,
     width: "70%",

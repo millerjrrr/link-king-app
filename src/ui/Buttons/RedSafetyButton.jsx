@@ -6,9 +6,11 @@ import {
 } from "react-native";
 import colors from "../../utils/colors";
 import { AntDesign } from "@expo/vector-icons";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getSettingsState } from "../../store/settings";
 import appShadow from "../../utils/appShadow";
+import { updateNotification } from "../../store/notification";
+import appTextSource from "../../utils/appTextSource";
 
 const RedSafetyButton = ({
   setElapsedTime,
@@ -19,6 +21,10 @@ const RedSafetyButton = ({
 }) => {
   const [pressStartTime, setPressStartTime] = useState(0);
   const pressTimer = useRef(null);
+  const { colorScheme, appLang } = useSelector(
+    getSettingsState,
+  );
+  const { SECONDARY, RED } = colors[colorScheme];
 
   useEffect(() => {
     const timerInterval = setInterval(() => {
@@ -47,14 +53,25 @@ const RedSafetyButton = ({
     setCoverZIndex(1);
   };
 
-  const { colorScheme } = useSelector(getSettingsState);
+  const dispatch = useDispatch();
+  const { pressAndHold: message } =
+    appTextSource(appLang).options;
 
-  const { SECONDARY, RED } = colors[colorScheme];
+  const onPress = () => {
+    if ((Date.now() - pressStartTime) / 1000 < 1)
+      dispatch(
+        updateNotification({
+          message,
+          type: "fail",
+        }),
+      );
+  };
 
   return (
     <View style={styles.container}>
       <TouchableHighlight
         underlayColor={SECONDARY}
+        onPress={onPress}
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
         style={[
