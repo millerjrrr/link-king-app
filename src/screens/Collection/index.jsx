@@ -1,16 +1,16 @@
-import InnerTabContainer from "./../../components/containers/InnerTabContainer";
-import WordCollectionList from "./../../collection/WordCollectionList";
+import InnerTabContainer from "@src/components/containers/InnerTabContainer";
+import WordCollectionList from "./WordCollectionList";
 import { useEffect, useState } from "react";
-import { fetchTickets } from "./../../collection/functions/fetchTickets";
-import SearchBarContainer from "./../../collection/SearchBarContainer";
+import { fetchTickets } from "@src/utils/fetchTickets";
+import SearchBarContainer from "./SearchBarContainer";
 import { useDispatch, useSelector } from "react-redux";
-import { getCollectionState } from "./../../store/collection";
-import { fetchTicketsFirstBatch } from "./../../collection/functions/fetchTicketsFirstBatch";
-import BusyWrapper from "../../components/Loader/BusyWrapper";
-import { getAuthState } from "./../../store/auth";
-import appTextSource from "./../../utils/appTextSource";
-import { getSettingsState } from "./../../store/settings";
-import AppModal from "../../components/AppModal";
+import { getCollectionState } from "@src/store/collection";
+import { fetchTicketsFirstBatch } from "@src/utils/fetchTicketsFirstBatch";
+import BusyWrapper from "@src/components/Loader/BusyWrapper";
+import { getAuthState } from "@src/store/auth";
+import appTextSource from "@src/utils/appTextSource";
+import { getSettingsState } from "@src/store/settings";
+import AppModal from "@src/components/AppModal";
 
 const Collection = ({ navigation }) => {
   const dispatch = useDispatch();

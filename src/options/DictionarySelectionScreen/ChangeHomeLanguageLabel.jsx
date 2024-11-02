@@ -1,5 +1,5 @@
 import { Image, TouchableOpacity } from "react-native";
-import AppText from "../../components/AppText";
+import AppText from "@src/components/AppText";
 import { useSelector } from "react-redux";
 import { getSettingsState } from "@src/store/settings";
 import getImageSource from "@src/utils/getImageSource";

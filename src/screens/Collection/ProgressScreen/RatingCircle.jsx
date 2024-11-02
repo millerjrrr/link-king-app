@@ -6,7 +6,7 @@ import { getStatsState } from "@src/store/stats";
 import { getSettingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import { getConsoleState } from "@src/store/console";
-import AppText from "../../components/AppText";
+import AppText from "@src/components/AppText";
 
 const RatingCircle = () => {
   const { colorScheme, golden, appLang } = useSelector(

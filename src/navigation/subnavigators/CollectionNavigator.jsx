@@ -6,9 +6,9 @@ import {
 import StatsScreen from "../../collection/StatsScreen";
 import DictionarySelectionScreen from "../../options/DictionarySelectionScreen";
 import ProgressScreen from "../../collection/ProgressScreen";
-import WordInfoScreen from "../../collection/WordInfoScreen";
-import EditTicketScreen from "../../collection/WordInfoScreen/EditTicketScreen";
-import Collection from "../../screens/Collection";
+import WordInfoScreen from "../../screens/Collection/WordInfoScreen";
+import EditTicketScreen from "../../screens/Collection/WordInfoScreen/EditTicketScreen";
+import Collection from "@src/screens/Collection";
 
 const CollectionStack = createStackNavigator();
 

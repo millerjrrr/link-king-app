@@ -1,8 +1,8 @@
 import { View, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import { getStatsState } from "@src/store/stats";
-import { timeInStyle } from "../functions/timeInStyle";
-import StatsIcon from "../../screens/Console/components/StatsIcon";
+import { timeInStyle } from "@src/utils/timeInStyle";
+import StatsIcon from "@src/screens/Console/components/StatsIcon";
 import { getSettingsState } from "@src/store/settings";
 import colors from "@src/utils/colors";
 

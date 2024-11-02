@@ -6,10 +6,10 @@ import {
   getCollectionState,
   updateCollection,
 } from "@src/store/collection";
-import Loader from "../components/Loader";
+import Loader from "@src/components/Loader";
 import { getSettingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
-import AppText from "../components/AppText";
+import AppText from "@src/components/AppText";
 
 const ListFooterComponent = () => {
   const { allDataLoaded } = useSelector(getCollectionState);

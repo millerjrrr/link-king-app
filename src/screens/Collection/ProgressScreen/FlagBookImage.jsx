@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { getConsoleState } from "@src/store/console";
-import FlagImage from "../../components/Graphics/FlagImage";
+import FlagImage from "@src/components/Graphics/FlagImage";
 import { getSettingsState } from "@src/store/settings";
 import languageNameCodeMap from "@src/utils/languageNameCodeMap";
 

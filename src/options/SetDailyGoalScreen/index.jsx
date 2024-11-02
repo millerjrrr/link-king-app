@@ -14,10 +14,10 @@ import {
 } from "@src/store/settings";
 import colors from "@src/utils/colors";
 import appTextSource from "@src/utils/appTextSource";
-import PopUpContainer from "../../components/containers/PopUpContainer";
-import BusyWrapper from "../../components/Loader/BusyWrapper";
-import AppText from "../../components/AppText";
-import AppModal from "../../components/AppModal";
+import PopUpContainer from "@src/components/containers/PopUpContainer";
+import BusyWrapper from "@src/components/Loader/BusyWrapper";
+import AppText from "@src/components/AppText";
+import AppModal from "@src/components/AppModal";
 import ScrollSelector from "./ScrollSelector";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { saveToAsyncStorage } from "@src/utils/asyncStorage";

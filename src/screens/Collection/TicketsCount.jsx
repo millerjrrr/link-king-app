@@ -1,8 +1,8 @@
 import { StyleSheet, View } from "react-native";
 import { useSelector } from "react-redux";
 import { getCollectionState } from "@src/store/collection";
-import BusyWrapper from "../components/Loader/BusyWrapper";
-import AppText from "../components/AppText";
+import BusyWrapper from "@src/components/Loader/BusyWrapper";
+import AppText from "@src/components/AppText";
 
 const TicketsCount = () => {
   const { results, busy } = useSelector(getCollectionState);

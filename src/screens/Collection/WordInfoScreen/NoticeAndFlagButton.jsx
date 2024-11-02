@@ -1,9 +1,9 @@
 import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
-import RedSafetyButton from "../../components/Buttons/RedSafetyButton";
+import RedSafetyButton from "@src/components/Buttons/RedSafetyButton";
 import { getSettingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
-import AppText from "../../components/AppText";
+import AppText from "@src/components/AppText";
 import { View } from "react-native";
 
 const NoticeAndFlagButton = ({

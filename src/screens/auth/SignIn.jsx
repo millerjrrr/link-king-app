@@ -1,11 +1,11 @@
 import { StyleSheet, View } from "react-native";
-import SubmitBtn from "../../components/form/SubmitBtn";
-import AppLink from "../../components/AppLink";
-import AuthInputField from "../../components/form/AuthInputField";
-import Form from "../../components/form";
+import SubmitBtn from "@src/components/form/SubmitBtn";
+import AppLink from "@src/components/AppLink";
+import AuthInputField from "@src/components/form/AuthInputField";
+import Form from "@src/components/form";
 import * as yup from "yup";
-import PasswordVisibilityIcon from "../../components/PasswordVisibilityIcon";
-import AuthFormContainer from "../../components/containers/AuthFormContainer";
+import PasswordVisibilityIcon from "@src/components/PasswordVisibilityIcon";
+import AuthFormContainer from "@src/components/containers/AuthFormContainer";
 import { useNavigation } from "@react-navigation/native";
 import client from "@src/api/client";
 import { useDispatch, useSelector } from "react-redux";

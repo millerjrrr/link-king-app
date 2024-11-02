@@ -6,11 +6,11 @@ import KeyboardAndStartButton from "./components/KeyboardAndStartButton";
 import Tail from "./components/Tail";
 import ReadWordButton from "./components/ReadWordButton";
 import StatsContainer from "./components/StatsContainer";
-import InnerTabContainer from "../../components/containers/InnerTabContainer";
+import InnerTabContainer from "@src/components/containers/InnerTabContainer";
 import UseEffects from "../../hooks/console/UseEffects";
 import { getSettingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
-import AppModal from "../../components/AppModal";
+import AppModal from "@src/components/AppModal";
 import {
   getAuthState,
   refreshPage,

@@ -1,10 +1,10 @@
 import { Linking, StyleSheet, View } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
-import PopUpContainer from "../../components/containers/PopUpContainer";
+import PopUpContainer from "@src/components/containers/PopUpContainer";
 import React, { useState } from "react";
-import BloodRedCover from "../../components/BloodRedCover";
+import BloodRedCover from "@src/components/BloodRedCover";
 import { flagAndDeleteTicket } from "@src/utils/flagAndDeleteTicket";
-import BusyWrapper from "../../components/Loader/BusyWrapper";
+import BusyWrapper from "@src/components/Loader/BusyWrapper";
 import ResponseInformation from "./ResponseInformation";
 import NoticeAndFlagButton from "./NoticeAndFlagButton";
 import appTextSource from "@src/utils/appTextSource";

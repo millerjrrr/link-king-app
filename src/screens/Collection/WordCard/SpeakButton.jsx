@@ -2,7 +2,7 @@ import { StyleSheet, View } from "react-native";
 import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
 import { getSettingsState } from "@src/store/settings";
-import ReadWordButton from "../../screens/Console/components/ReadWordButton";
+import ReadWordButton from "@src/screens/Console/components/ReadWordButton";
 
 const SpeakButton = ({
   showSpeaker = true,

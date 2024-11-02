@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { getSettingsState } from "@src/store/settings";
 import colors from "@src/utils/colors";
-import AppText from "../../components/AppText";
+import AppText from "@src/components/AppText";
 
 const MenuItemName = styled(AppText)`
   color: ${(props) => props.color};

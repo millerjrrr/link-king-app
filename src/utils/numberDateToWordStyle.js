@@ -1,5 +1,5 @@
 import appTextSource from "@src/utils/appTextSource";
-import dateToNumberStyleDate from "./dateToNumberStyleDate";
+import dateToNumberStyleDate from "@src/utils/dateToNumberStyleDate";
 
 const numberDateToDashFormat = (date) => {
   const workingDate = new Date(1899, 11, 30);

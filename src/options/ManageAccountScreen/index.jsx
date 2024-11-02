@@ -2,8 +2,8 @@ import appTextSource from "@src/utils/appTextSource";
 import { useDispatch, useSelector } from "react-redux";
 import { getSettingsState } from "@src/store/settings";
 import ManageAccountMenuItem from "./ManageAccountMenuItem";
-import PopUpContainer from "../../components/containers/PopUpContainer";
-import BusyWrapper from "../../components/Loader/BusyWrapper";
+import PopUpContainer from "@src/components/containers/PopUpContainer";
+import BusyWrapper from "@src/components/Loader/BusyWrapper";
 import {
   getAuthState,
   updateBusyState,

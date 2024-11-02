@@ -6,7 +6,7 @@ import colors from "@src/utils/colors";
 import { LinearGradient } from "expo-linear-gradient";
 import ScrollPicker from "react-native-wheel-scrollview-picker";
 import React from "react";
-import AppText from "../../components/AppText";
+import AppText from "@src/components/AppText";
 
 const Column = styled(View)`
   position: relative;

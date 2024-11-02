@@ -7,7 +7,7 @@ import SetDailyGoalScreen from "../../options/SetDailyGoalScreen";
 import VoiceSelectionScreen from "../../options/VoiceSelectionScreen";
 import DictionarySelectionScreen from "../../options/DictionarySelectionScreen";
 import ManageAccountNavigator from "./ManageAccountNavigator";
-import Options from "../../screens/Options";
+import Options from "@src/screens/Options";
 const OptionsStack = createStackNavigator();
 
 const OptionsNavigator = () => {

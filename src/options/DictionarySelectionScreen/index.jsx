@@ -3,7 +3,7 @@ import { getSettingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import { getConsoleState } from "@src/store/console";
 import languageNameCodeMap from "@src/utils/languageNameCodeMap";
-import PopUpContainer from "../../components/containers/PopUpContainer";
+import PopUpContainer from "@src/components/containers/PopUpContainer";
 import {
   FlatList,
   StyleSheet,
@@ -11,10 +11,10 @@ import {
   View,
 } from "react-native";
 import DictionarySelectorMenuItem from "./DictionarySelectorMenuItem";
-import BusyWrapper from "../../components/Loader/BusyWrapper";
+import BusyWrapper from "@src/components/Loader/BusyWrapper";
 import { useEffect, useState } from "react";
 import getAvailableDictionaries from "./getAvailableDictionaries";
-import AppText from "../../components/AppText";
+import AppText from "@src/components/AppText";
 import ChangeHomeLanguageLabel from "./ChangeHomeLanguageLabel";
 
 const DictionarySelectionScreen = ({ navigation }) => {

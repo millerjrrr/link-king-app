@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { ScrollView, View } from "react-native";
-import AuthButton from "../components/Buttons/AuthButton";
+import AuthButton from "@src/components/Buttons/AuthButton";
 import appTextSource from "@src/utils/appTextSource";
 import { useDispatch, useSelector } from "react-redux";
 import { getSettingsState } from "@src/store/settings";
-import AppText from "../components/AppText";
-import AuthFormContainer from "../components/containers/AuthFormContainer";
+import AppText from "@src/components/AppText";
+import AuthFormContainer from "@src/components/containers/AuthFormContainer";
 import subscribeFunction from "./subscribeFunction";
 import TermsAndConditions from "./TermsAndConditions";
 import setSubscriptionPrice from "./setSubscriptionPrice";

@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { getConsoleState } from "@src/store/console";
 import { getSettingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
-import AppText from "../../components/AppText";
+import AppText from "@src/components/AppText";
 import SolutionItem from "@src/screens/Console/components/SolutionsList/SolutionItem";
 
 const UserAttempt = () => {

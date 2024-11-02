@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import colors from "@src/utils/colors";
 import { getSettingsState } from "@src/store/settings";
 import appShadow from "@src/utils/appShadow";
-import AppText from "../../components/AppText";
+import AppText from "@src/components/AppText";
 
 const LevelLine = ({
   level,

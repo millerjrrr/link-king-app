@@ -1,5 +1,5 @@
 import { Text, Linking, View } from "react-native";
-import AppText from "../components/AppText";
+import AppText from "@src/components/AppText";
 import colors from "@src/utils/colors";
 import styled from "styled-components";
 import { useSelector } from "react-redux";

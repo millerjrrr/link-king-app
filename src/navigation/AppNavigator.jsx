@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { getAuthState } from "@src/store/auth";
 import TabNavigator from "./TabNavigator";
 import colors from "@src/utils/colors";
-import BusyWrapper from "../components/Loader/BusyWrapper";
+import BusyWrapper from "@src/components/Loader/BusyWrapper";
 import ConnectedWrapper from "@src/errors/ConnectedWrapper";
 import { getSettingsState } from "@src/store/settings";
 import AppNavigatorUseEffects from "./AppNavigatorUseEffects";

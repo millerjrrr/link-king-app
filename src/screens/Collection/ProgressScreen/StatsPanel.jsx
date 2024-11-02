@@ -1,7 +1,7 @@
 import { StyleSheet, View } from "react-native";
 import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
-import Panel from "../../components/Panel";
+import Panel from "@src/components/Panel";
 import { getSettingsState } from "@src/store/settings";
 
 const StatsPanel = ({ children }) => {

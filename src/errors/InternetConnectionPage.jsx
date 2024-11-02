@@ -4,7 +4,7 @@ import RefreshButton from "./RefreshButton";
 import { getSettingsState } from "@src/store/settings";
 import { useSelector } from "react-redux";
 import appTextSource from "./../utils/appTextSource/index";
-import AppText from "../components/AppText";
+import AppText from "@src/components/AppText";
 
 const InternetConnectionPage = ({ refresh }) => {
   const { colorScheme, appLang } = useSelector(

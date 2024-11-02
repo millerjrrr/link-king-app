@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { getSettingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
-import AppText from "../../components/AppText";
+import AppText from "@src/components/AppText";
 
 const ResponseInformation = ({
   status,

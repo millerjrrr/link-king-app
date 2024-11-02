@@ -5,8 +5,8 @@ import { useSelector } from "react-redux";
 import { getSettingsState } from "@src/store/settings";
 import colors from "@src/utils/colors";
 import appTextSource from "@src/utils/appTextSource";
-import AuthButton from "../components/Buttons/AuthButton";
-import AppText from "../components/AppText";
+import AuthButton from "@src/components/Buttons/AuthButton";
+import AppText from "@src/components/AppText";
 
 const Container = styled(ScrollView)`
   margin-horizontal: 15px;

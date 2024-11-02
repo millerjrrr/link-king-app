@@ -10,7 +10,7 @@ import {
   Title,
 } from "./StyledComponents";
 import { useNavigation } from "@react-navigation/native";
-import FlagImage from "../../components/Graphics/FlagImage";
+import FlagImage from "@src/components/Graphics/FlagImage";
 
 const ManageAccountMenuItem = ({
   first,

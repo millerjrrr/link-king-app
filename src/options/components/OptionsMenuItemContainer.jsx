@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import colors from "@src/utils/colors";
 import { getSettingsState } from "@src/store/settings";
 import styled from "styled-components";
-import FlagImage from "../../components/Graphics/FlagImage";
+import FlagImage from "@src/components/Graphics/FlagImage";
 import languageNameCodeMap from "@src/utils/languageNameCodeMap";
 
 const TouchableContainer = styled(TouchableOpacity)`
