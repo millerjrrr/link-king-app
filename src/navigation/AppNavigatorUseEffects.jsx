@@ -28,9 +28,7 @@ const AppNavigatorUseEffects = () => {
 
   const dispatch = useDispatch();
   const navigation = useNavigation();
-  const [appState, setAppState] = useState(
-    AppState.currentState,
-  );
+  const [appState] = useState(AppState.currentState);
 
   const daysLeft = (date) => {
     const today = new Date();

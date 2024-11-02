@@ -1,5 +1,5 @@
 const images = require.context(
-  "../assets",
+  "../../assets/img/flags",
   false,
   /\.png$/,
 );
@@ -12,9 +12,6 @@ const getImageSource = (name) => {
       throw new Error("Name is undefined or empty.");
     }
   } catch (e) {
-    // console.warn(
-    //   `Image not found or invalid name: ${name}, using default image.`,
-    // );
     return images(`./smallCrown.png`);
   }
 };

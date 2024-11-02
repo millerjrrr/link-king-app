@@ -11,7 +11,7 @@ const LinkKingIcon = () => {
   return (
     <Image
       {...{
-        source: require("../../assets/link-king-header-logo.png"),
+        source: require("../../../assets/img/link-king-header-logo.png"),
         resizeMode: "contain",
         tintColor,
         style: {

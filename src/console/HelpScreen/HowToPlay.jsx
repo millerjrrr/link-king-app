@@ -17,15 +17,15 @@ const HowToPlay = () => {
   const video = useRef(null);
 
   const demos = {
-    "English-Portuguese": require("../../assets/demo-English-Portuguese.mp4"),
-    "Spanish-English": require("../../assets/demo-Spanish-English.mp4"),
+    "English-Portuguese": require("../../../assets/img/demos/demo-English-Portuguese.mp4"),
+    "Spanish-English": require("../../../assets/img/demos/demo-Spanish-English.mp4"),
   };
   const source =
     dictionary === "English"
       ? demos["English-Portuguese"]
       : demos["Spanish-English"];
 
-  const image = require("../../assets/status-bar-filler.png");
+  const image = require("../../../assets/img/status-bar-filler.png");
 
   return (
     <DescriptionWrapper {...{ name: "howToPlay" }}>
