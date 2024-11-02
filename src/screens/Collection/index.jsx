@@ -6,11 +6,11 @@ import SearchBarContainer from "./../../collection/SearchBarContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { getCollectionState } from "./../../store/collection";
 import { fetchTicketsFirstBatch } from "./../../collection/functions/fetchTicketsFirstBatch";
-import BusyWrapper from "./../../ui/Loader/BusyWrapper";
+import BusyWrapper from "../../components/Loader/BusyWrapper";
 import { getAuthState } from "./../../store/auth";
 import appTextSource from "./../../utils/appTextSource";
 import { getSettingsState } from "./../../store/settings";
-import AppModal from "./../../ui/AppModal";
+import AppModal from "../../components/AppModal";
 
 const Collection = ({ navigation }) => {
   const dispatch = useDispatch();

@@ -1,12 +1,12 @@
 import { Text, View } from "react-native";
 import CircularProgress from "react-native-circular-progress-indicator";
-import colors from "../../utils/colors";
+import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
-import { getStatsState } from "../../store/stats";
-import { getSettingsState } from "../../store/settings";
-import appTextSource from "../../utils/appTextSource";
-import { getConsoleState } from "../../store/console";
-import AppText from "../../ui/AppText";
+import { getStatsState } from "@src/store/stats";
+import { getSettingsState } from "@src/store/settings";
+import appTextSource from "@src/utils/appTextSource";
+import { getConsoleState } from "@src/store/console";
+import AppText from "../../components/AppText";
 
 const RatingCircle = () => {
   const { colorScheme, golden, appLang } = useSelector(

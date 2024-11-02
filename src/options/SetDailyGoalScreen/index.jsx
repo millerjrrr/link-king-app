@@ -6,21 +6,21 @@ import {
 } from "react-native";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { updateNotification } from "../../store/notification";
+import { updateNotification } from "@src/store/notification";
 import {
   getSettingsState,
   restoreDefaultGoals,
   updateSettings,
-} from "../../store/settings";
-import colors from "../../utils/colors";
-import appTextSource from "../../utils/appTextSource";
+} from "@src/store/settings";
+import colors from "@src/utils/colors";
+import appTextSource from "@src/utils/appTextSource";
 import PopUpContainer from "../../components/containers/PopUpContainer";
-import BusyWrapper from "../../ui/Loader/BusyWrapper";
-import AppText from "../../ui/AppText";
-import AppModal from "../../ui/AppModal";
+import BusyWrapper from "../../components/Loader/BusyWrapper";
+import AppText from "../../components/AppText";
+import AppModal from "../../components/AppModal";
 import ScrollSelector from "./ScrollSelector";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { saveToAsyncStorage } from "../../utils/asyncStorage";
+import { saveToAsyncStorage } from "@src/utils/asyncStorage";
 
 const Container = styled(View)`
   flex: 1;

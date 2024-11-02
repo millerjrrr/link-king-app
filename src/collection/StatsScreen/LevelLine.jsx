@@ -5,10 +5,10 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { useSelector } from "react-redux";
-import colors from "../../utils/colors";
-import { getSettingsState } from "../../store/settings";
-import appShadow from "../../utils/appShadow";
-import AppText from "../../ui/AppText";
+import colors from "@src/utils/colors";
+import { getSettingsState } from "@src/store/settings";
+import appShadow from "@src/utils/appShadow";
+import AppText from "../../components/AppText";
 
 const LevelLine = ({
   level,

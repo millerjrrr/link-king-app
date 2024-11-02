@@ -1,8 +1,8 @@
 import { StyleSheet, View } from "react-native";
-import colors from "../../utils/colors";
+import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
-import Panel from "../../ui/Panel";
-import { getSettingsState } from "../../store/settings";
+import Panel from "../../components/Panel";
+import { getSettingsState } from "@src/store/settings";
 
 const StatsPanel = ({ children }) => {
   const { colorScheme, golden } = useSelector(

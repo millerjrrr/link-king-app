@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-import colors from "../../utils/colors";
+import colors from "@src/utils/colors";
 import { numberDateToWordStyleDate } from "../functions/numberDateToWordStyle";
 import { useSelector } from "react-redux";
 import WordCardLevelStars from "./WordCardLevelStars";
@@ -12,9 +12,9 @@ import {
   RowContainer,
   Title,
 } from "./WordCardStyledComponents";
-import { getSettingsState } from "../../store/settings";
-import appShadow from "../../utils/appShadow";
-import appTextSource from "../../utils/appTextSource";
+import { getSettingsState } from "@src/store/settings";
+import appShadow from "@src/utils/appShadow";
+import appTextSource from "@src/utils/appTextSource";
 import SpeakButton from "./SpeakButton";
 
 const WordCard = ({

@@ -1,10 +1,10 @@
 import { StyleSheet, View } from "react-native";
-import colors from "../utils/colors";
+import colors from "@src/utils/colors";
 import RefreshButton from "./RefreshButton";
-import { getSettingsState } from "../store/settings";
+import { getSettingsState } from "@src/store/settings";
 import { useSelector } from "react-redux";
 import appTextSource from "./../utils/appTextSource/index";
-import AppText from "../ui/AppText";
+import AppText from "../components/AppText";
 
 const InternetConnectionPage = ({ refresh }) => {
   const { colorScheme, appLang } = useSelector(

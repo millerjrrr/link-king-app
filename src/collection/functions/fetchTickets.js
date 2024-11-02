@@ -1,6 +1,6 @@
-import clientWithAuth from "../../api/clientWithAuth";
-import { errorHandler } from "../../errors/errorHandler";
-import { updateCollection } from "../../store/collection";
+import clientWithAuth from "@src/api/clientWithAuth";
+import { errorHandler } from "@src/errors/errorHandler";
+import { updateCollection } from "@src/store/collection";
 import { semiNormalize } from "./semiNormalize";
 
 export const fetchTickets = async (

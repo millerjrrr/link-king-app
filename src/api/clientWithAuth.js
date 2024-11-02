@@ -1,4 +1,4 @@
-import { getFromAsyncStorage } from "../utils/asyncStorage";
+import { getFromAsyncStorage } from "@src/utils/asyncStorage";
 import client from "./client";
 import * as Localization from "expo-localization";
 

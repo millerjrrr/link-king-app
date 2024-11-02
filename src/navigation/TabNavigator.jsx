@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import CollectionNavigator from "./subnavigators/CollectionNavigator";
 import OptionsNavigator from "./subnavigators/OptionsNavigator";
 import ConsoleNavigator from "./subnavigators/ConsoleNavigator";
-import colors from "../utils/colors";
+import colors from "@src/utils/colors";
 import {
   Entypo,
   Ionicons,
@@ -11,7 +11,7 @@ import {
 import { Platform, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import React from "react";
-import { getSettingsState } from "../store/settings";
+import { getSettingsState } from "@src/store/settings";
 import IsSubscribedWrapper from "../subscription/IsSubscribedWrapper";
 
 const Tab = createBottomTabNavigator();

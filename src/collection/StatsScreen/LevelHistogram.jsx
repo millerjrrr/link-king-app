@@ -2,9 +2,9 @@ import { useState } from "react";
 import { View, StyleSheet } from "react-native";
 import LevelLine from "./LevelLine";
 import { useSelector } from "react-redux";
-import colors from "../../utils/colors";
-import { getSettingsState } from "../../store/settings";
-import AppText from "../../ui/AppText";
+import colors from "@src/utils/colors";
+import { getSettingsState } from "@src/store/settings";
+import AppText from "../../components/AppText";
 
 const LevelHistogram = ({ lbd, histHeight }) => {
   const { colorScheme, golden } = useSelector(

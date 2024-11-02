@@ -1,4 +1,4 @@
-import appTextSource from "../../utils/appTextSource";
+import appTextSource from "@src/utils/appTextSource";
 import dateToNumberStyleDate from "./dateToNumberStyleDate";
 
 const numberDateToDashFormat = (date) => {

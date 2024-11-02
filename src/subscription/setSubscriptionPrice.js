@@ -1,7 +1,7 @@
 import { Platform } from "react-native";
 import Purchases from "react-native-purchases";
 import APIKeys from "./APIKeys";
-import { errorHandler } from "../errors/errorHandler";
+import { errorHandler } from "@src/errors/errorHandler";
 
 const setSubscriptionPrice = async ({ setPrice }) => {
   try {

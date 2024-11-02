@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux";
 import OptionsMenuItem from "../components/OptionsMenuItem";
-import { getSettingsState } from "../../store/settings";
-import appTextSource from "../../utils/appTextSource";
+import { getSettingsState } from "@src/store/settings";
+import appTextSource from "@src/utils/appTextSource";
 import { useDispatch } from "react-redux";
 import { sendDictionary } from "../components/sendDictionary";
-import { getConsoleState } from "../../store/console";
-import BusyWrapper from "../../ui/Loader/BusyWrapper";
+import { getConsoleState } from "@src/store/console";
+import BusyWrapper from "../../components/Loader/BusyWrapper";
 import { View } from "react-native";
 
 const DictionarySelectorMenuItem = ({

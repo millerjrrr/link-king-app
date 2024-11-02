@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
-import { getConsoleState } from "../../store/console";
-import FlagImage from "../../ui/Graphics/FlagImage";
-import { getSettingsState } from "../../store/settings";
-import languageNameCodeMap from "../../utils/languageNameCodeMap";
+import { getConsoleState } from "@src/store/console";
+import FlagImage from "../../components/Graphics/FlagImage";
+import { getSettingsState } from "@src/store/settings";
+import languageNameCodeMap from "@src/utils/languageNameCodeMap";
 
 const FlagBookImage = ({ scale = 2.5 }) => {
   const { dictionary } = useSelector(getConsoleState);

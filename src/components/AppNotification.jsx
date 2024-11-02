@@ -4,15 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getNotificationState,
   updateNotification,
-} from "../store/notification";
-import colors from "../utils/colors";
+} from "@src/store/notification";
+import colors from "@src/utils/colors";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withTiming,
 } from "react-native-reanimated";
-import { getSettingsState } from "../store/settings";
-import AppText from "../ui/AppText";
+import { getSettingsState } from "@src/store/settings";
+import AppText from "./AppText";
 
 const AppNotification = () => {
   const { message, type } = useSelector(

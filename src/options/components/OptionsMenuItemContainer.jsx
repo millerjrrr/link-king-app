@@ -1,11 +1,11 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { TouchableOpacity, View } from "react-native";
 import { useSelector } from "react-redux";
-import colors from "../../utils/colors";
-import { getSettingsState } from "../../store/settings";
+import colors from "@src/utils/colors";
+import { getSettingsState } from "@src/store/settings";
 import styled from "styled-components";
-import FlagImage from "../../ui/Graphics/FlagImage";
-import languageNameCodeMap from "../../utils/languageNameCodeMap";
+import FlagImage from "../../components/Graphics/FlagImage";
+import languageNameCodeMap from "@src/utils/languageNameCodeMap";
 
 const TouchableContainer = styled(TouchableOpacity)`
   height: 60px;

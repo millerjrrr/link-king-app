@@ -1,16 +1,16 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import colors from "../../utils/colors";
-import StatusBarFiller from "../../ui/StatusBarFiller";
+import colors from "@src/utils/colors";
+import StatusBarFiller from "../StatusBarFiller";
 import AppNotification from "../AppNotification";
 import { useSelector } from "react-redux";
-import FourCrowns from "../../ui/Graphics/FourCrowns";
-import LinkKingLogo from "../../ui/Graphics/LinkKingLogo";
-import HelpButton from "../../ui/Buttons/HelpButton";
-import { getSettingsState } from "../../store/settings";
-import FlagBook from "../../ui/Buttons/FlagBook";
-import AppText from "../../ui/AppText";
-import BackButton from "../../ui/Buttons/BackButton";
+import FourCrowns from "../Graphics/FourCrowns";
+import LinkKingLogo from "../Graphics/LinkKingLogo";
+import HelpButton from "../Buttons/HelpButton";
+import { getSettingsState } from "@src/store/settings";
+import FlagBook from "../Buttons/FlagBook";
+import AppText from "../AppText";
+import BackButton from "../Buttons/BackButton";
 import { LinearGradient } from "expo-linear-gradient";
 
 const InnerTabContainer = ({

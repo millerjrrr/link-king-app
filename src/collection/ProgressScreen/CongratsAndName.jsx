@@ -1,9 +1,9 @@
-import colors from "../../utils/colors";
+import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
-import { getStatsState } from "../../store/stats";
-import { getSettingsState } from "../../store/settings";
-import appTextSource from "../../utils/appTextSource";
-import AppText from "../../ui/AppText";
+import { getStatsState } from "@src/store/stats";
+import { getSettingsState } from "@src/store/settings";
+import appTextSource from "@src/utils/appTextSource";
+import AppText from "../../components/AppText";
 
 const CongratsAndName = () => {
   const { colorScheme, golden, appLang } = useSelector(

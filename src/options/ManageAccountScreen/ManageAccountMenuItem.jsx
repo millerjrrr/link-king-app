@@ -1,8 +1,8 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
-import colors from "../../utils/colors";
-import { getSettingsState } from "../../store/settings";
-import appTextSource from "../../utils/appTextSource";
+import colors from "@src/utils/colors";
+import { getSettingsState } from "@src/store/settings";
+import appTextSource from "@src/utils/appTextSource";
 import {
   Container,
   OptionContainer,
@@ -10,7 +10,7 @@ import {
   Title,
 } from "./StyledComponents";
 import { useNavigation } from "@react-navigation/native";
-import FlagImage from "../../ui/Graphics/FlagImage";
+import FlagImage from "../../components/Graphics/FlagImage";
 
 const ManageAccountMenuItem = ({
   first,

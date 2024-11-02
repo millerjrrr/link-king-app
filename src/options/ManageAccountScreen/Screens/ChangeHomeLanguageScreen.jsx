@@ -1,24 +1,24 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PopUpContainer from "../../../components/containers/PopUpContainer";
-import BloodRedCover from "../../../ui/BloodRedCover";
-import { getSettingsState } from "../../../store/settings";
+import BloodRedCover from "../../../components/BloodRedCover";
+import { getSettingsState } from "@src/store/settings";
 import AuthInputField from "../../../components/form/AuthInputField";
 import Form from "../../../components/form";
 import * as yup from "yup";
-import PasswordVisibilityIcon from "../../../ui/PasswordVisibilityIcon";
-import appTextSource from "../../../utils/appTextSource";
-import AppText from "../../../ui/AppText";
+import PasswordVisibilityIcon from "../../../components/PasswordVisibilityIcon";
+import appTextSource from "@src/utils/appTextSource";
+import AppText from "../../../components/AppText";
 import {
   Keyboard,
   TouchableWithoutFeedback,
   View,
 } from "react-native";
-import FormikSafetyButton from "../../../ui/Buttons/FormikSafetyButton";
+import FormikSafetyButton from "../../../components/Buttons/FormikSafetyButton";
 import changeUserHomeLanguage from "../functions/changeUserHomeLanguage";
-import FlagImage from "../../../ui/Graphics/FlagImage";
+import FlagImage from "../../../components/Graphics/FlagImage";
 import { AntDesign } from "@expo/vector-icons";
-import colors from "../../../utils/colors";
+import colors from "@src/utils/colors";
 import { useNavigation } from "@react-navigation/native";
 
 const ChangeHomeLanguageScreen = ({ route }) => {

@@ -4,18 +4,18 @@ import Form from "../../../components/form";
 import * as yup from "yup";
 import AuthFormContainer from "../../../components/containers/AuthFormContainer";
 import { useDispatch, useSelector } from "react-redux";
-import { getSettingsState } from "../../../store/settings";
-import appTextSource from "../../../utils/appTextSource";
+import { getSettingsState } from "@src/store/settings";
+import appTextSource from "@src/utils/appTextSource";
 import {
   getAuthState,
   updateEmail,
   updateLoggedInState,
   updateToken,
-} from "../../../store/auth";
-import { authErrorHandler } from "../../../errors/authErrorHandler";
-import client from "../../../api/client";
-import SignUpAppLink from "../../../ui/SignUpAppLink";
-import { saveToAsyncStorage } from "../../../utils/asyncStorage";
+} from "@src/store/auth";
+import { authErrorHandler } from "@src/errors/authErrorHandler";
+import client from "@src/api/client";
+import SignUpAppLink from "../../../components/SignUpAppLink";
+import { saveToAsyncStorage } from "@src/utils/asyncStorage";
 
 const VerificationCode = () => {
   const { appLang } = useSelector(getSettingsState);

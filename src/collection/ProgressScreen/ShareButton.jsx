@@ -4,13 +4,13 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-import colors from "../../utils/colors";
+import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
-import { getSettingsState } from "../../store/settings";
+import { getSettingsState } from "@src/store/settings";
 import { captureRef } from "react-native-view-shot";
-import { errorHandler } from "../../errors/errorHandler";
-import appTextSource from "../../utils/appTextSource";
-import { getConsoleState } from "../../store/console";
+import { errorHandler } from "@src/errors/errorHandler";
+import appTextSource from "@src/utils/appTextSource";
+import { getConsoleState } from "@src/store/console";
 
 const ShareButton = ({ shareRef }) => {
   const { colorScheme, golden, appLang } = useSelector(

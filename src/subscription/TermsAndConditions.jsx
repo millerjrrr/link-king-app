@@ -1,10 +1,10 @@
 import { Text, Linking, View } from "react-native";
-import AppText from "../ui/AppText";
-import colors from "../utils/colors";
+import AppText from "../components/AppText";
+import colors from "@src/utils/colors";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
-import { getSettingsState } from "../store/settings";
-import appTextSource from "../utils/appTextSource";
+import { getSettingsState } from "@src/store/settings";
+import appTextSource from "@src/utils/appTextSource";
 
 const Container = styled(View)`
   width: 100%;

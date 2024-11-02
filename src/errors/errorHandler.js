@@ -1,7 +1,7 @@
-import catchAsyncError from "../api/catchError";
-import { updateConnectedState } from "../store/auth";
-import { updateNotification } from "../store/notification";
-import logOut from "../utils/logOut";
+import catchAsyncError from "@src/api/catchError";
+import { updateConnectedState } from "@src/store/auth";
+import { updateNotification } from "@src/store/notification";
+import logOut from "@src/utils/logOut";
 
 export const errorHandler = (error, dispatch) => {
   const errorMessage = catchAsyncError(error);

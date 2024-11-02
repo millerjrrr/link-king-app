@@ -6,13 +6,13 @@ import * as yup from "yup";
 import AuthFormContainer from "../../../components/containers/AuthFormContainer";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
-import { getSettingsState } from "../../../store/settings";
-import appTextSource from "../../../utils/appTextSource";
+import { getSettingsState } from "@src/store/settings";
+import appTextSource from "@src/utils/appTextSource";
 import {
   getAuthState,
   updateEmail,
-} from "../../../store/auth";
-import SignUpAppLink from "../../../ui/SignUpAppLink";
+} from "@src/store/auth";
+import SignUpAppLink from "../../../components/SignUpAppLink";
 
 const Email = () => {
   const { appLang } = useSelector(getSettingsState);

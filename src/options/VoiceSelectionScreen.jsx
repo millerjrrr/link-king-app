@@ -2,11 +2,11 @@ import { ScrollView, View } from "react-native";
 import styled from "styled-components";
 import PopUpContainer from "./../components/containers/PopUpContainer";
 import { useSelector } from "react-redux";
-import { getSettingsState } from "../store/settings";
-import colors from "../utils/colors";
-import appTextSource from "../utils/appTextSource";
-import AuthButton from "../ui/Buttons/AuthButton";
-import AppText from "../ui/AppText";
+import { getSettingsState } from "@src/store/settings";
+import colors from "@src/utils/colors";
+import appTextSource from "@src/utils/appTextSource";
+import AuthButton from "../components/Buttons/AuthButton";
+import AppText from "../components/AppText";
 
 const Container = styled(ScrollView)`
   margin-horizontal: 15px;

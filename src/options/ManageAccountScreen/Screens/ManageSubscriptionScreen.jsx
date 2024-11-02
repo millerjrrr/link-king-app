@@ -1,21 +1,21 @@
 import PopUpContainer from "../../../components/containers/PopUpContainer";
-import appTextSource from "../../../utils/appTextSource";
+import appTextSource from "@src/utils/appTextSource";
 import { useDispatch, useSelector } from "react-redux";
-import { getSettingsState } from "../../../store/settings";
-import AppText from "../../../ui/AppText";
+import { getSettingsState } from "@src/store/settings";
+import AppText from "../../../components/AppText";
 import {
   Linking,
   Platform,
   TouchableOpacity,
   View,
 } from "react-native";
-import colors from "../../../utils/colors";
+import colors from "@src/utils/colors";
 import { FontAwesome5 } from "@expo/vector-icons";
 import styled from "styled-components";
-import { getAuthState } from "../../../store/auth";
+import { getAuthState } from "@src/store/auth";
 import subscribeFunction from "../../../subscription/subscribeFunction";
 import { useState } from "react";
-import Loader from "../../../ui/Loader";
+import Loader from "../../../components/Loader";
 import TermsAndConditions from "../../../subscription/TermsAndConditions";
 
 const Container = styled(View)`

@@ -1,9 +1,9 @@
 import {
   updateBusyState,
   updateDictionary,
-} from "../../store/console";
-import clientWithAuth from "../../api/clientWithAuth";
-import { errorHandler } from "../../errors/errorHandler";
+} from "@src/store/console";
+import clientWithAuth from "@src/api/clientWithAuth";
+import { errorHandler } from "@src/errors/errorHandler";
 
 export const sendDictionary = async ({
   dictionary,

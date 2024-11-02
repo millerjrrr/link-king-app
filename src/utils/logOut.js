@@ -2,8 +2,8 @@ import { StatusBar } from "react-native";
 import {
   updateLoggedInState,
   updateToken,
-} from "../store/auth";
-import { updateSettings } from "../store/settings";
+} from "@src/store/auth";
+import { updateSettings } from "@src/store/settings";
 import { removeFromAsyncStorage } from "./asyncStorage";
 
 const logOut = async (dispatch) => {

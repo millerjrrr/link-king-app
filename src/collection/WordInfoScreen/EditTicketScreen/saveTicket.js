@@ -1,6 +1,6 @@
-import catchAsyncError from "../../../api/catchError";
-import clientWithAuth from "../../../api/clientWithAuth";
-import { updateNotification } from "../../../store/notification";
+import catchAsyncError from "@src/api/catchError";
+import clientWithAuth from "@src/api/clientWithAuth";
+import { updateNotification } from "@src/store/notification";
 
 export const saveTicket = async ({
   id,

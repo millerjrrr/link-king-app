@@ -1,13 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
-import { getStatsState } from "../../store/stats";
+import { getStatsState } from "@src/store/stats";
 import { fetchStatsInfo } from "../functions/fetchStatsInfo";
 import { useEffect } from "react";
 import LevelHistogram from "./LevelHistogram";
 import PopUpContainer from "../../components/containers/PopUpContainer";
-import Loader from "../../ui/Loader";
-import { getSettingsState } from "../../store/settings";
-import appTextSource from "../../utils/appTextSource";
-import AppText from "../../ui/AppText";
+import Loader from "../../components/Loader";
+import { getSettingsState } from "@src/store/settings";
+import appTextSource from "@src/utils/appTextSource";
+import AppText from "../../components/AppText";
 import StatsContainer from "./StatsContainer";
 
 const StatsScreen = () => {

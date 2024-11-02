@@ -7,15 +7,15 @@ import {
   Platform,
   StatusBar,
 } from "react-native";
-import colors from "../../utils/colors";
+import colors from "@src/utils/colors";
 import AppNotification from "../AppNotification";
-import FourCrowns from "../../ui/Graphics/FourCrowns";
-import LinkKingLogo from "../../ui/Graphics/LinkKingLogo";
-import StatusBarFiller from "../../ui/StatusBarFiller";
+import FourCrowns from "../Graphics/FourCrowns";
+import LinkKingLogo from "../Graphics/LinkKingLogo";
+import StatusBarFiller from "../StatusBarFiller";
 import { useSelector } from "react-redux";
-import { getSettingsState } from "../../store/settings";
-import AppText from "../../ui/AppText";
-import BackButton from "../../ui/Buttons/BackButton";
+import { getSettingsState } from "@src/store/settings";
+import AppText from "../AppText";
+import BackButton from "../Buttons/BackButton";
 
 const AuthFormContainer = ({
   children,

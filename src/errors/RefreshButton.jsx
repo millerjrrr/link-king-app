@@ -4,12 +4,12 @@ import {
   StyleSheet,
   View,
 } from "react-native";
-import colors from "../utils/colors";
+import colors from "@src/utils/colors";
 import { Ionicons } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
-import { refreshPage } from "../store/auth";
-import { getSettingsState } from "../store/settings";
-import appShadow from "../utils/appShadow";
+import { refreshPage } from "@src/store/auth";
+import { getSettingsState } from "@src/store/settings";
+import appShadow from "@src/utils/appShadow";
 
 const RefreshButton = ({ size = 200 }) => {
   const dispatch = useDispatch();

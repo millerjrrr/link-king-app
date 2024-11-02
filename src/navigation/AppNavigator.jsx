@@ -4,12 +4,12 @@ import {
 } from "@react-navigation/native";
 import AuthNavigator from "./AuthNavigator";
 import { useSelector } from "react-redux";
-import { getAuthState } from "../store/auth";
+import { getAuthState } from "@src/store/auth";
 import TabNavigator from "./TabNavigator";
-import colors from "../utils/colors";
-import BusyWrapper from "../ui/Loader/BusyWrapper";
-import ConnectedWrapper from "../errors/ConnectedWrapper";
-import { getSettingsState } from "../store/settings";
+import colors from "@src/utils/colors";
+import BusyWrapper from "../components/Loader/BusyWrapper";
+import ConnectedWrapper from "@src/errors/ConnectedWrapper";
+import { getSettingsState } from "@src/store/settings";
 import AppNavigatorUseEffects from "./AppNavigatorUseEffects";
 import { StatusBar } from "expo-status-bar";
 

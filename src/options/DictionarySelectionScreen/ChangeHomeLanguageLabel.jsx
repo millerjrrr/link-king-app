@@ -1,9 +1,9 @@
 import { Image, TouchableOpacity } from "react-native";
-import AppText from "../../ui/AppText";
+import AppText from "../../components/AppText";
 import { useSelector } from "react-redux";
-import { getSettingsState } from "../../store/settings";
-import getImageSource from "../../utils/getImageSource";
-import appTextSource from "../../utils/appTextSource";
+import { getSettingsState } from "@src/store/settings";
+import getImageSource from "@src/utils/getImageSource";
+import appTextSource from "@src/utils/appTextSource";
 import { useNavigation } from "@react-navigation/native";
 
 const ChangeHomeLanguageLabel = () => {

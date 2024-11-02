@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
-import { getSettingsState } from "../../store/settings";
-import appTextSource from "../../utils/appTextSource";
-import { getConsoleState } from "../../store/console";
-import languageNameCodeMap from "../../utils/languageNameCodeMap";
+import { getSettingsState } from "@src/store/settings";
+import appTextSource from "@src/utils/appTextSource";
+import { getConsoleState } from "@src/store/console";
+import languageNameCodeMap from "@src/utils/languageNameCodeMap";
 import PopUpContainer from "../../components/containers/PopUpContainer";
 import {
   FlatList,
@@ -11,10 +11,10 @@ import {
   View,
 } from "react-native";
 import DictionarySelectorMenuItem from "./DictionarySelectorMenuItem";
-import BusyWrapper from "../../ui/Loader/BusyWrapper";
+import BusyWrapper from "../../components/Loader/BusyWrapper";
 import { useEffect, useState } from "react";
 import getAvailableDictionaries from "./getAvailableDictionaries";
-import AppText from "../../ui/AppText";
+import AppText from "../../components/AppText";
 import ChangeHomeLanguageLabel from "./ChangeHomeLanguageLabel";
 
 const DictionarySelectionScreen = ({ navigation }) => {

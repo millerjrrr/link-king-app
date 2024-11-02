@@ -2,18 +2,18 @@ import { Linking, StyleSheet, View } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import PopUpContainer from "../../components/containers/PopUpContainer";
 import React, { useState } from "react";
-import BloodRedCover from "../../ui/BloodRedCover";
-import { flagAndDeleteTicket } from "../../utils/flagAndDeleteTicket";
-import BusyWrapper from "../../ui/Loader/BusyWrapper";
-import SolutionsList from "../../console/SolutionsList";
+import BloodRedCover from "../../components/BloodRedCover";
+import { flagAndDeleteTicket } from "@src/utils/flagAndDeleteTicket";
+import BusyWrapper from "../../components/Loader/BusyWrapper";
 import ResponseInformation from "./ResponseInformation";
 import NoticeAndFlagButton from "./NoticeAndFlagButton";
-import appTextSource from "../../utils/appTextSource";
-import { getSettingsState } from "../../store/settings";
+import appTextSource from "@src/utils/appTextSource";
+import { getSettingsState } from "@src/store/settings";
 import AcceptedAnswers from "./AcceptedAnswers";
 import WordCard from "../WordCard";
 import UserAttempt from "./UserAttempt";
-import { getConsoleState } from "../../store/console";
+import { getConsoleState } from "@src/store/console";
+import SolutionsList from "@src/screens/Console/components/SolutionsList";
 
 const WordInfoScreen = ({ route }) => {
   const { ticket, wrongAnswerReturned } = route.params;

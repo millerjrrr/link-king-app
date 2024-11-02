@@ -5,11 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getCollectionState,
   updateCollection,
-} from "../store/collection";
-import Loader from "../ui/Loader";
-import { getSettingsState } from "../store/settings";
-import appTextSource from "../utils/appTextSource";
-import AppText from "../ui/AppText";
+} from "@src/store/collection";
+import Loader from "../components/Loader";
+import { getSettingsState } from "@src/store/settings";
+import appTextSource from "@src/utils/appTextSource";
+import AppText from "../components/AppText";
 
 const ListFooterComponent = () => {
   const { allDataLoaded } = useSelector(getCollectionState);

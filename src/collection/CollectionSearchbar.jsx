@@ -1,14 +1,14 @@
 import { StyleSheet } from "react-native";
 import { Searchbar } from "react-native-paper";
-import colors from "../utils/colors";
+import colors from "@src/utils/colors";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getCollectionState,
   updateCollection,
-} from "../store/collection";
-import { getSettingsState } from "../store/settings";
-import appTextSource from "../utils/appTextSource";
-import appShadow from "../utils/appShadow";
+} from "@src/store/collection";
+import { getSettingsState } from "@src/store/settings";
+import appTextSource from "@src/utils/appTextSource";
+import appShadow from "@src/utils/appShadow";
 
 const CollectionSearchbar = () => {
   const { colorScheme, golden, appLang } = useSelector(

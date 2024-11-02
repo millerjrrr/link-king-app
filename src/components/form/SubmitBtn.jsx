@@ -1,5 +1,5 @@
 import { useFormikContext } from "formik";
-import AuthButton from "../../ui/Buttons/AuthButton";
+import AuthButton from "../Buttons/AuthButton";
 
 const SubmitBtn = ({ title }) => {
   const { handleSubmit, isSubmitting } = useFormikContext();

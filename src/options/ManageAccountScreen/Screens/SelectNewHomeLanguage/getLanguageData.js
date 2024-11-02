@@ -1,4 +1,4 @@
-import languageNameCodeMap from "../../../../utils/languageNameCodeMap";
+import languageNameCodeMap from "@src/utils/languageNameCodeMap";
 
 const data = {
   af: {

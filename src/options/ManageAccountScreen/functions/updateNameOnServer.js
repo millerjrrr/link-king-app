@@ -1,6 +1,6 @@
-import clientWithAuth from "../../../api/clientWithAuth";
-import { errorHandler } from "../../../errors/errorHandler";
-import { updateNotification } from "../../../store/notification";
+import clientWithAuth from "@src/api/clientWithAuth";
+import { errorHandler } from "@src/errors/errorHandler";
+import { updateNotification } from "@src/store/notification";
 import appTextSource from "./../../../utils/appTextSource/index";
 
 const updateNameOnServer = async ({

@@ -5,8 +5,8 @@ import TicketsCount from "./TicketsCount";
 import { LinearGradient } from "expo-linear-gradient";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
-import { getSettingsState } from "../store/settings";
-import colors from "../utils/colors";
+import { getSettingsState } from "@src/store/settings";
+import colors from "@src/utils/colors";
 
 const FadeBackgroundView = styled(LinearGradient)`
   position: absolute;

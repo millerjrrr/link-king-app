@@ -1,15 +1,15 @@
 import styled from "styled-components";
-import AppText from "../../../../ui/AppText";
+import AppText from "../../../../components/AppText";
 import { TouchableOpacity } from "react-native";
-import FlagImage from "../../../../ui/Graphics/FlagImage";
+import FlagImage from "../../../../components/Graphics/FlagImage";
 import { useNavigation } from "@react-navigation/native";
 import { View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { getSettingsState } from "../../../../store/settings";
-import { updateNotification } from "../../../../store/notification";
-import appTextSource from "../../../../utils/appTextSource";
-import colors from "../../../../utils/colors";
-import appShadow from "../../../../utils/appShadow";
+import { getSettingsState } from "@src/store/settings";
+import { updateNotification } from "@src/store/notification";
+import appTextSource from "@src/utils/appTextSource";
+import colors from "@src/utils/colors";
+import appShadow from "@src/utils/appShadow";
 
 const Container = styled(TouchableOpacity)`
   flex-direction: row;

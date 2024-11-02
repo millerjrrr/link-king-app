@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { getSettingsState } from "../../../store/settings";
+import { getSettingsState } from "@src/store/settings";
 import * as yup from "yup";
 import AuthFormContainer from "../../../components/containers/AuthFormContainer";
 import Form from "../../../components/form";
@@ -7,8 +7,8 @@ import AuthInputField from "../../../components/form/AuthInputField";
 import SubmitBtn from "../../../components/form/SubmitBtn";
 import { ScrollView } from "react-native";
 import { View } from "react-native";
-import { normalize } from "./../../../console/functions/normalize";
-import appTextSource from "../../../utils/appTextSource";
+import { normalize } from "@src/utils/normalize";
+import appTextSource from "@src/utils/appTextSource";
 import { saveTicket } from "./saveTicket";
 import {
   StackActions,

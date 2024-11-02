@@ -6,9 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getAuthState,
   updateSubscribed,
-} from "../store/auth";
+} from "@src/store/auth";
 import APIKeys from "./APIKeys";
-import { errorHandler } from "../errors/errorHandler";
+import { errorHandler } from "@src/errors/errorHandler";
 
 const IsSubscribedWrapper = ({ children }) => {
   const [access, setAccess] = useState(true);

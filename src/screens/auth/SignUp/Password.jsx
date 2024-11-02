@@ -2,21 +2,21 @@ import SubmitBtn from "../../../components/form/SubmitBtn";
 import AuthInputField from "../../../components/form/AuthInputField";
 import Form from "../../../components/form";
 import * as yup from "yup";
-import PasswordVisibilityIcon from "../../../ui/PasswordVisibilityIcon";
+import PasswordVisibilityIcon from "../../../components/PasswordVisibilityIcon";
 import AuthFormContainer from "../../../components/containers/AuthFormContainer";
 import { useNavigation } from "@react-navigation/native";
-import client from "../../../api/client";
+import client from "@src/api/client";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { authErrorHandler } from "../../../errors/authErrorHandler";
-import { getSettingsState } from "../../../store/settings";
-import appTextSource from "../../../utils/appTextSource";
+import { authErrorHandler } from "@src/errors/authErrorHandler";
+import { getSettingsState } from "@src/store/settings";
+import appTextSource from "@src/utils/appTextSource";
 import {
   getAuthState,
   updateName,
   updateUnverifiedUserId,
-} from "../../../store/auth";
-import SignUpAppLink from "../../../ui/SignUpAppLink";
+} from "@src/store/auth";
+import SignUpAppLink from "../../../components/SignUpAppLink";
 
 const Password = () => {
   const { appLang } = useSelector(getSettingsState);

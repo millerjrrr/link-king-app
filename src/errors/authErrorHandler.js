@@ -1,5 +1,5 @@
-import catchAsyncError from "../api/catchError";
-import { updateNotification } from "../store/notification";
+import catchAsyncError from "@src/api/catchError";
+import { updateNotification } from "@src/store/notification";
 
 export const authErrorHandler = (error, dispatch) => {
   let errorMessage = catchAsyncError(error);

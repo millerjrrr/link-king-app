@@ -4,7 +4,7 @@ import {
   TransitionPresets,
 } from "@react-navigation/stack";
 import ProgressScreen from "../../collection/ProgressScreen";
-import HelpScreen from "../../console/HelpScreen";
+import HelpScreen from "../../screens/Console/HelpScreen";
 import DictionarySelectionScreen from "../../options/DictionarySelectionScreen";
 import WordInfoScreen from "../../collection/WordInfoScreen";
 import EditTicketScreen from "../../collection/WordInfoScreen/EditTicketScreen";

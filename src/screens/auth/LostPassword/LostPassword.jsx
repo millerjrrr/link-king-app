@@ -1,16 +1,16 @@
 import { StyleSheet, View } from "react-native";
 import SubmitBtn from "../../../components/form/SubmitBtn";
-import AppLink from "../../../ui/AppLink";
+import AppLink from "../../../components/AppLink";
 import AuthInputField from "../../../components/form/AuthInputField";
 import Form from "../../../components/form";
 import * as yup from "yup";
 import AuthFormContainer from "../../../components/containers/AuthFormContainer";
 import { useNavigation } from "@react-navigation/native";
-import client from "../../../api/client";
+import client from "@src/api/client";
 import { useDispatch, useSelector } from "react-redux";
-import { authErrorHandler } from "../../../errors/authErrorHandler";
-import appTextSource from "../../../utils/appTextSource";
-import { getSettingsState } from "../../../store/settings";
+import { authErrorHandler } from "@src/errors/authErrorHandler";
+import appTextSource from "@src/utils/appTextSource";
+import { getSettingsState } from "@src/store/settings";
 
 const LostPassword = () => {
   const { appLang } = useSelector(getSettingsState);

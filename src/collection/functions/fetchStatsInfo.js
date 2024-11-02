@@ -1,7 +1,7 @@
-import clientWithAuth from "../../api/clientWithAuth";
+import clientWithAuth from "@src/api/clientWithAuth";
 import { updateStatsState } from "./updateStatsState";
-import { updateBusyState } from "../../store/stats";
-import { errorHandler } from "../../errors/errorHandler";
+import { updateBusyState } from "@src/store/stats";
+import { errorHandler } from "@src/errors/errorHandler";
 
 export const fetchStatsInfo = async (dispatch) => {
   dispatch(updateBusyState(true));

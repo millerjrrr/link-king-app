@@ -6,21 +6,21 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
-import colors from "../../utils/colors";
+import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
 import AppNotification from "../AppNotification";
-import LinkKingLogo from "../../ui/Graphics/LinkKingLogo";
-import { getSettingsState } from "../../store/settings";
-import HelpButton from "../../ui/Buttons/HelpButton";
-import FourCrowns from "../../ui/Graphics/FourCrowns";
+import LinkKingLogo from "../Graphics/LinkKingLogo";
+import { getSettingsState } from "@src/store/settings";
+import HelpButton from "../Buttons/HelpButton";
+import FourCrowns from "../Graphics/FourCrowns";
 import {
   StackActions,
   useNavigation,
 } from "@react-navigation/native";
-import BackButton from "../../ui/Buttons/BackButton";
+import BackButton from "../Buttons/BackButton";
 import { LinearGradient } from "expo-linear-gradient";
 import styled from "styled-components";
-import AppText from "../../ui/AppText";
+import AppText from "../AppText";
 
 export const FadeBackgroundView = styled(LinearGradient)`
   position: absolute;

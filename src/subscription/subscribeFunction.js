@@ -1,9 +1,9 @@
 import { Platform } from "react-native";
 import Purchases from "react-native-purchases";
 import APIKeys from "./APIKeys";
-import { updateNotification } from "../store/notification";
-import { errorHandler } from "../errors/errorHandler";
-import { refreshPage } from "../store/auth";
+import { updateNotification } from "@src/store/notification";
+import { errorHandler } from "@src/errors/errorHandler";
+import { refreshPage } from "@src/store/auth";
 
 const subscribeFunction = async ({ dispatch, setBusy }) => {
   try {

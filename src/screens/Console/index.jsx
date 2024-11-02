@@ -1,20 +1,20 @@
-import InputAndTimerContainer from "./../../console/InputAndTimerContainer";
+import InputAndTimerContainer from "./components/InputAndTimerContainer";
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import OptionsContainer from "./../../console/OptionsContainer";
-import KeyboardAndStartButton from "./../../console/KeyboardAndStartButton";
-import Tail from "./../../console/Tail";
-import ReadWordButton from "./../../console/ReadWordButton";
-import StatsContainer from "./../../console/StatsContainer";
-import InnerTabContainer from "./../../components/containers/InnerTabContainer";
-import UseEffects from "./../../console/UseEffects";
-import { getSettingsState } from "./../../store/settings";
-import appTextSource from "./../../utils/appTextSource";
-import AppModal from "./../../ui/AppModal";
+import OptionsContainer from "./components/OptionsContainer";
+import KeyboardAndStartButton from "./components/KeyboardAndStartButton";
+import Tail from "./components/Tail";
+import ReadWordButton from "./components/ReadWordButton";
+import StatsContainer from "./components/StatsContainer";
+import InnerTabContainer from "../../components/containers/InnerTabContainer";
+import UseEffects from "../../hooks/console/UseEffects";
+import { getSettingsState } from "@src/store/settings";
+import appTextSource from "@src/utils/appTextSource";
+import AppModal from "../../components/AppModal";
 import {
   getAuthState,
   refreshPage,
-} from "./../../store/auth";
+} from "@src/store/auth";
 
 const Console = ({ navigation }) => {
   const dispatch = useDispatch();

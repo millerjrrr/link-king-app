@@ -1,11 +1,11 @@
 import { StyleSheet } from "react-native";
 import AuthFormContainer from "../../../components/containers/AuthFormContainer";
-import appTextSource from "../../../utils/appTextSource";
+import appTextSource from "@src/utils/appTextSource";
 import { useSelector } from "react-redux";
-import { getSettingsState } from "../../../store/settings";
-import AuthButton from "../../../ui/Buttons/AuthButton";
+import { getSettingsState } from "@src/store/settings";
+import AuthButton from "../../../components/Buttons/AuthButton";
 import { Fontisto } from "@expo/vector-icons";
-import AppText from "../../../ui/AppText";
+import AppText from "../../../components/AppText";
 
 const CheckYourEmail = ({ navigation }) => {
   const { appLang } = useSelector(getSettingsState);

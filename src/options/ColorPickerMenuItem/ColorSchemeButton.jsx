@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
-import AppButton from "../../ui/Buttons/AppButton";
-import colors from "../../utils/colors";
+import AppButton from "../../components/Buttons/AppButton";
+import colors from "@src/utils/colors";
 import {
   getSettingsState,
   updateSettings,
-} from "../../store/settings";
+} from "@src/store/settings";
 import { StatusBar } from "react-native";
-import { saveToAsyncStorage } from "../../utils/asyncStorage";
+import { saveToAsyncStorage } from "@src/utils/asyncStorage";
 
 const ColorSchemeButton = ({ cs }) => {
   const backgroundColor = colors[cs].SECONDARY;

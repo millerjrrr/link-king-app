@@ -3,7 +3,7 @@ import {
   updateLevelBreakdown,
   updateUserGameData,
   updateUserName,
-} from "../../store/stats";
+} from "@src/store/stats";
 
 export const updateStatsState = ({ data, dispatch }) => {
   const { levelBreakdown, userGameData, username } = data;

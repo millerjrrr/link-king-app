@@ -7,20 +7,20 @@ import {
   updateToken,
   updateTrialDays,
   updateVip,
-} from "../store/auth";
+} from "@src/store/auth";
 import { useEffect, useState } from "react";
-import colors from "../utils/colors";
-import client from "../api/client";
-import catchAsyncError from "../api/catchError";
+import colors from "@src/utils/colors";
+import client from "@src/api/client";
+import catchAsyncError from "@src/api/catchError";
 import {
   getFromAsyncStorage,
   saveToAsyncStorage,
-} from "../utils/asyncStorage";
-import { updateSettings } from "../store/settings";
+} from "@src/utils/asyncStorage";
+import { updateSettings } from "@src/store/settings";
 import { AppState, StatusBar } from "react-native";
-import { authErrorHandler } from "../errors/authErrorHandler";
+import { authErrorHandler } from "@src/errors/authErrorHandler";
 import * as Localization from "expo-localization";
-import logOut from "../utils/logOut";
+import logOut from "@src/utils/logOut";
 import { useNavigation } from "@react-navigation/native";
 
 const AppNavigatorUseEffects = () => {

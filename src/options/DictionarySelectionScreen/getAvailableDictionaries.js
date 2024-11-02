@@ -1,5 +1,5 @@
-import clientWithAuth from "../../api/clientWithAuth";
-import languageNameCodeMap from "../../utils/languageNameCodeMap";
+import clientWithAuth from "@src/api/clientWithAuth";
+import languageNameCodeMap from "@src/utils/languageNameCodeMap";
 
 const getAvailableDictionaries = async ({
   appLang,

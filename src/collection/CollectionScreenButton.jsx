@@ -1,9 +1,9 @@
 import { StyleSheet, TouchableOpacity } from "react-native";
-import colors from "../utils/colors";
+import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
 import { AntDesign } from "@expo/vector-icons";
-import { getSettingsState } from "../store/settings";
-import appShadow from "../utils/appShadow";
+import { getSettingsState } from "@src/store/settings";
+import appShadow from "@src/utils/appShadow";
 
 const CollectionScreenButton = ({ onPress, iconName }) => {
   const { colorScheme, golden } = useSelector(

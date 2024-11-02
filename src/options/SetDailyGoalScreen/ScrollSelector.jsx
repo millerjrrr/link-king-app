@@ -1,12 +1,12 @@
 import { View } from "react-native";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { getSettingsState } from "../../store/settings";
-import colors from "../../utils/colors";
+import { getSettingsState } from "@src/store/settings";
+import colors from "@src/utils/colors";
 import { LinearGradient } from "expo-linear-gradient";
 import ScrollPicker from "react-native-wheel-scrollview-picker";
 import React from "react";
-import AppText from "../../ui/AppText";
+import AppText from "../../components/AppText";
 
 const Column = styled(View)`
   position: relative;

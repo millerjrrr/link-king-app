@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import { getConsoleState } from "../../store/console";
-import AppText from "../../ui/AppText";
+import { getConsoleState } from "@src/store/console";
+import AppText from "../../components/AppText";
 
 const Target = () => {
   const { attempt } = useSelector(getConsoleState);

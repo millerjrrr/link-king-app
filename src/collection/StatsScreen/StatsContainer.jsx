@@ -1,10 +1,10 @@
 import { View, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
-import { getStatsState } from "../../store/stats";
+import { getStatsState } from "@src/store/stats";
 import { timeInStyle } from "../functions/timeInStyle";
-import StatsIcon from "../../console/StatsIcon";
-import { getSettingsState } from "../../store/settings";
-import colors from "../../utils/colors";
+import StatsIcon from "../../screens/Console/components/StatsIcon";
+import { getSettingsState } from "@src/store/settings";
+import colors from "@src/utils/colors";
 
 const StatsContainer = ({ size = 22 }) => {
   const {

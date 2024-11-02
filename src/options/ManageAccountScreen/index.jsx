@@ -1,19 +1,19 @@
-import appTextSource from "../../utils/appTextSource";
+import appTextSource from "@src/utils/appTextSource";
 import { useDispatch, useSelector } from "react-redux";
-import { getSettingsState } from "../../store/settings";
+import { getSettingsState } from "@src/store/settings";
 import ManageAccountMenuItem from "./ManageAccountMenuItem";
 import PopUpContainer from "../../components/containers/PopUpContainer";
-import BusyWrapper from "../../ui/Loader/BusyWrapper";
+import BusyWrapper from "../../components/Loader/BusyWrapper";
 import {
   getAuthState,
   updateBusyState,
   updateEmail,
   updateName,
-} from "../../store/auth";
-import { errorHandler } from "../../errors/errorHandler";
+} from "@src/store/auth";
+import { errorHandler } from "@src/errors/errorHandler";
 import { useNavigation } from "@react-navigation/native";
 import { useEffect, useState } from "react";
-import clientWithAuth from "../../api/clientWithAuth";
+import clientWithAuth from "@src/api/clientWithAuth";
 
 const ManageAccountScreen = () => {
   const { appLang } = useSelector(getSettingsState);

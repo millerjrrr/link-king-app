@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
-import { getSettingsState } from "../../store/settings";
+import { getSettingsState } from "@src/store/settings";
 import { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import ColorPicker from "./ColorPicker";
 import OptionsMenuItemContainer from "../components/OptionsMenuItemContainer";
-import appTextSource from "../../utils/appTextSource/index";
+import appTextSource from "@src/utils/appTextSource/index";
 import MenuItemLink from "../components/MenuItemLink";
 
 const ColorPickerMenuItem = () => {

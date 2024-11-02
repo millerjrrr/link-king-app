@@ -1,7 +1,7 @@
 import { Image } from "react-native";
 import { useSelector } from "react-redux";
-import colors from "../../utils/colors";
-import { getSettingsState } from "../../store/settings";
+import colors from "@src/utils/colors";
+import { getSettingsState } from "@src/store/settings";
 
 const LinkKingIcon = () => {
   const { colorScheme, golden } = useSelector(

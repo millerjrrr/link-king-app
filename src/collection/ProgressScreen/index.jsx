@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import { getStatsState } from "../../store/stats";
+import { getStatsState } from "@src/store/stats";
 import { useEffect, useRef } from "react";
 import { fetchStatsInfo } from "../functions/fetchStatsInfo";
 import StatsPanel from "./StatsPanel";
-import BusyWrapper from "../../ui/Loader/BusyWrapper";
+import BusyWrapper from "../../components/Loader/BusyWrapper";
 import {
   StackActions,
   useNavigation,
@@ -11,7 +11,7 @@ import {
 import LinkKingIcon from "./LinkKingIcon";
 import RatingCircle from "./RatingCircle";
 import FlagBookImage from "./FlagBookImage";
-import BackButton from "../../ui/Buttons/BackButton";
+import BackButton from "../../components/Buttons/BackButton";
 import ShareButton from "./ShareButton";
 import CongratsAndName from "./CongratsAndName";
 import ViewShot from "react-native-view-shot";
