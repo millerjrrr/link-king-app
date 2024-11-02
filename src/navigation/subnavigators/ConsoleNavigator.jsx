@@ -3,12 +3,12 @@ import {
   createStackNavigator,
   TransitionPresets,
 } from "@react-navigation/stack";
-import Console from "../../views/Console";
 import ProgressScreen from "../../collection/ProgressScreen";
 import HelpScreen from "../../console/HelpScreen";
 import DictionarySelectionScreen from "../../options/DictionarySelectionScreen";
 import WordInfoScreen from "../../collection/WordInfoScreen";
 import EditTicketScreen from "../../collection/WordInfoScreen/EditTicketScreen";
+import Console from "../../screens/Console";
 
 const ConsoleStack = createStackNavigator();
 

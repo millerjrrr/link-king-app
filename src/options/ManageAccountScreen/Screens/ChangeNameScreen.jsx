@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import appTextSource from "../../../utils/appTextSource";
-import Name from "../../../views/auth/SignUp/Name";
 import { getSettingsState } from "../../../store/settings";
+import Name from "../../../screens/auth/SignUp/Name";
 
 const ChangeNameScreen = () => {
   const { appLang } = useSelector(getSettingsState);

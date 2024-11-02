@@ -1,11 +1,11 @@
-import InnerTabContainer from "../components/containers/InnerTabContainer";
-import OptionsMenuItem from "../options/components/OptionsMenuItem";
+import InnerTabContainer from "./../../components/containers/InnerTabContainer";
+import OptionsMenuItem from "./../../options/components/OptionsMenuItem";
 import { useNavigation } from "@react-navigation/native";
-import ColorPickerMenuItem from "../options/ColorPickerMenuItem";
-import ModalTypeMenuItem from "../options/components/ModalTypeMenuItem";
-import appTextSource from "../utils/appTextSource";
+import ColorPickerMenuItem from "./../../options/ColorPickerMenuItem";
+import ModalTypeMenuItem from "./../../options/components/ModalTypeMenuItem";
+import appTextSource from "./../../utils/appTextSource";
 import { useSelector } from "react-redux";
-import { getSettingsState } from "../store/settings";
+import { getSettingsState } from "./../../store/settings";
 
 const Options = () => {
   const navigation = useNavigation();

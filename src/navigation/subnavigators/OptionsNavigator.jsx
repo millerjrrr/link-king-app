@@ -4,10 +4,10 @@ import {
   TransitionPresets,
 } from "@react-navigation/stack";
 import SetDailyGoalScreen from "../../options/SetDailyGoalScreen";
-import Options from "../../views/Options";
 import VoiceSelectionScreen from "../../options/VoiceSelectionScreen";
 import DictionarySelectionScreen from "../../options/DictionarySelectionScreen";
 import ManageAccountNavigator from "./ManageAccountNavigator";
+import Options from "../../screens/Options";
 const OptionsStack = createStackNavigator();
 
 const OptionsNavigator = () => {
