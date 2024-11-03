@@ -5,7 +5,7 @@ import {
   getNotificationState,
   updateNotification,
 } from "@src/store/notification";
-import colors from "@assets/themes/colors";
+import colors from "@src/utils/colors";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,

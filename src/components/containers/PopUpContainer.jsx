@@ -6,7 +6,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
-import colors from "@assets/themes/colors";
+import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
 import AppNotification from "../AppNotification";
 import LinkKingLogo from "../Graphics/LinkKingLogo";

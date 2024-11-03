@@ -7,7 +7,7 @@ import {
   Platform,
   StatusBar,
 } from "react-native";
-import colors from "@assets/themes/colors";
+import colors from "@src/utils/colors";
 import AppNotification from "../AppNotification";
 import FourCrowns from "../Graphics/FourCrowns";
 import LinkKingLogo from "../Graphics/LinkKingLogo";

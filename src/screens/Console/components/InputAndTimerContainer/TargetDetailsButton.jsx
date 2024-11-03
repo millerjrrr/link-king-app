@@ -1,6 +1,6 @@
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import colors from "@assets/themes/colors";
+import colors from "@src/utils/colors";
 import { useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
 import { getConsoleState } from "@src/store/console";

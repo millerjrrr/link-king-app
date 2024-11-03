@@ -1,36 +1,35 @@
-import { StyleSheet, View } from "react-native";
-import colors from "@assets/themes/colors";
+import { StyleSheet } from "react-native";
+import colors from "@src/utils/colors";
 import RefreshButton from "./RefreshButton";
 import { getSettingsState } from "@src/store/settings";
 import { useSelector } from "react-redux";
 import appTextSource from "../utils/appTextSource";
 import AppText from "@src/components/AppText";
+import AuthFormContainer from "@src/components/containers/AuthFormContainer";
+import AntDesign from "@expo/vector-icons/AntDesign";
 
 const InternetConnectionPage = ({ refresh }) => {
   const { colorScheme, appLang } = useSelector(
     getSettingsState,
   );
-  const color = colors[colorScheme].RED;
-  const backgroundColor = colors[colorScheme].PRIMARY;
+  const color = colors[colorScheme].CONTRAST[0];
+
   const { title, message } =
     appTextSource(appLang).internetConnectionPage;
   return (
-    <View style={[styles.container, { backgroundColor }]}>
-      <AppText style={{ fontsize: 40, color }}>
-        {title}
+    <AuthFormContainer heading={title} back={false}>
+      <AntDesign
+        name="disconnect"
+        size={100}
+        color={color}
+        style={{ padding: 20 }}
+      />
+      <AppText style={{ paddingVertical: 10 }}>
+        {message}
       </AppText>
-      <AppText style={{ color }}>{message}</AppText>
       <RefreshButton refresh={refresh} />
-    </View>
+    </AuthFormContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
 
 export default InternetConnectionPage;

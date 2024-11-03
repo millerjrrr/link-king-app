@@ -6,7 +6,7 @@ import appTextSource from "@src/utils/appTextSource";
 import AuthButton from "../../components/Buttons/AuthButton";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import colors from "@assets/themes/colors";
+import colors from "@src/utils/colors";
 import SignUpAppLink from "../../components/SignUpAppLink";
 
 const Welcome = () => {

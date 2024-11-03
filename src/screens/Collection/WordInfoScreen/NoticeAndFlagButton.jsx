@@ -1,4 +1,4 @@
-import colors from "@assets/themes/colors";
+import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
 import RedSafetyButton from "@src/components/Buttons/RedSafetyButton";
 import { getSettingsState } from "@src/store/settings";

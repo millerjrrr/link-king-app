@@ -1,6 +1,6 @@
 import { View, StyleSheet, Pressable } from "react-native";
-import AppInput from "../AppInput";
-import colors from "@assets/themes/colors";
+import AppInput from "./AppInput";
+import colors from "@src/utils/colors";
 import { useFormikContext } from "formik";
 import Animated, {
   useAnimatedStyle,
@@ -12,7 +12,7 @@ import Animated, {
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { getSettingsState } from "@src/store/settings";
-import AppText from "../AppText";
+import AppText from "./AppText";
 
 const AuthInputField = (props) => {
   const { colorScheme } = useSelector(getSettingsState);
@@ -78,7 +78,6 @@ const AuthInputField = (props) => {
         {/*rightIcon and is necessary*/}
         <AppInput
           {...{
-            // onSubmitEditing: handleSubmit,
             placeholder,
             keyboardType,
             autoCapitalize,

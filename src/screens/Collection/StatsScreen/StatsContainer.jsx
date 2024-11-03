@@ -4,7 +4,7 @@ import { getStatsState } from "@src/store/stats";
 import { timeInStyle } from "@src/utils/timeInStyle";
 import StatsIcon from "@src/screens/Console/components/StatsIcon";
 import { getSettingsState } from "@src/store/settings";
-import colors from "@assets/themes/colors";
+import colors from "@src/utils/colors";
 
 const StatsContainer = ({ size = 22 }) => {
   const {

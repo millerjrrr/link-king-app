@@ -2,7 +2,7 @@ import clientWithAuth from "@src/api/clientWithAuth";
 import { errorHandler } from "@src/errors/errorHandler";
 import { updateNotification } from "@src/store/notification";
 import appTextSource from "@src/utils/appTextSource";
-import logOut from "@src/utils/logOut";
+import logOut from "@src/utils/logOutDEP";
 
 const deleteUserAccount = async ({
   password,

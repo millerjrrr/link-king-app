@@ -1,6 +1,6 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
-import colors from "@assets/themes/colors";
+import colors from "@src/utils/colors";
 import { getSettingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import {

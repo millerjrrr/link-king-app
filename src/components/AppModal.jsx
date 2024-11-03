@@ -1,5 +1,5 @@
 import { TouchableOpacity, View } from "react-native";
-import colors from "@assets/themes/colors";
+import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
 import { getSettingsState } from "@src/store/settings";
 import styled from "styled-components";

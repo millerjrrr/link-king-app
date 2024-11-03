@@ -1,6 +1,5 @@
-import SubmitBtn from "../../components/form/SubmitBtn";
-import AuthInputField from "../../components/form/AuthInputField";
-import Form from "../../components/form";
+import SubmitButton from "../../components/Buttons/SubmitButton";
+import AuthInputField from "../../components/AuthInputField";
 import * as yup from "yup";
 import AuthFormContainer from "../../components/containers/AuthFormContainer";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,6 +15,7 @@ import { authErrorHandler } from "@src/errors/authErrorHandler";
 import client from "@src/api/client";
 import SignUpAppLink from "../../components/SignUpAppLink";
 import { saveToAsyncStorage } from "@src/utils/asyncStorage";
+import { Formik } from "formik";
 
 const VerificationCode = () => {
   const { appLang } = useSelector(getSettingsState);
@@ -83,7 +83,7 @@ const VerificationCode = () => {
         nologo: true,
       }}
     >
-      <Form
+      <Formik
         {...{ onSubmit, initialValues, validationSchema }}
       >
         <>
@@ -96,9 +96,9 @@ const VerificationCode = () => {
               containerStyle: { marginBottom: 20 },
             }}
           />
-          <SubmitBtn {...{ title: verify }} />
+          <SubmitButton {...{ title: verify }} />
         </>
-      </Form>
+      </Formik>
       <SignUpAppLink />
     </AuthFormContainer>
   );

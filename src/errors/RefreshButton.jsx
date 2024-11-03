@@ -4,7 +4,7 @@ import {
   StyleSheet,
   View,
 } from "react-native";
-import colors from "@assets/themes/colors";
+import colors from "@src/utils/colors";
 import { Ionicons } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { refreshPage } from "@src/store/auth";
@@ -15,7 +15,7 @@ const RefreshButton = ({ size = 200 }) => {
   const dispatch = useDispatch();
 
   const { colorScheme } = useSelector(getSettingsState);
-  const color = colors[colorScheme].RED;
+  const color = colors[colorScheme].CONTRAST[0];
   const backgroundColor = colors[colorScheme].SECONDARY;
 
   return (

@@ -3,7 +3,7 @@ import { getSettingsState } from "@src/store/settings";
 import DescriptionWrapper from "./DescriptionWrapper";
 import { Video, ResizeMode } from "expo-av";
 import { useRef } from "react";
-import colors from "@assets/themes/colors";
+import colors from "@src/utils/colors";
 import { getConsoleState } from "@src/store/console";
 import { Image, View } from "react-native";
 

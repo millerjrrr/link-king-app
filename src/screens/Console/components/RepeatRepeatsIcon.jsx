@@ -1,6 +1,6 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { StyleSheet, TouchableOpacity } from "react-native";
-import colors from "@assets/themes/colors";
+import colors from "@src/utils/colors";
 import { useDispatch, useSelector } from "react-redux";
 import { getSettingsState } from "@src/store/settings";
 import { useState } from "react";

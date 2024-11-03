@@ -8,7 +8,7 @@ const initialState = {
     id: "",
     target: "",
     solutions: [],
-    speechLang: "es-ES",
+    speechLang: "es",
   },
   options: { sound: true, blurred: false, timer: true },
   stats: {

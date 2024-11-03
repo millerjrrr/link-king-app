@@ -2,7 +2,7 @@ import { TouchableOpacity } from "react-native";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { getSettingsState } from "@src/store/settings";
-import colors from "@assets/themes/colors";
+import colors from "@src/utils/colors";
 import AppText from "@src/components/AppText";
 
 const MenuItemName = styled(AppText)`

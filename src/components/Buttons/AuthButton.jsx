@@ -3,7 +3,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-import colors from "@assets/themes/colors";
+import colors from "@src/utils/colors";
 import BusyWrapper from "../Loader/BusyWrapper";
 import appShadow from "@src/utils/appShadow";
 import { useSelector } from "react-redux";
@@ -41,7 +41,6 @@ const AuthButton = ({ title, busy, onPress }) => {
 
 const styles = StyleSheet.create({
   container: {
-    // paddingTop: 30,
     width: "100%",
     zIndex: 10,
   },

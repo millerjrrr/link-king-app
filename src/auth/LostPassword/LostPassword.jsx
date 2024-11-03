@@ -1,20 +1,23 @@
 import { StyleSheet, View } from "react-native";
-import SubmitBtn from "../../components/form/SubmitBtn";
+import SubmitButton from "../../components/Buttons/SubmitButton";
 import AppLink from "../../components/AppLink";
-import AuthInputField from "../../components/form/AuthInputField";
-import Form from "../../components/form";
-import * as yup from "yup";
+import AuthInputField from "../../components/AuthInputField";
 import AuthFormContainer from "../../components/containers/AuthFormContainer";
-import { useNavigation } from "@react-navigation/native";
 import client from "@src/api/client";
-import { useDispatch, useSelector } from "react-redux";
-import { authErrorHandler } from "@src/errors/authErrorHandler";
+import { useSelector } from "react-redux";
 import appTextSource from "@src/utils/appTextSource";
 import { getSettingsState } from "@src/store/settings";
+import useCatchAsync from "@src/hooks/useCatchAsync";
+import * as yup from "yup";
+import { Formik } from "formik";
 
-const LostPassword = () => {
+const LostPassword = ({ navigation }) => {
   const { appLang } = useSelector(getSettingsState);
-  const { email } = appTextSource(appLang).auth.forms;
+  const {
+    forms: { email },
+    titles: { sendLink, signIn, signUp },
+    lostPassword: { heading, subHeading },
+  } = appTextSource(appLang).auth;
 
   const validationSchema = yup.object({
     email: yup
@@ -26,11 +29,10 @@ const LostPassword = () => {
   const initialValues = {
     email: "",
   };
-  const dispatch = useDispatch();
 
-  const navigation = useNavigation();
+  const catchAsync = useCatchAsync();
 
-  const onSubmit = async (values, actions) => {
+  const onSubmit = catchAsync(async (values, actions) => {
     actions.setSubmitting(true);
     try {
       const { data } = await client.post(
@@ -47,27 +49,20 @@ const LostPassword = () => {
       );
       if (data.status === "success")
         navigation.navigate("CheckYourEmail");
-    } catch (error) {
-      authErrorHandler(error, dispatch);
+    } finally {
+      actions.setSubmitting(false);
     }
-    actions.setSubmitting(false);
-  };
-
-  const { sendLink, signIn, signUp } =
-    appTextSource(appLang).auth.titles;
-
-  const { heading, subHeading } =
-    appTextSource(appLang).auth.lostPassword;
+  });
 
   return (
     <AuthFormContainer
-      {...{
-        heading,
-        subHeading,
-      }}
+      heading={heading}
+      subHeading={subHeading}
     >
-      <Form
-        {...{ onSubmit, initialValues, validationSchema }}
+      <Formik
+        onSubmit={onSubmit}
+        initialValues={initialValues}
+        validationSchema={validationSchema}
       >
         <>
           <AuthInputField
@@ -97,9 +92,9 @@ const LostPassword = () => {
               }}
             />
           </View>
-          <SubmitBtn {...{ title: sendLink }} />
+          <SubmitButton {...{ title: sendLink }} />
         </>
-      </Form>
+      </Formik>
     </AuthFormContainer>
   );
 };

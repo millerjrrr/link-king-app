@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSettingsState } from "@src/store/settings";
 import { updateNotification } from "@src/store/notification";
 import appTextSource from "@src/utils/appTextSource";
-import colors from "@assets/themes/colors";
+import colors from "@src/utils/colors";
 import appShadow from "@src/utils/appShadow";
 
 const Container = styled(TouchableOpacity)`

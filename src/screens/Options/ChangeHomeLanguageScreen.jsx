@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import PopUpContainer from "../../components/containers/PopUpContainer";
 import BloodRedCover from "../../components/BloodRedCover";
 import { getSettingsState } from "@src/store/settings";
-import AuthInputField from "../../components/form/AuthInputField";
-import Form from "../../components/form";
+import AuthInputField from "../../components/AuthInputField";
 import * as yup from "yup";
 import PasswordVisibilityIcon from "../../components/PasswordVisibilityIcon";
 import appTextSource from "@src/utils/appTextSource";
@@ -18,8 +17,9 @@ import FormikSafetyButton from "../../components/Buttons/FormikSafetyButton";
 import changeUserHomeLanguage from "../../utils/changeUserHomeLanguage";
 import FlagImage from "../../components/Graphics/FlagImage";
 import { AntDesign } from "@expo/vector-icons";
-import colors from "@assets/themes/colors";
+import colors from "@src/utils/colors";
 import { useNavigation } from "@react-navigation/native";
+import { Formik } from "formik";
 
 const ChangeHomeLanguageScreen = ({ route }) => {
   const newLanguage = route.params.code;
@@ -98,7 +98,7 @@ const ChangeHomeLanguageScreen = ({ route }) => {
       >
         {changeHomeLanguageDetails}
       </AppText>
-      <Form
+      <Formik
         {...{
           onSubmit,
           initialValues,
@@ -142,7 +142,7 @@ const ChangeHomeLanguageScreen = ({ route }) => {
             </View>
           </TouchableWithoutFeedback>
         </View>
-      </Form>
+      </Formik>
     </PopUpContainer>
   );
 };

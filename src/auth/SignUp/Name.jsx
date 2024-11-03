@@ -1,18 +1,15 @@
-import SubmitBtn from "../../components/form/SubmitBtn";
-import AuthInputField from "../../components/form/AuthInputField";
-import Form from "../../components/form";
+import SubmitButton from "../../components/Buttons/SubmitButton";
+import AuthInputField from "../../components/AuthInputField";
 import * as yup from "yup";
 import AuthFormContainer from "../../components/containers/AuthFormContainer";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { getSettingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
-import {
-  getAuthState,
-  updateName,
-} from "@src/store/auth";
+import { getAuthState, updateName } from "@src/store/auth";
 import updateNameOnServer from "../../utils/updateNameOnServer";
 import SignUpAppLink from "../../components/SignUpAppLink";
+import { Formik } from "formik";
 
 const Name = ({ updateNameFunction, buttonTitle }) => {
   const { appLang } = useSelector(getSettingsState);
@@ -63,7 +60,7 @@ const Name = ({ updateNameFunction, buttonTitle }) => {
     <AuthFormContainer
       {...{ heading, subHeading, nologo: true }}
     >
-      <Form
+      <Formik
         {...{ onSubmit, initialValues, validationSchema }}
       >
         <>
@@ -75,9 +72,11 @@ const Name = ({ updateNameFunction, buttonTitle }) => {
               containerStyle: { marginBottom: 20 },
             }}
           />
-          <SubmitBtn {...{ title: buttonTitle || next }} />
+          <SubmitButton
+            {...{ title: buttonTitle || next }}
+          />
         </>
-      </Form>
+      </Formik>
       {!updateNameFunction ? <SignUpAppLink /> : null}
     </AuthFormContainer>
   );

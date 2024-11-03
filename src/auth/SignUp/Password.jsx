@@ -1,6 +1,5 @@
-import SubmitBtn from "../../components/form/SubmitBtn";
-import AuthInputField from "../../components/form/AuthInputField";
-import Form from "../../components/form";
+import SubmitButton from "../../components/Buttons/SubmitButton";
+import AuthInputField from "../../components/AuthInputField";
 import * as yup from "yup";
 import PasswordVisibilityIcon from "../../components/PasswordVisibilityIcon";
 import AuthFormContainer from "../../components/containers/AuthFormContainer";
@@ -17,6 +16,7 @@ import {
   updateUnverifiedUserId,
 } from "@src/store/auth";
 import SignUpAppLink from "../../components/SignUpAppLink";
+import { Formik } from "formik";
 
 const Password = () => {
   const { appLang } = useSelector(getSettingsState);
@@ -97,7 +97,7 @@ const Password = () => {
     <AuthFormContainer
       {...{ heading, subHeading, nologo: true }}
     >
-      <Form
+      <Formik
         {...{ onSubmit, initialValues, validationSchema }}
       >
         <>
@@ -117,9 +117,9 @@ const Password = () => {
               onRightIconPress: togglePasswordView,
             }}
           />
-          <SubmitBtn {...{ title: signUp }} />
+          <SubmitButton {...{ title: signUp }} />
         </>
-      </Form>
+      </Formik>
       <SignUpAppLink />
     </AuthFormContainer>
   );

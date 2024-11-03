@@ -13,7 +13,6 @@ const FourCrowns = ({ color, size = 96 }) => {
       {positions.map((position, index) => (
         <CrownUI
           key={`crown-${index}`}
-          //key isnt a prop, its different
           {...{
             position,
             size,

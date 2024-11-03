@@ -8,9 +8,10 @@ import Animated, {
   Easing,
 } from "react-native-reanimated";
 import { AntDesign } from "@expo/vector-icons";
-import colors from "@assets/themes/colors";
+import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
 import { getSettingsState } from "@src/store/settings";
+import FlagImage from "../Graphics/FlagImage";
 
 const Loader = ({ size = 24, color, backgroundColor }) => {
   const { colorScheme, golden } = useSelector(
@@ -64,6 +65,13 @@ const Loader = ({ size = 24, color, backgroundColor }) => {
           }}
         />
       </Animated.View>
+      <View
+        style={{
+          position: "absolute",
+        }}
+      >
+        <FlagImage flag1={"smallCrown"} scale={size / 48} />
+      </View>
     </View>
   );
 };

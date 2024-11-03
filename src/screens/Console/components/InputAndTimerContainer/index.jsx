@@ -1,6 +1,6 @@
 import { StyleSheet, View } from "react-native";
 import Timer from "./Timer";
-import colors from "@assets/themes/colors";
+import colors from "@src/utils/colors";
 import { useDispatch, useSelector } from "react-redux";
 import { getConsoleState } from "@src/store/console";
 import TargetDetailsButton from "./TargetDetailsButton";

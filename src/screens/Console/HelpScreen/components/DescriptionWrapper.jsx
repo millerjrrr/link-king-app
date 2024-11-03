@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { getSettingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
-import colors from "@assets/themes/colors";
+import colors from "@src/utils/colors";
 import {
   CardContainer,
   ComponentDesc,

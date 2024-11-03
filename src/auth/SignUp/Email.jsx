@@ -1,18 +1,15 @@
 import { StyleSheet } from "react-native";
-import SubmitBtn from "../../components/form/SubmitBtn";
-import AuthInputField from "../../components/form/AuthInputField";
-import Form from "../../components/form";
+import SubmitButton from "../../components/Buttons/SubmitButton";
+import AuthInputField from "../../components/AuthInputField";
 import * as yup from "yup";
 import AuthFormContainer from "../../components/containers/AuthFormContainer";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { getSettingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
-import {
-  getAuthState,
-  updateEmail,
-} from "@src/store/auth";
+import { getAuthState, updateEmail } from "@src/store/auth";
 import SignUpAppLink from "../../components/SignUpAppLink";
+import { Formik } from "formik";
 
 const Email = () => {
   const { appLang } = useSelector(getSettingsState);
@@ -52,7 +49,7 @@ const Email = () => {
     <AuthFormContainer
       {...{ heading, subHeading, nologo: true }}
     >
-      <Form
+      <Formik
         {...{ onSubmit, initialValues, validationSchema }}
       >
         <>
@@ -66,9 +63,9 @@ const Email = () => {
               containerStyle: { marginBottom: 20 },
             }}
           />
-          <SubmitBtn {...{ title: next }} />
+          <SubmitButton {...{ title: next }} />
         </>
-      </Form>
+      </Formik>
       <SignUpAppLink />
     </AuthFormContainer>
   );

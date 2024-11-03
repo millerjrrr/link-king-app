@@ -2,7 +2,7 @@ import { useState } from "react";
 import { View, StyleSheet } from "react-native";
 import LevelLine from "./LevelLine";
 import { useSelector } from "react-redux";
-import colors from "@assets/themes/colors";
+import colors from "@src/utils/colors";
 import { getSettingsState } from "@src/store/settings";
 import AppText from "@src/components/AppText";
 

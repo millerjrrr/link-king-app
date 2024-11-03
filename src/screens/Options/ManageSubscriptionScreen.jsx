@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import colors from "@assets/themes/colors";
+import colors from "@src/utils/colors";
 import { FontAwesome5 } from "@expo/vector-icons";
 import styled from "styled-components";
 import { getAuthState } from "@src/store/auth";

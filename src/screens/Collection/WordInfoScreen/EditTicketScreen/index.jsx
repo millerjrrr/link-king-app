@@ -2,9 +2,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSettingsState } from "@src/store/settings";
 import * as yup from "yup";
 import AuthFormContainer from "../../../../components/containers/AuthFormContainer";
-import Form from "../../../../components/form";
-import AuthInputField from "../../../../components/form/AuthInputField";
-import SubmitBtn from "../../../../components/form/SubmitBtn";
+import AuthInputField from "../../../../components/AuthInputField";
+import SubmitButton from "../../../../components/Buttons/SubmitButton";
 import { ScrollView } from "react-native";
 import { View } from "react-native";
 import { normalize } from "@src/utils/normalize";
@@ -15,6 +14,7 @@ import {
   useNavigation,
 } from "@react-navigation/native";
 import { useEffect } from "react";
+import { Formik } from "formik";
 
 const EditTicketScreen = ({ route }) => {
   const { appLang } = useSelector(getSettingsState);
@@ -95,7 +95,7 @@ const EditTicketScreen = ({ route }) => {
         popUp: true,
       }}
     >
-      <Form
+      <Formik
         {...{ onSubmit, initialValues, validationSchema }}
       >
         <>
@@ -128,11 +128,11 @@ const EditTicketScreen = ({ route }) => {
               width: "100%",
             }}
           >
-            <SubmitBtn {...{ title: save }} />
+            <SubmitButton {...{ title: save }} />
           </View>
           <View {...{ style: { height: 150 } }} />
         </>
-      </Form>
+      </Formik>
     </AuthFormContainer>
   );
 };

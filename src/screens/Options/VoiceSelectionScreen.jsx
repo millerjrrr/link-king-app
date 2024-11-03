@@ -3,7 +3,7 @@ import styled from "styled-components";
 import PopUpContainer from "../../components/containers/PopUpContainer";
 import { useSelector } from "react-redux";
 import { getSettingsState } from "@src/store/settings";
-import colors from "@assets/themes/colors";
+import colors from "@src/utils/colors";
 import appTextSource from "@src/utils/appTextSource";
 import AuthButton from "@src/components/Buttons/AuthButton";
 import AppText from "@src/components/AppText";

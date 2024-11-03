@@ -51,11 +51,11 @@ const UseEffects = ({
       };
 
       const timeGoalMet =
-        timeGoal !== "" && time >= timeGoal * 60 * 1000;
+        timeGoal !== 0 && time >= timeGoal * 60 * 1000;
       const newWordsGoalMet =
-        newWordsGoal !== "" && newWords >= newWordsGoal;
+        newWordsGoal !== 0 && newWords >= newWordsGoal;
       const stepsGoalMet =
-        stepsGoal !== "" && steps >= stepsGoal;
+        stepsGoal !== 0 && steps >= stepsGoal;
 
       if (timeGoalMet || newWordsGoalMet || stepsGoalMet) {
         if (golden === 0) {

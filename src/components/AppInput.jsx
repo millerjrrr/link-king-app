@@ -1,5 +1,5 @@
 import { TextInput } from "react-native";
-import colors from "@assets/themes/colors";
+import colors from "@src/utils/colors";
 import appShadow from "@src/utils/appShadow";
 import { useSelector } from "react-redux";
 import { getSettingsState } from "@src/store/settings";

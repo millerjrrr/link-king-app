@@ -7,7 +7,7 @@ const initialState = {
   colorScheme: "dark",
   golden: 0,
   timeGoal: 3,
-  newWordsGoal: "",
+  newWordsGoal: 0,
   stepsGoal: 100,
   appLang: "en",
 };

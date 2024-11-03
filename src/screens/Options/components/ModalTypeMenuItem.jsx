@@ -6,8 +6,8 @@ import { updateNotification } from "@src/store/notification";
 import appTextSource from "@src/utils/appTextSource";
 import AppModal from "@src/components/AppModal";
 import MenuItemLink from "./MenuItemLink";
-import logOut from "@src/utils/logOut";
 import { getSettingsState } from "@src/store/settings";
+import useLogOut from "@src/hooks/authHooks/useLogOut";
 
 const ModalTypeMenuItem = ({ optionName }) => {
   const { appLang } = useSelector(getSettingsState);
@@ -16,6 +16,7 @@ const ModalTypeMenuItem = ({ optionName }) => {
     useState(false);
 
   const dispatch = useDispatch();
+  const logOut = useLogOut();
 
   const { subject: subjectText } =
     appTextSource(appLang).options.contactUs;
@@ -38,7 +39,7 @@ const ModalTypeMenuItem = ({ optionName }) => {
   };
 
   const logOutNow = async () => {
-    logOut(dispatch);
+    await logOut();
     setIsModalVisible(false);
   };
 

@@ -12,7 +12,7 @@ import {
   restoreDefaultGoals,
   updateSettings,
 } from "@src/store/settings";
-import colors from "@assets/themes/colors";
+import colors from "@src/utils/colors";
 import appTextSource from "@src/utils/appTextSource";
 import PopUpContainer from "@src/components/containers/PopUpContainer";
 import BusyWrapper from "@src/components/Loader/BusyWrapper";
@@ -80,15 +80,15 @@ const SetDailyGoalScreen = ({}) => {
   const dispatch = useDispatch();
 
   const updateTimeGoal = (value) => {
-    saveToAsyncStorage("time-goal", value + "");
+    saveToAsyncStorage("time-goal", value.toString());
     dispatch(updateSettings({ timeGoal: value }));
   };
   const updateNewWordsGoal = (value) => {
-    saveToAsyncStorage("new-words-goal", value + "");
+    saveToAsyncStorage("new-words-goal", value.toString());
     dispatch(updateSettings({ newWordsGoal: value }));
   };
   const updateStepsGoal = (value) => {
-    saveToAsyncStorage("steps-goal", value + "");
+    saveToAsyncStorage("steps-goal", value.toString());
     dispatch(updateSettings({ stepsGoal: value }));
   };
 
@@ -127,7 +127,7 @@ const SetDailyGoalScreen = ({}) => {
               {...{
                 onSelect: updateTimeGoal,
                 length: 60,
-                start: timeGoal === "" ? 0 : timeGoal,
+                start: timeGoal,
               }}
             />
           </GoalContainer>
@@ -143,8 +143,7 @@ const SetDailyGoalScreen = ({}) => {
               {...{
                 onSelect: updateNewWordsGoal,
                 length: 50,
-                start:
-                  newWordsGoal === "" ? 0 : newWordsGoal,
+                start: newWordsGoal,
               }}
             />
           </GoalContainer>
@@ -160,7 +159,7 @@ const SetDailyGoalScreen = ({}) => {
               {...{
                 onSelect: updateStepsGoal,
                 length: 500,
-                start: stepsGoal === "" ? 0 : stepsGoal,
+                start: stepsGoal,
               }}
             />
           </GoalContainer>

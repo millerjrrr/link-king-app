@@ -1,5 +1,5 @@
 import { Entypo } from "@expo/vector-icons";
-import colors from "@assets/themes/colors";
+import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
 import { LevelStarsContainer } from "./WordCardStyledComponents";
 import { getSettingsState } from "@src/store/settings";

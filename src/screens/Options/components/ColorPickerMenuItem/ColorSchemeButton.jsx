@@ -1,14 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
-import AppButton from "@src/components/Buttons/AppButton";
-import colors from "@assets/themes/colors";
+import colors from "@src/utils/colors";
 import {
   getSettingsState,
   updateSettings,
 } from "@src/store/settings";
-import { StatusBar } from "react-native";
+import {
+  StatusBar,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 import { saveToAsyncStorage } from "@src/utils/asyncStorage";
+import appShadow from "@src/utils/appShadow";
 
-const ColorSchemeButton = ({ cs }) => {
+const ColorSchemeButton = ({ cs, size = 30 }) => {
   const backgroundColor = colors[cs].SECONDARY;
   const { colorScheme, golden } = useSelector(
     getSettingsState,
@@ -25,16 +30,37 @@ const ColorSchemeButton = ({ cs }) => {
   };
 
   return (
-    <AppButton
-      {...{
-        backgroundColor,
-        color,
-        size: 30,
-        onPress,
-        margin: 0,
-      }}
-    />
+    <View style={styles.container}>
+      <TouchableOpacity
+        onPress={onPress}
+        style={[
+          styles.button,
+          {
+            shadowColor: color,
+            borderColor: color,
+            width: size,
+            backgroundColor,
+          },
+        ]}
+      />
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 10,
+  },
+  button: {
+    aspectRatio: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 1000,
+    ...appShadow(1),
+  },
+});
 
 export default ColorSchemeButton;

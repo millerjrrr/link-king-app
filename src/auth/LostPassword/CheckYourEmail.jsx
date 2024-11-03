@@ -6,30 +6,28 @@ import { getSettingsState } from "@src/store/settings";
 import AuthButton from "../../components/Buttons/AuthButton";
 import { Fontisto } from "@expo/vector-icons";
 import AppText from "../../components/AppText";
+import colors from "@src/utils/colors";
 
 const CheckYourEmail = ({ navigation }) => {
   const { appLang } = useSelector(getSettingsState);
   const { heading, subHeading, text, returnToLogin } =
     appTextSource(appLang).auth.passwordReset;
 
-  const onPress = () => navigation.navigate("SignIn");
-
   return (
-    <AuthFormContainer {...{ heading, subHeading }}>
+    <AuthFormContainer
+      heading={heading}
+      subHeading={subHeading}
+    >
       <Fontisto
-        {...{
-          name: "email",
-          size: 100,
-          color: "white",
-        }}
+        name="email"
+        size={100}
+        color={colors.dark.CONTRAST[0]}
       />
       <AppText style={styles.text}>{text}</AppText>
       <AuthButton
-        {...{
-          title: returnToLogin,
-          busy: false,
-          onPress,
-        }}
+        title={returnToLogin}
+        busy={false}
+        onPress={() => navigation.navigate("SignIn")}
       />
     </AuthFormContainer>
   );

@@ -1,8 +1,7 @@
 import { StyleSheet, View } from "react-native";
-import SubmitBtn from "@src/components/form/SubmitBtn";
+import SubmitButton from "@src/components/Buttons/SubmitButton";
 import AppLink from "@src/components/AppLink";
-import AuthInputField from "@src/components/form/AuthInputField";
-import Form from "@src/components/form";
+import AuthInputField from "@src/components/AuthInputField";
 import * as yup from "yup";
 import PasswordVisibilityIcon from "@src/components/PasswordVisibilityIcon";
 import AuthFormContainer from "@src/components/containers/AuthFormContainer";
@@ -21,6 +20,7 @@ import { useState } from "react";
 import { authErrorHandler } from "@src/errors/authErrorHandler";
 import { getSettingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
+import { Formik } from "formik";
 
 const SignIn = () => {
   const { appLang } = useSelector(getSettingsState);
@@ -86,7 +86,7 @@ const SignIn = () => {
 
   return (
     <AuthFormContainer {...{ heading, back: false }}>
-      <Form
+      <Formik
         {...{
           onSubmit,
           initialValues,
@@ -134,9 +134,9 @@ const SignIn = () => {
               }}
             />
           </View>
-          <SubmitBtn title={signIn} />
+          <SubmitButton title={signIn} />
         </>
-      </Form>
+      </Formik>
     </AuthFormContainer>
   );
 };
