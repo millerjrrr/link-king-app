@@ -1,6 +1,6 @@
 import { Image } from "react-native";
 import { useSelector } from "react-redux";
-import colors from "@src/utils/colors";
+import colors from "@assets/themes/colors";
 import { getSettingsState } from "@src/store/settings";
 
 const LinkKingIcon = () => {
@@ -11,7 +11,7 @@ const LinkKingIcon = () => {
   return (
     <Image
       {...{
-        source: require("../../../assets/img/link-king-header-logo.png"),
+        source: require("@assets/img/link-king-header-logo.png"),
         resizeMode: "contain",
         tintColor,
         style: {

@@ -8,10 +8,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getConsoleState } from "@src/store/console";
 import AppText from "../../../components/AppText";
 import { getSettingsState } from "@src/store/settings";
-import colors from "@src/utils/colors";
+import colors from "@assets/themes/colors";
 import { speak } from "@src/utils/speak";
 import { updateNotification } from "@src/store/notification";
-import appTextSource from "@src/utils/appTextSource/index";
+import appTextSource from "@src/utils/appTextSource";
 
 const ReadWordButton = ({
   showSpeaker,

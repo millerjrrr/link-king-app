@@ -4,7 +4,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-import colors from "@src/utils/colors";
+import colors from "@assets/themes/colors";
 import { useSelector } from "react-redux";
 import { getSettingsState } from "@src/store/settings";
 import { captureRef } from "react-native-view-shot";

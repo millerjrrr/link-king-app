@@ -1,5 +1,5 @@
 import { View, StyleSheet } from "react-native";
-import colors from "@src/utils/colors";
+import colors from "@assets/themes/colors";
 import { getSettingsState } from "@src/store/settings";
 import { useSelector } from "react-redux";
 

@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import { Searchbar } from "react-native-paper";
-import colors from "@src/utils/colors";
+import colors from "@assets/themes/colors";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getCollectionState,

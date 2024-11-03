@@ -1,9 +1,9 @@
 import { StyleSheet, View } from "react-native";
-import colors from "@src/utils/colors";
+import colors from "@assets/themes/colors";
 import RefreshButton from "./RefreshButton";
 import { getSettingsState } from "@src/store/settings";
 import { useSelector } from "react-redux";
-import appTextSource from "./../utils/appTextSource/index";
+import appTextSource from "../utils/appTextSource";
 import AppText from "@src/components/AppText";
 
 const InternetConnectionPage = ({ refresh }) => {

@@ -1,5 +1,5 @@
 import { StyleSheet, TouchableOpacity } from "react-native";
-import colors from "@src/utils/colors";
+import colors from "@assets/themes/colors";
 import { useSelector } from "react-redux";
 import { AntDesign } from "@expo/vector-icons";
 import { getSettingsState } from "@src/store/settings";

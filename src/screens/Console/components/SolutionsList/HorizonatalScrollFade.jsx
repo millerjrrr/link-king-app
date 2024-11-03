@@ -2,7 +2,7 @@ import { View } from "react-native";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { getSettingsState } from "@src/store/settings";
-import colors from "@src/utils/colors";
+import colors from "@assets/themes/colors";
 import { LinearGradient } from "expo-linear-gradient";
 
 const Container = styled(View)`

@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-import colors from "@src/utils/colors";
+import colors from "@assets/themes/colors";
 import { numberDateToWordStyleDate } from "@src/utils/numberDateToWordStyle";
 import { useSelector } from "react-redux";
 import WordCardLevelStars from "./WordCardLevelStars";

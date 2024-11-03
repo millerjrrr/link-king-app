@@ -3,12 +3,12 @@ import {
   createStackNavigator,
   TransitionPresets,
 } from "@react-navigation/stack";
-import StatsScreen from "../../collection/StatsScreen";
-import DictionarySelectionScreen from "../../options/DictionarySelectionScreen";
-import ProgressScreen from "../../collection/ProgressScreen";
-import WordInfoScreen from "../../screens/Collection/WordInfoScreen";
-import EditTicketScreen from "../../screens/Collection/WordInfoScreen/EditTicketScreen";
+import DictionarySelectionScreen from "../../screens/Options/DictionarySelectionScreen";
+import WordInfoScreen from "@src/screens/Collection/WordInfoScreen";
+import EditTicketScreen from "@src/screens/Collection/WordInfoScreen/EditTicketScreen";
 import Collection from "@src/screens/Collection";
+import StatsScreen from "@src/screens/Collection/StatsScreen";
+import ProgressScreen from "@src/screens/Collection/ProgressScreen";
 
 const CollectionStack = createStackNavigator();
 

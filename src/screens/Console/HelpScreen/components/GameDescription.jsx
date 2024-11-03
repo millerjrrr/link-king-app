@@ -3,7 +3,7 @@ import DescriptionWrapper from "./DescriptionWrapper";
 import { AntDesign } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { getSettingsState } from "@src/store/settings";
-import colors from "@src/utils/colors";
+import colors from "@assets/themes/colors";
 import { errorHandler } from "@src/errors/errorHandler";
 
 const GameDescription = () => {

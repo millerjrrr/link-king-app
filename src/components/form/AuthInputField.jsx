@@ -1,6 +1,6 @@
 import { View, StyleSheet, Pressable } from "react-native";
 import AppInput from "../AppInput";
-import colors from "@src/utils/colors";
+import colors from "@assets/themes/colors";
 import { useFormikContext } from "formik";
 import Animated, {
   useAnimatedStyle,

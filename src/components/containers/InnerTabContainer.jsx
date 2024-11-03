@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import colors from "@src/utils/colors";
+import colors from "@assets/themes/colors";
 import StatusBarFiller from "../StatusBarFiller";
 import AppNotification from "../AppNotification";
 import { useSelector } from "react-redux";

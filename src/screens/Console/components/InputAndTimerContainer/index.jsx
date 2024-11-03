@@ -1,10 +1,10 @@
 import { StyleSheet, View } from "react-native";
 import Timer from "./Timer";
-import colors from "@src/utils/colors";
+import colors from "@assets/themes/colors";
 import { useDispatch, useSelector } from "react-redux";
 import { getConsoleState } from "@src/store/console";
 import TargetDetailsButton from "./TargetDetailsButton";
-import { submitAnswer } from "@src/utils/submitAnswer";
+import { submitAnswer } from "@src/utils/consoleFunctions/submitAnswer";
 import LoaderForTextInputForConsole from "./LoaderForTextInputForConsole";
 import TextInputForConsole from "./TextInputForConsole";
 import { getSettingsState } from "@src/store/settings";

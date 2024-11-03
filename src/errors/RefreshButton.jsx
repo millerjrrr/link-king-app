@@ -4,7 +4,7 @@ import {
   StyleSheet,
   View,
 } from "react-native";
-import colors from "@src/utils/colors";
+import colors from "@assets/themes/colors";
 import { Ionicons } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { refreshPage } from "@src/store/auth";

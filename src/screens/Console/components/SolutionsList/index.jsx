@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import SolutionItem from "./SolutionItem";
 import HorizontalScrollFade from "./HorizonatalScrollFade";
 import { getSettingsState } from "@src/store/settings";
-import colors from "@src/utils/colors";
+import colors from "@assets/themes/colors";
 
 const SolutionsList = ({ ticket, plus }) => {
   const { solutions, target } = ticket;

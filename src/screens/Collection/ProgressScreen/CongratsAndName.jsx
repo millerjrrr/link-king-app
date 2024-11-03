@@ -1,4 +1,4 @@
-import colors from "@src/utils/colors";
+import colors from "@assets/themes/colors";
 import { useSelector } from "react-redux";
 import { getStatsState } from "@src/store/stats";
 import { getSettingsState } from "@src/store/settings";

@@ -1,5 +1,5 @@
 import { StyleSheet, TextInput } from "react-native";
-import colors from "@src/utils/colors";
+import colors from "@assets/themes/colors";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getConsoleState,

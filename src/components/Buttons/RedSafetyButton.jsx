@@ -4,7 +4,7 @@ import {
   View,
   StyleSheet,
 } from "react-native";
-import colors from "@src/utils/colors";
+import colors from "@assets/themes/colors";
 import { AntDesign } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { getSettingsState } from "@src/store/settings";

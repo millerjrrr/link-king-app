@@ -1,10 +1,10 @@
 import { TouchableOpacity, View } from "react-native";
-import colors from "@src/utils/colors";
+import colors from "@assets/themes/colors";
 import { useSelector } from "react-redux";
 import { getSettingsState } from "@src/store/settings";
 import styled from "styled-components";
 import Modal from "react-native-modal";
-import appTextSource from "@src/utils/appTextSource/index";
+import appTextSource from "@src/utils/appTextSource";
 import appShadow from "@src/utils/appShadow";
 import YoutubePlayer from "react-native-youtube-iframe";
 import AppText from "./AppText";

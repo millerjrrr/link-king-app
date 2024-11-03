@@ -9,7 +9,7 @@ import {
   updateVip,
 } from "@src/store/auth";
 import { useEffect, useState } from "react";
-import colors from "@src/utils/colors";
+import colors from "@assets/themes/colors";
 import client from "@src/api/client";
 import catchAsyncError from "@src/api/catchError";
 import {

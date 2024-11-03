@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import CollectionNavigator from "./subnavigators/CollectionNavigator";
 import OptionsNavigator from "./subnavigators/OptionsNavigator";
 import ConsoleNavigator from "./subnavigators/ConsoleNavigator";
-import colors from "@src/utils/colors";
+import colors from "@assets/themes/colors";
 import {
   Entypo,
   Ionicons,

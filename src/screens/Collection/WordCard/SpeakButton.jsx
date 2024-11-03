@@ -1,5 +1,5 @@
 import { StyleSheet, View } from "react-native";
-import colors from "@src/utils/colors";
+import colors from "@assets/themes/colors";
 import { useSelector } from "react-redux";
 import { getSettingsState } from "@src/store/settings";
 import ReadWordButton from "@src/screens/Console/components/ReadWordButton";

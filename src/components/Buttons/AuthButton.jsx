@@ -3,7 +3,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-import colors from "@src/utils/colors";
+import colors from "@assets/themes/colors";
 import BusyWrapper from "../Loader/BusyWrapper";
 import appShadow from "@src/utils/appShadow";
 import { useSelector } from "react-redux";
