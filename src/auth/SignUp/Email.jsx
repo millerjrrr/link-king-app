@@ -3,7 +3,6 @@ import SubmitButton from "../../components/Buttons/SubmitButton";
 import AuthInputField from "../../components/AuthInputField";
 import * as yup from "yup";
 import AuthFormContainer from "../../components/containers/AuthFormContainer";
-import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { getSettingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
@@ -11,7 +10,7 @@ import { getAuthState, updateEmail } from "@src/store/auth";
 import SignUpAppLink from "../../components/SignUpAppLink";
 import { Formik } from "formik";
 
-const Email = () => {
+const Email = ({ navigation }) => {
   const { appLang } = useSelector(getSettingsState);
   const { email } = appTextSource(appLang).auth.forms;
 
@@ -30,8 +29,6 @@ const Email = () => {
   };
 
   const dispatch = useDispatch();
-
-  const navigation = useNavigation();
 
   const onSubmit = async (values, actions) => {
     actions.setSubmitting(true);

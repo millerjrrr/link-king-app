@@ -17,10 +17,10 @@ import {
 } from "@src/store/auth";
 import { saveToAsyncStorage } from "@src/utils/asyncStorage";
 import { useState } from "react";
-import { authErrorHandler } from "@src/errors/authErrorHandler";
 import { getSettingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import { Formik } from "formik";
+import useCatchAsync from "@src/hooks/useCatchAsync";
 
 const SignIn = () => {
   const { appLang } = useSelector(getSettingsState);
@@ -48,12 +48,13 @@ const SignIn = () => {
   const [secureEntry, setSecureEntry] = useState(true);
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  const catchAsync = useCatchAsync();
 
   const togglePasswordView = () => {
     setSecureEntry(!secureEntry);
   };
 
-  const onSubmit = async (values, actions) => {
+  const onSubmit = catchAsync(async (values, actions) => {
     actions.setSubmitting(true);
     try {
       const { data } = await client.post(
@@ -74,11 +75,10 @@ const SignIn = () => {
       dispatch(updateLoggedInState(true));
       dispatch(updateEmail(""));
       dispatch(refreshPage());
-    } catch (error) {
-      authErrorHandler(error, dispatch);
+    } finally {
+      actions.setSubmitting(false);
     }
-    actions.setSubmitting(false);
-  };
+  });
 
   const { heading } = appTextSource(appLang).auth.signIn;
   const { signIn, signUp, lostPassword } =

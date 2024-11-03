@@ -7,7 +7,6 @@ import { useNavigation } from "@react-navigation/native";
 import client from "@src/api/client";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { authErrorHandler } from "@src/errors/authErrorHandler";
 import { getSettingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import {
@@ -17,6 +16,7 @@ import {
 } from "@src/store/auth";
 import SignUpAppLink from "../../components/SignUpAppLink";
 import { Formik } from "formik";
+import useCatchAsync from "@src/hooks/useCatchAsync";
 
 const Password = () => {
   const { appLang } = useSelector(getSettingsState);
@@ -39,6 +39,7 @@ const Password = () => {
   };
 
   const dispatch = useDispatch();
+  const catchAsync = useCatchAsync();
 
   const [secureEntry, setSecureEntry] = useState(true);
   const navigation = useNavigation();
@@ -49,11 +50,10 @@ const Password = () => {
 
   const { formName, formEmail } = useSelector(getAuthState);
 
-  const onSubmit = async (values, actions) => {
-    const { password } = values;
-
-    actions.setSubmitting(true);
+  const onSubmit = catchAsync(async (values, actions) => {
     try {
+      actions.setSubmitting(true);
+      const { password } = values;
       const { data } = await client.post(
         "/api/v1/users/sign-up",
         {
@@ -77,16 +77,10 @@ const Password = () => {
         );
         navigation.navigate("VerificationCode");
       }
-    } catch (error) {
-      authErrorHandler(error, dispatch);
-      if (error?.response?.data?.message?.includes("[#1]"))
-        setTimeout(
-          () => navigation.navigate("VerificationCode"),
-          3000,
-        );
+    } finally {
+      actions.setSubmitting(false);
     }
-    actions.setSubmitting(false);
-  };
+  });
 
   const { heading, subHeading } =
     appTextSource(appLang).auth.signUp.password;

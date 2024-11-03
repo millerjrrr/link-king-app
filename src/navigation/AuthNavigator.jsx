@@ -2,7 +2,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Welcome from "@src/auth/SignUp/Welcome";
 import Name from "@src/auth/SignUp/Name";
 import Email from "@src/auth/SignUp/Email";
-import Password from "@src/auth/SignIn";
+import Password from "@src/auth/SignUp/Password";
 import VerificationCode from "@src/auth/SignUp/VerificationCode";
 import LostPassword from "@src/auth/LostPassword/LostPassword";
 import CheckYourEmail from "@src/auth/LostPassword/CheckYourEmail";

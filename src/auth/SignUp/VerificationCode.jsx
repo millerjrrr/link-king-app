@@ -11,11 +11,11 @@ import {
   updateLoggedInState,
   updateToken,
 } from "@src/store/auth";
-import { authErrorHandler } from "@src/errors/authErrorHandler";
 import client from "@src/api/client";
 import SignUpAppLink from "../../components/SignUpAppLink";
 import { saveToAsyncStorage } from "@src/utils/asyncStorage";
 import { Formik } from "formik";
+import useCatchAsync from "@src/hooks/useCatchAsync";
 
 const VerificationCode = () => {
   const { appLang } = useSelector(getSettingsState);
@@ -38,13 +38,12 @@ const VerificationCode = () => {
   };
 
   const dispatch = useDispatch();
+  const catchAsync = useCatchAsync();
 
-  const onSubmit = async (values, actions) => {
-    values.unverifiedUserId = unverifiedUserId;
-
-    actions.setSubmitting(true);
-
+  const onSubmit = catchAsync(async (values, actions) => {
     try {
+      values.unverifiedUserId = unverifiedUserId;
+      actions.setSubmitting(true);
       const { data } = await client.post(
         "/api/v1/users/sign-up-verification",
         {
@@ -61,11 +60,10 @@ const VerificationCode = () => {
       dispatch(updateToken(data.token));
       dispatch(updateLoggedInState(true));
       dispatch(updateEmail(""));
-    } catch (error) {
-      authErrorHandler(error, dispatch);
+    } finally {
+      actions.setSubmitting(false);
     }
-    actions.setSubmitting(false);
-  };
+  });
 
   const { heading, subHeading, subHeading2, verify } =
     appTextSource(appLang).auth.signUp.code;

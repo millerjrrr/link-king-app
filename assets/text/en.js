@@ -280,7 +280,7 @@ export default {
       password: {
         heading: "Create a password",
         subHeading:
-          "Create a password with at least 8 characters. our password must contain at least one digit (0-9), a letter and a special character (!@#$%¨&*())",
+          "Create a password with at least 8 characters. Your password must contain at least one digit (0-9), a letter and a special character (!@#$%¨&*())",
       },
       code: {
         heading: "Enter your verification code",
