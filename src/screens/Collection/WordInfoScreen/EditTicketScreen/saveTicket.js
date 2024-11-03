@@ -1,4 +1,4 @@
-import catchAsyncError from "@src/api/catchError";
+import returnErrorMessage from "@src/utils/returnErrorMessage";
 import clientWithAuth from "@src/api/clientWithAuth";
 import { updateNotification } from "@src/store/notification";
 
@@ -24,7 +24,7 @@ export const saveTicket = async ({
         }),
       );
   } catch (error) {
-    const errorMessage = catchAsyncError(error);
+    const errorMessage = returnErrorMessage(error);
     dispatch(
       updateNotification({
         message: errorMessage,

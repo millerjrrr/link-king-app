@@ -11,7 +11,7 @@ import {
 import { useEffect, useState } from "react";
 import colors from "@assets/themes/colors";
 import client from "@src/api/client";
-import catchAsyncError from "@src/api/catchError";
+import returnErrorMessage from "@src/utils/returnErrorMessage";
 import {
   getFromAsyncStorage,
   saveToAsyncStorage,
@@ -99,7 +99,7 @@ const AppNavigatorUseEffects = () => {
         dispatch(updateBusyState(false));
         // if we are not logged in, just show the login page
         // if it times out we want to show the disconnected page
-        const errorMessage = catchAsyncError(error);
+        const errorMessage = returnErrorMessage(error);
         if (errorMessage.startsWith("timeout"))
           dispatch(updateConnectedState(false));
         else {

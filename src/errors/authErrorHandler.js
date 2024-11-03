@@ -1,8 +1,8 @@
-import catchAsyncError from "@src/api/catchError";
+import returnErrorMessage from "@src/utils/returnErrorMessage";
 import { updateNotification } from "@src/store/notification";
 
 export const authErrorHandler = (error, dispatch) => {
-  let errorMessage = catchAsyncError(error);
+  let errorMessage = returnErrorMessage(error);
   errorMessage = errorMessage.startsWith("timeout")
     ? "no internet connection"
     : errorMessage;

@@ -1,6 +1,7 @@
-import axios from "axios";
+import axios, { AxiosInstance } from "axios";
 
-const client = {
+// need to find a better way to do this
+const client: { f: AxiosInstance; l: AxiosInstance } = {
   f: axios.create({
     baseURL: "http://192.168.8.108:3000",
   }),
