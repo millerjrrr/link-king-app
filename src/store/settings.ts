@@ -1,9 +1,20 @@
 import {
   createSelector,
   createSlice,
+  PayloadAction,
 } from "@reduxjs/toolkit";
+import { RootState } from "@src/store";
 
-const initialState = {
+interface SettingsState {
+  colorScheme: "dark" | "light";
+  golden: number;
+  timeGoal: number;
+  newWordsGoal: number;
+  stepsGoal: number;
+  appLang: string;
+}
+
+const initialState: SettingsState = {
   colorScheme: "dark",
   golden: 0,
   timeGoal: 3,
@@ -13,11 +24,14 @@ const initialState = {
 };
 
 const slice = createSlice({
-  name: "colors",
+  name: "settings",
   initialState,
   reducers: {
-    updateSettings(state, { payload }) {
-      return { ...state, ...payload };
+    updateSettings(
+      state,
+      action: PayloadAction<Partial<SettingsState>>,
+    ) {
+      return { ...state, ...action.payload };
     },
     restoreDefaultGoals(state) {
       state.timeGoal = 3;
@@ -31,8 +45,8 @@ export const { updateSettings, restoreDefaultGoals } =
   slice.actions;
 
 export const getSettingsState = createSelector(
-  (state) => state,
-  (state) => state.settings,
+  (settingsState) => settingsState,
+  (state: RootState) => state.settings,
 );
 
 export default slice.reducer;
