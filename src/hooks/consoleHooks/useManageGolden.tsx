@@ -1,11 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import { getConsoleState } from "@src/store/console";
 import { useEffect } from "react";
-import { useNavigation } from "@react-navigation/native";
+import {
+  NavigationProp,
+  useNavigation,
+} from "@react-navigation/native";
 import {
   getSettingsState,
   updateSettings,
 } from "@src/store/settings";
+import { ConsoleStackParamList } from "@src/types/navigationTypes";
 
 const useManageGolden = () => {
   const { stats, showSolution } =
@@ -15,10 +19,11 @@ const useManageGolden = () => {
   const { steps, time, newWords } = stats;
 
   const dispatch = useDispatch();
-  const navigation = useNavigation();
+  const navigation =
+    useNavigation<NavigationProp<ConsoleStackParamList>>();
 
   //goal management
-  return useEffect(() => {
+  useEffect(() => {
     if (showSolution) {
       const showResultsSummary = () => {
         navigation.navigate("ProgressScreen");
