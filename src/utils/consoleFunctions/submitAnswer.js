@@ -1,8 +1,8 @@
 import { stopPlaying } from "@src/store/console";
 import { acceptAnswer } from "./acceptAnswer";
-import { returnCorrectAnswerToServer } from "../returnCorrectAnswerToServer";
-import { returnNextTry } from "../returnNextTry";
-import { returnWrongAnswerToServer } from "../returnWrongAnswerToServer";
+import { returnCorrectAnswerToServer } from "./returnCorrectAnswerToServer";
+import { returnNextTry } from "./returnNextTry";
+import { returnWrongAnswerToServer } from "./returnWrongAnswerToServer";
 
 export const submitAnswer = ({
   dispatch,

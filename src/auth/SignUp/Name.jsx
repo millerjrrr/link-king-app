@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSettingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import { getAuthState, updateName } from "@src/store/auth";
-import updateNameOnServer from "../../utils/updateNameOnServer";
+import updateNameOnServer from "../../utils/optionsFunctions/updateNameOnServer";
 import SignUpAppLink from "../../components/SignUpAppLink";
 import { Formik } from "formik";
 

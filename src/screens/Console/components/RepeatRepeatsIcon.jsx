@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSettingsState } from "@src/store/settings";
 import { useState } from "react";
 import AppModal from "../../../components/AppModal";
-import { fetchConsoleInfo } from "@src/utils/fetchConsoleInfo";
+import { fetchConsoleInfo } from "@src/utils/consoleFunctions/fetchConsoleInfo";
 
 const RepeatRepeatsIcon = ({
   name = "stop",

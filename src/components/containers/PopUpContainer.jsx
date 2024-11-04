@@ -1,14 +1,7 @@
 import React, { useEffect } from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-  TouchableWithoutFeedback,
-  Keyboard,
-} from "react-native";
+import { View, StyleSheet } from "react-native";
 import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
-import AppNotification from "../AppNotification";
 import LinkKingLogo from "../Graphics/LinkKingLogo";
 import { getSettingsState } from "@src/store/settings";
 import HelpButton from "../Buttons/HelpButton";
@@ -75,7 +68,6 @@ const PopUpContainer = ({
       ]}
     >
       <FourCrowns {...{ color: SECONDARY }} />
-      <AppNotification />
       <HelpButton {...{ help }} />
       <BackButton />
       <LinkKingLogo

@@ -1,21 +1,21 @@
 import clientWithAuth from "@src/api/clientWithAuth";
 import { errorHandler } from "@src/errors/errorHandler";
 import { updateNotification } from "@src/store/notification";
-import appTextSource from "@src/utils/appTextSource";
-import logOut from "@src/utils/logOutDEP";
+import appTextSource from "../appTextSource";
 
-const deleteUserAccount = async ({
-  password,
+const updateNameOnServer = async ({
+  username,
   dispatch,
+  navigation,
   appLang,
 }) => {
   const message =
     appTextSource(appLang).options.manageAccount
-      .accountDeleted;
+      .usernameUpdated;
   try {
     const { data } = await clientWithAuth.post(
-      "/api/v1/users/delete-account",
-      { password },
+      "/api/v1/users/change-username",
+      { username },
     );
     if (data.status === "success") {
       dispatch(
@@ -24,11 +24,14 @@ const deleteUserAccount = async ({
           type: "info",
         }),
       );
-      setTimeout(() => logOut(dispatch), 2000);
+      setTimeout(
+        () => navigation.navigate("ManageAccountScreen"),
+        2000,
+      );
     }
   } catch (error) {
     errorHandler(error, dispatch);
   }
 };
 
-export default deleteUserAccount;
+export default updateNameOnServer;

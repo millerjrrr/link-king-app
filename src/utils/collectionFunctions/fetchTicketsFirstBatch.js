@@ -2,7 +2,7 @@ import clientWithAuth from "@src/api/clientWithAuth";
 import { errorHandler } from "@src/errors/errorHandler";
 import { updateCollection } from "@src/store/collection";
 import { updateDictionary } from "@src/store/console";
-import { semiNormalize } from "./semiNormalize";
+import { semiNormalize } from "../semiNormalize";
 
 export const fetchTicketsFirstBatch = async (
   dispatch,

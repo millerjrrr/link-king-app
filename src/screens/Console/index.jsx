@@ -83,7 +83,7 @@ const Console = ({ navigation }) => {
       <Tail setIsKeyboardVisible={setIsKeyboardVisible} />
       <KeyboardAndStartButton
         inputFieldRef={inputFieldRef}
-        isKeyboardVisible={setIsKeyboardVisible}
+        isKeyboardVisible={isKeyboardVisible}
       />
       {modals.map((modalProps, index) => (
         <AppModal key={index} {...modalProps} />

@@ -1,7 +1,6 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { getStatsState } from "@src/store/stats";
 import { useEffect, useRef } from "react";
-import { fetchStatsInfo } from "@src/utils/fetchStatsInfo";
 import StatsPanel from "./StatsPanel";
 import BusyWrapper from "@src/components/Loader/BusyWrapper";
 import {
@@ -15,18 +14,14 @@ import BackButton from "@src/components/Buttons/BackButton";
 import ShareButton from "./ShareButton";
 import CongratsAndName from "./CongratsAndName";
 import ViewShot from "react-native-view-shot";
+import useFetchStatsInfo from "@src/hooks/collectionHooks/useFetchStatsInfo";
 
 const ProgressScreen = () => {
   const { busy } = useSelector(getStatsState);
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    fetchStatsInfo(dispatch);
-  }, []);
-
   //close this screen every time we change bottom tab
   const navigation = useNavigation();
+
   useEffect(() => {
     const closeStackScreens = () => {
       navigation.dispatch(StackActions.popToTop());
@@ -39,6 +34,8 @@ const ProgressScreen = () => {
   }, [navigation]);
 
   const statsPanelRef = useRef();
+
+  useFetchStatsInfo();
 
   return (
     <BusyWrapper {...{ busy }}>

@@ -1,7 +1,7 @@
 import returnErrorMessage from "@src/utils/returnErrorMessage";
 import { updateConnectedState } from "@src/store/auth";
 import { updateNotification } from "@src/store/notification";
-import logOut from "@src/utils/logOutDEP";
+import logOut from "@src/utils/logOut";
 
 export const errorHandler = (error, dispatch) => {
   const errorMessage = returnErrorMessage(error);

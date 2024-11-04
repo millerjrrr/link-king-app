@@ -2,7 +2,6 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import colors from "@src/utils/colors";
 import StatusBarFiller from "../StatusBarFiller";
-import AppNotification from "../AppNotification";
 import { useSelector } from "react-redux";
 import FourCrowns from "../Graphics/FourCrowns";
 import LinkKingLogo from "../Graphics/LinkKingLogo";
@@ -47,7 +46,6 @@ const InnerTabContainer = ({
         ]}
       >
         <StatusBarFiller />
-        <AppNotification />
         {back ? <BackButton extraPadding={true} /> : null}
         <FourCrowns {...{ color }} />
         <HelpButton {...{ help, padding: true }} />

@@ -9,7 +9,7 @@ import PasswordVisibilityIcon from "../../components/PasswordVisibilityIcon";
 import appTextSource from "@src/utils/appTextSource";
 import AppText from "../../components/AppText";
 import { View } from "react-native";
-import deleteUserAccount from "../../utils/deleteUserAccount";
+import deleteUserAccount from "../../utils/optionsFunctions/deleteUserAccount";
 import FormikSafetyButton from "../../components/Buttons/FormikSafetyButton";
 import { Formik } from "formik";
 

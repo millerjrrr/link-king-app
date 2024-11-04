@@ -8,7 +8,6 @@ import {
   StatusBar,
 } from "react-native";
 import colors from "@src/utils/colors";
-import AppNotification from "../AppNotification";
 import FourCrowns from "../Graphics/FourCrowns";
 import LinkKingLogo from "../Graphics/LinkKingLogo";
 import StatusBarFiller from "../StatusBarFiller";
@@ -47,7 +46,6 @@ const AuthFormContainer = ({
           ]}
         >
           <StatusBarFiller />
-          <AppNotification />
           {back ? <BackButton extraPadding={true} /> : null}
           <FourCrowns {...{ color }} />
           {!nologo ? (

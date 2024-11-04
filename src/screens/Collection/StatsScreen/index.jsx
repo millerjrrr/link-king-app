@@ -1,7 +1,5 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { getStatsState } from "@src/store/stats";
-import { fetchStatsInfo } from "@src/utils/fetchStatsInfo";
-import { useEffect } from "react";
 import LevelHistogram from "./LevelHistogram";
 import PopUpContainer from "@src/components/containers/PopUpContainer";
 import Loader from "@src/components/Loader";
@@ -9,17 +7,14 @@ import { getSettingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import AppText from "@src/components/AppText";
 import StatsContainer from "./StatsContainer";
+import useFetchStatsInfo from "@src/hooks/collectionHooks/useFetchStatsInfo";
 
 const StatsScreen = () => {
   const { levelBreakdown, busy } =
     useSelector(getStatsState);
   const { appLang } = useSelector(getSettingsState);
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    fetchStatsInfo(dispatch);
-  }, []);
+  useFetchStatsInfo();
 
   const showHist = levelBreakdown.length > 2;
 

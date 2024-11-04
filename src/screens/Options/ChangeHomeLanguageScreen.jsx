@@ -14,7 +14,7 @@ import {
   View,
 } from "react-native";
 import FormikSafetyButton from "../../components/Buttons/FormikSafetyButton";
-import changeUserHomeLanguage from "../../utils/changeUserHomeLanguage";
+import changeUserHomeLanguage from "../../utils/optionsFunctions/changeUserHomeLanguage";
 import FlagImage from "../../components/Graphics/FlagImage";
 import { AntDesign } from "@expo/vector-icons";
 import colors from "@src/utils/colors";

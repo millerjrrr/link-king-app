@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { AppState } from "react-native";
-import { fetchConsoleInfo } from "@src/utils/fetchConsoleInfo";
+import { fetchConsoleInfo } from "@src/utils/consoleFunctions/fetchConsoleInfo";
 
 const useConsoleUpdates = () => {
   const dispatch = useDispatch();

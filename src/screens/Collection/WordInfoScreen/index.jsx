@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import PopUpContainer from "@src/components/containers/PopUpContainer";
 import React, { useState } from "react";
 import BloodRedCover from "@src/components/BloodRedCover";
-import { flagAndDeleteTicket } from "@src/utils/flagAndDeleteTicket";
+import { flagAndDeleteTicket } from "@src/utils/collectionFunctions/flagAndDeleteTicket";
 import BusyWrapper from "@src/components/Loader/BusyWrapper";
 import ResponseInformation from "./ResponseInformation";
 import NoticeAndFlagButton from "./NoticeAndFlagButton";

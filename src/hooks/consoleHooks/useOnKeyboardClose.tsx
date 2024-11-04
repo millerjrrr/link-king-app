@@ -5,7 +5,7 @@ import {
 } from "@src/store/console";
 import { useEffect } from "react";
 import { Keyboard } from "react-native";
-import { returnWrongAnswerToServer } from "@src/utils/returnWrongAnswerToServer";
+import { returnWrongAnswerToServer } from "@src/utils/consoleFunctions/returnWrongAnswerToServer";
 
 const useOnKeyboardClose = () => {
   const { startedThisWord, showSolution, isPlaying } =
