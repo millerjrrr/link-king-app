@@ -6,8 +6,11 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import useCatchAsync from "@src/hooks/useCatchAsync";
 import { semiNormalize } from "@src/utils/semiNormalize";
-import { useEffect } from "react";
-import { useNavigation } from "@react-navigation/native";
+import { useCallback, useEffect } from "react";
+import {
+  useFocusEffect,
+  useNavigation,
+} from "@react-navigation/native";
 import useDebounce from "./useDebounce";
 
 const useFetchTickets = () => {
@@ -15,7 +18,6 @@ const useFetchTickets = () => {
   const catchAsync = useCatchAsync();
   const { searchKeyword, tickets, page } =
     useSelector(collectionState);
-  const navigation = useNavigation();
 
   const debouncedSearchKeyword = useDebounce(
     searchKeyword,
@@ -49,15 +51,11 @@ const useFetchTickets = () => {
     dispatch(updateCollection({ busy: true }));
   }, [searchKeyword]);
 
-  useEffect(() => {
-    const unsubscribe = navigation.addListener(
-      "focus",
-      () => {
-        fetchTickets(searchKeyword);
-      },
-    );
-    return unsubscribe;
-  }, [navigation, searchKeyword, page]);
+  useFocusEffect(
+    useCallback(() => {
+      fetchTickets(searchKeyword);
+    }, [searchKeyword, page]),
+  );
 
   useEffect(() => {
     fetchTickets(debouncedSearchKeyword);

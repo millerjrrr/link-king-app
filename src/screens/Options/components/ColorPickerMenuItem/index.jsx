@@ -18,12 +18,9 @@ const ColorPickerMenuItem = () => {
 
   //Hide color palette when leaving tab
   useEffect(() => {
-    const hidePalette = () => setShowPallet(false);
-    const unsubscribe = navigation.addListener(
-      "focus",
-      hidePalette,
+    const unsubscribe = navigation.addListener("blur", () =>
+      setShowPallet(false),
     );
-    hidePalette();
     return unsubscribe;
   }, [navigation]);
 
