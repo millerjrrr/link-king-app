@@ -8,11 +8,9 @@ const returnErrorMessage = (error: unknown): string => {
   }
 
   if (isAxiosError(error)) {
-    const errorResponse = error.response
-      ? error.response.data
-      : null;
-    if (errorResponse && errorResponse.message === "string")
-      errorMessage = errorResponse.message;
+    errorMessage = error?.response?.data?.message
+      ? error.response.data.message
+      : errorMessage;
   }
   return errorMessage;
 };

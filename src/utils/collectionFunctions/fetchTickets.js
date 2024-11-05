@@ -6,7 +6,7 @@ import { semiNormalize } from "../semiNormalize";
 export const fetchTickets = async (
   dispatch,
   searchKeyword,
-  ticketsd,
+  tickets,
   page,
 ) => {
   const normWord = semiNormalize(searchKeyword);
@@ -16,7 +16,7 @@ export const fetchTickets = async (
     );
     dispatch(
       updateCollection({
-        tickets: [...ticketsd, ...data.data.tickets],
+        tickets: [...tickets, ...data.data.tickets],
         results: data.results,
         busy: false,
         allDataLoaded: data.returned < 50,

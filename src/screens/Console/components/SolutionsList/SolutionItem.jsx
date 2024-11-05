@@ -9,6 +9,7 @@ import {
   useNavigation,
 } from "@react-navigation/native";
 import { useEffect, useState } from "react";
+import { getConsoleState } from "@src/store/console";
 
 const SolutionItem = ({
   solution,
@@ -19,7 +20,10 @@ const SolutionItem = ({
   const { colorScheme, golden, appLang } = useSelector(
     getSettingsState,
   );
-  const languageCode = "test";
+  const { dictionary } = useSelector(getConsoleState);
+
+  const languageCode = dictionary;
+
   appLang.slice(0, 2);
 
   const color = red
