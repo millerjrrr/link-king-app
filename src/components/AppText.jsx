@@ -10,15 +10,13 @@ const AppText = ({ style, children }) => {
 
   return (
     <Text
-      {...{
-        style: {
-          fontSize: 25,
-          textAlign: "center",
-          color,
-          ...style,
-        },
-        allowFontScaling: false,
+      style={{
+        fontSize: 25,
+        textAlign: "center",
+        color,
+        ...style,
       }}
+      allowFontScaling={false}
     >
       {children}
     </Text>

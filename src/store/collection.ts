@@ -1,5 +1,4 @@
 import {
-  createSelector,
   createSlice,
   PayloadAction,
 } from "@reduxjs/toolkit";
@@ -11,18 +10,20 @@ interface CollectionState {
   page: number;
   allDataLoaded: boolean;
   results: number;
-  reload: boolean;
   busy: boolean;
+  wordDeletedSuccessfully: boolean;
+  wordDeleteButtonPressed: boolean;
 }
 
 const initialState: CollectionState = {
   searchKeyword: "",
   tickets: [],
+  results: 0,
   page: 1,
   allDataLoaded: false,
-  results: 0,
-  reload: true,
   busy: false,
+  wordDeletedSuccessfully: true,
+  wordDeleteButtonPressed: false,
 };
 
 const slice = createSlice({

@@ -1,23 +1,31 @@
 import colors from "@src/utils/colors";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import RedSafetyButton from "@src/components/Buttons/RedSafetyButton";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import AppText from "@src/components/AppText";
 import { View } from "react-native";
+import { updateRedCover } from "@src/store/redCover";
+import useFlagAndDeleteTicket from "@src/hooks/collectionHooks/useFlagAndDeleteTicket";
 
-const NoticeAndFlagButton = ({
-  completeFunction,
-  setElapsedTime,
-  setCoverZIndex,
-  wrongAnswerReturned,
-}) => {
+const DeleteButton = ({ ticketId }) => {
   const { colorScheme, appLang } =
     useSelector(settingsState);
+  const { description, buttonTitle } =
+    appTextSource(appLang).collection.wordInfoScreen;
+  const dispatch = useDispatch();
 
-  const { description, buttonTitle } = wrongAnswerReturned
-    ? appTextSource(appLang).console.targetDetails
-    : appTextSource(appLang).collection.wordInfoScreen;
+  const setElapsedTime = (a) =>
+    dispatch(updateRedCover({ elapsedTime: a }));
+
+  const setCoverZIndex = (a) =>
+    dispatch(updateRedCover({ redCoverZIndex: a }));
+
+  const flagAndDeleteTicket = useFlagAndDeleteTicket();
+
+  completeFunction = () => {
+    flagAndDeleteTicket(ticketId);
+  };
 
   return (
     <>
@@ -45,9 +53,7 @@ const NoticeAndFlagButton = ({
             setElapsedTime,
             completeFunction,
             setCoverZIndex,
-            iconName: wrongAnswerReturned
-              ? "flag"
-              : "delete",
+            iconName: "delete",
             buttonTitle,
           }}
         />
@@ -64,4 +70,4 @@ const NoticeAndFlagButton = ({
   );
 };
 
-export default NoticeAndFlagButton;
+export default DeleteButton;

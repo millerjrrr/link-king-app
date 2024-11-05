@@ -2,32 +2,21 @@ import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import AppText from "@src/components/AppText";
+import { collectionState } from "@src/store/collection";
 
-const ResponseInformation = ({
-  status,
-  wrongAnswerReturned,
-}) => {
+const ResponseInformation = () => {
   const { appLang } = useSelector(settingsState);
+  const { wordDeletedSuccessfully } =
+    useSelector(collectionState);
 
-  const { responseA, responseB } = wrongAnswerReturned
-    ? appTextSource(appLang).console.targetDetails
-    : appTextSource(appLang).collection.wordInfoScreen;
+  const { successResponse, failedResponse } =
+    appTextSource(appLang).collection.wordInfoScreen;
 
-  return status ? (
-    <AppText
-      style={{
-        marginHorizontal: 10,
-      }}
-    >
-      {responseA}
-    </AppText>
-  ) : (
-    <AppText
-      style={{
-        marginHorizontal: 15,
-      }}
-    >
-      {responseB}
+  return (
+    <AppText style={{ marginHorizontal: 15 }}>
+      {wordDeletedSuccessfully
+        ? successResponse
+        : failedResponse}
     </AppText>
   );
 };

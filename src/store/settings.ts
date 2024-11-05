@@ -1,5 +1,4 @@
 import {
-  createSelector,
   createSlice,
   PayloadAction,
 } from "@reduxjs/toolkit";

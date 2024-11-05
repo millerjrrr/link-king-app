@@ -15,9 +15,9 @@ export default {
         "Você acha que a sua resposta devia ser aceita? Você pode marcar essa palavra e a gente vai investigar se a sua resposta é apropriada o mais breve possível",
       buttonTitle:
         "Pressione e segure para marcar a palavra e a apagar da sua coleção",
-      responseA:
+      successResponse:
         "Essa palavra tem sido marcada e apagada da sua coleção. \n\nAgradecemos a sua ajuda!",
-      responseB:
+      failedResponse:
         "...algo deu errado 😣 por favor, certifique que você tem conexão de internet e tente de novo... ",
       userResponse: "Sua resposta:",
     },
@@ -121,9 +121,9 @@ export default {
         "Você quer remover permanentemente esta palavra da sua coleção?",
       buttonTitle:
         "Pressione e segure para excluir esta palavra da sua coleção",
-      responseA:
-        "Esta palavra foi removida da sua coleção. Você não a verá mais como parte de suas repetições, mas poderá vê-la novamente como um novo desafio de palavras em algum momento no futuro",
-      responseB:
+      successResponse:
+        "Esta palavra foi removida da sua coleção.",
+      failedResponse:
         "...algo deu errado 😣 por favor, certifique que você tem conexão de internet e tente de novo... ",
     },
   },

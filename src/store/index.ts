@@ -6,6 +6,7 @@ import settingsReducer from "./settings";
 import consoleReducer from "./console";
 import notificationReducer from "./notification";
 import statsReducer from "./stats";
+import redCoverReducer from "./redCover";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   notification: notificationReducer,
   settings: settingsReducer,
   stats: statsReducer,
+  redCover: redCoverReducer,
 });
 
 const store = configureStore({

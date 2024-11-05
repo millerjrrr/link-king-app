@@ -15,9 +15,9 @@ export default {
         "Think your answer should have been accepted? You can flag this word for review and we will look into it as soon as possible.",
       buttonTitle:
         "Press and hold to flag word and delete from collected words.",
-      responseA:
+      successResponse:
         "This word has been flagged for review and removed from your collection. \n \n Thank you for your help!",
-      responseB:
+      failedResponse:
         "...something went wrong 😣 please check your internet connection and try again... ",
       userResponse: "Your response:",
     },
@@ -120,9 +120,9 @@ export default {
         "Do you want to permanently remove this word from your collection?",
       buttonTitle:
         "Press and hold this button to delete this word from your collection",
-      responseA:
-        "This word has been removed from your collection. You will no longer see it as part of your repetitions but you may see it again as a new word challenge at some point in the future",
-      responseB:
+      successResponse:
+        "This word has been removed from your collection.",
+      failedResponse:
         "...something went wrong 😣 please check your internet connection and try again...",
     },
   },

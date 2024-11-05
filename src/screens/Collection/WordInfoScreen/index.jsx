@@ -1,12 +1,10 @@
 import { Linking, StyleSheet, View } from "react-native";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import PopUpContainer from "@src/components/containers/PopUpContainer";
-import React, { useState } from "react";
+import React from "react";
 import BloodRedCover from "@src/components/BloodRedCover";
-import { flagAndDeleteTicket } from "@src/utils/collectionFunctions/flagAndDeleteTicket";
 import BusyWrapper from "@src/components/Loader/BusyWrapper";
 import ResponseInformation from "./ResponseInformation";
-import NoticeAndFlagButton from "./NoticeAndFlagButton";
 import appTextSource from "@src/utils/appTextSource";
 import { settingsState } from "@src/store/settings";
 import AcceptedAnswers from "./AcceptedAnswers";
@@ -14,6 +12,9 @@ import WordCard from "../WordCard";
 import UserAttempt from "./UserAttempt";
 import { consoleState } from "@src/store/console";
 import SolutionsList from "@src/screens/Console/components/SolutionsList";
+import DeleteButton from "./DeleteButton";
+import { redCoverState } from "@src/store/redCover";
+import { collectionState } from "@src/store/collection";
 
 const WordInfoScreen = ({ route }) => {
   const { ticket, wrongAnswerReturned } = route.params;
@@ -25,30 +26,19 @@ const WordInfoScreen = ({ route }) => {
   const url = `https://www.google.com/search?q=define+${ticket.target}&hl=${languageCode}`;
   const onPress = () => Linking.openURL(url);
 
-  // ...loader management...
-  const [busy, setBusy] = useState(false);
-  const [status, setStatus] = useState(true);
-  const [elapsedTime, setElapsedTime] = useState(0);
-  const [coverZIndex, setCoverZIndex] = useState(1);
-  const [pressed, setPressed] = useState(false);
+  const { busy, wordDeleteButtonPressed } =
+    useSelector(collectionState);
+  const { elapsedTime, redCoverZIndex } =
+    useSelector(redCoverState);
 
-  const dispatch = useDispatch();
-  const completeFunction = () => {
-    flagAndDeleteTicket(
-      ticket.id,
-      setBusy,
-      setStatus,
-      setPressed,
-      wrongAnswerReturned,
-      dispatch,
-    );
-  };
   const { heading } =
     appTextSource(appLang).console.targetDetails;
 
   return (
     <PopUpContainer {...{ heading, blockPopToTop: true }}>
-      <BloodRedCover {...{ elapsedTime, coverZIndex }} />
+      <BloodRedCover
+        {...{ elapsedTime, coverZIndex: redCoverZIndex }}
+      />
       <BusyWrapper {...{ busy, size: 96 }}>
         <View style={styles.container}>
           <View {...{ style: { height: 8 } }} />
@@ -57,19 +47,10 @@ const WordInfoScreen = ({ route }) => {
           <SolutionsList {...{ ticket, plus: true }} />
           {wrongAnswerReturned ? <UserAttempt /> : null}
         </View>
-        {pressed ? (
-          <ResponseInformation
-            {...{ status, wrongAnswerReturned }}
-          />
+        {wordDeleteButtonPressed ? (
+          <ResponseInformation />
         ) : (
-          <NoticeAndFlagButton
-            {...{
-              completeFunction,
-              setElapsedTime,
-              setCoverZIndex,
-              wrongAnswerReturned,
-            }}
-          />
+          <DeleteButton ticketId={ticket.id} />
         )}
       </BusyWrapper>
     </PopUpContainer>
