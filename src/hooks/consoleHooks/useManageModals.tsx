@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getAuthState } from "@src/store/auth";
+import { authState } from "@src/store/auth";
 import useCatchAsync from "./../useCatchAsync";
 import {
   getFromAsyncStorage,
@@ -17,7 +17,7 @@ const useManageModals = (
   >,
 ) => {
   const { subscribed, trialDays, vip } =
-    useSelector(getAuthState);
+    useSelector(authState);
   const catchAsync = useCatchAsync();
   const [appState, setAppState] = useState(
     AppState.currentState,

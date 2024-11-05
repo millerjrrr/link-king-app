@@ -2,21 +2,20 @@ import { View, StyleSheet } from "react-native";
 import colors from "@src/utils/colors";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getConsoleState,
+  consoleState,
   updateOptions,
 } from "@src/store/console";
 import clientWithAuth from "@src/api/clientWithAuth";
 import { errorHandler } from "@src/errors/errorHandler";
 import OptionsIcon from "./OptionsIcon";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 
 const OptionsContainer = ({ size = 40, show = 0 }) => {
   const {
     options: { sound, blurred, timer },
-  } = useSelector(getConsoleState);
-  const { colorScheme, golden } = useSelector(
-    getSettingsState,
-  );
+  } = useSelector(consoleState);
+  const { colorScheme, golden } =
+    useSelector(settingsState);
   const color = colors[colorScheme].CONTRAST[golden];
 
   const dispatch = useDispatch();

@@ -3,17 +3,16 @@ import { Searchbar } from "react-native-paper";
 import colors from "@src/utils/colors";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getCollectionState,
+  collectionState,
   updateCollection,
 } from "@src/store/collection";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import appShadow from "@src/utils/appShadow";
 
 const CollectionSearchbar = () => {
-  const { colorScheme, golden, appLang } = useSelector(
-    getSettingsState,
-  );
+  const { colorScheme, golden, appLang } =
+    useSelector(settingsState);
   const color = colors[colorScheme].CONTRAST[golden];
 
   const keyboardAppearance =
@@ -21,7 +20,7 @@ const CollectionSearchbar = () => {
       ? "light"
       : "dark";
 
-  const { searchKeyword } = useSelector(getCollectionState);
+  const { searchKeyword } = useSelector(collectionState);
 
   const dispatch = useDispatch();
 

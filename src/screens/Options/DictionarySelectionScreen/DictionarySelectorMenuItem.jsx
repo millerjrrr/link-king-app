@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
 import OptionsMenuItem from "../components/OptionsMenuItem";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import { useDispatch } from "react-redux";
 import { sendDictionary } from "../components/sendDictionary";
-import { getConsoleState } from "@src/store/console";
+import { consoleState } from "@src/store/console";
 import BusyWrapper from "../../../components/Loader/BusyWrapper";
 import { View } from "react-native";
 
@@ -12,7 +12,7 @@ const DictionarySelectorMenuItem = ({
   name: dictionary,
   busy,
 }) => {
-  const { appLang } = useSelector(getSettingsState);
+  const { appLang } = useSelector(settingsState);
 
   const name =
     appTextSource(appLang).options.chooseDictionary[
@@ -21,7 +21,7 @@ const DictionarySelectorMenuItem = ({
   const dispatch = useDispatch();
 
   const { dictionary: currentDictionary } =
-    useSelector(getConsoleState);
+    useSelector(consoleState);
 
   const selected = dictionary === currentDictionary;
 

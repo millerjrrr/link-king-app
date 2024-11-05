@@ -4,7 +4,7 @@ import Purchases from "react-native-purchases";
 import Paywall from "./Paywall";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getAuthState,
+  authState,
   updateSubscribed,
 } from "@src/store/auth";
 import APIKeys from "./APIKeys";
@@ -13,7 +13,7 @@ import { errorHandler } from "@src/errors/errorHandler";
 const IsSubscribedWrapper = ({ children }) => {
   const [access, setAccess] = useState(true);
   const { refresh, trialDays, vip } =
-    useSelector(getAuthState);
+    useSelector(authState);
   const subRequired = !(vip > Date.now()) && trialDays < 0;
   const dispatch = useDispatch();
 

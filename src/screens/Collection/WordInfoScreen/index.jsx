@@ -8,19 +8,19 @@ import BusyWrapper from "@src/components/Loader/BusyWrapper";
 import ResponseInformation from "./ResponseInformation";
 import NoticeAndFlagButton from "./NoticeAndFlagButton";
 import appTextSource from "@src/utils/appTextSource";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import AcceptedAnswers from "./AcceptedAnswers";
 import WordCard from "../WordCard";
 import UserAttempt from "./UserAttempt";
-import { getConsoleState } from "@src/store/console";
+import { consoleState } from "@src/store/console";
 import SolutionsList from "@src/screens/Console/components/SolutionsList";
 
 const WordInfoScreen = ({ route }) => {
   const { ticket, wrongAnswerReturned } = route.params;
-  const { appLang } = useSelector(getSettingsState);
+  const { appLang } = useSelector(settingsState);
   const {
     attempt: { speechLang },
-  } = useSelector(getConsoleState);
+  } = useSelector(consoleState);
   const languageCode = speechLang.slice(0, 2);
   const url = `https://www.google.com/search?q=define+${ticket.target}&hl=${languageCode}`;
   const onPress = () => Linking.openURL(url);

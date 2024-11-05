@@ -6,8 +6,8 @@ import {
 } from "react-native";
 import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
-import { getConsoleState } from "@src/store/console";
-import { getSettingsState } from "@src/store/settings";
+import { consoleState } from "@src/store/console";
+import { settingsState } from "@src/store/settings";
 import styled from "styled-components";
 import SolutionsList from "./SolutionsList";
 import AppText from "../../../components/AppText";
@@ -20,10 +20,9 @@ const TailEntryText = styled(AppText)`
 `;
 
 const TailEntry = ({ index }) => {
-  const { tail } = useSelector(getConsoleState);
-  const { colorScheme, golden } = useSelector(
-    getSettingsState,
-  );
+  const { tail } = useSelector(consoleState);
+  const { colorScheme, golden } =
+    useSelector(settingsState);
   const color = colors[colorScheme].CONTRAST[golden];
 
   //font-size management
@@ -50,7 +49,7 @@ const Tail = ({ setIsKeyboardVisible }) => {
   const {
     showSolution,
     attempt: { solutions },
-  } = useSelector(getConsoleState);
+  } = useSelector(consoleState);
 
   const onPress = () => {
     Keyboard.dismiss();

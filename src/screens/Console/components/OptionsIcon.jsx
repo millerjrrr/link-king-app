@@ -1,7 +1,7 @@
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { Entypo, MaterialIcons } from "@expo/vector-icons";
 import colors from "@src/utils/colors";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import { useSelector } from "react-redux";
 import appShadow from "@src/utils/appShadow";
 
@@ -16,7 +16,7 @@ const OptionsIcon = ({
 }) => {
   const height = (size * 80) / 50;
 
-  const { colorScheme } = useSelector(getSettingsState);
+  const { colorScheme } = useSelector(settingsState);
   const backgroundColor = colors[colorScheme].SECONDARY;
 
   return (

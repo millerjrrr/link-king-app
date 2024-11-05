@@ -4,15 +4,15 @@ import * as yup from "yup";
 import AuthFormContainer from "../../components/containers/AuthFormContainer";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
-import { getAuthState, updateName } from "@src/store/auth";
+import { authState, updateName } from "@src/store/auth";
 import updateNameOnServer from "../../utils/optionsFunctions/updateNameOnServer";
 import SignUpAppLink from "../../components/SignUpAppLink";
 import { Formik } from "formik";
 
 const Name = ({ updateNameFunction, buttonTitle }) => {
-  const { appLang } = useSelector(getSettingsState);
+  const { appLang } = useSelector(settingsState);
   const { name } = appTextSource(appLang).auth.forms;
 
   const validationSchema = yup.object({
@@ -23,7 +23,7 @@ const Name = ({ updateNameFunction, buttonTitle }) => {
       .required(name.required),
   });
 
-  const { formName } = useSelector(getAuthState);
+  const { formName } = useSelector(authState);
 
   const initialValues = {
     name: formName,

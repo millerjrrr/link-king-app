@@ -1,12 +1,12 @@
 import { useSelector } from "react-redux";
-import { getConsoleState } from "@src/store/console";
+import { consoleState } from "@src/store/console";
 import FlagImage from "@src/components/Graphics/FlagImage";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import languageNameCodeMap from "@src/utils/languageNameCodeMap";
 
 const FlagBookImage = ({ scale = 2.5 }) => {
-  const { dictionary } = useSelector(getConsoleState);
-  const { appLang } = useSelector(getSettingsState);
+  const { dictionary } = useSelector(consoleState);
+  const { appLang } = useSelector(settingsState);
   const [flag1, flag2] = [
     appLang,
     languageNameCodeMap[dictionary],

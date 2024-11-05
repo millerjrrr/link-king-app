@@ -1,21 +1,20 @@
 import { useDispatch, useSelector } from "react-redux";
-import { getConsoleState } from "@src/store/console";
+import { consoleState } from "@src/store/console";
 import { useEffect } from "react";
 import {
   NavigationProp,
   useNavigation,
 } from "@react-navigation/native";
 import {
-  getSettingsState,
+  settingsState,
   updateSettings,
 } from "@src/store/settings";
 import { ConsoleStackParamList } from "@src/types/navigationTypes";
 
 const useManageGolden = () => {
-  const { stats, showSolution } =
-    useSelector(getConsoleState);
+  const { stats, showSolution } = useSelector(consoleState);
   const { timeGoal, newWordsGoal, stepsGoal, golden } =
-    useSelector(getSettingsState);
+    useSelector(settingsState);
   const { steps, time, newWords } = stats;
 
   const dispatch = useDispatch();

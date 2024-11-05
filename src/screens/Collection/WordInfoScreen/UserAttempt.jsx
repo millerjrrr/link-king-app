@@ -1,17 +1,16 @@
 import { View, StyleSheet } from "react-native";
 import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
-import { getConsoleState } from "@src/store/console";
-import { getSettingsState } from "@src/store/settings";
+import { consoleState } from "@src/store/console";
+import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import AppText from "@src/components/AppText";
 import SolutionItem from "@src/screens/Console/components/SolutionsList/SolutionItem";
 
 const UserAttempt = () => {
-  const { lastAttempt } = useSelector(getConsoleState);
-  const { colorScheme, appLang } = useSelector(
-    getSettingsState,
-  );
+  const { lastAttempt } = useSelector(consoleState);
+  const { colorScheme, appLang } =
+    useSelector(settingsState);
   const { userResponse } =
     appTextSource(appLang).console.targetDetails;
 

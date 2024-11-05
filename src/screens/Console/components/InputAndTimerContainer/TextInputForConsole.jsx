@@ -2,13 +2,13 @@ import { StyleSheet, TextInput } from "react-native";
 import colors from "@src/utils/colors";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getConsoleState,
+  consoleState,
   restartTheTimer,
   updateFormValue,
   updateTimerIsOn,
 } from "@src/store/console";
 import * as Speech from "expo-speech";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import appShadow from "@src/utils/appShadow";
 import { speak } from "@src/utils/speak";
 
@@ -25,9 +25,9 @@ const TextInputForConsole = ({
     attempt,
     showSolution,
     options: { sound },
-  } = useSelector(getConsoleState);
+  } = useSelector(consoleState);
   const { target, speechLang: language } = attempt;
-  const { colorScheme } = useSelector(getSettingsState);
+  const { colorScheme } = useSelector(settingsState);
   const placeholderTextColor = colors[colorScheme].LIGHTRED;
   const backgroundColor = colors[colorScheme].PRIMARY;
   const keyboardAppearance =

@@ -1,7 +1,7 @@
 import { TouchableOpacity } from "react-native";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import colors from "@src/utils/colors";
 import AppText from "@src/components/AppText";
 
@@ -12,9 +12,8 @@ const MenuItemName = styled(AppText)`
 `;
 
 const MenuItemLink = ({ name, onPress, gray }) => {
-  const { colorScheme, golden } = useSelector(
-    getSettingsState,
-  );
+  const { colorScheme, golden } =
+    useSelector(settingsState);
   const color = gray
     ? colors[colorScheme].INACTIVE_CONTRAST
     : colors[colorScheme].CONTRAST[golden];

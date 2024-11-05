@@ -3,16 +3,16 @@ import { FlatList, View, StyleSheet } from "react-native";
 import WordCard from "./WordCard";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getCollectionState,
+  collectionState,
   updateCollection,
 } from "@src/store/collection";
 import Loader from "@src/components/Loader";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import AppText from "@src/components/AppText";
 
 const ListFooterComponent = () => {
-  const { allDataLoaded } = useSelector(getCollectionState);
+  const { allDataLoaded } = useSelector(collectionState);
   return (
     <>
       {!allDataLoaded ? (
@@ -27,10 +27,9 @@ const ListFooterComponent = () => {
 
 const WordCollectionList = ({ navigation }) => {
   const dispatch = useDispatch();
-  const { tickets, page, allDataLoaded } = useSelector(
-    getCollectionState,
-  );
-  const { appLang } = useSelector(getSettingsState);
+  const { tickets, page, allDataLoaded } =
+    useSelector(collectionState);
+  const { appLang } = useSelector(settingsState);
 
   const { noWords } = appTextSource(appLang).collection;
 

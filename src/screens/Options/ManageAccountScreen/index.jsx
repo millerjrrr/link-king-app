@@ -1,11 +1,11 @@
 import appTextSource from "@src/utils/appTextSource";
 import { useDispatch, useSelector } from "react-redux";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import ManageAccountMenuItem from "./ManageAccountMenuItem";
 import PopUpContainer from "@src/components/containers/PopUpContainer";
 import BusyWrapper from "@src/components/Loader/BusyWrapper";
 import {
-  getAuthState,
+  authState,
   updateEmail,
   updateName,
 } from "@src/store/auth";
@@ -15,7 +15,7 @@ import { useEffect, useState } from "react";
 import clientWithAuth from "@src/api/clientWithAuth";
 
 const ManageAccountScreen = () => {
-  const { appLang } = useSelector(getSettingsState);
+  const { appLang } = useSelector(settingsState);
   const { title: heading, changeHomeLanguage } =
     appTextSource(appLang).options.manageAccount;
   const { subscribed, notSubscribed, vipMessage } =
@@ -27,7 +27,7 @@ const ManageAccountScreen = () => {
     formEmail: email,
     subscribed: userIsSubscribed,
     vip,
-  } = useSelector(getAuthState);
+  } = useSelector(authState);
 
   const dispatch = useDispatch();
   const [busy, setBusy] = useState(false);
@@ -48,7 +48,7 @@ const ManageAccountScreen = () => {
     setBusy(false);
   };
 
-  const { refresh } = useSelector(getAuthState);
+  const { refresh } = useSelector(authState);
   const navigation = useNavigation();
 
   useEffect(() => {

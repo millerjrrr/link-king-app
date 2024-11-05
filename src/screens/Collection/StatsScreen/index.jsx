@@ -1,18 +1,17 @@
 import { useSelector } from "react-redux";
-import { getStatsState } from "@src/store/stats";
+import { statsState } from "@src/store/stats";
 import LevelHistogram from "./LevelHistogram";
 import PopUpContainer from "@src/components/containers/PopUpContainer";
 import Loader from "@src/components/Loader";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import AppText from "@src/components/AppText";
 import StatsContainer from "./StatsContainer";
 import useFetchStatsInfo from "@src/hooks/collectionHooks/useFetchStatsInfo";
 
 const StatsScreen = () => {
-  const { levelBreakdown, busy } =
-    useSelector(getStatsState);
-  const { appLang } = useSelector(getSettingsState);
+  const { levelBreakdown, busy } = useSelector(statsState);
+  const { appLang } = useSelector(settingsState);
 
   useFetchStatsInfo();
 

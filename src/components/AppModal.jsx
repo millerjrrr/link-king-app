@@ -1,7 +1,7 @@
 import { TouchableOpacity, View } from "react-native";
 import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import styled from "styled-components";
 import Modal from "react-native-modal";
 import appTextSource from "@src/utils/appTextSource";
@@ -51,9 +51,8 @@ const AppModal = ({
   info,
   variable,
 }) => {
-  const { colorScheme, golden, appLang } = useSelector(
-    getSettingsState,
-  );
+  const { colorScheme, golden, appLang } =
+    useSelector(settingsState);
   const color = colors[colorScheme].CONTRAST[golden];
   const backgroundColor = colors[colorScheme].PRIMARY;
 

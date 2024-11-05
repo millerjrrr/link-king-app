@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import * as yup from "yup";
 import AuthFormContainer from "../../../../components/containers/AuthFormContainer";
 import AuthInputField from "../../../../components/AuthInputField";
@@ -17,7 +17,7 @@ import { useEffect } from "react";
 import { Formik } from "formik";
 
 const EditTicketScreen = ({ route }) => {
-  const { appLang } = useSelector(getSettingsState);
+  const { appLang } = useSelector(settingsState);
   const {
     ticket: { solutions, id },
     target,

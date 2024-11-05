@@ -6,11 +6,11 @@ import { updateNotification } from "@src/store/notification";
 import appTextSource from "@src/utils/appTextSource";
 import AppModal from "@src/components/AppModal";
 import MenuItemLink from "./MenuItemLink";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import useLogOut from "@src/hooks/authHooks/useLogOut";
 
 const ModalTypeMenuItem = ({ optionName }) => {
-  const { appLang } = useSelector(getSettingsState);
+  const { appLang } = useSelector(settingsState);
 
   const [isModalVisible, setIsModalVisible] =
     useState(false);

@@ -4,14 +4,14 @@ import AuthInputField from "../../components/AuthInputField";
 import * as yup from "yup";
 import AuthFormContainer from "../../components/containers/AuthFormContainer";
 import { useDispatch, useSelector } from "react-redux";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
-import { getAuthState, updateEmail } from "@src/store/auth";
+import { authState, updateEmail } from "@src/store/auth";
 import SignUpAppLink from "../../components/SignUpAppLink";
 import { Formik } from "formik";
 
 const Email = ({ navigation }) => {
-  const { appLang } = useSelector(getSettingsState);
+  const { appLang } = useSelector(settingsState);
   const { email } = appTextSource(appLang).auth.forms;
 
   const validationSchema = yup.object({
@@ -22,7 +22,7 @@ const Email = ({ navigation }) => {
       .required(email.required),
   });
 
-  const { formEmail } = useSelector(getAuthState);
+  const { formEmail } = useSelector(authState);
 
   const initialValues = {
     email: formEmail,

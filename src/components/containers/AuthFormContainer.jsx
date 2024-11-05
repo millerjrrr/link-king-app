@@ -12,7 +12,7 @@ import FourCrowns from "../Graphics/FourCrowns";
 import LinkKingLogo from "../Graphics/LinkKingLogo";
 import StatusBarFiller from "../StatusBarFiller";
 import { useSelector } from "react-redux";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import AppText from "../AppText";
 import BackButton from "../Buttons/BackButton";
 
@@ -24,9 +24,8 @@ const AuthFormContainer = ({
   popUp,
   back = true,
 }) => {
-  const { colorScheme, golden } = useSelector(
-    getSettingsState,
-  );
+  const { colorScheme, golden } =
+    useSelector(settingsState);
 
   const tintColor = colors[colorScheme].CONTRAST[golden];
   const color = colors[colorScheme].SECONDARY;

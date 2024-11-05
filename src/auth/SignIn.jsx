@@ -9,7 +9,7 @@ import { useNavigation } from "@react-navigation/native";
 import client from "@src/api/client";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getAuthState,
+  authState,
   refreshPage,
   updateEmail,
   updateLoggedInState,
@@ -17,13 +17,13 @@ import {
 } from "@src/store/auth";
 import { saveToAsyncStorage } from "@src/utils/asyncStorage";
 import { useState } from "react";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import { Formik } from "formik";
 import useCatchAsync from "@src/hooks/useCatchAsync";
 
 const SignIn = () => {
-  const { appLang } = useSelector(getSettingsState);
+  const { appLang } = useSelector(settingsState);
   const { email, password } =
     appTextSource(appLang).auth.forms;
 
@@ -38,7 +38,7 @@ const SignIn = () => {
       .trim(password.trim)
       .required(password.required),
   });
-  const { formEmail } = useSelector(getAuthState);
+  const { formEmail } = useSelector(authState);
 
   const initialValues = {
     email: formEmail,

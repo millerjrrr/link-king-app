@@ -1,7 +1,7 @@
 import { View } from "react-native";
 import PopUpContainer from "../../../components/containers/PopUpContainer";
 import { useSelector } from "react-redux";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import { HelpScroll } from "./components/StyledComponents";
 import HowToPlay from "./components/HowToPlay";
@@ -12,7 +12,7 @@ import GameDescription from "./components/GameDescription";
 import React from "react";
 
 const HelpScreen = React.memo(() => {
-  const { appLang } = useSelector(getSettingsState);
+  const { appLang } = useSelector(settingsState);
   const { heading } = appTextSource(appLang).console.help;
 
   return (

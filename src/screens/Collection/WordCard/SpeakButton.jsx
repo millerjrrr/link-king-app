@@ -1,7 +1,7 @@
 import { StyleSheet, View } from "react-native";
 import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import ReadWordButton from "@src/screens/Console/components/ReadWordButton";
 
 const SpeakButton = ({
@@ -9,7 +9,7 @@ const SpeakButton = ({
   speakWord,
   height = 50,
 }) => {
-  const { colorScheme } = useSelector(getSettingsState);
+  const { colorScheme } = useSelector(settingsState);
   return (
     <View
       {...{

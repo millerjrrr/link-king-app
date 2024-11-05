@@ -6,17 +6,16 @@ import {
 } from "react-native";
 import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import { captureRef } from "react-native-view-shot";
 import { errorHandler } from "@src/errors/errorHandler";
 import appTextSource from "@src/utils/appTextSource";
-import { getConsoleState } from "@src/store/console";
+import { consoleState } from "@src/store/console";
 
 const ShareButton = ({ shareRef }) => {
-  const { colorScheme, golden, appLang } = useSelector(
-    getSettingsState,
-  );
-  const { dictionary } = useSelector(getConsoleState);
+  const { colorScheme, golden, appLang } =
+    useSelector(settingsState);
+  const { dictionary } = useSelector(consoleState);
 
   const color = colors[colorScheme].CONTRAST[golden];
   const { challenge } =

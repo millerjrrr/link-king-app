@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { getStatsState } from "@src/store/stats";
+import { statsState } from "@src/store/stats";
 import { useEffect, useRef } from "react";
 import StatsPanel from "./StatsPanel";
 import BusyWrapper from "@src/components/Loader/BusyWrapper";
@@ -17,7 +17,7 @@ import ViewShot from "react-native-view-shot";
 import useFetchStatsInfo from "@src/hooks/collectionHooks/useFetchStatsInfo";
 
 const ProgressScreen = () => {
-  const { busy } = useSelector(getStatsState);
+  const { busy } = useSelector(statsState);
 
   //close this screen every time we change bottom tab
   const navigation = useNavigation();

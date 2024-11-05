@@ -10,13 +10,12 @@ import Animated, {
 import { AntDesign } from "@expo/vector-icons";
 import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import FlagImage from "../Graphics/FlagImage";
 
 const Loader = ({ size = 24, color, backgroundColor }) => {
-  const { colorScheme, golden } = useSelector(
-    getSettingsState,
-  );
+  const { colorScheme, golden } =
+    useSelector(settingsState);
   const loaderColor = color
     ? color
     : colors[colorScheme].CONTRAST[golden];

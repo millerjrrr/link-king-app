@@ -1,10 +1,10 @@
 import { View } from "react-native";
 import { useSelector } from "react-redux";
-import { getConsoleState } from "@src/store/console";
+import { consoleState } from "@src/store/console";
 import Loader from "../../../../components/Loader";
 
 const LoaderForTextInputForConsole = () => {
-  const { busy } = useSelector(getConsoleState);
+  const { busy } = useSelector(consoleState);
 
   return busy ? (
     <View

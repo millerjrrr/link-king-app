@@ -44,9 +44,7 @@ const slice = createSlice({
 export const { updateSettings, restoreDefaultGoals } =
   slice.actions;
 
-export const getSettingsState = createSelector(
-  (settingsState) => settingsState,
-  (state: RootState) => state.settings,
-);
+export const settingsState = (state: RootState) =>
+  state.settings;
 
 export default slice.reducer;

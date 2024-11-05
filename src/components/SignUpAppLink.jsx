@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import AppLink from "./AppLink";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import { View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
@@ -11,7 +11,7 @@ const SignUpAppLink = ({}) => {
     navigation.navigate("SignIn");
   };
 
-  const { appLang } = useSelector(getSettingsState);
+  const { appLang } = useSelector(settingsState);
   const { goToSignIn: title } =
     appTextSource(appLang).auth.titles;
 

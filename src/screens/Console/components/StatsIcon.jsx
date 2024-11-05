@@ -2,7 +2,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import colors from "@src/utils/colors";
 import { useDispatch, useSelector } from "react-redux";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import { updateNotification } from "@src/store/notification";
 import appTextSource from "@src/utils/appTextSource";
 import AppText from "../../../components/AppText";
@@ -12,9 +12,8 @@ const StatsIcon = ({
   text = "",
   size = 18,
 }) => {
-  const { colorScheme, golden, appLang } = useSelector(
-    getSettingsState,
-  );
+  const { colorScheme, golden, appLang } =
+    useSelector(settingsState);
 
   const color = colors[colorScheme].CONTRAST[golden];
 

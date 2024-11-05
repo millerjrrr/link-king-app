@@ -12,7 +12,7 @@ import {
   RowContainer,
   Title,
 } from "./WordCardStyledComponents";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import appShadow from "@src/utils/appShadow";
 import appTextSource from "@src/utils/appTextSource";
 import SpeakButton from "./SpeakButton";
@@ -25,9 +25,8 @@ const WordCard = ({
       ticket,
     }),
 }) => {
-  const { colorScheme, golden, appLang } = useSelector(
-    getSettingsState,
-  );
+  const { colorScheme, golden, appLang } =
+    useSelector(settingsState);
   const { CONTRAST, SECONDARY } = colors[colorScheme];
   const color = CONTRAST[golden];
   const backgroundColor = SECONDARY;

@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import PopUpContainer from "../../components/containers/PopUpContainer";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import { useNavigation } from "@react-navigation/native";
 import AuthButton from "../../components/Buttons/AuthButton";
 import appTextSource from "@src/utils/appTextSource";
@@ -10,7 +10,7 @@ import { View } from "react-native";
 const ChangeHomeLanguageWarningScreen = () => {
   const navigation = useNavigation();
 
-  const { appLang } = useSelector(getSettingsState);
+  const { appLang } = useSelector(settingsState);
 
   const {
     changeHomeLanguage: heading,

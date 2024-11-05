@@ -3,7 +3,7 @@ import { ScrollView, View } from "react-native";
 import AuthButton from "@src/components/Buttons/AuthButton";
 import appTextSource from "@src/utils/appTextSource";
 import { useDispatch, useSelector } from "react-redux";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import AppText from "@src/components/AppText";
 import AuthFormContainer from "@src/components/containers/AuthFormContainer";
 import subscribeFunction from "./subscribeFunction";
@@ -19,7 +19,7 @@ const Paywall = () => {
   const onPress = () =>
     subscribeFunction({ dispatch, setBusy });
 
-  const { appLang } = useSelector(getSettingsState);
+  const { appLang } = useSelector(settingsState);
   const { heading, notice, priceDescription, perYear } =
     appTextSource(appLang).paywall;
 

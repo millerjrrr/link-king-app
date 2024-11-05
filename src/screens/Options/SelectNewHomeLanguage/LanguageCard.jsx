@@ -5,7 +5,7 @@ import FlagImage from "../../../components/Graphics/FlagImage";
 import { useNavigation } from "@react-navigation/native";
 import { View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import { updateNotification } from "@src/store/notification";
 import appTextSource from "@src/utils/appTextSource";
 import colors from "@src/utils/colors";
@@ -25,9 +25,8 @@ const LanguageCard = ({ code, native }) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
-  const { appLang, colorScheme, golden } = useSelector(
-    getSettingsState,
-  );
+  const { appLang, colorScheme, golden } =
+    useSelector(settingsState);
 
   const color = colors[colorScheme].SECONDARY;
   const shadowColor = colors[colorScheme].CONTRAST[golden];

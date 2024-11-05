@@ -1,7 +1,7 @@
 import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
 import RedSafetyButton from "@src/components/Buttons/RedSafetyButton";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import AppText from "@src/components/AppText";
 import { View } from "react-native";
@@ -12,9 +12,8 @@ const NoticeAndFlagButton = ({
   setCoverZIndex,
   wrongAnswerReturned,
 }) => {
-  const { colorScheme, appLang } = useSelector(
-    getSettingsState,
-  );
+  const { colorScheme, appLang } =
+    useSelector(settingsState);
 
   const { description, buttonTitle } = wrongAnswerReturned
     ? appTextSource(appLang).console.targetDetails

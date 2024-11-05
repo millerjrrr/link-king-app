@@ -8,7 +8,7 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { updateNotification } from "@src/store/notification";
 import {
-  getSettingsState,
+  settingsState,
   restoreDefaultGoals,
   updateSettings,
 } from "@src/store/settings";
@@ -72,7 +72,7 @@ const SetDailyGoalScreen = ({}) => {
     newWordsGoal,
     stepsGoal,
     appLang,
-  } = useSelector(getSettingsState);
+  } = useSelector(settingsState);
   const color = colors[colorScheme].CONTRAST[golden];
   const { heading, textA, textB, textC, textD } =
     appTextSource(appLang).options.setDailyGoal;

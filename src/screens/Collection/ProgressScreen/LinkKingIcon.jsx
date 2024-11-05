@@ -1,12 +1,11 @@
 import { Image } from "react-native";
 import { useSelector } from "react-redux";
 import colors from "@src/utils/colors";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 
 const LinkKingIcon = () => {
-  const { colorScheme, golden } = useSelector(
-    getSettingsState,
-  );
+  const { colorScheme, golden } =
+    useSelector(settingsState);
   const tintColor = colors[colorScheme].CONTRAST[golden];
   return (
     <Image

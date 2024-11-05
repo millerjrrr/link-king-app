@@ -1,10 +1,10 @@
 import { View, StyleSheet } from "react-native";
 import colors from "@src/utils/colors";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import { useSelector } from "react-redux";
 
 const BloodRedCover = ({ elapsedTime, coverZIndex }) => {
-  const { colorScheme } = useSelector(getSettingsState);
+  const { colorScheme } = useSelector(settingsState);
   const backgroundColor = colors[colorScheme].LIGHTRED;
   return (
     <View

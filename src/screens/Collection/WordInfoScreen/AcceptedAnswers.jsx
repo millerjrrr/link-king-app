@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import AppText from "@src/components/AppText";
 
 const AcceptedAnswers = () => {
-  const { appLang } = useSelector(getSettingsState);
+  const { appLang } = useSelector(settingsState);
 
   const { accepted } =
     appTextSource(appLang).console.targetDetails;

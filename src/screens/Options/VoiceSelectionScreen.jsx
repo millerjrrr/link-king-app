@@ -2,7 +2,7 @@ import { ScrollView, View } from "react-native";
 import styled from "styled-components";
 import PopUpContainer from "../../components/containers/PopUpContainer";
 import { useSelector } from "react-redux";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import colors from "@src/utils/colors";
 import appTextSource from "@src/utils/appTextSource";
 import AuthButton from "@src/components/Buttons/AuthButton";
@@ -20,9 +20,8 @@ const TextBlock = styled(AppText)`
 `;
 
 const VoiceSelectionScreen = () => {
-  const { colorScheme, golden, appLang } = useSelector(
-    getSettingsState,
-  );
+  const { colorScheme, golden, appLang } =
+    useSelector(settingsState);
   const color = colors[colorScheme].CONTRAST[golden];
 
   const { title, textA, textB, tip, accessSettings } =

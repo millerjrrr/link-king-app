@@ -1,7 +1,7 @@
 import { View } from "react-native";
 import AuthFormContainer from "../../components/containers/AuthFormContainer";
 import { useSelector } from "react-redux";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import AuthButton from "../../components/Buttons/AuthButton";
 import { useNavigation } from "@react-navigation/native";
@@ -10,9 +10,8 @@ import colors from "@src/utils/colors";
 import SignUpAppLink from "../../components/SignUpAppLink";
 
 const Welcome = () => {
-  const { colorScheme, golden, appLang } = useSelector(
-    getSettingsState,
-  );
+  const { colorScheme, golden, appLang } =
+    useSelector(settingsState);
   const color = colors[colorScheme].CONTRAST[golden];
 
   const navigation = useNavigation();

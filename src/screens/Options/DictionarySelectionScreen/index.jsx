@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
-import { getConsoleState } from "@src/store/console";
+import { consoleState } from "@src/store/console";
 import languageNameCodeMap from "@src/utils/languageNameCodeMap";
 import PopUpContainer from "@src/components/containers/PopUpContainer";
 import {
@@ -18,11 +18,11 @@ import AppText from "@src/components/AppText";
 import ChangeHomeLanguageLabel from "./ChangeHomeLanguageLabel";
 
 const DictionarySelectionScreen = ({ navigation }) => {
-  const { appLang } = useSelector(getSettingsState);
+  const { appLang } = useSelector(settingsState);
   const { title: heading, dictionaryError } =
     appTextSource(appLang).options.chooseDictionary;
 
-  const { busy } = useSelector(getConsoleState);
+  const { busy } = useSelector(consoleState);
 
   const [apiBusy, setApiBusy] = useState(false);
   const [dictionaries, setDictionaries] = useState([]);

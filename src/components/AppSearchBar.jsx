@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import { Searchbar } from "react-native-paper";
 import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import appShadow from "@src/utils/appShadow";
 
 const AppSearchBar = ({
@@ -10,9 +10,8 @@ const AppSearchBar = ({
   setSearchKeyword,
   placeholder = "",
 }) => {
-  const { colorScheme, golden } = useSelector(
-    getSettingsState,
-  );
+  const { colorScheme, golden } =
+    useSelector(settingsState);
   const color = colors[colorScheme].CONTRAST[golden];
 
   const keyboardAppearance =

@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import ColorPicker from "./ColorPicker";
@@ -8,7 +8,7 @@ import appTextSource from "@src/utils/appTextSource";
 import MenuItemLink from "../MenuItemLink";
 
 const ColorPickerMenuItem = () => {
-  const { appLang } = useSelector(getSettingsState);
+  const { appLang } = useSelector(settingsState);
   const { colorSchemeTitle } =
     appTextSource(appLang).options;
 

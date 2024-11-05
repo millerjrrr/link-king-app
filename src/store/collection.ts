@@ -40,9 +40,7 @@ const slice = createSlice({
 
 export const { updateCollection } = slice.actions;
 
-export const getCollectionState = createSelector(
-  (collectionState) => collectionState,
-  (state: RootState) => state.collection,
-);
+export const collectionState = (state: RootState) =>
+  state.collection;
 
 export default slice.reducer;

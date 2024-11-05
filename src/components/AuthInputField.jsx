@@ -11,11 +11,11 @@ import Animated, {
 } from "react-native-reanimated";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import AppText from "./AppText";
 
 const AuthInputField = (props) => {
-  const { colorScheme } = useSelector(getSettingsState);
+  const { colorScheme } = useSelector(settingsState);
   const red = colors[colorScheme].RED;
 
   const inputTransformValue = useSharedValue(0);

@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import FourCrowns from "../Graphics/FourCrowns";
 import LinkKingLogo from "../Graphics/LinkKingLogo";
 import HelpButton from "../Buttons/HelpButton";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import FlagBook from "../Buttons/FlagBook";
 import AppText from "../AppText";
 import BackButton from "../Buttons/BackButton";
@@ -19,9 +19,8 @@ const InnerTabContainer = ({
   noBook,
   back,
 }) => {
-  const { colorScheme, golden } = useSelector(
-    getSettingsState,
-  );
+  const { colorScheme, golden } =
+    useSelector(settingsState);
   const { CONTRAST, SECONDARY, PRIMARY } =
     colors[colorScheme];
   const tintColor = CONTRAST[golden];

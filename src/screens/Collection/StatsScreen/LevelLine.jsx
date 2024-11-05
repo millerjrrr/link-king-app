@@ -6,7 +6,7 @@ import {
 } from "react-native";
 import { useSelector } from "react-redux";
 import colors from "@src/utils/colors";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import appShadow from "@src/utils/appShadow";
 import AppText from "@src/components/AppText";
 
@@ -16,9 +16,8 @@ const LevelLine = ({
   touched = false,
   onPress,
 }) => {
-  const { colorScheme, golden } = useSelector(
-    getSettingsState,
-  );
+  const { colorScheme, golden } =
+    useSelector(settingsState);
   const color = colors[colorScheme].CONTRAST[golden];
 
   return (

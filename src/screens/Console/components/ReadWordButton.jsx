@@ -5,9 +5,9 @@ import {
   StyleSheet,
 } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { getConsoleState } from "@src/store/console";
+import { consoleState } from "@src/store/console";
 import AppText from "../../../components/AppText";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import colors from "@src/utils/colors";
 import { speak } from "@src/utils/speak";
 import { updateNotification } from "@src/store/notification";
@@ -21,8 +21,8 @@ const ReadWordButton = ({
   const {
     attempt: { target, speechLang: language },
     options: { blurred, sound },
-  } = useSelector(getConsoleState);
-  const { appLang } = useSelector(getSettingsState);
+  } = useSelector(consoleState);
+  const { appLang } = useSelector(settingsState);
 
   const dispatch = useDispatch();
 
@@ -47,9 +47,8 @@ const ReadWordButton = ({
   const length = target.length;
   if (length > 12) fontSize = (fontSize * 12) / length;
 
-  const { colorScheme, golden } = useSelector(
-    getSettingsState,
-  );
+  const { colorScheme, golden } =
+    useSelector(settingsState);
   const color = colors[colorScheme].CONTRAST[golden];
 
   return (

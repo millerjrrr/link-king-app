@@ -100,9 +100,6 @@ export const {
   updateUnverifiedUserId,
 } = slice.actions;
 
-export const getAuthState = createSelector(
-  (authState) => authState,
-  (state: RootState) => state.auth,
-);
+export const authState = (state: RootState) => state.auth;
 
 export default slice.reducer;

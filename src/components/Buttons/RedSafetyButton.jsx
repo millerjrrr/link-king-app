@@ -7,7 +7,7 @@ import {
 import colors from "@src/utils/colors";
 import { AntDesign } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import appShadow from "@src/utils/appShadow";
 import { updateNotification } from "@src/store/notification";
 import appTextSource from "@src/utils/appTextSource";
@@ -21,9 +21,8 @@ const RedSafetyButton = ({
 }) => {
   const [pressStartTime, setPressStartTime] = useState(0);
   const pressTimer = useRef(null);
-  const { colorScheme, appLang } = useSelector(
-    getSettingsState,
-  );
+  const { colorScheme, appLang } =
+    useSelector(settingsState);
   const { SECONDARY, RED } = colors[colorScheme];
 
   useEffect(() => {

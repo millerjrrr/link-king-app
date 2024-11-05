@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import PopUpContainer from "../../../components/containers/PopUpContainer";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import LanguageSearchBar from "./LanguageSearchBar";
 import { useEffect, useState } from "react";
@@ -8,7 +8,7 @@ import getLanguageData from "./getLanguageData";
 import LanguageList from "./LanguageList";
 
 const SelectNewHomeLanguageScreen = () => {
-  const { appLang } = useSelector(getSettingsState);
+  const { appLang } = useSelector(settingsState);
   const { changeHomeLanguage: heading } =
     appTextSource(appLang).options.manageAccount;
 

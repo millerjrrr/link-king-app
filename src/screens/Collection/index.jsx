@@ -4,20 +4,20 @@ import { useEffect, useState } from "react";
 import { fetchTickets } from "@src/utils/collectionFunctions/fetchTickets";
 import SearchBarContainer from "./SearchBarContainer";
 import { useDispatch, useSelector } from "react-redux";
-import { getCollectionState } from "@src/store/collection";
+import { collectionState } from "@src/store/collection";
 import { fetchTicketsFirstBatch } from "@src/utils/collectionFunctions/fetchTicketsFirstBatch";
 import BusyWrapper from "@src/components/Loader/BusyWrapper";
-import { getAuthState } from "@src/store/auth";
+import { authState } from "@src/store/auth";
 import appTextSource from "@src/utils/appTextSource";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import AppModal from "@src/components/AppModal";
 
 const Collection = ({ navigation }) => {
   const dispatch = useDispatch();
   const { searchKeyword, tickets, page, busy } =
-    useSelector(getCollectionState);
-  const { appLang } = useSelector(getSettingsState);
-  const { refresh } = useSelector(getAuthState);
+    useSelector(collectionState);
+  const { appLang } = useSelector(settingsState);
+  const { refresh } = useSelector(authState);
 
   useEffect(() => {
     const unsubscribe = navigation.addListener(

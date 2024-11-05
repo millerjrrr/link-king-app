@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PopUpContainer from "../../components/containers/PopUpContainer";
 import BloodRedCover from "../../components/BloodRedCover";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import AuthInputField from "../../components/AuthInputField";
 import * as yup from "yup";
 import PasswordVisibilityIcon from "../../components/PasswordVisibilityIcon";
@@ -23,9 +23,8 @@ import { Formik } from "formik";
 
 const ChangeHomeLanguageScreen = ({ route }) => {
   const newLanguage = route.params.code;
-  const { appLang, colorScheme, golden } = useSelector(
-    getSettingsState,
-  );
+  const { appLang, colorScheme, golden } =
+    useSelector(settingsState);
   const color = colors[colorScheme].CONTRAST[golden];
 
   const {

@@ -3,13 +3,12 @@ import { View, StyleSheet } from "react-native";
 import LevelLine from "./LevelLine";
 import { useSelector } from "react-redux";
 import colors from "@src/utils/colors";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import AppText from "@src/components/AppText";
 
 const LevelHistogram = ({ lbd, histHeight }) => {
-  const { colorScheme, golden } = useSelector(
-    getSettingsState,
-  );
+  const { colorScheme, golden } =
+    useSelector(settingsState);
   const color = colors[colorScheme].CONTRAST[golden];
 
   [selected, setSelected] = useState(1);

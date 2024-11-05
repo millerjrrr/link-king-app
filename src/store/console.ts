@@ -177,9 +177,7 @@ export const {
   updateDictionary,
 } = slice.actions;
 
-export const getConsoleState = createSelector(
-  (consoleState) => consoleState,
-  (state: RootState) => state.console,
-);
+export const consoleState = (state: RootState) =>
+  state.console;
 
 export default slice.reducer;

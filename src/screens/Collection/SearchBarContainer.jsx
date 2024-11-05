@@ -5,7 +5,7 @@ import TicketsCount from "./TicketsCount";
 import { LinearGradient } from "expo-linear-gradient";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import colors from "@src/utils/colors";
 
 const FadeBackgroundView = styled(LinearGradient)`
@@ -18,7 +18,7 @@ const FadeBackgroundView = styled(LinearGradient)`
 `;
 
 const SearchBarContainer = ({ navigation }) => {
-  const { colorScheme } = useSelector(getSettingsState);
+  const { colorScheme } = useSelector(settingsState);
   const backgroundColor = colors[colorScheme].PRIMARY;
 
   return (

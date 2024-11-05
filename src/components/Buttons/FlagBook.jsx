@@ -1,15 +1,15 @@
 import { StyleSheet, TouchableOpacity } from "react-native";
 import StatusBarFiller from "../StatusBarFiller";
 import { useSelector } from "react-redux";
-import { getConsoleState } from "@src/store/console";
+import { consoleState } from "@src/store/console";
 import { useNavigation } from "@react-navigation/native";
 import FlagImage from "../Graphics/FlagImage";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import languageNameCodeMap from "@src/utils/languageNameCodeMap";
 
 const FlagBook = ({ padding }) => {
-  const { dictionary } = useSelector(getConsoleState);
-  const { appLang } = useSelector(getSettingsState);
+  const { dictionary } = useSelector(consoleState);
+  const { appLang } = useSelector(settingsState);
   const [flag1, flag2] = [
     appLang,
     languageNameCodeMap[dictionary],

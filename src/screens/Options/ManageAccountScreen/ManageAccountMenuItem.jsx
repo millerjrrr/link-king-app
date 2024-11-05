@@ -1,7 +1,7 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
 import colors from "@src/utils/colors";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import {
   Container,
@@ -19,9 +19,8 @@ const ManageAccountMenuItem = ({
   iconName,
   targetScreen,
 }) => {
-  const { colorScheme, golden, appLang } = useSelector(
-    getSettingsState,
-  );
+  const { colorScheme, golden, appLang } =
+    useSelector(settingsState);
   const backgroundColor = colors[colorScheme].PRIMARY;
   const color = colors[colorScheme].CONTRAST[golden];
 

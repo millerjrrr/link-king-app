@@ -2,7 +2,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { TouchableOpacity, View } from "react-native";
 import { useSelector } from "react-redux";
 import colors from "@src/utils/colors";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import styled from "styled-components";
 import FlagImage from "@src/components/Graphics/FlagImage";
 import languageNameCodeMap from "@src/utils/languageNameCodeMap";
@@ -39,9 +39,8 @@ const OptionsMenuItemContainer = ({
   children,
   onPress,
 }) => {
-  const { colorScheme, golden, appLang } = useSelector(
-    getSettingsState,
-  );
+  const { colorScheme, golden, appLang } =
+    useSelector(settingsState);
   const backgroundColor = colors[colorScheme].PRIMARY;
   const borderColor = colors[colorScheme].INACTIVE_CONTRAST;
   const color = colors[colorScheme].CONTRAST[golden];

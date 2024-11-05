@@ -7,10 +7,10 @@ import Tail from "./components/Tail";
 import ReadWordButton from "./components/ReadWordButton";
 import StatsContainer from "./components/StatsContainer";
 import InnerTabContainer from "@src/components/containers/InnerTabContainer";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import AppModal from "@src/components/AppModal";
-import { getAuthState, refreshPage } from "@src/store/auth";
+import { authState, refreshPage } from "@src/store/auth";
 import useManageGolden from "@src/hooks/consoleHooks/useManageGolden";
 import useTimeManager from "@src/hooks/consoleHooks/useTimeManager";
 import useConsoleUpdates from "@src/hooks/consoleHooks/useConsoleUpdates";
@@ -22,8 +22,8 @@ const Console = ({ navigation }) => {
   const dispatch = useDispatch();
 
   const inputFieldRef = useRef(null);
-  const { appLang } = useSelector(getSettingsState);
-  const { trialDays } = useSelector(getAuthState);
+  const { appLang } = useSelector(settingsState);
+  const { trialDays } = useSelector(authState);
 
   const [isModalVisible, setIsModalVisible] =
     useState(false);

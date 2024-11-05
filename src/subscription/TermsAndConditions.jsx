@@ -3,7 +3,7 @@ import AppText from "@src/components/AppText";
 import colors from "@src/utils/colors";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 
 const Container = styled(View)`
@@ -22,9 +22,8 @@ const Link = styled(Text)`
 `;
 
 const TermsAndConditions = () => {
-  const { colorScheme, appLang } = useSelector(
-    getSettingsState,
-  );
+  const { colorScheme, appLang } =
+    useSelector(settingsState);
   const { CONTRAST, INACTIVE_CONTRAST } =
     colors[colorScheme];
 

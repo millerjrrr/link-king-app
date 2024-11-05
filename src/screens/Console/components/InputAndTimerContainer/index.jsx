@@ -2,12 +2,12 @@ import { StyleSheet, View } from "react-native";
 import Timer from "./Timer";
 import colors from "@src/utils/colors";
 import { useDispatch, useSelector } from "react-redux";
-import { getConsoleState } from "@src/store/console";
+import { consoleState } from "@src/store/console";
 import TargetDetailsButton from "./TargetDetailsButton";
 import { submitAnswer } from "@src/utils/consoleFunctions/submitAnswer";
 import LoaderForTextInputForConsole from "./LoaderForTextInputForConsole";
 import TextInputForConsole from "./TextInputForConsole";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import { useState } from "react";
 
 const InputAndTimerContainer = ({
@@ -20,11 +20,10 @@ const InputAndTimerContainer = ({
     tries,
     startedThisWord,
     showSolution,
-  } = useSelector(getConsoleState);
+  } = useSelector(consoleState);
 
-  const { colorScheme, golden } = useSelector(
-    getSettingsState,
-  );
+  const { colorScheme, golden } =
+    useSelector(settingsState);
   const { RED, ORANGE, CONTRAST } = colors[colorScheme];
 
   const colorByTries = [RED, ORANGE, CONTRAST[golden]];

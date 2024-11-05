@@ -8,13 +8,13 @@ import colors from "@src/utils/colors";
 import { Ionicons } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { refreshPage } from "@src/store/auth";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import appShadow from "@src/utils/appShadow";
 
 const RefreshButton = ({ size = 200 }) => {
   const dispatch = useDispatch();
 
-  const { colorScheme } = useSelector(getSettingsState);
+  const { colorScheme } = useSelector(settingsState);
   const color = colors[colorScheme].CONTRAST[0];
   const backgroundColor = colors[colorScheme].SECONDARY;
 

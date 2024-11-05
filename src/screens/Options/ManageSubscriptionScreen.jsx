@@ -1,7 +1,7 @@
 import PopUpContainer from "../../components/containers/PopUpContainer";
 import appTextSource from "@src/utils/appTextSource";
 import { useDispatch, useSelector } from "react-redux";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import AppText from "../../components/AppText";
 import {
   Linking,
@@ -12,7 +12,7 @@ import {
 import colors from "@src/utils/colors";
 import { FontAwesome5 } from "@expo/vector-icons";
 import styled from "styled-components";
-import { getAuthState } from "@src/store/auth";
+import { authState } from "@src/store/auth";
 import subscribeFunction from "../../subscription/subscribeFunction";
 import { useState } from "react";
 import Loader from "../../components/Loader";
@@ -59,9 +59,8 @@ const ManageSubscripitonButton = styled(TouchableOpacity)`
 `;
 
 const ManageSubscriptionScreen = () => {
-  const { colorScheme, appLang, golden } = useSelector(
-    getSettingsState,
-  );
+  const { colorScheme, appLang, golden } =
+    useSelector(settingsState);
   const {
     heading,
     status,
@@ -84,7 +83,7 @@ const ManageSubscriptionScreen = () => {
   } = colors[colorScheme];
 
   const { subscribed: userIsSubscribed, vip } =
-    useSelector(getAuthState);
+    useSelector(authState);
   const dispatch = useDispatch();
 
   const date = new Date(vip);

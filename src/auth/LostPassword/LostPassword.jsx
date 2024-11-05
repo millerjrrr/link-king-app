@@ -6,13 +6,13 @@ import AuthFormContainer from "../../components/containers/AuthFormContainer";
 import client from "@src/api/client";
 import { useSelector } from "react-redux";
 import appTextSource from "@src/utils/appTextSource";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import useCatchAsync from "@src/hooks/useCatchAsync";
 import * as yup from "yup";
 import { Formik } from "formik";
 
 const LostPassword = ({ navigation }) => {
-  const { appLang } = useSelector(getSettingsState);
+  const { appLang } = useSelector(settingsState);
   const {
     forms: { email },
     titles: { sendLink, signIn, signUp },

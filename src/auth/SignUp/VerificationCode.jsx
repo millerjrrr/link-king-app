@@ -3,10 +3,10 @@ import AuthInputField from "../../components/AuthInputField";
 import * as yup from "yup";
 import AuthFormContainer from "../../components/containers/AuthFormContainer";
 import { useDispatch, useSelector } from "react-redux";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import {
-  getAuthState,
+  authState,
   updateEmail,
   updateLoggedInState,
   updateToken,
@@ -18,7 +18,7 @@ import { Formik } from "formik";
 import useCatchAsync from "@src/hooks/useCatchAsync";
 
 const VerificationCode = () => {
-  const { appLang } = useSelector(getSettingsState);
+  const { appLang } = useSelector(settingsState);
   const { code } = appTextSource(appLang).auth.forms;
 
   const validationSchema = yup.object({
@@ -31,7 +31,7 @@ const VerificationCode = () => {
       .required(code.required),
   });
 
-  const { unverifiedUserId } = useSelector(getAuthState);
+  const { unverifiedUserId } = useSelector(authState);
 
   const initialValues = {
     code: "",
@@ -68,7 +68,7 @@ const VerificationCode = () => {
   const { heading, subHeading, subHeading2, verify } =
     appTextSource(appLang).auth.signUp.code;
 
-  const { formEmail } = useSelector(getAuthState);
+  const { formEmail } = useSelector(authState);
 
   const newSubHeading =
     subHeading + "(" + formEmail + "). " + subHeading2;

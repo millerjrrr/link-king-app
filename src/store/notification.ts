@@ -31,9 +31,7 @@ const slice = createSlice({
 
 export const { updateNotification } = slice.actions;
 
-export const getNotificationState = createSelector(
-  (notificationState) => notificationState,
-  (state: RootState) => state.notification,
-);
+export const notificationState = (state: RootState) =>
+  state.notification;
 
 export default slice.reducer;

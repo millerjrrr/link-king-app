@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
-import { getAuthState } from "@src/store/auth";
+import { authState } from "@src/store/auth";
 import InternetConnectionPage from "./InternetConnectionPage";
 
 const ConnectedWrapper = ({ children }) => {
-  const { connected } = useSelector(getAuthState);
+  const { connected } = useSelector(authState);
   return (
     <>
       {!connected ? <InternetConnectionPage /> : children}

@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
-import { Text, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getNotificationState,
+  notificationState,
   updateNotification,
 } from "@src/store/notification";
 import colors from "@src/utils/colors";
@@ -11,13 +11,11 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from "react-native-reanimated";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import AppText from "./AppText";
 
 const AppNotification = () => {
-  const { message, type } = useSelector(
-    getNotificationState,
-  );
+  const { message, type } = useSelector(notificationState);
 
   const dispatch = useDispatch();
 
@@ -34,9 +32,8 @@ const AppNotification = () => {
     };
   });
 
-  const { colorScheme, golden } = useSelector(
-    getSettingsState,
-  );
+  const { colorScheme, golden } =
+    useSelector(settingsState);
   const color = colors[colorScheme].CONTRAST[golden];
   let backgroundColor = colors[colorScheme].RED;
   let messageTime = 3000;

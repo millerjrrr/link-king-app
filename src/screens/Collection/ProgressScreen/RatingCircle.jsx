@@ -2,22 +2,21 @@ import { Text, View } from "react-native";
 import CircularProgress from "react-native-circular-progress-indicator";
 import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
-import { getStatsState } from "@src/store/stats";
-import { getSettingsState } from "@src/store/settings";
+import { statsState } from "@src/store/stats";
+import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
-import { getConsoleState } from "@src/store/console";
+import { consoleState } from "@src/store/console";
 import AppText from "@src/components/AppText";
 
 const RatingCircle = () => {
-  const { colorScheme, golden, appLang } = useSelector(
-    getSettingsState,
-  );
+  const { colorScheme, golden, appLang } =
+    useSelector(settingsState);
   const color = colors[colorScheme].CONTRAST[golden];
   const green = colors[colorScheme].GREEN;
   const {
     userGameData: { rating },
-  } = useSelector(getStatsState);
-  const { dictionary } = useSelector(getConsoleState);
+  } = useSelector(statsState);
+  const { dictionary } = useSelector(consoleState);
 
   const { textA, textB } =
     appTextSource(appLang).collection.progressScreen;

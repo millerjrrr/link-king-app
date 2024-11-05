@@ -1,16 +1,16 @@
 import { useSelector } from "react-redux";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import DescriptionWrapper from "./DescriptionWrapper";
 import { Video, ResizeMode } from "expo-av";
 import { useRef } from "react";
 import colors from "@src/utils/colors";
-import { getConsoleState } from "@src/store/console";
+import { consoleState } from "@src/store/console";
 import { Image, View } from "react-native";
 
 const HowToPlay = () => {
-  const { colorScheme } = useSelector(getSettingsState);
+  const { colorScheme } = useSelector(settingsState);
 
-  const { dictionary } = useSelector(getConsoleState);
+  const { dictionary } = useSelector(consoleState);
 
   const color = colors[colorScheme].CONTRAST[1];
   const backgroundColor = colors.dark.PRIMARY;

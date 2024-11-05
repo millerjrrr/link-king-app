@@ -7,10 +7,10 @@ import { useNavigation } from "@react-navigation/native";
 import client from "@src/api/client";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import {
-  getAuthState,
+  authState,
   updateName,
   updateUnverifiedUserId,
 } from "@src/store/auth";
@@ -19,7 +19,7 @@ import { Formik } from "formik";
 import useCatchAsync from "@src/hooks/useCatchAsync";
 
 const Password = () => {
-  const { appLang } = useSelector(getSettingsState);
+  const { appLang } = useSelector(settingsState);
   const { password } = appTextSource(appLang).auth.forms;
 
   const validationSchema = yup.object({
@@ -48,7 +48,7 @@ const Password = () => {
     setSecureEntry(!secureEntry);
   };
 
-  const { formName, formEmail } = useSelector(getAuthState);
+  const { formName, formEmail } = useSelector(authState);
 
   const onSubmit = catchAsync(async (values, actions) => {
     try {

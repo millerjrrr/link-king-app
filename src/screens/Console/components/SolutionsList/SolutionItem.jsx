@@ -1,7 +1,7 @@
 import { Linking, TouchableOpacity } from "react-native";
 import { useSelector } from "react-redux";
 import colors from "@src/utils/colors";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import appShadow from "@src/utils/appShadow";
 import AppText from "../../../../components/AppText";
 import {
@@ -9,7 +9,7 @@ import {
   useNavigation,
 } from "@react-navigation/native";
 import { useEffect, useState } from "react";
-import { getConsoleState } from "@src/store/console";
+import { consoleState } from "@src/store/console";
 
 const SolutionItem = ({
   solution,
@@ -17,10 +17,9 @@ const SolutionItem = ({
   ticket,
   target,
 }) => {
-  const { colorScheme, golden, appLang } = useSelector(
-    getSettingsState,
-  );
-  const { dictionary } = useSelector(getConsoleState);
+  const { colorScheme, golden, appLang } =
+    useSelector(settingsState);
+  const { dictionary } = useSelector(consoleState);
 
   const languageCode = dictionary;
 

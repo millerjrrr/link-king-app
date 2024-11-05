@@ -1,7 +1,7 @@
 import { View } from "react-native";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import colors from "@src/utils/colors";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -20,7 +20,7 @@ const Fade = styled(LinearGradient)`
 `;
 
 const HorizontalScrollFade = ({ children }) => {
-  const { colorScheme } = useSelector(getSettingsState);
+  const { colorScheme } = useSelector(settingsState);
   const backgroundColor = colors[colorScheme].PRIMARY;
 
   return (

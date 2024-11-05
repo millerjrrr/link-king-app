@@ -5,7 +5,7 @@ import ColorPickerMenuItem from "./components/ColorPickerMenuItem";
 import ModalTypeMenuItem from "./components/ModalTypeMenuItem";
 import appTextSource from "../../utils/appTextSource";
 import { useSelector } from "react-redux";
-import { getSettingsState } from "./../../store/settings";
+import { settingsState } from "./../../store/settings";
 
 const Options = () => {
   const navigation = useNavigation();
@@ -13,7 +13,7 @@ const Options = () => {
     navigation.navigate(pageName);
   };
 
-  const { appLang } = useSelector(getSettingsState);
+  const { appLang } = useSelector(settingsState);
   const {
     heading,
     setDailyGoal,

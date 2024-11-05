@@ -98,9 +98,6 @@ export const {
   updatePageState,
 } = slice.actions;
 
-export const getStatsState = createSelector(
-  (statsState) => statsState,
-  (state: RootState) => state.stats,
-);
+export const statsState = (state: RootState) => state.stats;
 
 export default slice.reducer;

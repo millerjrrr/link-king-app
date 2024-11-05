@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import colors from "@src/utils/colors";
 import {
@@ -9,9 +9,8 @@ import {
 } from "./StyledComponents";
 
 const DescriptionWrapper = ({ name, children }) => {
-  const { colorScheme, golden, appLang } = useSelector(
-    getSettingsState,
-  );
+  const { colorScheme, golden, appLang } =
+    useSelector(settingsState);
   const color = colors[colorScheme].CONTRAST[golden];
   const backgroudColor = colors[colorScheme].PRIMARY;
 

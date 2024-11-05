@@ -11,15 +11,14 @@ import {
 import { Platform, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import React from "react";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import IsSubscribedWrapper from "../subscription/IsSubscribedWrapper";
 
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
-  const { colorScheme, golden } = useSelector(
-    getSettingsState,
-  );
+  const { colorScheme, golden } =
+    useSelector(settingsState);
   const color = colors[colorScheme].CONTRAST[golden];
   const backgroundColor = colors[colorScheme].PRIMARY;
   const tabBarInactiveTintColor =

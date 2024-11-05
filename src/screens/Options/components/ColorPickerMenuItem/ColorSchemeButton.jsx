@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import colors from "@src/utils/colors";
 import {
-  getSettingsState,
+  settingsState,
   updateSettings,
 } from "@src/store/settings";
 import {
@@ -15,9 +15,8 @@ import appShadow from "@src/utils/appShadow";
 
 const ColorSchemeButton = ({ cs, size = 30 }) => {
   const backgroundColor = colors[cs].SECONDARY;
-  const { colorScheme, golden } = useSelector(
-    getSettingsState,
-  );
+  const { colorScheme, golden } =
+    useSelector(settingsState);
   const color = colors[colorScheme].CONTRAST[golden];
   const dispatch = useDispatch();
 

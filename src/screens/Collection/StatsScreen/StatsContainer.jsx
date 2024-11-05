@@ -1,9 +1,9 @@
 import { View, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
-import { getStatsState } from "@src/store/stats";
+import { statsState } from "@src/store/stats";
 import { timeInStyle } from "@src/utils/timeInStyle";
 import StatsIcon from "@src/screens/Console/components/StatsIcon";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import colors from "@src/utils/colors";
 
 const StatsContainer = ({ size = 22 }) => {
@@ -14,11 +14,10 @@ const StatsContainer = ({ size = 22 }) => {
       stepsTakenLifetime,
       streakRecord,
     },
-  } = useSelector(getStatsState);
+  } = useSelector(statsState);
 
-  const { colorScheme, golden } = useSelector(
-    getSettingsState,
-  );
+  const { colorScheme, golden } =
+    useSelector(settingsState);
 
   const color = colors[colorScheme].CONTRAST[golden];
 

@@ -2,7 +2,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import colors from "@src/utils/colors";
 import { useDispatch, useSelector } from "react-redux";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import { useState } from "react";
 import AppModal from "../../../components/AppModal";
 import { fetchConsoleInfo } from "@src/utils/consoleFunctions/fetchConsoleInfo";
@@ -11,9 +11,8 @@ const RepeatRepeatsIcon = ({
   name = "stop",
   size = 32,
 }) => {
-  const { colorScheme, golden } = useSelector(
-    getSettingsState,
-  );
+  const { colorScheme, golden } =
+    useSelector(settingsState);
 
   const color = colors[colorScheme].CONTRAST[golden];
 

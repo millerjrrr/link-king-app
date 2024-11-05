@@ -2,13 +2,12 @@ import { StyleSheet, TouchableOpacity } from "react-native";
 import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
 import { AntDesign } from "@expo/vector-icons";
-import { getSettingsState } from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import appShadow from "@src/utils/appShadow";
 
 const CollectionScreenButton = ({ onPress, iconName }) => {
-  const { colorScheme, golden } = useSelector(
-    getSettingsState,
-  );
+  const { colorScheme, golden } =
+    useSelector(settingsState);
   const { SECONDARY, CONTRAST } = colors[colorScheme];
   const color = CONTRAST[golden];
 
