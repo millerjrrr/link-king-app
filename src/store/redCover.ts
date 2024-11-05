@@ -5,11 +5,13 @@ import {
 import { RootState } from "@src/store";
 
 interface RedCoverState {
+  startTime: number;
   elapsedTime: number;
   redCoverZIndex: number;
 }
 
 const initialState: RedCoverState = {
+  startTime: 0,
   elapsedTime: 0,
   redCoverZIndex: 1,
 };

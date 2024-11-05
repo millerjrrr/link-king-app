@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import {
   TouchableHighlight,
   View,
@@ -11,53 +11,84 @@ import { settingsState } from "@src/store/settings";
 import appShadow from "@src/utils/appShadow";
 import { updateNotification } from "@src/store/notification";
 import appTextSource from "@src/utils/appTextSource";
+import {
+  redCoverState,
+  updateRedCover,
+} from "@src/store/redCover";
+import { useNavigation } from "@react-navigation/native";
 
 const RedSafetyButton = ({
-  setElapsedTime,
   completeFunction,
-  iconName,
+  iconName = "delete",
   size = 60,
-  setCoverZIndex,
 }) => {
-  const [pressStartTime, setPressStartTime] = useState(0);
   const pressTimer = useRef(null);
   const { colorScheme, appLang } =
     useSelector(settingsState);
   const { SECONDARY, RED } = colors[colorScheme];
+  const dispatch = useDispatch();
+  const navigation = useNavigation();
+  const { startTime } = useSelector(redCoverState);
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener(
+      "blur",
+      () => {
+        dispatch(updateRedCover({ elapsedTime: 0 }));
+      },
+    );
+    return unsubscribe;
+  }, [navigation, dispatch]);
 
   useEffect(() => {
     const timerInterval = setInterval(() => {
-      if (pressStartTime !== 0) {
-        const elapsedTime =
-          (Date.now() - pressStartTime) / 1000; // Convert to seconds
-        setElapsedTime(elapsedTime);
+      if (startTime !== 0) {
+        dispatch(
+          updateRedCover({
+            elapsedTime: (Date.now() - startTime) / 1000,
+          }),
+        );
       }
-    }, 100); // Update every second
+    }, 100);
 
     return () => clearInterval(timerInterval);
-  }, [pressStartTime]);
+  }, [startTime]);
 
   const handlePressIn = () => {
     pressTimer.current = setTimeout(() => {
       completeFunction();
+      dispatch(
+        updateRedCover({
+          elapsedTime: 0,
+          startTime: 0,
+          redCoverZIndex: 1,
+        }),
+      );
     }, 3100); //needs a little longer to ensure screen fills
-    setPressStartTime(Date.now());
-    setCoverZIndex(5);
+    dispatch(
+      updateRedCover({
+        startTime: Date.now(),
+        redCoverZIndex: 5,
+      }),
+    );
   };
 
   const handlePressOut = () => {
     clearTimeout(pressTimer.current);
-    setPressStartTime(0);
-    setElapsedTime(0);
-    setCoverZIndex(1);
+    dispatch(
+      updateRedCover({
+        startTime: 0,
+        redCoverZIndex: 1,
+        elapsedTime: 0,
+      }),
+    );
   };
 
-  const dispatch = useDispatch();
   const { pressAndHold: message } =
     appTextSource(appLang).options;
 
   const onPress = () => {
-    if ((Date.now() - pressStartTime) / 1000 < 1)
+    if ((Date.now() - startTime) / 1000 < 1)
       dispatch(
         updateNotification({
           message,

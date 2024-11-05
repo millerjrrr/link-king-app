@@ -2,6 +2,7 @@ import clientWithAuth from "@src/api/clientWithAuth";
 import useCatchAsync from "@src/hooks/useCatchAsync";
 import { useDispatch } from "react-redux";
 import { updateCollection } from "@src/store/collection";
+import { updateRedCover } from "@src/store/redCover";
 
 const useFlagAndDeleteTicket = () => {
   const catchAsync = useCatchAsync();
@@ -34,6 +35,7 @@ const useFlagAndDeleteTicket = () => {
             busy: false,
           }),
         );
+        dispatch(updateRedCover({ elapsedTime: 0 }));
       }
     },
   );

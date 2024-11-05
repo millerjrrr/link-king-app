@@ -32,10 +32,6 @@ const ChangeHomeLanguageScreen = ({ route }) => {
     changeHomeLanguageDetails,
   } = appTextSource(appLang).options.manageAccount;
 
-  // ...loader management...
-  const [elapsedTime, setElapsedTime] = useState(0);
-  const [coverZIndex, setCoverZIndex] = useState(1);
-
   const { password } = appTextSource(appLang).auth.forms;
 
   const validationSchema = yup.object({
@@ -71,7 +67,7 @@ const ChangeHomeLanguageScreen = ({ route }) => {
 
   return (
     <PopUpContainer {...{ heading, blockPopToTop: true }}>
-      <BloodRedCover {...{ elapsedTime, coverZIndex }} />
+      <BloodRedCover />
       <View
         {...{
           style: {
@@ -131,13 +127,7 @@ const ChangeHomeLanguageScreen = ({ route }) => {
             onPress={() => Keyboard.dismiss()}
           >
             <View style={{ height: 250 }}>
-              <FormikSafetyButton
-                {...{
-                  setElapsedTime,
-                  setCoverZIndex,
-                  iconName: "sync",
-                }}
-              />
+              <FormikSafetyButton iconName="sync" />
             </View>
           </TouchableWithoutFeedback>
         </View>

@@ -4,19 +4,11 @@ import { View } from "react-native";
 import RedSafetyButton from "./RedSafetyButton";
 import BusyWrapper from "./../Loader/BusyWrapper";
 
-const FormikSafetyButton = ({
-  setElapsedTime,
-  setCoverZIndex,
-  iconName = "delete",
-}) => {
+const FormikSafetyButton = ({ iconName = "delete" }) => {
   const { handleSubmit, isSubmitting } = useFormikContext();
 
   const completeFunction = () => {
     handleSubmit();
-    setTimeout(() => {
-      setElapsedTime(0);
-      setCoverZIndex(1);
-    }, 3000);
   };
 
   return (
@@ -29,13 +21,9 @@ const FormikSafetyButton = ({
         }}
       >
         <RedSafetyButton
-          {...{
-            setElapsedTime,
-            completeFunction,
-            setCoverZIndex,
-            iconName,
-            size: 100,
-          }}
+          completeFunction={completeFunction}
+          iconName={iconName}
+          size={100}
         />
       </View>
     </BusyWrapper>

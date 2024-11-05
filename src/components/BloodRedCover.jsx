@@ -2,13 +2,17 @@ import { View, StyleSheet } from "react-native";
 import colors from "@src/utils/colors";
 import { settingsState } from "@src/store/settings";
 import { useSelector } from "react-redux";
+import { redCoverState } from "@src/store/redCover";
 
-const BloodRedCover = ({ elapsedTime, coverZIndex }) => {
+const BloodRedCover = () => {
   const { colorScheme } = useSelector(settingsState);
   const backgroundColor = colors[colorScheme].LIGHTRED;
+  const { elapsedTime, redCoverZIndex } =
+    useSelector(redCoverState);
+
   return (
     <View
-      style={[styles.container, { zIndex: coverZIndex }]}
+      style={[styles.container, { zIndex: redCoverZIndex }]}
     >
       <View
         style={{

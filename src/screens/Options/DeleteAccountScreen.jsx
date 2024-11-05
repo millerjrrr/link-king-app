@@ -8,7 +8,11 @@ import * as yup from "yup";
 import PasswordVisibilityIcon from "../../components/PasswordVisibilityIcon";
 import appTextSource from "@src/utils/appTextSource";
 import AppText from "../../components/AppText";
-import { View } from "react-native";
+import {
+  Keyboard,
+  TouchableWithoutFeedback,
+  View,
+} from "react-native";
 import deleteUserAccount from "../../utils/optionsFunctions/deleteUserAccount";
 import FormikSafetyButton from "../../components/Buttons/FormikSafetyButton";
 import { Formik } from "formik";
@@ -17,10 +21,6 @@ const DeleteAccountScreen = () => {
   const { appLang } = useSelector(settingsState);
   const { deleteAccount: heading, deleteAccountDetails } =
     appTextSource(appLang).options.manageAccount;
-
-  // ...loader management...
-  const [elapsedTime, setElapsedTime] = useState(0);
-  const [coverZIndex, setCoverZIndex] = useState(1);
 
   const { password } = appTextSource(appLang).auth.forms;
 
@@ -54,7 +54,7 @@ const DeleteAccountScreen = () => {
 
   return (
     <PopUpContainer {...{ heading, blockPopToTop: true }}>
-      <BloodRedCover {...{ elapsedTime, coverZIndex }} />
+      <BloodRedCover />
       <AppText
         {...{ style: { padding: 15, fontSize: 20 } }}
       >
@@ -90,14 +90,13 @@ const DeleteAccountScreen = () => {
               onRightIconPress: togglePasswordView,
             }}
           />
-          <View style={{ height: 250 }}>
-            <FormikSafetyButton
-              {...{
-                setElapsedTime,
-                setCoverZIndex,
-              }}
-            />
-          </View>
+          <TouchableWithoutFeedback
+            onPress={() => Keyboard.dismiss()}
+          >
+            <View style={{ height: 250 }}>
+              <FormikSafetyButton />
+            </View>
+          </TouchableWithoutFeedback>
         </View>
       </Formik>
     </PopUpContainer>

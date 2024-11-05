@@ -13,7 +13,6 @@ import UserAttempt from "./UserAttempt";
 import { consoleState } from "@src/store/console";
 import SolutionsList from "@src/screens/Console/components/SolutionsList";
 import DeleteButton from "./DeleteButton";
-import { redCoverState } from "@src/store/redCover";
 import { collectionState } from "@src/store/collection";
 
 const WordInfoScreen = ({ route }) => {
@@ -28,17 +27,13 @@ const WordInfoScreen = ({ route }) => {
 
   const { busy, wordDeleteButtonPressed } =
     useSelector(collectionState);
-  const { elapsedTime, redCoverZIndex } =
-    useSelector(redCoverState);
 
   const { heading } =
     appTextSource(appLang).console.targetDetails;
 
   return (
     <PopUpContainer {...{ heading, blockPopToTop: true }}>
-      <BloodRedCover
-        {...{ elapsedTime, coverZIndex: redCoverZIndex }}
-      />
+      <BloodRedCover />
       <BusyWrapper {...{ busy, size: 96 }}>
         <View style={styles.container}>
           <View {...{ style: { height: 8 } }} />

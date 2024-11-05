@@ -31,56 +31,52 @@ const AuthFormContainer = ({
   const color = colors[colorScheme].SECONDARY;
   const backgroundColor = colors[colorScheme].PRIMARY;
   return (
-    <TouchableWithoutFeedback
-      onPress={() => Keyboard.dismiss()}
-    >
-      <>
-        <View
-          style={[
-            styles.container,
-            {
-              backgroundColor,
-              alignItems: !nologo ? "center" : "flex-start",
-            },
-          ]}
+    <>
+      <View
+        style={[
+          styles.container,
+          {
+            backgroundColor,
+            alignItems: !nologo ? "center" : "flex-start",
+          },
+        ]}
+      >
+        <StatusBarFiller />
+        {back ? <BackButton extraPadding={true} /> : null}
+        <FourCrowns {...{ color }} />
+        {!nologo ? (
+          <LinkKingLogo {...{ tintColor }} />
+        ) : popUp ? null : (
+          <View {...{ style: { height: 60 } }} />
+        )}
+        <AppText
+          style={{
+            textAlign: !nologo ? "center" : "left",
+            color: tintColor,
+            fontWeight: "bold",
+            paddingHorizontal: 5,
+            paddingLeft: popUp ? 40 : 5,
+          }}
         >
-          <StatusBarFiller />
-          {back ? <BackButton extraPadding={true} /> : null}
-          <FourCrowns {...{ color }} />
-          {!nologo ? (
-            <LinkKingLogo {...{ tintColor }} />
-          ) : popUp ? null : (
-            <View {...{ style: { height: 60 } }} />
-          )}
+          {heading}
+        </AppText>
+        {subHeading ? (
           <AppText
             style={{
+              padding: 5,
+              paddingLeft: popUp ? 40 : 5,
+              fontSize: 16,
               textAlign: !nologo ? "center" : "left",
               color: tintColor,
-              fontWeight: "bold",
-              paddingHorizontal: 5,
-              paddingLeft: popUp ? 40 : 5,
             }}
           >
-            {heading}
+            {subHeading}
           </AppText>
-          {subHeading ? (
-            <AppText
-              style={{
-                padding: 5,
-                paddingLeft: popUp ? 40 : 5,
-                fontSize: 16,
-                textAlign: !nologo ? "center" : "left",
-                color: tintColor,
-              }}
-            >
-              {subHeading}
-            </AppText>
-          ) : null}
-          <View style={{ height: 10 }} />
-          {children}
-        </View>
-      </>
-    </TouchableWithoutFeedback>
+        ) : null}
+        <View style={{ height: 10 }} />
+        {children}
+      </View>
+    </>
   );
 };
 

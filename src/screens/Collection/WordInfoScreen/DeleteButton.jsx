@@ -1,11 +1,10 @@
 import colors from "@src/utils/colors";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import RedSafetyButton from "@src/components/Buttons/RedSafetyButton";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import AppText from "@src/components/AppText";
 import { View } from "react-native";
-import { updateRedCover } from "@src/store/redCover";
 import useFlagAndDeleteTicket from "@src/hooks/collectionHooks/useFlagAndDeleteTicket";
 
 const DeleteButton = ({ ticketId }) => {
@@ -13,13 +12,6 @@ const DeleteButton = ({ ticketId }) => {
     useSelector(settingsState);
   const { description, buttonTitle } =
     appTextSource(appLang).collection.wordInfoScreen;
-  const dispatch = useDispatch();
-
-  const setElapsedTime = (a) =>
-    dispatch(updateRedCover({ elapsedTime: a }));
-
-  const setCoverZIndex = (a) =>
-    dispatch(updateRedCover({ redCoverZIndex: a }));
 
   const flagAndDeleteTicket = useFlagAndDeleteTicket();
 
@@ -49,13 +41,7 @@ const DeleteButton = ({ ticketId }) => {
         }}
       >
         <RedSafetyButton
-          {...{
-            setElapsedTime,
-            completeFunction,
-            setCoverZIndex,
-            iconName: "delete",
-            buttonTitle,
-          }}
+          completeFunction={completeFunction}
         />
         <AppText
           style={{
