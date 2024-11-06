@@ -97,12 +97,14 @@ const AppNotification = () => {
 
 const styles = StyleSheet.create({
   inlineContainer: {
-    width: "100%",
+    width: "90%",
     zIndex: 999,
+    marginHorizontal: "auto",
+    elevation: 5,
   },
   container: {
     position: "absolute",
-    top: 40,
+    top: 60,
     width: "100%",
     borderRadius: 7,
   },

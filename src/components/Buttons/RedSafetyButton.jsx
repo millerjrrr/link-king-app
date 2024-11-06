@@ -21,7 +21,7 @@ const RedSafetyButton = ({
   const pressTimer = useRef(null);
   const { colorScheme, appLang } =
     useSelector(settingsState);
-  const { SECONDARY, RED } = colors[colorScheme];
+  const { PRIMARY, SECONDARY, RED } = colors[colorScheme];
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const { startTime } = useSelector(redCoverState);
@@ -84,19 +84,19 @@ const RedSafetyButton = ({
     appTextSource(appLang).options;
 
   const onPress = () => {
-    if ((Date.now() - startTime) / 1000 < 1)
-      dispatch(
-        updateNotification({
-          message,
-          type: "fail",
-        }),
-      );
+    // if ((Date.now() - startTime) / 1000 < 1)
+    dispatch(
+      updateNotification({
+        message,
+        type: "fail",
+      }),
+    );
   };
 
   return (
     <View style={{ zIndex: 10 }}>
       <TouchableHighlight
-        underlayColor={SECONDARY}
+        underlayColor={PRIMARY}
         onPress={onPress}
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
@@ -111,7 +111,7 @@ const RedSafetyButton = ({
           flexDirection: "row",
           justifyContent: "center",
           alignItems: "center",
-          ...appShadow(1),
+          ...appShadow(),
         }}
       >
         <AntDesign
