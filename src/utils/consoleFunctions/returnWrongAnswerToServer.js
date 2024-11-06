@@ -5,8 +5,8 @@ import {
   resetTimeOnThisWord,
   incrementStatsTime,
   resetConsole,
+  updateConsoleState,
 } from "@src/store/console";
-import { updateConsoleState } from "./updateConsoleState";
 import { Vibration } from "react-native";
 import { errorHandler } from "@src/errors/errorHandler";
 import { speak } from "@src/utils/speak";
@@ -31,11 +31,12 @@ export const returnWrongAnswerToServer = async ({
         time,
       },
     );
+
     const {
       gamePlay: { target, speechLang: language },
       options: { sound },
     } = data;
-    updateConsoleState(data, dispatch);
+    dispatch(updateConsoleState({ ...data }));
     dispatch(resetTimer());
     speak({ target, language, sound });
     dispatch(resetConsole());

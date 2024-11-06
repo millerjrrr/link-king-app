@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { statsState } from "@src/store/stats";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
-import { consoleState } from "@src/store/console";
+import { selectConsoleState } from "@src/store/console";
 import AppText from "@src/components/AppText";
 
 const RatingCircle = () => {
@@ -16,7 +16,7 @@ const RatingCircle = () => {
   const {
     userGameData: { rating },
   } = useSelector(statsState);
-  const { dictionary } = useSelector(consoleState);
+  const { dictionary } = useSelector(selectConsoleState);
 
   const { textA, textB } =
     appTextSource(appLang).collection.progressScreen;

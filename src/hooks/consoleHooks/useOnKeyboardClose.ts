@@ -1,12 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
-import { backOut, consoleState } from "@src/store/console";
+import {
+  backOut,
+  selectConsoleLocals,
+} from "@src/store/console";
 import { useEffect } from "react";
 import { Keyboard } from "react-native";
 import { returnWrongAnswerToServer } from "@src/utils/consoleFunctions/returnWrongAnswerToServer";
 
 const useOnKeyboardClose = () => {
   const { startedThisWord, showSolution, isPlaying } =
-    useSelector(consoleState);
+    useSelector(selectConsoleLocals);
 
   const dispatch = useDispatch();
 

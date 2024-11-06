@@ -1,14 +1,13 @@
 import clientWithAuth from "@src/api/clientWithAuth";
 import {
   restartTheTimer,
-  updateCSState,
   incrementStatsTime,
   updateBusyState,
+  updateLocals,
+  updateConsoleState,
 } from "@src/store/console";
-import { updateConsoleState } from "./updateConsoleState";
 import { errorHandler } from "@src/errors/errorHandler";
 import { speak } from "@src/utils/speak";
-import returnReversoData from "./reverso";
 
 export const returnCorrectAnswerToServer = async ({
   dispatch,
@@ -23,7 +22,7 @@ export const returnCorrectAnswerToServer = async ({
     showSolution: false,
     formValue: "",
   };
-  dispatch(updateCSState(payload));
+  dispatch(updateLocals(payload));
   try {
     const time = !showSolution
       ? Math.min(Date.now() - startedThisWord, 30 * 1000)
@@ -39,12 +38,10 @@ export const returnCorrectAnswerToServer = async ({
     const {
       gamePlay: { target, speechLang: language },
       options: { sound },
-      // dictionary,
     } = data;
 
-    // if (dictionary === "Personal")
-    //   data = await returnReversoData({ data });
-    updateConsoleState(data, dispatch);
+    dispatch(updateConsoleState({ ...data }));
+    dispatch(updateBusyState(false));
     speak({ target, language, sound });
     dispatch(restartTheTimer());
   } catch (error) {

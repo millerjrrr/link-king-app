@@ -2,7 +2,7 @@ import { StyleSheet, View } from "react-native";
 import Timer from "./Timer";
 import colors from "@src/utils/colors";
 import { useDispatch, useSelector } from "react-redux";
-import { consoleState } from "@src/store/console";
+import { selectConsoleState } from "@src/store/console";
 import TargetDetailsButton from "./TargetDetailsButton";
 import { submitAnswer } from "@src/utils/consoleFunctions/submitAnswer";
 import LoaderForTextInputForConsole from "./LoaderForTextInputForConsole";
@@ -15,12 +15,9 @@ const InputAndTimerContainer = ({
   setIsKeyboardVisible,
 }) => {
   const {
-    formValue,
-    attempt: { solutions },
-    tries,
-    startedThisWord,
-    showSolution,
-  } = useSelector(consoleState);
+    gamePlay: { solutions, tries },
+    locals: { formValue, startedThisWord, showSolution },
+  } = useSelector(selectConsoleState);
 
   const { colorScheme, golden } =
     useSelector(settingsState);

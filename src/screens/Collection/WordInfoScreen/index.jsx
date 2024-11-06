@@ -10,7 +10,7 @@ import { settingsState } from "@src/store/settings";
 import AcceptedAnswers from "./AcceptedAnswers";
 import WordCard from "../WordCard";
 import UserAttempt from "./UserAttempt";
-import { consoleState } from "@src/store/console";
+import { selectConsoleState } from "@src/store/console";
 import SolutionsList from "@src/screens/Console/components/SolutionsList";
 import DeleteButton from "./DeleteButton";
 import { collectionState } from "@src/store/collection";
@@ -19,8 +19,8 @@ const WordInfoScreen = ({ route }) => {
   const { ticket, wrongAnswerReturned } = route.params;
   const { appLang } = useSelector(settingsState);
   const {
-    attempt: { speechLang },
-  } = useSelector(consoleState);
+    gamePlay: { speechLang },
+  } = useSelector(selectConsoleState);
   const languageCode = speechLang.slice(0, 2);
   const url = `https://www.google.com/search?q=define+${ticket.target}&hl=${languageCode}`;
   const onPress = () => Linking.openURL(url);

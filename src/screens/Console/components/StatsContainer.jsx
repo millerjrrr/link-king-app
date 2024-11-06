@@ -2,12 +2,14 @@ import { View, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import StatsIcon from "./StatsIcon";
 import RepeatRepeatsIcon from "./RepeatRepeatsIcon";
-import { consoleState } from "@src/store/console";
+import { selectConsoleState } from "@src/store/console";
 import { convertMsToTime } from "@src/utils/convertMsToTime";
 
 const StatsContainer = ({ size = 22 }) => {
-  const { stats, timeOnThisWord } =
-    useSelector(consoleState);
+  const {
+    stats,
+    locals: { timeOnThisWord },
+  } = useSelector(selectConsoleState);
   const { due, steps, time, streak, newWords } = stats;
 
   return (

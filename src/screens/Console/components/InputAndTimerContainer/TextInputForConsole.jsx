@@ -2,7 +2,7 @@ import { StyleSheet, TextInput } from "react-native";
 import colors from "@src/utils/colors";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  consoleState,
+  selectConsoleState,
   restartTheTimer,
   updateFormValue,
   updateTimerIsOn,
@@ -21,12 +21,10 @@ const TextInputForConsole = ({
   const dispatch = useDispatch();
 
   const {
-    formValue,
-    attempt,
-    showSolution,
+    locals: { formValue, showSolution },
+    gamePlay: { target, speechLang: language, solutions },
     options: { sound },
-  } = useSelector(consoleState);
-  const { target, speechLang: language } = attempt;
+  } = useSelector(selectConsoleState);
   const { colorScheme } = useSelector(settingsState);
   const placeholderTextColor = colors[colorScheme].LIGHTRED;
   const backgroundColor = colors[colorScheme].PRIMARY;
@@ -51,9 +49,7 @@ const TextInputForConsole = ({
     setIsKeyboardVisible(false);
   };
 
-  const placeholder = showSolution
-    ? attempt.solutions[0]
-    : null;
+  const placeholder = showSolution ? solutions[0] : null;
 
   //font-size management
   let fontSize = 48;

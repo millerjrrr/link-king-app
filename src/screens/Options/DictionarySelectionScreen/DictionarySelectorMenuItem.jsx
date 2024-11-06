@@ -4,7 +4,7 @@ import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import { useDispatch } from "react-redux";
 import { sendDictionary } from "../components/sendDictionary";
-import { consoleState } from "@src/store/console";
+import { selectConsoleState } from "@src/store/console";
 import BusyWrapper from "../../../components/Loader/BusyWrapper";
 import { View } from "react-native";
 
@@ -20,8 +20,9 @@ const DictionarySelectorMenuItem = ({
     ] || dictionary;
   const dispatch = useDispatch();
 
-  const { dictionary: currentDictionary } =
-    useSelector(consoleState);
+  const { dictionary: currentDictionary } = useSelector(
+    selectConsoleState,
+  );
 
   const selected = dictionary === currentDictionary;
 

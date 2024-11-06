@@ -1,15 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
-  consoleState,
+  selectConsoleState,
   incrementTimeOnThisWord,
   updateTimerIsOn,
 } from "@src/store/console";
 import { useEffect } from "react";
 
 const useTimeManager = () => {
-  const { stats, timerIsOn, showSolution } =
-    useSelector(consoleState);
-  const { steps } = stats;
+  const {
+    stats: { steps },
+    locals: { timerIsOn, showSolution },
+  } = useSelector(selectConsoleState);
   const dispatch = useDispatch();
 
   // 1. Timer Effect

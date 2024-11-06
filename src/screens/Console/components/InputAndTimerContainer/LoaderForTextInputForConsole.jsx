@@ -1,10 +1,10 @@
 import { View } from "react-native";
 import { useSelector } from "react-redux";
-import { consoleState } from "@src/store/console";
+import { selectConsoleLocals } from "@src/store/console";
 import Loader from "../../../../components/Loader";
 
 const LoaderForTextInputForConsole = () => {
-  const { busy } = useSelector(consoleState);
+  const { busy } = useSelector(selectConsoleLocals);
 
   return busy ? (
     <View
@@ -13,7 +13,7 @@ const LoaderForTextInputForConsole = () => {
         zIndex: 20,
       }}
     >
-      <Loader size={24} />
+      <Loader size={30} />
     </View>
   ) : null;
 };

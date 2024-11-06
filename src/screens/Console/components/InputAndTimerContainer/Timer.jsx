@@ -1,17 +1,17 @@
 import { View, Dimensions } from "react-native";
 import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 import { useSelector } from "react-redux";
-import { consoleState } from "@src/store/console";
+import { selectConsoleState } from "@src/store/console";
 import { settingsState } from "@src/store/settings";
 import colors from "@src/utils/colors";
 
 const Timer = ({ onComplete, color }) => {
-  const { isPlaying, key, options } =
-    useSelector(consoleState);
+  const {
+    locals: { isPlaying, timerKey },
+    options: { timer },
+  } = useSelector(selectConsoleState);
   const { colorScheme } = useSelector(settingsState);
   const { PRIMARY } = colors[colorScheme];
-  const { timer } = options;
-
   const screenWidth = Dimensions.get("window").width;
   return timer ? (
     <View
@@ -21,7 +21,7 @@ const Timer = ({ onComplete, color }) => {
       }}
     >
       <CountdownCircleTimer
-        key={`timer-${key}`}
+        key={`timer-${timerKey}`}
         isPlaying={isPlaying}
         onComplete={onComplete}
         duration={10}

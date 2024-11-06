@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import { useState } from "react";
 import AppModal from "../../../components/AppModal";
-import { fetchConsoleInfo } from "@src/utils/consoleFunctions/fetchConsoleInfo";
+import useFetchConsoleInfo from "@src/hooks/consoleHooks/useFetchConsoleInfo";
 
 const RepeatRepeatsIcon = ({
   name = "stop",
@@ -16,13 +16,9 @@ const RepeatRepeatsIcon = ({
 
   const color = colors[colorScheme].CONTRAST[golden];
 
-  const dispatch = useDispatch();
+  const fetchConsoleInfo = useFetchConsoleInfo();
 
-  const callback = () =>
-    fetchConsoleInfo({
-      dispatch,
-      repeatRepeats: true,
-    });
+  const callback = () => fetchConsoleInfo(true);
 
   const [isModalVisible, setIsModalVisible] =
     useState(false);

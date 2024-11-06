@@ -9,7 +9,7 @@ import {
   useNavigation,
 } from "@react-navigation/native";
 import { useEffect, useState } from "react";
-import { consoleState } from "@src/store/console";
+import { selectConsoleState } from "@src/store/console";
 
 const SolutionItem = ({
   solution,
@@ -19,7 +19,7 @@ const SolutionItem = ({
 }) => {
   const { colorScheme, golden, appLang } =
     useSelector(settingsState);
-  const { dictionary } = useSelector(consoleState);
+  const { dictionary } = useSelector(selectConsoleState);
 
   const languageCode = dictionary;
 

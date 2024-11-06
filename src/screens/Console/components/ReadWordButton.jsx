@@ -1,11 +1,7 @@
 import { Feather } from "@expo/vector-icons";
-import {
-  View,
-  TouchableOpacity,
-  StyleSheet,
-} from "react-native";
+import { View, TouchableOpacity } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { consoleState } from "@src/store/console";
+import { selectConsoleState } from "@src/store/console";
 import AppText from "../../../components/AppText";
 import { settingsState } from "@src/store/settings";
 import colors from "@src/utils/colors";
@@ -19,9 +15,9 @@ const ReadWordButton = ({
   height = 75,
 }) => {
   const {
-    attempt: { target, speechLang: language },
+    gamePlay: { target, speechLang: language },
     options: { blurred, sound },
-  } = useSelector(consoleState);
+  } = useSelector(selectConsoleState);
   const { appLang } = useSelector(settingsState);
 
   const dispatch = useDispatch();

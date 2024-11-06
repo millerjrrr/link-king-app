@@ -3,15 +3,14 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "@src/utils/colors";
 import { useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
-import { consoleState } from "@src/store/console";
+import { selectConsoleState } from "@src/store/console";
 import { settingsState } from "@src/store/settings";
 
 const TargetDetailsButton = () => {
   const {
-    timerIsOn,
-    showSolution,
-    attempt: { id, target, solutions, rating },
-  } = useSelector(consoleState);
+    locals: { timerIsOn, showSolution },
+    gamePlay: { id, target, solutions, rating },
+  } = useSelector(selectConsoleState);
 
   const { colorScheme } = useSelector(settingsState);
   const color = colors[colorScheme].LIGHTRED;

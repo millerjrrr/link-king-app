@@ -4,13 +4,13 @@ import DescriptionWrapper from "./DescriptionWrapper";
 import { Video, ResizeMode } from "expo-av";
 import { useRef } from "react";
 import colors from "@src/utils/colors";
-import { consoleState } from "@src/store/console";
+import { selectConsoleState } from "@src/store/console";
 import { Image, View } from "react-native";
 
 const HowToPlay = () => {
   const { colorScheme } = useSelector(settingsState);
 
-  const { dictionary } = useSelector(consoleState);
+  const { dictionary } = useSelector(selectConsoleState);
 
   const color = colors[colorScheme].CONTRAST[1];
   const backgroundColor = colors.dark.PRIMARY;

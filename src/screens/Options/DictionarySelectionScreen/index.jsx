@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
-import { consoleState } from "@src/store/console";
+import { selectConsoleState } from "@src/store/console";
 import languageNameCodeMap from "@src/utils/languageNameCodeMap";
 import PopUpContainer from "@src/components/containers/PopUpContainer";
 import {
@@ -22,7 +22,7 @@ const DictionarySelectionScreen = ({ navigation }) => {
   const { title: heading, dictionaryError } =
     appTextSource(appLang).options.chooseDictionary;
 
-  const { busy } = useSelector(consoleState);
+  const { busy } = useSelector(selectConsoleState);
 
   const [apiBusy, setApiBusy] = useState(false);
   const [dictionaries, setDictionaries] = useState([]);

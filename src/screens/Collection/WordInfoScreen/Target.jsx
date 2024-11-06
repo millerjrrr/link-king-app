@@ -1,13 +1,13 @@
 import { useSelector } from "react-redux";
-import { consoleState } from "@src/store/console";
+import { selectConsoleState } from "@src/store/console";
 import AppText from "@src/components/AppText";
 
 const Target = () => {
-  const { attempt } = useSelector(consoleState);
+  const { gamePlay } = useSelector(selectConsoleState);
 
   //font-size management
   let fontSize = 40;
-  const length = attempt.target.length;
+  const length = gamePlay.target.length;
   if (length > 12) fontSize = (fontSize * 12) / length;
 
   return (
@@ -18,7 +18,7 @@ const Target = () => {
         zIndex: 1,
       }}
     >
-      {attempt.target}
+      {gamePlay.target}
     </AppText>
   );
 };

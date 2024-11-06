@@ -6,14 +6,14 @@ import {
 } from "react-native";
 import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
-import { consoleState } from "@src/store/console";
+import { selectConsoleLocals } from "@src/store/console";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import appShadow from "@src/utils/appShadow";
 import AppText from "@src/components/AppText";
 
 const StartButton = ({ inputFieldRef }) => {
-  const { timerIsOn } = useSelector(consoleState);
+  const { timerIsOn } = useSelector(selectConsoleLocals);
   const { colorScheme, golden, appLang } =
     useSelector(settingsState);
   const color = colors[colorScheme].CONTRAST[golden];
