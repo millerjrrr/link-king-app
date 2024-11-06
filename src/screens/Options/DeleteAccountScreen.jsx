@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import PopUpContainer from "../../components/containers/PopUpContainer";
 import BloodRedCover from "../../components/BloodRedCover";
 import { settingsState } from "@src/store/settings";
@@ -13,9 +13,9 @@ import {
   TouchableWithoutFeedback,
   View,
 } from "react-native";
-import deleteUserAccount from "../../utils/optionsFunctions/deleteUserAccount";
 import FormikSafetyButton from "../../components/Buttons/FormikSafetyButton";
 import { Formik } from "formik";
+import useDeleteAccount from "@src/hooks/optionsHooks/useDeleteAccount";
 
 const DeleteAccountScreen = () => {
   const { appLang } = useSelector(settingsState);
@@ -36,18 +36,16 @@ const DeleteAccountScreen = () => {
   };
 
   const [secureEntry, setSecureEntry] = useState(true);
-  const dispatch = useDispatch();
 
   const togglePasswordView = () => {
     setSecureEntry(!secureEntry);
   };
 
+  const deleteAccount = useDeleteAccount();
   const onSubmit = async (values, actions) => {
     actions.setSubmitting(true);
-    await deleteUserAccount({
+    await deleteAccount({
       password: values.password,
-      dispatch,
-      appLang,
     });
     actions.setSubmitting(false);
   };

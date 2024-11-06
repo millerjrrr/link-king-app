@@ -54,7 +54,7 @@ const ChangeHomeLanguageScreen = ({ route }) => {
 
   const onSubmit = async (values, actions) => {
     actions.setSubmitting(true);
-    changeHomeLanguage({
+    await changeHomeLanguage({
       password: values.password,
       newLanguage,
     });
