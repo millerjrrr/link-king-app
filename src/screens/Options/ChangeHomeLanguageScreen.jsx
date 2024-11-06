@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import PopUpContainer from "../../components/containers/PopUpContainer";
 import BloodRedCover from "../../components/BloodRedCover";
 import { settingsState } from "@src/store/settings";
@@ -14,12 +14,11 @@ import {
   View,
 } from "react-native";
 import FormikSafetyButton from "../../components/Buttons/FormikSafetyButton";
-import changeUserHomeLanguage from "../../utils/optionsFunctions/changeUserHomeLanguage";
 import FlagImage from "../../components/Graphics/FlagImage";
 import { AntDesign } from "@expo/vector-icons";
 import colors from "@src/utils/colors";
-import { useNavigation } from "@react-navigation/native";
 import { Formik } from "formik";
+import useChangeHomeLanguage from "@src/hooks/optionsHooks/useChangeHomeLanguage";
 
 const ChangeHomeLanguageScreen = ({ route }) => {
   const newLanguage = route.params.code;
@@ -46,8 +45,8 @@ const ChangeHomeLanguageScreen = ({ route }) => {
   };
 
   const [secureEntry, setSecureEntry] = useState(true);
-  const dispatch = useDispatch();
-  const navigation = useNavigation();
+
+  const changeHomeLanguage = useChangeHomeLanguage();
 
   const togglePasswordView = () => {
     setSecureEntry(!secureEntry);
@@ -55,12 +54,9 @@ const ChangeHomeLanguageScreen = ({ route }) => {
 
   const onSubmit = async (values, actions) => {
     actions.setSubmitting(true);
-    await changeUserHomeLanguage({
+    changeHomeLanguage({
       password: values.password,
       newLanguage,
-      dispatch,
-      navigation,
-      appLang,
     });
     actions.setSubmitting(false);
   };
