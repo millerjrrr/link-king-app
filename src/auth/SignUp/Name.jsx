@@ -7,9 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import { authState, updateName } from "@src/store/auth";
-import updateNameOnServer from "../../utils/optionsFunctions/updateNameOnServer";
 import SignUpAppLink from "../../components/SignUpAppLink";
 import { Formik } from "formik";
+import useChangeUsername from "@src/hooks/optionsHooks/useChangeUsername";
 
 const Name = ({ updateNameFunction, buttonTitle }) => {
   const { appLang } = useSelector(settingsState);
@@ -30,19 +30,14 @@ const Name = ({ updateNameFunction, buttonTitle }) => {
   };
 
   const dispatch = useDispatch();
-
   const navigation = useNavigation();
+  const changeUsername = useChangeUsername();
 
   const onSubmit = updateNameFunction
     ? async (values, actions) => {
         actions.setSubmitting(true);
         await dispatch(updateName(values.name));
-        await updateNameOnServer({
-          username: values.name,
-          dispatch,
-          navigation,
-          appLang,
-        });
+        await changeUsername(values.name);
         actions.setSubmitting(false);
       }
     : async (values, actions) => {
