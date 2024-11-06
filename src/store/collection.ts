@@ -36,10 +36,14 @@ const slice = createSlice({
     ) {
       return { ...state, ...action.payload };
     },
+    updateSearchKeyword(state, action) {
+      state.searchKeyword = action.payload;
+    },
   },
 });
 
-export const { updateCollection } = slice.actions;
+export const { updateCollection, updateSearchKeyword } =
+  slice.actions;
 
 export const collectionState = (state: RootState) =>
   state.collection;

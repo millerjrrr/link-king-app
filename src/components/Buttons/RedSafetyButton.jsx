@@ -1,9 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import {
-  TouchableHighlight,
-  View,
-  StyleSheet,
-} from "react-native";
+import { TouchableHighlight, View } from "react-native";
 import colors from "@src/utils/colors";
 import { AntDesign } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
@@ -98,24 +94,25 @@ const RedSafetyButton = ({
   };
 
   return (
-    <View style={styles.container}>
+    <View style={{ zIndex: 10 }}>
       <TouchableHighlight
         underlayColor={SECONDARY}
         onPress={onPress}
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
-        style={[
-          styles.buttonContainer,
-          {
-            backgroundColor: SECONDARY,
-            shadowColor: RED,
-            borderColor: RED,
-            height: size,
-            width: size,
-            margin: size / 5,
-            borderRadius: size / 2,
-          },
-        ]}
+        style={{
+          backgroundColor: SECONDARY,
+          shadowColor: RED,
+          borderColor: RED,
+          height: size,
+          width: size,
+          margin: size / 5,
+          borderRadius: size / 2,
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+          ...appShadow(1),
+        }}
       >
         <AntDesign
           {...{
@@ -128,17 +125,5 @@ const RedSafetyButton = ({
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    zIndex: 10,
-  },
-  buttonContainer: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    ...appShadow(1),
-  },
-});
 
 export default RedSafetyButton;

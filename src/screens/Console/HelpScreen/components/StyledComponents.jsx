@@ -1,6 +1,7 @@
-import { Platform, ScrollView, View } from "react-native";
+import { ScrollView, View } from "react-native";
 import styled from "styled-components";
 import AppText from "../../../../components/AppText";
+import { appShadowForStyledComponents } from "@src/utils/appShadow";
 
 export const HelpScroll = styled(ScrollView)`
   width: 100%;
@@ -9,23 +10,13 @@ export const HelpScroll = styled(ScrollView)`
 
 export const CardContainer = styled(View)`
   padding: 15px;
+  margin: 10px;
   margin-bottom: 20px;
   align-items: center;
   border-radius: 15px;
-  background-color: ${(props) => props.backgroudColor};
+  background-color: ${(props) => props.backgroundColor};
   shadow-color: ${(props) => props.color};
-  border-color: ${(props) => props.color};
-  ${Platform.select({
-    ios: `
-    shadow-offset: 1px 1px;
-    shadow-opacity: 0.5;
-    shadow-radius: 3px;
-  `,
-    android: `
-    elevation: 3;
-    border-width: 1px;
-  `,
-  })};
+  ${appShadowForStyledComponents}
 `;
 
 export const ComponentTitle = styled(AppText)`

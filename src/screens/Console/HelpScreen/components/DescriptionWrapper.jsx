@@ -12,13 +12,13 @@ const DescriptionWrapper = ({ name, children }) => {
   const { colorScheme, golden, appLang } =
     useSelector(settingsState);
   const color = colors[colorScheme].CONTRAST[golden];
-  const backgroudColor = colors[colorScheme].PRIMARY;
+  const backgroundColor = colors[colorScheme].PRIMARY;
 
   const { title, description } =
     appTextSource(appLang).console.help[name];
 
   return (
-    <CardContainer {...{ backgroudColor, color }}>
+    <CardContainer {...{ backgroundColor, color }}>
       {children}
       <ComponentTitle {...{ color }}>
         {title}

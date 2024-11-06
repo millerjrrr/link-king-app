@@ -22,7 +22,7 @@ const commonColors = {
 const darkText = {
   CONTRAST: ["#362718", "#8a793e"] as [string, string],
   INACTIVE_CONTRAST: "#36271880",
-  STATUSBAR: "dark-content" as StatusBarStyle,
+  STATUSBAR: "dark" as StatusBarStyle,
 };
 
 const colors: Record<string, ColorScheme> = {
@@ -31,7 +31,7 @@ const colors: Record<string, ColorScheme> = {
     SECONDARY: "#000000",
     CONTRAST: ["#ffffff", "#ffeeba"],
     INACTIVE_CONTRAST: "#ffffff80",
-    STATUSBAR: "light-content" as StatusBarStyle,
+    STATUSBAR: "light" as StatusBarStyle,
     ...commonColors,
   },
   blue: {

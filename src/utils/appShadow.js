@@ -14,4 +14,16 @@ const appShadow = () =>
     },
   });
 
+export const appShadowForStyledComponents = () =>
+  Platform.select({
+    ios: `
+      shadow-offset: 1px 1px;
+      shadow-opacity: 0.5;
+      shadow-radius: 3px;
+    `,
+    android: `
+      elevation: 5;
+    `,
+  });
+
 export default appShadow;

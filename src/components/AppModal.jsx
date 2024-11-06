@@ -5,17 +5,17 @@ import { settingsState } from "@src/store/settings";
 import styled from "styled-components";
 import Modal from "react-native-modal";
 import appTextSource from "@src/utils/appTextSource";
-import appShadow from "@src/utils/appShadow";
 import YoutubePlayer from "react-native-youtube-iframe";
 import AppText from "./AppText";
+import { appShadowForStyledComponents } from "@src/utils/appShadow";
 
 const ModalContainer = styled(View)`
-  background-color: ${(props) => props.backgroundColor};
-  shadow-color: ${(props) => props.color};
-  border-color: ${(props) => props.color};
   padding-horizontal: 5px;
   border-radius: 10px;
   align-items: center;
+  background-color: ${(props) => props.backgroundColor};
+  shadow-color: ${(props) => props.color};
+  ${appShadowForStyledComponents}
 `;
 const ModalText = styled(AppText)`
   margin: 20px;
@@ -71,9 +71,6 @@ const AppModal = ({
         {...{
           backgroundColor,
           color,
-          style: {
-            ...appShadow(1),
-          },
         }}
       >
         {videoId ? (

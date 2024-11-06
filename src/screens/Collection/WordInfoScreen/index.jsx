@@ -8,7 +8,7 @@ import ResponseInformation from "./ResponseInformation";
 import appTextSource from "@src/utils/appTextSource";
 import { settingsState } from "@src/store/settings";
 import AcceptedAnswers from "./AcceptedAnswers";
-import WordCard from "../WordCard";
+import WordCard from "../components/WordCard";
 import UserAttempt from "./UserAttempt";
 import { selectConsoleState } from "@src/store/console";
 import SolutionsList from "@src/screens/Console/components/SolutionsList";

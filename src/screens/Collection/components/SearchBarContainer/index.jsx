@@ -1,5 +1,5 @@
 import { View, StyleSheet } from "react-native";
-import CollectionScreenButton from "./CollectionScreenButton";
+import CollectionScreenButton from "./SideButton";
 import CollectionSearchbar from "./CollectionSearchbar";
 import TicketsCount from "./TicketsCount";
 import { LinearGradient } from "expo-linear-gradient";
@@ -10,14 +10,11 @@ import colors from "@src/utils/colors";
 
 const FadeBackgroundView = styled(LinearGradient)`
   position: absolute;
-  top: 0;
-  alignitems: center;
-  flexdirection: column;
   width: 100%;
   z-index: 20;
 `;
 
-const SearchBarContainer = ({ navigation }) => {
+const SearchBarContainer = () => {
   const { colorScheme } = useSelector(settingsState);
   const backgroundColor = colors[colorScheme].PRIMARY;
 
@@ -36,17 +33,13 @@ const SearchBarContainer = ({ navigation }) => {
         <TicketsCount />
         <View style={styles.searchBarContainer}>
           <CollectionScreenButton
-            onPress={() =>
-              navigation.navigate("StatsScreen")
-            }
-            iconName={"barschart"}
+            targetScreen={"StatsScreen"}
+            icon={"barschart"}
           />
           <CollectionSearchbar />
           <CollectionScreenButton
-            onPress={() =>
-              navigation.navigate("ProgressScreen")
-            }
-            iconName={"sharealt"}
+            targetScreen={"ProgressScreen"}
+            icon={"sharealt"}
           />
         </View>
       </FadeBackgroundView>

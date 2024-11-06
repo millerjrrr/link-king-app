@@ -1,5 +1,4 @@
-import React from "react";
-import { StyleSheet } from "react-native";
+import React, { useCallback } from "react";
 import colors from "@src/utils/colors";
 import { numberDateToWordStyleDate } from "@src/utils/numberDateToWordStyle";
 import { useSelector } from "react-redux";
@@ -13,53 +12,54 @@ import {
   Title,
 } from "./WordCardStyledComponents";
 import { settingsState } from "@src/store/settings";
-import appShadow from "@src/utils/appShadow";
 import appTextSource from "@src/utils/appTextSource";
 import SpeakButton from "./SpeakButton";
 
-const WordCard = ({
-  navigation,
-  ticket,
-  onPress = () =>
-    navigation.navigate("WordInfoScreen", {
-      ticket,
-    }),
-}) => {
+const WordCard = ({ navigation, ticket, onPress }) => {
   const { colorScheme, golden, appLang } =
     useSelector(settingsState);
   const { CONTRAST, SECONDARY } = colors[colorScheme];
-  const color = CONTRAST[golden];
-  const backgroundColor = SECONDARY;
 
   const { tomorrow } = appTextSource(appLang).collection;
 
   const { target, rating, level } = ticket;
 
-  let fontSize = 30;
-  const length = target.length;
-  if (length > 10)
-    fontSize = (fontSize * 10) / (10 + (length - 10) * 0.7);
+  const scale = 30;
+  const fontSize =
+    target.length > 10
+      ? (scale * 10) / (10 + (length - 10) * 0.7)
+      : scale;
+
+  // Use useCallback to memoize onPress
+  const goToWordInfoScreenForTicket = useCallback(() => {
+    navigation.navigate("WordInfoScreen", { ticket });
+  }, [navigation, ticket]);
 
   return (
     <Container
-      {...{
-        color,
-        backgroundColor,
-        style: styles.container,
-      }}
+      color={CONTRAST[golden]}
+      backgroundColor={SECONDARY}
     >
-      <InfoContainer {...{ onPress }}>
+      <InfoContainer
+        onPress={onPress || goToWordInfoScreenForTicket}
+      >
         <RowContainer>
-          <Title {...{ color, fontSize }}>{target}</Title>
-          <Rating {...{ color }}>
+          <Title
+            color={CONTRAST[golden]}
+            fontSize={fontSize}
+          >
+            {target}
+          </Title>
+          <Rating color={CONTRAST[golden]}>
             {Math.round(rating)}
           </Rating>
         </RowContainer>
         <RowContainer>
           <WordCardLevelStars
-            {...{ stars: level, target }}
+            stars={level}
+            target={target}
           />
-          <Date {...{ color }}>
+          <Date color={CONTRAST[golden]}>
             {ticket.dueDate
               ? numberDateToWordStyleDate({
                   date: ticket.dueDate,
@@ -69,19 +69,9 @@ const WordCard = ({
           </Date>
         </RowContainer>
       </InfoContainer>
-      <SpeakButton
-        {...{
-          speakWord: target,
-        }}
-      />
+      <SpeakButton speakWord={target} />
     </Container>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    ...appShadow(1),
-  },
-});
 
 export default WordCard;

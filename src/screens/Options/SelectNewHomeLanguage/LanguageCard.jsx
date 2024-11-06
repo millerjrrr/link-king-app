@@ -9,7 +9,8 @@ import { settingsState } from "@src/store/settings";
 import { updateNotification } from "@src/store/notification";
 import appTextSource from "@src/utils/appTextSource";
 import colors from "@src/utils/colors";
-import appShadow from "@src/utils/appShadow";
+import { appShadowForStyledComponents } from "@src/utils/appShadow";
+import { useCallback } from "react";
 
 const Container = styled(TouchableOpacity)`
   flex-direction: row;
@@ -18,7 +19,7 @@ const Container = styled(TouchableOpacity)`
   padding: 10px;
   background-color: ${(props) => props.backgroundColor};
   shadow-color: ${(props) => props.color};
-  border-color: ${(props) => props.color};
+  ${appShadowForStyledComponents}
 `;
 
 const LanguageCard = ({ code, native }) => {
@@ -28,32 +29,38 @@ const LanguageCard = ({ code, native }) => {
   const { appLang, colorScheme, golden } =
     useSelector(settingsState);
 
-  const color = colors[colorScheme].SECONDARY;
-  const shadowColor = colors[colorScheme].CONTRAST[golden];
+  const backgroundColor = colors[colorScheme].SECONDARY;
+  const color = colors[colorScheme].CONTRAST[golden];
 
   const { languageAlreadySelected } =
     appTextSource(appLang).options.manageAccount;
 
-  const onPress = () =>
-    appLang === code
-      ? dispatch(
-          updateNotification({
-            message: languageAlreadySelected,
-            type: "info",
-          }),
-        )
-      : navigation.navigate("ChangeHomeLanguageScreen", {
-          code,
-        });
+  const onPress = useCallback(() => {
+    if (appLang === code) {
+      dispatch(
+        updateNotification({
+          message: languageAlreadySelected,
+          type: "info",
+        }),
+      );
+    } else {
+      navigation.navigate("ChangeHomeLanguageScreen", {
+        code,
+      });
+    }
+  }, [
+    appLang,
+    code,
+    dispatch,
+    languageAlreadySelected,
+    navigation,
+  ]);
 
   return (
     <Container
-      {...{
-        backgroundColor: color,
-        color,
-        style: { shadowColor, ...appShadow(1) },
-        onPress,
-      }}
+      backgroundColor={backgroundColor}
+      color={color}
+      onPress={onPress}
     >
       <FlagImage {...{ flag1: code }} />
       <View {...{ style: { width: 10 } }} />

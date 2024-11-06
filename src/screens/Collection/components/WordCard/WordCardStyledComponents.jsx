@@ -1,6 +1,7 @@
 import { TouchableOpacity, View } from "react-native";
 import styled from "styled-components";
 import AppText from "@src/components/AppText";
+import { appShadowForStyledComponents } from "@src/utils/appShadow";
 
 export const Container = styled(View)`
   flex-direction: row;
@@ -10,6 +11,7 @@ export const Container = styled(View)`
   background-color: ${(props) => props.backgroundColor};
   shadow-color: ${(props) => props.color};
   border-color: ${(props) => props.color};
+  ${appShadowForStyledComponents}
 `;
 
 export const InfoContainer = styled(TouchableOpacity)`

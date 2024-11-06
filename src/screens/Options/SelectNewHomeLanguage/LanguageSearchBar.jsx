@@ -8,8 +8,6 @@ import AppSearchBar from "../../../components/AppSearchBar";
 
 const FadeBackgroundView = styled(LinearGradient)`
   position: absolute;
-  alignitems: center;
-  flexdirection: column;
   width: 100%;
   z-index: 20;
 `;

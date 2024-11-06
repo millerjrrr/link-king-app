@@ -32,28 +32,23 @@ const AppSearchBar = ({
         color,
         value: searchKeyword,
         onChangeText: (value) => setSearchKeyword(value),
-        style: [
-          styles.searchBar,
-          {
-            color,
-            shadowColor: color,
-            borderColor: color,
-            backgroundColor: colors[colorScheme].SECONDARY,
-          },
-        ],
+        style: {
+          marginTop: 8,
+          textAlign: "center",
+          zIndex: 10,
+          width: "70%",
+          shadowColor: color,
+          borderColor: color,
+          backgroundColor: colors[colorScheme].SECONDARY,
+          ...appShadow(),
+        },
       }}
     />
   );
 };
 
 const styles = StyleSheet.create({
-  searchBar: {
-    marginTop: 8,
-    textAlign: "center",
-    zIndex: 10,
-    width: "70%",
-    ...appShadow(),
-  },
+  searchBar: {},
 });
 
 export default AppSearchBar;

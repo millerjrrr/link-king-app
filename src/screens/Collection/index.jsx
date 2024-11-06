@@ -1,7 +1,7 @@
 import InnerTabContainer from "@src/components/containers/InnerTabContainer";
-import WordCollectionList from "./WordCollectionList";
+import WordCollectionList from "./components/WordCollectionList";
 import { useState } from "react";
-import SearchBarContainer from "./SearchBarContainer";
+import SearchBarContainer from "./components/SearchBarContainer";
 import { useSelector } from "react-redux";
 import { collectionState } from "@src/store/collection";
 import BusyWrapper from "@src/components/Loader/BusyWrapper";
