@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { authState } from "@src/store/auth";
-import useCatchAsync from "./../useCatchAsync";
+import useCatchAsync from "../../useCatchAsync";
 import {
   getFromAsyncStorage,
   saveToAsyncStorage,

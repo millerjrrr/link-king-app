@@ -1,4 +1,4 @@
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import CircularProgress from "react-native-circular-progress-indicator";
 import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";

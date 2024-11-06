@@ -4,11 +4,11 @@ import colors from "@src/utils/colors";
 import { useDispatch, useSelector } from "react-redux";
 import { selectConsoleState } from "@src/store/console";
 import TargetDetailsButton from "./TargetDetailsButton";
-import { submitAnswer } from "@src/utils/consoleFunctions/submitAnswer";
 import LoaderForTextInputForConsole from "./LoaderForTextInputForConsole";
 import TextInputForConsole from "./TextInputForConsole";
 import { settingsState } from "@src/store/settings";
 import { useState } from "react";
+import useSubmitAnswer from "@src/hooks/consoleHooks/useSubmitAnswer";
 
 const InputAndTimerContainer = ({
   inputFieldRef,
@@ -27,29 +27,21 @@ const InputAndTimerContainer = ({
 
   const color = colorByTries[tries - 1];
 
-  const dispatch = useDispatch();
+  const submitAnswer = useSubmitAnswer();
 
   const [isDisabled, setIsDisabled] = useState(false);
 
-  const sendAnswer = ({ timeUp }) => {
+  const sendAnswer = ({ timeOut }) => {
     if (!isDisabled) {
       setIsDisabled(true);
-      submitAnswer({
-        dispatch,
-        formValue,
-        solutions,
-        tries,
-        startedThisWord,
-        showSolution,
-        timeUp,
-      });
+      submitAnswer(timeOut);
       setTimeout(() => setIsDisabled(false), 400);
     }
   };
 
-  const onComplete = () => sendAnswer({ timeUp: true });
+  const onComplete = () => sendAnswer({ timeOut: true });
   const onSubmitEditing = () =>
-    sendAnswer({ timeUp: false });
+    sendAnswer({ timeOut: false });
 
   return (
     <View style={styles.formView}>

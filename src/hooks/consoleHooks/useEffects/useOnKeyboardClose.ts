@@ -5,21 +5,18 @@ import {
 } from "@src/store/console";
 import { useEffect } from "react";
 import { Keyboard } from "react-native";
-import { returnWrongAnswerToServer } from "@src/utils/consoleFunctions/returnWrongAnswerToServer";
+import useHandleWrongAnswer from "../useHandleWrongAnswer";
 
 const useOnKeyboardClose = () => {
   const { startedThisWord, showSolution, isPlaying } =
     useSelector(selectConsoleLocals);
 
   const dispatch = useDispatch();
+  const handleWrongAnswer = useHandleWrongAnswer();
 
   const onKeyboardClose = () => {
     if (!showSolution && isPlaying) {
-      returnWrongAnswerToServer({
-        dispatch,
-        startedThisWord,
-        showSolution,
-      });
+      handleWrongAnswer();
     } else {
       dispatch(backOut());
     }

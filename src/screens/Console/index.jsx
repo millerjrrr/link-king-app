@@ -11,12 +11,12 @@ import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import AppModal from "@src/components/AppModal";
 import { authState, refreshPage } from "@src/store/auth";
-import useManageGolden from "@src/hooks/consoleHooks/useManageGolden";
-import useTimeManager from "@src/hooks/consoleHooks/useTimeManager";
-import useConsoleUpdates from "@src/hooks/consoleHooks/useConsoleUpdates";
-import useManageModals from "@src/hooks/consoleHooks/useManageModals";
-import useOnKeyboardClose from "@src/hooks/consoleHooks/useOnKeyboardClose";
-import useHandleAppBackgroundExit from "../../hooks/consoleHooks/useHandleAppBackgroundExit";
+import useManageGolden from "@src/hooks/consoleHooks/useEffects/useManageGolden";
+import useTimeManager from "@src/hooks/consoleHooks/useEffects/useTimeManager";
+import useConsoleUpdates from "@src/hooks/consoleHooks/useEffects/useConsoleUpdates";
+import useManageModals from "@src/hooks/consoleHooks/useEffects/useManageModals";
+import useOnKeyboardClose from "@src/hooks/consoleHooks/useEffects/useOnKeyboardClose";
+import useHandleAppBackgroundExit from "../../hooks/consoleHooks/useEffects/useHandleAppBackgroundExit";
 
 const Console = ({ navigation }) => {
   const dispatch = useDispatch();
