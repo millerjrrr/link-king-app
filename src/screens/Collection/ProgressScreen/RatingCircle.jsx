@@ -20,6 +20,10 @@ const RatingCircle = () => {
 
   const { textA, textB } =
     appTextSource(appLang).collection.progressScreen;
+
+  const translatedDictionary =
+    appTextSource(appLang).languageNames[dictionary];
+
   return (
     <>
       <AppText
@@ -29,7 +33,7 @@ const RatingCircle = () => {
           color: green,
         }}
       >
-        {textA + dictionary + textB}
+        {textA + translatedDictionary + textB}
       </AppText>
       <View style={{ paddingVertical: 15 }}>
         <CircularProgress

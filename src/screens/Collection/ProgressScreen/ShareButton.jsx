@@ -10,22 +10,16 @@ import { settingsState } from "@src/store/settings";
 import { captureRef } from "react-native-view-shot";
 import { errorHandler } from "@src/errors/errorHandler";
 import appTextSource from "@src/utils/appTextSource";
-import { selectConsoleState } from "@src/store/console";
 
 const ShareButton = ({ shareRef }) => {
   const { colorScheme, golden, appLang } =
     useSelector(settingsState);
-  const { dictionary } = useSelector(selectConsoleState);
 
   const color = colors[colorScheme].CONTRAST[golden];
   const { challenge } =
     appTextSource(appLang).collection.progressScreen;
 
-  const message =
-    challenge.A +
-    dictionary +
-    challenge.B +
-    "\nhttps://www.linkoking.com";
+  const message = challenge + "\nhttps://www.linkoking.com";
 
   const onPress = async () => {
     try {

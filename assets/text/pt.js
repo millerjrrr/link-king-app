@@ -110,10 +110,8 @@ export default {
       },
       textA: "Sua ",
       textB: " classificação de desempenho é:",
-      challenge: {
-        A: "Baixe esse applicativo para avaliar seu vocabulário ",
-        B: " e descubra se você consegue bater minha pontuação!",
-      },
+      challenge:
+        "Baixe este aplicativo de aprendizagem de idiomas e veja se você consegue superar minha pontuação!",
     },
     wordInfoScreen: {
       heading: "Descrição",
@@ -367,5 +365,13 @@ export default {
         " dias restantes para seu teste gratuito.\n\nAtenciosamente,\nO time Link-King",
       cancel: "Fechar",
     },
+  },
+  languageNames: {
+    English: "Inglês",
+    Spanish: "Espanhol",
+    Portuguese: "Português",
+    French: "Francês",
+    Italian: "Italiano",
+    German: "Alemão",
   },
 };

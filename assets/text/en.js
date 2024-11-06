@@ -109,10 +109,8 @@ export default {
       },
       textA: "Your ",
       textB: " performance rating is:",
-      challenge: {
-        A: "Download this ",
-        B: " fluency app and see if you can beat my score!",
-      },
+      challenge:
+        "Download this language learning app and see if you can beat my score!",
     },
     wordInfoScreen: {
       heading: "Description",
@@ -363,5 +361,13 @@ export default {
         " days remaining on your free trial.\n\nKind regards,\nThe Link-King Team",
       cancel: "Close",
     },
+  },
+  languageNames: {
+    English: "English",
+    Spanish: "Spanish",
+    Portuguese: "Portuguese",
+    French: "French",
+    Italian: "Italian",
+    German: "German",
   },
 };

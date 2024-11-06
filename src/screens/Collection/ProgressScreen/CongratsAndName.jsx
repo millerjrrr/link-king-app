@@ -18,6 +18,7 @@ const CongratsAndName = () => {
 
   const { congratulations, collected } =
     appTextSource(appLang).collection.progressScreen;
+
   return (
     <>
       <AppText
