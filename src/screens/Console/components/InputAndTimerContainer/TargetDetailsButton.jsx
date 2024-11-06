@@ -8,8 +8,8 @@ import { settingsState } from "@src/store/settings";
 
 const TargetDetailsButton = () => {
   const {
-    locals: { timerIsOn, showSolution },
-    gamePlay: { id, target, solutions, rating },
+    display: { tail },
+    gamePlay: { id, target, solutions, rating, tries },
   } = useSelector(selectConsoleState);
 
   const { colorScheme } = useSelector(settingsState);
@@ -24,7 +24,7 @@ const TargetDetailsButton = () => {
     level: 1,
   };
 
-  return !timerIsOn || showSolution ? (
+  return tries === 1 && tail.length === 0 ? (
     <TouchableOpacity
       onPress={() =>
         navigation.navigate("WordInfoScreen", {
