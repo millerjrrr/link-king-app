@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import PopUpContainer from "../../../components/containers/PopUpContainer";
+import PopUpContainer from "../../../../components/Containers/PopUpContainer";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import LanguageSearchBar from "./LanguageSearchBar";

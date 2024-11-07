@@ -1,6 +1,6 @@
 import { Linking, StyleSheet, View } from "react-native";
 import { useSelector } from "react-redux";
-import PopUpContainer from "@src/components/containers/PopUpContainer";
+import PopUpContainer from "@src/components/Containers/PopUpContainer";
 import React from "react";
 import BloodRedCover from "@src/components/BloodRedCover";
 import BusyWrapper from "@src/components/Loader/BusyWrapper";

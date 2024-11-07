@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import { selectConsoleState } from "@src/store/console";
-import PopUpContainer from "@src/components/containers/PopUpContainer";
+import PopUpContainer from "@src/components/Containers/PopUpContainer";
 import { FlatList, StyleSheet, View } from "react-native";
 import DictionarySelectorMenuItem from "./DictionarySelectorMenuItem";
 import BusyWrapper from "@src/components/Loader/BusyWrapper";

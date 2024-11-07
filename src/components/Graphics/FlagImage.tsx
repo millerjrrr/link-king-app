@@ -1,7 +1,17 @@
 import { Image, View } from "react-native";
 import getImageSource from "@src/utils/getImageSource";
+import React from "react";
 
-const FlagImage = ({ flag1, flag2, scale = 0.75 }) => {
+interface FlagImageProps {
+  flag1: string;
+  flag2?: string;
+  scale?: number;
+}
+const FlagImage: React.FC<FlagImageProps> = ({
+  flag1,
+  flag2,
+  scale = 0.75,
+}) => {
   const source = [
     getImageSource(flag1),
     flag2 ? getImageSource(flag2) : "",

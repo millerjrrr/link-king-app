@@ -4,7 +4,6 @@ import {
   TransitionPresets,
 } from "@react-navigation/stack";
 import SetDailyGoalScreen from "../../screens/Options/SetDailyGoalScreen";
-import VoiceSelectionScreen from "../../screens/Options/VoiceSelectionScreen";
 import DictionarySelectionScreen from "../../screens/Options/DictionarySelectionScreen";
 import ManageAccountNavigator from "./ManageAccountNavigator";
 import Options from "@src/screens/Options";
@@ -27,16 +26,8 @@ const OptionsNavigator = () => {
         component={SetDailyGoalScreen}
       />
       <OptionsStack.Screen
-        name="VoiceSelectionScreen"
-        component={VoiceSelectionScreen}
-      />
-      <OptionsStack.Screen
         name="DictionarySelectionScreen"
         component={DictionarySelectionScreen}
-      />
-      <OptionsStack.Screen
-        name="ManageAccountNavigator"
-        component={ManageAccountNavigator}
       />
     </OptionsStack.Navigator>
   );

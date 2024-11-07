@@ -4,7 +4,7 @@ import AppLink from "@src/components/AppLink";
 import AuthInputField from "@src/components/AuthInputField";
 import * as yup from "yup";
 import PasswordVisibilityIcon from "@src/components/PasswordVisibilityIcon";
-import AuthFormContainer from "@src/components/containers/AuthFormContainer";
+import AuthFormContainer from "@src/components/Containers/AuthFormContainer";
 import { useNavigation } from "@react-navigation/native";
 import client from "@src/api/client";
 import { useDispatch, useSelector } from "react-redux";

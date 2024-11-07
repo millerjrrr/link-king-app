@@ -1,12 +1,15 @@
 import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
-import ManageAccountScreen from "../../screens/Options/ManageAccountScreen";
-import DeleteAccountScreen from "../../screens/Options/DeleteAccountScreen";
-import ChangeNameScreen from "../../screens/Options/ChangeNameScreen";
-import ManageSubscriptionScreen from "../../screens/Options/ManageSubscriptionScreen";
-import ChangeHomeLanguageScreen from "../../screens/Options/ChangeHomeLanguageScreen";
-import SelectNewHomeLanguageScreen from "../../screens/Options/SelectNewHomeLanguage";
-import ChangeHomeLanguageWarningScreen from "../../screens/Options/ChangeHomeLanguageWarningScreen";
+import {
+  createStackNavigator,
+  TransitionPresets,
+} from "@react-navigation/stack";
+import ManageAccountScreen from "../../screens/ManageAccount";
+import DeleteAccountScreen from "../../screens/ManageAccount/DeleteAccountScreen";
+import ChangeNameScreen from "../../screens/ManageAccount/ChangeNameScreen";
+import ManageSubscriptionScreen from "../../screens/ManageAccount/ManageSubscriptionScreen";
+import ChangeHomeLanguageScreen from "../../screens/ManageAccount/ChangeHomeLanguageScreens/ChangeHomeLanguageScreen";
+import SelectNewHomeLanguageScreen from "../../screens/ManageAccount/ChangeHomeLanguageScreens/SelectNewLanguageScreen";
+import ChangeHomeLanguageWarningScreen from "../../screens/ManageAccount/ChangeHomeLanguageScreens/ChangeHomeLanguageWarningScreen";
 
 const ManageAccountStack = createStackNavigator();
 
@@ -15,6 +18,7 @@ const ManageAccountNavigator = () => {
     <ManageAccountStack.Navigator
       screenOptions={{
         headerShown: false,
+        ...TransitionPresets.ModalPresentationIOS,
       }}
     >
       <ManageAccountStack.Screen

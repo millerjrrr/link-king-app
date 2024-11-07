@@ -8,16 +8,13 @@ import colors from "@src/utils/colors";
 const SolutionsList = ({ ticket, plus }) => {
   const { solutions, target } = ticket;
 
-  const { colorScheme } = useSelector(settingsState);
-  const backgroundColor = colors[colorScheme].PRIMARY;
-
   return (
     <HorizontalScrollFade>
       <View
         style={{
           height: 70,
           alignItems: "center",
-          backgroundColor,
+          backgroundColor: "#00000000",
         }}
       >
         <ScrollView

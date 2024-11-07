@@ -1,7 +1,7 @@
 import { StyleSheet, View } from "react-native";
 import Timer from "./Timer";
 import colors from "@src/utils/colors";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectConsoleState } from "@src/store/console";
 import TargetDetailsButton from "./TargetDetailsButton";
 import LoaderForTextInputForConsole from "./LoaderForTextInputForConsole";
@@ -15,8 +15,7 @@ const InputAndTimerContainer = ({
   setIsKeyboardVisible,
 }) => {
   const {
-    gamePlay: { solutions, tries },
-    locals: { formValue, startedThisWord, showSolution },
+    gamePlay: { tries },
   } = useSelector(selectConsoleState);
 
   const { colorScheme, golden } =
@@ -29,6 +28,8 @@ const InputAndTimerContainer = ({
 
   const submitAnswer = useSubmitAnswer();
 
+  // this temporarily disables sendAnswer to avoid
+  // accidental double tap
   const [isDisabled, setIsDisabled] = useState(false);
 
   const sendAnswer = ({ timeOut }) => {

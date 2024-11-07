@@ -14,7 +14,7 @@ import {
 } from "@src/store/settings";
 import colors from "@src/utils/colors";
 import appTextSource from "@src/utils/appTextSource";
-import PopUpContainer from "@src/components/containers/PopUpContainer";
+import PopUpContainer from "@src/components/Containers/PopUpContainer";
 import BusyWrapper from "@src/components/Loader/BusyWrapper";
 import AppText from "@src/components/AppText";
 import AppModal from "@src/components/AppModal";

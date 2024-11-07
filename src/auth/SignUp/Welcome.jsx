@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import AuthFormContainer from "../../components/containers/AuthFormContainer";
+import AuthFormContainer from "../../components/Containers/AuthFormContainer";
 import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";

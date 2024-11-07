@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import AppText from "../../../components/AppText";
+import AppText from "../../../../components/AppText";
 import { TouchableOpacity } from "react-native";
-import FlagImage from "../../../components/Graphics/FlagImage";
+import FlagImage from "../../../../components/Graphics/FlagImage";
 import { useNavigation } from "@react-navigation/native";
 import { View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";

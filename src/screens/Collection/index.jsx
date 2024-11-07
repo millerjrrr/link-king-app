@@ -1,4 +1,4 @@
-import InnerTabContainer from "@src/components/containers/InnerTabContainer";
+import InnerTabContainer from "@src/components/Containers/InnerTabContainer";
 import WordCollectionList from "./components/WordCollectionList";
 import { useState } from "react";
 import SearchBarContainer from "./components/SearchBarContainer";
@@ -38,10 +38,12 @@ const Collection = ({ navigation }) => {
 
   return (
     <InnerTabContainer
-      {...{ heading, help, dictionarySettings }}
+      heading={heading}
+      help={help}
+      dictionarySettings={dictionarySettings}
     >
       <SearchBarContainer navigation={navigation} />
-      <BusyWrapper {...{ busy, size: 96, pushToTop: true }}>
+      <BusyWrapper busy={busy} size={96} pushToTop={true}>
         <WordCollectionList
           navigation={navigation}
           tickets={tickets}

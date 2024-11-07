@@ -8,11 +8,11 @@ import {
   Ionicons,
   MaterialIcons,
 } from "@expo/vector-icons";
-import { Platform, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import React from "react";
 import { settingsState } from "@src/store/settings";
 import IsSubscribedWrapper from "../subscription/IsSubscribedWrapper";
+import ManageAccountNavigator from "./subnavigators/ManageAccountNavigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -31,15 +31,14 @@ const TabNavigator = () => {
           tabBarShowLabel: false,
           headerShown: false,
           tabBarInactiveTintColor,
-          tabBarStyle: [
-            styles.tabBarStyle,
-            {
-              color,
-              backgroundColor,
-              shadowColor: color,
-              borderColor: color,
-            },
-          ],
+          tabBarHideOnKeyboard: true,
+          tabBarStyle: {
+            color,
+            backgroundColor,
+            height: 80,
+            padding: 10,
+            borderTopWidth: 0,
+          },
         }}
         initialRouteName="Console"
       >
@@ -49,15 +48,11 @@ const TabNavigator = () => {
           options={{
             tabBarIcon: ({ color, size }) => (
               <Ionicons
-                {...{
-                  name: "game-controller",
-                  size: size + 15,
-                  color,
-                }}
+                name="game-controller"
+                size={size + 15}
+                color={color}
               />
             ),
-            tabBarLabel: "Console",
-            tabBarHideOnKeyboard: true,
           }}
         />
         <Tab.Screen
@@ -66,15 +61,11 @@ const TabNavigator = () => {
           options={{
             tabBarIcon: ({ color, size }) => (
               <Entypo
-                {...{
-                  name: "open-book",
-                  size: size + 15,
-                  color,
-                }}
+                name="open-book"
+                size={size + 15}
+                color={color}
               />
             ),
-            tabBarLabel: "Collection",
-            tabBarHideOnKeyboard: true,
           }}
         />
         <Tab.Screen
@@ -83,44 +74,24 @@ const TabNavigator = () => {
           options={{
             tabBarIcon: ({ color, size }) => (
               <MaterialIcons
-                {...{
-                  name: "settings",
-                  size: size + 15,
-                  color,
-                }}
+                name="settings"
+                size={size + 15}
+                color={color}
               />
             ),
-            tabBarLabel: "Options",
-            tabBarHideOnKeyboard: true,
-            tabBarStyle: {
-              display: "none",
-            },
+          }}
+        />
+        <Tab.Screen
+          name="ManageAccount"
+          component={ManageAccountNavigator} // Componente da aba oculta
+          options={{
+            tabBarButton: () => null, // Oculta o botão da aba
+            tabBarStyle: { display: "none" },
           }}
         />
       </Tab.Navigator>
     </IsSubscribedWrapper>
   );
 };
-
-const styles = StyleSheet.create({
-  tabBarStyle: {
-    height: 80,
-    padding: 10,
-    ...Platform.select({
-      ios: {
-        shadowOffset: {
-          height: -2,
-        },
-        borderTopWidth: 0,
-        shadowOpacity: 0.5,
-        shadowRadius: 5,
-      },
-      android: {
-        elevation: 10,
-        borderTopWidth: 0,
-      },
-    }),
-  },
-});
 
 export default TabNavigator;

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import * as yup from "yup";
-import AuthFormContainer from "../../../../components/containers/AuthFormContainer";
+import AuthFormContainer from "../../../../components/Containers/AuthFormContainer";
 import AuthInputField from "../../../../components/AuthInputField";
 import SubmitButton from "../../../../components/Buttons/SubmitButton";
 import { ScrollView } from "react-native";

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { ReactNode, useEffect } from "react";
 import { View, StyleSheet } from "react-native";
 import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
@@ -25,7 +25,15 @@ export const FadeBackgroundView = styled(LinearGradient)`
   z-index: 20;
 `;
 
-const PopUpContainer = ({
+interface PopUpContainerProps {
+  children: ReactNode;
+  heading: string;
+  help?: () => void;
+  blockPopToTop?: boolean;
+  padding?: number;
+}
+
+const PopUpContainer: React.FC<PopUpContainerProps> = ({
   children,
   heading,
   help,
@@ -67,7 +75,7 @@ const PopUpContainer = ({
       ]}
     >
       <FourCrowns {...{ color: SECONDARY }} />
-      <HelpButton {...{ help }} />
+      <HelpButton help={help} />
       <BackButton />
       <LinkKingLogo
         {...{

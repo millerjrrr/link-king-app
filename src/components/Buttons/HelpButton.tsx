@@ -4,8 +4,16 @@ import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import StatusBarFiller from "../StatusBarFiller";
+import React from "react";
 
-const HelpButton = ({ help, padding }) => {
+interface HelpButtonProps {
+  help?: () => void;
+  padding?: boolean;
+}
+const HelpButton: React.FC<HelpButtonProps> = ({
+  help,
+  padding,
+}) => {
   const { colorScheme, golden } =
     useSelector(settingsState);
   const color = colors[colorScheme].CONTRAST[golden];

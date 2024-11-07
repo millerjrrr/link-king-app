@@ -4,17 +4,27 @@ import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import { useNavigation } from "@react-navigation/native";
+import React from "react";
 
-const BackButton = ({ extraPadding }) => {
+interface BackButtonProps {
+  extraPadding?: boolean;
+  altFunction?: () => void;
+}
+const BackButton: React.FC<BackButtonProps> = ({
+  extraPadding,
+  altFunction,
+}) => {
   const { colorScheme, golden } =
     useSelector(settingsState);
   const color = colors[colorScheme].CONTRAST[golden];
   const navigation = useNavigation();
+  const onPress =
+    altFunction || (() => navigation.goBack());
 
   return (
     <>
       <TouchableOpacity
-        onPress={() => navigation.goBack()}
+        onPress={onPress}
         style={[
           styles.container,
           {

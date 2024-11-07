@@ -13,7 +13,16 @@ import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import FlagImage from "../Graphics/FlagImage";
 
-const Loader = ({ size = 24, color, backgroundColor }) => {
+interface LoaderProps {
+  size?: number;
+  color?: string;
+  backgroundColor?: string;
+}
+const Loader: React.FC<LoaderProps> = ({
+  size = 24,
+  color,
+  backgroundColor,
+}) => {
   const { colorScheme, golden } =
     useSelector(settingsState);
   const loaderColor = color

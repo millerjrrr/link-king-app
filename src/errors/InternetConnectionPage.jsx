@@ -5,7 +5,7 @@ import { settingsState } from "@src/store/settings";
 import { useSelector } from "react-redux";
 import appTextSource from "../utils/appTextSource";
 import AppText from "@src/components/AppText";
-import AuthFormContainer from "@src/components/containers/AuthFormContainer";
+import AuthFormContainer from "@src/components/Containers/AuthFormContainer";
 import AntDesign from "@expo/vector-icons/AntDesign";
 
 const InternetConnectionPage = ({ refresh }) => {

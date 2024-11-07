@@ -1,8 +1,8 @@
 import appTextSource from "@src/utils/appTextSource";
 import { useDispatch, useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
-import ManageAccountMenuItem from "./ManageAccountMenuItem";
-import PopUpContainer from "@src/components/containers/PopUpContainer";
+import ManageAccountMenuItem from "./components/ManageAccountMenuItem";
+import PopUpContainer from "@src/components/Containers/PopUpContainer";
 import BusyWrapper from "@src/components/Loader/BusyWrapper";
 import {
   authState,
@@ -13,6 +13,7 @@ import { useNavigation } from "@react-navigation/native";
 import { useEffect, useState } from "react";
 import clientWithAuth from "@src/api/clientWithAuth";
 import useCatchAsync from "@src/hooks/useCatchAsync";
+import InnerTabContainer from "@src/components/Containers/InnerTabContainer";
 
 const ManageAccountScreen = () => {
   const { appLang } = useSelector(settingsState);
@@ -49,15 +50,19 @@ const ManageAccountScreen = () => {
     }
   });
 
-  const { refresh } = useSelector(authState);
+  // const { refresh } = useSelector(authState);
   const navigation = useNavigation();
 
   useEffect(() => {
     updateAccountDetails();
-  }, [navigation, refresh]);
+  }, [navigation]);
 
   return (
-    <PopUpContainer {...{ heading, blockPopToTop: true }}>
+    <InnerTabContainer
+      heading={heading}
+      backFunction={() => navigation.navigate("Options")}
+      noBook={true}
+    >
       <BusyWrapper {...{ busy }}>
         <ManageAccountMenuItem
           {...{
@@ -103,7 +108,7 @@ const ManageAccountScreen = () => {
           }}
         />
       </BusyWrapper>
-    </PopUpContainer>
+    </InnerTabContainer>
   );
 };
 

@@ -1,12 +1,19 @@
+import React from "react";
 import { View, StatusBar, Platform } from "react-native";
 
-const StatusBarFiller = ({ backgroundColor }) => {
+interface StatusBarFillerProps {
+  backgroundColor?: string;
+}
+
+const StatusBarFiller: React.FC<StatusBarFillerProps> = ({
+  backgroundColor,
+}) => {
   return (
     <View
       style={{
         height: Platform.select({
           ios: 50,
-          android: StatusBar.currentHeight + 20,
+          android: (StatusBar.currentHeight || 0) + 20,
         }),
         width: "100%",
         backgroundColor,

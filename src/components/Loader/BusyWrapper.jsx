@@ -1,4 +1,3 @@
-import { View } from "react-native";
 import Loader from ".";
 
 const BusyWrapper = ({
@@ -7,14 +6,12 @@ const BusyWrapper = ({
   color,
   backgroundColor,
   children,
-  pushToTop,
 }) => {
   return (
     <>
       {busy ? (
         <>
           <Loader {...{ color, size, backgroundColor }} />
-          {pushToTop ? <View style={{ flex: 1 }} /> : null}
         </>
       ) : (
         children

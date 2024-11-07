@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { statsState } from "@src/store/stats";
 import LevelHistogram from "./LevelHistogram";
-import PopUpContainer from "@src/components/containers/PopUpContainer";
+import PopUpContainer from "@src/components/Containers/PopUpContainer";
 import Loader from "@src/components/Loader";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";

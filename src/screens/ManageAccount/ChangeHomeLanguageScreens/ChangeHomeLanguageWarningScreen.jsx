@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
-import PopUpContainer from "../../components/containers/PopUpContainer";
+import PopUpContainer from "../../../components/Containers/PopUpContainer";
 import { settingsState } from "@src/store/settings";
 import { useNavigation } from "@react-navigation/native";
-import AuthButton from "../../components/Buttons/AuthButton";
+import AuthButton from "../../../components/Buttons/AuthButton";
 import appTextSource from "@src/utils/appTextSource";
-import AppText from "../../components/AppText";
+import AppText from "../../../components/AppText";
 import { View } from "react-native";
 
 const ChangeHomeLanguageWarningScreen = () => {

@@ -1,4 +1,4 @@
-import InnerTabContainer from "./../../components/containers/InnerTabContainer";
+import InnerTabContainer from "../../components/Containers/InnerTabContainer";
 import OptionsMenuItem from "./components/OptionsMenuItem";
 import { useNavigation } from "@react-navigation/native";
 import ColorPickerMenuItem from "./components/ColorPickerMenuItem";
@@ -22,9 +22,7 @@ const Options = () => {
   } = appTextSource(appLang).options;
 
   return (
-    <InnerTabContainer
-      {...{ heading, noBook: true, back: true }}
-    >
+    <InnerTabContainer heading={heading} noBook={true}>
       <OptionsMenuItem
         {...{
           iconName: "target-variant",
@@ -34,13 +32,6 @@ const Options = () => {
           onPress: () => navigateTo("SetDailyGoalScreen"),
         }}
       />
-      {/* <OptionsMenuItem
-        {...{
-          iconName: "account-tie-voice",
-          name: voiceSelection.title,
-          onPress: () => navigateTo("VoiceSelectionScreen"),
-        }}
-      /> */}
       <OptionsMenuItem
         {...{
           iconName: "book-open-variant",
@@ -56,8 +47,7 @@ const Options = () => {
           iconName: "account-cog-outline",
           name: manageAccount.title,
           selected: true,
-          onPress: () =>
-            navigateTo("ManageAccountNavigator"),
+          onPress: () => navigateTo("ManageAccount"),
         }}
       />
       <ModalTypeMenuItem optionName="contactUs" />

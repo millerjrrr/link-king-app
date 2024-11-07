@@ -39,7 +39,6 @@ export type CollectionStackParamList = {
 export type OptionsStackParamList = {
   OptionsStackScreen: undefined;
   SetDailyGoalScreen: undefined;
-  VoiceSelectionScreen: undefined;
   DictionarySelectionScreen: undefined;
   ManageAccountNavigator: undefined;
 };

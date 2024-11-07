@@ -4,7 +4,7 @@ import appTextSource from "@src/utils/appTextSource";
 import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import AppText from "@src/components/AppText";
-import AuthFormContainer from "@src/components/containers/AuthFormContainer";
+import AuthFormContainer from "@src/components/Containers/AuthFormContainer";
 import TermsAndConditions from "./TermsAndConditions";
 import useSetSubscriptionPrice from "../hooks/subscriptionHooks/useSetSubscriptionPrice";
 import { authState } from "@src/store/auth";

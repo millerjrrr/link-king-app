@@ -17,7 +17,7 @@ const InnerTabContainer = ({
   heading,
   help,
   noBook,
-  back,
+  backFunction,
 }) => {
   const { colorScheme, golden } =
     useSelector(settingsState);
@@ -45,7 +45,12 @@ const InnerTabContainer = ({
         ]}
       >
         <StatusBarFiller />
-        {back ? <BackButton extraPadding={true} /> : null}
+        {backFunction ? (
+          <BackButton
+            altFunction={backFunction}
+            extraPadding={true}
+          />
+        ) : null}
         <FourCrowns {...{ color }} />
         <HelpButton {...{ help, padding: true }} />
         {!noBook ? (

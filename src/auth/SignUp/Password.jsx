@@ -2,7 +2,7 @@ import SubmitButton from "../../components/Buttons/SubmitButton";
 import AuthInputField from "../../components/AuthInputField";
 import * as yup from "yup";
 import PasswordVisibilityIcon from "../../components/PasswordVisibilityIcon";
-import AuthFormContainer from "../../components/containers/AuthFormContainer";
+import AuthFormContainer from "../../components/Containers/AuthFormContainer";
 import { useNavigation } from "@react-navigation/native";
 import client from "@src/api/client";
 import { useState } from "react";

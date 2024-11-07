@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import colors from "@src/utils/colors";
-import AppSearchBar from "../../../components/AppSearchBar";
+import AppSearchBar from "../../../../components/AppSearchBar";
 
 const FadeBackgroundView = styled(LinearGradient)`
   position: absolute;
