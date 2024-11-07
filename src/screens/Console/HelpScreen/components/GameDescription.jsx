@@ -1,26 +1,28 @@
 import { TouchableOpacity, Linking } from "react-native";
 import DescriptionWrapper from "./DescriptionWrapper";
 import { AntDesign } from "@expo/vector-icons";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import colors from "@src/utils/colors";
-import { errorHandler } from "@src/errors/errorHandler";
+import useCatchAsync from "@src/hooks/useCatchAsync";
 
 const GameDescription = () => {
   const { colorScheme, golden, appLang } =
     useSelector(settingsState);
   const color = colors[colorScheme].CONTRAST[golden];
-  const dispatch = useDispatch();
 
-  const onPress = () => {
+  const catchAsync = useCatchAsync();
+
+  const onPress = catchAsync(async () => {
     const url =
       "https://www.youtube.com/channel/UCtvz3tIHITft0MaJVSvy6Jg";
-    Linking.canOpenURL(url)
-      .then(() => {
-        Linking.openURL(url);
-      })
-      .catch((err) => errorHandler(err, dispatch));
-  };
+    const canOpen = await Linking.canOpenURL(url);
+    if (canOpen) {
+      await Linking.openURL(url);
+    } else {
+      throw new Error("Cannot open URL");
+    }
+  });
 
   return (
     <DescriptionWrapper {...{ name: "gameDescription" }}>

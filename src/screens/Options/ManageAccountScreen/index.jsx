@@ -9,10 +9,10 @@ import {
   updateEmail,
   updateName,
 } from "@src/store/auth";
-import { errorHandler } from "@src/errors/errorHandler";
 import { useNavigation } from "@react-navigation/native";
 import { useEffect, useState } from "react";
 import clientWithAuth from "@src/api/clientWithAuth";
+import useCatchAsync from "@src/hooks/useCatchAsync";
 
 const ManageAccountScreen = () => {
   const { appLang } = useSelector(settingsState);
@@ -30,9 +30,11 @@ const ManageAccountScreen = () => {
   } = useSelector(authState);
 
   const dispatch = useDispatch();
+  const catchAsync = useCatchAsync();
+
   const [busy, setBusy] = useState(false);
 
-  const updateAccountDetails = async () => {
+  const updateAccountDetails = catchAsync(async () => {
     try {
       setBusy(true);
       const {
@@ -42,11 +44,10 @@ const ManageAccountScreen = () => {
       );
       dispatch(updateName(username));
       dispatch(updateEmail(email));
-    } catch (error) {
-      errorHandler(error, dispatch);
+    } finally {
+      setBusy(false);
     }
-    setBusy(false);
-  };
+  });
 
   const { refresh } = useSelector(authState);
   const navigation = useNavigation();

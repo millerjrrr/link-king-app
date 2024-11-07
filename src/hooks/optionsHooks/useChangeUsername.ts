@@ -1,5 +1,4 @@
 import clientWithAuth from "@src/api/clientWithAuth";
-import { errorHandler } from "@src/errors/errorHandler";
 import { updateNotification } from "@src/store/notification";
 import appTextSource from "../../utils/appTextSource";
 import { useDispatch, useSelector } from "react-redux";

@@ -6,9 +6,9 @@ import {
   updateOptions,
 } from "@src/store/console";
 import clientWithAuth from "@src/api/clientWithAuth";
-import { errorHandler } from "@src/errors/errorHandler";
 import OptionsIcon from "./OptionsIcon";
 import { settingsState } from "@src/store/settings";
+import useCatchAsync from "@src/hooks/useCatchAsync";
 
 const OptionsContainer = ({ size = 40, show = 0 }) => {
   const {
@@ -19,21 +19,15 @@ const OptionsContainer = ({ size = 40, show = 0 }) => {
   const color = colors[colorScheme].CONTRAST[golden];
 
   const dispatch = useDispatch();
+  const catchAsync = useCatchAsync();
 
-  // These functions are slightly different
-  // and should be kept separate
-
-  const sendOptions = async ({ options }) => {
-    try {
-      const { data } = await clientWithAuth.post(
-        "/api/v1/console/update-game-settings",
-        options,
-      );
-      dispatch(updateOptions(data.options));
-    } catch (error) {
-      errorHandler(error, dispatch);
-    }
-  };
+  const sendOptions = catchAsync(async ({ options }) => {
+    const { data } = await clientWithAuth.post(
+      "/api/v1/console/update-game-settings",
+      options,
+    );
+    dispatch(updateOptions(data.options));
+  });
 
   const soundButtonFunction = async () => {
     const options = blurred

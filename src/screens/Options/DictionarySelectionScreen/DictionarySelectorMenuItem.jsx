@@ -3,10 +3,10 @@ import OptionsMenuItem from "../components/OptionsMenuItem";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import { useDispatch } from "react-redux";
-import { sendDictionary } from "../components/sendDictionary";
 import { selectConsoleState } from "@src/store/console";
 import BusyWrapper from "../../../components/Loader/BusyWrapper";
 import { View } from "react-native";
+import useSendDictionary from "@src/hooks/optionsHooks/useSendDictionary";
 
 const DictionarySelectorMenuItem = ({
   name: dictionary,
@@ -25,14 +25,12 @@ const DictionarySelectorMenuItem = ({
   );
 
   const selected = dictionary === currentDictionary;
+  const sendDictionary = useSendDictionary();
 
   const onPress = selected
     ? null
     : () => {
-        sendDictionary({
-          dictionary,
-          dispatch,
-        });
+        sendDictionary(dictionary);
       };
 
   return (

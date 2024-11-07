@@ -8,8 +8,8 @@ import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import { captureRef } from "react-native-view-shot";
-import { errorHandler } from "@src/errors/errorHandler";
 import appTextSource from "@src/utils/appTextSource";
+import useCatchAsync from "@src/hooks/useCatchAsync";
 
 const ShareButton = ({ shareRef }) => {
   const { colorScheme, golden, appLang } =
@@ -21,19 +21,17 @@ const ShareButton = ({ shareRef }) => {
 
   const message = challenge + "\nhttps://www.linkoking.com";
 
-  const onPress = async () => {
-    try {
-      const image = await captureRef(shareRef, {
-        quality: 1,
-      });
-      await Share.share({
-        url: image,
-        message,
-      });
-    } catch (error) {
-      errorHandler(error, dispatch);
-    }
-  };
+  const catchAsync = useCatchAsync();
+
+  const onPress = catchAsync(async () => {
+    const image = await captureRef(shareRef, {
+      quality: 1,
+    });
+    await Share.share({
+      url: image,
+      message,
+    });
+  });
 
   return (
     <>
