@@ -1,40 +1,25 @@
-import { useEffect, useState } from "react";
 import { ScrollView, View } from "react-native";
 import AuthButton from "@src/components/Buttons/AuthButton";
 import appTextSource from "@src/utils/appTextSource";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import AppText from "@src/components/AppText";
 import AuthFormContainer from "@src/components/containers/AuthFormContainer";
-import subscribeFunction from "./subscribeFunction";
 import TermsAndConditions from "./TermsAndConditions";
-import setSubscriptionPrice from "./setSubscriptionPrice";
-import { useNavigation } from "@react-navigation/native";
+import useSetSubscriptionPrice from "../hooks/subscriptionHooks/useSetSubscriptionPrice";
+import { authState } from "@src/store/auth";
+import useSubscribe from "../hooks/subscriptionHooks/useSubscribe";
 
 const Paywall = () => {
-  const [busy, setBusy] = useState(false);
-  const [price, setPrice] = useState("R$69.99");
-  const dispatch = useDispatch();
-
-  const onPress = () =>
-    subscribeFunction({ dispatch, setBusy });
+  const subscribe = useSubscribe();
 
   const { appLang } = useSelector(settingsState);
   const { heading, notice, priceDescription, perYear } =
     appTextSource(appLang).paywall;
 
-  const update = setSubscriptionPrice({ setPrice });
-
-  const navigation = useNavigation();
-
-  useEffect(() => {
-    const unsubscribe = navigation.addListener(
-      "focus",
-      update,
-    );
-
-    return unsubscribe;
-  }, [navigation]);
+  useSetSubscriptionPrice();
+  const { subscriptionPrice, busy } =
+    useSelector(authState);
 
   return (
     <AuthFormContainer {...{ heading, back: false }}>
@@ -61,15 +46,13 @@ const Paywall = () => {
           width: "100%",
         }}
       >
-        <AppText
-          {...{
-            style: { fontSize: 15, marginBottom: 10 },
-          }}
-        >
-          {priceDescription + price + perYear}
+        <AppText style={{ fontSize: 15, marginBottom: 10 }}>
+          {priceDescription + subscriptionPrice + perYear}
         </AppText>
         <AuthButton
-          {...{ title: heading, busy, onPress }}
+          title={heading}
+          busy={busy}
+          onPress={subscribe}
         />
         <TermsAndConditions />
       </View>

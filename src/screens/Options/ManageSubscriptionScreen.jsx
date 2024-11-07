@@ -13,10 +13,11 @@ import colors from "@src/utils/colors";
 import { FontAwesome5 } from "@expo/vector-icons";
 import styled from "styled-components";
 import { authState } from "@src/store/auth";
-import subscribeFunction from "../../subscription/subscribeFunction";
+import subscribeFunction from "../../hooks/subscriptionHooks/useSubscribe";
 import { useState } from "react";
 import Loader from "../../components/Loader";
 import TermsAndConditions from "../../subscription/TermsAndConditions";
+import useSubscribe from "../../hooks/subscriptionHooks/useSubscribe";
 
 const Container = styled(View)`
   width: 100%;
@@ -72,19 +73,20 @@ const ManageSubscriptionScreen = () => {
     manage,
     appStore,
     playStore,
-    subscribe,
-  } =
-    appTextSource(appLang).options.manageAccount
-      .subscriptionPage;
+    subscribe: subscribeText,
+  } = appTextSource(appLang).options.manageAccount
+    .subscriptionPage;
   const {
     PRIMARY: buttonColor,
     SECONDARY: backgroundColor,
     CONTRAST,
   } = colors[colorScheme];
 
-  const { subscribed: userIsSubscribed, vip } =
-    useSelector(authState);
-  const dispatch = useDispatch();
+  const {
+    subscribed: userIsSubscribed,
+    vip,
+    busy,
+  } = useSelector(authState);
 
   const date = new Date(vip);
   const options = {
@@ -98,9 +100,9 @@ const ManageSubscriptionScreen = () => {
     options,
   ).format(date);
 
-  const [busy, setBusy] = useState(false);
+  const subscribe = useSubscribe();
 
-  const onPress = userIsSubscribed
+  const onPress = !userIsSubscribed
     ? () => {
         if (Platform.OS === "ios") {
           Linking.openURL(
@@ -112,10 +114,7 @@ const ManageSubscriptionScreen = () => {
           );
         }
       }
-    : () => {
-        subscribeFunction({ dispatch, setBusy });
-      };
-
+    : subscribe;
   return (
     <PopUpContainer {...{ heading, blockPopToTop: true }}>
       <Container>
@@ -189,7 +188,9 @@ const ManageSubscriptionScreen = () => {
                 <Loader {...{ size: 24 }} />
               ) : (
                 <Tag>
-                  {userIsSubscribed ? manage : subscribe}
+                  {userIsSubscribed
+                    ? manage
+                    : subscribeText}
                 </Tag>
               )}
             </ManageSubscripitonButton>

@@ -54,7 +54,7 @@ const Console = ({ navigation }) => {
       videoId: appLang === "pt" ? "lfc3MTUbbWU" : false,
       onPress: () => {
         setIsModalVisible(false);
-        dispatch(refreshPage());
+        // dispatch(refreshPage());
         setIsModalVisible2(true);
       },
       info: true,

@@ -9,6 +9,7 @@ interface AuthState {
   token: string;
   trialDays: number;
   subscribed: boolean;
+  subscriptionPrice: string;
   vip: number;
   busy: boolean;
   connected: boolean;
@@ -23,6 +24,7 @@ const initialState: AuthState = {
   token: "",
   trialDays: 7,
   subscribed: false,
+  subscriptionPrice: "error",
   vip: 4070919600000,
   busy: false,
   connected: true,
@@ -53,6 +55,12 @@ const slice = createSlice({
       action: PayloadAction<boolean>,
     ) {
       state.subscribed = action.payload;
+    },
+    updateSubscriptionPrice(
+      state,
+      action: PayloadAction<string>,
+    ) {
+      state.subscriptionPrice = action.payload;
     },
     updateVip(state, action: PayloadAction<number>) {
       state.vip = action.payload;
@@ -89,6 +97,7 @@ export const {
   updateToken,
   updateTrialDays,
   updateSubscribed,
+  updateSubscriptionPrice,
   updateVip,
   updateLoggedInState,
   updateBusyState,

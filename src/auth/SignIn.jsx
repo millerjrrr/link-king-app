@@ -74,7 +74,7 @@ const SignIn = () => {
       dispatch(updateToken(data.token));
       dispatch(updateLoggedInState(true));
       dispatch(updateEmail(""));
-      dispatch(refreshPage());
+      // dispatch(refreshPage());
     } finally {
       actions.setSubmitting(false);
     }
