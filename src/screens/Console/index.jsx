@@ -10,7 +10,7 @@ import InnerTabContainer from "@src/components/containers/InnerTabContainer";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import AppModal from "@src/components/AppModal";
-import { authState, refreshPage } from "@src/store/auth";
+import { authState } from "@src/store/auth";
 import useManageGolden from "@src/hooks/consoleHooks/useEffects/useManageGolden";
 import useTimeManager from "@src/hooks/consoleHooks/useEffects/useTimeManager";
 import useConsoleUpdates from "@src/hooks/consoleHooks/useEffects/useConsoleUpdates";
@@ -54,7 +54,6 @@ const Console = ({ navigation }) => {
       videoId: appLang === "pt" ? "lfc3MTUbbWU" : false,
       onPress: () => {
         setIsModalVisible(false);
-        // dispatch(refreshPage());
         setIsModalVisible2(true);
       },
       info: true,

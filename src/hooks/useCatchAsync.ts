@@ -17,9 +17,11 @@ const useCatchAsync = () => {
         return await asyncFunc(...args);
       } catch (error) {
         let errorMessage = returnErrorMessage(error);
-
         // Network Timeout Handling
-        if (errorMessage.startsWith("timeout")) {
+        if (
+          errorMessage.startsWith("timeout") ||
+          errorMessage.startsWith("Network Error")
+        ) {
           errorMessage = "no internet connection";
           dispatch(updateConnectedState(false));
         }

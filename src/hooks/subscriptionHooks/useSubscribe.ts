@@ -28,7 +28,7 @@ const useSubscribe = () => {
 
       await Purchases.purchasePackage(packageToPurchase);
 
-      // dispatch(refreshPage());
+      dispatch(refreshPage());
     } finally {
       dispatch(updateBusyState(false));
     }

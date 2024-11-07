@@ -10,7 +10,6 @@ import client from "@src/api/client";
 import { useDispatch, useSelector } from "react-redux";
 import {
   authState,
-  refreshPage,
   updateEmail,
   updateLoggedInState,
   updateToken,
@@ -59,7 +58,6 @@ const SignIn = () => {
     try {
       const { data } = await client.post(
         "/api/v1/users/log-in",
-
         {
           ...values,
         },
@@ -74,7 +72,6 @@ const SignIn = () => {
       dispatch(updateToken(data.token));
       dispatch(updateLoggedInState(true));
       dispatch(updateEmail(""));
-      // dispatch(refreshPage());
     } finally {
       actions.setSubmitting(false);
     }
