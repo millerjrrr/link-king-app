@@ -1,14 +1,9 @@
 import { View, StyleSheet } from "react-native";
 import colors from "@src/utils/colors";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  selectConsoleState,
-  updateOptions,
-} from "@src/store/console";
-import clientWithAuth from "@src/api/clientWithAuth";
+import { useSelector } from "react-redux";
+import { selectConsoleState } from "@src/store/console";
 import OptionsIcon from "./OptionsIcon";
 import { settingsState } from "@src/store/settings";
-import useCatchAsync from "@src/hooks/useCatchAsync";
 import useSendOptions from "@src/hooks/consoleHooks/useSendOptions";
 import useCheckTTSData from "@src/hooks/consoleHooks/useCheckTTSData";
 

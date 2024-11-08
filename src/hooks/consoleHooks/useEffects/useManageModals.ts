@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { authState } from "@src/store/auth";
 import useCatchAsync from "../../useCatchAsync";
@@ -7,18 +7,14 @@ import {
   saveToAsyncStorage,
 } from "@src/utils/asyncStorage";
 import { AppState } from "react-native";
+import { updateModals } from "@src/store/modals";
 
-const useManageModals = (
-  setIsModalVisible: React.Dispatch<
-    React.SetStateAction<boolean>
-  >,
-  setIsModalVisible2: React.Dispatch<
-    React.SetStateAction<boolean>
-  >,
-) => {
+const useManageModals = () => {
   const { subscribed, trialDays, vip } =
     useSelector(authState);
   const catchAsync = useCatchAsync();
+  const dispatch = useDispatch();
+
   const [appState, setAppState] = useState(
     AppState.currentState,
   );
@@ -29,14 +25,16 @@ const useManageModals = (
       await getFromAsyncStorage("first-time");
 
     if (firstTime !== "no") {
-      setIsModalVisible(true);
+      dispatch(updateModals({ showWelcomeModal: true }));
       await saveToAsyncStorage("first-time", "no");
     } else if (
       !(vip > Date.now()) &&
       !subscribed &&
       trialDays >= 0
     )
-      setIsModalVisible2(true);
+      dispatch(
+        updateModals({ showTrialNoticeModal: true }),
+      );
   });
 
   // 2. Logic to check whether to run or not
@@ -45,8 +43,7 @@ const useManageModals = (
       await getFromAsyncStorage("last-run-date");
     const today = new Date().toISOString().split("T")[0];
 
-    // if (lastRun !== today) {
-    if (lastRun) {
+    if (lastRun !== today) {
       await showModalOnAppOpen();
       await saveToAsyncStorage("last-run-date", today);
     }

@@ -47,14 +47,12 @@ const ScrollSelector = ({ onSelect, length, start }) => {
   return (
     <Column>
       <TopShadow
-        {...{
-          colors: [
-            backgroundColor,
-            backgroundColor + "E6",
-            backgroundColor + "80",
-            backgroundColor + "00",
-          ],
-        }}
+        colors={[
+          backgroundColor,
+          backgroundColor + "E6",
+          backgroundColor + "80",
+          backgroundColor + "00",
+        ]}
       />
       <ScrollPicker
         dataSource={numbersArray}
@@ -90,14 +88,12 @@ const ScrollSelector = ({ onSelect, length, start }) => {
         highlightColor={color}
       />
       <BottomShadow
-        {...{
-          colors: [
-            backgroundColor + "00",
-            backgroundColor + "80",
-            backgroundColor + "E6",
-            backgroundColor,
-          ],
-        }}
+        colors={[
+          backgroundColor + "00",
+          backgroundColor + "80",
+          backgroundColor + "E6",
+          backgroundColor,
+        ]}
       />
     </Column>
   );

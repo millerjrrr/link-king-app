@@ -321,12 +321,6 @@ export default {
         "Entre em contato conosco por e-mail e nós responderemos o mais breve possível",
       cancel: "Cancelar",
     },
-    signUp: {
-      title: "Sair do processo",
-      modalMessage:
-        "Tem certeza de que deseja encerrar o processo?",
-      cancel: "Ficar aqui",
-    },
     logOut: {
       title: "Sair",
       modalMessage: "Tem certeza de que deseja sair?",

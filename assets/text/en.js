@@ -317,12 +317,6 @@ export default {
         "Please contact us by email and we will get back to you as soon as possible.",
       cancel: "Cancel",
     },
-    signUp: {
-      title: "Quit process",
-      modalMessage:
-        "Are your sure you want to end the process?",
-      cancel: "Stay here",
-    },
     logOut: {
       title: "Log Out",
       modalMessage: "Are your sure you want to log out?",

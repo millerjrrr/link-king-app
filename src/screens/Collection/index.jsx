@@ -2,25 +2,32 @@ import InnerTabContainer from "@src/components/Containers/InnerTabContainer";
 import WordCollectionList from "./components/WordCollectionList";
 import { useState } from "react";
 import SearchBarContainer from "./components/SearchBarContainer";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { collectionState } from "@src/store/collection";
 import BusyWrapper from "@src/components/Loader/BusyWrapper";
 import appTextSource from "@src/utils/appTextSource";
 import { settingsState } from "@src/store/settings";
 import AppModal from "@src/components/AppModal";
 import useFetchTickets from "@src/hooks/collectionHooks/useFetchTickets";
+import {
+  modalState,
+  updateModals,
+} from "@src/store/modals";
 
 const Collection = ({ navigation }) => {
   const { tickets, busy } = useSelector(collectionState);
   const { appLang } = useSelector(settingsState);
+  const { showCollectionInfoModal } =
+    useSelector(modalState);
   const { heading } = appTextSource(appLang).collection;
-  const [isModalVisible, setIsModalVisible] =
-    useState(false);
 
   useFetchTickets();
+  const dispatch = useDispatch();
 
   const help = () => {
-    setIsModalVisible(true);
+    dispatch(
+      updateModals({ showCollectionInfoModal: true }),
+    );
   };
 
   const dictionarySettings = () => {
@@ -29,10 +36,16 @@ const Collection = ({ navigation }) => {
   };
 
   const modalProps = {
-    isVisible: isModalVisible,
-    onBackdropPress: () => setIsModalVisible(false),
+    isVisible: showCollectionInfoModal,
+    onBackdropPress: () =>
+      dispatch(
+        updateModals({ showCollectionInfoModal: false }),
+      ),
     modalName: "collectionInfo",
-    onPress: () => setIsModalVisible(false),
+    onPress: () =>
+      dispatch(
+        updateModals({ showCollectionInfoModal: false }),
+      ),
     info: true,
   };
 

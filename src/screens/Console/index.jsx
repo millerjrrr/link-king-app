@@ -1,6 +1,6 @@
 import InputAndTimerContainer from "./components/InputAndTimerContainer";
 import { useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import OptionsContainer from "./components/OptionsContainer";
 import KeyboardAndStartButton from "./components/KeyboardAndStartButton";
 import Tail from "./components/Tail";
@@ -18,16 +18,19 @@ import useManageModals from "@src/hooks/consoleHooks/useEffects/useManageModals"
 import useOnKeyboardClose from "@src/hooks/consoleHooks/useEffects/useOnKeyboardClose";
 import useHandleAppBackgroundExit from "../../hooks/consoleHooks/useEffects/useHandleAppBackgroundExit";
 import useUpdateOptions from "@src/hooks/consoleHooks/useEffects/useUpdateOptions";
+import {
+  modalState,
+  updateModals,
+} from "@src/store/modals";
 
 const Console = ({ navigation }) => {
   const inputFieldRef = useRef(null);
   const { appLang } = useSelector(settingsState);
   const { trialDays } = useSelector(authState);
+  const { showWelcomeModal, showTrialNoticeModal } =
+    useSelector(modalState);
 
-  const [isModalVisible, setIsModalVisible] =
-    useState(false);
-  const [isModalVisible2, setIsModalVisible2] =
-    useState(false);
+  const dispatch = useDispatch();
 
   const [isKeyboardVisible, setIsKeyboardVisible] =
     useState(false);
@@ -42,27 +45,34 @@ const Console = ({ navigation }) => {
   useManageGolden();
   useTimeManager();
   useConsoleUpdates();
-  useManageModals(setIsModalVisible, setIsModalVisible2);
+  useManageModals();
   useHandleAppBackgroundExit();
   useOnKeyboardClose();
   useUpdateOptions();
 
   const modals = [
     {
-      isVisible: isModalVisible,
+      isVisible: showWelcomeModal,
       modalName: "welcome",
       videoId: appLang === "pt" ? "lfc3MTUbbWU" : false,
       onPress: () => {
-        setIsModalVisible(false);
-        setIsModalVisible2(true);
+        dispatch(
+          updateModals({
+            showWelcomeModal: false,
+            showTrialNoticeModal: true,
+          }),
+        );
       },
       info: true,
     },
     {
-      isVisible: isModalVisible2,
+      isVisible: showTrialNoticeModal,
       modalName: "trialNotice",
       variable: trialDays,
-      onPress: () => setIsModalVisible2(false),
+      onPress: () =>
+        dispatch(
+          updateModals({ showTrialNoticeModal: false }),
+        ),
       info: true,
     },
   ];

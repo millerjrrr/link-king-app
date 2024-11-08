@@ -7,6 +7,7 @@ import consoleReducer from "./console";
 import notificationReducer from "./notification";
 import statsReducer from "./stats";
 import redCoverReducer from "./redCover";
+import modalsReducer from "./modals";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   settings: settingsReducer,
   stats: statsReducer,
   redCover: redCoverReducer,
+  modals: modalsReducer,
 });
 
 const store = configureStore({
