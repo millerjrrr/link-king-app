@@ -4,12 +4,12 @@ const images = require.context(
   /\.png$/,
 );
 
-const getImageSource = (name) => {
+const getImageSource = (name: string): string => {
   try {
     if (name && images(`./${name}.png`)) {
       return images(`./${name}.png`);
     } else {
-      throw new Error("Name is undefined or empty.");
+      throw new Error();
     }
   } catch (e) {
     return images(`./smallCrown.png`);

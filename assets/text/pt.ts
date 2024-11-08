@@ -1,4 +1,6 @@
-export default {
+import AppText from "./interface";
+
+const pt: AppText = {
   internetConnectionPage: {
     title: "Desconectado!",
     message:
@@ -375,3 +377,5 @@ export default {
     German: "Alemão",
   },
 };
+
+export default pt;

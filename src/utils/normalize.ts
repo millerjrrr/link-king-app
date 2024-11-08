@@ -1,4 +1,4 @@
-const removeRepeatedLetters = (string) => {
+const removeRepeatedLetters = (string: string) => {
   const result = [];
   let prevChar = null;
   for (const char of string) {
@@ -11,7 +11,7 @@ const removeRepeatedLetters = (string) => {
   return result.join("");
 };
 
-export const normalize = (inputString) => {
+export const normalize = (inputString: string) => {
   let string = inputString + "";
   const accentsMap = {
     á: "a",
@@ -37,11 +37,15 @@ export const normalize = (inputString) => {
 
   string = string.toLowerCase();
 
+  type AccentedChar = keyof typeof accentsMap;
+
   string = string
     .trim()
-    .replace(/[áéíóúàèìòùâêîôûãõñç]/g, function (matched) {
-      return accentsMap[matched];
-    })
+    .replace(
+      /[áéíóúàèìòùâêîôûãõñç]/g,
+      (matched) =>
+        accentsMap[matched as AccentedChar] || matched,
+    )
     .replace(/[^a-zA-Z0-9]/g, " ")
     .replace(
       /(?:to |the |a |an |de |para |á |o |um |uma )/g,

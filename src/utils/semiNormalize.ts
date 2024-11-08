@@ -1,4 +1,4 @@
-export const semiNormalize = (inputString) => {
+export const semiNormalize = (inputString: string) => {
   let string = inputString + "";
   const accentsMap = {
     á: "a",
@@ -23,10 +23,13 @@ export const semiNormalize = (inputString) => {
   };
 
   string = string.toLowerCase();
+  type AccentedChar = keyof typeof accentsMap;
 
   return string
-    .replace(/[áéíóúàèìòùâêîôûãõñç]/gi, function (matched) {
-      return accentsMap[matched];
-    })
+    .replace(
+      /[áéíóúàèìòùâêîôûãõñç]/g,
+      (matched) =>
+        accentsMap[matched as AccentedChar] || matched,
+    )
     .replace(/[^a-zA-Z0-9 ]/g, "");
 };
