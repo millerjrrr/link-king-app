@@ -6,6 +6,7 @@ import {
   Dimensions,
   Platform,
   StatusBar,
+  ScrollView,
 } from "react-native";
 import colors from "@src/utils/colors";
 import FourCrowns from "../Graphics/FourCrowns";
@@ -32,8 +33,8 @@ const AuthFormContainer = ({
   const backgroundColor = colors[colorScheme].PRIMARY;
   return (
     <>
-      <View
-        style={[
+      <ScrollView
+        contentContainerStyle={[
           styles.container,
           {
             backgroundColor,
@@ -75,7 +76,7 @@ const AuthFormContainer = ({
         ) : null}
         <View style={{ height: 10 }} />
         {children}
-      </View>
+      </ScrollView>
     </>
   );
 };

@@ -1,5 +1,5 @@
 import React, { ReactNode, useEffect } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, ScrollView } from "react-native";
 import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
 import LinkKingLogo from "../Graphics/LinkKingLogo";
@@ -68,8 +68,8 @@ const PopUpContainer: React.FC<PopUpContainerProps> = ({
   }, [navigation]);
 
   return (
-    <View
-      style={[
+    <ScrollView
+      contentContainerStyle={[
         {
           backgroundColor,
           paddingHorizontal: padding || 0,
@@ -103,7 +103,7 @@ const PopUpContainer: React.FC<PopUpContainerProps> = ({
           {children}
         </BusyWrapper>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
