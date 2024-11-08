@@ -12,6 +12,7 @@ interface AuthState {
   subscriptionPrice: string;
   vip: number;
   busy: boolean;
+  appLoading: boolean;
   connected: boolean;
   refresh: number;
   formName: string;
@@ -27,6 +28,7 @@ const initialState: AuthState = {
   subscriptionPrice: "error",
   vip: 4070919600000,
   busy: false,
+  appLoading: false,
   connected: true,
   refresh: 0,
   formName: "",
@@ -68,6 +70,12 @@ const slice = createSlice({
     updateBusyState(state, action: PayloadAction<boolean>) {
       state.busy = action.payload;
     },
+    updateAppLoadingState(
+      state,
+      action: PayloadAction<boolean>,
+    ) {
+      state.appLoading = action.payload;
+    },
     updateConnectedState(
       state,
       action: PayloadAction<boolean>,
@@ -101,6 +109,7 @@ export const {
   updateVip,
   updateLoggedInState,
   updateBusyState,
+  updateAppLoadingState,
   updateConnectedState,
   refreshPage,
   updateName,

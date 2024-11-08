@@ -6,7 +6,7 @@ import AuthNavigator from "./AuthNavigator";
 import { useDispatch, useSelector } from "react-redux";
 import {
   authState,
-  updateBusyState,
+  updateAppLoadingState,
 } from "@src/store/auth";
 import TabNavigator from "./TabNavigator";
 import colors from "@src/utils/colors";
@@ -17,10 +17,12 @@ import useFetchAuthInfo from "../hooks/authHooks/useFetchAuthInfo";
 import useFetchSettings from "../hooks/authHooks/useFetchSettings";
 import { useEffect, useState } from "react";
 import { AppState } from "react-native";
+import BusyWrapper from "@src/components/Loader/BusyWrapper";
 
 const RootNavigator = () => {
   const { colorScheme, golden } =
     useSelector(settingsState);
+  const { appLoading } = useSelector(authState);
   const primary = colors[colorScheme].CONTRAST[golden];
   const { STATUSBAR, PRIMARY: background } =
     colors[colorScheme];
@@ -43,10 +45,10 @@ const RootNavigator = () => {
 
   useEffect(() => {
     const update = async () => {
-      dispatch(updateBusyState(true));
+      dispatch(updateAppLoadingState(true));
       await fetchAuthInfo();
       await fetchSettings();
-      dispatch(updateBusyState(false));
+      dispatch(updateAppLoadingState(false));
     };
 
     update();
@@ -60,7 +62,9 @@ const RootNavigator = () => {
         backgroundColor="#00000000"
       />
       <ConnectedWrapper>
-        {loggedIn ? <TabNavigator /> : <AuthNavigator />}
+        <BusyWrapper busy={appLoading} size={150}>
+          {loggedIn ? <TabNavigator /> : <AuthNavigator />}
+        </BusyWrapper>
       </ConnectedWrapper>
     </NavigationContainer>
   );
