@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import { updateNotification } from "@src/store/notification";
 import appTextSource from "@src/utils/appTextSource";
-import AppText from "../../../components/AppText";
+import AppText from "../../../../components/AppText";
 
 const StatsIcon = ({
   name = "clock-outline",

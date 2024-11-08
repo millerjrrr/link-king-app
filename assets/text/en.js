@@ -355,6 +355,11 @@ export default {
         " days remaining on your free trial.\n\nKind regards,\nThe Link-King Team",
       cancel: "Close",
     },
+    missingTTS: {
+      modalMessage:
+        "Text-to-Speech (TTS) data for this language isn’t installed on your device. Some Android devices don’t come with TTS data pre-installed to save space. You can download it for free and even select different accents if desired.",
+      cancel: "Close",
+    },
   },
   languageNames: {
     English: "English",

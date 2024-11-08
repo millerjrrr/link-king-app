@@ -1,11 +1,12 @@
 import { View, StyleSheet } from "react-native";
 import colors from "@src/utils/colors";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectConsoleState } from "@src/store/console";
 import OptionsIcon from "./OptionsIcon";
 import { settingsState } from "@src/store/settings";
 import useSendOptions from "@src/hooks/consoleHooks/useSendOptions";
 import useCheckTTSData from "@src/hooks/consoleHooks/useCheckTTSData";
+import { updateModals } from "@src/store/modals";
 
 const OptionsContainer = ({ size = 40, show = 0 }) => {
   const {
@@ -17,13 +18,12 @@ const OptionsContainer = ({ size = 40, show = 0 }) => {
 
   const sendOptions = useSendOptions();
   const checkCheckTTSData = useCheckTTSData();
+  const dispatch = useDispatch();
 
   const soundButtonFunction = async () => {
     const TTS = sound || (await checkCheckTTSData());
     if (!TTS)
-      console.log(
-        "No speech data. Some Android phone's don't have TTS data pre-installed (to save memory). That's ok. You can download Text to Speech data for free. You can even choose different accents. Check out this video where we go through it in detail!",
-      );
+      dispatch(updateModals({ showMissingTTSModal: true }));
     else {
       const options = blurred
         ? { sound: !sound, blurred: false }
@@ -35,9 +35,7 @@ const OptionsContainer = ({ size = 40, show = 0 }) => {
   const blurredButtonFunction = async () => {
     const TTS = blurred || (await checkCheckTTSData());
     if (!TTS)
-      console.log(
-        "No speech data. Some Android phone's don't have TTS data pre-installed (to save memory). That's ok. You can download Text to Speech data for free. You can even choose different accents. Check out this video where we go through it in detail!",
-      );
+      dispatch(updateModals({ showMissingTTSModal: true }));
     else {
       const options = !blurred
         ? { sound: true, blurred: !blurred }

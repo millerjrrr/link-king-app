@@ -359,6 +359,12 @@ export default {
         " dias restantes para seu teste gratuito.\n\nAtenciosamente,\nO time Link-King",
       cancel: "Fechar",
     },
+
+    missingTTS: {
+      modalMessage:
+        "Os dados de Texto-para-Fala (TTS) para este idioma não estão instalados no seu dispositivo. Alguns dispositivos Android não vêm com dados TTS pré-instalados para economizar espaço. Você pode baixá-los gratuitamente e até escolher diferentes sotaques, se desejar.",
+      cancel: "Fechar",
+    },
   },
   languageNames: {
     English: "Inglês",

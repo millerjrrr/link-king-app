@@ -10,6 +10,7 @@ interface ModalState {
   showCollectionInfoModal: boolean;
   showWelcomeModal: boolean;
   showTrialNoticeModal: boolean;
+  showMissingTTSModal: boolean;
 }
 
 const initialState: ModalState = {
@@ -18,6 +19,7 @@ const initialState: ModalState = {
   showCollectionInfoModal: false,
   showWelcomeModal: false,
   showTrialNoticeModal: false,
+  showMissingTTSModal: false,
 };
 
 const slice = createSlice({

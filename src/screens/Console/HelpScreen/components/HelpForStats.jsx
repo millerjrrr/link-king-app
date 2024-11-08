@@ -1,4 +1,4 @@
-import StatsIcon from "../../components/StatsIcon";
+import StatsIcon from "../../components/StatsContainer/StatsIcon";
 import DescriptionWrapper from "./DescriptionWrapper";
 
 const HelpForStats = ({ name }) => {
