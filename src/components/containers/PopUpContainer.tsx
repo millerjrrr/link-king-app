@@ -14,6 +14,8 @@ import BackButton from "../Buttons/BackButton";
 import { LinearGradient } from "expo-linear-gradient";
 import styled from "styled-components";
 import AppText from "../AppText";
+import BusyWrapper from "../Loader/BusyWrapper";
+import { authState } from "@src/store/auth";
 
 export const FadeBackgroundView = styled(LinearGradient)`
   position: absolute;
@@ -40,6 +42,7 @@ const PopUpContainer: React.FC<PopUpContainerProps> = ({
   blockPopToTop,
   padding,
 }) => {
+  const { busy } = useSelector(authState);
   const { colorScheme, golden } =
     useSelector(settingsState);
   const { CONTRAST, SECONDARY, PRIMARY } =
@@ -96,7 +99,9 @@ const PopUpContainer: React.FC<PopUpContainerProps> = ({
             ],
           }}
         />
-        {children}
+        <BusyWrapper busy={busy} size={150}>
+          {children}
+        </BusyWrapper>
       </View>
     </View>
   );

@@ -16,12 +16,10 @@ import FlagImage from "../Graphics/FlagImage";
 interface LoaderProps {
   size?: number;
   color?: string;
-  backgroundColor?: string;
 }
 const Loader: React.FC<LoaderProps> = ({
   size = 24,
   color,
-  backgroundColor,
 }) => {
   const { colorScheme, golden } =
     useSelector(settingsState);
@@ -61,7 +59,6 @@ const Loader: React.FC<LoaderProps> = ({
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor,
       }}
     >
       <Animated.View style={transform}>

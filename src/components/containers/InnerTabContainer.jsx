@@ -11,6 +11,8 @@ import FlagBook from "../Buttons/FlagBook";
 import AppText from "../AppText";
 import BackButton from "../Buttons/BackButton";
 import { LinearGradient } from "expo-linear-gradient";
+import BusyWrapper from "../Loader/BusyWrapper";
+import { authState } from "@src/store/auth";
 
 const InnerTabContainer = ({
   children,
@@ -21,6 +23,7 @@ const InnerTabContainer = ({
 }) => {
   const { colorScheme, golden } =
     useSelector(settingsState);
+  const { busy } = useSelector(authState);
   const { CONTRAST, SECONDARY, PRIMARY } =
     colors[colorScheme];
   const tintColor = CONTRAST[golden];
@@ -64,7 +67,9 @@ const InnerTabContainer = ({
           }}
         />
         <AppText style={styles.heading}>{heading}</AppText>
-        {children}
+        <BusyWrapper busy={busy} size={150}>
+          {children}
+        </BusyWrapper>
       </View>
     </>
   );

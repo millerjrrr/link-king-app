@@ -1,5 +1,5 @@
 import useCatchAsync from "@src/hooks/useCatchAsync";
-import { useCallback } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import configurePurchases from "../../utils/configurePurchases";
 import Purchases from "react-native-purchases";
@@ -7,15 +7,17 @@ import {
   updateBusyState,
   updateSubscribed,
 } from "@src/store/auth";
-import { useFocusEffect } from "@react-navigation/native";
 
 const useCheckSubscriptionStatus = () => {
   const dispatch = useDispatch();
   const catchAsync = useCatchAsync();
+  const hasChecked = useRef(false);
 
   const checkSubscriptionStatus = useCallback(
     () =>
       catchAsync(async () => {
+        if (hasChecked.current) return;
+        console.log("Checking subscription status");
         dispatch(updateBusyState(true));
         await configurePurchases();
         const customerInfo =
@@ -27,11 +29,14 @@ const useCheckSubscriptionStatus = () => {
           ),
         );
         dispatch(updateBusyState(false));
+        hasChecked.current = true; // Mark as checked
       }),
     [dispatch, catchAsync],
   );
 
-  useFocusEffect(checkSubscriptionStatus);
+  useEffect(() => {
+    checkSubscriptionStatus();
+  }, [checkSubscriptionStatus]);
 };
 
 export default useCheckSubscriptionStatus;

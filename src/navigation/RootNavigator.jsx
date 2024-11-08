@@ -10,7 +10,6 @@ import {
 } from "@src/store/auth";
 import TabNavigator from "./TabNavigator";
 import colors from "@src/utils/colors";
-import BusyWrapper from "@src/components/Loader/BusyWrapper";
 import ConnectedWrapper from "@src/errors/ConnectedWrapper";
 import { settingsState } from "@src/store/settings";
 import { StatusBar } from "expo-status-bar";
@@ -35,8 +34,7 @@ const RootNavigator = () => {
     },
   };
 
-  const { loggedIn, busy, refresh } =
-    useSelector(authState);
+  const { loggedIn, refresh } = useSelector(authState);
   const [appState] = useState(AppState.currentState);
 
   const fetchAuthInfo = useFetchAuthInfo();
@@ -61,15 +59,9 @@ const RootNavigator = () => {
         translucent={true}
         backgroundColor="#00000000"
       />
-      <BusyWrapper
-        busy={busy}
-        size={150}
-        backgroundColor={background}
-      >
-        <ConnectedWrapper>
-          {loggedIn ? <TabNavigator /> : <AuthNavigator />}
-        </ConnectedWrapper>
-      </BusyWrapper>
+      <ConnectedWrapper>
+        {loggedIn ? <TabNavigator /> : <AuthNavigator />}
+      </ConnectedWrapper>
     </NavigationContainer>
   );
 };

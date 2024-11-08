@@ -23,11 +23,10 @@ const WordCard = ({ navigation, ticket, onPress }) => {
   const { tomorrow } = appTextSource(appLang).collection;
 
   const { target, rating, level } = ticket;
-
   const scale = 30;
   const fontSize =
     target.length > 10
-      ? (scale * 10) / (10 + (length - 10) * 0.7)
+      ? (scale * 10) / (10 + (target.length - 10) * 0.7)
       : scale;
 
   // Use useCallback to memoize onPress
