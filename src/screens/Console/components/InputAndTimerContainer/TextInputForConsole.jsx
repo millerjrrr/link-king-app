@@ -10,7 +10,7 @@ import {
 import * as Speech from "expo-speech";
 import { settingsState } from "@src/store/settings";
 import appShadow from "@src/utils/appShadow";
-import { speak } from "@src/utils/speak";
+import { speak } from "@src/utils/appSpeak";
 
 const TextInputForConsole = ({
   inputFieldRef,

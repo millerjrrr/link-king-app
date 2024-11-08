@@ -9,6 +9,8 @@ import clientWithAuth from "@src/api/clientWithAuth";
 import OptionsIcon from "./OptionsIcon";
 import { settingsState } from "@src/store/settings";
 import useCatchAsync from "@src/hooks/useCatchAsync";
+import useSendOptions from "@src/hooks/consoleHooks/useSendOptions";
+import useCheckTTSData from "@src/hooks/consoleHooks/useCheckTTSData";
 
 const OptionsContainer = ({ size = 40, show = 0 }) => {
   const {
@@ -18,36 +20,42 @@ const OptionsContainer = ({ size = 40, show = 0 }) => {
     useSelector(settingsState);
   const color = colors[colorScheme].CONTRAST[golden];
 
-  const dispatch = useDispatch();
-  const catchAsync = useCatchAsync();
-
-  const sendOptions = catchAsync(async ({ options }) => {
-    const { data } = await clientWithAuth.post(
-      "/api/v1/console/update-game-settings",
-      options,
-    );
-    dispatch(updateOptions(data.options));
-  });
+  const sendOptions = useSendOptions();
+  const checkCheckTTSData = useCheckTTSData();
 
   const soundButtonFunction = async () => {
-    const options = blurred
-      ? { sound: !sound, blurred: false }
-      : { sound: !sound };
-    await sendOptions({ options });
+    const TTS = sound || (await checkCheckTTSData());
+    if (!TTS)
+      console.log(
+        "No speech data. Some Android phone's don't have TTS data pre-installed (to save memory). That's ok. You can download Text to Speech data for free. You can even choose different accents. Check out this video where we go through it in detail!",
+      );
+    else {
+      const options = blurred
+        ? { sound: !sound, blurred: false }
+        : { sound: !sound };
+      await sendOptions(options);
+    }
   };
 
   const blurredButtonFunction = async () => {
-    const options = !blurred
-      ? { sound: true, blurred: !blurred }
-      : { blurred: !blurred };
-    await sendOptions({ options });
+    const TTS = blurred || (await checkCheckTTSData());
+    if (!TTS)
+      console.log(
+        "No speech data. Some Android phone's don't have TTS data pre-installed (to save memory). That's ok. You can download Text to Speech data for free. You can even choose different accents. Check out this video where we go through it in detail!",
+      );
+    else {
+      const options = !blurred
+        ? { sound: true, blurred: !blurred }
+        : { blurred: !blurred };
+      await sendOptions(options);
+    }
   };
 
   const timerButtonFunction = async () => {
     const options = {
       timer: !timer,
     };
-    await sendOptions({ options });
+    await sendOptions(options);
   };
 
   return (

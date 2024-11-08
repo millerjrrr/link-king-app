@@ -1,5 +1,10 @@
 import { useDispatch } from "react-redux";
-import { useCallback, useEffect, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { AppState } from "react-native";
 import useFetchConsoleInfo from "@src/hooks/consoleHooks/useFetchConsoleInfo";
 import { useFocusEffect } from "@react-navigation/native";
@@ -10,10 +15,14 @@ const useConsoleUpdates = () => {
   const [appState, setAppState] = useState(
     AppState.currentState,
   );
+  const hasFetchedOnMount = useRef(false);
 
   // fetchConsoleInfo on appStartUp
   useEffect(() => {
-    fetchConsoleInfo();
+    if (!hasFetchedOnMount.current) {
+      fetchConsoleInfo();
+      hasFetchedOnMount.current = true; // Set flag to avoid repeat
+    }
   }, [dispatch]);
 
   //fetchConsoleInfo when app enters foreground
@@ -41,7 +50,10 @@ const useConsoleUpdates = () => {
 
   useFocusEffect(
     useCallback(() => {
-      fetchConsoleInfo();
+      if (hasFetchedOnMount.current) {
+        // Only fetch if it's not the initial mount
+        fetchConsoleInfo();
+      }
     }, [dispatch]),
   );
 };

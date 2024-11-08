@@ -1,6 +1,6 @@
 import InputAndTimerContainer from "./components/InputAndTimerContainer";
 import { useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import OptionsContainer from "./components/OptionsContainer";
 import KeyboardAndStartButton from "./components/KeyboardAndStartButton";
 import Tail from "./components/Tail";
@@ -17,10 +17,9 @@ import useConsoleUpdates from "@src/hooks/consoleHooks/useEffects/useConsoleUpda
 import useManageModals from "@src/hooks/consoleHooks/useEffects/useManageModals";
 import useOnKeyboardClose from "@src/hooks/consoleHooks/useEffects/useOnKeyboardClose";
 import useHandleAppBackgroundExit from "../../hooks/consoleHooks/useEffects/useHandleAppBackgroundExit";
+import useUpdateOptions from "@src/hooks/consoleHooks/useEffects/useUpdateOptions";
 
 const Console = ({ navigation }) => {
-  const dispatch = useDispatch();
-
   const inputFieldRef = useRef(null);
   const { appLang } = useSelector(settingsState);
   const { trialDays } = useSelector(authState);
@@ -46,6 +45,7 @@ const Console = ({ navigation }) => {
   useManageModals(setIsModalVisible, setIsModalVisible2);
   useHandleAppBackgroundExit();
   useOnKeyboardClose();
+  useUpdateOptions();
 
   const modals = [
     {

@@ -9,7 +9,7 @@ import {
   selectConsoleLocals,
 } from "@src/store/console";
 import { Vibration } from "react-native";
-import { speak } from "@src/utils/speak";
+import { speak } from "@src/utils/appSpeak";
 import { useDispatch, useSelector } from "react-redux";
 import useCatchAsync from "@src/hooks/useCatchAsync";
 

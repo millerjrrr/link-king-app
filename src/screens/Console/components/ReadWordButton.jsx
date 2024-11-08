@@ -5,7 +5,7 @@ import { selectConsoleState } from "@src/store/console";
 import AppText from "../../../components/AppText";
 import { settingsState } from "@src/store/settings";
 import colors from "@src/utils/colors";
-import { speak } from "@src/utils/speak";
+import { speak } from "@src/utils/appSpeak";
 import { updateNotification } from "@src/store/notification";
 import appTextSource from "@src/utils/appTextSource";
 

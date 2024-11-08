@@ -12,9 +12,10 @@ import {
 import { ConsoleStackParamList } from "@src/types/navigationTypes";
 
 const useManageGolden = () => {
-  const { stats, showSolution } = useSelector(
-    selectConsoleState,
-  );
+  const {
+    stats,
+    locals: { showSolution },
+  } = useSelector(selectConsoleState);
   const { timeGoal, newWordsGoal, stepsGoal, golden } =
     useSelector(settingsState);
   const { steps, time, newWords } = stats;

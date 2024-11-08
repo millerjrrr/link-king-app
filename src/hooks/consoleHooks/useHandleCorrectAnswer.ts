@@ -7,7 +7,7 @@ import {
   updateConsoleState,
   selectConsoleLocals,
 } from "@src/store/console";
-import { speak } from "@src/utils/speak";
+import { speak } from "@src/utils/appSpeak";
 import { useDispatch, useSelector } from "react-redux";
 import useCatchAsync from "../useCatchAsync";
 
