@@ -10,6 +10,7 @@ import appTextSource from "@src/utils/appTextSource";
 import AppText from "../../../components/AppText";
 import {
   Keyboard,
+  ScrollView,
   TouchableWithoutFeedback,
   View,
 } from "react-native";
@@ -63,71 +64,75 @@ const ChangeHomeLanguageScreen = ({ route }) => {
 
   return (
     <PopUpContainer {...{ heading, blockPopToTop: true }}>
-      <BloodRedCover />
-      <View
-        {...{
-          style: {
-            flexDirection: "row",
-            alignItems: "center",
-          },
-        }}
+      <ScrollView
+        contentContainerStyle={{ alignItems: "center" }}
       >
-        <FlagImage {...{ flag1: appLang, scale: 1.5 }} />
-        <AntDesign
-          {...{
-            name: "arrowright",
-            size: 48,
-            color,
-          }}
-        />
-        <FlagImage
-          {...{ flag1: newLanguage, scale: 1.5 }}
-        />
-      </View>
-      <AppText
-        {...{ style: { padding: 15, fontSize: 20 } }}
-      >
-        {changeHomeLanguageDetails}
-      </AppText>
-      <Formik
-        {...{
-          onSubmit,
-          initialValues,
-          validationSchema,
-        }}
-      >
+        <BloodRedCover />
         <View
           {...{
             style: {
-              marginHorizontal: 15,
-              zIndex: 2,
+              flexDirection: "row",
+              alignItems: "center",
             },
           }}
         >
-          <AuthInputField
+          <FlagImage {...{ flag1: appLang, scale: 1.5 }} />
+          <AntDesign
             {...{
-              name: "password",
-              label: password.label,
-              placeholder: "********",
-              autoCapitalize: "none",
-              secureTextEntry: secureEntry,
-              rightIcon: (
-                <PasswordVisibilityIcon
-                  {...{ privateIcon: secureEntry }}
-                />
-              ),
-              onRightIconPress: togglePasswordView,
+              name: "arrowright",
+              size: 48,
+              color,
             }}
           />
-          <TouchableWithoutFeedback
-            onPress={() => Keyboard.dismiss()}
-          >
-            <View style={{ height: 250 }}>
-              <FormikSafetyButton iconName="sync" />
-            </View>
-          </TouchableWithoutFeedback>
+          <FlagImage
+            {...{ flag1: newLanguage, scale: 1.5 }}
+          />
         </View>
-      </Formik>
+        <AppText
+          {...{ style: { padding: 15, fontSize: 20 } }}
+        >
+          {changeHomeLanguageDetails}
+        </AppText>
+        <Formik
+          {...{
+            onSubmit,
+            initialValues,
+            validationSchema,
+          }}
+        >
+          <View
+            {...{
+              style: {
+                marginHorizontal: 15,
+                zIndex: 2,
+              },
+            }}
+          >
+            <AuthInputField
+              {...{
+                name: "password",
+                label: password.label,
+                placeholder: "********",
+                autoCapitalize: "none",
+                secureTextEntry: secureEntry,
+                rightIcon: (
+                  <PasswordVisibilityIcon
+                    {...{ privateIcon: secureEntry }}
+                  />
+                ),
+                onRightIconPress: togglePasswordView,
+              }}
+            />
+            <TouchableWithoutFeedback
+              onPress={() => Keyboard.dismiss()}
+            >
+              <View style={{ height: 250 }}>
+                <FormikSafetyButton iconName="sync" />
+              </View>
+            </TouchableWithoutFeedback>
+          </View>
+        </Formik>
+      </ScrollView>
     </PopUpContainer>
   );
 };

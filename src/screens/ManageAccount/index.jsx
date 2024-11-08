@@ -2,10 +2,10 @@ import appTextSource from "@src/utils/appTextSource";
 import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import ManageAccountMenuItem from "./components/ManageAccountMenuItem";
-import BusyWrapper from "@src/components/Loader/BusyWrapper";
 import { authState } from "@src/store/auth";
 import InnerTabContainer from "@src/components/Containers/InnerTabContainer";
 import useUpdateAccountDetails from "../../hooks/manageAccountHooks/useUpdateAccountDetails";
+import { ScrollView } from "react-native";
 
 const ManageAccountScreen = ({ navigation }) => {
   const { appLang } = useSelector(settingsState);
@@ -14,8 +14,6 @@ const ManageAccountScreen = ({ navigation }) => {
   const { subscribed, notSubscribed, vipMessage } =
     appTextSource(appLang).options.manageAccount
       .subscriptionPage;
-
-  const { busy } = useSelector(authState);
 
   const {
     formName: name,
@@ -68,13 +66,11 @@ const ManageAccountScreen = ({ navigation }) => {
       backFunction={() => navigation.navigate("Options")}
       noBook={true}
     >
-      <BusyWrapper busy={busy}>
-        <ManageAccountMenuItem {...props.email} />
-        <ManageAccountMenuItem {...props.name} />
-        <ManageAccountMenuItem {...props.subscription} />
-        <ManageAccountMenuItem {...props.homeLanguage} />
-        <ManageAccountMenuItem {...props.deleteAccount} />
-      </BusyWrapper>
+      <ManageAccountMenuItem {...props.email} />
+      <ManageAccountMenuItem {...props.name} />
+      <ManageAccountMenuItem {...props.subscription} />
+      <ManageAccountMenuItem {...props.homeLanguage} />
+      <ManageAccountMenuItem {...props.deleteAccount} />
     </InnerTabContainer>
   );
 };

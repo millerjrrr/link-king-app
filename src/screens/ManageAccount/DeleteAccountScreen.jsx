@@ -10,6 +10,7 @@ import appTextSource from "@src/utils/appTextSource";
 import AppText from "../../components/AppText";
 import {
   Keyboard,
+  ScrollView,
   TouchableWithoutFeedback,
   View,
 } from "react-native";
@@ -52,51 +53,53 @@ const DeleteAccountScreen = () => {
 
   return (
     <PopUpContainer {...{ heading, blockPopToTop: true }}>
-      <BloodRedCover />
-      <AppText
-        {...{ style: { padding: 15, fontSize: 20 } }}
-      >
-        {deleteAccountDetails}
-      </AppText>
-      <Formik
-        {...{
-          onSubmit,
-          initialValues,
-          validationSchema,
-        }}
-      >
-        <View
+      <ScrollView>
+        <BloodRedCover />
+        <AppText
+          {...{ style: { padding: 15, fontSize: 20 } }}
+        >
+          {deleteAccountDetails}
+        </AppText>
+        <Formik
           {...{
-            style: {
-              marginHorizontal: 15,
-              zIndex: 2,
-            },
+            onSubmit,
+            initialValues,
+            validationSchema,
           }}
         >
-          <AuthInputField
+          <View
             {...{
-              name: "password",
-              label: password.label,
-              placeholder: "********",
-              autoCapitalize: "none",
-              secureTextEntry: secureEntry,
-              rightIcon: (
-                <PasswordVisibilityIcon
-                  {...{ privateIcon: secureEntry }}
-                />
-              ),
-              onRightIconPress: togglePasswordView,
+              style: {
+                marginHorizontal: 15,
+                zIndex: 2,
+              },
             }}
-          />
-          <TouchableWithoutFeedback
-            onPress={() => Keyboard.dismiss()}
           >
-            <View style={{ height: 250 }}>
-              <FormikSafetyButton />
-            </View>
-          </TouchableWithoutFeedback>
-        </View>
-      </Formik>
+            <AuthInputField
+              {...{
+                name: "password",
+                label: password.label,
+                placeholder: "********",
+                autoCapitalize: "none",
+                secureTextEntry: secureEntry,
+                rightIcon: (
+                  <PasswordVisibilityIcon
+                    {...{ privateIcon: secureEntry }}
+                  />
+                ),
+                onRightIconPress: togglePasswordView,
+              }}
+            />
+            <TouchableWithoutFeedback
+              onPress={() => Keyboard.dismiss()}
+            >
+              <View style={{ height: 250 }}>
+                <FormikSafetyButton />
+              </View>
+            </TouchableWithoutFeedback>
+          </View>
+        </Formik>
+      </ScrollView>
     </PopUpContainer>
   );
 };
