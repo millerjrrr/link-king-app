@@ -62,11 +62,11 @@ const StartButton = ({ inputFieldRef }) => {
 
 const styles = StyleSheet.create({
   container: {
-    zIndex: 10,
+    zIndex: 1,
+    flex: 1,
+    alignItems: "center",
   },
   button: {
-    margin: 30,
-    marginBottom: 150,
     width: "100%",
     height: 70,
     alignItems: "center",
