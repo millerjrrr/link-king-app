@@ -5,7 +5,7 @@ import ManageAccountMenuItem from "./components/ManageAccountMenuItem";
 import BusyWrapper from "@src/components/Loader/BusyWrapper";
 import { authState } from "@src/store/auth";
 import InnerTabContainer from "@src/components/Containers/InnerTabContainer";
-import useUpdateAccountDetails from "./useUpdateAccountDetails";
+import useUpdateAccountDetails from "../../hooks/manageAccountHooks/useUpdateAccountDetails";
 
 const ManageAccountScreen = ({ navigation }) => {
   const { appLang } = useSelector(settingsState);

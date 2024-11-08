@@ -1,50 +1,35 @@
 import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
-import { selectConsoleState } from "@src/store/console";
 import PopUpContainer from "@src/components/Containers/PopUpContainer";
 import { FlatList, StyleSheet, View } from "react-native";
 import DictionarySelectorMenuItem from "./DictionarySelectorMenuItem";
 import BusyWrapper from "@src/components/Loader/BusyWrapper";
-import { useEffect, useState } from "react";
-import getAvailableDictionaries from "./getAvailableDictionaries";
+import { useState } from "react";
 import AppText from "@src/components/AppText";
 import ChangeHomeLanguageLabel from "./ChangeHomeLanguageLabel";
+import { authState } from "@src/store/auth";
+import useSetDictionaries from "../../../hooks/optionsHooks/useSetDictionaries";
 
-const DictionarySelectionScreen = ({ navigation }) => {
+const DictionarySelectionScreen = () => {
   const { appLang } = useSelector(settingsState);
-  const { title: heading, dictionaryError } =
+  const { title, dictionaryError } =
     appTextSource(appLang).options.chooseDictionary;
 
-  const { busy } = useSelector(selectConsoleState);
+  const { busy } = useSelector(authState);
 
-  const [apiBusy, setApiBusy] = useState(false);
   const [dictionaries, setDictionaries] = useState([]);
-
-  useEffect(() => {
-    const fetchDictionaries = async () => {
-      setApiBusy(true);
-      await getAvailableDictionaries({
-        appLang,
-        setDictionaries,
-      });
-      setApiBusy(false);
-    };
-
-    fetchDictionaries();
-  }, [navigation]);
+  useSetDictionaries(setDictionaries);
 
   return (
-    <PopUpContainer {...{ heading }}>
-      <BusyWrapper {...{ busy: apiBusy }}>
+    <PopUpContainer heading={title}>
+      <BusyWrapper busy={busy}>
         {dictionaries.length === 0 ? (
           <AppText
-            {...{
-              style: {
-                textAlign: "left",
-                fontSize: 15,
-                padding: 20,
-              },
+            style={{
+              textAlign: "left",
+              fontSize: 15,
+              padding: 20,
             }}
           >
             {dictionaryError}

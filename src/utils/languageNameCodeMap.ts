@@ -1,4 +1,4 @@
-const languageNameCodeMap = {
+const languageNameCodeMap: Record<string, string> = {
   Arabic: "ar",
   Bulgarian: "bg",
   Bengali: "bn",
