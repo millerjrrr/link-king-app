@@ -54,6 +54,13 @@ const ConsoleModals = () => {
           }),
         );
       },
+      onBackdropPress: () => {
+        dispatch(
+          updateModals({
+            showMissingTTSModal: false,
+          }),
+        );
+      },
       info: true,
     },
   ];

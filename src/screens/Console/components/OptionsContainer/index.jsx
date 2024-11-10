@@ -20,11 +20,11 @@ const OptionsContainer = ({ size = 40, show = 0 }) => {
     useSelector(settingsState);
   const color = colors[colorScheme].CONTRAST[golden];
 
-  const checkCheckTTSData = useCheckTTSData();
+  const checkTTSData = useCheckTTSData();
   const dispatch = useDispatch();
 
   const soundButtonFunction = async () => {
-    const TTS = sound || (await checkCheckTTSData());
+    const TTS = sound || (await checkTTSData());
     if (!TTS)
       dispatch(updateModals({ showMissingTTSModal: true }));
     else {
@@ -36,7 +36,7 @@ const OptionsContainer = ({ size = 40, show = 0 }) => {
   };
 
   const blurredButtonFunction = async () => {
-    const TTS = blurred || (await checkCheckTTSData());
+    const TTS = blurred || (await checkTTSData());
     if (!TTS)
       dispatch(updateModals({ showMissingTTSModal: true }));
     else {

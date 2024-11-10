@@ -2,12 +2,12 @@ import { Feather } from "@expo/vector-icons";
 import { View, TouchableOpacity } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { selectConsoleState } from "@src/store/console";
-import AppText from "../../../components/AppText";
+import AppText from "@src/components/AppText";
 import { settingsState } from "@src/store/settings";
 import colors from "@src/utils/colors";
 import { speak } from "@src/utils/appSpeak";
-import { updateNotification } from "@src/store/notification";
-import appTextSource from "@src/utils/appTextSource";
+import { updateModals } from "@src/store/modals";
+import useCheckTTSData from "@src/hooks/consoleHooks/useCheckTTSData";
 
 const ReadWordButton = ({
   showSpeaker,
@@ -20,24 +20,17 @@ const ReadWordButton = ({
       options: { blurred, sound },
     },
   } = useSelector(selectConsoleState);
-  const { appLang } = useSelector(settingsState);
 
   const dispatch = useDispatch();
-
-  const { sound: message } =
-    appTextSource(appLang).console.statsMessages;
+  const checkTTSData = useCheckTTSData();
 
   const newTarget = speakWord ? speakWord : target;
   const onPress = async () => {
-    if (sound)
-      speak({ target: newTarget, language, sound });
+    const TTS = sound || (await checkTTSData());
+    if (!TTS)
+      dispatch(updateModals({ showMissingTTSModal: true }));
     else
-      dispatch(
-        updateNotification({
-          message,
-          type: "info",
-        }),
-      );
+      speak({ target: newTarget, language, sound: true });
   };
 
   //font-size management
