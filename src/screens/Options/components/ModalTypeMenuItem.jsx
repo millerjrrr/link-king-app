@@ -8,6 +8,7 @@ import AppModal from "@src/components/AppModal";
 import MenuItemLink from "./MenuItemLink";
 import { settingsState } from "@src/store/settings";
 import useLogOut from "@src/hooks/authHooks/useLogOut";
+import goToRatingPage from "@src/utils/goToRatingsInAppStore";
 
 const ModalTypeMenuItem = ({ optionName }) => {
   const { appLang } = useSelector(settingsState);
@@ -47,6 +48,10 @@ const ModalTypeMenuItem = ({ optionName }) => {
     appTextSource(appLang).options[optionName];
 
   switch (optionName) {
+    case "leaveAReview":
+      onPress = goToRatingPage;
+      iconName = "thumb-up-outline";
+      break;
     case "contactUs":
       onPress = handleSendEmail;
       iconName = "email-outline";

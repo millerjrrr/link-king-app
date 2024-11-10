@@ -6,6 +6,7 @@ import {
   modalState,
   updateModals,
 } from "@src/store/modals";
+import { Platform } from "react-native";
 
 const ConsoleModals = () => {
   const { appLang } = useSelector(settingsState);
@@ -36,7 +37,7 @@ const ConsoleModals = () => {
     {
       isVisible: showTrialNoticeModal,
       modalName: "trialNotice",
-      variable: trialDays,
+      variable: trialDays.toString(),
       onPress: () =>
         dispatch(
           updateModals({ showTrialNoticeModal: false }),

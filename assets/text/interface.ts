@@ -154,6 +154,10 @@ interface OptionsManageAccount {
   subscriptionPage: OptionsManageAccountSubscriptionPage;
 }
 
+interface OptionsLeaveAReview {
+  name: string;
+}
+
 interface OptionsContactUs {
   name: string;
   subject: string;
@@ -171,6 +175,7 @@ interface Options {
   chooseDictionary: OptionsChooseDictionary;
   colorSchemeTitle: string;
   manageAccount: OptionsManageAccount;
+  leaveAReview: OptionsLeaveAReview;
   contactUs: OptionsContactUs;
   logOut: OptionsLogOut;
 }
@@ -271,6 +276,7 @@ interface ModalsMessage {
 }
 
 interface Modals {
+  leaveAReview: ModalsMessage;
   contactUs: ModalsMessage;
   logOut: ModalsMessage;
   setDailyGoal: ModalsMessage;

@@ -50,6 +50,7 @@ const Options = () => {
           onPress: () => navigateTo("ManageAccount"),
         }}
       />
+      <ModalTypeMenuItem optionName="leaveAReview" />
       <ModalTypeMenuItem optionName="contactUs" />
       <ModalTypeMenuItem optionName="logOut" />
     </InnerTabContainer>

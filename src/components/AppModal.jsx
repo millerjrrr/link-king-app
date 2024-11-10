@@ -1,4 +1,8 @@
-import { TouchableOpacity, View } from "react-native";
+import {
+  Platform,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
@@ -31,7 +35,9 @@ const ButtonText = styled(AppText)`
 const ButtonContainer = styled(TouchableOpacity)`
   width: 100%;
   border-top-color: ${(props) => props.color};
-  border-top-width: 0.2px;
+  border-top-width: ${Platform.OS === "android"
+    ? 0.5
+    : 0.2}px;
 `;
 
 const Button = ({ title, color, size, onPress }) => {

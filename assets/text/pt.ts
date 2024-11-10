@@ -197,6 +197,9 @@ const pt: AppText = {
         subscribe: "Inscrever-se",
       },
     },
+    leaveAReview: {
+      name: "Deixe um Comentário",
+    },
     contactUs: {
       name: "Contatos",
       subject: "Consulta Geral",
@@ -317,6 +320,12 @@ const pt: AppText = {
     perYear: "/ano",
   },
   modals: {
+    leaveAReview: {
+      title: "Avalie-nos!",
+      modalMessage:
+        "Aproveitando o Link-King?\n\nPor favor, ajude-nos a compartilhar este aplicativo com o mundo!",
+      cancel: "Cancelar",
+    },
     contactUs: {
       title: "Enviar E-mail",
       modalMessage:

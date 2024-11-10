@@ -194,6 +194,9 @@ const en: AppText = {
         subscribe: "Subscribe",
       },
     },
+    leaveAReview: {
+      name: "Leave a Review",
+    },
     contactUs: {
       name: "Contact Us",
       subject: "General Inquiry",
@@ -313,6 +316,12 @@ const en: AppText = {
     perYear: "/yr",
   },
   modals: {
+    leaveAReview: {
+      title: "Rate Us!",
+      modalMessage:
+        "Enjoying Link-King?\n\nPlease help us share this app with the world!",
+      cancel: "Cancel",
+    },
     contactUs: {
       title: "Send Email",
       modalMessage:
