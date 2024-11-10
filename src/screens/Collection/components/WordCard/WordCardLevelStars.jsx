@@ -1,7 +1,7 @@
 import { Entypo } from "@expo/vector-icons";
 import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
-import { LevelStarsContainer } from "./WordCardStyledComponents";
+import { LevelStarsContainer } from "./StyledComponents";
 import { settingsState } from "@src/store/settings";
 
 const WordCardLevelStars = ({ stars, target }) => {

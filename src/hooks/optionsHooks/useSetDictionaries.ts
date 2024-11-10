@@ -20,6 +20,7 @@ const useSetDictionaries = (
   const navigation = useNavigation();
 
   const setDictioanariesFunction = catchAsync(async () => {
+    console.log("# loading the dictionaries");
     try {
       dispatch(updateBusyState(true));
       const { data } = await clientWithAuth.get(

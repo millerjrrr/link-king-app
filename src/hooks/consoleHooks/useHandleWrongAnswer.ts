@@ -21,6 +21,7 @@ const useHandleWrongAnswer = () => {
   );
 
   const handleWrongAnswer = catchAsync(async () => {
+    console.log("# Handling wrong answer");
     try {
       Vibration.vibrate(500);
       dispatch(updateBusyState(true));

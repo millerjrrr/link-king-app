@@ -51,6 +51,7 @@ const Password = () => {
   const { formName, formEmail } = useSelector(authState);
 
   const onSubmit = catchAsync(async (values, actions) => {
+    console.log("# Signing Up");
     try {
       actions.setSubmitting(true);
       const { password } = values;

@@ -1,7 +1,4 @@
-import {
-  createSlice,
-  PayloadAction,
-} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "@src/store";
 
 interface CollectionState {
@@ -30,20 +27,43 @@ const slice = createSlice({
   name: "collection",
   initialState,
   reducers: {
-    updateCollection(
-      state,
-      action: PayloadAction<Partial<CollectionState>>,
-    ) {
-      return { ...state, ...action.payload };
-    },
     updateSearchKeyword(state, action) {
       state.searchKeyword = action.payload;
+    },
+    updateTickets(state, action) {
+      state.tickets = action.payload;
+    },
+    updateResults(state, action) {
+      state.results = action.payload;
+    },
+    updatePage(state, action) {
+      state.page = action.payload;
+    },
+    updateAllDataLoaded(state, action) {
+      state.allDataLoaded = action.payload;
+    },
+    updateBusy(state, action) {
+      state.busy = action.payload;
+    },
+    updateWordDeletedSuccessfully(state, action) {
+      state.wordDeletedSuccessfully = action.payload;
+    },
+    updateWordDeleteButtonPressed(state, action) {
+      state.wordDeleteButtonPressed = action.payload;
     },
   },
 });
 
-export const { updateCollection, updateSearchKeyword } =
-  slice.actions;
+export const {
+  updateSearchKeyword,
+  updateTickets,
+  updateResults,
+  updatePage,
+  updateAllDataLoaded,
+  updateBusy,
+  updateWordDeletedSuccessfully,
+  updateWordDeleteButtonPressed,
+} = slice.actions;
 
 export const collectionState = (state: RootState) =>
   state.collection;

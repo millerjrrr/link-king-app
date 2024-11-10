@@ -12,6 +12,7 @@ interface ClientWithAuth {
 }
 const clientWithAuth: ClientWithAuth = {
   post: async (url: string, data: any) => {
+    console.log("# API Request");
     const token = await getFromAsyncStorage("auth-token");
     const appLang =
       Localization.getLocales()[0]?.languageCode || "en";
@@ -24,10 +25,11 @@ const clientWithAuth: ClientWithAuth = {
           hour12: false,
         }),
       },
-      timeout: 5000,
+      timeout: 10000,
     });
   },
   get: async (url: string) => {
+    console.log("# API Request");
     const token = await getFromAsyncStorage("auth-token");
     const appLang =
       Localization.getLocales()[0]?.languageCode || "en";
@@ -40,7 +42,7 @@ const clientWithAuth: ClientWithAuth = {
           hour12: false,
         }),
       },
-      timeout: 5000,
+      timeout: 10000,
     });
   },
 };

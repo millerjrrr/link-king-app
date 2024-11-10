@@ -19,6 +19,7 @@ const useHandleCorrectAnswer = () => {
   );
 
   const handleCorrectAnswer = catchAsync(async () => {
+    console.log("# Handling correct Answer");
     try {
       dispatch(
         updateLocals({

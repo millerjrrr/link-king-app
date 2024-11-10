@@ -10,7 +10,7 @@ import {
   Rating,
   RowContainer,
   Title,
-} from "./WordCardStyledComponents";
+} from "./StyledComponents";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import SpeakButton from "./SpeakButton";
@@ -61,7 +61,7 @@ const WordCard = ({ navigation, ticket, onPress }) => {
           <Date color={CONTRAST[golden]}>
             {ticket.dueDate
               ? numberDateToWordStyleDate({
-                  date: ticket.dueDate,
+                  dateAsNumber: Number(ticket.dueDate),
                   appLang,
                 })
               : tomorrow}

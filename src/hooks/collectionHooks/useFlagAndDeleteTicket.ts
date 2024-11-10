@@ -1,7 +1,10 @@
 import clientWithAuth from "@src/api/clientWithAuth";
 import useCatchAsync from "@src/hooks/useCatchAsync";
 import { useDispatch } from "react-redux";
-import { updateCollection } from "@src/store/collection";
+import {
+  updateBusy,
+  updateWordDeleteButtonPressed,
+} from "@src/store/collection";
 import { updateRedCover } from "@src/store/redCover";
 
 const useFlagAndDeleteTicket = () => {
@@ -10,12 +13,9 @@ const useFlagAndDeleteTicket = () => {
 
   const flagAndDeleteTicket = catchAsync(
     async (ticketId) => {
-      dispatch(
-        updateCollection({
-          busy: true,
-          wordDeleteButtonPressed: true,
-        }),
-      );
+      console.log("# flagging and deleting a word");
+      dispatch(updateBusy(true));
+      dispatch(updateWordDeleteButtonPressed(true));
       try {
         const { data } = await clientWithAuth.post(
           "/api/v1/collection/flag-word",
@@ -24,17 +24,12 @@ const useFlagAndDeleteTicket = () => {
           },
         );
         dispatch(
-          updateCollection({
-            wordDeletedSuccessfully:
-              data.status === "success",
-          }),
+          updateWordDeleteButtonPressed(
+            data.status === "success",
+          ),
         );
       } finally {
-        dispatch(
-          updateCollection({
-            busy: false,
-          }),
-        );
+        dispatch(updateBusy(false));
         dispatch(updateRedCover({ elapsedTime: 0 }));
       }
     },

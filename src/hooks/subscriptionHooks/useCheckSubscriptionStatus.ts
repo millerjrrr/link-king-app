@@ -16,6 +16,7 @@ const useCheckSubscriptionStatus = () => {
   const checkSubscriptionStatus = useCallback(
     () =>
       catchAsync(async () => {
+        console.log("# Checking subscription status");
         if (hasChecked.current) return;
         console.log("Checking subscription status");
         dispatch(updateBusyState(true));

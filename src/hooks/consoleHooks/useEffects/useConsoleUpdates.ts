@@ -15,15 +15,17 @@ const useConsoleUpdates = () => {
   const [appState, setAppState] = useState(
     AppState.currentState,
   );
-  const hasFetchedOnMount = useRef(false);
 
   // fetchConsoleInfo on appStartUp
-  useEffect(() => {
-    if (!hasFetchedOnMount.current) {
+
+  // important to refresh console on navigation after say
+  // deleting a ticket
+
+  useFocusEffect(
+    useCallback(() => {
       fetchConsoleInfo();
-      hasFetchedOnMount.current = true; // Set flag to avoid repeat
-    }
-  }, [dispatch]);
+    }, [dispatch]),
+  );
 
   //fetchConsoleInfo when app enters foreground
   useEffect(() => {
@@ -44,18 +46,6 @@ const useConsoleUpdates = () => {
       subscription.remove();
     };
   }, [appState, dispatch]);
-
-  // important to refresh console on navigation after say
-  // deleting a ticket
-
-  useFocusEffect(
-    useCallback(() => {
-      if (hasFetchedOnMount.current) {
-        // Only fetch if it's not the initial mount
-        fetchConsoleInfo();
-      }
-    }, [dispatch]),
-  );
 };
 
 export default useConsoleUpdates;

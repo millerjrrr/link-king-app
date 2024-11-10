@@ -4,7 +4,7 @@ import WordCard from "./WordCard";
 import { useDispatch, useSelector } from "react-redux";
 import {
   collectionState,
-  updateCollection,
+  updatePage,
 } from "@src/store/collection";
 import Loader from "@src/components/Loader";
 import { settingsState } from "@src/store/settings";
@@ -51,7 +51,7 @@ const WordCollectionList = ({ navigation }) => {
         style={styles.flatList}
         onEndReached={() => {
           if (!allDataLoaded)
-            dispatch(updateCollection({ page: page + 1 }));
+            dispatch(updatePage(page + 1));
         }}
         onEndReachedThreshold={0.1}
         ListFooterComponent={ListFooterComponent}

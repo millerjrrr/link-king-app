@@ -13,6 +13,7 @@ const useSetSubscriptionPrice = () => {
   const setSubscriptionPrice = useCallback(
     () =>
       catchAsync(async () => {
+        console.log("# Setting subscription price");
         await configurePurchases();
         const offerings = await Purchases.getOfferings();
         const price =

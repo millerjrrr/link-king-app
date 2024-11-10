@@ -1,20 +1,22 @@
 import clientWithAuth from "@src/api/clientWithAuth";
 import {
   collectionState,
-  updateCollection,
+  updateAllDataLoaded,
+  updateBusy,
+  updatePage,
+  updateResults,
+  updateTickets,
 } from "@src/store/collection";
 import { useDispatch, useSelector } from "react-redux";
 import useCatchAsync from "@src/hooks/useCatchAsync";
 import { semiNormalize } from "@src/utils/semiNormalize";
-import { useCallback, useEffect } from "react";
-import {
-  useFocusEffect,
-  useNavigation,
-} from "@react-navigation/native";
+import { useEffect } from "react";
+import { useNavigation } from "@react-navigation/native";
 import useDebounce from "./useDebounce";
 
 const useFetchTickets = () => {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
   const catchAsync = useCatchAsync();
   const { searchKeyword, tickets, page } =
     useSelector(collectionState);
@@ -25,49 +27,50 @@ const useFetchTickets = () => {
   );
 
   const fetchTickets = catchAsync(
-    async (keyword: string) => {
+    async (keyword: string, page: number) => {
+      console.log("# Fetching Tickets");
       try {
+        if (page === 1) dispatch(updateBusy(true));
         const normWord = semiNormalize(keyword);
         const { data } = await clientWithAuth.get(
-          `/api/v1/collection/tickets?page=${page}&search=${normWord}`,
+          `/api/v1/collection/tickets?page=${page}&search=${normWord}&limit=20`,
         );
         dispatch(
-          updateCollection({
-            tickets:
-              page === 1
-                ? data.data.tickets
-                : [...tickets, ...data.data.tickets],
-            results: data.results,
-            allDataLoaded: data.returned < 50,
-          }),
+          updateTickets(
+            page === 1
+              ? data.data.tickets
+              : [...tickets, ...data.data.tickets],
+          ),
         );
+        dispatch(updateResults(data.results));
+        dispatch(updateAllDataLoaded(data.returned < 20));
       } finally {
-        dispatch(updateCollection({ busy: false }));
+        dispatch(updateBusy(false));
       }
     },
   );
 
   useEffect(() => {
-    dispatch(updateCollection({ busy: true }));
-  }, [searchKeyword]);
-
-  useFocusEffect(
-    useCallback(() => {
-      fetchTickets(searchKeyword);
-    }, [searchKeyword, page]),
-  );
+    const unsubscribe = navigation.addListener(
+      "focus",
+      () => {
+        fetchTickets("", 1);
+      },
+    );
+    return unsubscribe;
+  }, [navigation]);
 
   useEffect(() => {
-    fetchTickets(debouncedSearchKeyword);
+    if (page > 1) fetchTickets(searchKeyword, page);
   }, [page]);
 
   useEffect(() => {
-    // Reset page to 1 when searchKeyword changes
-    if (page !== 1) {
-      dispatch(updateCollection({ page: 1 }));
-    } else {
-      fetchTickets(debouncedSearchKeyword); // If already on page 1, fetch immediately
-    }
+    dispatch(updateBusy(true));
+    dispatch(updatePage(1));
+  }, [searchKeyword]);
+
+  useEffect(() => {
+    fetchTickets(debouncedSearchKeyword, 1);
   }, [debouncedSearchKeyword]);
 };
 

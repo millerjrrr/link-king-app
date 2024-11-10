@@ -1,12 +1,6 @@
 import { useSelector } from "react-redux";
-import {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { useCallback, useEffect, useState } from "react";
 import { AppState } from "react-native";
-import { useFocusEffect } from "@react-navigation/native";
 import { selectConsoleState } from "@src/store/console";
 import useSendOptions from "../useSendOptions";
 import useCheckTTSData from "../useCheckTTSData";
@@ -15,29 +9,20 @@ const useUpdateOptions = () => {
   const [appState, setAppState] = useState(
     AppState.currentState,
   );
-  const hasRunOnMount = useRef(false);
-
-  const {
-    gamePlay: { speechLang: language },
-  } = useSelector(selectConsoleState);
 
   const checkTTSData = useCheckTTSData();
   const sendOptions = useSendOptions();
-  const updateOptions = async () => {
+
+  const updateOptions = useCallback(async () => {
     const TTS = await checkTTSData();
-    if (!TTS)
+    if (!TTS) {
       await sendOptions({ sound: false, blurred: false });
-  };
-
-  // fetchConsoleInfo on appStartUp
-  useEffect(() => {
-    if (!hasRunOnMount.current) {
-      updateOptions();
-      hasRunOnMount.current = true; // Set flag after initial run
     }
-  }, [language]);
+  }, [checkTTSData]);
 
-  // fetchConsoleInfo when app enters foreground
+  // need to update on appStateChange because
+  // sometimes a user might delete a TTS pack
+  // and then sound should be off
   useEffect(() => {
     const subscription = AppState.addEventListener(
       "change",
@@ -46,6 +31,7 @@ const useUpdateOptions = () => {
           appState.match(/inactive|background/) &&
           nextAppState === "active"
         ) {
+          console.log("appState change");
           updateOptions();
         }
         setAppState(nextAppState);
@@ -55,15 +41,14 @@ const useUpdateOptions = () => {
     return () => {
       subscription.remove();
     };
-  }, [appState, language]);
+  }, [appState]);
 
-  useFocusEffect(
-    useCallback(() => {
-      if (hasRunOnMount.current) {
-        updateOptions();
-      }
-    }, [language]),
-  );
+  // options should update every time language changes
+
+  useEffect(() => {
+    console.log("# language change");
+    updateOptions();
+  }, [updateOptions]);
 };
 
 export default useUpdateOptions;

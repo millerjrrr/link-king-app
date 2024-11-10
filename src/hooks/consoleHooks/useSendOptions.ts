@@ -13,12 +13,11 @@ const useSendOptions = () => {
       blurred?: boolean;
       timer?: boolean;
     }) => {
-      console.log("...sending");
+      console.log("# Sending options");
       const { data } = await clientWithAuth.post(
         "/api/v1/console/update-game-settings",
         options,
       );
-      console.log(data);
       dispatch(updateOptions(data.options));
     },
   );

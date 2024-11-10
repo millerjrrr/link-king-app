@@ -54,6 +54,7 @@ const SignIn = () => {
   };
 
   const onSubmit = catchAsync(async (values, actions) => {
+    console.log("# Signing In");
     actions.setSubmitting(true);
     try {
       const { data } = await client.post(
