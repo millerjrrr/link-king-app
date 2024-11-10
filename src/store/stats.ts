@@ -54,7 +54,7 @@ const initialState: StatsState = {
     timer: true,
   },
   username: "anonymous",
-  busy: false,
+  busy: true,
   page: true,
 };
 

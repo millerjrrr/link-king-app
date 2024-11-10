@@ -1,7 +1,7 @@
 import { Linking, StyleSheet, View } from "react-native";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PopUpContainer from "@src/components/Containers/PopUpContainer";
-import React from "react";
+import React, { useCallback } from "react";
 import BloodRedCover from "@src/components/BloodRedCover";
 import BusyWrapper from "@src/components/Loader/BusyWrapper";
 import ResponseInformation from "./ResponseInformation";
@@ -13,7 +13,11 @@ import UserAttempt from "./UserAttempt";
 import { selectConsoleState } from "@src/store/console";
 import SolutionsList from "@src/screens/Console/components/SolutionsList";
 import DeleteButton from "./DeleteButton";
-import { collectionState } from "@src/store/collection";
+import {
+  collectionState,
+  updateWordDeleteButtonPressed,
+} from "@src/store/collection";
+import { useFocusEffect } from "@react-navigation/native";
 
 const WordInfoScreen = ({ route }) => {
   const { ticket, wrongAnswerReturned } = route.params;
@@ -30,6 +34,19 @@ const WordInfoScreen = ({ route }) => {
 
   const { heading } =
     appTextSource(appLang).console.targetDetails;
+  const dispatch = useDispatch();
+
+  useFocusEffect(
+    useCallback(() => {
+      // This code will run when the screen gains focus
+      // (nothing here for your use case)
+
+      // The cleanup function will run when the screen loses focus
+      return () => {
+        dispatch(updateWordDeleteButtonPressed(false));
+      };
+    }, [dispatch]),
+  );
 
   return (
     <PopUpContainer {...{ heading, blockPopToTop: true }}>

@@ -1,4 +1,8 @@
-import React, { useRef, useEffect } from "react";
+import React, {
+  useRef,
+  useEffect,
+  useCallback,
+} from "react";
 import { TouchableHighlight, View } from "react-native";
 import colors from "@src/utils/colors";
 import { AntDesign } from "@expo/vector-icons";
@@ -11,7 +15,10 @@ import {
   redCoverState,
   updateRedCover,
 } from "@src/store/redCover";
-import { useNavigation } from "@react-navigation/native";
+import {
+  useFocusEffect,
+  useNavigation,
+} from "@react-navigation/native";
 
 const RedSafetyButton = ({
   completeFunction,
@@ -23,18 +30,19 @@ const RedSafetyButton = ({
     useSelector(settingsState);
   const { PRIMARY, SECONDARY, RED } = colors[colorScheme];
   const dispatch = useDispatch();
-  const navigation = useNavigation();
   const { startTime } = useSelector(redCoverState);
 
-  useEffect(() => {
-    const unsubscribe = navigation.addListener(
-      "blur",
-      () => {
+  useFocusEffect(
+    useCallback(() => {
+      // This code will run when the screen gains focus
+      // (nothing here for your use case)
+
+      // The cleanup function will run when the screen loses focus
+      return () => {
         dispatch(updateRedCover({ elapsedTime: 0 }));
-      },
-    );
-    return unsubscribe;
-  }, [navigation, dispatch]);
+      };
+    }, [dispatch]),
+  );
 
   useEffect(() => {
     const timerInterval = setInterval(() => {
@@ -55,7 +63,6 @@ const RedSafetyButton = ({
       completeFunction();
       dispatch(
         updateRedCover({
-          elapsedTime: 0,
           startTime: 0,
           redCoverZIndex: 1,
         }),

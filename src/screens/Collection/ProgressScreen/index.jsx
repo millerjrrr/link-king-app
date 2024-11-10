@@ -38,7 +38,7 @@ const ProgressScreen = () => {
   useFetchStatsInfo();
 
   return (
-    <BusyWrapper {...{ busy }}>
+    <BusyWrapper busy={busy} size={150}>
       <BackButton />
       <ShareButton shareRef={statsPanelRef} />
       <ViewShot

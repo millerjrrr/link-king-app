@@ -65,7 +65,10 @@ const ChangeHomeLanguageScreen = ({ route }) => {
   return (
     <PopUpContainer {...{ heading, blockPopToTop: true }}>
       <ScrollView
-        contentContainerStyle={{ alignItems: "center" }}
+        contentContainerStyle={{
+          alignItems: "center",
+          height: "100%",
+        }}
       >
         <BloodRedCover />
         <View

@@ -12,7 +12,7 @@ const FormikSafetyButton = ({ iconName = "delete" }) => {
   };
 
   return (
-    <BusyWrapper {...{ busy: isSubmitting }}>
+    <BusyWrapper busy={isSubmitting} size={150}>
       <View
         style={{
           width: "100%",
