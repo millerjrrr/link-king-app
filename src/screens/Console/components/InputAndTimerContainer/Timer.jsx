@@ -7,8 +7,11 @@ import colors from "@src/utils/colors";
 
 const Timer = ({ onComplete, color }) => {
   const {
-    locals: { isPlaying, timerKey },
-    options: { timer },
+    locals: {
+      isPlaying,
+      timerKey,
+      options: { timer },
+    },
   } = useSelector(selectConsoleState);
   const { colorScheme } = useSelector(settingsState);
   const { PRIMARY } = colors[colorScheme];

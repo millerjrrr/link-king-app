@@ -1,22 +1,25 @@
 import { View, StyleSheet } from "react-native";
 import colors from "@src/utils/colors";
 import { useDispatch, useSelector } from "react-redux";
-import { selectConsoleState } from "@src/store/console";
+import {
+  selectConsoleState,
+  updateOptions,
+} from "@src/store/console";
 import OptionsIcon from "./OptionsIcon";
 import { settingsState } from "@src/store/settings";
-import useSendOptions from "@src/hooks/consoleHooks/useSendOptions";
 import useCheckTTSData from "@src/hooks/consoleHooks/useCheckTTSData";
 import { updateModals } from "@src/store/modals";
 
 const OptionsContainer = ({ size = 40, show = 0 }) => {
   const {
-    options: { sound, blurred, timer },
+    locals: {
+      options: { sound, blurred, timer },
+    },
   } = useSelector(selectConsoleState);
   const { colorScheme, golden } =
     useSelector(settingsState);
   const color = colors[colorScheme].CONTRAST[golden];
 
-  const sendOptions = useSendOptions();
   const checkCheckTTSData = useCheckTTSData();
   const dispatch = useDispatch();
 
@@ -28,7 +31,7 @@ const OptionsContainer = ({ size = 40, show = 0 }) => {
       const options = blurred
         ? { sound: !sound, blurred: false }
         : { sound: !sound };
-      await sendOptions(options);
+      dispatch(updateOptions(options));
     }
   };
 
@@ -40,7 +43,7 @@ const OptionsContainer = ({ size = 40, show = 0 }) => {
       const options = !blurred
         ? { sound: true, blurred: !blurred }
         : { blurred: !blurred };
-      await sendOptions(options);
+      dispatch(updateOptions(options));
     }
   };
 
@@ -48,7 +51,7 @@ const OptionsContainer = ({ size = 40, show = 0 }) => {
     const options = {
       timer: !timer,
     };
-    await sendOptions(options);
+    dispatch(updateOptions(options));
   };
 
   return (

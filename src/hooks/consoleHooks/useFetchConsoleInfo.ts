@@ -1,7 +1,7 @@
 import {
-  selectConsoleLocals,
   updateBusyState,
   updateConsoleState,
+  updateLocals,
   updateShowSolution,
 } from "@src/store/console";
 import clientWithAuth from "@src/api/clientWithAuth";
@@ -11,7 +11,6 @@ import { useDispatch, useSelector } from "react-redux";
 const useFetchConsoleInfo = () => {
   const catchAsync = useCatchAsync();
   const dispatch = useDispatch();
-  const locals = useSelector(selectConsoleLocals);
 
   const fetchConsoleInfo = catchAsync(
     async (repeatRepeats: boolean = false) => {
@@ -22,15 +21,21 @@ const useFetchConsoleInfo = () => {
       try {
         dispatch(updateBusyState(true));
         dispatch(updateShowSolution(false));
-        const { data } = await clientWithAuth.get(url);
+        const {
+          data: { dictionary, display, gamePlay, stats },
+        } = await clientWithAuth.get(url);
         dispatch(
           updateConsoleState({
-            ...data,
-            locals: {
-              ...locals,
-              busy: false,
-              golden: Number(data.stats.steps === 0),
-            },
+            dictionary,
+            display,
+            gamePlay,
+            stats,
+          }),
+        );
+        dispatch(
+          updateLocals({
+            busy: false,
+            golden: Number(stats.steps === 0),
           }),
         );
       } finally {

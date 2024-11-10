@@ -21,9 +21,12 @@ const TextInputForConsole = ({
   const dispatch = useDispatch();
 
   const {
-    locals: { formValue, showSolution },
+    locals: {
+      formValue,
+      showSolution,
+      options: { sound },
+    },
     gamePlay: { target, speechLang: language, solutions },
-    options: { sound },
   } = useSelector(selectConsoleState);
   const { colorScheme } = useSelector(settingsState);
   const placeholderTextColor = colors[colorScheme].LIGHTRED;

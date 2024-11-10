@@ -1,9 +1,8 @@
-import { useSelector } from "react-redux";
 import { useCallback, useEffect, useState } from "react";
 import { AppState } from "react-native";
-import { selectConsoleState } from "@src/store/console";
-import useSendOptions from "../useSendOptions";
 import useCheckTTSData from "../useCheckTTSData";
+import { useDispatch } from "react-redux";
+import { updateOptions } from "@src/store/console";
 
 const useUpdateOptions = () => {
   const [appState, setAppState] = useState(
@@ -11,12 +10,17 @@ const useUpdateOptions = () => {
   );
 
   const checkTTSData = useCheckTTSData();
-  const sendOptions = useSendOptions();
+  const dispatch = useDispatch();
 
-  const updateOptions = useCallback(async () => {
+  const checkTTSAndUpdateOptions = useCallback(async () => {
     const TTS = await checkTTSData();
     if (!TTS) {
-      await sendOptions({ sound: false, blurred: false });
+      dispatch(
+        updateOptions({
+          sound: false,
+          blurred: false,
+        }),
+      );
     }
   }, [checkTTSData]);
 
@@ -32,7 +36,7 @@ const useUpdateOptions = () => {
           nextAppState === "active"
         ) {
           console.log("appState change");
-          updateOptions();
+          checkTTSAndUpdateOptions();
         }
         setAppState(nextAppState);
       },
@@ -47,8 +51,8 @@ const useUpdateOptions = () => {
 
   useEffect(() => {
     console.log("# language change");
-    updateOptions();
-  }, [updateOptions]);
+    checkTTSAndUpdateOptions();
+  }, [checkTTSAndUpdateOptions]);
 };
 
 export default useUpdateOptions;

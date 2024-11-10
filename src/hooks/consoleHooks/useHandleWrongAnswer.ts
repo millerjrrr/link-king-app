@@ -16,9 +16,11 @@ import useCatchAsync from "@src/hooks/useCatchAsync";
 const useHandleWrongAnswer = () => {
   const dispatch = useDispatch();
   const catchAsync = useCatchAsync();
-  const { showSolution, startedThisWord } = useSelector(
-    selectConsoleLocals,
-  );
+  const {
+    showSolution,
+    startedThisWord,
+    options: { sound },
+  } = useSelector(selectConsoleLocals);
 
   const handleWrongAnswer = catchAsync(async () => {
     console.log("# Handling wrong answer");
@@ -40,7 +42,6 @@ const useHandleWrongAnswer = () => {
 
       const {
         gamePlay: { target, speechLang: language },
-        options: { sound },
       } = data;
       dispatch(updateConsoleState({ ...data }));
       dispatch(resetTimer());

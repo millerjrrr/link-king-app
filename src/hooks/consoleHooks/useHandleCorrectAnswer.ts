@@ -14,9 +14,11 @@ import useCatchAsync from "../useCatchAsync";
 const useHandleCorrectAnswer = () => {
   const dispatch = useDispatch();
   const catchAsync = useCatchAsync();
-  const { showSolution, startedThisWord } = useSelector(
-    selectConsoleLocals,
-  );
+  const {
+    showSolution,
+    startedThisWord,
+    options: { sound },
+  } = useSelector(selectConsoleLocals);
 
   const handleCorrectAnswer = catchAsync(async () => {
     console.log("# Handling correct Answer");
@@ -47,7 +49,6 @@ const useHandleCorrectAnswer = () => {
 
       const {
         gamePlay: { target, speechLang: language },
-        options: { sound },
       } = data;
 
       dispatch(updateConsoleState({ ...data }));

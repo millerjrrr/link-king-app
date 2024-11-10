@@ -16,7 +16,9 @@ const ReadWordButton = ({
 }) => {
   const {
     gamePlay: { target, speechLang: language },
-    options: { blurred, sound },
+    locals: {
+      options: { blurred, sound },
+    },
   } = useSelector(selectConsoleState);
   const { appLang } = useSelector(settingsState);
 

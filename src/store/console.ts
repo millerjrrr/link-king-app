@@ -44,13 +44,13 @@ interface Locals {
   timerKey: number;
   busy: boolean;
   golden: number;
+  options: Options;
 }
 
 interface ConsoleState {
   dictionary: string;
   display: Display;
   gamePlay: GamePlay;
-  options: Options;
   stats: Stats;
   locals: Locals;
 }
@@ -67,7 +67,6 @@ const initialState: ConsoleState = {
     target: "",
     tries: 3,
   },
-  options: { sound: true, blurred: false, timer: true },
   stats: {
     due: 0,
     newWords: 0,
@@ -86,6 +85,7 @@ const initialState: ConsoleState = {
     timerKey: 0,
     busy: false,
     golden: 0,
+    options: { sound: true, blurred: false, timer: true },
   },
 };
 
@@ -93,8 +93,11 @@ const slice = createSlice({
   name: "console",
   initialState,
   reducers: {
-    updateOptions(state, action: PayloadAction<Options>) {
-      state.options = action.payload;
+    updateOptions(
+      state,
+      action: PayloadAction<Partial<Options>>,
+    ) {
+      Object.assign(state.locals.options, action.payload);
     },
     updateTries(state) {
       state.gamePlay.tries -= 1;
