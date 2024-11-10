@@ -22,7 +22,7 @@ const ConsoleModals = () => {
     {
       isVisible: showWelcomeModal,
       modalName: "welcome",
-      videoId: appLang === "pt" ? "lfc3MTUbbWU" : false,
+      videoId: "ZpRTUHu6MJ4",
       onPress: () => {
         dispatch(
           updateModals({
@@ -46,7 +46,6 @@ const ConsoleModals = () => {
     {
       isVisible: showMissingTTSModal,
       modalName: "missingTTS",
-      videoId: "lfc3MTUbbWU",
       onPress: () => {
         dispatch(
           updateModals({
