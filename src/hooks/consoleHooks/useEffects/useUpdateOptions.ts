@@ -1,13 +1,19 @@
 import { useCallback, useEffect, useState } from "react";
 import { AppState } from "react-native";
 import useCheckTTSData from "../useCheckTTSData";
-import { useDispatch } from "react-redux";
-import { updateOptions } from "@src/store/console";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectConsoleState,
+  updateOptions,
+} from "@src/store/console";
 
 const useUpdateOptions = () => {
   const [appState, setAppState] = useState(
     AppState.currentState,
   );
+  const {
+    gamePlay: { speechLang: language },
+  } = useSelector(selectConsoleState);
 
   const checkTTSData = useCheckTTSData();
   const dispatch = useDispatch();
@@ -35,7 +41,6 @@ const useUpdateOptions = () => {
           appState.match(/inactive|background/) &&
           nextAppState === "active"
         ) {
-          console.log("appState change");
           checkTTSAndUpdateOptions();
         }
         setAppState(nextAppState);
@@ -52,7 +57,7 @@ const useUpdateOptions = () => {
   useEffect(() => {
     console.log("# language change");
     checkTTSAndUpdateOptions();
-  }, [checkTTSAndUpdateOptions]);
+  }, [language]);
 };
 
 export default useUpdateOptions;
