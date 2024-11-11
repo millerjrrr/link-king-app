@@ -10,10 +10,8 @@ const AppLink = ({ title, onPress }) => {
 
   return (
     <TouchableOpacity
-      {...{
-        onPress,
-        style: { padding: 5, paddingTop: 10 },
-      }}
+      onPress={onPress}
+      style={{ padding: 5, paddingTop: 10 }}
     >
       <AppText style={{ color, fontSize: 15 }}>
         {title}

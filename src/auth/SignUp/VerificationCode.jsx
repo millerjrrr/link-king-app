@@ -76,26 +76,24 @@ const VerificationCode = () => {
 
   return (
     <AuthFormContainer
-      {...{
-        heading,
-        subHeading: newSubHeading,
-        nologo: true,
-      }}
+      heading={heading}
+      subHeading={newSubHeading}
+      nologo={true}
     >
       <Formik
-        {...{ onSubmit, initialValues, validationSchema }}
+        onSubmit={onSubmit}
+        initialValues={initialValues}
+        validationSchema={validationSchema}
       >
         <>
           <AuthInputField
-            {...{
-              name: "code",
-              keyboardType: "numeric",
-              placeholder: "",
-              label: code.label,
-              containerStyle: { marginBottom: 20 },
-            }}
+            name={"code"}
+            keyboardType={"numeric"}
+            placeholder={""}
+            label={code.label}
+            containerStyle={{ marginBottom: 20 }}
           />
-          <SubmitButton {...{ title: verify }} />
+          <SubmitButton title={verify} />
         </>
       </Formik>
       <SignUpAppLink />

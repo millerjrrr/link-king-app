@@ -44,23 +44,25 @@ const Email = ({ navigation }) => {
 
   return (
     <AuthFormContainer
-      {...{ heading, subHeading, nologo: true }}
+      heading={heading}
+      subHeading={subHeading}
+      nologo={true}
     >
       <Formik
-        {...{ onSubmit, initialValues, validationSchema }}
+        onSubmit={onSubmit}
+        initialValues={initialValues}
+        validationSchema={validationSchema}
       >
         <>
           <AuthInputField
-            {...{
-              name: "email",
-              label: email.label,
-              placeholder: email.placeholder,
-              keyboardType: "email-address",
-              autoCapitalize: "none",
-              containerStyle: { marginBottom: 20 },
-            }}
+            name={"email"}
+            label={email.label}
+            placeholder={email.placeholder}
+            keyboardType={"email-address"}
+            autoCapitalize={"none"}
+            containerStyle={{ marginBottom: 20 }}
           />
-          <SubmitButton {...{ title: next }} />
+          <SubmitButton title={next} />
         </>
       </Formik>
       <SignUpAppLink />

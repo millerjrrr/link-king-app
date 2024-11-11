@@ -53,23 +53,23 @@ const Name = ({ updateNameFunction, buttonTitle }) => {
 
   return (
     <AuthFormContainer
-      {...{ heading, subHeading, nologo: true }}
+      heading={heading}
+      subHeading={subHeading}
+      nologo={true}
     >
       <Formik
-        {...{ onSubmit, initialValues, validationSchema }}
+        onSubmit={onSubmit}
+        initialValues={initialValues}
+        validationSchema={validationSchema}
       >
         <>
           <AuthInputField
-            {...{
-              name: "name",
-              label: name.label,
-              placeholder: name.placeholder,
-              containerStyle: { marginBottom: 20 },
-            }}
+            name={"name"}
+            label={name.label}
+            placeholder={name.placeholder}
+            containerStyle={{ marginBottom: 20 }}
           />
-          <SubmitButton
-            {...{ title: buttonTitle || next }}
-          />
+          <SubmitButton title={buttonTitle || next} />
         </>
       </Formik>
       {!updateNameFunction ? <SignUpAppLink /> : null}

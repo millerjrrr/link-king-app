@@ -42,8 +42,10 @@ const ButtonContainer = styled(TouchableOpacity)`
 
 const Button = ({ title, color, size, onPress }) => {
   return (
-    <ButtonContainer {...{ onPress, color }}>
-      <ButtonText {...{ color, size }}>{title}</ButtonText>
+    <ButtonContainer onPress={onPress} color={color}>
+      <ButtonText color={color} size={size}>
+        {title}
+      </ButtonText>
     </ButtonContainer>
   );
 };
@@ -67,62 +69,50 @@ const AppModal = ({
 
   return (
     <Modal
-      {...{
-        isVisible,
-        onBackdropPress,
-        backdropColor: "transparent",
-      }}
+      isVisible={isVisible}
+      onBackdropPress={onBackdropPress}
+      backdropColor={"transparent"}
     >
       <ModalContainer
-        {...{
-          backgroundColor,
-          color,
-        }}
+        backgroundColor={backgroundColor}
+        color={color}
       >
         {videoId ? (
           <YoutubePlayer
-            {...{
-              height: 195,
-              width: "100%",
-              play: true,
-              videoId,
-              webViewStyle: {
-                margin: 10,
-                marginTop: 15,
-              },
+            height={195}
+            width={"100%"}
+            play={true}
+            videoId={videoId}
+            webViewStyle={{
+              margin: 10,
+              marginTop: 15,
             }}
           />
         ) : null}
-        <ModalText {...{ color }}>
+        <ModalText color={color}>
           {modalMessage +
             (variable ? variable + modalMessage2 : "")}
         </ModalText>
         {info ? (
           <Button
-            {...{
-              title: cancel,
-              color,
-              size: 20,
-              onPress,
-            }}
+            title={cancel}
+            color={color}
+            size={20}
+            onPress={onPress}
           />
         ) : (
           <>
             <Button
-              {...{
-                title,
-                color,
-                size: 20,
-                onPress,
-              }}
+              title={title}
+              color={color}
+              size={20}
+              onPress={onPress}
             />
             <Button
-              {...{
-                title: cancel,
-                color,
-                size: 15,
-                onPress: onBackdropPress,
-              }}
+              title={cancel}
+              color={color}
+              size={15}
+              onPress={onBackdropPress}
             />
           </>
         )}

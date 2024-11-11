@@ -25,22 +25,20 @@ const Welcome = () => {
 
   return (
     <AuthFormContainer
-      {...{
-        heading,
-        subHeading,
-        back: false,
-      }}
+      heading={heading}
+      subHeading={subHeading}
+      back={false}
     >
       <MaterialCommunityIcons
-        {...{
-          name: "account-arrow-right-outline",
-          size: 100,
-          color,
-        }}
+        name={"account-arrow-right-outline"}
+        size={100}
+        color={color}
       />
       <View style={{ height: 20 }} />
       <AuthButton
-        {...{ title: buttonTitle, busy: false, onPress }}
+        title={buttonTitle}
+        busy={false}
+        onPress={onPress}
       />
       <SignUpAppLink />
     </AuthFormContainer>

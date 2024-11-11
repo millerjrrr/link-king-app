@@ -90,29 +90,31 @@ const Password = () => {
 
   return (
     <AuthFormContainer
-      {...{ heading, subHeading, nologo: true }}
+      heading={heading}
+      subHeading={subHeading}
+      nologo={true}
     >
       <Formik
-        {...{ onSubmit, initialValues, validationSchema }}
+        onSubmit={onSubmit}
+        initialValues={initialValues}
+        validationSchema={validationSchema}
       >
         <>
           <AuthInputField
-            {...{
-              name: "password",
-              label: password.label,
-              placeholder: "********",
-              autoCapitalize: "none",
-              secureTextEntry: secureEntry,
-              containerStyle: { marginBottom: 20 },
-              rightIcon: (
-                <PasswordVisibilityIcon
-                  {...{ privateIcon: secureEntry }}
-                />
-              ),
-              onRightIconPress: togglePasswordView,
-            }}
+            name={"password"}
+            label={password.label}
+            placeholder={"********"}
+            autoCapitalize={"none"}
+            secureTextEntry={secureEntry}
+            containerStyle={{ marginBottom: 20 }}
+            rightIcon={
+              <PasswordVisibilityIcon
+                privateIcon={secureEntry}
+              />
+            }
+            onRightIconPress={togglePasswordView}
           />
-          <SubmitButton {...{ title: signUp }} />
+          <SubmitButton title={signUp} />
         </>
       </Formik>
       <SignUpAppLink />

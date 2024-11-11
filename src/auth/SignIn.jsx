@@ -83,41 +83,34 @@ const SignIn = () => {
     appTextSource(appLang).auth.titles;
 
   return (
-    <AuthFormContainer {...{ heading, back: false }}>
+    <AuthFormContainer heading={heading} back={false}>
       <Formik
-        {...{
-          onSubmit,
-          initialValues,
-          validationSchema,
-        }}
+        onSubmit={onSubmit}
+        initialValues={initialValues}
+        validationSchema={validationSchema}
       >
         <>
           <AuthInputField
-            {...{
-              name: "email",
-              label: email.label,
-              placeholder: email.placeholder,
-              keyboardType: "email-address",
-              autoCapitalize: "none",
-              containerStyle: { marginBottom: 20 },
-            }}
+            name={"email"}
+            label={email.label}
+            placeholder={email.placeholder}
+            keyboardType={"email-address"}
+            autoCapitalize={"none"}
+            containerStyle={{ marginBottom: 20 }}
           />
           <AuthInputField
-            {...{
-              name: "password",
-              label: password.label,
-              placeholder: "********",
-              autoCapitalize: "none",
-              secureTextEntry: secureEntry,
-              rightIcon: (
-                <PasswordVisibilityIcon
-                  {...{ privateIcon: secureEntry }}
-                />
-              ),
-              onRightIconPress: togglePasswordView,
-            }}
+            name={"password"}
+            label={password.label}
+            placeholder={"********"}
+            autoCapitalize={"none"}
+            secureTextEntry={secureEntry}
+            rightIcon={
+              <PasswordVisibilityIcon
+                privateIcon={secureEntry}
+              />
+            }
+            onRightIconPress={togglePasswordView}
           />
-
           <View style={styles.linkContainer}>
             <AppLink
               title={signUp}

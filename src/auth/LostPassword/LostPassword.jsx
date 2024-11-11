@@ -67,33 +67,27 @@ const LostPassword = ({ navigation }) => {
       >
         <>
           <AuthInputField
-            {...{
-              name: "email",
-              label: email.label,
-              placeholder: email.placeholder,
-              keyboardType: "email-address",
-              autoCapitalize: "none",
-            }}
+            name={"email"}
+            label={email.label}
+            placeholder={email.placeholder}
+            keyboardType={"email-address"}
+            autoCapitalize={"none"}
           />
           <View style={styles.linkContainer}>
             <AppLink
-              {...{
-                title: signIn,
-                onPress: () =>
-                  navigation.navigate("SignIn"),
-              }}
+              title={signIn}
+              onPress={() => navigation.navigate("SignIn")}
             />
             <AppLink
-              {...{
-                title: signUp,
-                onPress: () =>
-                  navigation.navigate("Welcome", {
-                    key: "start",
-                  }),
-              }}
+              title={signUp}
+              onPress={() =>
+                navigation.navigate("Welcome", {
+                  key: "start",
+                })
+              }
             />
           </View>
-          <SubmitButton {...{ title: sendLink }} />
+          <SubmitButton title={sendLink} />
         </>
       </Formik>
     </AuthFormContainer>
