@@ -16,7 +16,7 @@ import { StatusBar } from "expo-status-bar";
 import useFetchAuthInfo from "../hooks/authHooks/useFetchAuthInfo";
 import useFetchSettings from "../hooks/authHooks/useFetchSettings";
 import { useEffect, useState } from "react";
-import { AppState } from "react-native";
+import { AppState, View } from "react-native";
 import BusyWrapper from "@src/components/Loader/BusyWrapper";
 
 const RootNavigator = () => {
@@ -62,9 +62,17 @@ const RootNavigator = () => {
         backgroundColor="#00000000"
       />
       <ConnectedWrapper>
-        <BusyWrapper busy={appLoading} size={150}>
-          {loggedIn ? <TabNavigator /> : <AuthNavigator />}
-        </BusyWrapper>
+        <View
+          style={{ flex: 1, backgroundColor: background }}
+        >
+          <BusyWrapper busy={appLoading} size={150}>
+            {loggedIn ? (
+              <TabNavigator />
+            ) : (
+              <AuthNavigator />
+            )}
+          </BusyWrapper>
+        </View>
       </ConnectedWrapper>
     </NavigationContainer>
   );
