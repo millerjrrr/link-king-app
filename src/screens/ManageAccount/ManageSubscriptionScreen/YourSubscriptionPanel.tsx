@@ -36,7 +36,7 @@ const YourSubscriptionPanel = () => {
 
   const subscribe = useSubscribe();
 
-  const onPress = !userIsSubscribed
+  const onPress = userIsSubscribed
     ? () => {
         const url =
           Platform.OS === "ios"

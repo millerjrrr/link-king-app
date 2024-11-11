@@ -1,8 +1,6 @@
 import {
   View,
   StyleSheet,
-  TouchableWithoutFeedback,
-  Keyboard,
   Dimensions,
   Platform,
   StatusBar,
@@ -24,6 +22,7 @@ const AuthFormContainer = ({
   nologo,
   popUp,
   back = true,
+  noScrollView,
 }) => {
   const { colorScheme, golden } =
     useSelector(settingsState);
@@ -31,17 +30,31 @@ const AuthFormContainer = ({
   const tintColor = colors[colorScheme].CONTRAST[golden];
   const color = colors[colorScheme].SECONDARY;
   const backgroundColor = colors[colorScheme].PRIMARY;
-  return (
-    <>
-      <ScrollView
-        contentContainerStyle={[
+
+  const Container = noScrollView ? View : ScrollView;
+  const containerProps = noScrollView
+    ? {
+        style: [
           styles.container,
           {
             backgroundColor,
             alignItems: !nologo ? "center" : "flex-start",
           },
-        ]}
-      >
+        ],
+      }
+    : {
+        contentContainerStyle: [
+          styles.container,
+          {
+            backgroundColor,
+            alignItems: !nologo ? "center" : "flex-start",
+          },
+        ],
+      };
+
+  return (
+    <>
+      <Container {...containerProps}>
         <StatusBarFiller />
         {back ? <BackButton extraPadding={true} /> : null}
         <FourCrowns {...{ color }} />
@@ -76,7 +89,7 @@ const AuthFormContainer = ({
         ) : null}
         <View style={{ height: 10 }} />
         {children}
-      </ScrollView>
+      </Container>
     </>
   );
 };

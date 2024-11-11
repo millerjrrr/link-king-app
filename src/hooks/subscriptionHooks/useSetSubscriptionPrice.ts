@@ -2,9 +2,11 @@ import Purchases from "react-native-purchases";
 import { useDispatch } from "react-redux";
 import useCatchAsync from "@src/hooks/useCatchAsync";
 import configurePurchases from "../../utils/configurePurchases";
-import { updateSubscriptionPrice } from "@src/store/auth";
-import { useFocusEffect } from "@react-navigation/native";
-import { useCallback } from "react";
+import {
+  updateAppLoadingState,
+  updateSubscriptionPrice,
+} from "@src/store/auth";
+import { useCallback, useEffect } from "react";
 
 const useSetSubscriptionPrice = () => {
   const dispatch = useDispatch();
@@ -13,19 +15,26 @@ const useSetSubscriptionPrice = () => {
   const setSubscriptionPrice = useCallback(
     () =>
       catchAsync(async () => {
-        // console.log("# Setting subscription price");
-        await configurePurchases();
-        const offerings = await Purchases.getOfferings();
-        const price =
-          offerings?.current?.annual?.product
-            ?.priceString || "error";
+        try {
+          dispatch(updateAppLoadingState(true));
+          // console.log("# Setting subscription price");
+          await configurePurchases();
+          const offerings = await Purchases.getOfferings();
+          const price =
+            offerings?.current?.annual?.product
+              ?.priceString || "error";
 
-        dispatch(updateSubscriptionPrice(price));
+          dispatch(updateSubscriptionPrice(price));
+        } finally {
+          dispatch(updateAppLoadingState(false));
+        }
       }),
     [dispatch, catchAsync],
   );
 
-  useFocusEffect(setSubscriptionPrice);
+  useEffect(() => {
+    setSubscriptionPrice();
+  }, []);
 };
 
 export default useSetSubscriptionPrice;
