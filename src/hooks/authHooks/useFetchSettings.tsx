@@ -11,7 +11,7 @@ const useFetchSettings = () => {
   const catchAsync = useCatchAsync();
 
   const fetchSettings = catchAsync(async () => {
-    console.log("# Fetching settings");
+    // console.log("# Fetching settings");
     const colorScheme: string =
       (await getFromAsyncStorage("color-scheme")) || "dark";
     const { STATUSBAR } =

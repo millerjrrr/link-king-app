@@ -13,7 +13,7 @@ const useDeleteAccount = () => {
   const logOut = useLogOut();
 
   const deleteAccount = catchAsync(async ({ password }) => {
-    console.log("# Deleting account");
+    // console.log("# Deleting account");
     const message =
       appTextSource(appLang).options.manageAccount
         .accountDeleted;

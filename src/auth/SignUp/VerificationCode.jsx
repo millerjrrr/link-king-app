@@ -41,7 +41,7 @@ const VerificationCode = () => {
   const catchAsync = useCatchAsync();
 
   const onSubmit = catchAsync(async (values, actions) => {
-    console.log("# Verifying the code");
+    // console.log("# Verifying the code");
     try {
       values.unverifiedUserId = unverifiedUserId;
       actions.setSubmitting(true);

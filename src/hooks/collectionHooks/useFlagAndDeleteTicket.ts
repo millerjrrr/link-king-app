@@ -13,7 +13,7 @@ const useFlagAndDeleteTicket = () => {
 
   const flagAndDeleteTicket = catchAsync(
     async (ticketId) => {
-      console.log("# flagging and deleting a word");
+      // console.log("# flagging and deleting a word");
       dispatch(updateBusy(true));
       dispatch(updateWordDeleteButtonPressed(true));
       try {
