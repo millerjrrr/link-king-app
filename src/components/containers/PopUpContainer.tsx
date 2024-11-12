@@ -77,6 +77,16 @@ const PopUpContainer: React.FC<PopUpContainerProps> = ({
         styles.container,
       ]}
     >
+      <LinearGradient //bottomTab shadow for android
+        style={{
+          position: "absolute",
+          bottom: 0,
+          width: "100%",
+          height: 5,
+          zIndex: 10,
+        }}
+        colors={[color + "00", color + "60"]}
+      />
       <FourCrowns {...{ color: SECONDARY }} />
       <HelpButton help={help} />
       <BackButton />

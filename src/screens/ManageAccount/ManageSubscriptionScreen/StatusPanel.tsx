@@ -22,9 +22,8 @@ const StatusPanel = () => {
 
   const { SECONDARY, CONTRAST } = colors[colorScheme];
 
-  const { subscribed: test, vip } = useSelector(authState);
-
-  const userIsSubscribed = !test;
+  const { subscribed: userIsSubscribed, vip } =
+    useSelector(authState);
 
   const date = new Date(vip);
   const options: Intl.DateTimeFormatOptions = {

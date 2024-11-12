@@ -12,7 +12,7 @@ interface ClientWithAuth {
 }
 const clientWithAuth: ClientWithAuth = {
   post: async (url: string, data: any) => {
-    // console.log("# API Request");
+    console.log("# API Request");
     const token = await getFromAsyncStorage("auth-token");
     const appLang =
       Localization.getLocales()[0]?.languageCode || "en";
@@ -21,15 +21,18 @@ const clientWithAuth: ClientWithAuth = {
       headers: {
         Authorization: "Bearer " + token,
         "Accept-Language": appLang,
-        "Local-Time": new Date().toLocaleString("en-GB", {
-          hour12: false,
-        }),
+        "Local-Time-US-Format": new Date().toLocaleString(
+          "en-US",
+          {
+            hour12: false,
+          },
+        ),
       },
       timeout: 10000,
     });
   },
   get: async (url: string) => {
-    // console.log("# API Request");
+    console.log("# API Request");
     const token = await getFromAsyncStorage("auth-token");
     const appLang =
       Localization.getLocales()[0]?.languageCode || "en";
@@ -38,9 +41,12 @@ const clientWithAuth: ClientWithAuth = {
       headers: {
         Authorization: "Bearer " + token,
         "Accept-Language": appLang,
-        "Local-Time": new Date().toLocaleString("en-GB", {
-          hour12: false,
-        }),
+        "Local-Time-US-Format": new Date().toLocaleString(
+          "en-US",
+          {
+            hour12: false,
+          },
+        ),
       },
       timeout: 10000,
     });
