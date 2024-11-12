@@ -21,7 +21,7 @@ const useFetchAuthInfo = () => {
   const catchAsync = useCatchAsync();
 
   const fetchAuthInfo = catchAsync(async () => {
-    // console.log("# Fetching Auth Info");
+    console.log("# Fetching Auth Info");
     let appLang =
       (await getFromAsyncStorage("app-lang")) || false;
 

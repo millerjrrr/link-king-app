@@ -30,7 +30,12 @@ const AuthButton = ({ title, busy, onPress }) => {
           },
         ]}
       >
-        <BusyWrapper {...{ color, busy, size: 25 }}>
+        <BusyWrapper
+          color={color}
+          busy={busy}
+          size={25}
+          noFlex={true}
+        >
           <AppText>{title}</AppText>
         </BusyWrapper>
       </TouchableOpacity>

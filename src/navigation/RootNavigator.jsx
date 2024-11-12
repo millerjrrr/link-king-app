@@ -15,8 +15,8 @@ import { settingsState } from "@src/store/settings";
 import { StatusBar } from "expo-status-bar";
 import useFetchAuthInfo from "../hooks/authHooks/useFetchAuthInfo";
 import useFetchSettings from "../hooks/authHooks/useFetchSettings";
-import { useEffect, useState } from "react";
-import { AppState, View } from "react-native";
+import { useEffect } from "react";
+import { View } from "react-native";
 import BusyWrapper from "@src/components/Loader/BusyWrapper";
 
 const RootNavigator = () => {
@@ -37,7 +37,6 @@ const RootNavigator = () => {
   };
 
   const { loggedIn, refresh } = useSelector(authState);
-  const [appState] = useState(AppState.currentState);
 
   const fetchAuthInfo = useFetchAuthInfo();
   const fetchSettings = useFetchSettings();
@@ -52,7 +51,7 @@ const RootNavigator = () => {
     };
 
     update();
-  }, [refresh, appState]);
+  }, [refresh]);
 
   return (
     <NavigationContainer theme={AppTheme}>

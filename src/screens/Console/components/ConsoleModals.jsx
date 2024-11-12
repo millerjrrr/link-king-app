@@ -1,15 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
-import { settingsState } from "@src/store/settings";
 import AppModal from "@src/components/AppModal";
 import { authState } from "@src/store/auth";
 import {
   modalState,
   updateModals,
 } from "@src/store/modals";
-import { Platform } from "react-native";
 
 const ConsoleModals = () => {
-  const { appLang } = useSelector(settingsState);
   const { trialDays } = useSelector(authState);
   const {
     showWelcomeModal,
@@ -23,7 +20,6 @@ const ConsoleModals = () => {
     {
       isVisible: showWelcomeModal,
       modalName: "welcome",
-      videoId: "ZpRTUHu6MJ4",
       onPress: () => {
         dispatch(
           updateModals({

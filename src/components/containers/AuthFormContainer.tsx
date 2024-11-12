@@ -5,6 +5,8 @@ import {
   Platform,
   StatusBar,
   ScrollView,
+  ViewProps,
+  ScrollViewProps,
 } from "react-native";
 import colors from "@src/utils/colors";
 import FourCrowns from "../Graphics/FourCrowns";
@@ -14,8 +16,21 @@ import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import AppText from "../AppText";
 import BackButton from "../Buttons/BackButton";
+import React, { ReactNode } from "react";
 
-const AuthFormContainer = ({
+interface AuthFormContainerProps {
+  children: ReactNode;
+  heading: string;
+  subHeading?: string;
+  nologo?: boolean;
+  popUp?: boolean;
+  back?: boolean;
+  noScrollView?: boolean;
+}
+
+const AuthFormContainer: React.FC<
+  AuthFormContainerProps
+> = ({
   children,
   heading,
   subHeading,
@@ -32,25 +47,26 @@ const AuthFormContainer = ({
   const backgroundColor = colors[colorScheme].PRIMARY;
 
   const Container = noScrollView ? View : ScrollView;
-  const containerProps = noScrollView
-    ? {
-        style: [
-          styles.container,
-          {
-            backgroundColor,
-            alignItems: !nologo ? "center" : "flex-start",
-          },
-        ],
-      }
-    : {
-        contentContainerStyle: [
-          styles.container,
-          {
-            backgroundColor,
-            alignItems: !nologo ? "center" : "flex-start",
-          },
-        ],
-      };
+  const containerProps: ViewProps | ScrollViewProps =
+    noScrollView
+      ? {
+          style: [
+            styles.container,
+            {
+              backgroundColor,
+              alignItems: !nologo ? "center" : "flex-start",
+            },
+          ],
+        }
+      : {
+          contentContainerStyle: [
+            styles.container,
+            {
+              backgroundColor,
+              alignItems: !nologo ? "center" : "flex-start",
+            },
+          ],
+        };
 
   return (
     <>
@@ -98,10 +114,9 @@ const styles = StyleSheet.create({
   container: {
     height:
       Dimensions.get("window").height +
-      Platform.select({
-        ios: 0,
-        android: StatusBar.currentHeight + 20,
-      }),
+      (Platform.OS === "ios"
+        ? 0
+        : StatusBar.currentHeight || 30 + 20),
     width: "100%",
     alignItems: "center",
     justifyContent: "flex-start",

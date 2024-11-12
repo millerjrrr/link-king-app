@@ -25,7 +25,7 @@ const initialState: AuthState = {
   token: "",
   trialDays: 7,
   subscribed: false,
-  subscriptionPrice: "error",
+  subscriptionPrice: "$12.99",
   vip: 4070919600000,
   busy: false,
   appLoading: false,

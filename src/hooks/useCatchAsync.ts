@@ -24,7 +24,7 @@ const useCatchAsync = () => {
           errorMessage.startsWith("Network Error")
         ) {
           errorMessage = "no internet connection";
-          dispatch(updateConnectedState(false));
+          // dispatch(updateConnectedState(false));
         }
 
         // Authentication Handling (JWT Expiry)

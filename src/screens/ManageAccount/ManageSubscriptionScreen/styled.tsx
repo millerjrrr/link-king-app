@@ -1,4 +1,5 @@
 import AppText from "@src/components/AppText";
+import { appShadowForStyledComponents } from "@src/utils/appShadow";
 import { TextStyle, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import styled from "styled-components";
@@ -6,11 +7,12 @@ import styled from "styled-components";
 interface PanelProps {
   flexDirection?: "row" | "column";
   backgroundColor: string;
+  shadowColor: string;
 }
 
 interface ManageSubscriptionButtonProps {
-  userIsSubscribed: boolean;
   buttonColor: string;
+  shadowColor: string;
 }
 
 export const Container = styled(View)`
@@ -35,6 +37,8 @@ export const Panel = styled(View)<PanelProps>`
   padding: 15px;
   border-radius: 10px;
   margin-bottom: 30px;
+  shadow-color: ${(props) => props.shadowColor};
+  ${appShadowForStyledComponents}
 `;
 
 export const StoreCombo = styled(View)`
@@ -45,13 +49,13 @@ export const StoreCombo = styled(View)`
 export const ManageSubscriptionButton = styled(
   TouchableOpacity,
 )<ManageSubscriptionButtonProps>`
-  width: ${(props) => {
-    return !props.userIsSubscribed ? "100%" : null;
-  }};
   height: 50px;
+  width: 100%;
   align-items: center;
   background-color: ${(props) => props.buttonColor};
-  padding-horizontal: 10px;
+  padding-horizontal: 15px;
   padding-vertical: 5px;
-  border-radius: 20px;
+  border-radius: 50px;
+  shadow-color: ${(props) => props.shadowColor};
+  ${appShadowForStyledComponents}
 `;

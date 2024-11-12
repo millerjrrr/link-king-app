@@ -1,26 +1,25 @@
 import { ReactNode } from "react";
 import Loader from ".";
 import { View } from "react-native";
-import { useSelector } from "react-redux";
-import { settingsState } from "@src/store/settings";
 
 interface BusyWrapperProps {
   busy: boolean;
   size?: number;
   color?: string;
   children: ReactNode;
+  noFlex?: boolean;
 }
 const BusyWrapper: React.FC<BusyWrapperProps> = ({
   busy,
   size,
   color,
   children,
+  noFlex,
 }) => {
-  const { colorScheme } = useSelector(settingsState);
   return (
     <>
       {busy ? (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: noFlex ? 0 : 1 }}>
           <Loader {...{ color, size }} />
         </View>
       ) : (

@@ -11,10 +11,10 @@ const IsSubscribedWrapper = ({ children }) => {
 
   useCheckSubscriptionStatus();
 
-  return !subRequired || subscribed ? (
-    <>{children}</>
-  ) : (
+  return subRequired && !subscribed ? (
     <Paywall />
+  ) : (
+    <>{children}</>
   );
 };
 

@@ -8,12 +8,14 @@ import {
 } from "@src/utils/asyncStorage";
 import { AppState } from "react-native";
 import { updateModals } from "@src/store/modals";
+import useFetchAuthInfo from "./../../authHooks/useFetchAuthInfo";
 
 const useManageModals = () => {
   const { subscribed, trialDays, vip } =
     useSelector(authState);
   const catchAsync = useCatchAsync();
   const dispatch = useDispatch();
+  const fetchAuthInfo = useFetchAuthInfo();
 
   const [appState, setAppState] = useState(
     AppState.currentState,
@@ -46,6 +48,7 @@ const useManageModals = () => {
     const today = new Date().toISOString().split("T")[0];
 
     if (lastRun !== today) {
+      await fetchAuthInfo();
       await showModalOnAppOpen();
       await saveToAsyncStorage("last-run-date", today);
     }

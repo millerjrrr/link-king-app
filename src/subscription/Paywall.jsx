@@ -9,7 +9,6 @@ import TermsAndConditions from "./TermsAndConditions";
 import useSetSubscriptionPrice from "../hooks/subscriptionHooks/useSetSubscriptionPrice";
 import { authState } from "@src/store/auth";
 import useSubscribe from "../hooks/subscriptionHooks/useSubscribe";
-import BusyWrapper from "@src/components/Loader/BusyWrapper";
 
 const Paywall = () => {
   const subscribe = useSubscribe();
@@ -46,7 +45,6 @@ const Paywall = () => {
         style={{
           marginTop: 10,
           marginBottom: 40,
-          height: busy ? 200 : null,
           width: "100%",
         }}
       >

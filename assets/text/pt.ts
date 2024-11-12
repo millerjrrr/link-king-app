@@ -355,7 +355,7 @@ const pt: AppText = {
     },
     welcome: {
       modalMessage:
-        "Bem-vindo ao Link-King!\nO vídeo acima fala um pouco sobre o conceito do aplicativo. Se você já conhece seu funcionamento, pode pular o vídeo e ir direto para o console!",
+        "Bem-vindo ao Link-King!\nDigite as palavras ou frases curtas que você ouve em seu idioma nativo e pressione Enter para enviar!",
       cancel: "Fechar",
     },
     repeatRepeats: {

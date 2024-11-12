@@ -1,24 +1,27 @@
-import PopUpContainer from "../../../components/Containers/PopUpContainer";
 import appTextSource from "@src/utils/appTextSource";
 import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import StatusPanel from "./StatusPanel";
 import YourSubscriptionPanel from "./YourSubscriptionPanel";
 import { Container } from "./styled";
+import AuthFormContainer from "@src/components/Containers/AuthFormContainer";
+import { authState } from "@src/store/auth";
 
 const ManageSubscriptionScreen = () => {
   const { appLang } = useSelector(settingsState);
   const { heading } =
     appTextSource(appLang).options.manageAccount
       .subscriptionPage;
-
+  const { vip } = useSelector(authState);
+  const expiredOrSoon =
+    vip < Date.now() + 24 * 60 * 60 * 1000 * 7;
   return (
-    <PopUpContainer heading={heading} blockPopToTop={true}>
+    <AuthFormContainer heading={heading}>
       <Container>
         <StatusPanel />
-        <YourSubscriptionPanel />
+        {expiredOrSoon ? <YourSubscriptionPanel /> : null}
       </Container>
-    </PopUpContainer>
+    </AuthFormContainer>
   );
 };
 export default ManageSubscriptionScreen;
