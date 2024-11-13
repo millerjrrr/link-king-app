@@ -23,7 +23,7 @@ interface AuthState {
 const initialState: AuthState = {
   loggedIn: false,
   token: "",
-  trialDays: 7,
+  trialDays: 0,
   subscribed: false,
   subscriptionPrice: "$12.99",
   vip: 4070919600000,

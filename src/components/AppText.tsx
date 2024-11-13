@@ -7,11 +7,13 @@ import { ReactNode } from "react";
 interface AppTextProps {
   style?: TextStyle;
   children: ReactNode;
+  onPress?: () => void;
 }
 
 const AppText: React.FC<AppTextProps> = ({
   style,
   children,
+  onPress,
 }) => {
   const { colorScheme, golden } =
     useSelector(settingsState);
@@ -25,6 +27,7 @@ const AppText: React.FC<AppTextProps> = ({
         color,
         ...style,
       }}
+      onPress={onPress}
       allowFontScaling={false}
     >
       {children}

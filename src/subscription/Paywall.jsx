@@ -9,6 +9,9 @@ import TermsAndConditions from "./TermsAndConditions";
 import useSetSubscriptionPrice from "../hooks/subscriptionHooks/useSetSubscriptionPrice";
 import { authState } from "@src/store/auth";
 import useSubscribe from "../hooks/subscriptionHooks/useSubscribe";
+import AppModal from "@src/components/AppModal";
+import useLogOut from "./../hooks/authHooks/useLogOut";
+import { useState } from "react";
 
 const Paywall = () => {
   const subscribe = useSubscribe();
@@ -20,6 +23,16 @@ const Paywall = () => {
   useSetSubscriptionPrice();
   const { subscriptionPrice, busy } =
     useSelector(authState);
+
+  // LogOutModal Logic
+  const [isModalVisible, setIsModalVisible] =
+    useState(false);
+  const logOut = useLogOut();
+  const logOutNow = async () => {
+    await logOut();
+    setIsModalVisible(false);
+  };
+  const { name } = appTextSource(appLang).options.logOut;
 
   return (
     <AuthFormContainer
@@ -43,8 +56,7 @@ const Paywall = () => {
       </ScrollView>
       <View
         style={{
-          marginTop: 10,
-          marginBottom: 40,
+          marginVertical: 10,
           width: "100%",
         }}
       >
@@ -57,7 +69,19 @@ const Paywall = () => {
           onPress={subscribe}
         />
         <TermsAndConditions />
+        <AppText
+          onPress={() => setIsModalVisible(true)}
+          style={{ fontSize: 12 }}
+        >
+          {name}
+        </AppText>
       </View>
+      <AppModal
+        isVisible={isModalVisible}
+        onBackdropPress={() => setIsModalVisible(false)}
+        modalName={"logOut"}
+        onPress={logOutNow}
+      />
     </AuthFormContainer>
   );
 };

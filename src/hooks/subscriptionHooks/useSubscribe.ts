@@ -2,6 +2,7 @@ import Purchases from "react-native-purchases";
 import {
   refreshPage,
   updateBusyState,
+  updateSubscribed,
 } from "@src/store/auth";
 import { useDispatch } from "react-redux";
 import configurePurchases from "../../utils/configurePurchases";
@@ -28,7 +29,7 @@ const useSubscribe = () => {
 
       await Purchases.purchasePackage(packageToPurchase);
 
-      dispatch(refreshPage());
+      dispatch(updateSubscribed(true));
     } finally {
       dispatch(updateBusyState(false));
     }

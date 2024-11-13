@@ -31,9 +31,9 @@ const useManageModals = () => {
       dispatch(updateModals({ showWelcomeModal: true }));
       await saveToAsyncStorage("first-time", "no");
     } else if (
-      !(vip > Date.now()) &&
+      vip < Date.now() &&
       !subscribed &&
-      trialDays >= 0
+      trialDays > 0
     )
       dispatch(
         updateModals({ showTrialNoticeModal: true }),
@@ -56,7 +56,6 @@ const useManageModals = () => {
 
   // 3. Run on AppState Change
   useEffect(() => {
-    checkAndShowModal(); // Run on app load
     const subscription = AppState.addEventListener(
       "change",
       (nextAppState) => {
@@ -72,6 +71,12 @@ const useManageModals = () => {
 
     return () => subscription.remove();
   }, [appState]);
+
+  // 4. Run on app load
+  useEffect(() => {
+    fetchAuthInfo();
+    checkAndShowModal();
+  }, []);
 };
 
 export default useManageModals;
