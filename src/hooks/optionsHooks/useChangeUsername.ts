@@ -21,7 +21,7 @@ const useChangeUsername = () => {
 
   const changeUsername = catchAsync(
     async (username: string) => {
-      // console.log("# Changing username");
+      console.log("# Changing username");
       const message =
         appTextSource(appLang).options.manageAccount
           .usernameUpdated;

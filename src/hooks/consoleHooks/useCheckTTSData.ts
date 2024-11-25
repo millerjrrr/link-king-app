@@ -12,7 +12,7 @@ const useCheckTTSData = () => {
 
   const checkTTSData = catchAsync(async () => {
     if (Platform.OS === "android" && language !== "") {
-      // console.log("# ..checking ", language);
+      console.log("# ..checking ", language);
       const code = language.slice(0, 2);
       const languages =
         await Speech.getAvailableVoicesAsync();

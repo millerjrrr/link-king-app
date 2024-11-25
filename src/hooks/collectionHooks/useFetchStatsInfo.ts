@@ -15,7 +15,7 @@ const useFetchStatsInfo = () => {
   const dispatch = useDispatch();
 
   const fetchStatsInfo = catchAsync(async () => {
-    // console.log("# Fetching stats info");
+    console.log("# Fetching stats info");
     dispatch(updateBusyState(true));
     try {
       const { data } = await clientWithAuth.get(

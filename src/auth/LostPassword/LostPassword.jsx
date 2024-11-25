@@ -33,7 +33,7 @@ const LostPassword = ({ navigation }) => {
   const catchAsync = useCatchAsync();
 
   const onSubmit = catchAsync(async (values, actions) => {
-    // console.log("# Getting new password");
+    console.log("# Getting new password");
     actions.setSubmitting(true);
     try {
       const { data } = await client.post(

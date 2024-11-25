@@ -13,7 +13,7 @@ const useCatchAsync = () => {
 
   const catchAsync = (asyncFunc: AsyncFunction) => {
     return async (...args: Parameters<AsyncFunction>) => {
-      // console.log(`Calling function:`);
+      console.log(`Calling function:`);
       try {
         return await asyncFunc(...args);
       } catch (error) {

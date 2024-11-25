@@ -55,7 +55,7 @@ const useUpdateOptions = () => {
   // options should update every time language changes
 
   useEffect(() => {
-    // console.log("# language change");
+    console.log("# language change");
     checkTTSAndUpdateOptions();
   }, [language]);
 };

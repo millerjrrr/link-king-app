@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import {
   updateBusyState,
+  updateConnectedState,
   updateLoggedInState,
   updateToken,
   updateTrialDays,
@@ -41,29 +42,37 @@ const useFetchAuthInfo = () => {
       return;
     }
 
-    const { data } = await client.get(
-      "/api/v1/users/log-in-confirmation",
-      {
-        headers: {
-          Authorization: "Bearer " + token,
-          "Accept-Language": appLang,
+    try {
+      const { data } = await client.get(
+        "/api/v1/users/log-in-confirmation",
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+            "Accept-Language": appLang,
+          },
+          timeout: 3000,
         },
-        timeout: 3000,
-      },
-    );
+      );
 
-    const { userCreationDate, vip, homeLanguage } = data;
+      const { userCreationDate, vip, homeLanguage } = data;
 
-    if (data.status === "success") {
-      dispatch(updateTrialDays(daysLeft(userCreationDate)));
-      dispatch(updateVip(new Date(vip).getTime() || 0));
-      dispatch(updateBusyState(false));
-      dispatch(updateToken(token));
-      dispatch(updateLoggedInState(true));
-      if (appLang !== homeLanguage) {
-        saveToAsyncStorage("app-lang", homeLanguage);
-        dispatch(updateSettings({ appLang: homeLanguage }));
+      if (data.status === "success") {
+        dispatch(
+          updateTrialDays(daysLeft(userCreationDate)),
+        );
+        dispatch(updateVip(new Date(vip).getTime() || 0));
+        dispatch(updateBusyState(false));
+        dispatch(updateToken(token));
+        dispatch(updateLoggedInState(true));
+        if (appLang !== homeLanguage) {
+          saveToAsyncStorage("app-lang", homeLanguage);
+          dispatch(
+            updateSettings({ appLang: homeLanguage }),
+          );
+        }
       }
+    } catch (e) {
+      dispatch(updateConnectedState(false));
     }
   });
 

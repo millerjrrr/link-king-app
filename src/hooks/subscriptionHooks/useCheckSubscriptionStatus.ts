@@ -19,7 +19,7 @@ const useCheckSubscriptionStatus = () => {
     console.log("# Checking subscription status");
     await fetchAuthInfo();
     if (hasChecked.current) return;
-    //console.log("# Checking subscription status");
+    console.log("# Checking subscription status");
     dispatch(updateBusyState(true));
     await configurePurchases();
     const customerInfo = await Purchases.getCustomerInfo();
