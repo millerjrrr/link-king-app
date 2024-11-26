@@ -12,11 +12,26 @@ import useSubscribe from "../hooks/subscriptionHooks/useSubscribe";
 import AppModal from "@src/components/AppModal";
 import useLogOut from "./../hooks/authHooks/useLogOut";
 import { useState } from "react";
+import styled from "styled-components";
+import { LinearGradient } from "expo-linear-gradient";
+import colors from "@src/utils/colors";
+
+const FadeBackgroundView = styled(LinearGradient)`
+  position: absolute;
+  ${(props) => props.position}:0;
+  width: 100%;
+  height: 30px;
+  z-index: 20;
+  border-radius: 10px;
+`;
 
 const Paywall = () => {
   const subscribe = useSubscribe();
 
-  const { appLang } = useSelector(settingsState);
+  const { appLang, colorScheme } =
+    useSelector(settingsState);
+  const { PRIMARY: backgroundColor } = colors[colorScheme];
+
   const { heading, notice, priceDescription, perYear } =
     appTextSource(appLang).paywall;
 
@@ -36,24 +51,51 @@ const Paywall = () => {
 
   return (
     <AuthFormContainer
-      {...{ heading, back: false, noScrollView: true }}
+      heading={heading}
+      back={false}
+      noScrollView={true}
     >
-      <ScrollView
+      <View
         style={{
-          padding: 5,
-          paddingVertical: 15,
           flex: 1,
         }}
       >
-        <AppText
-          {...{
-            style: { textAlign: "left", fontSize: 20 },
+        <FadeBackgroundView
+          position="top"
+          colors={[
+            backgroundColor,
+            backgroundColor + "E6",
+            backgroundColor + "80",
+            backgroundColor + "00",
+          ]}
+        />
+        <ScrollView
+          style={{
+            padding: 10,
+            paddingVertical: 20,
+            borderRadius: 10,
+            flex: 1,
           }}
         >
-          {notice}
-        </AppText>
-        <View style={{ height: 50 }} />
-      </ScrollView>
+          <AppText
+            {...{
+              style: { textAlign: "left", fontSize: 20 },
+            }}
+          >
+            {notice}
+          </AppText>
+          <View style={{ height: 50 }} />
+        </ScrollView>
+        <FadeBackgroundView
+          position="bottom"
+          colors={[
+            backgroundColor + "00",
+            backgroundColor + "80",
+            backgroundColor + "E6",
+            backgroundColor,
+          ]}
+        />
+      </View>
       <View
         style={{
           marginVertical: 10,

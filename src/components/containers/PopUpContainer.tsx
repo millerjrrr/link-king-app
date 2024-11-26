@@ -20,8 +20,6 @@ import { authState } from "@src/store/auth";
 export const FadeBackgroundView = styled(LinearGradient)`
   position: absolute;
   top: 0;
-  alignitems: center;
-  flexdirection: column;
   width: 100%;
   height: 20px;
   z-index: 20;
