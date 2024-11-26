@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View } from "react-native";
+import { Image, View } from "react-native";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -11,7 +11,8 @@ import { AntDesign } from "@expo/vector-icons";
 import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
-import FlagImage from "../Graphics/FlagImage";
+
+declare function require(path: string): any;
 
 interface LoaderProps {
   size?: number;
@@ -26,6 +27,7 @@ const Loader: React.FC<LoaderProps> = ({
   const loaderColor = color
     ? color
     : colors[colorScheme].CONTRAST[golden];
+  const backgroundColor = colors[colorScheme].SECONDARY;
 
   const initialRotation = useSharedValue(0);
 
@@ -73,9 +75,19 @@ const Loader: React.FC<LoaderProps> = ({
       <View
         style={{
           position: "absolute",
+          borderRadius: 500,
+          backgroundColor,
         }}
       >
-        <FlagImage flag1={"smallCrown"} scale={size / 48} />
+        <Image
+          source={require("@assets/img/link-crown-symbol.png")}
+          style={{
+            tintColor: loaderColor,
+            resizeMode: "contain",
+            height: size * 0.9,
+            aspectRatio: 1,
+          }}
+        />
       </View>
     </View>
   );

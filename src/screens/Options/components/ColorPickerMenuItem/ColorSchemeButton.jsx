@@ -9,18 +9,22 @@ import {
   View,
   StyleSheet,
   TouchableOpacity,
+  Image,
 } from "react-native";
 import { saveToAsyncStorage } from "@src/utils/asyncStorage";
 import appShadow from "@src/utils/appShadow";
 
 const ColorSchemeButton = ({ cs, size = 30 }) => {
-  const backgroundColor = colors[cs].SECONDARY;
   const { colorScheme, golden } =
     useSelector(settingsState);
   const color = colors[colorScheme].CONTRAST[golden];
   const dispatch = useDispatch();
 
-  const statusBarColor = colors[cs].STATUSBAR;
+  const {
+    STATUSBAR: statusBarColor,
+    SECONDARY: backgroundColor,
+    CONTRAST,
+  } = colors[cs];
 
   const onPress = () => {
     saveToAsyncStorage("color-scheme", cs);
@@ -41,7 +45,17 @@ const ColorSchemeButton = ({ cs, size = 30 }) => {
             backgroundColor,
           },
         ]}
-      />
+      >
+        <Image
+          source={require("@assets/img/link-crown-symbol.png")}
+          style={{
+            tintColor: CONTRAST[0],
+            resizeMode: "contain",
+            height: size * 0.7,
+            aspectRatio: 1,
+          }}
+        />
+      </TouchableOpacity>
     </View>
   );
 };
