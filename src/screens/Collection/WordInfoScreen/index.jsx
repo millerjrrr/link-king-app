@@ -18,7 +18,11 @@ import {
   updateWordDeleteButtonPressed,
 } from "@src/store/collection";
 import { useFocusEffect } from "@react-navigation/native";
-import { updateModals } from "@src/store/modals";
+import {
+  modalState,
+  updateModals,
+} from "@src/store/modals";
+import AppModal from "@src/components/AppModal";
 
 const WordInfoScreen = ({ route }) => {
   const { ticket, wrongAnswerReturned } = route.params;
@@ -56,6 +60,21 @@ const WordInfoScreen = ({ route }) => {
     }, [dispatch]),
   );
 
+  const { showDefinitionInWebViewModal } =
+    useSelector(modalState);
+
+  const modalProps = {
+    isVisible: showDefinitionInWebViewModal,
+    webView: true,
+    onBackdropPress: () => {
+      dispatch(
+        updateModals({
+          showDefinitionInWebViewModal: false,
+        }),
+      );
+    },
+    info: true,
+  };
   return (
     <PopUpContainer {...{ heading, blockPopToTop: true }}>
       <BloodRedCover />
@@ -72,6 +91,7 @@ const WordInfoScreen = ({ route }) => {
         ) : (
           <DeleteButton ticketId={ticket.id} />
         )}
+        <AppModal {...modalProps} />
       </BusyWrapper>
     </PopUpContainer>
   );

@@ -1,5 +1,10 @@
 import React from "react";
-import { FlatList, View, StyleSheet } from "react-native";
+import {
+  FlatList,
+  View,
+  StyleSheet,
+  Text,
+} from "react-native";
 import WordCard from "./WordCard";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -10,6 +15,7 @@ import Loader from "@src/components/Loader";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import AppText from "@src/components/AppText";
+import PlusButton from "./WordCard/PlusButton";
 
 const ListFooterComponent = () => {
   const { allDataLoaded } = useSelector(collectionState);
@@ -40,10 +46,12 @@ const WordCollectionList = ({ navigation }) => {
   ) : (
     <>
       <FlatList
-        data={tickets}
+        data={["plusButton", ...tickets]}
         renderItem={({ item }) => {
           // must be called item for FlatList to work
-          return (
+          return item === "plusButton" ? (
+            <PlusButton />
+          ) : (
             <WordCard {...{ navigation, ticket: item }} />
           );
         }}
