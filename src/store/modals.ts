@@ -11,6 +11,9 @@ interface ModalState {
   showWelcomeModal: boolean;
   showTrialNoticeModal: boolean;
   showMissingTTSModal: boolean;
+  showDefinitionInWebViewModal: boolean;
+  definitionSearchWord: string;
+  definitionSearchLanguage: string;
 }
 
 const initialState: ModalState = {
@@ -20,6 +23,9 @@ const initialState: ModalState = {
   showWelcomeModal: false,
   showTrialNoticeModal: false,
   showMissingTTSModal: false,
+  showDefinitionInWebViewModal: false,
+  definitionSearchWord: "",
+  definitionSearchLanguage: "",
 };
 
 const slice = createSlice({

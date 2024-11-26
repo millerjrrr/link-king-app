@@ -1,4 +1,4 @@
-import { Linking, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import PopUpContainer from "@src/components/Containers/PopUpContainer";
 import React, { useCallback } from "react";
@@ -18,6 +18,7 @@ import {
   updateWordDeleteButtonPressed,
 } from "@src/store/collection";
 import { useFocusEffect } from "@react-navigation/native";
+import { updateModals } from "@src/store/modals";
 
 const WordInfoScreen = ({ route }) => {
   const { ticket, wrongAnswerReturned } = route.params;
@@ -25,16 +26,23 @@ const WordInfoScreen = ({ route }) => {
   const {
     gamePlay: { speechLang },
   } = useSelector(selectConsoleState);
-  const languageCode = speechLang.slice(0, 2);
-  const url = `https://www.google.com/search?q=define+${ticket.target}&hl=${languageCode}`;
-  const onPress = () => Linking.openURL(url);
+  const definitionSearchLanguage = speechLang.slice(0, 2);
+  const dispatch = useDispatch();
+
+  const onPress = () =>
+    dispatch(
+      updateModals({
+        showDefinitionInWebViewModal: true,
+        definitionSearchWord: ticket.target,
+        definitionSearchLanguage,
+      }),
+    );
 
   const { busy, wordDeleteButtonPressed } =
     useSelector(collectionState);
 
   const { heading } =
     appTextSource(appLang).console.targetDetails;
-  const dispatch = useDispatch();
 
   useFocusEffect(
     useCallback(() => {

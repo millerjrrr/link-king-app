@@ -5,6 +5,8 @@ import {
   modalState,
   updateModals,
 } from "@src/store/modals";
+import Modal from "react-native-modal";
+import { Text } from "react-native";
 
 const ConsoleModals = () => {
   const { trialDays } = useSelector(authState);
@@ -12,6 +14,7 @@ const ConsoleModals = () => {
     showWelcomeModal,
     showTrialNoticeModal,
     showMissingTTSModal,
+    showDefinitionInWebViewModal,
   } = useSelector(modalState);
 
   const dispatch = useDispatch();
@@ -54,6 +57,18 @@ const ConsoleModals = () => {
         dispatch(
           updateModals({
             showMissingTTSModal: false,
+          }),
+        );
+      },
+      info: true,
+    },
+    {
+      isVisible: showDefinitionInWebViewModal,
+      webView: true,
+      onBackdropPress: () => {
+        dispatch(
+          updateModals({
+            showDefinitionInWebViewModal: false,
           }),
         );
       },

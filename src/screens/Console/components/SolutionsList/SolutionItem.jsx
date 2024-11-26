@@ -1,5 +1,5 @@
-import { Linking, TouchableOpacity } from "react-native";
-import { useSelector } from "react-redux";
+import { TouchableOpacity } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 import colors from "@src/utils/colors";
 import { settingsState } from "@src/store/settings";
 import appShadow from "@src/utils/appShadow";
@@ -10,6 +10,7 @@ import {
 } from "@react-navigation/native";
 import { useEffect, useState } from "react";
 import { selectConsoleState } from "@src/store/console";
+import { updateModals } from "@src/store/modals";
 
 const SolutionItem = ({
   solution,
@@ -32,8 +33,6 @@ const SolutionItem = ({
 
   const navigation = useNavigation();
 
-  const url = `https://www.google.com/search?q=define+${solution}&hl=${languageCode}`;
-
   const [popToTop, setPopToTop] = useState(true);
 
   useEffect(() => {
@@ -50,6 +49,8 @@ const SolutionItem = ({
     }
   }, [navigation, popToTop]);
 
+  const dispatch = useDispatch();
+
   const onPress = ticket
     ? () => {
         setPopToTop(false);
@@ -58,7 +59,14 @@ const SolutionItem = ({
           target,
         });
       }
-    : () => Linking.openURL(url);
+    : () =>
+        dispatch(
+          updateModals({
+            showDefinitionInWebViewModal: true,
+            definitionSearchWord: solution,
+            definitionSearchLanguage: languageCode,
+          }),
+        );
 
   return (
     <TouchableOpacity
