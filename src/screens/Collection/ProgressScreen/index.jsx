@@ -15,6 +15,7 @@ import ShareButton from "./ShareButton";
 import CongratsAndName from "./CongratsAndName";
 import ViewShot from "react-native-view-shot";
 import useFetchStatsInfo from "@src/hooks/collectionHooks/useFetchStatsInfo";
+import BottomShadow from "./BottomShadow";
 
 const ProgressScreen = () => {
   const { busy } = useSelector(statsState);
@@ -53,6 +54,7 @@ const ProgressScreen = () => {
           <CongratsAndName />
           <RatingCircle />
         </StatsPanel>
+        <BottomShadow />
       </ViewShot>
     </BusyWrapper>
   );

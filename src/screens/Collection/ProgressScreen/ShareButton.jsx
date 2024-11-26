@@ -19,7 +19,7 @@ const ShareButton = ({ shareRef }) => {
   const { challenge } =
     appTextSource(appLang).collection.progressScreen;
 
-  const message = challenge + "\nhttps://www.linkoking.com";
+  const message = challenge + " https://link-king.com";
 
   const catchAsync = useCatchAsync();
 
