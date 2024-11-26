@@ -17,8 +17,6 @@ import useOnKeyboardClose from "@src/hooks/consoleHooks/useEffects/useOnKeyboard
 import useHandleAppBackgroundExit from "../../hooks/consoleHooks/useEffects/useHandleAppBackgroundExit";
 import useUpdateOptions from "@src/hooks/consoleHooks/useEffects/useUpdateOptions";
 import ConsoleModals from "./components/ConsoleModals";
-import WebView from "react-native-webview";
-import { Modal } from "react-native";
 
 const Console = ({ navigation }) => {
   const inputFieldRef = useRef(null);
@@ -59,12 +57,6 @@ const Console = ({ navigation }) => {
         inputFieldRef={inputFieldRef}
         isKeyboardVisible={isKeyboardVisible}
       />
-      {/* <Modal>
-        <WebView
-          style={{ flex: 1 }}
-          source={{ uri: "https://link-king.com" }}
-        />
-      </Modal> */}
       <ConsoleModals />
     </InnerTabContainer>
   );

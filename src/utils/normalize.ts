@@ -47,10 +47,7 @@ export const normalize = (inputString: string) => {
         accentsMap[matched as AccentedChar] || matched,
     )
     .replace(/[^a-zA-Z0-9]/g, " ")
-    .replace(
-      /(?:to |the |a |an |de |para |á |o |um |uma )/g,
-      "",
-    )
+    .replace(/\b(?:to|the|a|an|de|para|á|o|um|uma)\b/g, "")
     .replace(/ /g, "")
     .replace(/nt/g, "not")
     .replace(/(as?|os?)\b$/, "o");

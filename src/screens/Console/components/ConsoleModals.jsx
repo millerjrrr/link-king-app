@@ -5,8 +5,6 @@ import {
   modalState,
   updateModals,
 } from "@src/store/modals";
-import Modal from "react-native-modal";
-import { Text } from "react-native";
 
 const ConsoleModals = () => {
   const { trialDays } = useSelector(authState);
