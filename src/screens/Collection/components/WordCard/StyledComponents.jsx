@@ -21,6 +21,13 @@ export const InfoContainer = styled(TouchableOpacity)`
   margin-horizontal: 15px;
 `;
 
+export const InfoContainerView = styled(View)`
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-horizontal: 15px;
+`;
+
 export const IconContainer = styled(TouchableOpacity)`
   margin: 0 10px 0 15px;
   justify-content: center;
@@ -34,7 +41,6 @@ export const RowContainer = styled(View)`
 `;
 
 export const Title = styled(AppText)`
-  height: 40px;
   font-size: ${(props) => props.fontSize}px;
   font-weight: bold;
   align-items: flex-start;
@@ -43,6 +49,7 @@ export const Title = styled(AppText)`
 `;
 
 export const Rating = styled(AppText)`
+  padding: 0;
   font-size: 20px;
   color: ${(props) => props.color};
 `;

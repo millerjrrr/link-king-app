@@ -17,6 +17,7 @@ const SolutionItem = ({
   red,
   ticket,
   target,
+  edit,
 }) => {
   const { colorScheme, golden, appLang } =
     useSelector(settingsState);
@@ -52,13 +53,24 @@ const SolutionItem = ({
   const dispatch = useDispatch();
 
   const onPress = ticket
-    ? () => {
-        setPopToTop(false);
-        navigation.navigate("EditTicketScreen", {
-          ticket,
-          target,
-        });
-      }
+    ? edit
+      ? () => {
+          dispatch(
+            updateModals({ showNewWordAddedModal: false }),
+          );
+          setPopToTop(false);
+          navigation.navigate("EditTicketScreen", {
+            ticket,
+            target,
+          });
+        }
+      : () => {
+          setPopToTop(false);
+          navigation.navigate("EditTicketScreen", {
+            ticket,
+            target,
+          });
+        }
     : () =>
         dispatch(
           updateModals({

@@ -2,6 +2,7 @@ import colors from "@src/utils/colors";
 import { useDispatch, useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import {
+  NewWordFooter,
   NewWordHeader,
   NewWordModalContainer,
   XBarContainer,
@@ -26,7 +27,7 @@ const NewWordAddedModal = ({ x }) => {
 
   const { showDefinitionInWebViewModal, ticket } =
     useSelector(modalState);
-  const { newWordAdded } =
+  const { wordAdded } =
     appTextSource(appLang).collection
       .dictionaryLookupScreen;
 
@@ -53,10 +54,10 @@ const NewWordAddedModal = ({ x }) => {
       <XBarContainer onPress={x}>
         <AntDesign name="close" size={24} color={color} />
       </XBarContainer>
-      <NewWordHeader>{newWordAdded}</NewWordHeader>
+      <NewWordHeader>{wordAdded}</NewWordHeader>
       <WordCard {...{ ticket, onPress }} />
       <AcceptedAnswers />
-      <SolutionsList {...{ ticket }} />
+      <SolutionsList {...{ ticket, edit: true }} />
       <AppModal
         {...{
           isVisible: showDefinitionInWebViewModal,

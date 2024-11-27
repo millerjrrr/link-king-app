@@ -1,8 +1,8 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   Container,
   IconContainer,
-  InfoContainer,
+  InfoContainerView,
   Rating,
   RowContainer,
   Title,
@@ -10,10 +10,10 @@ import {
 import { settingsState } from "@src/store/settings";
 import colors from "@src/utils/colors";
 import { Entypo } from "@expo/vector-icons";
-import { updateModals } from "@src/store/modals";
+import useAddNewWord from "@src/hooks/collectionHooks/useAddNewWord";
 
 const DictionaryLookupCard = ({ dictEntry }) => {
-  const { target, rating, id } = dictEntry;
+  const { target, rating, _id: id } = dictEntry;
   const { colorScheme, golden } =
     useSelector(settingsState);
   const { CONTRAST, SECONDARY } = colors[colorScheme];
@@ -24,16 +24,17 @@ const DictionaryLookupCard = ({ dictEntry }) => {
       ? (scale * 10) / (10 + (target.length - 10) * 0.7)
       : scale;
 
-  const dispatch = useDispatch();
-  const addWord = () =>
-    dispatch(updateModals({ showNewWordAddedModal: true }));
+  const addNewWord = useAddNewWord();
+  const addWord = () => {
+    addNewWord(id);
+  };
 
   return (
     <Container
       color={CONTRAST[golden]}
       backgroundColor={SECONDARY}
     >
-      <InfoContainer>
+      <InfoContainerView>
         <RowContainer>
           <Title
             color={CONTRAST[golden]}
@@ -45,7 +46,7 @@ const DictionaryLookupCard = ({ dictEntry }) => {
             {Math.round(rating)}
           </Rating>
         </RowContainer>
-      </InfoContainer>
+      </InfoContainerView>
       <IconContainer
         onPress={addWord}
         style={{ width: 30 }}

@@ -10,6 +10,8 @@ import {
   modalState,
   updateModals,
 } from "@src/store/modals";
+import BusyWrapper from "@src/components/Loader/BusyWrapper";
+import { dictionaryLookupState } from "@src/store/dictionaryLookup";
 
 const DictionaryLookupScreen = () => {
   useFetchDictEntries();
@@ -20,13 +22,16 @@ const DictionaryLookupScreen = () => {
       .dictionaryLookupScreen;
 
   const { showNewWordAddedModal } = useSelector(modalState);
+  const { busy } = useSelector(dictionaryLookupState);
 
   const dispatch = useDispatch();
 
   return (
-    <PopUpContainer heading={heading}>
+    <PopUpContainer heading={heading} blockPopToTop={true}>
       <DictionaryLookupSearchbar />
-      <DictionaryLookupList />
+      <BusyWrapper busy={busy}>
+        <DictionaryLookupList />
+      </BusyWrapper>
       <AppModal
         {...{
           isVisible: showNewWordAddedModal,

@@ -1,11 +1,8 @@
 import { ScrollView, View } from "react-native";
-import { useSelector } from "react-redux";
 import SolutionItem from "./SolutionItem";
 import HorizontalScrollFade from "./HorizonatalScrollFade";
-import { settingsState } from "@src/store/settings";
-import colors from "@src/utils/colors";
 
-const SolutionsList = ({ ticket, plus }) => {
+const SolutionsList = ({ ticket, plus, edit }) => {
   const { solutions, target } = ticket;
 
   return (
@@ -26,13 +23,14 @@ const SolutionsList = ({ ticket, plus }) => {
             alignItems: "center",
           }}
         >
-          {plus ? (
+          {plus || edit ? (
             <SolutionItem
               key="+"
               {...{
                 solution: "+",
                 ticket,
                 target,
+                edit,
               }}
             />
           ) : null}
