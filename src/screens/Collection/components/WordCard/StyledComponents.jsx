@@ -21,6 +21,11 @@ export const InfoContainer = styled(TouchableOpacity)`
   margin-horizontal: 15px;
 `;
 
+export const IconContainer = styled(TouchableOpacity)`
+  margin: 0 10px 0 15px;
+  justify-content: center;
+`;
+
 export const RowContainer = styled(View)`
   width: 100%;
   flex-direction: row;
@@ -33,6 +38,7 @@ export const Title = styled(AppText)`
   font-size: ${(props) => props.fontSize}px;
   font-weight: bold;
   align-items: flex-start;
+  justify-content: center;
   color: ${(props) => props.color};
 `;
 

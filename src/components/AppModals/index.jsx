@@ -10,11 +10,13 @@ import {
 } from "./StyledCompontents";
 import ModalButton from "./ModalButton";
 import DefinitionInWebViewModal from "./DefinitionInWebViewModal";
+import NewWordAddedModal from "./NewWordAddedModal";
 
 const AppModal = ({
   isVisible,
   info,
   webView,
+  newWordAdded,
   modalName,
   videoId,
   variable,
@@ -54,6 +56,8 @@ const AppModal = ({
 
         {webView ? (
           <DefinitionInWebViewModal x={onBackdropPress} />
+        ) : newWordAdded ? (
+          <NewWordAddedModal x={onBackdropPress} />
         ) : (
           <ModalText color={color}>
             {modalMessage +
@@ -71,7 +75,7 @@ const AppModal = ({
             onPress={onPress}
           />
         )}
-        {webView ? null : (
+        {webView || newWordAdded ? null : (
           <ModalButton
             title={cancel}
             color={color}

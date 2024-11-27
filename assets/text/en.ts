@@ -125,6 +125,16 @@ const en: AppText = {
       failedResponse:
         "...something went wrong 😣 please check your internet connection and try again...",
     },
+    dictionaryLookupScreen: {
+      heading: "Add New Words",
+      searchMessage: "Search Dictionary",
+      searchDictionary:
+        "Here you can add more words from our rated dictionary.",
+      noResults: "No results containing these letters",
+      reminder:
+        "Remember that for efficiency we do not include variations of the same word and some words may not be available. If you feel a word should be included but isn't please contact us.",
+      wordAdded: "New word added to collection:",
+    },
   },
   options: {
     heading: "Options",

@@ -7,7 +7,7 @@ import { collectionState } from "@src/store/collection";
 import BusyWrapper from "@src/components/Loader/BusyWrapper";
 import appTextSource from "@src/utils/appTextSource";
 import { settingsState } from "@src/store/settings";
-import AppModal from "@src/components/AppModal";
+import AppModal from "@src/components/AppModals";
 import useFetchTickets from "@src/hooks/collectionHooks/useFetchTickets";
 import {
   modalState,

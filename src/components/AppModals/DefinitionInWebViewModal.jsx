@@ -17,31 +17,6 @@ const DefinitionInWebViewModal = ({ x }) => {
   const { definitionSearchWord, definitionSearchLanguage } =
     useSelector(modalState);
 
-  const injectedCSS = `
-    body {
-      background-color: #121212 !important;
-      color: #ffffff !important;
-    }
-    a {
-      color: #1e90ff !important;
-    }
-    input, textarea {
-      background-color: #333333 !important;
-      color: #ffffff !important;
-    }
-    header, footer {
-      background-color: #121212 !important;
-    }
-  `;
-
-  const injectedJavaScript = `
-    const style = document.createElement('style');
-    style.type = 'text/css';
-    style.innerHTML = \`${injectedCSS}\`;
-    document.head.appendChild(style);
-    true; // Signal that the script ran successfully
-  `;
-
   return (
     <WebViewContainer>
       <XBarContainer onPress={x}>
@@ -52,7 +27,6 @@ const DefinitionInWebViewModal = ({ x }) => {
         source={{
           uri: `https://www.google.com/search?q=define+${definitionSearchWord}&hl=${definitionSearchLanguage}&theme=dark`,
         }}
-        injectedJavaScript={injectedJavaScript}
       />
     </WebViewContainer>
   );

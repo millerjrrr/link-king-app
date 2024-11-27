@@ -27,6 +27,18 @@ export const WebViewContainer = styled(View)`
   width: 100%;
 `;
 
+export const NewWordModalContainer = styled(View)`
+  padding-horizontal: 5px;
+  padding-vertical: 10px;
+  border-radius: 10px;
+  width: 100%;
+`;
+
+export const NewWordHeader = styled(AppText)`
+  font-size: 25px;
+  padding-bottom: 10px;
+`;
+
 export const XBarContainer = styled(TouchableOpacity)`
   padding-bottom: 5px;
   align-items: flex-end;

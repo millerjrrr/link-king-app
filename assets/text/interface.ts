@@ -82,6 +82,15 @@ interface CollectionWordInfoScreen {
   failedResponse: string;
 }
 
+interface CollectionDictionaryLookupScreen {
+  heading: string;
+  searchMessage: string;
+  searchDictionary: string;
+  noResults: string;
+  reminder: string;
+  wordAdded: string;
+}
+
 interface Collection {
   heading: string;
   searchMessage: string;
@@ -91,6 +100,7 @@ interface Collection {
   statistics: CollectionStatistics;
   progressScreen: CollectionProgressScreen;
   wordInfoScreen: CollectionWordInfoScreen;
+  dictionaryLookupScreen: CollectionDictionaryLookupScreen;
 }
 
 interface OptionsSetDailyGoal {

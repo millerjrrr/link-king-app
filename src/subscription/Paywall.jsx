@@ -9,7 +9,7 @@ import TermsAndConditions from "./TermsAndConditions";
 import useSetSubscriptionPrice from "../hooks/subscriptionHooks/useSetSubscriptionPrice";
 import { authState } from "@src/store/auth";
 import useSubscribe from "../hooks/subscriptionHooks/useSubscribe";
-import AppModal from "@src/components/AppModal";
+import AppModal from "@src/components/AppModals";
 import useLogOut from "./../hooks/authHooks/useLogOut";
 import { useState } from "react";
 import styled from "styled-components";

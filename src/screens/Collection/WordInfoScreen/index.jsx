@@ -22,7 +22,7 @@ import {
   modalState,
   updateModals,
 } from "@src/store/modals";
-import AppModal from "@src/components/AppModal";
+import AppModal from "@src/components/AppModals";
 
 const WordInfoScreen = ({ route }) => {
   const { ticket, wrongAnswerReturned } = route.params;

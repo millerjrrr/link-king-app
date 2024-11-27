@@ -4,7 +4,7 @@ import colors from "@src/utils/colors";
 import { useDispatch, useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import { useState } from "react";
-import AppModal from "../../../../components/AppModal";
+import AppModal from "../../../../components/AppModals";
 import useFetchConsoleInfo from "@src/hooks/consoleHooks/useFetchConsoleInfo";
 
 const RepeatRepeatsIcon = ({

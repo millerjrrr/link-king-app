@@ -4,7 +4,7 @@ import { useState } from "react";
 import OptionsMenuItemContainer from "./OptionsMenuItemContainer";
 import { updateNotification } from "@src/store/notification";
 import appTextSource from "@src/utils/appTextSource";
-import AppModal from "@src/components/AppModal";
+import AppModal from "@src/components/AppModals";
 import MenuItemLink from "./MenuItemLink";
 import { settingsState } from "@src/store/settings";
 import useLogOut from "@src/hooks/authHooks/useLogOut";

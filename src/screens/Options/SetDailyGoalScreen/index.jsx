@@ -16,7 +16,7 @@ import colors from "@src/utils/colors";
 import appTextSource from "@src/utils/appTextSource";
 import PopUpContainer from "@src/components/Containers/PopUpContainer";
 import AppText from "@src/components/AppText";
-import AppModal from "@src/components/AppModal";
+import AppModal from "@src/components/AppModals";
 import ScrollSelector from "./ScrollSelector";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { saveToAsyncStorage } from "@src/utils/asyncStorage";

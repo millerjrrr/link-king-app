@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import authReducer from "./auth";
 import collectionReducer from "./collection";
+import dictionaryLookupReducer from "./dictionaryLookup";
 import settingsReducer from "./settings";
 import consoleReducer from "./console";
 import notificationReducer from "./notification";
@@ -12,6 +13,7 @@ import modalsReducer from "./modals";
 const rootReducer = combineReducers({
   auth: authReducer,
   collection: collectionReducer,
+  dictionaryLookup: dictionaryLookupReducer,
   console: consoleReducer,
   notification: notificationReducer,
   settings: settingsReducer,

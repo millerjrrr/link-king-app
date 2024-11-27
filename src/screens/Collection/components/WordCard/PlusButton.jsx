@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
 import {
@@ -7,13 +7,16 @@ import {
 } from "./StyledComponents";
 import { settingsState } from "@src/store/settings";
 import { Entypo } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
-const PlusButton = ({ navigation, ticket, onPress }) => {
+const PlusButton = () => {
   const { colorScheme, golden } =
     useSelector(settingsState);
   const { CONTRAST, SECONDARY } = colors[colorScheme];
 
-  const addNewWord = () => console.log("add new word");
+  const navigation = useNavigation();
+  const addNewWord = () =>
+    navigation.navigate("DictionaryLookupScreen");
 
   return (
     <Container

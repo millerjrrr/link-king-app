@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import AppModal from "@src/components/AppModal";
+import AppModal from "@src/components/AppModals";
 import { authState } from "@src/store/auth";
 import {
   modalState,

@@ -55,7 +55,7 @@ const WordCollectionList = ({ navigation }) => {
             <WordCard {...{ navigation, ticket: item }} />
           );
         }}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id || "plusButton"}
         style={styles.flatList}
         onEndReached={() => {
           if (!allDataLoaded)

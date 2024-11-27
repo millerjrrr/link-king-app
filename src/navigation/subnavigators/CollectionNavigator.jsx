@@ -9,6 +9,7 @@ import EditTicketScreen from "@src/screens/Collection/WordInfoScreen/EditTicketS
 import Collection from "@src/screens/Collection";
 import StatsScreen from "@src/screens/Collection/StatsScreen";
 import ProgressScreen from "@src/screens/Collection/ProgressScreen";
+import DictionaryLookupScreen from "@src/screens/Collection/DictionaryLookupScreen";
 
 const CollectionStack = createStackNavigator();
 
@@ -39,6 +40,10 @@ const CollectionNavigator = () => {
       <CollectionStack.Screen
         name="ProgressScreen"
         component={ProgressScreen}
+      />
+      <CollectionStack.Screen
+        name="DictionaryLookupScreen"
+        component={DictionaryLookupScreen}
       />
       <CollectionStack.Screen
         name="DictionarySelectionScreen"
