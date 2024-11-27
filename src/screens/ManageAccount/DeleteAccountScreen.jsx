@@ -52,7 +52,7 @@ const DeleteAccountScreen = () => {
   };
 
   return (
-    <PopUpContainer {...{ heading, blockPopToTop: true }}>
+    <PopUpContainer {...{ heading }}>
       <ScrollView
         contentContainerStyle={{ height: "100%" }}
       >

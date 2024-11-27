@@ -1,3 +1,6 @@
+import { NavigationProp } from "@react-navigation/native";
+import type { StackNavigationProp } from "@react-navigation/stack";
+
 interface Ticket {
   id: string;
   target?: string;
@@ -7,7 +10,7 @@ interface Ticket {
 }
 
 // CONSOLE
-export type ConsoleStackParamList = {
+export type ConsoleStackParamList = StackNavigationProp<{
   ConsoleStackScreen: undefined;
   WordInfoScreen: {
     ticket: Ticket;
@@ -20,10 +23,10 @@ export type ConsoleStackParamList = {
   HelpScreen: undefined;
   ProgressScreen: undefined;
   DictionarySelectionScreen: undefined;
-};
+}>;
 
 // COLLECTION
-export type CollectionStackParamList = {
+export type CollectionStackParamList = StackNavigationProp<{
   WordsCollection: undefined;
   WordInfoScreen: {
     ticket: Ticket;
@@ -33,29 +36,31 @@ export type CollectionStackParamList = {
   StatsScreen: undefined;
   ProgressScreen: undefined;
   DictionarySelectionScreen: undefined;
-};
+  DictionaryLookupScreen: undefined;
+}>;
 
 // OPTIONS
-export type OptionsStackParamList = {
+export type OptionsStackParamList = StackNavigationProp<{
   OptionsStackScreen: undefined;
   SetDailyGoalScreen: undefined;
   DictionarySelectionScreen: undefined;
   ManageAccountNavigator: undefined;
-};
+}>;
 
 // MANAGE ACCOUNT
-export type ManageAccountStackParamList = {
-  ManageAccountScreen: undefined;
-  ChangeNameScreen: undefined;
-  ManageSubscriptionScreen: undefined;
-  ChangeHomeLanguageWarningScreen: undefined;
-  ChangeHomeLanguageScreen: undefined;
-  SelectNewHomeLanguageScreen: undefined;
-  DeleteAccountScreen: undefined;
-};
+export type ManageAccountStackParamList =
+  StackNavigationProp<{
+    ManageAccountScreen: undefined;
+    ChangeNameScreen: undefined;
+    ManageSubscriptionScreen: undefined;
+    ChangeHomeLanguageWarningScreen: undefined;
+    ChangeHomeLanguageScreen: undefined;
+    SelectNewHomeLanguageScreen: undefined;
+    DeleteAccountScreen: undefined;
+  }>;
 
 // AUTH
-export type AuthStackParamList = {
+export type AuthStackParamList = StackNavigationProp<{
   Welcome: undefined;
   SignIn: undefined;
   Name: undefined;
@@ -64,4 +69,4 @@ export type AuthStackParamList = {
   VerificationCode: undefined;
   LostPassword: undefined;
   CheckYourEmail: undefined;
-};
+}>;

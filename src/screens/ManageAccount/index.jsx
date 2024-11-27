@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import ManageAccountMenuItem from "./components/ManageAccountMenuItem";
 import { authState } from "@src/store/auth";
-import InnerTabContainer from "@src/components/Containers/InnerTabContainer";
+import TabScreenContainer from "@src/components/Containers/TabScreenContainer";
 import useUpdateAccountDetails from "../../hooks/manageAccountHooks/useUpdateAccountDetails";
 import { ScrollView } from "react-native";
 
@@ -61,7 +61,7 @@ const ManageAccountScreen = ({ navigation }) => {
   };
 
   return (
-    <InnerTabContainer
+    <TabScreenContainer
       heading={heading}
       backFunction={() => navigation.navigate("Options")}
       noBook={true}
@@ -71,7 +71,7 @@ const ManageAccountScreen = ({ navigation }) => {
       <ManageAccountMenuItem {...props.subscription} />
       <ManageAccountMenuItem {...props.homeLanguage} />
       <ManageAccountMenuItem {...props.deleteAccount} />
-    </InnerTabContainer>
+    </TabScreenContainer>
   );
 };
 

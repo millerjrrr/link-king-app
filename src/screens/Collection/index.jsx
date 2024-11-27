@@ -1,4 +1,4 @@
-import InnerTabContainer from "@src/components/Containers/InnerTabContainer";
+import TabScreenContainer from "@src/components/Containers/TabScreenContainer";
 import WordCollectionList from "./components/WordCollectionList";
 import { useState } from "react";
 import SearchBarContainer from "./components/SearchBarContainer";
@@ -13,8 +13,10 @@ import {
   modalState,
   updateModals,
 } from "@src/store/modals";
+import usePopToTop from "@src/hooks/usePopToTop";
 
 const Collection = ({ navigation }) => {
+  usePopToTop();
   const { tickets, busy } = useSelector(collectionState);
   const { appLang } = useSelector(settingsState);
   const { showCollectionInfoModal } =
@@ -50,7 +52,7 @@ const Collection = ({ navigation }) => {
   };
 
   return (
-    <InnerTabContainer
+    <TabScreenContainer
       heading={heading}
       help={help}
       dictionarySettings={dictionarySettings}
@@ -63,7 +65,7 @@ const Collection = ({ navigation }) => {
         />
       </BusyWrapper>
       <AppModal {...modalProps} />
-    </InnerTabContainer>
+    </TabScreenContainer>
   );
 };
 

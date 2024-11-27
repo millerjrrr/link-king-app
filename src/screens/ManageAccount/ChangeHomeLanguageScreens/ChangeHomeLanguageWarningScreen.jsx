@@ -19,9 +19,7 @@ const ChangeHomeLanguageWarningScreen = () => {
   } = appTextSource(appLang).options.manageAccount;
 
   return (
-    <PopUpContainer
-      {...{ heading, blockPopToTop: true, padding: 15 }}
-    >
+    <PopUpContainer {...{ heading, padding: 15 }}>
       <AppText>{changeHomeLanguageWarning}</AppText>
       <View {...{ style: { height: 50 } }} />
       <AuthButton

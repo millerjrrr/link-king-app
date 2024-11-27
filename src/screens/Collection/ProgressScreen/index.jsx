@@ -1,12 +1,8 @@
 import { useSelector } from "react-redux";
 import { statsState } from "@src/store/stats";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import StatsPanel from "./StatsPanel";
 import BusyWrapper from "@src/components/Loader/BusyWrapper";
-import {
-  StackActions,
-  useNavigation,
-} from "@react-navigation/native";
 import LinkKingIcon from "./LinkKingIcon";
 import RatingCircle from "./RatingCircle";
 import FlagBookImage from "./FlagBookImage";
@@ -15,27 +11,11 @@ import ShareButton from "./ShareButton";
 import CongratsAndName from "./CongratsAndName";
 import ViewShot from "react-native-view-shot";
 import useFetchStatsInfo from "@src/hooks/collectionHooks/useFetchStatsInfo";
-import BottomShadow from "./BottomShadow";
+import BottomShadow from "../../../components/BottomShadow";
 
 const ProgressScreen = () => {
   const { busy } = useSelector(statsState);
-
-  //close this screen every time we change bottom tab
-  const navigation = useNavigation();
-
-  useEffect(() => {
-    const closeStackScreens = () => {
-      navigation.dispatch(StackActions.popToTop());
-    };
-    const unsubscribe = navigation.addListener(
-      "blur",
-      closeStackScreens,
-    );
-    return unsubscribe;
-  }, [navigation]);
-
   const statsPanelRef = useRef();
-
   useFetchStatsInfo();
 
   return (

@@ -12,6 +12,7 @@ import {
   updatePage,
   updateResults,
   updateDictEntries,
+  updateSearchKeyword,
 } from "@src/store/dictionaryLookup";
 
 const useFetchDictEntries = () => {
@@ -57,9 +58,9 @@ const useFetchDictEntries = () => {
 
   useEffect(() => {
     const unsubscribe = navigation.addListener(
-      "focus",
+      "blur",
       () => {
-        fetchDictEntries("", 1);
+        dispatch(updateSearchKeyword(""));
       },
     );
     return unsubscribe;

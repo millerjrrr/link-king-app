@@ -25,7 +25,7 @@ const SelectNewHomeLanguageScreen = () => {
   }, [searchKeyword]);
 
   return (
-    <PopUpContainer {...{ heading, blockPopToTop: true }}>
+    <PopUpContainer {...{ heading }}>
       <LanguageSearchBar
         {...{ searchKeyword, setSearchKeyword }}
       />

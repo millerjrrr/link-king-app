@@ -27,7 +27,7 @@ const DictionaryLookupScreen = () => {
   const dispatch = useDispatch();
 
   return (
-    <PopUpContainer heading={heading} blockPopToTop={true}>
+    <PopUpContainer heading={heading}>
       <DictionaryLookupSearchbar />
       <BusyWrapper busy={busy}>
         <DictionaryLookupList />

@@ -13,8 +13,9 @@ import BackButton from "../Buttons/BackButton";
 import { LinearGradient } from "expo-linear-gradient";
 import BusyWrapper from "../Loader/BusyWrapper";
 import { authState } from "@src/store/auth";
+import BottomShadow from "../BottomShadow";
 
-const InnerTabContainer = ({
+const TabScreenContainer = ({
   children,
   heading,
   help,
@@ -31,16 +32,7 @@ const InnerTabContainer = ({
 
   return (
     <>
-      <LinearGradient //bottomTab shadow for android
-        style={{
-          position: "absolute",
-          bottom: 0,
-          width: "100%",
-          height: 5,
-          zIndex: 10,
-        }}
-        colors={[tintColor + "00", tintColor + "60"]}
-      />
+      <BottomShadow />
       <View
         style={[
           { backgroundColor: PRIMARY },
@@ -90,4 +82,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default InnerTabContainer;
+export default TabScreenContainer;

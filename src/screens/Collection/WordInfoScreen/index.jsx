@@ -76,7 +76,7 @@ const WordInfoScreen = ({ route }) => {
     info: true,
   };
   return (
-    <PopUpContainer {...{ heading, blockPopToTop: true }}>
+    <PopUpContainer {...{ heading }}>
       <BloodRedCover />
       <BusyWrapper {...{ busy, size: 96 }}>
         <View style={styles.container}>

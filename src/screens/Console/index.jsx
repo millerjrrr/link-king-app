@@ -6,7 +6,7 @@ import KeyboardAndStartButton from "./components/KeyboardAndStartButton";
 import Tail from "./components/Tail";
 import ReadWordButton from "./components/ReadWordButton";
 import StatsContainer from "./components/StatsContainer";
-import InnerTabContainer from "@src/components/Containers/InnerTabContainer";
+import TabScreenContainer from "@src/components/Containers/TabScreenContainer";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import useManageGolden from "@src/hooks/consoleHooks/useEffects/useManageGolden";
@@ -17,6 +17,7 @@ import useOnKeyboardClose from "@src/hooks/consoleHooks/useEffects/useOnKeyboard
 import useHandleAppBackgroundExit from "../../hooks/consoleHooks/useEffects/useHandleAppBackgroundExit";
 import useUpdateOptions from "@src/hooks/consoleHooks/useEffects/useUpdateOptions";
 import ConsoleModals from "./components/ConsoleModals";
+import usePopToTop from "@src/hooks/usePopToTop";
 
 const Console = ({ navigation }) => {
   const inputFieldRef = useRef(null);
@@ -40,8 +41,10 @@ const Console = ({ navigation }) => {
   useOnKeyboardClose();
   useUpdateOptions();
 
+  usePopToTop();
+
   return (
-    <InnerTabContainer
+    <TabScreenContainer
       heading={heading}
       help={navigateToHelp}
     >
@@ -58,7 +61,7 @@ const Console = ({ navigation }) => {
         isKeyboardVisible={isKeyboardVisible}
       />
       <ConsoleModals />
-    </InnerTabContainer>
+    </TabScreenContainer>
   );
 };
 

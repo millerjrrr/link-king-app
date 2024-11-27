@@ -11,7 +11,6 @@ const BottomShadow = () => {
 
   return (
     <LinearGradient
-      //bottomTab shadow for android
       style={{
         position: "absolute",
         bottom: 0,

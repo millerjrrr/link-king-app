@@ -5,7 +5,6 @@ import {
 } from "@react-navigation/stack";
 import SetDailyGoalScreen from "../../screens/Options/SetDailyGoalScreen";
 import DictionarySelectionScreen from "../../screens/Options/DictionarySelectionScreen";
-import ManageAccountNavigator from "./ManageAccountNavigator";
 import Options from "@src/screens/Options";
 const OptionsStack = createStackNavigator();
 

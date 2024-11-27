@@ -33,6 +33,7 @@ const DictionaryLookupCard = ({ dictEntry }) => {
     <Container
       color={CONTRAST[golden]}
       backgroundColor={SECONDARY}
+      style={{ height: 50 }}
     >
       <InfoContainerView>
         <RowContainer>

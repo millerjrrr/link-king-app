@@ -13,8 +13,8 @@ import {
   StackActions,
   useNavigation,
 } from "@react-navigation/native";
-import { useEffect } from "react";
 import { Formik } from "formik";
+import BottomShadow from "@src/components/BottomShadow";
 
 const EditTicketScreen = ({ route }) => {
   const { appLang } = useSelector(settingsState);
@@ -68,72 +68,59 @@ const EditTicketScreen = ({ route }) => {
       dispatch,
     });
     actions.setSubmitting(false);
-    setTimeout(
-      () => navigation.dispatch(StackActions.popToTop()),
-      1000,
-    );
   };
 
-  useEffect(() => {
-    const closeStackScreens = () => {
-      if (navigation.canGoBack())
-        navigation.dispatch(StackActions.popToTop());
-    };
-    const unsubscribe = navigation.addListener(
-      "blur",
-      closeStackScreens,
-    );
-    return unsubscribe;
-  }, [navigation]);
-
   return (
-    <AuthFormContainer
-      {...{
-        heading: target,
-        subHeading,
-        nologo: true,
-        popUp: true,
-      }}
-    >
-      <Formik
-        {...{ onSubmit, initialValues, validationSchema }}
+    <>
+      <BottomShadow />
+      <AuthFormContainer
+        {...{
+          heading: target,
+          subHeading,
+          nologo: true,
+          popUp: true,
+        }}
       >
-        <>
-          <ScrollView
-            {...{
-              showsScrollIndicator: true,
-              contentContainerStyle: {
-                padding: 5,
-                paddingHorizontal: 30,
-                alignItems: "center",
-              },
-            }}
-          >
-            {Array.from({ length: 5 }).map((_, index) => (
-              <AuthInputField
-                key={index}
-                {...{
-                  name: `newSolutions${index + 1}`,
-                  label: solutionName + " " + (index + 1),
-                  placeholder: "",
-                  containerStyle: { marginBottom: 10 },
-                  autoCapitalize: false,
-                }}
-              />
-            ))}
-          </ScrollView>
-          <View
-            style={{
-              padding: 30,
-              width: "100%",
-            }}
-          >
-            <SubmitButton {...{ title: save }} />
-          </View>
-          <View {...{ style: { height: 150 } }} />
-        </>
-      </Formik>
-    </AuthFormContainer>
+        <Formik
+          {...{ onSubmit, initialValues, validationSchema }}
+        >
+          <>
+            <ScrollView
+              {...{
+                showsScrollIndicator: true,
+                contentContainerStyle: {
+                  padding: 5,
+                  paddingHorizontal: 30,
+                  alignItems: "center",
+                },
+              }}
+            >
+              {Array.from({ length: 5 }).map((_, index) => (
+                <AuthInputField
+                  key={index}
+                  {...{
+                    name: `newSolutions${index + 1}`,
+                    label: solutionName + " " + (index + 1),
+                    placeholder: "",
+                    containerStyle: { marginBottom: 10 },
+                    autoCapitalize: false,
+                  }}
+                />
+              ))}
+            </ScrollView>
+            <View
+              style={{
+                padding: 30,
+                width: "100%",
+              }}
+            >
+              <SubmitButton {...{ title: save }} />
+            </View>
+            <View {...{ style: { height: 150 } }} />
+          </>
+        </Formik>
+      </AuthFormContainer>
+    </>
   );
 };
 

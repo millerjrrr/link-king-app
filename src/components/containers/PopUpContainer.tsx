@@ -16,6 +16,7 @@ import styled from "styled-components";
 import AppText from "../AppText";
 import BusyWrapper from "../Loader/BusyWrapper";
 import { authState } from "@src/store/auth";
+import BottomShadow from "../BottomShadow";
 
 export const FadeBackgroundView = styled(LinearGradient)`
   position: absolute;
@@ -29,7 +30,6 @@ interface PopUpContainerProps {
   children: ReactNode;
   heading: string;
   help?: () => void;
-  blockPopToTop?: boolean;
   padding?: number;
 }
 
@@ -37,7 +37,6 @@ const PopUpContainer: React.FC<PopUpContainerProps> = ({
   children,
   heading,
   help,
-  blockPopToTop,
   padding,
 }) => {
   const { busy } = useSelector(authState);
@@ -47,23 +46,6 @@ const PopUpContainer: React.FC<PopUpContainerProps> = ({
     colors[colorScheme];
   const color = CONTRAST[golden];
   const backgroundColor = PRIMARY;
-
-  //close this screen every time we change bottom tab
-  const navigation = useNavigation();
-
-  useEffect(() => {
-    if (!blockPopToTop) {
-      const closeStackScreens = () => {
-        if (navigation.canGoBack())
-          navigation.dispatch(StackActions.popToTop());
-      };
-      const unsubscribe = navigation.addListener(
-        "blur",
-        closeStackScreens,
-      );
-      return unsubscribe;
-    }
-  }, [navigation]);
 
   return (
     <View
@@ -75,16 +57,7 @@ const PopUpContainer: React.FC<PopUpContainerProps> = ({
         styles.container,
       ]}
     >
-      <LinearGradient //bottomTab shadow for android
-        style={{
-          position: "absolute",
-          bottom: 0,
-          width: "100%",
-          height: 5,
-          zIndex: 10,
-        }}
-        colors={[color + "00", color + "60"]}
-      />
+      <BottomShadow />
       <FourCrowns {...{ color: SECONDARY }} />
       <HelpButton help={help} />
       <BackButton />

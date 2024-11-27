@@ -63,7 +63,7 @@ const ChangeHomeLanguageScreen = ({ route }) => {
   };
 
   return (
-    <PopUpContainer {...{ heading, blockPopToTop: true }}>
+    <PopUpContainer {...{ heading }}>
       <ScrollView
         contentContainerStyle={{
           alignItems: "center",

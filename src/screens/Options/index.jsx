@@ -1,4 +1,4 @@
-import InnerTabContainer from "../../components/Containers/InnerTabContainer";
+import TabScreenContainer from "../../components/Containers/TabScreenContainer";
 import OptionsMenuItem from "./components/OptionsMenuItem";
 import { useNavigation } from "@react-navigation/native";
 import ColorPickerMenuItem from "./components/ColorPickerMenuItem";
@@ -6,8 +6,10 @@ import ModalTypeMenuItem from "./components/ModalTypeMenuItem";
 import appTextSource from "../../utils/appTextSource";
 import { useSelector } from "react-redux";
 import { settingsState } from "./../../store/settings";
+import usePopToTop from "@src/hooks/usePopToTop";
 
 const Options = () => {
+  usePopToTop();
   const navigation = useNavigation();
   const navigateTo = (pageName) => {
     navigation.navigate(pageName);
@@ -22,7 +24,7 @@ const Options = () => {
   } = appTextSource(appLang).options;
 
   return (
-    <InnerTabContainer heading={heading} noBook={true}>
+    <TabScreenContainer heading={heading} noBook={true}>
       <OptionsMenuItem
         {...{
           iconName: "target-variant",
@@ -53,7 +55,7 @@ const Options = () => {
       <ModalTypeMenuItem optionName="leaveAReview" />
       <ModalTypeMenuItem optionName="contactUs" />
       <ModalTypeMenuItem optionName="logOut" />
-    </InnerTabContainer>
+    </TabScreenContainer>
   );
 };
 
