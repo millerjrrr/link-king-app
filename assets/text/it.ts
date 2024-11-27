@@ -125,6 +125,17 @@ const it: AppText = {
       failedResponse:
         "...qualcosa è andato storto 😣 per favore controlla la tua connessione Internet e riprova...",
     },
+    dictionaryLookupScreen: {
+      heading: "Aggiungi Nuove Parole",
+      searchMessage: "Cerca nel Dizionario",
+      searchDictionary:
+        "Qui puoi aggiungere altre parole dal nostro dizionario valutato.",
+      noResults:
+        "Nessun risultato contenente queste lettere",
+      reminder:
+        "Ricorda che, per efficienza, non includiamo variazioni della stessa parola e alcune parole potrebbero non essere disponibili. Se ritieni che una parola debba essere inclusa ma non lo è, contattaci.",
+      wordAdded: "Nuova parola aggiunta alla raccolta:",
+    },
   },
   options: {
     heading: "Opzioni",

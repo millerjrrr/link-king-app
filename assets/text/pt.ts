@@ -126,6 +126,16 @@ const pt: AppText = {
       failedResponse:
         "...algo deu errado 😣 por favor, certifique que você tem conexão de internet e tente de novo... ",
     },
+    dictionaryLookupScreen: {
+      heading: "Adicionar Novas Palavras",
+      searchMessage: "Pesquisar no Dicionário",
+      searchDictionary:
+        "Aqui você pode adicionar mais palavras do nosso dicionário avaliado.",
+      noResults: "Nenhum resultado contendo essas letras",
+      reminder:
+        "Lembre-se de que, para eficiência, não incluímos variações da mesma palavra e algumas palavras podem não estar disponíveis. Se você achar que uma palavra deveria ser incluída, mas não está, entre em contato conosco.",
+      wordAdded: "Nova palavra adicionada à coleção:",
+    },
   },
   options: {
     heading: "Opções",
