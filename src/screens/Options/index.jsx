@@ -7,6 +7,7 @@ import appTextSource from "../../utils/appTextSource";
 import { useSelector } from "react-redux";
 import { settingsState } from "./../../store/settings";
 import usePopToTop from "@src/hooks/usePopToTop";
+import WebsiteQR from "./components/WebsiteQR";
 
 const Options = () => {
   usePopToTop();
@@ -55,6 +56,7 @@ const Options = () => {
       <ModalTypeMenuItem optionName="leaveAReview" />
       <ModalTypeMenuItem optionName="contactUs" />
       <ModalTypeMenuItem optionName="logOut" />
+      <WebsiteQR />
     </TabScreenContainer>
   );
 };
