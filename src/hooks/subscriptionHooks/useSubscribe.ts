@@ -13,7 +13,7 @@ const useSubscribe = () => {
   const catchAsync = useCatchAsync();
 
   const subscribe = catchAsync(async () => {
-    console.log("# Subscribing");
+    //console.log("# Subscribing");
     try {
       dispatch(updateBusyState(true));
 

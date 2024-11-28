@@ -28,7 +28,7 @@ const ListFooterComponent = () => {
   );
 };
 
-const DictionaryLookupList = ({ navigation }) => {
+const DictionaryLookupList = () => {
   const dispatch = useDispatch();
   const {
     dictEntries,

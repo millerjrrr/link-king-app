@@ -10,7 +10,7 @@ const useSetSubscriptionPrice = () => {
   const catchAsync = useCatchAsync();
 
   const setSubscriptionPrice = catchAsync(async () => {
-    console.log("# Setting subscription price");
+    //console.log("# Setting subscription price");
     await configurePurchases();
     const offerings = await Purchases.getOfferings();
     const price =

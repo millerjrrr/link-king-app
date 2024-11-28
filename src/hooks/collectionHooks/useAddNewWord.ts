@@ -9,7 +9,7 @@ const useAddNewWord = () => {
   const catchAsync = useCatchAsync();
 
   const addNewWord = catchAsync(async (id: string) => {
-    console.log("# Adding New Word");
+    //console.log("# Adding New Word");
     try {
       dispatch(updateBusy(true));
       const {

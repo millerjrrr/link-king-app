@@ -16,7 +16,7 @@ const useUpdateAccountDetails = () => {
 
   const updateAccountDetails = useCallback(
     catchAsync(async () => {
-      console.log("# updating ManageAccount");
+      //console.log("# updating ManageAccount");
       if (hasFetched.current) return;
       try {
         dispatch(updateBusyState(true));

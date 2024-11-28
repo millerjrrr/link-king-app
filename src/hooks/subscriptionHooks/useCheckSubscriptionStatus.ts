@@ -17,7 +17,7 @@ const useCheckSubscriptionStatusAndFetchAuthInfo = () => {
 
   const checkSubscriptionStatusAndFetchAuthInfo =
     catchAsync(async () => {
-      console.log("# Checking subscription status");
+      //console.log("# Checking subscription status");
       await fetchAuthInfo();
       if (hasChecked.current) return;
       dispatch(updateBusyState(true));

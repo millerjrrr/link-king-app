@@ -30,7 +30,7 @@ const useFetchDictEntries = () => {
 
   const fetchDictEntries = catchAsync(
     async (keyword: string, page: number) => {
-      console.log("# Fetching DictEntries");
+      //console.log("# Fetching DictEntries");
       try {
         if (page === 1) dispatch(updateBusy(true));
         const normWord = semiNormalize(keyword);

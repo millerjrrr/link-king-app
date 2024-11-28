@@ -31,7 +31,7 @@ const useChangeHomeLanguage = () => {
       password: string;
       newLanguage: string;
     }) => {
-      console.log("# Changing home language");
+      //console.log("# Changing home language");
       const message =
         appTextSource(appLang).options.manageAccount
           .homeLanguageUpdated;

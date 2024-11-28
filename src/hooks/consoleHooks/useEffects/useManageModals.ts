@@ -23,7 +23,7 @@ const useManageModals = () => {
 
   // 1. Logic to show the modals
   const showModalOnAppOpen = catchAsync(async () => {
-    console.log("# Checking first-time and sub");
+    //console.log("# Checking first-time and sub");
     const firstTime =
       await getFromAsyncStorage("first-time");
 
@@ -44,7 +44,7 @@ const useManageModals = () => {
 
   // 2. Logic to check whether to run or not
   const checkAndShowModal = catchAsync(async () => {
-    console.log("# Checking last run today");
+    //console.log("# Checking last run today");
     const lastRun =
       await getFromAsyncStorage("last-run-date");
     const today = new Date().toISOString().split("T")[0];

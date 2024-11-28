@@ -28,7 +28,7 @@ const useFetchTickets = () => {
 
   const fetchTickets = catchAsync(
     async (keyword: string, page: number) => {
-      console.log("# Fetching Tickets");
+      //console.log("# Fetching Tickets");
       try {
         if (page === 1) dispatch(updateBusy(true));
         const normWord = semiNormalize(keyword);

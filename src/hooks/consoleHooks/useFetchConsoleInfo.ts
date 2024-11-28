@@ -14,7 +14,7 @@ const useFetchConsoleInfo = () => {
 
   const fetchConsoleInfo = catchAsync(
     async (repeatRepeats: boolean = false) => {
-      console.log("# Fetching console info");
+      //console.log("# Fetching console info");
       const url = repeatRepeats
         ? "/api/v1/console/repeat-repeats"
         : "/api/v1/console/send-game-state";

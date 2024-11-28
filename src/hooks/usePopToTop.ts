@@ -24,7 +24,7 @@ const usePopToTop = () => {
     const unsubscribe = navigation.addListener(
       "focus",
       () => {
-        console.log("# Navigating to ", route.name);
+        //console.log("# Navigating to ", route.name);
 
         if (route.name !== "ConsoleStackScreen") {
           consoleNavigation.reset({

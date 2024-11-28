@@ -10,7 +10,7 @@ const useSendDictionary = () => {
 
   const sendDictionary = catchAsync(
     async (dictionary: string) => {
-      console.log("# Sending a dictionary");
+      //console.log("# Sending a dictionary");
       try {
         dispatch(updateBusyState(true));
         const { data } = await clientWithAuth.post(
