@@ -24,23 +24,34 @@ const usePopToTop = () => {
     const unsubscribe = navigation.addListener(
       "focus",
       () => {
-        //console.log("# Navigating to ", route.name);
-
-        if (route.name !== "ConsoleStackScreen") {
+        const consoleState = consoleNavigation.getState();
+        if (
+          route.name !== "ConsoleStackScreen" &&
+          consoleState.index !== 0
+        ) {
           consoleNavigation.reset({
             index: 0,
             routes: [{ name: "ConsoleStackScreen" }],
           });
         }
 
-        if (route.name !== "WordsCollection") {
+        const collectionState =
+          collectionNavigation.getState();
+        if (
+          route.name !== "WordsCollection" &&
+          collectionState.index !== 0
+        ) {
           collectionNavigation.reset({
             index: 0,
             routes: [{ name: "WordsCollection" }],
           });
         }
 
-        if (route.name !== "OptionsStackScreen") {
+        const optionsState = optionsNavigation.getState();
+        if (
+          route.name !== "OptionsStackScreen" &&
+          optionsState.index !== 0
+        ) {
           optionsNavigation.reset({
             index: 0,
             routes: [{ name: "OptionsStackScreen" }],

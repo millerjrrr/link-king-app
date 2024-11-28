@@ -7,13 +7,12 @@ import useAppNotification from "./useAppNotification";
 type AsyncFunction = (...args: any[]) => Promise<any>;
 
 const useCatchAsync = () => {
-  const dispatch = useDispatch();
   const logOut = useLogOut();
   const appNotification = useAppNotification();
 
   const catchAsync = (asyncFunc: AsyncFunction) => {
     return async (...args: Parameters<AsyncFunction>) => {
-      console.log(`Calling function:`);
+      //console.log("# Calling function:"");
       try {
         return await asyncFunc(...args);
       } catch (error) {
@@ -24,7 +23,6 @@ const useCatchAsync = () => {
           errorMessage.startsWith("Network Error")
         ) {
           errorMessage = "no internet connection";
-          // dispatch(updateConnectedState(false));
         }
 
         // Authentication Handling (JWT Expiry)
