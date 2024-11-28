@@ -13,11 +13,11 @@ import colors from "@src/utils/colors";
 import ConnectedWrapper from "@src/errors/ConnectedWrapper";
 import { settingsState } from "@src/store/settings";
 import { StatusBar } from "expo-status-bar";
-import useFetchAuthInfo from "../hooks/authHooks/useFetchAuthInfo";
 import useFetchSettings from "../hooks/authHooks/useFetchSettings";
 import { useEffect } from "react";
 import { View } from "react-native";
-import BusyWrapper from "@src/components/Loader/BusyWrapper";
+import AppLoadingWrapper from "@src/components/Loader/AppLoadingWrapper";
+import useCheckSubscriptionStatusAndFetchAuthInfo from "./../hooks/subscriptionHooks/useCheckSubscriptionStatus";
 
 const RootNavigator = () => {
   const { colorScheme, golden } =
@@ -37,17 +37,20 @@ const RootNavigator = () => {
   };
 
   const { loggedIn, refresh } = useSelector(authState);
-
-  const fetchAuthInfo = useFetchAuthInfo();
+  const checkSubscriptionStatusAndFetchAuthInfo =
+    useCheckSubscriptionStatusAndFetchAuthInfo();
   const fetchSettings = useFetchSettings();
   const dispatch = useDispatch();
 
   useEffect(() => {
     const update = async () => {
       dispatch(updateAppLoadingState(true));
-      await fetchAuthInfo();
+      await checkSubscriptionStatusAndFetchAuthInfo();
       await fetchSettings();
-      dispatch(updateAppLoadingState(false));
+      setTimeout(
+        () => dispatch(updateAppLoadingState(false)),
+        1000,
+      );
     };
 
     update();
@@ -64,13 +67,13 @@ const RootNavigator = () => {
         <View
           style={{ flex: 1, backgroundColor: background }}
         >
-          <BusyWrapper busy={appLoading} size={150}>
+          <AppLoadingWrapper>
             {loggedIn ? (
               <TabNavigator />
             ) : (
               <AuthNavigator />
             )}
-          </BusyWrapper>
+          </AppLoadingWrapper>
         </View>
       </ConnectedWrapper>
     </NavigationContainer>

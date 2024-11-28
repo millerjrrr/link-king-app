@@ -14,8 +14,6 @@ const IsSubscribedWrapper = ({
 
   const subRequired = vip <= Date.now() && trialDays <= 0;
 
-  useCheckSubscriptionStatus();
-
   return subRequired && !subscribed ? (
     <Paywall />
   ) : (

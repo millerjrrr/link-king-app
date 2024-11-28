@@ -76,7 +76,6 @@ const useManageModals = () => {
 
   // 4. Run on app load
   useEffect(() => {
-    fetchAuthInfo();
     checkAndShowModal();
   }, []);
 };

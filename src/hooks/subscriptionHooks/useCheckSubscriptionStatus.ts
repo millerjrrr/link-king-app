@@ -9,33 +9,32 @@ import {
 } from "@src/store/auth";
 import useFetchAuthInfo from "../authHooks/useFetchAuthInfo";
 
-const useCheckSubscriptionStatus = () => {
+const useCheckSubscriptionStatusAndFetchAuthInfo = () => {
   const dispatch = useDispatch();
   const catchAsync = useCatchAsync();
   const fetchAuthInfo = useFetchAuthInfo();
   const hasChecked = useRef(false);
 
-  const checkSubscriptionStatus = catchAsync(async () => {
-    console.log("# Checking subscription status");
-    await fetchAuthInfo();
-    if (hasChecked.current) return;
-    console.log("# Checking subscription status");
-    dispatch(updateBusyState(true));
-    await configurePurchases();
-    const customerInfo = await Purchases.getCustomerInfo();
-    dispatch(
-      updateSubscribed(
-        customerInfo.entitlements.active["Standard"] !==
-          undefined,
-      ),
-    );
-    dispatch(updateBusyState(false));
-    hasChecked.current = true; // Mark as checked
-  });
+  const checkSubscriptionStatusAndFetchAuthInfo =
+    catchAsync(async () => {
+      console.log("# Checking subscription status");
+      await fetchAuthInfo();
+      if (hasChecked.current) return;
+      dispatch(updateBusyState(true));
+      await configurePurchases();
+      const customerInfo =
+        await Purchases.getCustomerInfo();
+      dispatch(
+        updateSubscribed(
+          customerInfo.entitlements.active["Standard"] !==
+            undefined,
+        ),
+      );
+      dispatch(updateBusyState(false));
+      hasChecked.current = true; // Mark as checked
+    });
 
-  useEffect(() => {
-    checkSubscriptionStatus();
-  }, []);
+  return checkSubscriptionStatusAndFetchAuthInfo;
 };
 
-export default useCheckSubscriptionStatus;
+export default useCheckSubscriptionStatusAndFetchAuthInfo;
