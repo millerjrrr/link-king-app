@@ -11,12 +11,12 @@ const Container = styled(View)`
   padding-vertical: 10px;
 `;
 
-const TextComponent = styled(AppText)`
+const TextComponent = styled(AppText)<{ color: string }>`
   font-size: 15px;
   color: ${(props) => props.color};
 `;
 
-const Link = styled(Text)`
+const Link = styled(Text)<{ color: string }>`
   color: ${(props) => props.color};
   text-decoration-line: underline;
 `;

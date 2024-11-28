@@ -3,6 +3,7 @@ import {
   PayloadAction,
 } from "@reduxjs/toolkit";
 import { RootState } from "@src/store";
+import { Modal } from "@src/types/Modals";
 
 interface Ticket {
   id?: string;
@@ -13,13 +14,7 @@ interface Ticket {
 }
 
 interface ModalState {
-  showSetDailyGoalModal: boolean;
-  showDailyGoalInfoModal: boolean;
-  showCollectionInfoModal: boolean;
-  showWelcomeModal: boolean;
-  showTrialNoticeModal: boolean;
-  showMissingTTSModal: boolean;
-  showDefinitionInWebViewModal: boolean;
+  modalShowing: Modal | "";
   definitionSearchWord: string;
   definitionSearchLanguage: string;
   showNewWordAddedModal: boolean;
@@ -27,23 +22,11 @@ interface ModalState {
 }
 
 const initialState: ModalState = {
-  showSetDailyGoalModal: false,
-  showDailyGoalInfoModal: false,
-  showCollectionInfoModal: false,
-  showWelcomeModal: false,
-  showTrialNoticeModal: false,
-  showMissingTTSModal: false,
-  showDefinitionInWebViewModal: false,
+  modalShowing: "",
   definitionSearchWord: "",
   definitionSearchLanguage: "",
   showNewWordAddedModal: false,
-  ticket: {
-    id: "67461974410ac48a9222d62c",
-    target: "abalanzar",
-    solutions: ["compensate"],
-    rating: 500,
-    level: 1,
-  },
+  ticket: {},
 };
 
 const slice = createSlice({

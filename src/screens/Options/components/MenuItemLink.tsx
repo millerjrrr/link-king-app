@@ -5,13 +5,15 @@ import { settingsState } from "@src/store/settings";
 import colors from "@src/utils/colors";
 import AppText from "@src/components/AppText";
 
-const MenuItemName = styled(AppText)`
+const MenuItemName = styled(AppText)<{
+  color: string;
+}>`
   color: ${(props) => props.color};
   font-size: 20px;
   text-align: flex-start;
 `;
 
-const MenuItemLink = ({ name, onPress, gray }) => {
+const MenuItemLink = ({ name, onPress, gray }: any) => {
   const { colorScheme, golden } =
     useSelector(settingsState);
   const color = gray

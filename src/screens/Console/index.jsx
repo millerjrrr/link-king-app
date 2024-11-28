@@ -16,7 +16,6 @@ import useManageModals from "@src/hooks/consoleHooks/useEffects/useManageModals"
 import useOnKeyboardClose from "@src/hooks/consoleHooks/useEffects/useOnKeyboardClose";
 import useHandleAppBackgroundExit from "../../hooks/consoleHooks/useEffects/useHandleAppBackgroundExit";
 import useUpdateOptions from "@src/hooks/consoleHooks/useEffects/useUpdateOptions";
-import ConsoleModals from "./components/ConsoleModals";
 import usePopToTop from "@src/hooks/usePopToTop";
 
 const Console = ({ navigation }) => {
@@ -60,7 +59,6 @@ const Console = ({ navigation }) => {
         inputFieldRef={inputFieldRef}
         isKeyboardVisible={isKeyboardVisible}
       />
-      <ConsoleModals />
     </TabScreenContainer>
   );
 };

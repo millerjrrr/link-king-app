@@ -3,27 +3,28 @@ import { StyleSheet, TouchableOpacity } from "react-native";
 import colors from "@src/utils/colors";
 import { useDispatch, useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
-import { useState } from "react";
-import AppModal from "../../../../components/AppModals";
-import useFetchConsoleInfo from "@src/hooks/consoleHooks/useFetchConsoleInfo";
+import { updateModals } from "@src/store/modals";
+import { ComponentProps } from "react";
+
+type MaterialCommunityIconsName = ComponentProps<
+  typeof MaterialCommunityIcons
+>["name"];
 
 const RepeatRepeatsIcon = ({
   name = "stop",
   size = 32,
+}: {
+  name: MaterialCommunityIconsName;
+  size: number;
 }) => {
   const { colorScheme, golden } =
     useSelector(settingsState);
-
   const color = colors[colorScheme].CONTRAST[golden];
-
-  const fetchConsoleInfo = useFetchConsoleInfo();
-
-  const callback = () => fetchConsoleInfo(true);
-
-  const [isModalVisible, setIsModalVisible] =
-    useState(false);
-
-  const onPress = () => setIsModalVisible(true);
+  const dispatch = useDispatch();
+  const onPress = () =>
+    dispatch(
+      updateModals({ modalShowing: "repeatRepeatsModal" }),
+    );
 
   return (
     <>
@@ -31,20 +32,11 @@ const RepeatRepeatsIcon = ({
         {...{ onPress, style: styles.container }}
       >
         <MaterialCommunityIcons
-          {...{ name, size, color }}
+          name={name}
+          size={size}
+          color={color}
         />
       </TouchableOpacity>
-      <AppModal
-        {...{
-          isVisible: isModalVisible,
-          onBackdropPress: () => setIsModalVisible(false),
-          modalName: "repeatRepeats",
-          onPress: () => {
-            setIsModalVisible(false);
-            callback();
-          },
-        }}
-      />
     </>
   );
 };

@@ -8,7 +8,7 @@ import {
   ModalContainer,
   ModalText,
 } from "./StyledCompontents";
-import ModalButton from "./ModalButton";
+import ModalButton from "./components/ModalButton";
 import DefinitionInWebViewModal from "./DefinitionInWebViewModal";
 import NewWordAddedModal from "./NewWordAddedModal";
 

@@ -1,5 +1,4 @@
 import React, { useCallback } from "react";
-import colors from "@src/utils/colors";
 import { numberDateToWordStyleDate } from "@src/utils/numberDateToWordStyle";
 import { useSelector } from "react-redux";
 import WordCardLevelStars from "./WordCardLevelStars";
@@ -14,11 +13,11 @@ import {
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import SpeakButton from "./SpeakButton";
+import useColors from "@src/hooks/useColors";
 
-const WordCard = ({ navigation, ticket, onPress }) => {
-  const { colorScheme, golden, appLang } =
-    useSelector(settingsState);
-  const { CONTRAST, SECONDARY } = colors[colorScheme];
+const WordCard = ({ navigation, ticket, onPress }: any) => {
+  const { appLang } = useSelector(settingsState);
+  const { CONTRAST, SECONDARY } = useColors();
 
   const { tomorrow } = appTextSource(appLang).collection;
 
@@ -35,21 +34,15 @@ const WordCard = ({ navigation, ticket, onPress }) => {
   }, [navigation, ticket]);
 
   return (
-    <Container
-      color={CONTRAST[golden]}
-      backgroundColor={SECONDARY}
-    >
+    <Container color={CONTRAST} backgroundColor={SECONDARY}>
       <InfoContainer
         onPress={onPress || goToWordInfoScreenForTicket}
       >
         <RowContainer>
-          <Title
-            color={CONTRAST[golden]}
-            fontSize={fontSize}
-          >
+          <Title color={CONTRAST} fontSize={fontSize}>
             {target}
           </Title>
-          <Rating color={CONTRAST[golden]}>
+          <Rating color={CONTRAST}>
             {Math.round(rating)}
           </Rating>
         </RowContainer>
@@ -58,7 +51,7 @@ const WordCard = ({ navigation, ticket, onPress }) => {
             stars={level}
             target={target}
           />
-          <Date color={CONTRAST[golden]}>
+          <Date color={CONTRAST}>
             {ticket.dueDate
               ? numberDateToWordStyleDate({
                   dateAsNumber: Number(ticket.dueDate),

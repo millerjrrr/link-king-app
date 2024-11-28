@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   View,
   TouchableOpacity,
@@ -9,22 +8,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateNotification } from "@src/store/notification";
 import {
   settingsState,
-  restoreDefaultGoals,
   updateSettings,
 } from "@src/store/settings";
 import colors from "@src/utils/colors";
 import appTextSource from "@src/utils/appTextSource";
 import PopUpContainer from "@src/components/Containers/PopUpContainer";
 import AppText from "@src/components/AppText";
-import AppModal from "@src/components/AppModals";
 import ScrollSelector from "./ScrollSelector";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { saveToAsyncStorage } from "@src/utils/asyncStorage";
-import {
-  modalState,
-  updateModals,
-} from "@src/store/modals";
-import { updateBusyState } from "@src/store/auth";
+import { updateModals } from "@src/store/modals";
 
 const Container = styled(View)`
   flex: 1;
@@ -94,21 +87,9 @@ const SetDailyGoalScreen = ({}) => {
     dispatch(updateSettings({ stepsGoal: value }));
   };
 
-  const { showSetDailyGoalModal, showDailyGoalInfoModal } =
-    useSelector(modalState);
-
-  const restoreGoalDefaults = () => {
-    dispatch(updateBusyState(true));
-    setTimeout(() => dispatch(updateBusyState(false)), 5);
-    dispatch(
-      updateModals({ showSetDailyGoalModal: false }),
-    );
-    dispatch(restoreDefaultGoals());
-  };
-
   const help = () => {
     dispatch(
-      updateModals({ showDailyGoalInfoModal: true }),
+      updateModals({ modalShowing: "dailyGoalInfoModal" }),
     );
   };
 
@@ -154,7 +135,9 @@ const SetDailyGoalScreen = ({}) => {
         <TouchableOpacity
           onPress={() =>
             dispatch(
-              updateModals({ showSetDailyGoalModal: true }),
+              updateModals({
+                modalShowing: "setDailyGoalModal",
+              }),
             )
           }
           style={{ marginTop: 35 }}
@@ -168,37 +151,6 @@ const SetDailyGoalScreen = ({}) => {
             {textD}
           </AppText>
         </TouchableOpacity>
-        <AppModal
-          isVisible={showSetDailyGoalModal}
-          onBackdropPress={() =>
-            dispatch(
-              updateModals({
-                showSetDailyGoalModal: false,
-              }),
-            )
-          }
-          modalName={"setDailyGoal"}
-          onPress={restoreGoalDefaults}
-        />
-        <AppModal
-          isVisible={showDailyGoalInfoModal}
-          onBackdropPress={() =>
-            dispatch(
-              updateModals({
-                showDailyGoalInfoModal: false,
-              }),
-            )
-          }
-          modalName={"dailyGoalInfo"}
-          onPress={() =>
-            dispatch(
-              updateModals({
-                showDailyGoalInfoModal: false,
-              }),
-            )
-          }
-          info={true}
-        />
       </Container>
     </PopUpContainer>
   );

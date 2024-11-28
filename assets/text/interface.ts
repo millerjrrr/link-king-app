@@ -1,3 +1,5 @@
+import { Modals } from "@src/types/Modals";
+
 interface InternetConnectionPage {
   title: string;
   message: string;
@@ -276,26 +278,6 @@ interface Paywall {
   terms: [string, string, string, string];
   priceDescription: string;
   perYear: string;
-}
-
-interface ModalsMessage {
-  title?: string;
-  modalMessage: string;
-  modalMessage2?: string;
-  cancel: string;
-}
-
-interface Modals {
-  leaveAReview: ModalsMessage;
-  contactUs: ModalsMessage;
-  logOut: ModalsMessage;
-  setDailyGoal: ModalsMessage;
-  dailyGoalInfo: ModalsMessage;
-  collectionInfo: ModalsMessage;
-  welcome: ModalsMessage;
-  repeatRepeats: ModalsMessage;
-  trialNotice: ModalsMessage;
-  missingTTS: ModalsMessage;
 }
 
 interface LanguageNames {

@@ -2,7 +2,7 @@ import { ScrollView, View } from "react-native";
 import SolutionItem from "./SolutionItem";
 import HorizontalScrollFade from "./HorizonatalScrollFade";
 
-const SolutionsList = ({ ticket, plus, edit }) => {
+const SolutionsList = ({ ticket, plus, edit }: any) => {
   const { solutions, target } = ticket;
 
   return (
@@ -34,11 +34,16 @@ const SolutionsList = ({ ticket, plus, edit }) => {
               }}
             />
           ) : null}
-          {solutions.map((solution, index) => {
-            return (
-              <SolutionItem key={index} {...{ solution }} />
-            );
-          })}
+          {solutions.map(
+            (solution: string, index: number) => {
+              return (
+                <SolutionItem
+                  key={index}
+                  solution={solution}
+                />
+              );
+            },
+          )}
         </ScrollView>
       </View>
     </HorizontalScrollFade>

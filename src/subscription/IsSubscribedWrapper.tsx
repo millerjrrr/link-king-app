@@ -2,8 +2,13 @@ import { useSelector } from "react-redux";
 import { authState } from "@src/store/auth";
 import Paywall from "./Paywall";
 import useCheckSubscriptionStatus from "../hooks/subscriptionHooks/useCheckSubscriptionStatus";
+import { ReactNode } from "react";
 
-const IsSubscribedWrapper = ({ children }) => {
+const IsSubscribedWrapper = ({
+  children,
+}: {
+  children: ReactNode;
+}) => {
   const { trialDays, vip, subscribed } =
     useSelector(authState);
 

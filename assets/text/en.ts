@@ -326,57 +326,57 @@ const en: AppText = {
     perYear: "/yr",
   },
   modals: {
-    leaveAReview: {
+    leaveAReviewModal: {
       title: "Rate Us!",
       modalMessage:
         "Enjoying Link-King?\n\nPlease help us share this app with the world!",
       cancel: "Cancel",
     },
-    contactUs: {
+    contactUsModal: {
       title: "Send Email",
       modalMessage:
         "Please contact us by email and we will get back to you as soon as possible.",
       cancel: "Cancel",
     },
-    logOut: {
+    logOutModal: {
       title: "Log Out",
       modalMessage: "Are your sure you want to log out?",
       cancel: "Cancel",
     },
-    setDailyGoal: {
+    setDailyGoalModal: {
       title: "Restore Defaults",
       modalMessage:
         "Are your sure you want to restore defaults?",
       cancel: "Cancel",
     },
-    dailyGoalInfo: {
+    dailyGoalInfoModal: {
       modalMessage:
         "Here you can set daily goals for time, new words and steps. You’ll be notified when you reach your goal for the day while playing. You can set a goal to blank and it will not be considered.",
       cancel: "Close",
     },
-    collectionInfo: {
+    collectionInfoModal: {
       modalMessage:
         "Here is your collection list. Each time you get a word wrong we add it to your collection. (If you get it right, you already know it, so you don't need to see it again.) After its added, each time you get it right the longer it will be before you see it again. This is called “structured spaced repetition” and is a powerful learning tool.",
       cancel: "Close",
     },
-    welcome: {
+    welcomeModal: {
       modalMessage:
         "Welcome to Link-King!\nType the words or short phrases that you hear in your home language and hit enter to submit!",
       cancel: "Close",
     },
-    repeatRepeats: {
+    repeatRepeatsModal: {
       modalMessage:
         "Would you like to repeat all the words you got wrong today?",
       title: "Yes, let's go!",
       cancel: "No. Close",
     },
-    trialNotice: {
+    trialNoticeModal: {
       modalMessage: "Welcome back!\n\n You have ",
       modalMessage2:
         " days remaining on your free trial.\n\nKind regards,\nThe Link-King Team",
       cancel: "Close",
     },
-    missingTTS: {
+    missingTTSModal: {
       modalMessage:
         "Text-to-Speech (TTS) data for this language isn’t installed on your device. Some Android devices don’t come with TTS data pre-installed to save space. You can download it for free and even select different accents if desired.",
       cancel: "Close",

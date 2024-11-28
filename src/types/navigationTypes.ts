@@ -1,7 +1,6 @@
-import { NavigationProp } from "@react-navigation/native";
 import type { StackNavigationProp } from "@react-navigation/stack";
 
-interface Ticket {
+export interface Ticket {
   id: string;
   target?: string;
   solutions: string[];

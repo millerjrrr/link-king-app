@@ -40,7 +40,7 @@ export const NewWordHeader = styled(AppText)`
 `;
 
 export const XBarContainer = styled(TouchableOpacity)`
-  padding-bottom: 5px;
+  padding-top: 5px;
   align-items: flex-end;
   width: 100%;
 `;
@@ -48,7 +48,8 @@ export const XBarContainer = styled(TouchableOpacity)`
 export const ModalText = styled(AppText)<
   TextStyle & { color: string }
 >`
-  margin: 20px;
+  padding-horizontal: 10px;
+  padding-bottom: 10px;
   color: ${(props) => props.color};
 `;
 

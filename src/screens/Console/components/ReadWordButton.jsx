@@ -28,7 +28,9 @@ const ReadWordButton = ({
   const onPress = async () => {
     const TTS = sound || (await checkTTSData());
     if (!TTS)
-      dispatch(updateModals({ showMissingTTSModal: true }));
+      dispatch(
+        updateModals({ modalShowing: "missingTTSModal" }),
+      );
     else
       speak({ target: newTarget, language, sound: true });
   };

@@ -28,7 +28,9 @@ const useManageModals = () => {
       await getFromAsyncStorage("first-time");
 
     if (firstTime !== "no") {
-      dispatch(updateModals({ showWelcomeModal: true }));
+      dispatch(
+        updateModals({ modalShowing: "welcomeModal" }),
+      );
       await saveToAsyncStorage("first-time", "no");
     } else if (
       vip < Date.now() &&
@@ -36,7 +38,7 @@ const useManageModals = () => {
       trialDays > 0
     )
       dispatch(
-        updateModals({ showTrialNoticeModal: true }),
+        updateModals({ modalShowing: "trialNoticeModal" }),
       );
   });
 

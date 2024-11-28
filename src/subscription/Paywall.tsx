@@ -1,7 +1,7 @@
 import { ScrollView, View } from "react-native";
 import AuthButton from "@src/components/Buttons/AuthButton";
 import appTextSource from "@src/utils/appTextSource";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import AppText from "@src/components/AppText";
 import AuthFormContainer from "@src/components/Containers/AuthFormContainer";
@@ -9,14 +9,14 @@ import TermsAndConditions from "./TermsAndConditions";
 import useSetSubscriptionPrice from "../hooks/subscriptionHooks/useSetSubscriptionPrice";
 import { authState } from "@src/store/auth";
 import useSubscribe from "../hooks/subscriptionHooks/useSubscribe";
-import AppModal from "@src/components/AppModals";
-import useLogOut from "./../hooks/authHooks/useLogOut";
-import { useState } from "react";
 import styled from "styled-components";
 import { LinearGradient } from "expo-linear-gradient";
 import colors from "@src/utils/colors";
+import { updateModals } from "@src/store/modals";
 
-const FadeBackgroundView = styled(LinearGradient)`
+const FadeBackgroundView = styled(LinearGradient)<{
+  position: string;
+}>`
   position: absolute;
   ${(props) => props.position}:0;
   width: 100%;
@@ -27,6 +27,7 @@ const FadeBackgroundView = styled(LinearGradient)`
 
 const Paywall = () => {
   const subscribe = useSubscribe();
+  const dispatch = useDispatch();
 
   const { appLang, colorScheme } =
     useSelector(settingsState);
@@ -39,14 +40,6 @@ const Paywall = () => {
   const { subscriptionPrice, busy } =
     useSelector(authState);
 
-  // LogOutModal Logic
-  const [isModalVisible, setIsModalVisible] =
-    useState(false);
-  const logOut = useLogOut();
-  const logOutNow = async () => {
-    await logOut();
-    setIsModalVisible(false);
-  };
   const { name } = appTextSource(appLang).options.logOut;
 
   return (
@@ -112,18 +105,16 @@ const Paywall = () => {
         />
         <TermsAndConditions />
         <AppText
-          onPress={() => setIsModalVisible(true)}
+          onPress={() =>
+            dispatch(
+              updateModals({ modalShowing: "logOutModal" }),
+            )
+          }
           style={{ fontSize: 12 }}
         >
           {name}
         </AppText>
       </View>
-      <AppModal
-        isVisible={isModalVisible}
-        onBackdropPress={() => setIsModalVisible(false)}
-        modalName={"logOut"}
-        onPress={logOutNow}
-      />
     </AuthFormContainer>
   );
 };

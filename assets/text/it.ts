@@ -329,57 +329,57 @@ const it: AppText = {
     perYear: "/anno",
   },
   modals: {
-    leaveAReview: {
+    leaveAReviewModal: {
       title: "Valutaci!",
       modalMessage:
         "Ti piace Link-King?\n\nAiutaci a condividere questa app con il mondo!",
       cancel: "Annulla",
     },
-    contactUs: {
+    contactUsModal: {
       title: "Invia Email",
       modalMessage:
         "Contattaci via email e ti risponderemo il prima possibile.",
       cancel: "Annulla",
     },
-    logOut: {
+    logOutModal: {
       title: "Esci",
       modalMessage: "Sei sicuro di voler uscire?",
       cancel: "Annulla",
     },
-    setDailyGoal: {
+    setDailyGoalModal: {
       title: "Ripristina Predefiniti",
       modalMessage:
         "Sei sicuro di voler ripristinare i valori predefiniti?",
       cancel: "Annulla",
     },
-    dailyGoalInfo: {
+    dailyGoalInfoModal: {
       modalMessage:
         "Qui puoi impostare obiettivi giornalieri per tempo, nuove parole e passi. Riceverai una notifica quando raggiungerai il tuo obiettivo giornaliero durante il gioco. Puoi lasciare vuoto un obiettivo e non sarà considerato.",
       cancel: "Chiudi",
     },
-    collectionInfo: {
+    collectionInfoModal: {
       modalMessage:
         "Ecco la tua lista di raccolta. Ogni volta che sbagli una parola, la aggiungiamo alla tua collezione. (Se la indovini, significa che già la conosci, quindi non hai bisogno di rivederla.) Ogni volta che indovini una parola nella tua collezione, il tempo prima che la rivedi aumenta. Questo si chiama 'ripetizione strutturata' ed è uno strumento di apprendimento potente.",
       cancel: "Chiudi",
     },
-    welcome: {
+    welcomeModal: {
       modalMessage:
         "Benvenuto su Link-King!\nScrivi le parole o le brevi frasi che senti nella tua lingua madre e premi invio per inviarle!",
       cancel: "Chiudi",
     },
-    repeatRepeats: {
+    repeatRepeatsModal: {
       modalMessage:
         "Vuoi ripetere tutte le parole che hai sbagliato oggi?",
       title: "Sì, facciamolo!",
       cancel: "No. Chiudi",
     },
-    trialNotice: {
+    trialNoticeModal: {
       modalMessage: "Bentornato!\n\nTi restano ",
       modalMessage2:
         " giorni di prova gratuita.\n\nCordiali saluti,\nIl Team di Link-King",
       cancel: "Chiudi",
     },
-    missingTTS: {
+    missingTTSModal: {
       modalMessage:
         "I dati Text-to-Speech (TTS) per questa lingua non sono installati sul tuo dispositivo. Alcuni dispositivi Android non hanno i dati TTS preinstallati per risparmiare spazio. Puoi scaricarli gratuitamente e persino selezionare diversi accenti, se lo desideri.",
       cancel: "Chiudi",

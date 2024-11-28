@@ -7,7 +7,9 @@ import styled from "styled-components";
 import FlagImage from "@src/components/Graphics/FlagImage";
 import languageNameCodeMap from "@src/utils/languageNameCodeMap";
 
-const TouchableContainer = styled(TouchableOpacity)`
+const TouchableContainer = styled(TouchableOpacity)<{
+  backgroundColor: string;
+}>`
   height: 60px;
   align-items: center;
   flex-direction: row;
@@ -15,7 +17,9 @@ const TouchableContainer = styled(TouchableOpacity)`
   background-color: ${(props) => props.backgroundColor};
 `;
 
-const Container = styled(View)`
+const Container = styled(View)<{
+  backgroundColor: string;
+}>`
   height: 60px;
   align-items: center;
   flex-direction: row;
@@ -23,7 +27,10 @@ const Container = styled(View)`
   background-color: ${(props) => props.backgroundColor};
 `;
 
-const OptionContainer = styled(View)`
+const OptionContainer = styled(View)<{
+  borderTopWidth: number;
+  borderColor: string;
+}>`
   flex: 1;
   height: 100%;
   justify-content: center;
@@ -38,7 +45,7 @@ const OptionsMenuItemContainer = ({
   first,
   children,
   onPress,
-}) => {
+}: any) => {
   const { colorScheme, golden, appLang } =
     useSelector(settingsState);
   const backgroundColor = colors[colorScheme].PRIMARY;

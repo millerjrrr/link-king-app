@@ -26,7 +26,9 @@ const OptionsContainer = ({ size = 40, show = 0 }) => {
   const soundButtonFunction = async () => {
     const TTS = sound || (await checkTTSData());
     if (!TTS)
-      dispatch(updateModals({ showMissingTTSModal: true }));
+      dispatch(
+        updateModals({ modalShowing: "missingTTSModal" }),
+      );
     else {
       const options = blurred
         ? { sound: !sound, blurred: false }
@@ -38,7 +40,9 @@ const OptionsContainer = ({ size = 40, show = 0 }) => {
   const blurredButtonFunction = async () => {
     const TTS = blurred || (await checkTTSData());
     if (!TTS)
-      dispatch(updateModals({ showMissingTTSModal: true }));
+      dispatch(
+        updateModals({ modalShowing: "missingTTSModal" }),
+      );
     else {
       const options = !blurred
         ? { sound: true, blurred: !blurred }

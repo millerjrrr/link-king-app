@@ -3,7 +3,10 @@ import styled from "styled-components";
 import AppText from "@src/components/AppText";
 import { appShadowForStyledComponents } from "@src/utils/appShadow";
 
-export const Container = styled(View)`
+export const Container = styled(View)<{
+  backgroundColor: string;
+  color: string;
+}>`
   flex-direction: row;
   margin: 10px;
   border-radius: 15px;
@@ -40,7 +43,10 @@ export const RowContainer = styled(View)`
   align-items: center;
 `;
 
-export const Title = styled(AppText)`
+export const Title = styled(AppText)<{
+  fontSize: number;
+  color: string;
+}>`
   font-size: ${(props) => props.fontSize}px;
   font-weight: bold;
   align-items: flex-start;
@@ -48,13 +54,17 @@ export const Title = styled(AppText)`
   color: ${(props) => props.color};
 `;
 
-export const Rating = styled(AppText)`
+export const Rating = styled(AppText)<{
+  color: string;
+}>`
   padding: 0;
   font-size: 20px;
   color: ${(props) => props.color};
 `;
 
-export const Date = styled(AppText)`
+export const Date = styled(AppText)<{
+  color: string;
+}>`
   font-size: 20px;
   font-style: italic;
   color: ${(props) => props.color};
