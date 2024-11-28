@@ -4,6 +4,7 @@ export type ModalWithMessage = keyof Modals;
 
 export type ModalWithoutMessage =
   | "definitionInWebViewModal"
+  | "webViewModal"
   | "newWordAddedModal";
 
 export interface Modals {

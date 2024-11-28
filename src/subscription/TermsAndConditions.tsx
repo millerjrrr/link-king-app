@@ -2,9 +2,10 @@ import { Text, Linking, View } from "react-native";
 import AppText from "@src/components/AppText";
 import colors from "@src/utils/colors";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
+import { updateModals } from "@src/store/modals";
 
 const Container = styled(View)`
   width: 100%;
@@ -28,6 +29,7 @@ const TermsAndConditions = () => {
     colors[colorScheme];
 
   const { terms } = appTextSource(appLang).paywall;
+  const dispatch = useDispatch();
 
   return (
     <Container>
@@ -38,25 +40,31 @@ const TermsAndConditions = () => {
       >
         {terms[0]}
         <Link
-          {...{
-            color: INACTIVE_CONTRAST,
-            onPress: () =>
-              Linking.openURL(
-                "https://www.linkoking.com/terms-of-service",
-              ),
-          }}
+          color={INACTIVE_CONTRAST}
+          onPress={() =>
+            dispatch(
+              updateModals({
+                modalShowing: "webViewModal",
+                webViewUrl:
+                  "https://link-king.com/terms-and-conditions/",
+              }),
+            )
+          }
         >
           {terms[1]}
         </Link>
         {terms[2]}
         <Link
-          {...{
-            color: INACTIVE_CONTRAST,
-            onPress: () =>
-              Linking.openURL(
-                "https://www.linkoking.com/privacy-policy",
-              ),
-          }}
+          color={INACTIVE_CONTRAST}
+          onPress={() =>
+            dispatch(
+              updateModals({
+                modalShowing: "webViewModal",
+                webViewUrl:
+                  "https://link-king.com/privacy-policy/",
+              }),
+            )
+          }
         >
           {terms[3]}
         </Link>

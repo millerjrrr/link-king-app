@@ -5,23 +5,20 @@ import { modalState } from "@src/store/modals";
 import AppModal from "./AppModal";
 import useColors from "@src/hooks/useColors";
 
-const DefinitionInWebViewModal = () => {
-  const { definitionSearchWord, definitionSearchLanguage } =
-    useSelector(modalState);
-
-  const { SECONDARY } = useColors();
+const WebViewModal = () => {
+  const { webViewUrl } = useSelector(modalState);
 
   return (
-    <AppModal name="definitionInWebViewModal">
+    <AppModal name="webViewModal">
       <WebViewContainer>
         <WebView
           style={{
             flex: 1,
             borderRadius: 10,
-            backgroundColor: SECONDARY,
+            backgroundColor: "black",
           }}
           source={{
-            uri: `https://www.google.com/search?q=define+${definitionSearchWord}&hl=${definitionSearchLanguage}&theme=dark`,
+            uri: webViewUrl,
           }}
         />
       </WebViewContainer>
@@ -29,4 +26,4 @@ const DefinitionInWebViewModal = () => {
   );
 };
 
-export default DefinitionInWebViewModal;
+export default WebViewModal;

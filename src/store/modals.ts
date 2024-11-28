@@ -19,6 +19,7 @@ interface ModalState {
   definitionSearchLanguage: string;
   showNewWordAddedModal: boolean;
   ticket: Ticket;
+  webViewUrl: string;
 }
 
 const initialState: ModalState = {
@@ -27,6 +28,7 @@ const initialState: ModalState = {
   definitionSearchLanguage: "",
   showNewWordAddedModal: false,
   ticket: {},
+  webViewUrl: "",
 };
 
 const slice = createSlice({
