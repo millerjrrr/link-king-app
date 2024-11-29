@@ -9,30 +9,24 @@ import {
   updateAppLoadingState,
 } from "@src/store/auth";
 import TabNavigator from "./TabNavigator";
-import colors from "@src/utils/colors";
 import ConnectedWrapper from "@src/errors/ConnectedWrapper";
-import { settingsState } from "@src/store/settings";
 import { StatusBar } from "expo-status-bar";
 import useFetchSettings from "../hooks/authHooks/useFetchSettings";
 import { useEffect } from "react";
 import { View } from "react-native";
 import AppLoadingWrapper from "@src/components/Loader/AppLoadingWrapper";
 import useCheckSubscriptionStatusAndFetchAuthInfo from "./../hooks/subscriptionHooks/useCheckSubscriptionStatus";
+import useColors from "@src/hooks/useColors";
 
 const RootNavigator = () => {
-  const { colorScheme, golden } =
-    useSelector(settingsState);
-  const { appLoading } = useSelector(authState);
-  const primary = colors[colorScheme].CONTRAST[golden];
-  const { STATUSBAR, PRIMARY: background } =
-    colors[colorScheme];
+  const { STATUSBAR, PRIMARY, CONTRAST } = useColors();
 
   const AppTheme = {
     ...DefaultTheme,
     colors: {
       ...DefaultTheme.colors,
-      background,
-      primary,
+      background: PRIMARY,
+      primary: CONTRAST,
     },
   };
 
@@ -64,9 +58,7 @@ const RootNavigator = () => {
         backgroundColor="#00000000"
       />
       <ConnectedWrapper>
-        <View
-          style={{ flex: 1, backgroundColor: background }}
-        >
+        <View style={{ flex: 1, backgroundColor: PRIMARY }}>
           <AppLoadingWrapper>
             {loggedIn ? (
               <TabNavigator />

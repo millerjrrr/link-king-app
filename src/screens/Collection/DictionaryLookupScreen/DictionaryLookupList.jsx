@@ -47,9 +47,8 @@ const DictionaryLookupList = () => {
 
   return dictEntries === null ||
     dictEntries.length === 0 ? (
-    <ScrollView
-      style={{ flex: 1, paddingTop: 90, width: "80%" }}
-    >
+    <ScrollView style={{ flex: 1, width: "85%" }}>
+      <View style={{ height: 90 }} />
       <AppText>{noWords}</AppText>
     </ScrollView>
   ) : (

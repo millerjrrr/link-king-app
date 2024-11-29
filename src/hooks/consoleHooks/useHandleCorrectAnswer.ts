@@ -6,6 +6,7 @@ import {
   updateLocals,
   updateConsoleState,
   selectConsoleLocals,
+  updateFormValue,
 } from "@src/store/console";
 import { speak } from "@src/utils/appSpeak";
 import { useDispatch, useSelector } from "react-redux";
@@ -30,7 +31,6 @@ const useHandleCorrectAnswer = () => {
           timerIsOn: true, // the clock should still be running to count seconds playing the game
           busy: true,
           showSolution: false,
-          formValue: "",
         }),
       );
 
@@ -52,7 +52,7 @@ const useHandleCorrectAnswer = () => {
       } = data;
 
       dispatch(updateConsoleState({ ...data }));
-      dispatch(updateBusyState(false));
+      dispatch(updateFormValue(""));
       speak({ target, language, sound });
       dispatch(restartTheTimer());
     } finally {

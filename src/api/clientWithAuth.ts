@@ -28,7 +28,7 @@ const clientWithAuth: ClientWithAuth = {
           },
         ),
       },
-      timeout: 10000,
+      timeout: 5000,
     });
   },
   get: async (url: string) => {
@@ -48,7 +48,7 @@ const clientWithAuth: ClientWithAuth = {
           },
         ),
       },
-      timeout: 10000,
+      timeout: 5000,
     });
   },
 };

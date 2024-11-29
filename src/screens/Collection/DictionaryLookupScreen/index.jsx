@@ -23,7 +23,7 @@ const DictionaryLookupScreen = () => {
   return (
     <PopUpContainer heading={heading}>
       <DictionaryLookupSearchbar />
-      <BusyWrapper busy={busy}>
+      <BusyWrapper busy={busy} size={100}>
         <DictionaryLookupList />
       </BusyWrapper>
       <NewWordAddedModal />
