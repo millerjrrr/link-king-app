@@ -11,8 +11,8 @@ const WebsiteQR = () => {
   return (
     <Image
       source={require("@assets/img/websiteQR.png")}
+      tintColor={tintColor}
       style={{
-        tintColor,
         flex: 1,
         aspectRatio: 1,
         borderRadius: 15,

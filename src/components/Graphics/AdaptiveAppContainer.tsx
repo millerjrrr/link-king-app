@@ -10,6 +10,9 @@ const AdaptiveAppContainer = ({
   children: ReactNode;
 }) => {
   const { CONTRAST } = useColors();
+  const vh = Dimensions.get("window").height;
+  const height = vh * 0.95;
+  const width = height * 0.462;
 
   return Platform.OS === "web" ? (
     <View
@@ -29,14 +32,27 @@ const AdaptiveAppContainer = ({
       >
         <View
           style={{
-            height: Dimensions.get("window").height * 0.9,
-            width: Dimensions.get("window").height * 0.43,
+            height,
+            width,
             borderRadius: 40,
             overflow: "hidden",
             borderWidth: 10,
             ...appShadow(CONTRAST, 20),
           }}
         >
+          <View
+            style={{
+              width: 0.3 * width,
+              height: 0.085 * width,
+              top: 0.033 * width,
+              left: "50%",
+              transform: [{ translateX: -0.15 * width }],
+              backgroundColor: "black",
+              position: "absolute",
+              zIndex: 1000,
+              borderRadius: vh,
+            }}
+          />
           {children}
         </View>
       </View>

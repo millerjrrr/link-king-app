@@ -14,6 +14,7 @@ const StatusBarFiller: React.FC<StatusBarFillerProps> = ({
         height: Platform.select({
           ios: 50,
           android: (StatusBar.currentHeight || 0) + 20,
+          web: 50,
         }),
         width: "100%",
         backgroundColor,

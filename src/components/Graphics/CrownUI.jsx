@@ -39,8 +39,8 @@ const CrownUI = ({
     <Image
       source={require("@assets/img/link-crown-symbol.png")}
       resizeMode="contain"
+      tintColor={color}
       style={{
-        tintColor: color,
         width: size / 1,
         height: size / 1,
         position: "absolute",

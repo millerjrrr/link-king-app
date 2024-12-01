@@ -21,9 +21,6 @@ const StartButton = ({ inputFieldRef }) => {
 
   const title = appTextSource(appLang).console.start;
 
-  const { width } = Dimensions.get("window");
-  const size = width / 1.75;
-
   const onPress = async () => {
     if (inputFieldRef.current) {
       inputFieldRef.current.focus();
@@ -39,7 +36,7 @@ const StartButton = ({ inputFieldRef }) => {
         style={[
           styles.button,
           {
-            width: size,
+            width: "80%",
             backgroundColor,
             ...appShadow(color),
           },
@@ -48,7 +45,7 @@ const StartButton = ({ inputFieldRef }) => {
         <AppText
           {...{
             style: {
-              fontSize: size / 7,
+              fontSize: 40,
             },
           }}
         >
@@ -64,9 +61,10 @@ const styles = StyleSheet.create({
     zIndex: 1,
     flex: 1,
     alignItems: "center",
+    width: "100%",
   },
   button: {
-    width: "100%",
+    width: "80%",
     height: 70,
     alignItems: "center",
     justifyContent: "center",

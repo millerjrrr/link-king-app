@@ -100,7 +100,6 @@ const styles = StyleSheet.create({
     width: "90%",
     zIndex: 999,
     marginHorizontal: "auto",
-    elevation: 5,
   },
   container: {
     position: "absolute",
