@@ -24,8 +24,7 @@ const AuthButton = ({ title, busy, onPress }) => {
         style={[
           styles.button,
           {
-            shadowColor: color,
-            borderColor: color,
+            ...appShadow(color),
             backgroundColor,
           },
         ]}
@@ -54,7 +53,6 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 45,
     borderRadius: 20,
-    ...appShadow(1),
   },
 });
 

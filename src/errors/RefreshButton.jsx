@@ -26,11 +26,10 @@ const RefreshButton = ({ size = 200 }) => {
           styles.button,
           {
             backgroundColor,
-            shadowColor: color,
-            borderColor: color,
             borderRadius: size / 2,
             height: size,
             width: size,
+            ...appShadow(color),
           },
         ]}
       >
@@ -53,6 +52,5 @@ const styles = StyleSheet.create({
   button: {
     alignItems: "center",
     justifyContent: "center",
-    ...appShadow(1),
   },
 });

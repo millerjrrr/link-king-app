@@ -37,9 +37,7 @@ const AppInput = (props) => {
           padding: 10,
           backgroundColor,
           color,
-          shadowColor: color,
-          borderColor: color,
-          ...appShadow(1),
+          ...appShadow(color),
         },
       ]}
     />

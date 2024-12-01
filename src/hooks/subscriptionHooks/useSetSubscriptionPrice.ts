@@ -4,6 +4,7 @@ import useCatchAsync from "@src/hooks/useCatchAsync";
 import configurePurchases from "../../utils/configurePurchases";
 import { updateSubscriptionPrice } from "@src/store/auth";
 import { useEffect } from "react";
+import { Platform } from "react-native";
 
 const useSetSubscriptionPrice = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const useSetSubscriptionPrice = () => {
   });
 
   useEffect(() => {
-    setSubscriptionPrice();
+    if (Platform.OS !== "web") setSubscriptionPrice();
   }, []);
 };
 

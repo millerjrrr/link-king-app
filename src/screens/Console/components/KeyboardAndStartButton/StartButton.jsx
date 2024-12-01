@@ -39,10 +39,9 @@ const StartButton = ({ inputFieldRef }) => {
         style={[
           styles.button,
           {
-            shadowColor: color,
-            borderColor: color,
             width: size,
             backgroundColor,
+            ...appShadow(color),
           },
         ]}
       >
@@ -72,7 +71,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 50,
-    ...appShadow(1),
   },
 });
 

@@ -26,8 +26,7 @@ const OptionsIcon = ({
         style: [
           styles.option,
           {
-            shadowColor: color,
-            borderColor: color,
+            ...appShadow(color),
             height,
             backgroundColor,
           },
@@ -63,7 +62,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     margin: 8,
     marginBottom: 0,
-    ...appShadow(1),
   },
 });
 

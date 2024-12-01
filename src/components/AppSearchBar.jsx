@@ -37,10 +37,8 @@ const AppSearchBar = ({
           textAlign: "center",
           zIndex: 10,
           width: "70%",
-          shadowColor: color,
-          borderColor: color,
           backgroundColor: colors[colorScheme].SECONDARY,
-          ...appShadow(),
+          ...appShadow(color),
         },
       }}
     />

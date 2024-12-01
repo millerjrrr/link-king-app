@@ -16,8 +16,7 @@ export const ModalContainer = styled(View)<{
   border-radius: 10px;
   align-items: center;
   background-color: ${(props) => props.backgroundColor};
-  shadow-color: ${(props) => props.color};
-  ${appShadowForStyledComponents}
+  ${(props) => appShadowForStyledComponents(props.color)}
 `;
 export const WebViewContainer = styled(View)`
   padding-horizontal: 5px;

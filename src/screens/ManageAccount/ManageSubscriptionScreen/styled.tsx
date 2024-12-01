@@ -37,8 +37,8 @@ export const Panel = styled(View)<PanelProps>`
   padding: 15px;
   border-radius: 10px;
   margin-bottom: 30px;
-  shadow-color: ${(props) => props.shadowColor};
-  ${appShadowForStyledComponents}
+  ${(props) =>
+    appShadowForStyledComponents(props.shadowColor)}
 `;
 
 export const StoreCombo = styled(View)`
@@ -56,6 +56,6 @@ export const ManageSubscriptionButton = styled(
   padding-horizontal: 15px;
   padding-vertical: 5px;
   border-radius: 50px;
-  shadow-color: ${(props) => props.shadowColor};
-  ${appShadowForStyledComponents}
+  ${(props) =>
+    appShadowForStyledComponents(props.shadowColor)}
 `;

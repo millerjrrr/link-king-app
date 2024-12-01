@@ -18,9 +18,8 @@ const SideButton = ({ targetScreen, icon }) => {
       style={[
         styles.button,
         {
-          shadowColor: color,
-          borderColor: color,
           backgroundColor: SECONDARY,
+          ...appShadow(color),
         },
       ]}
       onPress={() => navigation.navigate(targetScreen)}
@@ -39,7 +38,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 1000,
-    ...appShadow(1),
   },
   text: {
     fontSize: 15,

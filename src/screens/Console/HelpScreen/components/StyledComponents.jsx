@@ -15,8 +15,7 @@ export const CardContainer = styled(View)`
   align-items: center;
   border-radius: 15px;
   background-color: ${(props) => props.backgroundColor};
-  shadow-color: ${(props) => props.color};
-  ${appShadowForStyledComponents}
+  ${(props) => appShadowForStyledComponents(props.color)}
 `;
 
 export const ComponentTitle = styled(AppText)`

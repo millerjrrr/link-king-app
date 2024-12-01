@@ -1,29 +1,48 @@
-import { Platform } from "react-native";
+import { Platform, ViewStyle } from "react-native";
 
-const appShadow = () =>
+const appShadow = (
+  color: string,
+  width: number = 5,
+): ViewStyle =>
   Platform.select({
     ios: {
       shadowOffset: {
-        height: 1,
+        width: 0,
+        height: 0,
       },
       shadowOpacity: 0.5,
-      shadowRadius: 5,
+      shadowRadius: width * 0.6,
+      shadowColor: color,
     },
     android: {
-      elevation: 5,
+      elevation: width,
+      shadowColor: color,
     },
-  });
+    web: {
+      boxShadow: `0px 0px ${width}px ${color}80`,
+    },
+    default: {},
+  }) || {};
 
-export const appShadowForStyledComponents = () =>
+export const appShadowForStyledComponents = (
+  color: string,
+  width: number = 5,
+) =>
   Platform.select({
     ios: `
-      shadow-offset: 1px 1px;
-      shadow-opacity: 0.5;
-      shadow-radius: 3px;
-    `,
+        shadow-offset: 1px 1px;
+        shadow-opacity: 0.5;
+        shadow-radius: ${width * 0.6}px;
+        shadow-color:${color};
+      `,
     android: `
-      elevation: 5;
-    `,
-  });
+        elevation: ${width};
+        shadow-color:${color};
+      `,
+    web: `
+        box-shadow: 0px 0px ${width}px ${color}80; 
+      `,
+    default: "",
+  }) || "";
 
 export default appShadow;

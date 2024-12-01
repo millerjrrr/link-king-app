@@ -18,8 +18,7 @@ const Container = styled(TouchableOpacity)`
   border-radius: 15px;
   padding: 10px;
   background-color: ${(props) => props.backgroundColor};
-  shadow-color: ${(props) => props.color};
-  ${appShadowForStyledComponents}
+  ${(props) => appShadowForStyledComponents(props.color)}
 `;
 
 const LanguageCard = ({ code, native }) => {

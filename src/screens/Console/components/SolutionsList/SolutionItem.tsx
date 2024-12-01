@@ -23,9 +23,8 @@ const SolutionContainer = styled(TouchableOpacity)<{
   align-items: center;
   padding-horizontal: 13px;
   border-radius: 20px;
-  shadow-color: ${(props) => props.color};
   height: 40px;
-  ${appShadowForStyledComponents}
+  ${(props) => appShadowForStyledComponents(props.color)}
 `;
 
 const SolutionItem = ({

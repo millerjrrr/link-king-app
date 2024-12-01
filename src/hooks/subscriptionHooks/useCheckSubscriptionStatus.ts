@@ -8,6 +8,7 @@ import {
   updateSubscribed,
 } from "@src/store/auth";
 import useFetchAuthInfo from "../authHooks/useFetchAuthInfo";
+import { Platform } from "react-native";
 
 const useCheckSubscriptionStatusAndFetchAuthInfo = () => {
   const dispatch = useDispatch();
@@ -18,20 +19,22 @@ const useCheckSubscriptionStatusAndFetchAuthInfo = () => {
   const checkSubscriptionStatusAndFetchAuthInfo =
     catchAsync(async () => {
       //console.log("# Checking subscription status");
+      dispatch(updateBusyState(true));
       await fetchAuthInfo();
       if (hasChecked.current) return;
-      dispatch(updateBusyState(true));
-      await configurePurchases();
-      const customerInfo =
-        await Purchases.getCustomerInfo();
-      dispatch(
-        updateSubscribed(
-          customerInfo.entitlements.active["Standard"] !==
-            undefined,
-        ),
-      );
-      dispatch(updateBusyState(false));
+      if (Platform.OS !== "web") {
+        await configurePurchases();
+        const customerInfo =
+          await Purchases.getCustomerInfo();
+        dispatch(
+          updateSubscribed(
+            customerInfo.entitlements.active["Standard"] !==
+              undefined,
+          ),
+        );
+      }
       hasChecked.current = true; // Mark as checked
+      dispatch(updateBusyState(false));
     });
 
   return checkSubscriptionStatusAndFetchAuthInfo;

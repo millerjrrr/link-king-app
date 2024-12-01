@@ -38,7 +38,6 @@ const LevelHistogram = ({ lbd, histHeight }) => {
         style={{
           fontSize: 50,
           fontWeight: "bold",
-          shadowColor: color,
         }}
       >
         {heights[selected - 1]}

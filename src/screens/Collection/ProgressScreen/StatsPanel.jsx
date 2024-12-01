@@ -17,9 +17,9 @@ const Panel = styled(View)`
   align-items: center;
   padding: 15px;
   border-radius: 20px;
-  shadow-color: ${(props) => props.shadowColor};
   background-color: ${(props) => props.backgroundColor};
-  ${appShadowForStyledComponents}
+  ${(props) =>
+    appShadowForStyledComponents(props.shadowColor)}
 `;
 
 const StatsPanel = ({ children }) => {

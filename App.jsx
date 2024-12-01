@@ -4,16 +4,16 @@ import store from "./src/store";
 import RootNavigator from "./src/navigation/RootNavigator";
 import AppNotification from "./src/components/AppNotification";
 import AppModals from "./src/components/AppModals";
-import { GlobalBackgroundStyle } from "./src/components/Graphics/GlobalBackgroundStyle";
+import AdaptiveAppContainer from "./src/components/Graphics/AdaptiveAppContainer";
 
 export default function App() {
   return (
-    <GlobalBackgroundStyle>
-      <Provider store={store}>
+    <Provider store={store}>
+      <AdaptiveAppContainer>
         <AppNotification />
         <AppModals />
         <RootNavigator />
-      </Provider>
-    </GlobalBackgroundStyle>
+      </AdaptiveAppContainer>
+    </Provider>
   );
 }

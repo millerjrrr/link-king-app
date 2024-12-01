@@ -33,8 +33,7 @@ const LevelLine = ({
         style={[
           {
             backgroundColor: color,
-            shadowColor: color,
-            borderColor: color,
+            ...appShadow(color),
             height: height,
           },
           styles.lineStyle,
@@ -53,7 +52,6 @@ const styles = StyleSheet.create({
   },
   touched: {
     width: 12,
-    ...appShadow(7),
   },
 });
 

@@ -7,13 +7,11 @@ import appTextSource from "@src/utils/appTextSource";
 import AppText from "@src/components/AppText";
 import SolutionItem from "@src/screens/Console/components/SolutionsList/SolutionItem";
 import appShadow from "@src/utils/appShadow";
+import useColors from "@src/hooks/useColors";
 
 const UserAttempt = () => {
   const { lastAttempt } = useSelector(selectConsoleLocals);
-  const { colorScheme, appLang } =
-    useSelector(settingsState);
-  const { userResponse } =
-    appTextSource(appLang).console.targetDetails;
+  const { RED, SECONDARY } = useColors();
 
   return lastAttempt ? (
     <View style={styles.container}>
@@ -21,15 +19,14 @@ const UserAttempt = () => {
         style={[
           styles.fakeSolution,
           {
-            backgroundColor: colors[colorScheme].SECONDARY,
-            shadowColor: colors[colorScheme].RED,
-            borderColor: colors[colorScheme].RED,
+            backgroundColor: SECONDARY,
+            ...appShadow(RED),
           },
         ]}
       >
         <AppText
           style={{
-            color: colors[colorScheme].RED,
+            color: RED,
             fontSize: 25,
           }}
         >
@@ -56,7 +53,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 13,
     borderRadius: 20,
     height: 40,
-    ...appShadow(1),
   },
 });
 

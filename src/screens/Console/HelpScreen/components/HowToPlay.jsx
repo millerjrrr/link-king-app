@@ -33,8 +33,7 @@ const HowToPlay = () => {
         {...{
           backgroundColor,
           borderRadius: 20,
-          shadowColor: color,
-          borderColor: color,
+          ...appShadow(color),
           borderWidth: 3,
           margin: 15,
           overflow: "hidden",

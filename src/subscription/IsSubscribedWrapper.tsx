@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { authState } from "@src/store/auth";
 import Paywall from "./Paywall";
 import { ReactNode } from "react";
+import { Platform } from "react-native";
 
 const IsSubscribedWrapper = ({
   children,
@@ -11,7 +12,10 @@ const IsSubscribedWrapper = ({
   const { trialDays, vip, subscribed } =
     useSelector(authState);
 
-  const subRequired = vip <= Date.now() && trialDays <= 0;
+  const isWebApp = Platform.OS === "web";
+
+  const subRequired =
+    vip <= Date.now() && trialDays <= 0 && !isWebApp;
 
   return subRequired && !subscribed ? (
     <Paywall />

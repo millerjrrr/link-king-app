@@ -109,8 +109,6 @@ const RedSafetyButton = ({
         onPressOut={handlePressOut}
         style={{
           backgroundColor: SECONDARY,
-          shadowColor: RED,
-          borderColor: RED,
           height: size,
           width: size,
           margin: size / 5,
@@ -118,7 +116,7 @@ const RedSafetyButton = ({
           flexDirection: "row",
           justifyContent: "center",
           alignItems: "center",
-          ...appShadow(),
+          ...appShadow(RED),
         }}
       >
         <AntDesign

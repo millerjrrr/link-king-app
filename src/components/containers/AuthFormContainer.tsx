@@ -46,9 +46,12 @@ const AuthFormContainer: React.FC<
   const color = colors[colorScheme].SECONDARY;
   const backgroundColor = colors[colorScheme].PRIMARY;
 
-  const Container = noScrollView ? View : ScrollView;
+  const Container =
+    noScrollView || Platform.OS === "web"
+      ? View
+      : ScrollView;
   const containerProps: ViewProps | ScrollViewProps =
-    noScrollView
+    noScrollView || Platform.OS === "web"
       ? {
           style: [
             styles.container,

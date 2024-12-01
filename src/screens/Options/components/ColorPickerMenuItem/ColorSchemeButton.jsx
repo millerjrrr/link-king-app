@@ -39,8 +39,7 @@ const ColorSchemeButton = ({ cs, size = 30 }) => {
         style={[
           styles.button,
           {
-            shadowColor: color,
-            borderColor: color,
+            ...appShadow(color),
             width: size,
             backgroundColor,
           },
@@ -72,7 +71,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 1000,
-    ...appShadow(1),
   },
 });
 

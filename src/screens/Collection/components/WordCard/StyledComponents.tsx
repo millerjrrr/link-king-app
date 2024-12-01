@@ -12,9 +12,7 @@ export const Container = styled(View)<{
   border-radius: 15px;
   padding: 5px;
   background-color: ${(props) => props.backgroundColor};
-  shadow-color: ${(props) => props.color};
-  border-color: ${(props) => props.color};
-  ${appShadowForStyledComponents}
+  ${(props) => appShadowForStyledComponents(props.color)}
 `;
 
 export const InfoContainer = styled(TouchableOpacity)`

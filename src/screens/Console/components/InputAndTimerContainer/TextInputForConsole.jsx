@@ -94,9 +94,8 @@ const TextInputForConsole = ({
         styles.input,
         {
           color,
-          shadowColor: color,
+          ...appShadow(color),
           backgroundColor,
-          borderColor: color,
           fontSize,
         },
       ]}
@@ -111,7 +110,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     paddingBottom: 7,
     borderRadius: 35,
-    ...appShadow(2),
   },
 });
 
