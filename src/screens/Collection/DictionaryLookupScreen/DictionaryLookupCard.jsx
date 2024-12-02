@@ -3,6 +3,7 @@ import {
   Container,
   IconContainer,
   InfoContainerView,
+  Padding,
   Rating,
   RowContainer,
   Title,
@@ -30,35 +31,37 @@ const DictionaryLookupCard = ({ dictEntry }) => {
   };
 
   return (
-    <Container
-      color={CONTRAST[golden]}
-      backgroundColor={SECONDARY}
-      style={{ height: 50 }}
-    >
-      <InfoContainerView>
-        <RowContainer>
-          <Title
-            color={CONTRAST[golden]}
-            fontSize={fontSize}
-          >
-            {target}
-          </Title>
-          <Rating color={CONTRAST[golden]}>
-            {Math.round(rating)}
-          </Rating>
-        </RowContainer>
-      </InfoContainerView>
-      <IconContainer
-        onPress={addWord}
-        style={{ width: 30 }}
+    <Padding>
+      <Container
+        color={CONTRAST[golden]}
+        backgroundColor={SECONDARY}
+        style={{ height: 50 }}
       >
-        <Entypo
-          name="plus"
-          size={24}
-          color={CONTRAST[golden]}
-        />
-      </IconContainer>
-    </Container>
+        <InfoContainerView>
+          <RowContainer>
+            <Title
+              color={CONTRAST[golden]}
+              fontSize={fontSize}
+            >
+              {target}
+            </Title>
+            <Rating color={CONTRAST[golden]}>
+              {Math.round(rating)}
+            </Rating>
+          </RowContainer>
+        </InfoContainerView>
+        <IconContainer
+          onPress={addWord}
+          style={{ width: 30 }}
+        >
+          <Entypo
+            name="plus"
+            size={24}
+            color={CONTRAST[golden]}
+          />
+        </IconContainer>
+      </Container>
+    </Padding>
   );
 };
 
