@@ -40,7 +40,17 @@ const LevelLine = ({
           touched ? styles.touched : null,
         ]}
       />
-      <AppText>{level}</AppText>
+      <AppText
+        style={
+          touched
+            ? {
+                fontWeight: "bold",
+              }
+            : null
+        }
+      >
+        {level}
+      </AppText>
     </TouchableOpacity>
   );
 };

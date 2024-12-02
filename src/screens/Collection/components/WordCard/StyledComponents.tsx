@@ -1,14 +1,17 @@
 import { TouchableOpacity, View } from "react-native";
-import styled from "styled-components";
+import styled from "styled-components/native";
 import AppText from "@src/components/AppText";
 import { appShadowForStyledComponents } from "@src/utils/appShadow";
 
+export const Padding = styled(View)`
+  width: 100%;
+  padding: 10px;
+`;
 export const Container = styled(View)<{
   backgroundColor: string;
   color: string;
 }>`
   flex-direction: row;
-  margin: 10px;
   border-radius: 15px;
   padding: 5px;
   background-color: ${(props) => props.backgroundColor};

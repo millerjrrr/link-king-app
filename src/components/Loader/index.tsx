@@ -24,7 +24,7 @@ const Loader: React.FC<LoaderProps> = ({
   altimage,
   duration = 700,
 }) => {
-  const { CONTRAST, SECONDARY, PRIMARY } = useColors();
+  const { CONTRAST, SECONDARY } = useColors();
   const loaderColor = color || CONTRAST;
 
   const initialRotation = useSharedValue(0);
@@ -57,9 +57,10 @@ const Loader: React.FC<LoaderProps> = ({
     <View
       style={{
         flex: 1,
+        width: "100%",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: altimage ? SECONDARY : undefined,
+        // backgroundColor: altimage ? SECONDARY : undefined,
       }}
     >
       <Animated.View style={transform}>
@@ -96,7 +97,7 @@ const Loader: React.FC<LoaderProps> = ({
           resizeMode="contain"
           style={{
             height: size * 0.9,
-            aspectRatio: 1,
+            width: size * 0.9, //aspect ratio =1 no good on web
           }}
         />
       </View>

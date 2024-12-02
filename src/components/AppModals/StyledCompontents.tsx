@@ -4,7 +4,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import styled from "styled-components";
+import styled from "styled-components/native";
 import AppText from "../AppText";
 import { appShadowForStyledComponents } from "@src/utils/appShadow";
 

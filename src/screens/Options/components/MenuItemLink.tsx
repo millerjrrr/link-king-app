@@ -1,6 +1,6 @@
 import { TouchableOpacity } from "react-native";
 import { useSelector } from "react-redux";
-import styled from "styled-components";
+import styled from "styled-components/native";
 import { settingsState } from "@src/store/settings";
 import colors from "@src/utils/colors";
 import AppText from "@src/components/AppText";

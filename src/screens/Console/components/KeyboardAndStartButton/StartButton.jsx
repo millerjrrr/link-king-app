@@ -1,5 +1,4 @@
 import {
-  Dimensions,
   View,
   StyleSheet,
   TouchableOpacity,

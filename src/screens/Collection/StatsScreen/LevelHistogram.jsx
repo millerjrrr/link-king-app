@@ -1,16 +1,11 @@
 import { useState } from "react";
 import { View, StyleSheet } from "react-native";
 import LevelLine from "./LevelLine";
-import { useSelector } from "react-redux";
-import colors from "@src/utils/colors";
-import { settingsState } from "@src/store/settings";
 import AppText from "@src/components/AppText";
+import useColors from "@src/hooks/useColors";
+import appShadow from "@src/utils/appShadow";
 
 const LevelHistogram = ({ lbd, histHeight }) => {
-  const { colorScheme, golden } =
-    useSelector(settingsState);
-  const color = colors[colorScheme].CONTRAST[golden];
-
   [selected, setSelected] = useState(1);
   const heights = lbd.map((row) => row.frequency);
   let maxHeight = Math.max(...heights);
@@ -18,10 +13,19 @@ const LevelHistogram = ({ lbd, histHeight }) => {
   const normalizedHeights = heights.map(
     (h) => (h * histHeight) / maxHeight,
   );
+  const { CONTRAST, SECONDARY } = useColors();
 
   return (
     <View style={styles.container}>
-      <View style={styles.levelHistogram}>
+      <View
+        style={[
+          styles.levelHistogram,
+          {
+            backgroundColor: SECONDARY,
+            ...appShadow(CONTRAST),
+          },
+        ]}
+      >
         {normalizedHeights.map((_, index) => (
           <LevelLine
             key={index}
@@ -48,13 +52,16 @@ const LevelHistogram = ({ lbd, histHeight }) => {
 
 const styles = StyleSheet.create({
   container: {
+    width: "100%",
     justifyContent: "flex-start",
     alignItems: "center",
   },
   levelHistogram: {
+    width: "100%",
     flexDirection: "row",
     alignItems: "flex-end",
-    padding: 30,
+    padding: 10,
+    borderRadius: 10,
   },
 });
 

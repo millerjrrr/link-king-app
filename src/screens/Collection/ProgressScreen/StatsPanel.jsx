@@ -2,7 +2,7 @@ import { View } from "react-native";
 import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
-import styled from "styled-components";
+import styled from "styled-components/native";
 import { appShadowForStyledComponents } from "@src/utils/appShadow";
 
 const Container = styled(View)`

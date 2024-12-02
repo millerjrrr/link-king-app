@@ -6,6 +6,7 @@ import {
   Container,
   Date,
   InfoContainer,
+  Padding,
   Rating,
   RowContainer,
   Title,
@@ -34,35 +35,40 @@ const WordCard = ({ navigation, ticket, onPress }: any) => {
   }, [navigation, ticket]);
 
   return (
-    <Container color={CONTRAST} backgroundColor={SECONDARY}>
-      <InfoContainer
-        onPress={onPress || goToWordInfoScreenForTicket}
+    <Padding>
+      <Container
+        color={CONTRAST}
+        backgroundColor={SECONDARY}
       >
-        <RowContainer>
-          <Title color={CONTRAST} fontSize={fontSize}>
-            {target}
-          </Title>
-          <Rating color={CONTRAST}>
-            {Math.round(rating)}
-          </Rating>
-        </RowContainer>
-        <RowContainer>
-          <WordCardLevelStars
-            stars={level}
-            target={target}
-          />
-          <Date color={CONTRAST}>
-            {ticket.dueDate
-              ? numberDateToWordStyleDate({
-                  dateAsNumber: Number(ticket.dueDate),
-                  appLang,
-                })
-              : tomorrow}
-          </Date>
-        </RowContainer>
-      </InfoContainer>
-      <SpeakButton speakWord={target} />
-    </Container>
+        <InfoContainer
+          onPress={onPress || goToWordInfoScreenForTicket}
+        >
+          <RowContainer>
+            <Title color={CONTRAST} fontSize={fontSize}>
+              {target}
+            </Title>
+            <Rating color={CONTRAST}>
+              {Math.round(rating)}
+            </Rating>
+          </RowContainer>
+          <RowContainer>
+            <WordCardLevelStars
+              stars={level}
+              target={target}
+            />
+            <Date color={CONTRAST}>
+              {ticket.dueDate
+                ? numberDateToWordStyleDate({
+                    dateAsNumber: Number(ticket.dueDate),
+                    appLang,
+                  })
+                : tomorrow}
+            </Date>
+          </RowContainer>
+        </InfoContainer>
+        <SpeakButton speakWord={target} />
+      </Container>
+    </Padding>
   );
 };
 

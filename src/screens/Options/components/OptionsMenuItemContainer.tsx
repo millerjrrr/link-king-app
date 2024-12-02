@@ -3,7 +3,7 @@ import { TouchableOpacity, View } from "react-native";
 import { useSelector } from "react-redux";
 import colors from "@src/utils/colors";
 import { settingsState } from "@src/store/settings";
-import styled from "styled-components";
+import styled from "styled-components/native";
 import FlagImage from "@src/components/Graphics/FlagImage";
 import languageNameCodeMap from "@src/utils/languageNameCodeMap";
 

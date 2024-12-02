@@ -1,5 +1,10 @@
 import React from "react";
-import { FlatList, View, StyleSheet } from "react-native";
+import {
+  FlatList,
+  View,
+  StyleSheet,
+  Platform,
+} from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "@src/components/Loader";
 import { settingsState } from "@src/store/settings";
@@ -65,6 +70,7 @@ const DictionaryLookupList = () => {
       }}
       onEndReachedThreshold={0.1}
       ListFooterComponent={ListFooterComponent}
+      showsVerticalScrollIndicator={Platform.OS !== "web"}
     />
   );
 };

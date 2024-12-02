@@ -8,7 +8,7 @@ import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
 import { selectConsoleState } from "@src/store/console";
 import { settingsState } from "@src/store/settings";
-import styled from "styled-components";
+import styled from "styled-components/native";
 import SolutionsList from "./SolutionsList";
 import AppText from "../../../components/AppText";
 

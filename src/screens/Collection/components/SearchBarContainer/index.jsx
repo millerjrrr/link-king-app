@@ -3,7 +3,7 @@ import CollectionScreenButton from "./SideButton";
 import CollectionSearchbar from "./CollectionSearchbar";
 import TicketsCount from "./TicketsCount";
 import { LinearGradient } from "expo-linear-gradient";
-import styled from "styled-components";
+import styled from "styled-components/native";
 import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import colors from "@src/utils/colors";

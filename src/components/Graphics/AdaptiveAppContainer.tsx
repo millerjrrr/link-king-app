@@ -1,8 +1,9 @@
 import useColors from "@src/hooks/useColors";
 import appShadow from "@src/utils/appShadow";
 import colors from "@src/utils/colors";
+import screenDimensions from "@src/utils/screenDimensions";
 import { ReactNode } from "react";
-import { Dimensions, Platform, View } from "react-native";
+import { Platform, View } from "react-native";
 
 const AdaptiveAppContainer = ({
   children,
@@ -10,9 +11,8 @@ const AdaptiveAppContainer = ({
   children: ReactNode;
 }) => {
   const { CONTRAST } = useColors();
-  const vh = Dimensions.get("window").height;
-  const height = vh * 0.95;
-  const width = height * 0.462;
+  const { height, width } = screenDimensions();
+  const borderRadius = height * 0.0542;
 
   return Platform.OS === "web" ? (
     <View
@@ -27,14 +27,14 @@ const AdaptiveAppContainer = ({
         style={{
           borderColor: colors.dark.CONTRAST[1],
           borderWidth: 3,
-          borderRadius: 40,
+          borderRadius,
         }}
       >
         <View
           style={{
             height,
             width,
-            borderRadius: 40,
+            borderRadius,
             overflow: "hidden",
             borderWidth: 10,
             ...appShadow(CONTRAST, 20),
@@ -50,7 +50,7 @@ const AdaptiveAppContainer = ({
               backgroundColor: "black",
               position: "absolute",
               zIndex: 1000,
-              borderRadius: vh,
+              borderRadius: height,
             }}
           />
           {children}

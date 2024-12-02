@@ -1,18 +1,14 @@
 import React, { ReactNode, useEffect } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Platform } from "react-native";
 import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
 import LinkKingLogo from "../Graphics/LinkKingLogo";
 import { settingsState } from "@src/store/settings";
 import HelpButton from "../Buttons/HelpButton";
 import FourCrowns from "../Graphics/FourCrowns";
-import {
-  StackActions,
-  useNavigation,
-} from "@react-navigation/native";
 import BackButton from "../Buttons/BackButton";
 import { LinearGradient } from "expo-linear-gradient";
-import styled from "styled-components";
+import styled from "styled-components/native";
 import AppText from "../AppText";
 import BusyWrapper from "../Loader/BusyWrapper";
 import { authState } from "@src/store/auth";
@@ -64,7 +60,7 @@ const PopUpContainer: React.FC<PopUpContainerProps> = ({
       <LinkKingLogo
         {...{
           height: 40,
-          marginTop: 0,
+          marginTop: Platform.OS === "web" ? 30 : 0,
           tintColor: color,
         }}
       />

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components/native";
 import AppText from "../../../../components/AppText";
 import { TouchableOpacity } from "react-native";
 import FlagImage from "../../../../components/Graphics/FlagImage";

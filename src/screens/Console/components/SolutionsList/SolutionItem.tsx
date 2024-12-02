@@ -6,7 +6,7 @@ import AppText from "@src/components/AppText";
 import { selectConsoleState } from "@src/store/console";
 import { updateModals } from "@src/store/modals";
 import useColors from "@src/hooks/useColors";
-import styled from "styled-components";
+import styled from "styled-components/native";
 import {
   CollectionStackParamList,
   Ticket,

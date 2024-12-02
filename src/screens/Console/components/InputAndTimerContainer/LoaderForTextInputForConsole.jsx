@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { selectConsoleLocals } from "@src/store/console";
 import Loader from "../../../../components/Loader";
 
-const LoaderForTextInputForConsole = () => {
+const LoaderForTextInputForConsole = ({ color }) => {
   const { busy } = useSelector(selectConsoleLocals);
 
   return busy ? (
@@ -13,7 +13,7 @@ const LoaderForTextInputForConsole = () => {
         zIndex: 20,
       }}
     >
-      <Loader size={30} />
+      <Loader size={30} color={color} />
     </View>
   ) : null;
 };

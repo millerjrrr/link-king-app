@@ -1,5 +1,5 @@
 import { TouchableOpacity, View } from "react-native";
-import styled from "styled-components";
+import styled from "styled-components/native";
 import AppText from "@src/components/AppText";
 
 export const Container = styled(TouchableOpacity)`

@@ -7,7 +7,7 @@ import {
   updateSearchKeyword,
 } from "@src/store/dictionaryLookup";
 import { LinearGradient } from "expo-linear-gradient";
-import styled from "styled-components";
+import styled from "styled-components/native";
 import { View } from "react-native";
 import colors from "@src/utils/colors";
 

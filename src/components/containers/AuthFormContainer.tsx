@@ -1,7 +1,6 @@
 import {
   View,
   StyleSheet,
-  Dimensions,
   Platform,
   StatusBar,
   ScrollView,
@@ -17,6 +16,7 @@ import { settingsState } from "@src/store/settings";
 import AppText from "../AppText";
 import BackButton from "../Buttons/BackButton";
 import React, { ReactNode } from "react";
+import screenDimensions from "@src/utils/screenDimensions";
 
 interface AuthFormContainerProps {
   children: ReactNode;
@@ -116,10 +116,13 @@ const AuthFormContainer: React.FC<
 const styles = StyleSheet.create({
   container: {
     height:
-      Dimensions.get("window").height +
-      (Platform.OS === "ios"
-        ? 0
-        : StatusBar.currentHeight || 30 + 20),
+      screenDimensions().height +
+      Platform.select({
+        ios: 0,
+        web: -screenDimensions().height * 0.02,
+        android: (StatusBar.currentHeight || 30) + 8,
+        default: 0,
+      }),
     width: "100%",
     alignItems: "center",
     justifyContent: "flex-start",

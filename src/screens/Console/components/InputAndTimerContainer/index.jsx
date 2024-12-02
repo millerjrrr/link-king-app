@@ -46,8 +46,8 @@ const InputAndTimerContainer = ({
 
   return (
     <View style={styles.formView}>
-      <Timer {...{ onComplete, color }} />
-      <LoaderForTextInputForConsole />
+      <Timer onComplete={onComplete} color={color} />
+      <LoaderForTextInputForConsole color={color} />
       <TargetDetailsButton />
       <TextInputForConsole
         {...{

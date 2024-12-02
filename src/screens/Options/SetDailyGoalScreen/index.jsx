@@ -1,9 +1,5 @@
-import {
-  View,
-  TouchableOpacity,
-  Dimensions,
-} from "react-native";
-import styled from "styled-components";
+import { View, TouchableOpacity } from "react-native";
+import styled from "styled-components/native";
 import { useDispatch, useSelector } from "react-redux";
 import { updateNotification } from "@src/store/notification";
 import {
@@ -18,6 +14,7 @@ import ScrollSelector from "./ScrollSelector";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { saveToAsyncStorage } from "@src/utils/asyncStorage";
 import { updateModals } from "@src/store/modals";
+import screenDimensions from "@src/utils/screenDimensions";
 
 const Container = styled(View)`
   flex: 1;
@@ -27,7 +24,7 @@ const Container = styled(View)`
   padding: 15px;
 `;
 
-const { width } = Dimensions.get("window");
+const { width } = screenDimensions();
 
 const GoalContainer = styled(View)`
   flex-direction: row;

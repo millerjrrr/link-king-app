@@ -1,3 +1,4 @@
+import screenDimensions from "@src/utils/screenDimensions";
 import React from "react";
 import { View, StatusBar, Platform } from "react-native";
 
@@ -12,9 +13,9 @@ const StatusBarFiller: React.FC<StatusBarFillerProps> = ({
     <View
       style={{
         height: Platform.select({
-          ios: 50,
+          ios: screenDimensions().height * 0.0542,
           android: (StatusBar.currentHeight || 0) + 20,
-          web: 50,
+          web: screenDimensions().height * 0.0542,
         }),
         width: "100%",
         backgroundColor,

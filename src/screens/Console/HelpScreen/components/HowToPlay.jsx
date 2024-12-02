@@ -1,11 +1,13 @@
 import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import DescriptionWrapper from "./DescriptionWrapper";
-import { Video, ResizeMode } from "expo-av";
+import { Video } from "expo-av";
 import { useRef } from "react";
 import colors from "@src/utils/colors";
 import { selectConsoleState } from "@src/store/console";
-import { Image, View } from "react-native";
+import { Platform, View } from "react-native";
+import appShadow from "@src/utils/appShadow";
+import screenDimensions from "@src/utils/screenDimensions";
 
 const HowToPlay = () => {
   const { colorScheme } = useSelector(settingsState);
@@ -25,54 +27,36 @@ const HowToPlay = () => {
       ? demos["English-Portuguese"]
       : demos["Spanish-English"];
 
-  const image = require("@assets//img/status-bar-filler.png");
+  const { height, width } = screenDimensions();
 
   return (
-    <DescriptionWrapper {...{ name: "howToPlay" }}>
-      <View
-        {...{
-          backgroundColor,
-          borderRadius: 20,
-          ...appShadow(color),
-          borderWidth: 3,
-          margin: 15,
-          overflow: "hidden",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Image
+    <DescriptionWrapper name="howToPlay">
+      {Platform.OS !== "web" ? (
+        <View
           {...{
-            source: image,
-            resizeMode: "repeat",
-            style: {
-              margin: 1,
-              top: 0,
-              center: 0,
-              width: 100,
-              height: 12,
-              position: "absolute",
-              borderRadius: 20,
-              zIndex: 2,
-            },
+            backgroundColor,
+            borderRadius: height * 0.25 * 0.0542,
+            ...appShadow(color),
+            borderWidth: 1,
+            margin: 15,
+            justifyContent: "center",
+            alignItems: "center",
           }}
-        />
-        <Video
-          {...{
-            ref: video,
-            style: {
-              height: 250,
-              width: 115,
-              borderRadius: 20,
-            },
-            source,
-            isMuted: true,
-            resizeMode: ResizeMode.CONTAIN,
-            isLooping: true,
-            shouldPlay: true,
-          }}
-        />
-      </View>
+        >
+          <Video
+            ref={video}
+            style={{
+              height: height * 0.25,
+              width: width * 0.25,
+              borderRadius: height * 0.25 * 0.0542,
+            }}
+            source={source}
+            isMuted
+            isLooping
+            shouldPlay
+          />
+        </View>
+      ) : null}
     </DescriptionWrapper>
   );
 };

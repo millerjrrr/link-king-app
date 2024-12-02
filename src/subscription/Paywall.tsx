@@ -9,7 +9,7 @@ import TermsAndConditions from "./TermsAndConditions";
 import useSetSubscriptionPrice from "../hooks/subscriptionHooks/useSetSubscriptionPrice";
 import { authState } from "@src/store/auth";
 import useSubscribe from "../hooks/subscriptionHooks/useSubscribe";
-import styled from "styled-components";
+import styled from "styled-components/native";
 import { LinearGradient } from "expo-linear-gradient";
 import colors from "@src/utils/colors";
 import { updateModals } from "@src/store/modals";

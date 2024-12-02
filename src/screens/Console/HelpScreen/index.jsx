@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { Platform, View } from "react-native";
 import PopUpContainer from "../../../components/Containers/PopUpContainer";
 import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
@@ -16,19 +16,21 @@ const HelpScreen = React.memo(() => {
   const { heading } = appTextSource(appLang).console.help;
 
   return (
-    <PopUpContainer {...{ heading }}>
-      <HelpScroll contentContainerStyle="center">
+    <PopUpContainer heading={heading}>
+      <HelpScroll
+        showsVerticalScrollIndicator={Platform.OS !== "web"}
+      >
         <HowToPlay />
         <GameDescription />
         <SkipButtonDescription />
-        <HelpForStats {...{ name: "dueToday" }} />
-        <HelpForStats {...{ name: "steps" }} />
-        <HelpForStats {...{ name: "time" }} />
-        <HelpForStats {...{ name: "streak" }} />
-        <HelpForOptions {...{ name: "listen" }} />
-        <HelpForOptions {...{ name: "read" }} />
-        <HelpForOptions {...{ name: "countdown" }} />
-        <View {...{ style: { height: 30 } }} />
+        <HelpForStats name="dueToday" />
+        <HelpForStats name="steps" />
+        <HelpForStats name="time" />
+        <HelpForStats name="streak" />
+        <HelpForOptions name="listen" />
+        <HelpForOptions name="read" />
+        <HelpForOptions name="countdown" />
+        <View style={{ height: 30 }} />
       </HelpScroll>
     </PopUpContainer>
   );

@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import {
   Container,
   InfoContainer,
+  Padding,
 } from "./StyledComponents";
 import { settingsState } from "@src/store/settings";
 import { Entypo } from "@expo/vector-icons";
@@ -19,22 +20,24 @@ const PlusButton = () => {
     navigation.navigate("DictionaryLookupScreen");
 
   return (
-    <Container
-      color={CONTRAST[golden]}
-      backgroundColor={SECONDARY}
-      style={{ opacity: 0.5 }}
-    >
-      <InfoContainer
-        onPress={addNewWord}
-        style={{ alignItems: "center" }}
+    <Padding>
+      <Container
+        color={CONTRAST[golden]}
+        backgroundColor={SECONDARY}
+        style={{ opacity: 0.5 }}
       >
-        <Entypo
-          name="plus"
-          size={24}
-          color={CONTRAST[golden]}
-        />
-      </InfoContainer>
-    </Container>
+        <InfoContainer
+          onPress={addNewWord}
+          style={{ alignItems: "center" }}
+        >
+          <Entypo
+            name="plus"
+            size={24}
+            color={CONTRAST[golden]}
+          />
+        </InfoContainer>
+      </Container>
+    </Padding>
   );
 };
 

@@ -4,6 +4,7 @@ import {
   View,
   StyleSheet,
   Text,
+  Platform,
 } from "react-native";
 import WordCard from "./WordCard";
 import { useDispatch, useSelector } from "react-redux";
@@ -63,6 +64,7 @@ const WordCollectionList = ({ navigation }) => {
         }}
         onEndReachedThreshold={0.1}
         ListFooterComponent={ListFooterComponent}
+        showsVerticalScrollIndicator={Platform.OS !== "web"}
       />
     </>
   );

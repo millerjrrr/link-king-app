@@ -2,7 +2,7 @@ import AppText from "@src/components/AppText";
 import { appShadowForStyledComponents } from "@src/utils/appShadow";
 import { TextStyle, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import styled from "styled-components";
+import styled from "styled-components/native";
 
 interface PanelProps {
   flexDirection?: "row" | "column";

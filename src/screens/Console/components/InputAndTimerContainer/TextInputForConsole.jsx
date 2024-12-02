@@ -97,6 +97,7 @@ const TextInputForConsole = ({
           ...appShadow(color),
           backgroundColor,
           fontSize,
+          outlineStyle: "none", // prevent white border for web
         },
       ]}
     />
@@ -110,6 +111,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     paddingBottom: 7,
     borderRadius: 35,
+    zIndex: 10,
   },
 });
 
