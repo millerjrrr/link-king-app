@@ -6,10 +6,9 @@ import {
   dictionaryLookupState,
   updateSearchKeyword,
 } from "@src/store/dictionaryLookup";
-import { LinearGradient } from "expo-linear-gradient";
 import styled from "styled-components/native";
 import { View } from "react-native";
-import colors from "@src/utils/colors";
+import FadeBackgroundView from "@src/components/Graphics/FadeBackgroundView";
 
 const Container = styled(View)`
   width: 100%;
@@ -18,18 +17,9 @@ const Container = styled(View)`
   align-items: center;
   z-index: 20;
 `;
-const FadeBackgroundView = styled(LinearGradient)`
-  position: absolute;
-  align-items: center;
-  padding-bottom: 10px;
-  width: 100%;
-  z-index: 20;
-`;
 
 const DictionaryLookupSearchbar = () => {
-  const { appLang, colorScheme } =
-    useSelector(settingsState);
-  const backgroundColor = colors[colorScheme].PRIMARY;
+  const { appLang } = useSelector(settingsState);
   const { searchKeyword } = useSelector(
     dictionaryLookupState,
   );
@@ -40,14 +30,7 @@ const DictionaryLookupSearchbar = () => {
 
   return (
     <Container>
-      <FadeBackgroundView
-        colors={[
-          backgroundColor,
-          backgroundColor + "E6",
-          backgroundColor + "80",
-          backgroundColor + "00",
-        ]}
-      >
+      <FadeBackgroundView style={{ paddingBottom: 10 }}>
         <AppSearchBar
           searchKeyword={searchKeyword}
           setSearchKeyword={(value) =>

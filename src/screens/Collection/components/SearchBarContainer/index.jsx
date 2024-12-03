@@ -2,34 +2,15 @@ import { View, StyleSheet } from "react-native";
 import CollectionScreenButton from "./SideButton";
 import CollectionSearchbar from "./CollectionSearchbar";
 import TicketsCount from "./TicketsCount";
-import { LinearGradient } from "expo-linear-gradient";
-import styled from "styled-components/native";
-import { useSelector } from "react-redux";
-import { settingsState } from "@src/store/settings";
-import colors from "@src/utils/colors";
-
-const FadeBackgroundView = styled(LinearGradient)`
-  position: absolute;
-  width: 100%;
-  z-index: 20;
-`;
+import useColors from "@src/hooks/useColors";
+import FadeBackgroundView from "@src/components/Graphics/FadeBackgroundView";
 
 const SearchBarContainer = () => {
-  const { colorScheme } = useSelector(settingsState);
-  const backgroundColor = colors[colorScheme].PRIMARY;
+  const { PRIMARY } = useColors();
 
   return (
     <View style={styles.container}>
-      <FadeBackgroundView
-        {...{
-          colors: [
-            backgroundColor,
-            backgroundColor + "E6",
-            backgroundColor + "80",
-            backgroundColor + "00",
-          ],
-        }}
-      >
+      <FadeBackgroundView>
         <TicketsCount />
         <View style={styles.searchBarContainer}>
           <CollectionScreenButton

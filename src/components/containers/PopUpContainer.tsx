@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect } from "react";
+import React, { ReactNode } from "react";
 import { View, StyleSheet, Platform } from "react-native";
 import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
@@ -7,20 +7,11 @@ import { settingsState } from "@src/store/settings";
 import HelpButton from "../Buttons/HelpButton";
 import FourCrowns from "../Graphics/FourCrowns";
 import BackButton from "../Buttons/BackButton";
-import { LinearGradient } from "expo-linear-gradient";
-import styled from "styled-components/native";
 import AppText from "../AppText";
 import BusyWrapper from "../Loader/BusyWrapper";
 import { authState } from "@src/store/auth";
 import BottomShadow from "../BottomShadow";
-
-export const FadeBackgroundView = styled(LinearGradient)`
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 20px;
-  z-index: 20;
-`;
+import FadeBackgroundView from "../Graphics/FadeBackgroundView";
 
 interface PopUpContainerProps {
   children: ReactNode;
@@ -66,16 +57,7 @@ const PopUpContainer: React.FC<PopUpContainerProps> = ({
       />
       <AppText style={styles.heading}>{heading}</AppText>
       <View style={styles.container}>
-        <FadeBackgroundView
-          {...{
-            colors: [
-              backgroundColor,
-              backgroundColor + "E6",
-              backgroundColor + "80",
-              backgroundColor + "00",
-            ],
-          }}
-        />
+        <FadeBackgroundView height={20} />
         <BusyWrapper busy={busy} size={150}>
           {children}
         </BusyWrapper>

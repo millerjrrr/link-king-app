@@ -1,36 +1,14 @@
 import { View, StyleSheet } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
-import styled from "styled-components/native";
-import { useSelector } from "react-redux";
-import { settingsState } from "@src/store/settings";
-import colors from "@src/utils/colors";
 import AppSearchBar from "../../../../components/AppSearchBar";
-
-const FadeBackgroundView = styled(LinearGradient)`
-  position: absolute;
-  width: 100%;
-  z-index: 20;
-`;
+import FadeBackgroundView from "@src/components/Graphics/FadeBackgroundView";
 
 const LanguageSearchBar = ({
   searchKeyword,
   setSearchKeyword,
 }) => {
-  const { colorScheme } = useSelector(settingsState);
-  const backgroundColor = colors[colorScheme].PRIMARY;
-
   return (
     <View style={styles.container}>
-      <FadeBackgroundView
-        {...{
-          colors: [
-            backgroundColor,
-            backgroundColor + "E6",
-            backgroundColor + "80",
-            backgroundColor + "00",
-          ],
-        }}
-      >
+      <FadeBackgroundView>
         <View style={styles.searchBarContainer}>
           <AppSearchBar
             {...{ searchKeyword, setSearchKeyword }}

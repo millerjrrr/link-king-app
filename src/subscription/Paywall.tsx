@@ -9,29 +9,14 @@ import TermsAndConditions from "./TermsAndConditions";
 import useSetSubscriptionPrice from "../hooks/subscriptionHooks/useSetSubscriptionPrice";
 import { authState } from "@src/store/auth";
 import useSubscribe from "../hooks/subscriptionHooks/useSubscribe";
-import styled from "styled-components/native";
-import { LinearGradient } from "expo-linear-gradient";
-import colors from "@src/utils/colors";
 import { updateModals } from "@src/store/modals";
-
-const FadeBackgroundView = styled(LinearGradient)<{
-  position: string;
-}>`
-  position: absolute;
-  ${(props) => props.position}:0;
-  width: 100%;
-  height: 30px;
-  z-index: 20;
-  border-radius: 10px;
-`;
+import FadeBackgroundView from "@src/components/Graphics/FadeBackgroundView";
 
 const Paywall = () => {
   const subscribe = useSubscribe();
   const dispatch = useDispatch();
 
-  const { appLang, colorScheme } =
-    useSelector(settingsState);
-  const { PRIMARY: backgroundColor } = colors[colorScheme];
+  const { appLang } = useSelector(settingsState);
 
   const { heading, notice, priceDescription, perYear } =
     appTextSource(appLang).paywall;
@@ -55,12 +40,8 @@ const Paywall = () => {
       >
         <FadeBackgroundView
           position="top"
-          colors={[
-            backgroundColor,
-            backgroundColor + "E6",
-            backgroundColor + "80",
-            backgroundColor + "00",
-          ]}
+          height={30}
+          style={{ borderRadius: 10 }}
         />
         <ScrollView
           style={{
@@ -81,12 +62,8 @@ const Paywall = () => {
         </ScrollView>
         <FadeBackgroundView
           position="bottom"
-          colors={[
-            backgroundColor + "00",
-            backgroundColor + "80",
-            backgroundColor + "E6",
-            backgroundColor,
-          ]}
+          height={30}
+          style={{ borderRadius: 10 }}
         />
       </View>
       <View
