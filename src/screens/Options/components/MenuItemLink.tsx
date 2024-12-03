@@ -1,9 +1,7 @@
 import { TouchableOpacity } from "react-native";
-import { useSelector } from "react-redux";
 import styled from "styled-components/native";
-import { settingsState } from "@src/store/settings";
-import colors from "@src/utils/colors";
 import AppText from "@src/components/AppText";
+import useColors from "@src/hooks/useColors";
 
 const MenuItemName = styled(AppText)<{
   color: string;
@@ -14,24 +12,18 @@ const MenuItemName = styled(AppText)<{
 `;
 
 const MenuItemLink = ({ name, onPress, gray }: any) => {
-  const { colorScheme, golden } =
-    useSelector(settingsState);
-  const color = gray
-    ? colors[colorScheme].INACTIVE_CONTRAST
-    : colors[colorScheme].CONTRAST[golden];
+  const { INACTIVE_CONTRAST, CONTRAST } = useColors();
+  const color = gray ? INACTIVE_CONTRAST : CONTRAST;
 
   return (
     <TouchableOpacity
-      {...{
-        style: {
-          flex: 1,
-          justifyContent: "center",
-          width: "100%",
-        },
-        onPress,
+      style={{
+        justifyContent: "center",
+        width: "100%",
       }}
+      onPress={onPress}
     >
-      <MenuItemName {...{ color }}>{name}</MenuItemName>
+      <MenuItemName color={color}>{name}</MenuItemName>
     </TouchableOpacity>
   );
 };

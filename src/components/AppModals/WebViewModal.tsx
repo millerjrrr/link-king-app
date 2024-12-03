@@ -1,9 +1,8 @@
 import { useSelector } from "react-redux";
 import { WebView } from "react-native-webview";
-import { WebViewContainer } from "./StyledCompontents";
+import { WebViewContainer } from "./components/StyledCompontents";
 import { modalState } from "@src/store/modals";
 import AppModal from "./AppModal";
-import useColors from "@src/hooks/useColors";
 
 const WebViewModal = () => {
   const { webViewUrl } = useSelector(modalState);

@@ -6,7 +6,7 @@ import {
   NewWordHeader,
   NewWordModalContainer,
   XBarContainer,
-} from "./StyledCompontents";
+} from "./components/StyledCompontents";
 import { AntDesign } from "@expo/vector-icons";
 import WordCard from "@src/screens/Collection/components/WordCard";
 import React from "react";

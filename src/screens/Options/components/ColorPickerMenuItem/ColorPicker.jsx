@@ -19,7 +19,6 @@ const ColorPicker = () => {
       <ColorPalette>
         <ColorSchemeButton cs="dark" />
         <ColorSchemeButton cs="blue" />
-        {/* <ColorSchemeButton cs="turquoise" /> */}
         <ColorSchemeButton cs="green" />
         <ColorSchemeButton cs="orange" />
         <ColorSchemeButton cs="pink" />

@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import {
   ButtonContainer,
   ButtonText,
-} from "../StyledCompontents";
+} from "./StyledCompontents";
 import { settingsState } from "@src/store/settings";
 import colors from "@src/utils/colors";
 

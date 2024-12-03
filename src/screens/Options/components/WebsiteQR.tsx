@@ -1,6 +1,6 @@
 import { settingsState } from "@src/store/settings";
 import colors from "@src/utils/colors";
-import { Image } from "react-native";
+import { Image, View } from "react-native";
 import { useSelector } from "react-redux";
 declare function require(path: string): any;
 
@@ -12,11 +12,10 @@ const WebsiteQR = () => {
     <Image
       source={require("@assets/img/websiteQR.png")}
       tintColor={tintColor}
+      resizeMode="contain"
       style={{
         flex: 1,
-        aspectRatio: 1,
-        borderRadius: 15,
-        margin: 25,
+        margin: 10,
       }}
     />
   );

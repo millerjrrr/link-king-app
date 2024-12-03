@@ -10,6 +10,7 @@ import languageNameCodeMap from "@src/utils/languageNameCodeMap";
 const TouchableContainer = styled(TouchableOpacity)<{
   backgroundColor: string;
 }>`
+  width: 100%;
   height: 60px;
   align-items: center;
   flex-direction: row;
@@ -20,6 +21,7 @@ const TouchableContainer = styled(TouchableOpacity)<{
 const Container = styled(View)<{
   backgroundColor: string;
 }>`
+  width: 100%;
   height: 60px;
   align-items: center;
   flex-direction: row;

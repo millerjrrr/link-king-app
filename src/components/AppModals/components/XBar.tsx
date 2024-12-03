@@ -1,5 +1,5 @@
 import { AntDesign } from "@expo/vector-icons";
-import { XBarContainer } from "../StyledCompontents";
+import { XBarContainer } from "./StyledCompontents";
 import useColors from "@src/hooks/useColors";
 
 const Xbar = ({ x }: { x: () => void }) => {

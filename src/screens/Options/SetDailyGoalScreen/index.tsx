@@ -1,7 +1,5 @@
-import { View, TouchableOpacity } from "react-native";
-import styled from "styled-components/native";
+import { Platform, TouchableOpacity } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { updateNotification } from "@src/store/notification";
 import {
   settingsState,
   updateSettings,
@@ -11,50 +9,14 @@ import appTextSource from "@src/utils/appTextSource";
 import PopUpContainer from "@src/components/Containers/PopUpContainer";
 import AppText from "@src/components/AppText";
 import ScrollSelector from "./ScrollSelector";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { saveToAsyncStorage } from "@src/utils/asyncStorage";
 import { updateModals } from "@src/store/modals";
-import screenDimensions from "@src/utils/screenDimensions";
-
-const Container = styled(View)`
-  flex: 1;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px;
-`;
-
-const { width } = screenDimensions();
-
-const GoalContainer = styled(View)`
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: ${width - 30}px;
-`;
-
-const Icon = ({ name, message, color }) => {
-  const dispatch = useDispatch();
-
-  return (
-    <TouchableOpacity
-      onPress={() =>
-        dispatch(
-          updateNotification({
-            message,
-            type: "info",
-          }),
-        )
-      }
-    >
-      <MaterialCommunityIcons
-        name={name}
-        color={color}
-        size={96}
-      />
-    </TouchableOpacity>
-  );
-};
+import {
+  Container,
+  GoalContainer,
+} from "./StyledComponents";
+import Icon from "./Icon";
+import DropdownSelector from "./DropdownSelector";
 
 const SetDailyGoalScreen = ({}) => {
   const {
@@ -71,15 +33,15 @@ const SetDailyGoalScreen = ({}) => {
 
   const dispatch = useDispatch();
 
-  const updateTimeGoal = (value) => {
+  const updateTimeGoal = (value: number) => {
     saveToAsyncStorage("time-goal", value.toString());
     dispatch(updateSettings({ timeGoal: value }));
   };
-  const updateNewWordsGoal = (value) => {
+  const updateNewWordsGoal = (value: number) => {
     saveToAsyncStorage("new-words-goal", value.toString());
     dispatch(updateSettings({ newWordsGoal: value }));
   };
-  const updateStepsGoal = (value) => {
+  const updateStepsGoal = (value: number) => {
     saveToAsyncStorage("steps-goal", value.toString());
     dispatch(updateSettings({ stepsGoal: value }));
   };
@@ -90,6 +52,11 @@ const SetDailyGoalScreen = ({}) => {
     );
   };
 
+  const Selector =
+    Platform.OS === "web"
+      ? DropdownSelector
+      : ScrollSelector;
+
   return (
     <PopUpContainer heading={heading} help={help}>
       <Container>
@@ -99,7 +66,7 @@ const SetDailyGoalScreen = ({}) => {
             message={textA}
             color={color}
           />
-          <ScrollSelector
+          <Selector
             onSelect={updateTimeGoal}
             length={60}
             start={timeGoal}
@@ -111,7 +78,7 @@ const SetDailyGoalScreen = ({}) => {
             message={textB}
             color={color}
           />
-          <ScrollSelector
+          <Selector
             onSelect={updateNewWordsGoal}
             length={50}
             start={newWordsGoal}
@@ -123,7 +90,7 @@ const SetDailyGoalScreen = ({}) => {
             message={textC}
             color={color}
           />
-          <ScrollSelector
+          <Selector
             onSelect={updateStepsGoal}
             length={500}
             start={stepsGoal}

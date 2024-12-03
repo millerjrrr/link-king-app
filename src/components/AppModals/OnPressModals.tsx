@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
-import { ModalText } from "./StyledCompontents";
+import { ModalText } from "./components/StyledCompontents";
 import AppModal from "./AppModal";
 import ModalButton from "./components/ModalButton";
 import {

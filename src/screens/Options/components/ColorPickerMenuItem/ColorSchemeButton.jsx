@@ -13,11 +13,10 @@ import {
 } from "react-native";
 import { saveToAsyncStorage } from "@src/utils/asyncStorage";
 import appShadow from "@src/utils/appShadow";
+import useColors from "@src/hooks/useColors";
 
 const ColorSchemeButton = ({ cs, size = 30 }) => {
-  const { colorScheme, golden } =
-    useSelector(settingsState);
-  const color = colors[colorScheme].CONTRAST[golden];
+  const { CONTRAST: shadowColor } = useColors();
   const dispatch = useDispatch();
 
   const {
@@ -36,21 +35,23 @@ const ColorSchemeButton = ({ cs, size = 30 }) => {
     <View style={styles.container}>
       <TouchableOpacity
         onPress={onPress}
-        style={[
-          styles.button,
-          {
-            ...appShadow(color),
-            width: size,
-            backgroundColor,
-          },
-        ]}
+        style={{
+          ...appShadow(shadowColor),
+          width: size,
+          backgroundColor,
+          aspectRatio: 1,
+          alignItems: "center",
+          justifyContent: "center",
+          borderRadius: 20,
+        }}
       >
         <Image
           source={require("@assets/img/link-crown-symbol.png")}
           tintColor={CONTRAST[0]}
+          resizeMode="contain"
           style={{
-            resizeMode: "contain",
             height: size * 0.7,
+            width: size * 0.7, //important for web dev
             aspectRatio: 1,
           }}
         />
@@ -65,12 +66,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     zIndex: 10,
-  },
-  button: {
-    aspectRatio: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 1000,
   },
 });
 

@@ -5,13 +5,17 @@ import {
   View,
 } from "react-native";
 import styled from "styled-components/native";
-import AppText from "../AppText";
+import AppText from "../../AppText";
 import { appShadowForStyledComponents } from "@src/utils/appShadow";
+import screenDimensions from "@src/utils/screenDimensions";
+
+const { width, height } = screenDimensions();
 
 export const ModalContainer = styled(View)<{
   backgroundColor: string;
   color: string;
 }>`
+  width: ${width * 0.85};
   padding-horizontal: 5px;
   border-radius: 10px;
   align-items: center;
@@ -22,7 +26,7 @@ export const WebViewContainer = styled(View)`
   padding-horizontal: 5px;
   padding-vertical: 10px;
   border-radius: 10px;
-  height: 550px;
+  height: ${height * 0.7};
   width: 100%;
 `;
 

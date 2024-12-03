@@ -2,7 +2,7 @@ import colors from "@src/utils/colors";
 import { useDispatch, useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import Modal from "react-native-modal";
-import { ModalContainer } from "./StyledCompontents";
+import { ModalContainer } from "./components/StyledCompontents";
 import {
   modalState,
   updateModals,
@@ -36,6 +36,10 @@ const AppModal = ({
       isVisible={name === modalShowing}
       onBackdropPress={!important ? close : () => void 0}
       backdropColor={"transparent"}
+      style={{
+        justifyContent: "center",
+        alignItems: "center",
+      }}
     >
       <ModalContainer
         backgroundColor={PRIMARY}

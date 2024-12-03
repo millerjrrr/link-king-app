@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start --tunnel",
+    "start": "expo start",
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web"
@@ -13,6 +13,7 @@
     "@expo/vector-icons": "14.0.3",
     "@react-native-async-storage/async-storage": "1.23.1",
     "@react-native-community/masked-view": "^0.1.11",
+    "@react-native-picker/picker": "2.7.5",
     "@react-navigation/bottom-tabs": "^6.5.11",
     "@react-navigation/native": "^6.1.9",
     "@react-navigation/native-stack": "^6.9.17",
@@ -40,6 +41,7 @@
     "react-native-mail": "^6.1.1",
     "react-native-modal": "^13.0.1",
     "react-native-paper": "^5.12.3",
+    "react-native-picker-select": "^9.3.1",
     "react-native-purchases": "^7.27.2",
     "react-native-reanimated": "~3.10.1",
     "react-native-redash": "^18.1.3",
