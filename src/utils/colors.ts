@@ -1,7 +1,5 @@
-import { StatusBarStyle } from "react-native";
-
 interface ColorScheme {
-  STATUSBAR: StatusBarStyle;
+  STATUSBAR: "dark" | "light";
   PRIMARY: string;
   SECONDARY: string;
   CONTRAST: [string, string];
@@ -22,7 +20,7 @@ const commonColors = {
 const darkText = {
   CONTRAST: ["#362718", "#8a793e"] as [string, string],
   INACTIVE_CONTRAST: "#36271880",
-  STATUSBAR: "dark" as StatusBarStyle,
+  STATUSBAR: "dark" as "dark" | "light",
 };
 
 const colors: Record<string, ColorScheme> = {
@@ -31,7 +29,7 @@ const colors: Record<string, ColorScheme> = {
     SECONDARY: "#000000",
     CONTRAST: ["#ffffff", "#ffeeba"],
     INACTIVE_CONTRAST: "#ffffff80",
-    STATUSBAR: "light" as StatusBarStyle,
+    STATUSBAR: "light",
     ...commonColors,
   },
   blue: {

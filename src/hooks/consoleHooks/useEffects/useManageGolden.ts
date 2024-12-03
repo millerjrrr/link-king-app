@@ -10,6 +10,7 @@ import {
   updateSettings,
 } from "@src/store/settings";
 import { ConsoleStackParamList } from "@src/types/navigationTypes";
+import { StackNavigationProp } from "@react-navigation/stack";
 
 const useManageGolden = () => {
   const {
@@ -22,13 +23,17 @@ const useManageGolden = () => {
 
   const dispatch = useDispatch();
   const navigation =
-    useNavigation<NavigationProp<ConsoleStackParamList>>();
+    useNavigation<
+      NavigationProp<
+        StackNavigationProp<ConsoleStackParamList>
+      >
+    >();
 
   //goal management
   useEffect(() => {
     if (showSolution) {
       const showResultsSummary = () => {
-        navigation.navigate("ProgressScreen");
+        navigation.navigate("Progress");
       };
 
       const timeGoalMet =

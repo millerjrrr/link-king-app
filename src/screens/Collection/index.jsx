@@ -27,7 +27,7 @@ const Collection = ({ navigation }) => {
 
   const dictionarySettings = () => {
     navigation.navigate("Options");
-    navigation.navigate("DictionarySelectionScreen");
+    navigation.navigate("Dictionary Selection");
   };
 
   return (
@@ -37,7 +37,7 @@ const Collection = ({ navigation }) => {
       dictionarySettings={dictionarySettings}
     >
       <SearchBarContainer navigation={navigation} />
-      <BusyWrapper busy={busy} size={96} pushToTop={true}>
+      <BusyWrapper busy={busy} size={96} pushToTop>
         <WordCollectionList
           navigation={navigation}
           tickets={tickets}

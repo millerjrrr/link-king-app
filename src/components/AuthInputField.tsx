@@ -25,7 +25,7 @@ interface FormValues {
 
 interface AuthInputFieldProps {
   label: string;
-  placeholder: string;
+  placeholder: string | undefined;
   autoCapitalize?:
     | "none"
     | "sentences"
@@ -35,6 +35,7 @@ interface AuthInputFieldProps {
   secureTextEntry?: boolean;
   name: keyof FormValues;
   rightIcon?: React.ReactNode;
+  bottomMargin?: boolean;
   onRightIconPress?: () => void;
 }
 
@@ -59,6 +60,7 @@ const AuthInputField: React.FC<AuthInputFieldProps> = (
     secureTextEntry,
     name,
     rightIcon,
+    bottomMargin,
     onRightIconPress,
   } = props;
 
@@ -106,7 +108,10 @@ const AuthInputField: React.FC<AuthInputFieldProps> = (
             keyboardType,
             autoCapitalize,
             secureTextEntry,
-            style: { width: "100%" },
+            style: {
+              width: "100%",
+              marginBottom: bottomMargin ? 20 : 0,
+            },
             onChangeText: handleChange(name),
             value: values[name],
             onBlur: handleBlur(name),

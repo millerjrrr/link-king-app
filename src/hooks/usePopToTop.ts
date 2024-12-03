@@ -2,6 +2,7 @@ import {
   useNavigation,
   useRoute,
 } from "@react-navigation/native";
+import { StackNavigationProp as SNP } from "@react-navigation/stack";
 import {
   CollectionStackParamList,
   ConsoleStackParamList,
@@ -12,11 +13,11 @@ import { useEffect } from "react";
 const usePopToTop = () => {
   const navigation = useNavigation();
   const consoleNavigation =
-    useNavigation<ConsoleStackParamList>();
+    useNavigation<SNP<ConsoleStackParamList>>();
   const collectionNavigation =
-    useNavigation<CollectionStackParamList>();
+    useNavigation<SNP<CollectionStackParamList>>();
   const optionsNavigation =
-    useNavigation<OptionsStackParamList>();
+    useNavigation<SNP<OptionsStackParamList>>();
 
   const route = useRoute();
 
@@ -24,24 +25,24 @@ const usePopToTop = () => {
     const unsubscribe = navigation.addListener(
       "focus",
       () => {
-        if (route.name !== "ConsoleStackScreen") {
+        if (route.name !== "Console") {
           consoleNavigation.reset({
             index: 0,
-            routes: [{ name: "ConsoleStackScreen" }],
+            routes: [{ name: "Console" }],
           });
         }
 
-        if (route.name !== "WordsCollection") {
+        if (route.name !== "Collection") {
           collectionNavigation.reset({
             index: 0,
-            routes: [{ name: "WordsCollection" }],
+            routes: [{ name: "Collection" }],
           });
         }
 
-        if (route.name !== "OptionsStackScreen") {
+        if (route.name !== "Options") {
           optionsNavigation.reset({
             index: 0,
-            routes: [{ name: "OptionsStackScreen" }],
+            routes: [{ name: "Options" }],
           });
         }
       },

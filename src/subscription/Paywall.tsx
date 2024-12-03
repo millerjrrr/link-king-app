@@ -46,7 +46,7 @@ const Paywall = () => {
     <AuthFormContainer
       heading={heading}
       back={false}
-      noScrollView={true}
+      noScrollView
     >
       <View
         style={{

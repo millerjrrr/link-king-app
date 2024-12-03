@@ -80,7 +80,7 @@ const NewWordAddedModal = () => {
             onPress={showWordInfo}
           />
           <AcceptedAnswers />
-          <SolutionsList ticket={ticket} edit={true} />
+          <SolutionsList ticket={ticket} edit />
         </NewWordModalContainer>
       </ModalContainer>
       <DefinitionInWebViewModal />

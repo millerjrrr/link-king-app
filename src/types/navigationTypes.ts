@@ -8,64 +8,62 @@ export interface Ticket {
   level: number;
 }
 
-// CONSOLE
-export type ConsoleStackParamList = StackNavigationProp<{
-  ConsoleStackScreen: undefined;
-  WordInfoScreen: {
+// COLLECTION
+export type CollectionStackParamList = {
+  Collection: undefined;
+  "Word Details": {
     ticket: Ticket;
     wrongAnswerReturned?: boolean;
   };
-  EditTicketScreen: {
+  "Edit Solutions": { ticket: Ticket; target: string };
+  Statistics: undefined;
+  Progress: undefined;
+  "Dictionary Lookup": undefined;
+  "Dictionary Selection": undefined;
+};
+
+// CONSOLE
+export type ConsoleStackParamList = {
+  Console: undefined;
+  "Word Details": {
+    ticket: Ticket;
+    wrongAnswerReturned?: boolean;
+  };
+  "Edit Solutions": {
     ticket: Ticket;
     target: string;
   };
-  HelpScreen: undefined;
-  ProgressScreen: undefined;
-  DictionarySelectionScreen: undefined;
-}>;
-
-// COLLECTION
-export type CollectionStackParamList = StackNavigationProp<{
-  WordsCollection: undefined;
-  WordInfoScreen: {
-    ticket: Ticket;
-    wrongAnswerReturned?: boolean;
-  };
-  EditTicketScreen: { ticket: Ticket; target: string };
-  StatsScreen: undefined;
-  ProgressScreen: undefined;
-  DictionarySelectionScreen: undefined;
-  DictionaryLookupScreen: undefined;
-}>;
-
-// OPTIONS
-export type OptionsStackParamList = StackNavigationProp<{
-  OptionsStackScreen: undefined;
-  SetDailyGoalScreen: undefined;
-  DictionarySelectionScreen: undefined;
-  ManageAccountNavigator: undefined;
-}>;
+  "Console - Help": undefined;
+  Progress: undefined;
+  "Dictionary Selection": undefined;
+};
 
 // MANAGE ACCOUNT
-export type ManageAccountStackParamList =
-  StackNavigationProp<{
-    ManageAccountScreen: undefined;
-    ChangeNameScreen: undefined;
-    ManageSubscriptionScreen: undefined;
-    ChangeHomeLanguageWarningScreen: undefined;
-    ChangeHomeLanguageScreen: undefined;
-    SelectNewHomeLanguageScreen: undefined;
-    DeleteAccountScreen: undefined;
-  }>;
+export type ManageAccountStackParamList = {
+  "Manage Account": undefined;
+  "Change Account Name": undefined;
+  "Manage Subscription": undefined;
+  "Change Home Language - Warning": undefined;
+  "Change Home Language": undefined;
+  "Select New Home Language": undefined;
+  "Delete Account": undefined;
+};
+
+// OPTIONS
+export type OptionsStackParamList = {
+  Options: undefined;
+  "Set Daily Goals": undefined;
+  "Dictionary Selection": undefined;
+};
 
 // AUTH
-export type AuthStackParamList = StackNavigationProp<{
+export type AuthStackParamList = {
   Welcome: undefined;
-  SignIn: undefined;
+  "Sign In": undefined;
   Name: undefined;
   Email: undefined;
   Password: undefined;
-  VerificationCode: undefined;
-  LostPassword: undefined;
-  CheckYourEmail: undefined;
-}>;
+  "Verification Code": undefined;
+  "Lost Password": undefined;
+  "Check Your Email": undefined;
+};

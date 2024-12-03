@@ -27,9 +27,7 @@ const ChangeHomeLanguageWarningScreen = () => {
           title,
           busy: false,
           onPress: () =>
-            navigation.navigate(
-              "SelectNewHomeLanguageScreen",
-            ),
+            navigation.navigate("Select New Home Language"),
         }}
       />
     </PopUpContainer>

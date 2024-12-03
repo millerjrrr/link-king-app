@@ -40,10 +40,10 @@ const TabNavigator = () => {
             borderTopWidth: 0,
           },
         }}
-        initialRouteName="Console"
+        initialRouteName="Console:"
       >
         <Tab.Screen
-          name="Console"
+          name="Console:"
           component={ConsoleNavigator}
           options={{
             tabBarIcon: ({ color, size }) => (
@@ -56,7 +56,7 @@ const TabNavigator = () => {
           }}
         />
         <Tab.Screen
-          name="Collection"
+          name="Collection:"
           component={CollectionNavigator}
           options={{
             tabBarIcon: ({ color, size }) => (
@@ -69,7 +69,7 @@ const TabNavigator = () => {
           }}
         />
         <Tab.Screen
-          name="Options"
+          name="Options:"
           component={OptionsNavigator}
           options={{
             tabBarIcon: ({ color, size }) => (
@@ -82,7 +82,7 @@ const TabNavigator = () => {
           }}
         />
         <Tab.Screen
-          name="ManageAccount"
+          name="Manage Account:"
           component={ManageAccountNavigator} // Componente da aba oculta
           options={{
             tabBarButton: () => null, // Oculta o botão da aba

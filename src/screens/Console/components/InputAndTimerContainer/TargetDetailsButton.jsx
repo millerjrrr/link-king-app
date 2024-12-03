@@ -27,7 +27,7 @@ const TargetDetailsButton = () => {
   return tries === 1 && tail.length === 0 ? (
     <TouchableOpacity
       onPress={() =>
-        navigation.navigate("WordInfoScreen", {
+        navigation.navigate("Word Details", {
           ticket,
           wrongAnswerReturned: true,
         })

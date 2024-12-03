@@ -43,7 +43,7 @@ const LanguageCard = ({ code, native }) => {
         }),
       );
     } else {
-      navigation.navigate("ChangeHomeLanguageScreen", {
+      navigation.navigate("Change Home Language", {
         code,
       });
     }

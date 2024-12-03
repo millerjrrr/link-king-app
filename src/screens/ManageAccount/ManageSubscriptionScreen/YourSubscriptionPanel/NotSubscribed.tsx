@@ -41,7 +41,7 @@ const NotSubscribedPanel = () => {
         onPress={subscribe}
       >
         <View style={{ width: 150, alignItems: "center" }}>
-          <BusyWrapper busy={busy} size={30} noFlex={true}>
+          <BusyWrapper busy={busy} size={30} noFlex>
             <PanelLabel>{subscribeText}</PanelLabel>
           </BusyWrapper>
         </View>

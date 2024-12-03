@@ -27,7 +27,7 @@ const CheckYourEmail = ({ navigation }) => {
       <AuthButton
         title={returnToLogin}
         busy={false}
-        onPress={() => navigation.navigate("SignIn")}
+        onPress={() => navigation.navigate("Sign In")}
       />
     </AuthFormContainer>
   );

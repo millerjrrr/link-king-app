@@ -16,7 +16,7 @@ const FlagBook = ({ padding }) => {
   ];
   const navigation = useNavigation();
   const onPress = () => {
-    navigation.navigate("DictionarySelectionScreen");
+    navigation.navigate("Dictionary Selection");
   };
 
   return (

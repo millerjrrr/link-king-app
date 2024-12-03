@@ -8,7 +8,7 @@ import { useNavigation } from "@react-navigation/native";
 const SignUpAppLink = ({}) => {
   const navigation = useNavigation();
   onPress = () => {
-    navigation.navigate("SignIn");
+    navigation.navigate("Sign In");
   };
 
   const { appLang } = useSelector(settingsState);

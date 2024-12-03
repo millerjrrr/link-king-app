@@ -9,13 +9,16 @@ import {
 import { settingsState } from "@src/store/settings";
 import { ManageAccountStackParamList } from "@src/types/navigationTypes";
 import useCatchAsync from "../useCatchAsync";
+import { StackNavigationProp } from "@react-navigation/stack";
 
 const useChangeUsername = () => {
   const dispatch = useDispatch();
   const catchAsync = useCatchAsync();
   const navigation =
     useNavigation<
-      NavigationProp<ManageAccountStackParamList>
+      NavigationProp<
+        StackNavigationProp<ManageAccountStackParamList>
+      >
     >();
   const { appLang } = useSelector(settingsState);
 
@@ -37,7 +40,7 @@ const useChangeUsername = () => {
           }),
         );
         setTimeout(
-          () => navigation.navigate("ManageAccountScreen"),
+          () => navigation.navigate("Manage Account"),
           2000,
         );
       }

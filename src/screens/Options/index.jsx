@@ -25,14 +25,14 @@ const Options = () => {
   } = appTextSource(appLang).options;
 
   return (
-    <TabScreenContainer heading={heading} noBook={true}>
+    <TabScreenContainer heading={heading} noBook>
       <OptionsMenuItem
         {...{
           iconName: "target-variant",
           name: setDailyGoal.heading,
           selected: true,
           first: true,
-          onPress: () => navigateTo("SetDailyGoalScreen"),
+          onPress: () => navigateTo("Set Daily Goals"),
         }}
       />
       <OptionsMenuItem
@@ -40,8 +40,7 @@ const Options = () => {
           iconName: "book-open-variant",
           name: chooseDictionary.title,
           selected: true,
-          onPress: () =>
-            navigateTo("DictionarySelectionScreen"),
+          onPress: () => navigateTo("Dictionary Selection"),
         }}
       />
       <ColorPickerMenuItem />
@@ -50,7 +49,7 @@ const Options = () => {
           iconName: "account-cog-outline",
           name: manageAccount.title,
           selected: true,
-          onPress: () => navigateTo("ManageAccount"),
+          onPress: () => navigateTo("Manage Account:"),
         }}
       />
       <ModalTypeMenuItem optionName="leaveAReview" />

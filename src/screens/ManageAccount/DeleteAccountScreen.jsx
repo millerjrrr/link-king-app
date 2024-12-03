@@ -78,19 +78,17 @@ const DeleteAccountScreen = () => {
             }}
           >
             <AuthInputField
-              {...{
-                name: "password",
-                label: password.label,
-                placeholder: "********",
-                autoCapitalize: "none",
-                secureTextEntry: secureEntry,
-                rightIcon: (
-                  <PasswordVisibilityIcon
-                    {...{ privateIcon: secureEntry }}
-                  />
-                ),
-                onRightIconPress: togglePasswordView,
-              }}
+              name="password"
+              label={password.label}
+              placeholder="********"
+              autoCapitalize="none"
+              secureTextEntry={secureEntry}
+              rightIcon={
+                <PasswordVisibilityIcon
+                  {...{ privateIcon: secureEntry }}
+                />
+              }
+              onRightIconPress={togglePasswordView}
             />
             <TouchableWithoutFeedback
               onPress={() => Keyboard.dismiss()}

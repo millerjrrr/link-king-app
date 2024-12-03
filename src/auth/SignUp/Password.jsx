@@ -76,7 +76,7 @@ const Password = () => {
         dispatch(
           updateUnverifiedUserId(data.unverifiedUserId),
         );
-        navigation.navigate("VerificationCode");
+        navigation.navigate("Verification Code");
       }
     } finally {
       actions.setSubmitting(false);
@@ -92,7 +92,7 @@ const Password = () => {
     <AuthFormContainer
       heading={heading}
       subHeading={subHeading}
-      nologo={true}
+      nologo
     >
       <Formik
         onSubmit={onSubmit}
@@ -106,7 +106,7 @@ const Password = () => {
             placeholder={"********"}
             autoCapitalize={"none"}
             secureTextEntry={secureEntry}
-            containerStyle={{ marginBottom: 20 }}
+            bottomMargin
             rightIcon={
               <PasswordVisibilityIcon
                 privateIcon={secureEntry}

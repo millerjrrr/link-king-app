@@ -106,7 +106,8 @@ const ChangeHomeLanguageScreen = ({ route }) => {
           <View
             {...{
               style: {
-                marginHorizontal: 15,
+                paddingHorizontal: 15,
+                width: "100%",
                 zIndex: 2,
               },
             }}

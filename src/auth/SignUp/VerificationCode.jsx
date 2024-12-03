@@ -78,7 +78,7 @@ const VerificationCode = () => {
     <AuthFormContainer
       heading={heading}
       subHeading={newSubHeading}
-      nologo={true}
+      nologo
     >
       <Formik
         onSubmit={onSubmit}
@@ -91,7 +91,7 @@ const VerificationCode = () => {
             keyboardType={"numeric"}
             placeholder={""}
             label={code.label}
-            containerStyle={{ marginBottom: 20 }}
+            bottomMargin
           />
           <SubmitButton title={verify} />
         </>

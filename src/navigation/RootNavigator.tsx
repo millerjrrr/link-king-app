@@ -15,7 +15,7 @@ import useFetchSettings from "../hooks/authHooks/useFetchSettings";
 import { useEffect } from "react";
 import { View } from "react-native";
 import AppLoadingWrapper from "@src/components/Loader/AppLoadingWrapper";
-import useCheckSubscriptionStatusAndFetchAuthInfo from "./../hooks/subscriptionHooks/useCheckSubscriptionStatus";
+import useCheckSubscriptionStatusAndFetchAuthInfo from "../hooks/subscriptionHooks/useCheckSubscriptionStatus";
 import useColors from "@src/hooks/useColors";
 
 const RootNavigator = () => {
@@ -54,7 +54,7 @@ const RootNavigator = () => {
     <NavigationContainer theme={AppTheme}>
       <StatusBar
         style={STATUSBAR}
-        translucent={true}
+        translucent
         backgroundColor="#00000000"
       />
       <ConnectedWrapper>

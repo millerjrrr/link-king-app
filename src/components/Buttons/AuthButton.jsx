@@ -33,7 +33,7 @@ const AuthButton = ({ title, busy, onPress }) => {
           color={color}
           busy={busy}
           size={25}
-          noFlex={true}
+          noFlex
         >
           <AppText>{title}</AppText>
         </BusyWrapper>

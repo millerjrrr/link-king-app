@@ -17,7 +17,7 @@ const PlusButton = () => {
 
   const navigation = useNavigation();
   const addNewWord = () =>
-    navigation.navigate("DictionaryLookupScreen");
+    navigation.navigate("Dictionary Lookup");
 
   return (
     <Padding>

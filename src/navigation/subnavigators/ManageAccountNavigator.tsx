@@ -1,6 +1,7 @@
 import React from "react";
 import {
   createStackNavigator,
+  StackNavigationOptions,
   TransitionPresets,
 } from "@react-navigation/stack";
 import ManageAccountScreen from "../../screens/ManageAccount";
@@ -10,43 +11,47 @@ import ManageSubscriptionScreen from "../../screens/ManageAccount/ManageSubscrip
 import ChangeHomeLanguageScreen from "../../screens/ManageAccount/ChangeHomeLanguageScreens/ChangeHomeLanguageScreen";
 import SelectNewHomeLanguageScreen from "../../screens/ManageAccount/ChangeHomeLanguageScreens/SelectNewLanguageScreen";
 import ChangeHomeLanguageWarningScreen from "../../screens/ManageAccount/ChangeHomeLanguageScreens/ChangeHomeLanguageWarningScreen";
+import { ManageAccountStackParamList } from "@src/types/navigationTypes";
 
-const ManageAccountStack = createStackNavigator();
+const ManageAccountStack =
+  createStackNavigator<ManageAccountStackParamList>();
 
 const ManageAccountNavigator = () => {
+  const screenOptions: StackNavigationOptions = {
+    headerShown: false,
+    ...TransitionPresets.ModalPresentationIOS,
+  };
+
   return (
     <ManageAccountStack.Navigator
-      screenOptions={{
-        headerShown: false,
-        ...TransitionPresets.ModalPresentationIOS,
-      }}
+      screenOptions={screenOptions}
     >
       <ManageAccountStack.Screen
-        name="ManageAccountScreen"
+        name="Manage Account"
         component={ManageAccountScreen}
       />
       <ManageAccountStack.Screen
-        name="ChangeNameScreen"
+        name="Change Account Name"
         component={ChangeNameScreen}
       />
       <ManageAccountStack.Screen
-        name="ManageSubscriptionScreen"
+        name="Manage Subscription"
         component={ManageSubscriptionScreen}
       />
       <ManageAccountStack.Screen
-        name="ChangeHomeLanguageWarningScreen"
+        name="Change Home Language - Warning"
         component={ChangeHomeLanguageWarningScreen}
       />
       <ManageAccountStack.Screen
-        name="ChangeHomeLanguageScreen"
+        name="Change Home Language"
         component={ChangeHomeLanguageScreen}
       />
       <ManageAccountStack.Screen
-        name="SelectNewHomeLanguageScreen"
+        name="Select New Home Language"
         component={SelectNewHomeLanguageScreen}
       />
       <ManageAccountStack.Screen
-        name="DeleteAccountScreen"
+        name="Delete Account"
         component={DeleteAccountScreen}
       />
     </ManageAccountStack.Navigator>

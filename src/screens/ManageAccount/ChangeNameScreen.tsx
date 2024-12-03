@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import appTextSource from "@src/utils/appTextSource";
 import { settingsState } from "@src/store/settings";
-import Name from "../../auth/SignUp/Name";
+import NameScreen from "../../auth/SignUp/NameScreen";
 
 const ChangeNameScreen = () => {
   const { appLang } = useSelector(settingsState);
@@ -10,7 +10,7 @@ const ChangeNameScreen = () => {
     appTextSource(appLang).options.manageAccount.save;
 
   return (
-    <Name {...{ updateNameFunction: true, buttonTitle }} />
+    <NameScreen updateName buttonTitle={buttonTitle} />
   );
 };
 

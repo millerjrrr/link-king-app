@@ -1,14 +1,16 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Welcome from "@src/auth/SignUp/Welcome";
-import Name from "@src/auth/SignUp/Name";
+import NameScreen from "@src/auth/SignUp/NameScreen";
 import Email from "@src/auth/SignUp/Email";
 import Password from "@src/auth/SignUp/Password";
 import VerificationCode from "@src/auth/SignUp/VerificationCode";
 import LostPassword from "@src/auth/LostPassword/LostPassword";
 import CheckYourEmail from "@src/auth/LostPassword/CheckYourEmail";
 import SignIn from "@src/auth/SignIn";
+import { AuthStackParamList } from "@src/types/navigationTypes";
 
-const Stack = createNativeStackNavigator();
+const Stack =
+  createNativeStackNavigator<AuthStackParamList>();
 
 const AuthNavigator = () => {
   return (
@@ -18,20 +20,20 @@ const AuthNavigator = () => {
       }}
     >
       <Stack.Screen name="Welcome" component={Welcome} />
-      <Stack.Screen name="SignIn" component={SignIn} />
-      <Stack.Screen name="Name" component={Name} />
+      <Stack.Screen name="Sign In" component={SignIn} />
+      <Stack.Screen name="Name" component={NameScreen} />
       <Stack.Screen name="Email" component={Email} />
       <Stack.Screen name="Password" component={Password} />
       <Stack.Screen
-        name="VerificationCode"
+        name="Verification Code"
         component={VerificationCode}
       />
       <Stack.Screen
-        name="LostPassword"
+        name="Lost Password"
         component={LostPassword}
       />
       <Stack.Screen
-        name="CheckYourEmail"
+        name="Check Your Email"
         component={CheckYourEmail}
       />
     </Stack.Navigator>

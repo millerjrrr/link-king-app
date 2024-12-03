@@ -13,6 +13,7 @@ import { saveToAsyncStorage } from "@src/utils/asyncStorage";
 import { useDispatch, useSelector } from "react-redux";
 import useCatchAsync from "../useCatchAsync";
 import { ManageAccountStackParamList } from "@src/types/navigationTypes";
+import { StackNavigationProp } from "@react-navigation/stack";
 
 const useChangeHomeLanguage = () => {
   const { appLang } = useSelector(settingsState);
@@ -20,7 +21,9 @@ const useChangeHomeLanguage = () => {
   const catchAsync = useCatchAsync();
   const navigation =
     useNavigation<
-      NavigationProp<ManageAccountStackParamList>
+      NavigationProp<
+        StackNavigationProp<ManageAccountStackParamList>
+      >
     >();
 
   const changeHomeLanguage = catchAsync(
@@ -48,7 +51,7 @@ const useChangeHomeLanguage = () => {
               type: "info",
             }),
           );
-          navigation.navigate("ManageAccountScreen");
+          navigation.navigate("Manage Account");
         }, 1000);
         dispatch(updateSettings({ appLang: newLanguage }));
         saveToAsyncStorage("app-lang", newLanguage);

@@ -34,7 +34,7 @@ const ManageAccountScreen = ({ navigation }) => {
       iconName: "square-edit-outline",
       heading: "name",
       data: name,
-      targetScreen: "ChangeNameScreen",
+      targetScreen: "Change Account Name",
     },
     subscription: {
       iconName: "information",
@@ -45,18 +45,18 @@ const ManageAccountScreen = ({ navigation }) => {
           : userIsSubscribed
             ? subscribed
             : notSubscribed,
-      targetScreen: "ManageSubscriptionScreen",
+      targetScreen: "Manage Subscription",
     },
     homeLanguage: {
       iconName: "flag",
       heading: "homeLanguage",
       data: changeHomeLanguage,
-      targetScreen: "ChangeHomeLanguageWarningScreen",
+      targetScreen: "Change Home Language - Warning",
     },
     deleteAccount: {
       iconName: "delete-alert-outline",
       heading: "deleteAccount",
-      targetScreen: "DeleteAccountScreen",
+      targetScreen: "Delete Account",
     },
   };
 
@@ -64,7 +64,7 @@ const ManageAccountScreen = ({ navigation }) => {
     <TabScreenContainer
       heading={heading}
       backFunction={() => navigation.navigate("Options")}
-      noBook={true}
+      noBook
     >
       <ManageAccountMenuItem {...props.email} />
       <ManageAccountMenuItem {...props.name} />

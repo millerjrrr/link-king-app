@@ -75,7 +75,7 @@ const AuthFormContainer: React.FC<
     <>
       <Container {...containerProps}>
         <StatusBarFiller />
-        {back ? <BackButton extraPadding={true} /> : null}
+        {back ? <BackButton extraPadding /> : null}
         <FourCrowns {...{ color }} />
         {!nologo ? (
           <LinkKingLogo {...{ tintColor }} />

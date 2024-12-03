@@ -46,7 +46,7 @@ const Email = ({ navigation }) => {
     <AuthFormContainer
       heading={heading}
       subHeading={subHeading}
-      nologo={true}
+      nologo
     >
       <Formik
         onSubmit={onSubmit}
@@ -60,7 +60,7 @@ const Email = ({ navigation }) => {
             placeholder={email.placeholder}
             keyboardType={"email-address"}
             autoCapitalize={"none"}
-            containerStyle={{ marginBottom: 20 }}
+            bottomMargin
           />
           <SubmitButton title={next} />
         </>

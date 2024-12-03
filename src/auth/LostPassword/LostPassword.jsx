@@ -49,7 +49,7 @@ const LostPassword = ({ navigation }) => {
         },
       );
       if (data.status === "success")
-        navigation.navigate("CheckYourEmail");
+        navigation.navigate("Check Your Email");
     } finally {
       actions.setSubmitting(false);
     }
@@ -76,7 +76,7 @@ const LostPassword = ({ navigation }) => {
           <View style={styles.linkContainer}>
             <AppLink
               title={signIn}
-              onPress={() => navigation.navigate("SignIn")}
+              onPress={() => navigation.navigate("Sign In")}
             />
             <AppLink
               title={signUp}

@@ -96,7 +96,7 @@ const SignIn = () => {
             placeholder={email.placeholder}
             keyboardType={"email-address"}
             autoCapitalize={"none"}
-            containerStyle={{ marginBottom: 20 }}
+            bottomMargin
           />
           <AuthInputField
             name={"password"}
@@ -121,7 +121,7 @@ const SignIn = () => {
             <AppLink
               title={lostPassword}
               onPress={() => {
-                navigation.navigate("LostPassword");
+                navigation.navigate("Lost Password");
               }}
             />
           </View>

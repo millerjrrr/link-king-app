@@ -15,7 +15,7 @@ const SolutionsList = ({ ticket, plus, edit }: any) => {
         }}
       >
         <ScrollView
-          horizontal={true}
+          horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{
             padding: 5,

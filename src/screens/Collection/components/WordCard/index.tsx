@@ -31,7 +31,7 @@ const WordCard = ({ navigation, ticket, onPress }: any) => {
 
   // Use useCallback to memoize onPress
   const goToWordInfoScreenForTicket = useCallback(() => {
-    navigation.navigate("WordInfoScreen", { ticket });
+    navigation.navigate("Word Details", { ticket });
   }, [navigation, ticket]);
 
   return (

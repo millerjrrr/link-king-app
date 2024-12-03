@@ -13,10 +13,10 @@ const ChangeHomeLanguageLabel = () => {
   const navigation = useNavigation();
 
   const onPress = () => {
-    navigation.navigate("ManageAccount");
+    navigation.navigate("Manage Account:");
     navigation.navigate("Options");
     setTimeout(
-      () => navigation.navigate("ManageAccount"),
+      () => navigation.navigate("Manage Account:"),
       1000,
     );
   };

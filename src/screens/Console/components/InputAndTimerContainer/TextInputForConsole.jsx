@@ -7,7 +7,6 @@ import {
   updateFormValue,
   updateTimerIsOn,
 } from "@src/store/console";
-import * as Speech from "expo-speech";
 import { settingsState } from "@src/store/settings";
 import appShadow from "@src/utils/appShadow";
 import { speak } from "@src/utils/appSpeak";
@@ -84,7 +83,7 @@ const TextInputForConsole = ({
       autoCapitalize={"none"}
       returnKeyType={"next"}
       autoCompleteType="off"
-      spellCheck={true}
+      spellCheck
       selectionColor={color + "55"}
       underlineColorAndroid="transparent"
       textContentType="none"

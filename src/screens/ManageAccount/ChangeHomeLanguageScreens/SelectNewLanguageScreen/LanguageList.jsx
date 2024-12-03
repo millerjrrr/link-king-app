@@ -21,6 +21,7 @@ const LanguageList = ({ languages }) => {
         ListFooterComponent={
           <View style={{ height: 100 }} />
         }
+        showsVerticalScrollIndicator={false}
       />
     </>
   );

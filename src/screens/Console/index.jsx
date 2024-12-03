@@ -26,7 +26,7 @@ const Console = ({ navigation }) => {
     useState(false);
 
   const navigateToHelp = () => {
-    navigation.navigate("HelpScreen");
+    navigation.navigate("Console - Help");
   };
 
   const { heading } = appTextSource(appLang).console;

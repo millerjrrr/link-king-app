@@ -12,6 +12,7 @@ import {
   Ticket,
 } from "@src/types/navigationTypes";
 import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 
 const SolutionContainer = styled(TouchableOpacity)<{
   color: string;
@@ -49,7 +50,9 @@ const SolutionItem = ({
 
   const dispatch = useDispatch();
   const navigation =
-    useNavigation<CollectionStackParamList>();
+    useNavigation<
+      StackNavigationProp<CollectionStackParamList>
+    >();
 
   const onPress =
     ticket && target
@@ -60,7 +63,7 @@ const SolutionItem = ({
                 showNewWordAddedModal: false,
               }),
             );
-          navigation.navigate("EditTicketScreen", {
+          navigation.navigate("Edit Solutions", {
             ticket,
             target,
           });

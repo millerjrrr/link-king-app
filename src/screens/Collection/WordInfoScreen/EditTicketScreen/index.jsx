@@ -98,13 +98,11 @@ const EditTicketScreen = ({ route }) => {
               {Array.from({ length: 5 }).map((_, index) => (
                 <AuthInputField
                   key={index}
-                  {...{
-                    name: `newSolutions${index + 1}`,
-                    label: solutionName + " " + (index + 1),
-                    placeholder: "",
-                    containerStyle: { marginBottom: 10 },
-                    autoCapitalize: false,
-                  }}
+                  name={`newSolutions${index + 1}`}
+                  label={solutionName + " " + (index + 1)}
+                  placeholder=""
+                  bottomMargin
+                  autoCapitalize={false}
                 />
               ))}
             </ScrollView>

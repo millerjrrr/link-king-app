@@ -1,6 +1,7 @@
 import React from "react";
 import {
   createStackNavigator,
+  StackNavigationOptions,
   TransitionPresets,
 } from "@react-navigation/stack";
 import ProgressScreen from "@src/screens/Collection/ProgressScreen";
@@ -9,39 +10,40 @@ import DictionarySelectionScreen from "@src/screens/Options/DictionarySelectionS
 import WordInfoScreen from "@src/screens/Collection/WordInfoScreen";
 import EditTicketScreen from "@src/screens/Collection/WordInfoScreen/EditTicketScreen";
 import Console from "@src/screens/Console";
+import { ConsoleStackParamList } from "@src/types/navigationTypes";
 
-const ConsoleStack = createStackNavigator();
+const ConsoleStack =
+  createStackNavigator<ConsoleStackParamList>();
 
 const ConsoleNavigator = () => {
+  const screenOptions: StackNavigationOptions = {
+    headerShown: false,
+    ...TransitionPresets.ModalPresentationIOS,
+  };
   return (
-    <ConsoleStack.Navigator
-      screenOptions={{
-        headerShown: false,
-        ...TransitionPresets.ModalPresentationIOS,
-      }}
-    >
+    <ConsoleStack.Navigator screenOptions={screenOptions}>
       <ConsoleStack.Screen
-        name="ConsoleStackScreen"
+        name="Console"
         component={Console}
       />
       <ConsoleStack.Screen
-        name="WordInfoScreen"
+        name="Word Details"
         component={WordInfoScreen}
       />
       <ConsoleStack.Screen
-        name="EditTicketScreen"
+        name="Edit Solutions"
         component={EditTicketScreen}
       />
       <ConsoleStack.Screen
-        name="HelpScreen"
+        name="Console - Help"
         component={HelpScreen}
       />
       <ConsoleStack.Screen
-        name="ProgressScreen"
+        name="Progress"
         component={ProgressScreen}
       />
       <ConsoleStack.Screen
-        name="DictionarySelectionScreen"
+        name="Dictionary Selection"
         component={DictionarySelectionScreen}
       />
     </ConsoleStack.Navigator>

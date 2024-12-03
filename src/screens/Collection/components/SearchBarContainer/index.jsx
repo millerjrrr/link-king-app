@@ -33,12 +33,12 @@ const SearchBarContainer = () => {
         <TicketsCount />
         <View style={styles.searchBarContainer}>
           <CollectionScreenButton
-            targetScreen={"StatsScreen"}
+            targetScreen={"Statistics"}
             icon={"barschart"}
           />
           <CollectionSearchbar />
           <CollectionScreenButton
-            targetScreen={"ProgressScreen"}
+            targetScreen={"Progress"}
             icon={"sharealt"}
           />
         </View>

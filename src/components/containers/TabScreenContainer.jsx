@@ -43,7 +43,7 @@ const TabScreenContainer = ({
         {backFunction ? (
           <BackButton
             altFunction={backFunction}
-            extraPadding={true}
+            extraPadding
           />
         ) : null}
         <FourCrowns {...{ color }} />
