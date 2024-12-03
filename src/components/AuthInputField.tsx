@@ -1,6 +1,10 @@
-import { View, StyleSheet, Pressable } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Pressable,
+  KeyboardTypeOptions,
+} from "react-native";
 import AppInput from "./AppInput";
-import colors from "@src/utils/colors";
 import { useFormikContext } from "formik";
 import Animated, {
   useAnimatedStyle,
@@ -10,13 +14,34 @@ import Animated, {
   withSpring,
 } from "react-native-reanimated";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { settingsState } from "@src/store/settings";
 import AppText from "./AppText";
+import useColors from "@src/hooks/useColors";
 
-const AuthInputField = (props) => {
-  const { colorScheme } = useSelector(settingsState);
-  const red = colors[colorScheme].RED;
+interface FormValues {
+  name: string; // Define your fields explicitly if known
+  email: string; // Define your fields explicitly if known
+  password: string; // Define your fields explicitly if known
+}
+
+interface AuthInputFieldProps {
+  label: string;
+  placeholder: string;
+  autoCapitalize?:
+    | "none"
+    | "sentences"
+    | "words"
+    | "characters";
+  keyboardType?: KeyboardTypeOptions;
+  secureTextEntry?: boolean;
+  name: keyof FormValues;
+  rightIcon?: React.ReactNode;
+  onRightIconPress?: () => void;
+}
+
+const AuthInputField: React.FC<AuthInputFieldProps> = (
+  props,
+) => {
+  const { RED: red } = useColors();
 
   const inputTransformValue = useSharedValue(0);
   const {
@@ -25,14 +50,13 @@ const AuthInputField = (props) => {
     errors,
     handleBlur,
     touched,
-  } = useFormikContext();
+  } = useFormikContext<FormValues>();
   const {
     label,
     placeholder,
     autoCapitalize,
     keyboardType,
     secureTextEntry,
-    containerStyle,
     name,
     rightIcon,
     onRightIconPress,
@@ -66,7 +90,7 @@ const AuthInputField = (props) => {
   }, [errorMsg]);
 
   return (
-    <Animated.View style={[styles.container, inputStyle]}>
+    <Animated.View style={[{ width: "100%" }, inputStyle]}>
       <View style={styles.labelContainer}>
         <AppText style={{ fontSize: 15 }}>{label}</AppText>
         <AppText style={{ fontSize: 15, color: red }}>
@@ -82,7 +106,7 @@ const AuthInputField = (props) => {
             keyboardType,
             autoCapitalize,
             secureTextEntry,
-            style: containerStyle,
+            style: { width: "100%" },
             onChangeText: handleChange(name),
             value: values[name],
             onBlur: handleBlur(name),
@@ -102,7 +126,6 @@ const AuthInputField = (props) => {
 };
 
 const styles = StyleSheet.create({
-  containerStyle: { width: "100%" },
   labelContainer: {
     width: "100%",
     flexDirection: "row",

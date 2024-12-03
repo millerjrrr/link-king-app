@@ -15,7 +15,7 @@ export const ModalContainer = styled(View)<{
   backgroundColor: string;
   color: string;
 }>`
-  width: ${width * 0.85};
+  width: ${width * 0.85}px;
   padding-horizontal: 5px;
   border-radius: 10px;
   align-items: center;
