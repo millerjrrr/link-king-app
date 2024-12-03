@@ -1,9 +1,7 @@
 import { View } from "react-native";
-import { useSelector } from "react-redux";
 import styled from "styled-components/native";
-import { settingsState } from "@src/store/settings";
-import colors from "@src/utils/colors";
 import { LinearGradient } from "expo-linear-gradient";
+import useColors from "@src/hooks/useColors";
 
 const Container = styled(View)`
   position: relative;
@@ -20,8 +18,7 @@ const Fade = styled(LinearGradient)`
 `;
 
 const HorizontalScrollFade = ({ children }) => {
-  const { colorScheme } = useSelector(settingsState);
-  const backgroundColor = colors[colorScheme].PRIMARY;
+  const { PRIMARY } = useColors();
 
   return (
     <Container>
@@ -29,10 +26,10 @@ const HorizontalScrollFade = ({ children }) => {
         {...{
           side: "left",
           colors: [
-            backgroundColor,
-            backgroundColor + "E6",
-            backgroundColor + "80",
-            backgroundColor + "00",
+            PRIMARY,
+            PRIMARY + "E6",
+            PRIMARY + "80",
+            PRIMARY + "00",
           ],
           start: { x: 0, y: 0 },
           end: { x: 1, y: 0 },
@@ -42,10 +39,10 @@ const HorizontalScrollFade = ({ children }) => {
         {...{
           side: "right",
           colors: [
-            backgroundColor + "00",
-            backgroundColor + "80",
-            backgroundColor + "E6",
-            backgroundColor,
+            PRIMARY + "00",
+            PRIMARY + "80",
+            PRIMARY + "E6",
+            PRIMARY,
           ],
           start: { x: 0, y: 0 },
           end: { x: 1, y: 0 },

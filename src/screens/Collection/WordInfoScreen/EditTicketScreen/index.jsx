@@ -4,15 +4,12 @@ import * as yup from "yup";
 import AuthFormContainer from "../../../../components/Containers/AuthFormContainer";
 import AuthInputField from "../../../../components/AuthInputField";
 import SubmitButton from "../../../../components/Buttons/SubmitButton";
-import { ScrollView } from "react-native";
+import { Platform, ScrollView } from "react-native";
 import { View } from "react-native";
 import { normalize } from "@src/utils/normalize";
 import appTextSource from "@src/utils/appTextSource";
 import { saveTicket } from "./saveTicket";
-import {
-  StackActions,
-  useNavigation,
-} from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { Formik } from "formik";
 import BottomShadow from "@src/components/BottomShadow";
 
@@ -86,13 +83,13 @@ const EditTicketScreen = ({ route }) => {
         >
           <>
             <ScrollView
-              {...{
-                showsScrollIndicator: true,
-                contentContainerStyle: {
-                  padding: 5,
-                  paddingHorizontal: 30,
-                  alignItems: "center",
-                },
+              showsVerticalScrollIndicator={
+                Platform.OS !== "web"
+              }
+              contentContainerStyle={{
+                padding: 5,
+                paddingHorizontal: 30,
+                alignItems: "center",
               }}
             >
               {Array.from({ length: 5 }).map((_, index) => (

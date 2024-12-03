@@ -1,9 +1,14 @@
-import { ScrollView, View } from "react-native";
+import { Platform, ScrollView, View } from "react-native";
 import SolutionItem from "./SolutionItem";
 import HorizontalScrollFade from "./HorizonatalScrollFade";
+import screenDimensions from "@src/utils/screenDimensions";
+
+const { width } = screenDimensions();
 
 const SolutionsList = ({ ticket, plus, edit }: any) => {
   const { solutions, target } = ticket;
+
+  const web = Platform.OS === "web";
 
   return (
     <HorizontalScrollFade>
@@ -16,11 +21,12 @@ const SolutionsList = ({ ticket, plus, edit }: any) => {
       >
         <ScrollView
           horizontal
-          showsHorizontalScrollIndicator={false}
+          showsHorizontalScrollIndicator={web}
           contentContainerStyle={{
             padding: 5,
             paddingHorizontal: 30,
             alignItems: "center",
+            width: web ? width - 30 : undefined,
           }}
         >
           {plus || edit ? (
