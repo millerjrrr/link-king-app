@@ -34,7 +34,6 @@ const AppSearchBar = ({
         onChangeText: (value) => setSearchKeyword(value),
         style: {
           marginTop: 8,
-          textAlign: "center",
           zIndex: 10,
           width: "70%",
           backgroundColor: colors[colorScheme].SECONDARY,

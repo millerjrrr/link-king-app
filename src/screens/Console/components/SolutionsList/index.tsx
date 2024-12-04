@@ -25,6 +25,7 @@ const SolutionsList = ({ ticket, plus, edit }: any) => {
           contentContainerStyle={{
             padding: 5,
             paddingHorizontal: 30,
+            justifyContent: "center",
             alignItems: "center",
             width: web ? width - 30 : undefined,
           }}

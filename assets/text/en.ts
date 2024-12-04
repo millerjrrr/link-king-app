@@ -94,7 +94,7 @@ const en: AppText = {
   },
   collection: {
     heading: "Collection",
-    searchMessage: "Search Collected Words",
+    searchMessage: "Search Collection",
     noWords: "No words containing these letters",
     today: "today",
     tomorrow: "tomorrow",

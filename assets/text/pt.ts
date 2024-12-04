@@ -95,7 +95,7 @@ const pt: AppText = {
   },
   collection: {
     heading: "Coleção",
-    searchMessage: "Pesquisar Coleção",
+    searchMessage: "Pesquisar",
     noWords: "Nenhuma palavra contendo essas letras",
     today: "hoje",
     tomorrow: "amanhã",
@@ -128,7 +128,7 @@ const pt: AppText = {
     },
     dictionaryLookupScreen: {
       heading: "Adicionar Novas Palavras",
-      searchMessage: "Pesquisar no Dicionário",
+      searchMessage: "Pesquisar",
       searchDictionary:
         "Aqui você pode adicionar mais palavras do nosso dicionário avaliado.",
       noResults: "Nenhum resultado contendo essas letras",
