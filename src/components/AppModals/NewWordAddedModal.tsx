@@ -61,6 +61,10 @@ const NewWordAddedModal = () => {
       isVisible={showNewWordAddedModal}
       onBackdropPress={x}
       backdropColor={"transparent"}
+      style={{
+        justifyContent: "center",
+        alignItems: "center",
+      }}
     >
       <ModalContainer
         backgroundColor={PRIMARY}

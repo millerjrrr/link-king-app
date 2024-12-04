@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { Platform, StyleSheet, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import PopUpContainer from "@src/components/Containers/PopUpContainer";
 import React, { useCallback } from "react";
@@ -19,6 +19,7 @@ import {
 } from "@src/store/collection";
 import { useFocusEffect } from "@react-navigation/native";
 import { updateModals } from "@src/store/modals";
+import definitionWebLookup from "@src/utils/definitionWebLookup";
 
 const WordInfoScreen = ({ route }) => {
   const { selectedTicket: ticket } =
@@ -32,13 +33,18 @@ const WordInfoScreen = ({ route }) => {
   const dispatch = useDispatch();
 
   const onPress = () => {
-    dispatch(
-      updateModals({
-        modalShowing: "definitionInWebViewModal",
-        definitionSearchWord: ticket.target,
-        definitionSearchLanguage,
-      }),
-    );
+    Platform.OS === "web"
+      ? definitionWebLookup(
+          ticket.target,
+          definitionSearchLanguage,
+        )
+      : dispatch(
+          updateModals({
+            modalShowing: "definitionInWebViewModal",
+            definitionSearchWord: ticket.target,
+            definitionSearchLanguage,
+          }),
+        );
   };
 
   const { busy, wordDeleteButtonPressed } =

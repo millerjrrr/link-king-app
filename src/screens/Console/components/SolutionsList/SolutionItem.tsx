@@ -1,4 +1,4 @@
-import { TouchableOpacity } from "react-native";
+import { Platform, TouchableOpacity } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import { appShadowForStyledComponents } from "@src/utils/appShadow";
@@ -12,6 +12,7 @@ import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { updateSelectedTicket } from "@src/store/collection";
 import Ticket from "@src/types/Ticket";
+import definitionWebLookup from "@src/utils/definitionWebLookup";
 
 const SolutionContainer = styled(TouchableOpacity)<{
   color: string;
@@ -63,18 +64,19 @@ const SolutionItem = ({
               }),
             );
           dispatch(updateSelectedTicket(ticket));
-          navigation.navigate("Edit Solutions", {
-            target,
-          });
+          navigation.navigate("Edit Solutions");
         }
-      : () =>
-          dispatch(
-            updateModals({
-              modalShowing: "definitionInWebViewModal",
-              definitionSearchWord: solution,
-              definitionSearchLanguage: languageCode,
-            }),
-          );
+      : () => {
+          Platform.OS === "web"
+            ? definitionWebLookup(solution, languageCode)
+            : dispatch(
+                updateModals({
+                  modalShowing: "definitionInWebViewModal",
+                  definitionSearchWord: solution,
+                  definitionSearchLanguage: languageCode,
+                }),
+              );
+        };
 
   return (
     <SolutionContainer
