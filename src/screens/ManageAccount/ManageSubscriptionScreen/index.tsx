@@ -21,7 +21,7 @@ const ManageSubscriptionScreen = () => {
   const isWebApp = Platform.OS === "web";
 
   return (
-    <AuthFormContainer heading={heading}>
+    <AuthFormContainer heading={heading} noScrollView>
       <Container>
         {isWebApp ? (
           <AppText>{webNotice}</AppText>

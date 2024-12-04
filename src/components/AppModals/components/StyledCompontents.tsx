@@ -26,7 +26,7 @@ export const WebViewContainer = styled(View)`
   padding-horizontal: 5px;
   padding-vertical: 10px;
   border-radius: 10px;
-  height: ${height * 0.7};
+  height: ${height * 0.7}px;
   width: 100%;
 `;
 

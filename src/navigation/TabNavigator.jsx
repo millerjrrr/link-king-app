@@ -2,27 +2,24 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import CollectionNavigator from "./subnavigators/CollectionNavigator";
 import OptionsNavigator from "./subnavigators/OptionsNavigator";
 import ConsoleNavigator from "./subnavigators/ConsoleNavigator";
-import colors from "@src/utils/colors";
 import {
   Entypo,
   Ionicons,
   MaterialIcons,
 } from "@expo/vector-icons";
-import { useSelector } from "react-redux";
 import React from "react";
-import { settingsState } from "@src/store/settings";
 import IsSubscribedWrapper from "../subscription/IsSubscribedWrapper";
 import ManageAccountNavigator from "./subnavigators/ManageAccountNavigator";
+import useColors from "@src/hooks/useColors";
 
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
-  const { colorScheme, golden } =
-    useSelector(settingsState);
-  const color = colors[colorScheme].CONTRAST[golden];
-  const backgroundColor = colors[colorScheme].PRIMARY;
-  const tabBarInactiveTintColor =
-    colors[colorScheme].INACTIVE_CONTRAST;
+  const {
+    CONTRAST: color,
+    PRIMARY,
+    INACTIVE_CONTRAST,
+  } = useColors();
 
   return (
     <IsSubscribedWrapper>
@@ -30,11 +27,11 @@ const TabNavigator = () => {
         screenOptions={{
           tabBarShowLabel: false,
           headerShown: false,
-          tabBarInactiveTintColor,
+          tabBarInactiveTintColor: INACTIVE_CONTRAST,
           tabBarHideOnKeyboard: true,
           tabBarStyle: {
             color,
-            backgroundColor,
+            backgroundColor: PRIMARY,
             height: 80,
             padding: 10,
             borderTopWidth: 0,

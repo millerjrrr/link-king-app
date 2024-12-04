@@ -10,4 +10,4 @@ const client: { f: AxiosInstance; l: AxiosInstance } = {
   }),
 };
 
-export default client.f;
+export default client.l;

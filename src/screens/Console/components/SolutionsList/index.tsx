@@ -16,6 +16,8 @@ const SolutionsList = ({ ticket, plus, edit }: any) => {
         style={{
           height: 70,
           alignItems: "center",
+          justifyContent: "center",
+          width: width - 30,
           backgroundColor: "#00000000",
         }}
       >
@@ -25,9 +27,8 @@ const SolutionsList = ({ ticket, plus, edit }: any) => {
           contentContainerStyle={{
             padding: 5,
             paddingHorizontal: 30,
-            justifyContent: "center",
             alignItems: "center",
-            width: web ? width - 30 : undefined,
+            maxWidth: web ? width - 30 : undefined,
           }}
         >
           {plus || edit ? (
