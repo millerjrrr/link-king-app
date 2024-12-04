@@ -7,16 +7,14 @@ import {
   ViewProps,
   ScrollViewProps,
 } from "react-native";
-import colors from "@src/utils/colors";
 import FourCrowns from "../Graphics/FourCrowns";
 import LinkKingLogo from "../Graphics/LinkKingLogo";
 import StatusBarFiller from "../StatusBarFiller";
-import { useSelector } from "react-redux";
-import { settingsState } from "@src/store/settings";
 import AppText from "../AppText";
 import BackButton from "../Buttons/BackButton";
 import React, { ReactNode } from "react";
 import screenDimensions from "@src/utils/screenDimensions";
+import useColors from "@src/hooks/useColors";
 
 interface AuthFormContainerProps {
   children: ReactNode;
@@ -39,12 +37,7 @@ const AuthFormContainer: React.FC<
   back = true,
   noScrollView,
 }) => {
-  const { colorScheme, golden } =
-    useSelector(settingsState);
-
-  const tintColor = colors[colorScheme].CONTRAST[golden];
-  const color = colors[colorScheme].SECONDARY;
-  const backgroundColor = colors[colorScheme].PRIMARY;
+  const { CONTRAST, SECONDARY } = useColors();
 
   const Container =
     noScrollView || Platform.OS === "web"
@@ -56,7 +49,6 @@ const AuthFormContainer: React.FC<
           style: [
             styles.container,
             {
-              backgroundColor,
               alignItems: !nologo ? "center" : "flex-start",
             },
           ],
@@ -65,7 +57,6 @@ const AuthFormContainer: React.FC<
           contentContainerStyle: [
             styles.container,
             {
-              backgroundColor,
               alignItems: !nologo ? "center" : "flex-start",
             },
           ],
@@ -73,19 +64,19 @@ const AuthFormContainer: React.FC<
 
   return (
     <>
+      <FourCrowns color={SECONDARY} />
       <Container {...containerProps}>
         <StatusBarFiller />
         {back ? <BackButton extraPadding /> : null}
-        <FourCrowns {...{ color }} />
         {!nologo ? (
-          <LinkKingLogo {...{ tintColor }} />
+          <LinkKingLogo tintColor={CONTRAST} />
         ) : popUp ? null : (
-          <View {...{ style: { height: 60 } }} />
+          <View style={{ height: 60 }} />
         )}
         <AppText
           style={{
             textAlign: !nologo ? "center" : "left",
-            color: tintColor,
+            color: CONTRAST,
             fontWeight: "bold",
             paddingHorizontal: 5,
             paddingLeft: popUp ? 40 : 5,
@@ -100,7 +91,7 @@ const AuthFormContainer: React.FC<
               paddingLeft: popUp ? 40 : 5,
               fontSize: 16,
               textAlign: !nologo ? "center" : "left",
-              color: tintColor,
+              color: CONTRAST,
             }}
           >
             {subHeading}
