@@ -205,6 +205,8 @@ const it: AppText = {
         appStore: "App Store",
         playStore: "Play Store",
         subscribe: "Iscriviti",
+        webNotice:
+          "L'app web è attualmente gratuita. Nessun abbonamento richiesto.",
       },
     },
     leaveAReview: {

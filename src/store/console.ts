@@ -63,8 +63,8 @@ const initialState: ConsoleState = {
     level: 0,
     rating: 400,
     solutions: [],
-    speechLang: "",
     target: "",
+    speechLang: "",
     tries: 3,
   },
   stats: {

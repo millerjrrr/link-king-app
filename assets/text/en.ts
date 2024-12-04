@@ -202,6 +202,8 @@ const en: AppText = {
         appStore: "AppStore",
         playStore: "Play Store",
         subscribe: "Subscribe",
+        webNotice:
+          "The web app is currently free. No subscription required",
       },
     },
     leaveAReview: {

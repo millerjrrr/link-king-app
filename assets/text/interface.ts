@@ -144,6 +144,7 @@ interface OptionsManageAccountSubscriptionPage {
   appStore: string;
   playStore: string;
   subscribe: string;
+  webNotice: string;
 }
 
 interface OptionsManageAccount {
