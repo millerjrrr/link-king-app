@@ -6,12 +6,12 @@ import {
 } from "@react-navigation/stack";
 import DictionarySelectionScreen from "../../screens/Options/DictionarySelectionScreen";
 import WordInfoScreen from "@src/screens/Collection/WordInfoScreen";
-import EditTicketScreen from "@src/screens/Collection/WordInfoScreen/EditTicketScreen";
 import Collection from "@src/screens/Collection";
 import StatsScreen from "@src/screens/Collection/StatsScreen";
 import ProgressScreen from "@src/screens/Collection/ProgressScreen";
 import DictionaryLookupScreen from "@src/screens/Collection/DictionaryLookupScreen";
 import { CollectionStackParamList } from "@src/types/navigationTypes";
+import EditTicketScreen from "@src/screens/Collection/EditTicketScreen";
 
 const CollectionStack =
   createStackNavigator<CollectionStackParamList>();

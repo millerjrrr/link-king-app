@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { numberDateToWordStyleDate } from "@src/utils/numberDateToWordStyle";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import WordCardLevelStars from "./WordCardLevelStars";
 import {
   Container,
@@ -15,6 +15,7 @@ import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import SpeakButton from "./SpeakButton";
 import useColors from "@src/hooks/useColors";
+import { updateSelectedTicket } from "@src/store/collection";
 
 const WordCard = ({ navigation, ticket, onPress }: any) => {
   const { appLang } = useSelector(settingsState);
@@ -29,9 +30,13 @@ const WordCard = ({ navigation, ticket, onPress }: any) => {
       ? (scale * 10) / (10 + (target.length - 10) * 0.7)
       : scale;
 
+  const dispatch = useDispatch();
   // Use useCallback to memoize onPress
   const goToWordInfoScreenForTicket = useCallback(() => {
-    navigation.navigate("Word Details", { ticket });
+    dispatch(updateSelectedTicket(ticket));
+    navigation.navigate("Word Details", {
+      wrongAnswerReturned: false,
+    });
   }, [navigation, ticket]);
 
   return (

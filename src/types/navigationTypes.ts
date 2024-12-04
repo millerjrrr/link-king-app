@@ -1,21 +1,10 @@
-import type { StackNavigationProp } from "@react-navigation/stack";
-
-export interface Ticket {
-  id: string;
-  target?: string;
-  solutions: string[];
-  rating: number;
-  level: number;
-}
-
 // COLLECTION
 export type CollectionStackParamList = {
   Collection: undefined;
   "Word Details": {
-    ticket: Ticket;
     wrongAnswerReturned?: boolean;
   };
-  "Edit Solutions": { ticket: Ticket; target: string };
+  "Edit Solutions": undefined;
   Statistics: undefined;
   Progress: undefined;
   "Dictionary Lookup": undefined;
@@ -26,13 +15,9 @@ export type CollectionStackParamList = {
 export type ConsoleStackParamList = {
   Console: undefined;
   "Word Details": {
-    ticket: Ticket;
     wrongAnswerReturned?: boolean;
   };
-  "Edit Solutions": {
-    ticket: Ticket;
-    target: string;
-  };
+  "Edit Solutions": undefined;
   "Console - Help": undefined;
   Progress: undefined;
   "Dictionary Selection": undefined;

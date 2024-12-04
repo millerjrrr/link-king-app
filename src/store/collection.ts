@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "@src/store";
+import Ticket from "@src/types/Ticket";
 
 interface CollectionState {
   searchKeyword: string;
@@ -10,6 +11,7 @@ interface CollectionState {
   busy: boolean;
   wordDeletedSuccessfully: boolean;
   wordDeleteButtonPressed: boolean;
+  selectedTicket: Ticket;
 }
 
 const initialState: CollectionState = {
@@ -21,6 +23,13 @@ const initialState: CollectionState = {
   busy: false,
   wordDeletedSuccessfully: true,
   wordDeleteButtonPressed: false,
+  selectedTicket: {
+    id: "",
+    target: "",
+    solutions: [""],
+    rating: 0,
+    level: 0,
+  },
 };
 
 const slice = createSlice({
@@ -51,6 +60,9 @@ const slice = createSlice({
     updateWordDeleteButtonPressed(state, action) {
       state.wordDeleteButtonPressed = action.payload;
     },
+    updateSelectedTicket(state, action) {
+      state.selectedTicket = action.payload;
+    },
   },
 });
 
@@ -63,6 +75,7 @@ export const {
   updateBusy,
   updateWordDeletedSuccessfully,
   updateWordDeleteButtonPressed,
+  updateSelectedTicket,
 } = slice.actions;
 
 export const collectionState = (state: RootState) =>

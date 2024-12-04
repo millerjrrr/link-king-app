@@ -21,7 +21,9 @@ import { useFocusEffect } from "@react-navigation/native";
 import { updateModals } from "@src/store/modals";
 
 const WordInfoScreen = ({ route }) => {
-  const { ticket, wrongAnswerReturned } = route.params;
+  const { selectedTicket: ticket } =
+    useSelector(collectionState);
+  const { wrongAnswerReturned } = route.params;
   const { appLang } = useSelector(settingsState);
   const {
     gamePlay: { speechLang },

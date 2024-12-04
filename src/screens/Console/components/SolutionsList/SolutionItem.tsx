@@ -7,12 +7,11 @@ import { selectConsoleState } from "@src/store/console";
 import { updateModals } from "@src/store/modals";
 import useColors from "@src/hooks/useColors";
 import styled from "styled-components/native";
-import {
-  CollectionStackParamList,
-  Ticket,
-} from "@src/types/navigationTypes";
+import { CollectionStackParamList } from "@src/types/navigationTypes";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
+import { updateSelectedTicket } from "@src/store/collection";
+import Ticket from "@src/types/Ticket";
 
 const SolutionContainer = styled(TouchableOpacity)<{
   color: string;
@@ -63,8 +62,8 @@ const SolutionItem = ({
                 showNewWordAddedModal: false,
               }),
             );
+          dispatch(updateSelectedTicket(ticket));
           navigation.navigate("Edit Solutions", {
-            ticket,
             target,
           });
         }

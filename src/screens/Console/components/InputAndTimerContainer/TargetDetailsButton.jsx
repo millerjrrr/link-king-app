@@ -2,9 +2,10 @@ import { StyleSheet, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "@src/utils/colors";
 import { useNavigation } from "@react-navigation/native";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectConsoleState } from "@src/store/console";
 import { settingsState } from "@src/store/settings";
+import { updateSelectedTicket } from "@src/store/collection";
 
 const TargetDetailsButton = () => {
   const {
@@ -23,15 +24,16 @@ const TargetDetailsButton = () => {
     rating,
     level: 1,
   };
+  const dispatch = useDispatch();
 
   return tries === 1 && tail.length === 0 ? (
     <TouchableOpacity
-      onPress={() =>
+      onPress={() => {
+        dispatch(updateSelectedTicket(ticket));
         navigation.navigate("Word Details", {
-          ticket,
           wrongAnswerReturned: true,
-        })
-      }
+        });
+      }}
       style={styles.container}
     >
       <MaterialCommunityIcons

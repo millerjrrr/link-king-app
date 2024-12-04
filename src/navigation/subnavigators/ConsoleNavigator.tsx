@@ -8,7 +8,7 @@ import ProgressScreen from "@src/screens/Collection/ProgressScreen";
 import HelpScreen from "@src/screens/Console/HelpScreen";
 import DictionarySelectionScreen from "@src/screens/Options/DictionarySelectionScreen";
 import WordInfoScreen from "@src/screens/Collection/WordInfoScreen";
-import EditTicketScreen from "@src/screens/Collection/WordInfoScreen/EditTicketScreen";
+import EditTicketScreen from "@src/screens/Collection/EditTicketScreen";
 import Console from "@src/screens/Console";
 import { ConsoleStackParamList } from "@src/types/navigationTypes";
 

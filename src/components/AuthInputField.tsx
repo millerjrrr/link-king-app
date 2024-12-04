@@ -21,6 +21,14 @@ interface FormValues {
   name: string; // Define your fields explicitly if known
   email: string; // Define your fields explicitly if known
   password: string; // Define your fields explicitly if known
+  newSolutions1: string;
+  newSolutions2: string;
+  newSolutions3: string;
+  newSolutions4: string;
+  newSolutions5: string;
+  newSolutions6: string;
+  newSolutions7: string;
+  newSolutions8: string;
 }
 
 interface AuthInputFieldProps {
