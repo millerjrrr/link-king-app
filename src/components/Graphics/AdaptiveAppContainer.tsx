@@ -3,7 +3,8 @@ import appShadow from "@src/utils/appShadow";
 import colors from "@src/utils/colors";
 import screenDimensions from "@src/utils/screenDimensions";
 import { ReactNode } from "react";
-import { Platform, View } from "react-native";
+import { Dimensions, Platform, View } from "react-native";
+import DownloadAppScreenForWebAppOnMobile from "./DownloadAppScreenForWebAppOnMobile";
 
 const AdaptiveAppContainer = ({
   children,
@@ -13,6 +14,7 @@ const AdaptiveAppContainer = ({
   const { CONTRAST } = useColors();
   const { height, width } = screenDimensions();
   const borderRadius = height * 0.0542;
+  const deviceWidth = Dimensions.get("window").width;
 
   return Platform.OS === "web" ? (
     <View
@@ -53,7 +55,11 @@ const AdaptiveAppContainer = ({
               borderRadius: height,
             }}
           />
-          {children}
+          {deviceWidth < 500 ? (
+            <DownloadAppScreenForWebAppOnMobile />
+          ) : (
+            children
+          )}
         </View>
       </View>
     </View>

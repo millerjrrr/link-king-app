@@ -329,6 +329,8 @@ const it: AppText = {
     ],
     priceDescription: "Accesso completo a soli ",
     perYear: "/anno",
+    webAppUnavailableOnMobileNotice:
+      "Purtroppo, l'app web non funziona bene sui dispositivi mobili.\n\nFortunatamente, puoi scaricare l'app GRATUITAMENTE qui!",
   },
   modals: {
     leaveAReviewModal: {

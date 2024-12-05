@@ -1,12 +1,12 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Welcome from "@src/auth/SignUp/Welcome";
-import NameScreen from "@src/auth/SignUp/NameScreen";
-import Email from "@src/auth/SignUp/Email";
-import Password from "@src/auth/SignUp/Password";
-import VerificationCode from "@src/auth/SignUp/VerificationCode";
-import LostPassword from "@src/auth/LostPassword/LostPassword";
-import CheckYourEmail from "@src/auth/LostPassword/CheckYourEmail";
-import SignIn from "@src/auth/SignIn";
+import Welcome from "@auth/SignUp/Welcome";
+import NameScreen from "@auth/SignUp/NameScreen";
+import Email from "@auth/SignUp/Email";
+import Password from "@auth/SignUp/Password";
+import VerificationCode from "@auth/SignUp/VerificationCode";
+import LostPassword from "@auth/LostPassword/LostPassword";
+import CheckYourEmail from "@auth/LostPassword/CheckYourEmail";
+import SignIn from "@auth/SignIn";
 import { AuthStackParamList } from "@src/types/navigationTypes";
 
 const Stack =

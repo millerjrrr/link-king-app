@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
-import OptionsMenuItem from "../components/OptionsMenuItem";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import { selectConsoleState } from "@src/store/console";
 import { View } from "react-native";
 import useSendDictionary from "@src/hooks/optionsHooks/useSendDictionary";
+import OptionsMenuItem from "../components/OptionsMenuItem";
 
 const DictionarySelectorMenuItem = ({
   name: dictionary,

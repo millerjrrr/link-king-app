@@ -8,7 +8,6 @@ import ResponseInformation from "./ResponseInformation";
 import appTextSource from "@src/utils/appTextSource";
 import { settingsState } from "@src/store/settings";
 import AcceptedAnswers from "./AcceptedAnswers";
-import WordCard from "../components/WordCard";
 import UserAttempt from "./UserAttempt";
 import { selectConsoleState } from "@src/store/console";
 import SolutionsList from "@src/screens/Console/components/SolutionsList";
@@ -20,6 +19,7 @@ import {
 import { useFocusEffect } from "@react-navigation/native";
 import { updateModals } from "@src/store/modals";
 import definitionWebLookup from "@src/utils/definitionWebLookup";
+import WordCard from "../components/WordCard";
 
 const WordInfoScreen = ({ route }) => {
   const { selectedTicket: ticket } =

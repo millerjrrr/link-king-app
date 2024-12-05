@@ -7,8 +7,8 @@ import {
   updateBusyState,
   updateSubscribed,
 } from "@src/store/auth";
-import useFetchAuthInfo from "../authHooks/useFetchAuthInfo";
 import { Platform } from "react-native";
+import useFetchAuthInfo from "../authHooks/useFetchAuthInfo";
 
 const useCheckSubscriptionStatusAndFetchAuthInfo = () => {
   const dispatch = useDispatch();

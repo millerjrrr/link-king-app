@@ -1,13 +1,13 @@
 import { View } from "react-native";
-import AuthFormContainer from "../../components/Containers/AuthFormContainer";
 import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
-import AuthButton from "../../components/Buttons/AuthButton";
+import AuthButton from "@components/Buttons/AuthButton";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "@src/utils/colors";
-import SignUpAppLink from "../../components/SignUpAppLink";
+import SignUpAppLink from "@components/SignUpAppLink";
+import AuthFormContainer from "@src/components/Containers/AuthFormContainer";
 
 const Welcome = () => {
   const { colorScheme, golden, appLang } =

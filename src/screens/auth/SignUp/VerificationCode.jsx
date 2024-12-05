@@ -1,7 +1,7 @@
-import SubmitButton from "../../components/Buttons/SubmitButton";
-import AuthInputField from "../../components/AuthInputField";
+import SubmitButton from "@components/Buttons/SubmitButton";
+import AuthInputField from "@components/AuthInputField";
 import * as yup from "yup";
-import AuthFormContainer from "../../components/Containers/AuthFormContainer";
+import AuthFormContainer from "@components/Containers/AuthFormContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
@@ -12,7 +12,7 @@ import {
   updateToken,
 } from "@src/store/auth";
 import client from "@src/api/client";
-import SignUpAppLink from "../../components/SignUpAppLink";
+import SignUpAppLink from "@components/SignUpAppLink";
 import { saveToAsyncStorage } from "@src/utils/asyncStorage";
 import { Formik } from "formik";
 import useCatchAsync from "@src/hooks/useCatchAsync";

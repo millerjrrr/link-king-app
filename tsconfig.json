@@ -10,18 +10,14 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "@src/*": [
-        "src/*"
-      ],
-      "@assets/*": [
-        "assets/*"
-      ]
+      "@src/*": ["src/*"],
+      "@assets/*": ["assets/*"],
+      "@auth/*": ["src/screens/auth/*"],
+      "@Console/*": ["src/screens/Console/*"],
+      "@components/*": ["src/components/*"]
     }
   },
-  "include": [
-    "src/**/*",
-    "assets/**/*"
-  ],
+  "include": ["src/**/*", "assets/**/*"],
   "exclude": [
     "node_modules",
     "babel.config.js",

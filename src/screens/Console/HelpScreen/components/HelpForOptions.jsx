@@ -1,5 +1,5 @@
-import DescriptionWrapper from "./DescriptionWrapper";
 import OptionsContainer from "../../components/OptionsContainer";
+import DescriptionWrapper from "./DescriptionWrapper";
 
 const HelpForOptions = ({ name }) => {
   const lookup = {

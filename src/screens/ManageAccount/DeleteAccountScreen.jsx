@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import PopUpContainer from "../../components/Containers/PopUpContainer";
-import BloodRedCover from "../../components/BloodRedCover";
+import PopUpContainer from "@components/Containers/PopUpContainer";
+import BloodRedCover from "@components/BloodRedCover";
 import { settingsState } from "@src/store/settings";
-import AuthInputField from "../../components/AuthInputField";
+import AuthInputField from "@components/AuthInputField";
 import * as yup from "yup";
-import PasswordVisibilityIcon from "../../components/PasswordVisibilityIcon";
+import PasswordVisibilityIcon from "@components/PasswordVisibilityIcon";
 import appTextSource from "@src/utils/appTextSource";
-import AppText from "../../components/AppText";
+import AppText from "@components/AppText";
 import {
   Keyboard,
   ScrollView,
   TouchableWithoutFeedback,
   View,
 } from "react-native";
-import FormikSafetyButton from "../../components/Buttons/FormikSafetyButton";
+import FormikSafetyButton from "@components/Buttons/FormikSafetyButton";
 import { Formik } from "formik";
 import useDeleteAccount from "@src/hooks/optionsHooks/useDeleteAccount";
 

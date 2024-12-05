@@ -9,7 +9,7 @@ import {
   updateAppLoadingState,
 } from "@src/store/auth";
 import TabNavigator from "./TabNavigator";
-import ConnectedWrapper from "@src/errors/ConnectedWrapper";
+import ConnectedWrapper from "@src/components/ConnectedWrapper";
 import { StatusBar } from "expo-status-bar";
 import useFetchSettings from "../hooks/authHooks/useFetchSettings";
 import { useEffect } from "react";

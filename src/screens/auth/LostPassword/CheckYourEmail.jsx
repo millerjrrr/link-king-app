@@ -1,11 +1,11 @@
 import { StyleSheet } from "react-native";
-import AuthFormContainer from "../../components/Containers/AuthFormContainer";
+import AuthFormContainer from "@components/Containers/AuthFormContainer";
 import appTextSource from "@src/utils/appTextSource";
 import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
-import AuthButton from "../../components/Buttons/AuthButton";
+import AuthButton from "@components/Buttons/AuthButton";
 import { Fontisto } from "@expo/vector-icons";
-import AppText from "../../components/AppText";
+import AppText from "@components/AppText";
 import colors from "@src/utils/colors";
 
 const CheckYourEmail = ({ navigation }) => {

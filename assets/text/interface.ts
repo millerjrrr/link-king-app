@@ -279,6 +279,7 @@ interface Paywall {
   terms: [string, string, string, string];
   priceDescription: string;
   perYear: string;
+  webAppUnavailableOnMobileNotice: string;
 }
 
 interface LanguageNames {

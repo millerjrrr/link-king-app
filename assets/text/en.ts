@@ -326,6 +326,8 @@ const en: AppText = {
     ],
     priceDescription: "Full access for just ",
     perYear: "/yr",
+    webAppUnavailableOnMobileNotice:
+      "Unfortunately, the web app does not work so well on mobile devices.\n\nFortunately, you can download the app for FREE here!",
   },
   modals: {
     leaveAReviewModal: {
