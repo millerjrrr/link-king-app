@@ -17,7 +17,8 @@ const SolutionsList = ({ ticket, plus, edit }: any) => {
           height: 70,
           alignItems: "center",
           justifyContent: "center",
-          width: width - 30,
+          // width: width - 30, remember
+          // to test on phone when updating this for web
           backgroundColor: "#00000000",
         }}
       >
