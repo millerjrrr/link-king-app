@@ -20,7 +20,6 @@ const AdaptiveAppContainer = ({
     <View
       style={{
         flex: 1,
-        backgroundColor: "black",
         justifyContent: "center",
         alignItems: "center",
       }}
@@ -30,6 +29,7 @@ const AdaptiveAppContainer = ({
           borderColor: colors.dark.CONTRAST[1],
           borderWidth: 3,
           borderRadius,
+          ...appShadow(CONTRAST, 15),
         }}
       >
         <View
@@ -39,7 +39,7 @@ const AdaptiveAppContainer = ({
             borderRadius,
             overflow: "hidden",
             borderWidth: 10,
-            ...appShadow(CONTRAST, 20),
+            backgroundColor: "black",
           }}
         >
           <View
