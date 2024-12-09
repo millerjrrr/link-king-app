@@ -16,6 +16,8 @@ const AdaptiveAppContainer = ({
   const borderRadius = height * 0.0542;
   const deviceWidth = Dimensions.get("window").width;
 
+  //run npx expo export --platfrom web to export
+
   return Platform.OS === "web" ? (
     <View
       style={{
