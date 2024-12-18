@@ -41,11 +41,16 @@ export type OptionsStackParamList = {
   "Dictionary Selection": undefined;
 };
 
+export interface NameScreenProps {
+  updateName: boolean;
+  buttonTitle?: string;
+}
+
 // AUTH
 export type AuthStackParamList = {
   Welcome: undefined;
   "Sign In": undefined;
-  Name: undefined;
+  Name: NameScreenProps;
   Email: undefined;
   Password: undefined;
   "Verification Code": undefined;

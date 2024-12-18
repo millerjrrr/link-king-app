@@ -14,14 +14,10 @@ import {
 import SignUpAppLink from "@components/SignUpAppLink";
 import { Formik, FormikHelpers } from "formik";
 import useChangeUsername from "@src/hooks/optionsHooks/useChangeUsername";
+import { NameScreenProps } from "@src/types/navigationTypes";
 
 interface FormValues {
   name: string;
-}
-
-interface NameScreenProps {
-  updateName: boolean;
-  buttonTitle?: string;
 }
 
 const NameScreen: React.FC<NameScreenProps> = ({

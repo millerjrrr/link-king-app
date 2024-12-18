@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { settingsState } from "./../../store/settings";
 import usePopToTop from "@src/hooks/usePopToTop";
 import WebsiteQR from "./components/WebsiteQR";
+import { Platform } from "react-native";
 
 const Options = () => {
   usePopToTop();
@@ -52,7 +53,9 @@ const Options = () => {
           onPress: () => navigateTo("Manage Account:"),
         }}
       />
-      <ModalTypeMenuItem optionName="leaveAReview" />
+      {Platform.OS !== "web" ? (
+        <ModalTypeMenuItem optionName="leaveAReview" />
+      ) : null}
       <ModalTypeMenuItem optionName="contactUs" />
       <ModalTypeMenuItem optionName="logOut" />
       <WebsiteQR />

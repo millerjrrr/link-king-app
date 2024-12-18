@@ -1,3 +1,4 @@
+import React from "react";
 import DefinitionInWebViewModal from "./DefinitionInWebViewModal";
 import InfoModals from "./InfoModals";
 import OnPressModals from "./OnPressModals";

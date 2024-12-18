@@ -1,14 +1,12 @@
-import { Linking } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import OptionsMenuItemContainer from "./OptionsMenuItemContainer";
-import { updateNotification } from "@src/store/notification";
 import appTextSource from "@src/utils/appTextSource";
 import MenuItemLink from "./MenuItemLink";
 import { settingsState } from "@src/store/settings";
-import useLogOut from "@src/hooks/authHooks/useLogOut";
-import goToRatingPage from "@src/utils/goToRatingsInAppStore";
+
 import { updateModals } from "@src/store/modals";
 import { ModalWithMessage } from "@src/types/Modals";
+import { Platform } from "react-native";
 
 const ModalTypeMenuItem = ({
   optionName,
@@ -25,27 +23,36 @@ const ModalTypeMenuItem = ({
     appTextSource(appLang).options[optionName];
 
   let iconName;
+  let onPress;
 
   switch (optionName) {
     case "leaveAReview":
       iconName = "thumb-up-outline";
+      onPress = () =>
+        dispatch(updateModals({ modalShowing: name }));
       break;
     case "contactUs":
       iconName = "email-outline";
+      onPress =
+        Platform.OS === "web"
+          ? () => {
+              window.open(`https://link-king.com/contact`);
+            }
+          : () =>
+              dispatch(
+                updateModals({ modalShowing: name }),
+              );
       break;
     case "logOut":
       iconName = "logout";
+      onPress = () =>
+        dispatch(updateModals({ modalShowing: name }));
       break;
   }
 
   return (
     <OptionsMenuItemContainer iconName={iconName}>
-      <MenuItemLink
-        name={linkTitle}
-        onPress={() =>
-          dispatch(updateModals({ modalShowing: name }))
-        }
-      />
+      <MenuItemLink name={linkTitle} onPress={onPress} />
     </OptionsMenuItemContainer>
   );
 };
