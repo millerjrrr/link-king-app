@@ -16,7 +16,7 @@ const DictionarySelectionScreen = () => {
   const { title, dictionaryError } =
     appTextSource(appLang).options.chooseDictionary;
 
-  const { busy } = useSelector(authState);
+  const { busy, justSignedUp } = useSelector(authState);
 
   const [dictionaries, setDictionaries] = useState([]);
   useSetDictionaries(setDictionaries);
@@ -55,7 +55,9 @@ const DictionarySelectionScreen = () => {
                 <View style={{ height: 100 }} />
               }
             />
-            <ChangeHomeLanguageLabel />
+            {justSignedUp ? null : (
+              <ChangeHomeLanguageLabel />
+            )}
           </>
         )}
       </BusyWrapper>

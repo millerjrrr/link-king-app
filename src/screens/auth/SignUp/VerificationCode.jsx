@@ -8,6 +8,7 @@ import appTextSource from "@src/utils/appTextSource";
 import {
   authState,
   updateEmail,
+  updateJustSignedUp,
   updateLoggedInState,
   updateToken,
 } from "@src/store/auth";
@@ -16,6 +17,10 @@ import SignUpAppLink from "@components/SignUpAppLink";
 import { saveToAsyncStorage } from "@src/utils/asyncStorage";
 import { Formik } from "formik";
 import useCatchAsync from "@src/hooks/useCatchAsync";
+import {
+  updateConsoleState,
+  updateDictionary,
+} from "@src/store/console";
 
 const VerificationCode = () => {
   const { appLang } = useSelector(settingsState);
@@ -59,7 +64,14 @@ const VerificationCode = () => {
       );
       await saveToAsyncStorage("auth-token", data.token);
       dispatch(updateToken(data.token));
+      dispatch(
+        updateSettings({
+          appLang: data.data.user.homeLanguage,
+        }),
+      );
+      dispatch(updateDictionary(data.data.user.dictionary));
       dispatch(updateLoggedInState(true));
+      dispatch(updateJustSignedUp(true));
       dispatch(updateEmail(""));
     } finally {
       actions.setSubmitting(false);

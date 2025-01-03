@@ -6,6 +6,40 @@ const it: AppText = {
     message:
       "...sembra che tu non sia connesso a Internet. Questa app richiede una connessione Internet stabile...",
   },
+  walkthrough: {
+    Welcome: {
+      heading: "Ci siamo quasi!",
+      subHeading:
+        "Confermiamo le tue impostazioni di lingua",
+      buttonTitle: "Andiamo",
+    },
+    "Choose Home Language": {
+      heading: "Lingua Nativa",
+      subHeading:
+        "Questa dovrebbe essere la tua lingua nativa, quella che conosci meglio.",
+      buttonTitle: "Avanti",
+      linkTitle: "Cambia lingua nativa",
+      message: "Lingua nativa aggiornata con successo!",
+    },
+    "Choose a Language to Study": {
+      heading: "Lingua di Studio",
+      subHeading: "Questa è la lingua che vuoi migliorare",
+      buttonTitle: "Avanti",
+      linkTitle: "Cambia lingua di studio",
+    },
+    "You're all set!": {
+      heading: "Tutto pronto!",
+      subHeading:
+        "Quando premi avanti, verrai portato al console. È qui che accade la magia.\n",
+      howTo:
+        "Le parole verranno presentate in #T. Il tuo obiettivo è digitare la migliore traduzione in #N",
+      dunno:
+        "Se non conosci una parola, premi semplicemente invio e le soluzioni verranno mostrate sotto",
+      playFor:
+        "Gioca per un totale di 3 minuti e scopri la tua valutazione del vocabolario #T",
+      next: "Andiamo!",
+    },
+  },
   console: {
     heading: "Console",
     start: "Avvia",

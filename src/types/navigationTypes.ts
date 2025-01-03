@@ -24,13 +24,17 @@ export type ConsoleStackParamList = {
 };
 
 // MANAGE ACCOUNT
+export interface SelectNewHomeLanguageProp {
+  unprotect?: boolean;
+}
+
 export type ManageAccountStackParamList = {
   "Manage Account": undefined;
   "Change Account Name": undefined;
   "Manage Subscription": undefined;
   "Change Home Language - Warning": undefined;
   "Change Home Language": undefined;
-  "Select New Home Language": undefined;
+  "Select New Home Language": SelectNewHomeLanguageProp;
   "Delete Account": undefined;
 };
 
@@ -41,12 +45,12 @@ export type OptionsStackParamList = {
   "Dictionary Selection": undefined;
 };
 
+// AUTH
 export interface NameScreenProps {
-  updateName: boolean;
+  updateName?: boolean;
   buttonTitle?: string;
 }
 
-// AUTH
 export type AuthStackParamList = {
   Welcome: undefined;
   "Sign In": undefined;
@@ -56,4 +60,15 @@ export type AuthStackParamList = {
   "Verification Code": undefined;
   "Lost Password": undefined;
   "Check Your Email": undefined;
+};
+
+// WALKTHROUGH
+
+export type WalkthroughStackParamList = {
+  Welcome: undefined;
+  "Choose Home Language": undefined;
+  "Choose a Language to Study": undefined;
+  "You're all set!": undefined;
+  "Select New Home Language": undefined;
+  "Choose a Dictionary": undefined;
 };

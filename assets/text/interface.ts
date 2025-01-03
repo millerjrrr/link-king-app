@@ -291,8 +291,30 @@ interface LanguageNames {
   German: string;
 }
 
+interface WalkthroughBase {
+  heading: string;
+  subHeading: string;
+  buttonTitle: string;
+  linkTitle?: string;
+  message?: string;
+}
+interface Walkthrough {
+  Welcome: WalkthroughBase;
+  "Choose Home Language": WalkthroughBase;
+  "Choose a Language to Study": WalkthroughBase;
+  "You're all set!": {
+    heading: string;
+    subHeading: string;
+    howTo: string;
+    dunno: string;
+    playFor: string;
+    next: string;
+  };
+}
+
 interface AppText {
   internetConnectionPage: InternetConnectionPage;
+  walkthrough: Walkthrough;
   console: Console;
   collection: Collection;
   options: Options;

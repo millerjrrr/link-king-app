@@ -1,7 +1,4 @@
-import {
-  NavigationProp,
-  useNavigation,
-} from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import clientWithAuth from "@src/api/clientWithAuth";
 import { updateNotification } from "@src/store/notification";
 import {
@@ -14,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import useCatchAsync from "../useCatchAsync";
 import { ManageAccountStackParamList } from "@src/types/navigationTypes";
 import { StackNavigationProp } from "@react-navigation/stack";
+import { updateDictionary } from "@src/store/console";
 
 const useChangeHomeLanguage = () => {
   const { appLang } = useSelector(settingsState);
@@ -21,9 +19,7 @@ const useChangeHomeLanguage = () => {
   const catchAsync = useCatchAsync();
   const navigation =
     useNavigation<
-      NavigationProp<
-        StackNavigationProp<ManageAccountStackParamList>
-      >
+      StackNavigationProp<ManageAccountStackParamList>
     >();
 
   const changeHomeLanguage = catchAsync(
@@ -54,6 +50,9 @@ const useChangeHomeLanguage = () => {
           navigation.navigate("Manage Account");
         }, 1000);
         dispatch(updateSettings({ appLang: newLanguage }));
+        dispatch(
+          updateDictionary(data.data.user.dictionary),
+        );
         saveToAsyncStorage("app-lang", newLanguage);
       }
     },

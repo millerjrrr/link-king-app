@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { View, StyleSheet } from "react-native";
 import colors from "@src/utils/colors";
 import StatusBarFiller from "../StatusBarFiller";
@@ -10,18 +10,21 @@ import { settingsState } from "@src/store/settings";
 import FlagBook from "../Buttons/FlagBook";
 import AppText from "../AppText";
 import BackButton from "../Buttons/BackButton";
-import { LinearGradient } from "expo-linear-gradient";
 import BusyWrapper from "../Loader/BusyWrapper";
 import { authState } from "@src/store/auth";
 import BottomShadow from "../BottomShadow";
 
-const TabScreenContainer = ({
-  children,
-  heading,
-  help,
-  noBook,
-  backFunction,
-}) => {
+interface TabScreenContainerProps {
+  children: ReactNode;
+  heading: string;
+  help?: () => void;
+  noBook?: boolean;
+  backFunction?: () => void;
+}
+
+const TabScreenContainer: React.FC<
+  TabScreenContainerProps
+> = ({ children, heading, help, noBook, backFunction }) => {
   const { colorScheme, golden } =
     useSelector(settingsState);
   const { busy } = useSelector(authState);

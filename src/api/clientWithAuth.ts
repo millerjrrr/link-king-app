@@ -15,7 +15,9 @@ const clientWithAuth: ClientWithAuth = {
     //console.log("# API Request");
     const token = await getFromAsyncStorage("auth-token");
     const appLang =
-      Localization.getLocales()[0]?.languageCode || "en";
+      (await getFromAsyncStorage("app-lang")) ||
+      Localization.getLocales()[0]?.languageCode ||
+      "en";
 
     return client.post(url, data, {
       headers: {

@@ -7,7 +7,9 @@ import { useEffect, useState } from "react";
 import getLanguageData from "./getLanguageData";
 import LanguageList from "./LanguageList";
 
-const SelectNewHomeLanguageScreen = () => {
+const SelectNewHomeLanguageScreen: React.FC<{
+  unprotect?: boolean;
+}> = ({ unprotect }) => {
   const { appLang } = useSelector(settingsState);
   const { changeHomeLanguage: heading } =
     appTextSource(appLang).options.manageAccount;
@@ -25,11 +27,11 @@ const SelectNewHomeLanguageScreen = () => {
   }, [searchKeyword]);
 
   return (
-    <PopUpContainer {...{ heading }}>
+    <PopUpContainer heading={heading}>
       <LanguageSearchBar
         {...{ searchKeyword, setSearchKeyword }}
       />
-      <LanguageList {...{ languages }} />
+      <LanguageList {...{ languages, unprotect }} />
     </PopUpContainer>
   );
 };

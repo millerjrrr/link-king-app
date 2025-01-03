@@ -1,6 +1,6 @@
 import languageNameCodeMap from "@src/utils/languageNameCodeMap";
 
-const data = {
+export const languages = {
   af: {
     name: "Afrikaans",
     nativeName: "Afrikaans",
@@ -944,7 +944,7 @@ const data = {
 const hasFlag = (o) =>
   languageNameCodeMap[o.name] ? true : false;
 
-const getLanguageData = Object.entries(data)
+const getLanguageData = Object.entries(languages)
   .map(([code, lang]) => ({
     code: code,
     name: lang.name,

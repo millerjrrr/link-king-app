@@ -6,6 +6,40 @@ const en: AppText = {
     message:
       "...looks like you are not connected to the internet. This app requires a stable internet connection...",
   },
+  walkthrough: {
+    Welcome: {
+      heading: "Almost there!",
+      subHeading: "Let's confirm your language settings",
+      buttonTitle: "Let's go",
+    },
+    "Choose Home Language": {
+      heading: "Native Language",
+      subHeading:
+        "This should be your native language, the language that you know best.",
+      buttonTitle: "Next",
+      linkTitle: "Change home language",
+      message: "Native language updated successfully!",
+    },
+    "Choose a Language to Study": {
+      heading: "Study Language",
+      subHeading:
+        "This is the language you want to improve",
+      buttonTitle: "Next",
+      linkTitle: "Change study language",
+    },
+    "You're all set!": {
+      heading: "You're all set!",
+      subHeading:
+        "When you hit next you will be taken to the console. This is where the magic happens.\n",
+      howTo:
+        "Words will be presented in #T. Your goal is to type the best translation in #N",
+      dunno:
+        "If you don't know a word just hit enter and the solutions will be shown below",
+      playFor:
+        "Play for a total of 3 minutes and find your #T vocabulary rating",
+      next: "Let's Go!",
+    },
+  },
   console: {
     heading: "Console",
     start: "Start",

@@ -12,6 +12,7 @@ import BusyWrapper from "../Loader/BusyWrapper";
 import { authState } from "@src/store/auth";
 import BottomShadow from "../BottomShadow";
 import FadeBackgroundView from "../Graphics/FadeBackgroundView";
+import AppNotification from "../AppNotification";
 
 interface PopUpContainerProps {
   children: ReactNode;
@@ -44,6 +45,7 @@ const PopUpContainer: React.FC<PopUpContainerProps> = ({
         styles.container,
       ]}
     >
+      <AppNotification />
       <BottomShadow />
       <FourCrowns {...{ color: SECONDARY }} />
       <HelpButton help={help} />

@@ -6,6 +6,7 @@ import { RootState } from "@src/store";
 
 interface AuthState {
   loggedIn: boolean;
+  justSignedUp: boolean;
   token: string;
   trialDays: number;
   subscribed: boolean;
@@ -22,6 +23,7 @@ interface AuthState {
 
 const initialState: AuthState = {
   loggedIn: false,
+  justSignedUp: false,
   token: "",
   trialDays: 0,
   subscribed: false,
@@ -45,6 +47,12 @@ const slice = createSlice({
       action: PayloadAction<boolean>,
     ) {
       state.loggedIn = action.payload;
+    },
+    updateJustSignedUp(
+      state,
+      action: PayloadAction<boolean>,
+    ) {
+      state.justSignedUp = action.payload;
     },
     updateToken(state, action: PayloadAction<string>) {
       state.token = action.payload;
@@ -108,6 +116,7 @@ export const {
   updateSubscriptionPrice,
   updateVip,
   updateLoggedInState,
+  updateJustSignedUp,
   updateBusyState,
   updateAppLoadingState,
   updateConnectedState,

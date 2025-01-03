@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   authState,
   updateAppLoadingState,
+  updateJustSignedUp,
 } from "@src/store/auth";
 import TabNavigator from "./TabNavigator";
 import ConnectedWrapper from "@src/components/ConnectedWrapper";
@@ -17,6 +18,7 @@ import { View } from "react-native";
 import AppLoadingWrapper from "@src/components/Loader/AppLoadingWrapper";
 import useCheckSubscriptionStatusAndFetchAuthInfo from "../hooks/subscriptionHooks/useCheckSubscriptionStatus";
 import useColors from "@src/hooks/useColors";
+import WalkthroughNavigator from "./WalkthroughNavigator";
 
 const RootNavigator = () => {
   const { STATUSBAR, PRIMARY, CONTRAST } = useColors();
@@ -30,11 +32,14 @@ const RootNavigator = () => {
     },
   };
 
-  const { loggedIn, refresh } = useSelector(authState);
+  const { loggedIn, refresh, justSignedUp } =
+    useSelector(authState);
   const checkSubscriptionStatusAndFetchAuthInfo =
     useCheckSubscriptionStatusAndFetchAuthInfo();
   const fetchSettings = useFetchSettings();
   const dispatch = useDispatch();
+
+  // dispatch(updateJustSignedUp(true));
 
   useEffect(() => {
     const update = async () => {
@@ -61,7 +66,11 @@ const RootNavigator = () => {
         <View style={{ flex: 1, backgroundColor: PRIMARY }}>
           <AppLoadingWrapper>
             {loggedIn ? (
-              <TabNavigator />
+              justSignedUp ? (
+                <WalkthroughNavigator />
+              ) : (
+                <TabNavigator />
+              )
             ) : (
               <AuthNavigator />
             )}

@@ -2,7 +2,7 @@ import React from "react";
 import { FlatList, View, StyleSheet } from "react-native";
 import LanguageCard from "./LanguageCard";
 
-const LanguageList = ({ languages }) => {
+const LanguageList = ({ languages, unprotect }) => {
   return languages === null ||
     languages.length === 0 ? null : (
     <>
@@ -12,7 +12,9 @@ const LanguageList = ({ languages }) => {
           // must be called item for FlatList to work
           const { code, name, native } = item;
           return (
-            <LanguageCard {...{ code, name, native }} />
+            <LanguageCard
+              {...{ code, name, native, unprotect }}
+            />
           );
         }}
         keyExtractor={(item) => item.code}

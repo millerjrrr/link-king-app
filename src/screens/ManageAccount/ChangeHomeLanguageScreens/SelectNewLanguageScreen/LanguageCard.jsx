@@ -11,6 +11,7 @@ import appTextSource from "@src/utils/appTextSource";
 import colors from "@src/utils/colors";
 import { appShadowForStyledComponents } from "@src/utils/appShadow";
 import { useCallback } from "react";
+import useChangeHomeLanguageForNewUser from "@src/hooks/authHooks/useChangeHomeLanguageForNewUser";
 
 const Container = styled(TouchableOpacity)`
   flex-direction: row;
@@ -21,7 +22,7 @@ const Container = styled(TouchableOpacity)`
   ${(props) => appShadowForStyledComponents(props.color)}
 `;
 
-const LanguageCard = ({ code, native }) => {
+const LanguageCard = ({ code, native, unprotect }) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
@@ -34,6 +35,9 @@ const LanguageCard = ({ code, native }) => {
   const { languageAlreadySelected } =
     appTextSource(appLang).options.manageAccount;
 
+  const changeHomeLanguageForNewUser =
+    useChangeHomeLanguageForNewUser();
+
   const onPress = useCallback(() => {
     if (appLang === code) {
       dispatch(
@@ -43,9 +47,14 @@ const LanguageCard = ({ code, native }) => {
         }),
       );
     } else {
-      navigation.navigate("Change Home Language", {
-        code,
-      });
+      if (unprotect) {
+        changeHomeLanguageForNewUser({
+          newLanguage: code,
+        });
+      } else
+        navigation.navigate("Change Home Language", {
+          code,
+        });
     }
   }, [
     appLang,
