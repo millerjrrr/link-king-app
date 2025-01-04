@@ -1,9 +1,8 @@
-import { StyleSheet, View } from "react-native";
-import colors from "@src/utils/colors";
-import RefreshButton from "../components/RefreshButton";
+import { View } from "react-native";
+import RefreshButton from "../../components/RefreshButton";
 import { settingsState } from "@src/store/settings";
 import { useSelector } from "react-redux";
-import appTextSource from "../utils/appTextSource";
+import appTextSource from "../../utils/appTextSource";
 import AppText from "@src/components/AppText";
 import AuthFormContainer from "@src/components/Containers/AuthFormContainer";
 import AntDesign from "@expo/vector-icons/AntDesign";

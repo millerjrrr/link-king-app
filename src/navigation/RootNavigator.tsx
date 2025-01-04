@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   authState,
   updateAppLoadingState,
-  updateJustSignedUp,
 } from "@src/store/auth";
 import TabNavigator from "./TabNavigator";
 import ConnectedWrapper from "@src/components/ConnectedWrapper";
@@ -19,6 +18,8 @@ import AppLoadingWrapper from "@src/components/Loader/AppLoadingWrapper";
 import useCheckSubscriptionStatusAndFetchAuthInfo from "../hooks/subscriptionHooks/useCheckSubscriptionStatus";
 import useColors from "@src/hooks/useColors";
 import WalkthroughNavigator from "./WalkthroughNavigator";
+import UpdateToLatestVersionPage from "@src/screens/popUpScreens/UpdateToLatestVersionPage";
+import appConfig from "../../app.json";
 
 const RootNavigator = () => {
   const { STATUSBAR, PRIMARY, CONTRAST } = useColors();
@@ -32,14 +33,14 @@ const RootNavigator = () => {
     },
   };
 
-  const { loggedIn, refresh, justSignedUp } =
+  const currentVersion = appConfig.expo.version;
+
+  const { loggedIn, refresh, justSignedUp, latestVersion } =
     useSelector(authState);
   const checkSubscriptionStatusAndFetchAuthInfo =
     useCheckSubscriptionStatusAndFetchAuthInfo();
   const fetchSettings = useFetchSettings();
   const dispatch = useDispatch();
-
-  // dispatch(updateJustSignedUp(true));
 
   useEffect(() => {
     const update = async () => {
@@ -65,7 +66,9 @@ const RootNavigator = () => {
       <ConnectedWrapper>
         <View style={{ flex: 1, backgroundColor: PRIMARY }}>
           <AppLoadingWrapper>
-            {loggedIn ? (
+            {latestVersion !== currentVersion ? (
+              <UpdateToLatestVersionPage />
+            ) : loggedIn ? (
               justSignedUp ? (
                 <WalkthroughNavigator />
               ) : (

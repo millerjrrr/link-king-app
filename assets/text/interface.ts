@@ -282,6 +282,13 @@ interface Paywall {
   webAppUnavailableOnMobileNotice: string;
 }
 
+interface Updates {
+  heading: string;
+  subHeading: string;
+  linkX: string;
+  currentX: string;
+}
+
 interface LanguageNames {
   English: string;
   Spanish: string;
@@ -320,6 +327,7 @@ interface AppText {
   options: Options;
   auth: Auth;
   paywall: Paywall;
+  updates: Updates;
   modals: Modals;
   languageNames: LanguageNames;
 }

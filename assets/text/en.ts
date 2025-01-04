@@ -363,6 +363,13 @@ const en: AppText = {
     webAppUnavailableOnMobileNotice:
       "Unfortunately, the web app does not work so well on mobile devices.\n\nFortunately, you can download the app for FREE here!",
   },
+  updates: {
+    heading: "Update Available!",
+    subHeading:
+      "A new version of the app is available with exciting features and improvements. Please update to continue using the app.",
+    linkX: "Update to version #X",
+    currentX: "Current version #X",
+  },
   modals: {
     leaveAReviewModal: {
       title: "Rate Us!",

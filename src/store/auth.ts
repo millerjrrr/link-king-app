@@ -19,6 +19,7 @@ interface AuthState {
   formName: string;
   formEmail: string;
   unverifiedUserId: string;
+  latestVersion: string;
 }
 
 const initialState: AuthState = {
@@ -36,6 +37,7 @@ const initialState: AuthState = {
   formName: "",
   formEmail: "",
   unverifiedUserId: "",
+  latestVersion: "5.0.1",
 };
 
 const slice = createSlice({
@@ -96,6 +98,12 @@ const slice = createSlice({
     updateEmail(state, action: PayloadAction<string>) {
       state.formEmail = action.payload;
     },
+    updateLatestVersion(
+      state,
+      action: PayloadAction<string>,
+    ) {
+      state.latestVersion = action.payload;
+    },
     updateUnverifiedUserId(
       state,
       action: PayloadAction<string>,
@@ -123,6 +131,7 @@ export const {
   refreshPage,
   updateName,
   updateEmail,
+  updateLatestVersion,
   updateUnverifiedUserId,
 } = slice.actions;
 

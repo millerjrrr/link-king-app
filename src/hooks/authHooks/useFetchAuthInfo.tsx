@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import {
   updateBusyState,
   updateConnectedState,
+  updateLatestVersion,
   updateLoggedInState,
   updateToken,
   updateTrialDays,
@@ -54,13 +55,19 @@ const useFetchAuthInfo = () => {
         },
       );
 
-      const { userCreationDate, vip, homeLanguage } = data;
+      const {
+        userCreationDate,
+        vip,
+        homeLanguage,
+        version,
+      } = data;
 
       if (data.status === "success") {
         dispatch(
           updateTrialDays(daysLeft(userCreationDate)),
         );
         dispatch(updateVip(new Date(vip).getTime() || 0));
+        dispatch(updateLatestVersion(version));
         dispatch(updateBusyState(false));
         dispatch(updateToken(token));
         dispatch(updateLoggedInState(true));

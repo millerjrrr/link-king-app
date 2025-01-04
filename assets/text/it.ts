@@ -366,6 +366,14 @@ const it: AppText = {
     webAppUnavailableOnMobileNotice:
       "Purtroppo, l'app web non funziona bene sui dispositivi mobili.\n\nFortunatamente, puoi scaricare l'app GRATUITAMENTE qui!",
   },
+  updates: {
+    heading: "Aggiornamento Disponibile!",
+    subHeading:
+      "È disponibile una nuova versione dell'app con funzionalità entusiasmanti e miglioramenti. Aggiorna per continuare a utilizzare l'app.",
+    linkX: "Aggiorna alla versione #X",
+    currentX: "Versione corrente #X",
+  },
+
   modals: {
     leaveAReviewModal: {
       title: "Valutaci!",
