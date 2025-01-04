@@ -7,7 +7,7 @@ const CrownUI = ({
   color,
 }) => {
   let viewPosition;
-  let indent = 0.5;
+  let indent = 0.6;
 
   switch (position) {
     case "top-left":

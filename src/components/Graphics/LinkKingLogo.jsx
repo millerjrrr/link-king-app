@@ -7,7 +7,7 @@ const LinkKingLogo = ({
 }) => {
   return (
     <Image
-      source={require("@assets/img/link-king-header-logo.png")}
+      source={require("@assets/img/link-king-header-logo-flair.png")}
       resizeMode="contain"
       tintColor={tintColor}
       style={{
