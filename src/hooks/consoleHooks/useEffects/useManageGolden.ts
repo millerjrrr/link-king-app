@@ -1,10 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { selectConsoleState } from "@src/store/console";
 import { useEffect } from "react";
-import {
-  NavigationProp,
-  useNavigation,
-} from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import {
   settingsState,
   updateSettings,
@@ -24,9 +21,7 @@ const useManageGolden = () => {
   const dispatch = useDispatch();
   const navigation =
     useNavigation<
-      NavigationProp<
-        StackNavigationProp<ConsoleStackParamList>
-      >
+      StackNavigationProp<ConsoleStackParamList>
     >();
 
   //goal management

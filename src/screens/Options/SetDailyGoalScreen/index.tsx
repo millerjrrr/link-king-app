@@ -17,6 +17,7 @@ import {
 } from "./StyledComponents";
 import Icon from "./Icon";
 import DropdownSelector from "./DropdownSelector";
+import { selectConsoleState } from "@src/store/console";
 
 const SetDailyGoalScreen = ({}) => {
   const {
@@ -33,17 +34,39 @@ const SetDailyGoalScreen = ({}) => {
 
   const dispatch = useDispatch();
 
+  const {
+    stats: { steps, time, newWords },
+  } = useSelector(selectConsoleState);
+
+  let timeGoalMet =
+    timeGoal !== 0 && time >= timeGoal * 60 * 1000;
+  let newWordsGoalMet =
+    newWordsGoal !== 0 && newWords >= newWordsGoal;
+  let stepsGoalMet = stepsGoal !== 0 && steps >= stepsGoal;
+
   const updateTimeGoal = (value: number) => {
     saveToAsyncStorage("time-goal", value.toString());
     dispatch(updateSettings({ timeGoal: value }));
+    timeGoalMet = value !== 0 && time >= value * 60 * 1000;
+    if (timeGoalMet || newWordsGoalMet || stepsGoalMet)
+      dispatch(updateSettings({ golden: 1 }));
+    else dispatch(updateSettings({ golden: 0 }));
   };
   const updateNewWordsGoal = (value: number) => {
     saveToAsyncStorage("new-words-goal", value.toString());
     dispatch(updateSettings({ newWordsGoal: value }));
+    newWordsGoalMet = value !== 0 && newWords >= value;
+    if (timeGoalMet || newWordsGoalMet || stepsGoalMet)
+      dispatch(updateSettings({ golden: 1 }));
+    else dispatch(updateSettings({ golden: 0 }));
   };
   const updateStepsGoal = (value: number) => {
     saveToAsyncStorage("steps-goal", value.toString());
     dispatch(updateSettings({ stepsGoal: value }));
+    stepsGoalMet = value !== 0 && steps >= value;
+    if (timeGoalMet || newWordsGoalMet || stepsGoalMet)
+      dispatch(updateSettings({ golden: 1 }));
+    else dispatch(updateSettings({ golden: 0 }));
   };
 
   const help = () => {
