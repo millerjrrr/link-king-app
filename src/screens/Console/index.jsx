@@ -12,7 +12,6 @@ import appTextSource from "@src/utils/appTextSource";
 import useManageGolden from "@src/hooks/consoleHooks/useEffects/useManageGolden";
 import useTimeManager from "@src/hooks/consoleHooks/useEffects/useTimeManager";
 import useConsoleUpdates from "@src/hooks/consoleHooks/useEffects/useConsoleUpdates";
-import useManageModals from "@src/hooks/consoleHooks/useEffects/useManageModals";
 import useOnKeyboardClose from "@src/hooks/consoleHooks/useEffects/useOnKeyboardClose";
 import useHandleAppBackgroundExit from "../../hooks/consoleHooks/useEffects/useHandleAppBackgroundExit";
 import useUpdateOptions from "@src/hooks/consoleHooks/useEffects/useUpdateOptions";
@@ -35,7 +34,6 @@ const Console = ({ navigation }) => {
   useManageGolden();
   useTimeManager();
   useConsoleUpdates();
-  useManageModals();
   useHandleAppBackgroundExit();
   useOnKeyboardClose();
   useUpdateOptions();

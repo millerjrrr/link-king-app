@@ -13,8 +13,6 @@ export interface Modals {
   logOutModal: ModalsMessage;
   setDailyGoalModal: ModalsMessage;
   repeatRepeatsModal: ModalsMessage;
-  welcomeModal: ModalsMessage;
-  trialNoticeModal: ModalsMessage;
   collectionInfoModal: ModalsMessage;
   missingTTSModal: ModalsMessage;
   dailyGoalInfoModal: ModalsMessage;

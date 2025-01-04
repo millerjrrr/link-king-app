@@ -400,22 +400,11 @@ const it: AppText = {
         "Ecco la tua lista di raccolta. Ogni volta che sbagli una parola, la aggiungiamo alla tua collezione. (Se la indovini, significa che già la conosci, quindi non hai bisogno di rivederla.) Ogni volta che indovini una parola nella tua collezione, il tempo prima che la rivedi aumenta. Questo si chiama 'ripetizione strutturata' ed è uno strumento di apprendimento potente.",
       cancel: "Chiudi",
     },
-    welcomeModal: {
-      modalMessage:
-        "Benvenuto su Link-King!\nScrivi le parole o le brevi frasi che senti nella tua lingua madre e premi invio per inviarle!",
-      cancel: "Chiudi",
-    },
     repeatRepeatsModal: {
       modalMessage:
         "Vuoi ripetere tutte le parole che hai sbagliato oggi?",
       title: "Sì, facciamolo!",
       cancel: "No. Chiudi",
-    },
-    trialNoticeModal: {
-      modalMessage: "Bentornato!\n\nTi restano ",
-      modalMessage2:
-        " giorni di prova gratuita.\n\nCordiali saluti,\nIl Team di Link-King",
-      cancel: "Chiudi",
     },
     missingTTSModal: {
       modalMessage:

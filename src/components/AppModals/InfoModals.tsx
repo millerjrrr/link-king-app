@@ -8,7 +8,6 @@ import {
   modalState,
   updateModals,
 } from "@src/store/modals";
-import { authState } from "@src/store/auth";
 import useColors from "@src/hooks/useColors";
 import { ModalWithMessage } from "@src/types/Modals";
 
@@ -18,8 +17,6 @@ const InfoModals = () => {
   const { modalShowing } = useSelector(modalState);
 
   const infoModals = [
-    "welcomeModal",
-    "trialNoticeModal",
     "collectionInfoModal",
     "missingTTSModal",
     "dailyGoalInfoModal",
@@ -29,31 +26,19 @@ const InfoModals = () => {
     modalShowing,
   )
     ? (modalShowing as ModalWithMessage)
-    : "welcomeModal";
+    : "collectionInfoModal";
 
-  const { modalMessage, modalMessage2, cancel } =
+  const { modalMessage, cancel } =
     appTextSource(appLang).modals[name];
 
   const dispatch = useDispatch();
   const close = () => {
-    dispatch(
-      updateModals({
-        modalShowing:
-          name === "welcomeModal" ? "trialNoticeModal" : "",
-      }),
-    );
+    dispatch(updateModals({ modalShowing: "" }));
   };
-
-  const { trialDays } = useSelector(authState);
-
-  const message: string =
-    name === "trialNoticeModal" && modalMessage2
-      ? `${trialDays} ${modalMessage2}`
-      : modalMessage;
 
   return (
     <AppModal name={name} important>
-      <ModalText color={CONTRAST}>{message}</ModalText>
+      <ModalText color={CONTRAST}>{modalMessage}</ModalText>
       <ModalButton
         title={cancel}
         size={20}

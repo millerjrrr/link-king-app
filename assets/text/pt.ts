@@ -402,24 +402,12 @@ const pt: AppText = {
         "Aqui tem sua lista de coleção. Cada vez que você errar uma palavra, ela será adicionada à sua coleção. Depois, cada vez que você acertar, mais tempo levará até que você a veja novamente. Esse método é chamado de “repetição espaçada estruturada” e é uma poderosa ferramenta de aprendizagem.",
       cancel: "Fechar",
     },
-    welcomeModal: {
-      modalMessage:
-        "Bem-vindo ao Link-King!\nDigite as palavras ou frases curtas que você ouve em seu idioma nativo e pressione Enter para enviar!",
-      cancel: "Fechar",
-    },
     repeatRepeatsModal: {
       modalMessage:
         "Você gostaria de repetir todas as palavras que errou hoje?",
       title: "Sim, vamos lá!",
       cancel: "Não. Fechar",
     },
-    trialNoticeModal: {
-      modalMessage: "Bem-vindo de volta!\n\n Você tem ",
-      modalMessage2:
-        " dias restantes para seu teste gratuito.\n\nAtenciosamente,\nO time Link-King",
-      cancel: "Fechar",
-    },
-
     missingTTSModal: {
       modalMessage:
         "Os dados de Texto-para-Fala (TTS) para este idioma não estão instalados no seu dispositivo. Alguns dispositivos Android não vêm com dados TTS pré-instalados para economizar espaço. Você pode baixá-los gratuitamente e até escolher diferentes sotaques, se desejar.",

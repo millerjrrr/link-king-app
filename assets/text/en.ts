@@ -397,22 +397,11 @@ const en: AppText = {
         "Here is your collection list. Each time you get a word wrong we add it to your collection. (If you get it right, you already know it, so you don't need to see it again.) After its added, each time you get it right the longer it will be before you see it again. This is called “structured spaced repetition” and is a powerful learning tool.",
       cancel: "Close",
     },
-    welcomeModal: {
-      modalMessage:
-        "Welcome to Link-King!\nType the words or short phrases that you hear in your home language and hit enter to submit!",
-      cancel: "Close",
-    },
     repeatRepeatsModal: {
       modalMessage:
         "Would you like to repeat all the words you got wrong today?",
       title: "Yes, let's go!",
       cancel: "No. Close",
-    },
-    trialNoticeModal: {
-      modalMessage: "Welcome back!\n\n You have ",
-      modalMessage2:
-        " days remaining on your free trial.\n\nKind regards,\nThe Link-King Team",
-      cancel: "Close",
     },
     missingTTSModal: {
       modalMessage:
