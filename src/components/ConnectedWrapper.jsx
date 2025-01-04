@@ -3,10 +3,14 @@ import { authState } from "@src/store/auth";
 import InternetConnectionPage from "../screens/popUpScreens/InternetConnectionPage";
 
 const ConnectedWrapper = ({ children }) => {
-  const { connected } = useSelector(authState);
+  const { connection } = useSelector(authState);
   return (
     <>
-      {!connected ? <InternetConnectionPage /> : children}
+      {connection !== "connected" ? (
+        <InternetConnectionPage />
+      ) : (
+        children
+      )}
     </>
   );
 };

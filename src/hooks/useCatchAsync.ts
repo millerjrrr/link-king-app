@@ -1,6 +1,4 @@
-import { updateConnectedState } from "@src/store/auth";
 import returnErrorMessage from "@src/utils/returnErrorMessage";
-import { useDispatch } from "react-redux";
 import useLogOut from "./authHooks/useLogOut";
 import useAppNotification from "./useAppNotification";
 

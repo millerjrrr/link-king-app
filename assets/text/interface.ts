@@ -1,8 +1,15 @@
 import { Modals } from "@src/types/Modals";
 
 interface InternetConnectionPage {
-  title: string;
-  message: string;
+  title1: string;
+  title2: string;
+  title3: string;
+  message1: string;
+  message2: string;
+  message3: string;
+  message4: string;
+  message5: string;
+  refresh: string;
 }
 
 interface ConsoleTargetDetails {

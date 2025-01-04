@@ -2,9 +2,19 @@ import AppText from "./interface";
 
 const it: AppText = {
   internetConnectionPage: {
-    title: "Disconnesso!",
-    message:
-      "...sembra che tu non sia connesso a Internet. Questa app richiede una connessione Internet stabile...",
+    title1: "Connessione Persa",
+    title2: "Manutenzione",
+    title3: "Errore Sconosciuto",
+    message1:
+      "Si prega di controllare la connessione a Internet e riprovare. Potrebbe essere un problema nostro, e in tal caso, ci scusiamo.",
+    message2:
+      "Siamo attualmente in manutenzione. Si prega di tornare più tardi.",
+    message3:
+      "Si è verificato un errore sconosciuto. Si prega di riprovare più tardi. Se l'errore persiste, contattare il supporto.",
+    message4:
+      "Visita il nostro sito per saperne di più su Link King",
+    message5: "Contatta il supporto",
+    refresh: "Ricarica",
   },
   walkthrough: {
     Welcome: {

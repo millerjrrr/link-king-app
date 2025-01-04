@@ -14,7 +14,11 @@ interface AuthState {
   vip: number;
   busy: boolean;
   appLoading: boolean;
-  connected: boolean;
+  connection:
+    | "connected"
+    | "disconnected"
+    | "maintenance"
+    | "unknown";
   refresh: number;
   formName: string;
   formEmail: string;
@@ -32,7 +36,7 @@ const initialState: AuthState = {
   vip: 4070919600000,
   busy: false,
   appLoading: false,
-  connected: true,
+  connection: "connected",
   refresh: 0,
   formName: "",
   formEmail: "",
@@ -88,9 +92,14 @@ const slice = createSlice({
     },
     updateConnectedState(
       state,
-      action: PayloadAction<boolean>,
+      action: PayloadAction<
+        | "connected"
+        | "disconnected"
+        | "maintenance"
+        | "unknown"
+      >,
     ) {
-      state.connected = action.payload;
+      state.connection = action.payload;
     },
     updateName(state, action: PayloadAction<string>) {
       state.formName = action.payload;
@@ -111,7 +120,7 @@ const slice = createSlice({
       state.unverifiedUserId = action.payload;
     },
     refreshPage(state) {
-      state.connected = true;
+      state.connection = "connected";
       state.refresh += 1;
     },
   },

@@ -1,42 +1,24 @@
 import React from "react";
-import {
-  TouchableOpacity,
-  StyleSheet,
-  View,
-} from "react-native";
-import colors from "@src/utils/colors";
-import { Ionicons } from "@expo/vector-icons";
+import { StyleSheet, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { refreshPage } from "@src/store/auth";
+import AuthButton from "./Buttons/AuthButton";
+import appTextSource from "@src/utils/appTextSource";
 import { settingsState } from "@src/store/settings";
-import appShadow from "@src/utils/appShadow";
 
-const RefreshButton = ({ size = 200 }) => {
+const RefreshButton = () => {
   const dispatch = useDispatch();
+  const { appLang } = useSelector(settingsState);
 
-  const { colorScheme } = useSelector(settingsState);
-  const color = colors[colorScheme].CONTRAST[0];
-  const backgroundColor = colors[colorScheme].SECONDARY;
+  const buttonTitle =
+    appTextSource(appLang).internetConnectionPage.refresh;
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity
+      <AuthButton
+        title={buttonTitle}
         onPress={() => dispatch(refreshPage())}
-        style={[
-          styles.button,
-          {
-            backgroundColor,
-            borderRadius: size / 2,
-            height: size,
-            width: size,
-            ...appShadow(color),
-          },
-        ]}
-      >
-        <Ionicons
-          {...{ size: 96, name: "refresh", color }}
-        />
-      </TouchableOpacity>
+      />
     </View>
   );
 };
@@ -46,11 +28,8 @@ export default RefreshButton;
 const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
+    width: "100%",
     padding: 20,
     zIndex: 10,
-  },
-  button: {
-    alignItems: "center",
-    justifyContent: "center",
   },
 });

@@ -2,9 +2,19 @@ import AppText from "./interface";
 
 const en: AppText = {
   internetConnectionPage: {
-    title: "Disconnected!",
-    message:
-      "...looks like you are not connected to the internet. This app requires a stable internet connection...",
+    title1: "Connection Lost",
+    title2: "Maintenance",
+    title3: "Unknown Error",
+    message1:
+      "Please check your internet connection and try again. It could be us too, in which case, we are very sorry.",
+    message2:
+      "We are currently undergoing maintenance. Please check back later.",
+    message3:
+      "An unknown error has occurred. Please try again later. If the error persists, please contact support.",
+    message4:
+      "Visit our site to learn more about Link King",
+    message5: "Contact support",
+    refresh: "Reload",
   },
   walkthrough: {
     Welcome: {
