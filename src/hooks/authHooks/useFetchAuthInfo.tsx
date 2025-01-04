@@ -85,7 +85,6 @@ const useFetchAuthInfo = () => {
         else if (e.message.endsWith("503"))
           dispatch(updateConnectedState("maintenance"));
         else dispatch(updateConnectedState("unknown"));
-        // else dispatch(updateConnectedState("unknown"));
       }
     }
   });

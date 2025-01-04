@@ -39,13 +39,7 @@ const EditTicketScreen = () => {
   const notSilly = yup.string().test(
     "no-bad-solutions", // Unique name for the test
     "The solution can't be silly", // Custom error message
-    (value) =>
-      !value ||
-      (normalize(value) !== "" &&
-        !(
-          normalize(value).length <
-          value.replace(/\s+/g, "").length - 2
-        )),
+    (value) => !value || normalize(value) !== "",
   );
 
   const validationSchema = yup.object().shape({
@@ -65,9 +59,9 @@ const EditTicketScreen = () => {
     newSolutions3: solutions[2] || "",
     newSolutions4: solutions[3] || "",
     newSolutions5: solutions[4] || "",
-    newSolutions6: solutions[4] || "",
-    newSolutions7: solutions[4] || "",
-    newSolutions8: solutions[4] || "",
+    newSolutions6: solutions[5] || "",
+    newSolutions7: solutions[6] || "",
+    newSolutions8: solutions[7] || "",
   };
 
   const saveTicket = useSaveTicket();
@@ -90,8 +84,9 @@ const EditTicketScreen = () => {
       <AuthFormContainer
         heading={target}
         subHeading={subHeading}
-        nologo={true}
-        popUp={true}
+        noScrollView
+        nologo
+        popUp
       >
         <Formik
           onSubmit={onSubmit}

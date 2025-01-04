@@ -29,6 +29,7 @@ const initialState: CollectionState = {
     solutions: [""],
     rating: 0,
     level: 0,
+    dueDate: 0,
   },
 };
 
