@@ -24,6 +24,7 @@ interface AuthFormContainerProps {
   popUp?: boolean;
   back?: boolean;
   noScrollView?: boolean;
+  noPadding?: boolean;
 }
 
 const AuthFormContainer: React.FC<
@@ -36,6 +37,7 @@ const AuthFormContainer: React.FC<
   popUp,
   back = true,
   noScrollView,
+  noPadding,
 }) => {
   const { CONTRAST, SECONDARY } = useColors();
 
@@ -66,7 +68,7 @@ const AuthFormContainer: React.FC<
     <>
       <FourCrowns color={SECONDARY} />
       <Container {...containerProps}>
-        <StatusBarFiller />
+        {noPadding ? null : <StatusBarFiller />}
         {back ? <BackButton extraPadding /> : null}
         {!nologo ? (
           <LinkKingLogo tintColor={CONTRAST} />

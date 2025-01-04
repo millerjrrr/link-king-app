@@ -5,7 +5,7 @@ const daysLeft = (date: Date): number => {
   // Calculate the time difference in milliseconds
   const timeDif =
     input.getTime() +
-    7 * 24 * 60 * 60 * 1000 -
+    3 * 24 * 60 * 60 * 1000 -
     today.getTime();
 
   // Convert the time difference to days
@@ -13,7 +13,7 @@ const daysLeft = (date: Date): number => {
     timeDif / (1000 * 60 * 60 * 24),
   );
 
-  // Ensure that the result is not negative if the date is more than 7 days ago
+  // Ensure that the result is not negative if the date is more than 3 days ago
   return Math.max(0, daysDif);
 };
 

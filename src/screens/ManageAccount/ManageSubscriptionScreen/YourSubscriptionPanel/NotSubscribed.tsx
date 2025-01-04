@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import colors from "@src/utils/colors";
 import { authState } from "@src/store/auth";
-import TermsAndConditions from "@src/subscription/TermsAndConditions";
+import TermsAndConditions from "@src/screens/popUpScreens/Paywall/TermsAndConditions";
 import useSubscribe from "@src/hooks/subscriptionHooks/useSubscribe";
 import {
   ManageSubscriptionButton,

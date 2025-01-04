@@ -16,6 +16,7 @@ import useOnKeyboardClose from "@src/hooks/consoleHooks/useEffects/useOnKeyboard
 import useHandleAppBackgroundExit from "../../hooks/consoleHooks/useEffects/useHandleAppBackgroundExit";
 import useUpdateOptions from "@src/hooks/consoleHooks/useEffects/useUpdateOptions";
 import usePopToTop from "@src/hooks/usePopToTop";
+import IsSubscribedWrapper from "./components/IsSubscribedWrapper";
 
 const Console = ({ navigation }) => {
   const inputFieldRef = useRef(null);
@@ -41,23 +42,25 @@ const Console = ({ navigation }) => {
   usePopToTop();
 
   return (
-    <TabScreenContainer
-      heading={heading}
-      help={navigateToHelp}
-    >
-      <StatsContainer />
-      <OptionsContainer />
-      <ReadWordButton />
-      <InputAndTimerContainer
-        inputFieldRef={inputFieldRef}
-        setIsKeyboardVisible={setIsKeyboardVisible}
-      />
-      <Tail setIsKeyboardVisible={setIsKeyboardVisible} />
-      <KeyboardAndStartButton
-        inputFieldRef={inputFieldRef}
-        isKeyboardVisible={isKeyboardVisible}
-      />
-    </TabScreenContainer>
+    <IsSubscribedWrapper>
+      <TabScreenContainer
+        heading={heading}
+        help={navigateToHelp}
+      >
+        <StatsContainer />
+        <OptionsContainer />
+        <ReadWordButton />
+        <InputAndTimerContainer
+          inputFieldRef={inputFieldRef}
+          setIsKeyboardVisible={setIsKeyboardVisible}
+        />
+        <Tail setIsKeyboardVisible={setIsKeyboardVisible} />
+        <KeyboardAndStartButton
+          inputFieldRef={inputFieldRef}
+          isKeyboardVisible={isKeyboardVisible}
+        />
+      </TabScreenContainer>
+    </IsSubscribedWrapper>
   );
 };
 

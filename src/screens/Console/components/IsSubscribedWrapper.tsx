@@ -1,21 +1,32 @@
+import React from "react";
 import { useSelector } from "react-redux";
 import { authState } from "@src/store/auth";
-import Paywall from "./Paywall";
+import Paywall from "../../popUpScreens/Paywall/Paywall";
 import { ReactNode } from "react";
 import { Platform } from "react-native";
+import { selectConsoleState } from "@src/store/console";
 
 const IsSubscribedWrapper = ({
   children,
 }: {
   children: ReactNode;
 }) => {
-  const { trialDays, vip, subscribed } =
+  const { vip, subscribed, trialDays } =
     useSelector(authState);
+
+  const {
+    stats: { time },
+    display: { tail },
+  } = useSelector(selectConsoleState);
 
   const isWebApp = Platform.OS === "web";
 
   const subRequired =
-    vip <= Date.now() && trialDays <= 0 && !isWebApp;
+    vip <= Date.now() &&
+    time > 5 * 60 * 1000 &&
+    trialDays === 0 &&
+    tail.length === 0 &&
+    !isWebApp;
 
   return subRequired && !subscribed ? (
     <Paywall />

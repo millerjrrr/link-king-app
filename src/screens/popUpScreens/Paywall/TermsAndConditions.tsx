@@ -46,7 +46,7 @@ const TermsAndConditions = () => {
               updateModals({
                 modalShowing: "webViewModal",
                 webViewUrl:
-                  "https://link-king.com/terms-and-conditions/",
+                  "https://link-king.com/terms-conditions/",
               }),
             )
           }
