@@ -414,12 +414,6 @@ export const languages = {
         code: "th",
       },
       {
-        name: "Klingon (Latin)",
-        nativeName: "Klingon (Latin)",
-        dir: "ltr",
-        code: "tlh-Latn",
-      },
-      {
         name: "Turkish",
         nativeName: "Türkçe",
         dir: "ltr",
@@ -851,19 +845,6 @@ export const languages = {
   th: {
     name: "Thai",
     nativeName: "ไทย",
-    dir: "ltr",
-    translations: [
-      {
-        name: "English",
-        nativeName: "English",
-        dir: "ltr",
-        code: "en",
-      },
-    ],
-  },
-  "tlh-Latn": {
-    name: "Klingon (Latin)",
-    nativeName: "Klingon (Latin)",
     dir: "ltr",
     translations: [
       {

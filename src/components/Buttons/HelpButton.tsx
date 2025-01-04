@@ -1,31 +1,38 @@
 import { Entypo } from "@expo/vector-icons";
-import { StyleSheet, TouchableOpacity } from "react-native";
-import colors from "@src/utils/colors";
-import { useSelector } from "react-redux";
-import { settingsState } from "@src/store/settings";
+import { TouchableOpacity } from "react-native";
 import StatusBarFiller from "../StatusBarFiller";
 import React from "react";
+import useColors from "@src/hooks/useColors";
 
 interface HelpButtonProps {
   help?: () => void;
   padding?: boolean;
+  nopadding?: boolean;
+  tintColor?: string;
 }
 const HelpButton: React.FC<HelpButtonProps> = ({
   help,
   padding,
+  nopadding,
+  tintColor,
 }) => {
-  const { colorScheme, golden } =
-    useSelector(settingsState);
-  const color = colors[colorScheme].CONTRAST[golden];
+  const { CONTRAST } = useColors();
+  const color = tintColor || CONTRAST;
 
   return help ? (
     <>
       <TouchableOpacity
         onPress={help}
-        style={[
-          styles.container,
-          { paddingVertical: padding ? 5 : 15 },
-        ]}
+        style={{
+          paddingVertical: nopadding ? 0 : padding ? 5 : 15,
+          position: "absolute",
+          top: nopadding ? 0 : 10,
+          right: 0,
+          padding: 15,
+          alignItems: "center",
+          justifyContent: "center",
+          zIndex: 10,
+        }}
       >
         {padding ? <StatusBarFiller /> : null}
         <Entypo {...{ name: "help", size: 24, color }} />
@@ -33,17 +40,5 @@ const HelpButton: React.FC<HelpButtonProps> = ({
     </>
   ) : null;
 };
-
-const styles = StyleSheet.create({
-  container: {
-    position: "absolute",
-    top: 10,
-    right: 0,
-    padding: 15,
-    alignItems: "center",
-    justifyContent: "center",
-    zIndex: 10,
-  },
-});
 
 export default HelpButton;

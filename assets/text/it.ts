@@ -429,6 +429,12 @@ const it: AppText = {
         "I dati Text-to-Speech (TTS) per questa lingua non sono installati sul tuo dispositivo. Alcuni dispositivi Android non hanno i dati TTS preinstallati per risparmiare spazio. Puoi scaricarli gratuitamente e persino selezionare diversi accenti, se lo desideri.",
       cancel: "Chiudi",
     },
+    ratingInfoModal: {
+      modalMessage:
+        "Un punteggio di prestazione riflette la tua capacità di riconoscere le parole, mentre i punteggi delle parole indicano la loro difficoltà. Il tuo punteggio si aggiorna mentre interagisci con nuove parole, garantendo una misurazione accurata delle tue abilità.",
+      title: "Scopri di più",
+      cancel: "Chiudi",
+    },
   },
   languageNames: {
     English: "Inglese",

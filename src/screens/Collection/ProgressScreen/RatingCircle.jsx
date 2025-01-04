@@ -1,12 +1,15 @@
 import { View } from "react-native";
 import CircularProgress from "react-native-circular-progress-indicator";
 import colors from "@src/utils/colors";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { statsState } from "@src/store/stats";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import { selectConsoleState } from "@src/store/console";
 import AppText from "@src/components/AppText";
+import HelpButton from "@src/components/Buttons/HelpButton";
+import { updateModals } from "@src/store/modals";
+import useColors from "@src/hooks/useColors";
 
 const RatingCircle = () => {
   const { colorScheme, golden, appLang } =
@@ -24,6 +27,15 @@ const RatingCircle = () => {
   const translatedDictionary =
     appTextSource(appLang).languageNames[dictionary];
 
+  const dispatch = useDispatch();
+
+  const help = () =>
+    dispatch(
+      updateModals({ modalShowing: "ratingInfoModal" }),
+    );
+
+  const { GREEN: tintColor } = useColors();
+
   return (
     <>
       <AppText
@@ -36,6 +48,20 @@ const RatingCircle = () => {
         {textA + translatedDictionary + textB}
       </AppText>
       <View style={{ paddingVertical: 15 }}>
+        <View
+          style={{
+            position: "absolute",
+            top: 0,
+            right: -40,
+            zIndex: 100,
+          }}
+        >
+          <HelpButton
+            help={help}
+            nopadding
+            tintColor={tintColor}
+          />
+        </View>
         <CircularProgress
           value={rating}
           radius={100}

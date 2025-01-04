@@ -52,6 +52,11 @@ const OnPressModals = () => {
       dispatch(updateModals({ modalShowing: "" }));
       fetchConsoleInfo(true);
     },
+    ratingInfoModal: () => {
+      Linking.openURL(
+        "https://link-king.com/2024/12/20/my-language-learning-story/",
+      );
+    },
   };
 
   const name: ModalWithMessage = Object.keys(
@@ -66,8 +71,7 @@ const OnPressModals = () => {
   const close = () => {
     dispatch(
       updateModals({
-        modalShowing:
-          name === "welcomeModal" ? "trialNoticeModal" : "",
+        modalShowing: "",
       }),
     );
   };

@@ -1,13 +1,9 @@
-import { settingsState } from "@src/store/settings";
-import colors from "@src/utils/colors";
-import { Image, View } from "react-native";
-import { useSelector } from "react-redux";
+import useColors from "@src/hooks/useColors";
+import { Image } from "react-native";
 declare function require(path: string): any;
 
 const WebsiteQR = () => {
-  const { colorScheme, golden } =
-    useSelector(settingsState);
-  const tintColor = colors[colorScheme].CONTRAST[golden];
+  const tintColor = useColors().CONTRAST;
   return (
     <Image
       source={require("@assets/img/websiteQR.png")}

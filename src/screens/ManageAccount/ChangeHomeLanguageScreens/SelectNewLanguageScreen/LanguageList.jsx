@@ -11,9 +11,15 @@ const LanguageList = ({ languages, unprotect }) => {
         renderItem={({ item }) => {
           // must be called item for FlatList to work
           const { code, name, native } = item;
+          const shortcode = code.slice(0, 2);
           return (
             <LanguageCard
-              {...{ code, name, native, unprotect }}
+              {...{
+                code: shortcode,
+                name,
+                native,
+                unprotect,
+              }}
             />
           );
         }}

@@ -430,6 +430,12 @@ const pt: AppText = {
         "Os dados de Texto-para-Fala (TTS) para este idioma não estão instalados no seu dispositivo. Alguns dispositivos Android não vêm com dados TTS pré-instalados para economizar espaço. Você pode baixá-los gratuitamente e até escolher diferentes sotaques, se desejar.",
       cancel: "Fechar",
     },
+    ratingInfoModal: {
+      modalMessage:
+        "Um índice de desempenho reflete sua capacidade de reconhecer palavras, enquanto os índices das palavras indicam sua dificuldade. Seu índice é atualizado conforme você interage com novas palavras, garantindo uma medição precisa de suas habilidades.",
+      title: "Saiba mais",
+      cancel: "Fechar",
+    },
   },
   languageNames: {
     English: "Inglês",

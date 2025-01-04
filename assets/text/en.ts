@@ -425,6 +425,12 @@ const en: AppText = {
         "Text-to-Speech (TTS) data for this language isn’t installed on your device. Some Android devices don’t come with TTS data pre-installed to save space. You can download it for free and even select different accents if desired.",
       cancel: "Close",
     },
+    ratingInfoModal: {
+      modalMessage:
+        "A performance rating reflects your ability to recognize words, while word ratings indicate their difficulty. Your rating adjusts as you interact with new words, ensuring an accurate measure of your ability.",
+      title: "Learn more",
+      cancel: "Close",
+    },
   },
   languageNames: {
     English: "English",

@@ -16,6 +16,7 @@ export interface Modals {
   collectionInfoModal: ModalsMessage;
   missingTTSModal: ModalsMessage;
   dailyGoalInfoModal: ModalsMessage;
+  ratingInfoModal: ModalsMessage;
 }
 
 interface ModalsMessage {
