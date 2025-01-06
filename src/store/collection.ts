@@ -11,6 +11,7 @@ interface CollectionState {
   busy: boolean;
   wordDeletedSuccessfully: boolean;
   wordDeleteButtonPressed: boolean;
+  promptWords: { target: string; level: number }[];
   selectedTicket: Ticket;
 }
 
@@ -23,6 +24,7 @@ const initialState: CollectionState = {
   busy: false,
   wordDeletedSuccessfully: true,
   wordDeleteButtonPressed: false,
+  promptWords: [],
   selectedTicket: {
     id: "",
     target: "",
@@ -61,6 +63,9 @@ const slice = createSlice({
     updateWordDeleteButtonPressed(state, action) {
       state.wordDeleteButtonPressed = action.payload;
     },
+    updatePromptWords(state, action) {
+      state.promptWords = action.payload;
+    },
     updateSelectedTicket(state, action) {
       state.selectedTicket = action.payload;
     },
@@ -76,6 +81,7 @@ export const {
   updateBusy,
   updateWordDeletedSuccessfully,
   updateWordDeleteButtonPressed,
+  updatePromptWords,
   updateSelectedTicket,
 } = slice.actions;
 

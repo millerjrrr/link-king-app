@@ -12,6 +12,7 @@ import ProgressScreen from "@src/screens/Collection/ProgressScreen";
 import DictionaryLookupScreen from "@src/screens/Collection/DictionaryLookupScreen";
 import { CollectionStackParamList } from "@src/types/navigationTypes";
 import EditTicketScreen from "@src/screens/Collection/EditTicketScreen";
+import AIStories from "@src/screens/Collection/AIStories";
 
 const CollectionStack =
   createStackNavigator<CollectionStackParamList>();
@@ -41,6 +42,10 @@ const CollectionNavigator: React.FC = () => {
       <CollectionStack.Screen
         name="Statistics"
         component={StatsScreen}
+      />
+      <CollectionStack.Screen
+        name="AI Stories"
+        component={AIStories}
       />
       <CollectionStack.Screen
         name="Progress"

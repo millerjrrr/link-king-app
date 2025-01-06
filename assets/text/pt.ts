@@ -149,6 +149,15 @@ const pt: AppText = {
       description:
         'O "Nível" de uma palavra representa quantas vezes você acertou a palavra. Depois de coletar palavras em diferentes níveis, esta página mostrará quantas palavras você tem em cada nível.',
     },
+    stories: {
+      title: "Histórias de IA",
+      description:
+        "Copie e cole o prompt abaixo no seu IA favorito para criar uma história. Edite o prompt para personalizar a história ao seu gosto!",
+      promptX:
+        "Usando uma linguagem muito simples e palavras derivadas de cada um dos lemas na lista a seguir, escreva uma história curta em #X sobre um assunto aleatório. Mantenha as frases curtas e o tom positivo. Por favor, marque cada palavra usada da lista com seu nível em subscrito minúsculo na palavra. Lista: #Y",
+      prompt: "Prompt",
+      copy: "Copiar",
+    },
     progressScreen: {
       congratulations: "Parabéns!",
       collected: {

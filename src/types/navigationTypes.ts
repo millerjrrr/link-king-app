@@ -6,6 +6,7 @@ export type CollectionStackParamList = {
   };
   "Edit Solutions": undefined;
   Statistics: undefined;
+  "AI Stories": undefined;
   Progress: undefined;
   "Dictionary Lookup": undefined;
   "Dictionary Selection": undefined;

@@ -100,6 +100,14 @@ interface CollectionDictionaryLookupScreen {
   wordAdded: string;
 }
 
+interface CollectionStories {
+  title: string;
+  description: string;
+  promptX: string;
+  prompt: string;
+  copy: string;
+}
+
 interface Collection {
   heading: string;
   searchMessage: string;
@@ -107,6 +115,7 @@ interface Collection {
   today: string;
   tomorrow: string;
   statistics: CollectionStatistics;
+  stories: CollectionStories;
   progressScreen: CollectionProgressScreen;
   wordInfoScreen: CollectionWordInfoScreen;
   dictionaryLookupScreen: CollectionDictionaryLookupScreen;

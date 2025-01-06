@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import {
   Container,
   IconContainer,
@@ -8,16 +7,14 @@ import {
   RowContainer,
   Title,
 } from "../components/WordCard/StyledComponents";
-import { settingsState } from "@src/store/settings";
-import colors from "@src/utils/colors";
 import { Entypo } from "@expo/vector-icons";
 import useAddNewWord from "@src/hooks/collectionHooks/useAddNewWord";
+import useColors from "@src/hooks/useColors";
 
 const DictionaryLookupCard = ({ dictEntry }) => {
   const { target, rating, _id: id } = dictEntry;
-  const { colorScheme, golden } =
-    useSelector(settingsState);
-  const { CONTRAST, SECONDARY } = colors[colorScheme];
+
+  const { CONTRAST, SECONDARY } = useColors();
 
   const scale = 30;
   const fontSize =
@@ -33,19 +30,16 @@ const DictionaryLookupCard = ({ dictEntry }) => {
   return (
     <Padding>
       <Container
-        color={CONTRAST[golden]}
+        color={CONTRAST}
         backgroundColor={SECONDARY}
         style={{ height: 50 }}
       >
         <InfoContainer onPress={addWord}>
           <RowContainer>
-            <Title
-              color={CONTRAST[golden]}
-              fontSize={fontSize}
-            >
+            <Title color={CONTRAST} fontSize={fontSize}>
               {target}
             </Title>
-            <Rating color={CONTRAST[golden]}>
+            <Rating color={CONTRAST}>
               {Math.round(rating)}
             </Rating>
           </RowContainer>
@@ -54,7 +48,7 @@ const DictionaryLookupCard = ({ dictEntry }) => {
           <Entypo
             name="plus"
             size={24}
-            color={CONTRAST[golden]}
+            color={CONTRAST}
             onPress={addWord}
           />
         </IconContainer>

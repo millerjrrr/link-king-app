@@ -147,6 +147,15 @@ const it: AppText = {
       description:
         'Il "Livello" di una parola rappresenta quante volte hai indovinato quella parola. Dopo aver raccolto parole di livelli diversi, questa pagina mostrerà una suddivisione di quante parole hai a ogni livello.',
     },
+    stories: {
+      title: "Storie di IA",
+      description:
+        "Copia e incolla il prompt qui sotto nella tua IA preferita per creare una storia. Modifica il prompt per personalizzare la storia secondo i tuoi gusti!",
+      promptX:
+        "Usando un linguaggio molto semplice e parole derivate da ciascuno dei lemmi nell'elenco seguente, scrivi una breve storia in #X su un argomento casuale. Mantieni le frasi brevi e il tono positivo. Per favore, segna ogni parola usata dall'elenco con il suo livello in pedice minuscolo sulla parola. Elenco: #Y",
+      prompt: "Prompt",
+      copy: "Copia",
+    },
     progressScreen: {
       congratulations: "Congratulazioni!",
       collected: {

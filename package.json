@@ -22,6 +22,7 @@
     "axios": "^1.6.5",
     "expo": "~51.0.39",
     "expo-av": "14.0.7",
+    "expo-clipboard": "^7.0.0",
     "expo-dev-client": "~4.0.29",
     "expo-linear-gradient": "~13.0.2",
     "expo-localization": "~15.0.3",

@@ -147,6 +147,15 @@ const en: AppText = {
       description:
         'The "Level" of a word represents how many times you got that word right. After you\'ve collected words at different levels, this page will show a breakdown of how many words you have at each level.',
     },
+    stories: {
+      title: "AI Stories",
+      description:
+        "Copy and paste the prompt below into your favorite AI to create a story. Edit the prompt to customize the story to your liking!",
+      promptX:
+        "Using very simple language and words derived from each of the lemmas in the following list, write a short story in #X about a random subject. Keep the sentences short and maintain a positive mood. Please mark each word used from the list with its level in lowercase subscript on the word. List: #Y",
+      prompt: "Prompt",
+      copy: "Copy",
+    },
     progressScreen: {
       congratulations: "Congratulations!",
       collected: {
