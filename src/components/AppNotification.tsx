@@ -48,28 +48,36 @@ const AppNotification = () => {
       break;
   }
 
-  const timeOutIdRef = useRef(null);
+  const timeOutIdRef = useRef<
+    number | NodeJS.Timeout | null
+  >(null);
+
   useEffect(() => {
-    const performAnimation = () => {
-      height.value = withTiming(notificationHeight, {
-        duration: 150,
-      });
-
-      timeOutIdRef.current = setTimeout(() => {
-        height.value = withTiming(0, { duration: 150 });
-        dispatch(updateNotification({ message: "", type }));
-      }, messageTime);
-    };
-
     if (message) {
-      performAnimation();
-    }
+      console.log(message);
+      const performAnimation = () => {
+        height.value = withTiming(notificationHeight, {
+          duration: 150,
+        });
 
-    return () => {
-      if (timeOutIdRef.current) {
-        clearTimeout(timeOutIdRef.current);
+        timeOutIdRef.current = setTimeout(() => {
+          height.value = withTiming(0, { duration: 150 });
+          dispatch(
+            updateNotification({ message: "", type }),
+          );
+        }, messageTime);
+      };
+
+      if (message) {
+        performAnimation();
       }
-    };
+
+      return () => {
+        if (timeOutIdRef.current) {
+          clearTimeout(timeOutIdRef.current);
+        }
+      };
+    }
   }, [
     message,
     messageTime,

@@ -16,7 +16,10 @@ import {
 } from "@src/store/auth";
 import { saveToAsyncStorage } from "@src/utils/asyncStorage";
 import { useState } from "react";
-import { settingsState } from "@src/store/settings";
+import {
+  settingsState,
+  updateSettings,
+} from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import { Formik } from "formik";
 import useCatchAsync from "@src/hooks/useCatchAsync";
@@ -70,6 +73,15 @@ const SignIn = () => {
         },
       );
       await saveToAsyncStorage("auth-token", data.token);
+      await saveToAsyncStorage(
+        "app-lang",
+        data.data.user.homeLanguage,
+      );
+      dispatch(
+        updateSettings({
+          appLang: data.data.user.homeLanguage,
+        }),
+      );
       dispatch(updateToken(data.token));
       dispatch(updateLoggedInState(true));
       dispatch(updateEmail(""));

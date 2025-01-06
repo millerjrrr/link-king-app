@@ -15,6 +15,7 @@ const useCatchAsync = () => {
         return await asyncFunc(...args);
       } catch (error) {
         let errorMessage = returnErrorMessage(error);
+        console.log(errorMessage);
         // Network Timeout Handling
         if (
           errorMessage.startsWith("timeout") ||

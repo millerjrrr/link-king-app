@@ -10,19 +10,27 @@ import {
 import { Modal as ModalType } from "@src/types/Modals";
 import { ReactNode } from "react";
 import Xbar from "./components/XBar";
+import useColors from "@src/hooks/useColors";
+import AppLink from "../AppLink";
+import { Linking } from "react-native";
+import appTextSource from "@src/utils/appTextSource";
 
-const AppModal = ({
+interface Props {
+  name: ModalType;
+  important?: boolean;
+  webViewUrl?: string;
+  children: ReactNode;
+}
+
+const AppModal: React.FC<Props> = ({
   name,
   important,
   children,
-}: {
-  name: ModalType;
-  important?: boolean;
-  children: ReactNode;
+  webViewUrl,
 }) => {
-  const { colorScheme, golden } =
-    useSelector(settingsState);
-  const { CONTRAST, PRIMARY } = colors[colorScheme];
+  const { CONTRAST, PRIMARY } = useColors();
+  const { appLang } = useSelector(settingsState);
+  const { openInBrowser } = appTextSource(appLang).paywall;
 
   const dispatch = useDispatch();
   const { modalShowing } = useSelector(modalState);
@@ -43,10 +51,18 @@ const AppModal = ({
     >
       <ModalContainer
         backgroundColor={PRIMARY}
-        color={CONTRAST[golden]}
+        color={CONTRAST}
       >
         <Xbar x={close} />
         {children}
+        {webViewUrl ? (
+          <AppLink
+            title={openInBrowser}
+            onPress={() => {
+              if (webViewUrl) Linking.openURL(webViewUrl);
+            }}
+          />
+        ) : null}
       </ModalContainer>
     </Modal>
   );

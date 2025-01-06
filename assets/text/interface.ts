@@ -287,6 +287,7 @@ interface Paywall {
   priceDescription: string;
   perYear: string;
   webAppUnavailableOnMobileNotice: string;
+  openInBrowser: string;
 }
 
 interface Updates {

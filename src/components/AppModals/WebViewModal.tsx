@@ -8,7 +8,7 @@ const WebViewModal = () => {
   const { webViewUrl } = useSelector(modalState);
 
   return (
-    <AppModal name="webViewModal">
+    <AppModal name="webViewModal" webViewUrl={webViewUrl}>
       <WebViewContainer>
         <WebView
           style={{

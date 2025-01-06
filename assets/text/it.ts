@@ -375,6 +375,7 @@ const it: AppText = {
     perYear: "/anno",
     webAppUnavailableOnMobileNotice:
       "Purtroppo, l'app web non funziona bene sui dispositivi mobili.\n\nFortunatamente, puoi scaricare l'app GRATUITAMENTE qui!",
+    openInBrowser: "Apri nel browser",
   },
   updates: {
     heading: "Aggiornamento Disponibile!",
