@@ -72,6 +72,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "100%",
     paddingTop: 10,
+    overflow: "hidden",
+    borderRadius: 10,
   },
   heading: {
     fontSize: 15,

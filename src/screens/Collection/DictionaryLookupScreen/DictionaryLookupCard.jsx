@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import {
   Container,
   IconContainer,
-  InfoContainerView,
+  InfoContainer,
   Padding,
   Rating,
   RowContainer,
@@ -37,7 +37,7 @@ const DictionaryLookupCard = ({ dictEntry }) => {
         backgroundColor={SECONDARY}
         style={{ height: 50 }}
       >
-        <InfoContainerView>
+        <InfoContainer onPress={addWord}>
           <RowContainer>
             <Title
               color={CONTRAST[golden]}
@@ -49,15 +49,13 @@ const DictionaryLookupCard = ({ dictEntry }) => {
               {Math.round(rating)}
             </Rating>
           </RowContainer>
-        </InfoContainerView>
-        <IconContainer
-          onPress={addWord}
-          style={{ width: 30 }}
-        >
+        </InfoContainer>
+        <IconContainer style={{ width: 30 }}>
           <Entypo
             name="plus"
             size={24}
             color={CONTRAST[golden]}
+            onPress={addWord}
           />
         </IconContainer>
       </Container>

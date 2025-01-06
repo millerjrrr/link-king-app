@@ -25,13 +25,6 @@ export const InfoContainer = styled(TouchableOpacity)`
   margin-horizontal: 15px;
 `;
 
-export const InfoContainerView = styled(View)`
-  flex: 1;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-horizontal: 15px;
-`;
-
 export const IconContainer = styled(TouchableOpacity)`
   margin: 0 10px 0 15px;
   justify-content: center;

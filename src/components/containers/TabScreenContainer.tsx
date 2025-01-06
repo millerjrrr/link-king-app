@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-start",
     paddingHorizontal: 15,
+    overflow: "hidden",
   },
   heading: {
     fontSize: 12,

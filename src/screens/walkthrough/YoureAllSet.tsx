@@ -6,7 +6,7 @@ import AppText from "@src/components/AppText";
 import { selectConsoleState } from "@src/store/console";
 import { settingsState } from "@src/store/settings";
 import { languages } from "../ManageAccount/ChangeHomeLanguageScreens/SelectNewLanguageScreen/getLanguageData";
-import { Video } from "expo-av";
+import { ResizeMode, Video } from "expo-av";
 import appTextSource from "@src/utils/appTextSource";
 import screenDimensions from "@src/utils/screenDimensions";
 import FadeBackgroundView from "@src/components/Graphics/FadeBackgroundView";
@@ -53,7 +53,7 @@ const YoureAllSet = () => {
       ? demoSolutionsSpanishEnglish
       : demoSolutionsEnglishPortuguese;
 
-  const { height, width } = screenDimensions();
+  const { width } = screenDimensions();
   const navigation =
     useNavigation<
       StackNavigationProp<WalkthroughStackParamList>
@@ -89,21 +89,24 @@ const YoureAllSet = () => {
           <AppText>{howTo}</AppText>
           <View
             style={{
-              height: height * 0.35,
               overflow: "hidden",
+              alignItems: "center",
               margin: 20,
+              height: width * 0.8,
             }}
           >
             <Video
               style={{
-                transform: [{ translateY: -height * 0.1 }],
-                height: height * 0.8,
+                transform: [{ translateY: -0 }],
+                height: width * 1.5,
                 width: width * 0.8,
+                backgroundColor: "red",
               }}
               source={source}
               isMuted
               isLooping
               shouldPlay
+              resizeMode={ResizeMode.COVER}
             />
           </View>
           <AppText>{dunno}</AppText>
@@ -111,12 +114,14 @@ const YoureAllSet = () => {
             style={{
               height: width * 0.8,
               width: width * 0.8,
+              alignSelf: "center",
               margin: 20,
             }}
             source={source2}
             isMuted
             isLooping
             shouldPlay
+            resizeMode={ResizeMode.COVER}
           />
           <AppText>{playFor}</AppText>
           <View style={{ height: 50 }} />
@@ -129,10 +134,11 @@ const YoureAllSet = () => {
         </ScrollView>
         <FadeBackgroundView
           position="bottom"
-          height={30}
+          height={50}
           style={{ borderRadius: 10 }}
         />
       </View>
+      <View style={{ height: 70 }} />
     </TabScreenContainer>
   );
 };

@@ -65,7 +65,13 @@ const AuthFormContainer: React.FC<
         };
 
   return (
-    <>
+    <View
+      style={{
+        flex: 1,
+        overflow: "hidden",
+        borderRadius: 10,
+      }}
+    >
       <FourCrowns color={SECONDARY} />
       <Container {...containerProps}>
         {noPadding ? null : <StatusBarFiller />}
@@ -102,7 +108,7 @@ const AuthFormContainer: React.FC<
         <View style={{ height: 10 }} />
         {children}
       </Container>
-    </>
+    </View>
   );
 };
 
