@@ -6,6 +6,7 @@ import {
   restartTheTimer,
   updateFormValue,
   updateTimerIsOn,
+  updateShowSolution,
 } from "@src/store/console";
 import { settingsState } from "@src/store/settings";
 import appShadow from "@src/utils/appShadow";
@@ -43,6 +44,7 @@ const TextInputForConsole = ({
     setIsKeyboardVisible(true);
     speak({ target, language, sound });
     dispatch(updateTimerIsOn(true));
+    dispatch(updateShowSolution(false));
     dispatch(updateFormValue(""));
     dispatch(restartTheTimer());
   };

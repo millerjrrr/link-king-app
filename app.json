@@ -60,6 +60,7 @@
         "foregroundImage": "./assets/icon-android.png",
         "backgroundColor": "#000000"
       },
+      "softwareKeyboardLayoutMode": "pan",
       "blockedPermissions": [
         "android.permission.RECORD_AUDIO"
       ]

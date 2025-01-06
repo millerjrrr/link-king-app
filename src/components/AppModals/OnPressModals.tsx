@@ -54,7 +54,7 @@ const OnPressModals = () => {
     },
     ratingInfoModal: () => {
       Linking.openURL(
-        "https://link-king.com/2024/12/20/my-language-learning-story/",
+        "https://link-king.com/2025/01/06/what-is-an-elo-rating/",
       );
     },
   };
