@@ -100,7 +100,6 @@ const YoureAllSet = () => {
                 transform: [{ translateY: -0 }],
                 height: width * 1.5,
                 width: width * 0.8,
-                backgroundColor: "red",
               }}
               source={source}
               isMuted
