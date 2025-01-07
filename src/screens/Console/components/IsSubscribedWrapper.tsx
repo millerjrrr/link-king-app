@@ -21,8 +21,9 @@ const IsSubscribedWrapper = ({
 
   const isWebApp = Platform.OS === "web";
 
+  console.log(trialDays);
   const subRequired =
-    vip <= Date.now() &&
+    new Date(vip).getTime() <= Date.now() &&
     time > 5 * 60 * 1000 &&
     trialDays === 0 &&
     tail.length === 0 &&

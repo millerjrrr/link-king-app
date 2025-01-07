@@ -1,5 +1,4 @@
-import { ReactNode } from "react";
-import { Image, View } from "react-native";
+import React, { ReactNode } from "react";
 import { useSelector } from "react-redux";
 import { authState } from "@src/store/auth";
 import useColors from "@src/hooks/useColors";
