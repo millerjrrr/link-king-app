@@ -6,7 +6,7 @@ import {
 } from "@src/store/console";
 import clientWithAuth from "@src/api/clientWithAuth";
 import useCatchAsync from "@src/hooks/useCatchAsync";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const useFetchConsoleInfo = () => {
   const catchAsync = useCatchAsync();

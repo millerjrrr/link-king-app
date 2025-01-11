@@ -17,6 +17,7 @@ import useHandleAppBackgroundExit from "../../hooks/consoleHooks/useEffects/useH
 import useUpdateOptions from "@src/hooks/consoleHooks/useEffects/useUpdateOptions";
 import usePopToTop from "@src/hooks/usePopToTop";
 import IsSubscribedWrapper from "./components/IsSubscribedWrapper";
+import usePlayBackgroundMusic from "@src/hooks/consoleHooks/useEffects/usePlayBackgroundMusic";
 
 const Console = ({ navigation }) => {
   const inputFieldRef = useRef(null);
@@ -38,6 +39,7 @@ const Console = ({ navigation }) => {
   useHandleAppBackgroundExit();
   useOnKeyboardClose();
   useUpdateOptions();
+  usePlayBackgroundMusic();
 
   usePopToTop();
 
