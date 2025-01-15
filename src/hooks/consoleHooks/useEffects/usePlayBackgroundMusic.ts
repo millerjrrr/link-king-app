@@ -16,7 +16,10 @@ const usePlayBackgroundMusic = () => {
           setSound(null); // Reset the sound state
         }
 
-        const file = require("@assets/backgroundMusic/Symph40Mozart.mp3");
+        const file =
+          Platform.OS === "web"
+            ? "assets/assets/backgroundMusic/Symph40Mozart.mp3"
+            : require("@assets/backgroundMusic/Symph40Mozart.mp3");
         const { sound } = await Audio.Sound.createAsync(
           file, // Adjust the path as necessary
           { shouldPlay: true, isLooping: true },

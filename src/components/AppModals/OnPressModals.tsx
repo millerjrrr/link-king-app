@@ -34,7 +34,7 @@ const OnPressModals = () => {
   > = {
     leaveAReviewModal: goToRatingPage,
     contactUsModal: () => {
-      const email = "info@linkoking.com";
+      const email = "info@link-king.com";
       const subject = encodeURIComponent(subjectText);
       const url = `mailto:${email}?subject=${subject}`;
       Linking.openURL(url).catch((err) =>
