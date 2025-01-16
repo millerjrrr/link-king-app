@@ -11,6 +11,7 @@ export interface Modals {
   leaveAReviewModal: ModalsMessage;
   contactUsModal: ModalsMessage;
   logOutModal: ModalsMessage;
+  deleteWordModal: ModalsMessage;
   setDailyGoalModal: ModalsMessage;
   repeatRepeatsModal: ModalsMessage;
   collectionInfoModal: ModalsMessage;

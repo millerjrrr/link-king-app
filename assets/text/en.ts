@@ -408,6 +408,12 @@ const en: AppText = {
       modalMessage: "Are your sure you want to log out?",
       cancel: "Cancel",
     },
+    deleteWordModal: {
+      title: "Delete",
+      modalMessage:
+        "Do you want to permanently remove this word from your collection?",
+      cancel: "Cancel",
+    },
     setDailyGoalModal: {
       title: "Restore Defaults",
       modalMessage:

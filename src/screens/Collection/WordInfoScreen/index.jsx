@@ -2,7 +2,6 @@ import { Platform, StyleSheet, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import PopUpContainer from "@src/components/Containers/PopUpContainer";
 import React, { useCallback } from "react";
-import BloodRedCover from "@src/components/BloodRedCover";
 import BusyWrapper from "@src/components/Loader/BusyWrapper";
 import ResponseInformation from "./ResponseInformation";
 import appTextSource from "@src/utils/appTextSource";
@@ -63,7 +62,6 @@ const WordInfoScreen = ({ route }) => {
 
   return (
     <PopUpContainer {...{ heading }}>
-      <BloodRedCover />
       <BusyWrapper {...{ busy, size: 96 }}>
         <View style={styles.container}>
           <View {...{ style: { height: 8 } }} />
@@ -75,7 +73,7 @@ const WordInfoScreen = ({ route }) => {
         {wordDeleteButtonPressed ? (
           <ResponseInformation />
         ) : (
-          <DeleteButton ticketId={ticket.id} />
+          <DeleteButton />
         )}
       </BusyWrapper>
     </PopUpContainer>

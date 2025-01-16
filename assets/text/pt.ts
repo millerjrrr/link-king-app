@@ -413,6 +413,12 @@ const pt: AppText = {
       modalMessage: "Tem certeza de que deseja sair?",
       cancel: "Cancelar",
     },
+    deleteWordModal: {
+      title: "Excluir",
+      modalMessage:
+        "Você deseja remover permanentemente esta palavra da sua coleção?",
+      cancel: "Cancelar",
+    },
     setDailyGoalModal: {
       title: "Restaurar",
       modalMessage:

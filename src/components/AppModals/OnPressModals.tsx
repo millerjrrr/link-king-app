@@ -16,11 +16,22 @@ import useLogOut from "./../../hooks/authHooks/useLogOut";
 import goToRatingPage from "@src/utils/goToRatingsInAppStore";
 import useRestoreGoalDefaults from "@src/hooks/optionsHooks/useRestoreGoalDefaults";
 import useFetchConsoleInfo from "./../../hooks/consoleHooks/useFetchConsoleInfo";
+import { collectionState } from "@src/store/collection";
+import useFlagAndDeleteTicket from "./../../hooks/collectionHooks/useFlagAndDeleteTicket";
 
 const OnPressModals = () => {
   const { CONTRAST } = useColors();
   const { appLang } = useSelector(settingsState);
   const { modalShowing } = useSelector(modalState);
+
+  const dispatch = useDispatch();
+  const close = () => {
+    dispatch(
+      updateModals({
+        modalShowing: "",
+      }),
+    );
+  };
 
   const { subject: subjectText } =
     appTextSource(appLang).options.contactUs;
@@ -28,6 +39,9 @@ const OnPressModals = () => {
   const restoreGoalDefaults = useRestoreGoalDefaults();
 
   const fetchConsoleInfo = useFetchConsoleInfo();
+
+  const { selectedTicket } = useSelector(collectionState);
+  const flagAndDeleteTicket = useFlagAndDeleteTicket();
 
   const onPress: Partial<
     Record<ModalWithMessage, () => void>
@@ -47,6 +61,10 @@ const OnPressModals = () => {
       );
     },
     logOutModal: logOut,
+    deleteWordModal: () => {
+      flagAndDeleteTicket(selectedTicket.id);
+      close();
+    },
     setDailyGoalModal: restoreGoalDefaults,
     repeatRepeatsModal: () => {
       dispatch(updateModals({ modalShowing: "" }));
@@ -66,15 +84,6 @@ const OnPressModals = () => {
     : "logOutModal";
   const { modalMessage, cancel, title } =
     appTextSource(appLang).modals[name];
-
-  const dispatch = useDispatch();
-  const close = () => {
-    dispatch(
-      updateModals({
-        modalShowing: "",
-      }),
-    );
-  };
 
   return (
     <AppModal name={name}>

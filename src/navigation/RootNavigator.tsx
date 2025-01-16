@@ -20,6 +20,7 @@ import useColors from "@src/hooks/useColors";
 import WalkthroughNavigator from "./WalkthroughNavigator";
 import UpdateToLatestVersionPage from "@src/screens/popUpScreens/UpdateToLatestVersionPage";
 import appConfig from "../../app.json";
+import compareVersions from "@src/utils/versionCompare";
 
 const RootNavigator = () => {
   const { STATUSBAR, PRIMARY, CONTRAST } = useColors();
@@ -37,6 +38,12 @@ const RootNavigator = () => {
 
   const { loggedIn, refresh, justSignedUp, latestVersion } =
     useSelector(authState);
+
+  const updateRequired = compareVersions(
+    latestVersion,
+    currentVersion,
+  );
+
   const checkSubscriptionStatusAndFetchAuthInfo =
     useCheckSubscriptionStatusAndFetchAuthInfo();
   const fetchSettings = useFetchSettings();
@@ -66,7 +73,7 @@ const RootNavigator = () => {
       <ConnectedWrapper>
         <View style={{ flex: 1, backgroundColor: PRIMARY }}>
           <AppLoadingWrapper>
-            {latestVersion !== currentVersion ? (
+            {updateRequired ? (
               <UpdateToLatestVersionPage />
             ) : loggedIn ? (
               justSignedUp ? (
