@@ -2,7 +2,7 @@
   "expo": {
     "name": "Link King",
     "slug": "LinkKingApp",
-    "version": "5.0.2",
+    "version": "5.0.3",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -55,7 +55,7 @@
       ],
       "icon": "./assets/adaptive-icon.png",
       "package": "com.linkoking.app",
-      "versionCode": 56,
+      "versionCode": 57,
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon-android.png",
         "backgroundColor": "#000000"
