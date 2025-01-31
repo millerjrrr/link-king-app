@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import * as WebBrowser from "expo-web-browser";
 import * as Google from "expo-auth-session/providers/google";
-import * as SecureStore from "expo-secure-store";
 import { makeRedirectUri } from "expo-auth-session";
 import {
   Image,
