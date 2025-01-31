@@ -368,6 +368,7 @@ const it: AppText = {
           "Il tuo account è stato verificato. Torna alla nostra homepage per accedere",
         buttonTitle: "Accedi",
       },
+      continueWithGoogle: "Continua con Google",
     },
   },
   paywall: {

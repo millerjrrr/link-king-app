@@ -370,6 +370,7 @@ const pt: AppText = {
           "Sua conta foi verificada. Retorne à nossa página inicial para fazer login",
         buttonTitle: "Entrar",
       },
+      continueWithGoogle: "Continuar com o Google",
     },
   },
   paywall: {

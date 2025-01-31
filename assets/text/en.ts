@@ -365,6 +365,7 @@ const en: AppText = {
           "You're account has been verified. Return to our homepage to login",
         buttonTitle: "Sign in",
       },
+      continueWithGoogle: "Continue with Google",
     },
   },
   paywall: {

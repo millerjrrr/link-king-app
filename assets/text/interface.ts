@@ -277,6 +277,7 @@ interface AuthSignUp {
     cancel: string;
   };
   finish: AuthSignUpStep;
+  continueWithGoogle: string;
 }
 
 interface Auth {

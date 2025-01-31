@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import * as WebBrowser from "expo-web-browser";
 import * as Google from "expo-auth-session/providers/google";
 import * as SecureStore from "expo-secure-store";
-import jwtDecode from "jwt-decode";
 import { makeRedirectUri } from "expo-auth-session";
 import {
   Image,
@@ -28,6 +27,10 @@ import {
   GOOGLE_IOS_CLIENT_ID,
   GOOGLE_ANDROID_CLIENT_ID,
 } from "@env";
+import useColors from "@src/hooks/useColors";
+import appShadow from "@src/utils/appShadow";
+import AppText from "./AppText";
+import appTextSource from "@src/utils/appTextSource";
 
 declare function require(path: string): any;
 
@@ -98,6 +101,11 @@ const GoogleAuthButton = () => {
     },
   );
 
+  const { SECONDARY, CONTRAST } = useColors();
+
+  const { continueWithGoogle } =
+    appTextSource(appLang).auth.signUp;
+
   return (
     <View
       style={{
@@ -109,14 +117,32 @@ const GoogleAuthButton = () => {
     >
       <TouchableOpacity
         style={{
-          marginTop: 10,
+          flexDirection: "row",
+          alignItems: "center",
+          backgroundColor: SECONDARY,
+          paddingVertical: 12,
+          paddingHorizontal: 16,
+          borderRadius: 100,
+          ...appShadow(CONTRAST),
         }}
         disabled={!request}
         onPress={() => promptAsync()}
+        activeOpacity={0.8}
       >
         <Image
-          source={require("@assets/img/GSignUp.png")}
+          source={require("@assets/img/google-icon.png")}
+          style={{
+            width: 24,
+            height: 24,
+            marginRight: 10,
+          }}
         />
+
+        <AppText
+          style={{ fontSize: 16, fontWeight: "bold" }}
+        >
+          {continueWithGoogle}
+        </AppText>
       </TouchableOpacity>
     </View>
   );
