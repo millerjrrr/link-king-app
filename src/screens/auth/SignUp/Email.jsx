@@ -9,6 +9,7 @@ import appTextSource from "@src/utils/appTextSource";
 import { authState, updateEmail } from "@src/store/auth";
 import SignUpAppLink from "@components/SignUpAppLink";
 import { Formik } from "formik";
+import GoogleAuthButton from "@src/components/GoogleAuthButton";
 
 const Email = ({ navigation }) => {
   const { appLang } = useSelector(settingsState);
@@ -66,6 +67,7 @@ const Email = ({ navigation }) => {
         </>
       </Formik>
       <SignUpAppLink />
+      <GoogleAuthButton />
     </AuthFormContainer>
   );
 };

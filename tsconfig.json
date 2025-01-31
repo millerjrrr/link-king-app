@@ -20,7 +20,8 @@
   "include": [
     "src/**/*",
     "assets/**/*",
-    "declarations.d.ts"
+    "declarations.d.ts",
+    "env.d.ts"
   ],
   "exclude": [
     "node_modules",

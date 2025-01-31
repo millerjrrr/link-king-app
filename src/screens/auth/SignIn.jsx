@@ -23,6 +23,7 @@ import {
 import appTextSource from "@src/utils/appTextSource";
 import { Formik } from "formik";
 import useCatchAsync from "@src/hooks/useCatchAsync";
+import GoogleAuthButton from "@src/components/GoogleAuthButton";
 
 const SignIn = () => {
   const { appLang } = useSelector(settingsState);
@@ -140,6 +141,7 @@ const SignIn = () => {
           <SubmitButton title={signIn} />
         </>
       </Formik>
+      <GoogleAuthButton />
     </AuthFormContainer>
   );
 };

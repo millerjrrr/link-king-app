@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Link King",
+    "name": "Link-King",
     "slug": "LinkKingApp",
     "version": "5.0.3",
     "orientation": "portrait",
@@ -12,6 +12,7 @@
       "backgroundColor": "#000000"
     },
     "assetBundlePatterns": ["**/*"],
+    "scheme": "com.linkoking.app",
     "ios": {
       "buildNumber": "1",
       "supportsTablet": false,
@@ -65,7 +66,11 @@
         "android.permission.RECORD_AUDIO"
       ]
     },
-    "plugins": ["expo-av", "expo-localization"],
+    "plugins": [
+      "expo-av",
+      "expo-localization",
+      "expo-secure-store"
+    ],
     "extra": {
       "eas": {
         "projectId": "d3f81d37-8476-4818-9dc2-15ff6a7e1a63"
@@ -76,6 +81,7 @@
     },
     "updates": {
       "url": "https://u.expo.dev/d3f81d37-8476-4818-9dc2-15ff6a7e1a63"
-    }
+    },
+    "jsEngine": "jsc"
   }
 }

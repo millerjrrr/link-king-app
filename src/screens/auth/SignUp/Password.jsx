@@ -17,6 +17,7 @@ import {
 import SignUpAppLink from "@components/SignUpAppLink";
 import { Formik } from "formik";
 import useCatchAsync from "@src/hooks/useCatchAsync";
+import GoogleAuthButton from "@src/components/GoogleAuthButton";
 
 const Password = () => {
   const { appLang } = useSelector(settingsState);
@@ -118,6 +119,7 @@ const Password = () => {
         </>
       </Formik>
       <SignUpAppLink />
+      <GoogleAuthButton />
     </AuthFormContainer>
   );
 };
