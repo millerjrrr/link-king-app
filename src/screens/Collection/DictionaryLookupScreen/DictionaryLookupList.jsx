@@ -16,8 +16,9 @@ import {
 } from "@src/store/dictionaryLookup";
 import DictionaryLookupCard from "./DictionaryLookupCard";
 import { ScrollView } from "react-native-gesture-handler";
+import AddCustomDictionaryEntry from "./AddCustomDictionaryEntry";
 
-const ListFooterComponent = () => {
+const ListFooterComponent = ({ searchKeyword }) => {
   const { allDataLoaded } = useSelector(
     dictionaryLookupState,
   );
@@ -27,7 +28,11 @@ const ListFooterComponent = () => {
         <View style={{ height: 100 }}>
           <Loader {...{ size: 50 }} />
         </View>
-      ) : null}
+      ) : (
+        <AddCustomDictionaryEntry
+          searchKeyword={searchKeyword}
+        />
+      )}
       <View style={{ height: 100 }} />
     </>
   );
@@ -54,6 +59,14 @@ const DictionaryLookupList = () => {
     dictEntries.length === 0 ? (
     <ScrollView style={{ flex: 1, width: "85%" }}>
       <View style={{ height: 90 }} />
+      {searchKeyword !== "" ? (
+        <>
+          <AddCustomDictionaryEntry
+            searchKeyword={searchKeyword}
+          />
+          <View style={{ height: 20 }} />
+        </>
+      ) : null}
       <AppText>{noWords}</AppText>
     </ScrollView>
   ) : (
@@ -69,7 +82,11 @@ const DictionaryLookupList = () => {
         if (!allDataLoaded) dispatch(updatePage(page + 1));
       }}
       onEndReachedThreshold={0.1}
-      ListFooterComponent={ListFooterComponent}
+      ListFooterComponent={
+        <ListFooterComponent
+          searchKeyword={searchKeyword}
+        />
+      }
       showsVerticalScrollIndicator={Platform.OS !== "web"}
     />
   );

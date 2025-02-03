@@ -53,7 +53,7 @@ const WordCard = ({ navigation, ticket, onPress }: any) => {
               {target}
             </Title>
             <Rating color={CONTRAST}>
-              {Math.round(rating)}
+              {!!rating ? Math.round(rating) : ""}
             </Rating>
           </RowContainer>
           <RowContainer>

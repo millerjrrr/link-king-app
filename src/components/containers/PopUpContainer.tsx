@@ -18,6 +18,7 @@ interface PopUpContainerProps {
   heading: string;
   help?: () => void;
   padding?: number;
+  altFunction?: () => void;
 }
 
 const PopUpContainer: React.FC<PopUpContainerProps> = ({
@@ -25,6 +26,7 @@ const PopUpContainer: React.FC<PopUpContainerProps> = ({
   heading,
   help,
   padding,
+  altFunction,
 }) => {
   const { busy } = useSelector(authState);
   const { colorScheme, golden } =
@@ -47,7 +49,7 @@ const PopUpContainer: React.FC<PopUpContainerProps> = ({
       <BottomShadow />
       <FourCrowns {...{ color: SECONDARY }} />
       <HelpButton help={help} />
-      <BackButton />
+      <BackButton altFunction={altFunction} />
       <LinkKingLogo
         {...{
           height: 40,

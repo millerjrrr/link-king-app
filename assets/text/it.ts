@@ -73,6 +73,12 @@ const it: AppText = {
       solutionName: "Soluzione",
       save: "Salva",
       message: "Nuove soluzioni aggiunte!",
+      altHeading: "Crea un Ticket Personalizzato",
+      altMessage: "Ticket personalizzato creato!",
+      newTargetWord: "Nuova Parola Obiettivo",
+      importSolutions: "Importa Soluzioni",
+      required: "obbligatorio",
+      silly: "inaccettabile",
     },
     help: {
       heading: "Aiuto",
@@ -188,6 +194,9 @@ const it: AppText = {
       reminder:
         "Ricorda che, per efficienza, non includiamo variazioni della stessa parola e alcune parole potrebbero non essere disponibili. Se ritieni che una parola debba essere inclusa ma non lo è, contattaci.",
       wordAdded: "Nuova parola aggiunta alla raccolta:",
+      addCustomWord: "AGGIUNGI PAROLA PERSONALIZZATA",
+      customTicketCreated:
+        "Ticket personalizzato creato con successo",
     },
   },
   options: {

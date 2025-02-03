@@ -13,6 +13,7 @@ import DictionaryLookupScreen from "@src/screens/Collection/DictionaryLookupScre
 import { CollectionStackParamList } from "@src/types/navigationTypes";
 import EditTicketScreen from "@src/screens/Collection/EditTicketScreen";
 import AIStories from "@src/screens/Collection/AIStories";
+import CreateCustomTicketScreen from "@src/screens/Collection/CreateCustomTicketScreen";
 
 const CollectionStack =
   createStackNavigator<CollectionStackParamList>();
@@ -38,6 +39,10 @@ const CollectionNavigator: React.FC = () => {
       <CollectionStack.Screen
         name="Edit Solutions"
         component={EditTicketScreen}
+      />
+      <CollectionStack.Screen
+        name="Create Custom Ticket"
+        component={CreateCustomTicketScreen}
       />
       <CollectionStack.Screen
         name="Statistics"

@@ -73,6 +73,12 @@ const en: AppText = {
       solutionName: "Solution",
       save: "Save",
       message: "New solutions added!",
+      altHeading: "Create A Custom Ticket",
+      altMessage: "Custom ticket created!",
+      newTargetWord: "New Target Word",
+      importSolutions: "Import Solutions",
+      required: "required",
+      silly: "unacceptable",
     },
     help: {
       heading: "Help",
@@ -187,6 +193,9 @@ const en: AppText = {
       reminder:
         "Remember that for efficiency we do not include variations of the same word and some words may not be available. If you feel a word should be included but isn't please contact us.",
       wordAdded: "New word added to collection:",
+      addCustomWord: "ADD CUSTOM WORD",
+      customTicketCreated:
+        "Custom ticket successfully created",
     },
   },
   options: {

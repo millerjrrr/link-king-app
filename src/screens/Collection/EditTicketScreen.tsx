@@ -38,7 +38,7 @@ const EditTicketScreen = () => {
 
   const notSilly = yup.string().test(
     "no-bad-solutions", // Unique name for the test
-    "The solution can't be silly", // Custom error message
+    "Entries can't be silly", // Custom error message
     (value) => !value || normalize(value) !== "",
   );
 

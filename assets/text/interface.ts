@@ -28,6 +28,12 @@ interface ConsoleEditTicketScreen {
   solutionName: string;
   save: string;
   message: string;
+  altHeading: string;
+  altMessage: string;
+  newTargetWord: string;
+  importSolutions: string;
+  required: string;
+  silly: string;
 }
 
 interface ConsoleHelpSection {
@@ -98,6 +104,8 @@ interface CollectionDictionaryLookupScreen {
   noResults: string;
   reminder: string;
   wordAdded: string;
+  addCustomWord: string;
+  customTicketCreated: string;
 }
 
 interface CollectionStories {

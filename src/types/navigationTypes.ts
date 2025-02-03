@@ -5,6 +5,7 @@ export type CollectionStackParamList = {
     wrongAnswerReturned?: boolean;
   };
   "Edit Solutions": undefined;
+  "Create Custom Ticket": { target: string };
   Statistics: undefined;
   "AI Stories": undefined;
   Progress: undefined;
