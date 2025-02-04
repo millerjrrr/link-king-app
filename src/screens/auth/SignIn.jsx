@@ -14,7 +14,10 @@ import {
   updateLoggedInState,
   updateToken,
 } from "@src/store/auth";
-import { saveToAsyncStorage } from "@src/utils/asyncStorage";
+import {
+  saveToAsyncStorage,
+  secureSaveToAsyncStorage,
+} from "@src/utils/asyncStorage";
 import { useState } from "react";
 import {
   settingsState,
@@ -73,7 +76,10 @@ const SignIn = () => {
           },
         },
       );
-      await saveToAsyncStorage("auth-token", data.token);
+      await secureSaveToAsyncStorage(
+        "auth-token",
+        data.token,
+      );
       await saveToAsyncStorage(
         "app-lang",
         data.data.user.homeLanguage,

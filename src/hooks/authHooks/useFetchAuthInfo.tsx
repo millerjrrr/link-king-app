@@ -12,6 +12,7 @@ import client from "@src/api/client";
 import {
   getFromAsyncStorage,
   saveToAsyncStorage,
+  secureGetFromAsyncStorage,
 } from "@src/utils/asyncStorage";
 import { updateSettings } from "@src/store/settings";
 import daysLeft from "@src/utils/daysLeft";
@@ -35,7 +36,8 @@ const useFetchAuthInfo = () => {
       dispatch(updateSettings({ appLang }));
     }
 
-    const token = await getFromAsyncStorage("auth-token");
+    const token =
+      await secureGetFromAsyncStorage("auth-token");
 
     // if there is no token stored on device exit
     if (!token) {

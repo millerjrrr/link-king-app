@@ -5,7 +5,10 @@ import {
 } from "@src/store/auth";
 import { updateSettings } from "@src/store/settings";
 import { useDispatch } from "react-redux";
-import { removeFromAsyncStorage } from "@src/utils/asyncStorage";
+import {
+  removeFromAsyncStorage,
+  secureRemoveFromAsyncStorage,
+} from "@src/utils/asyncStorage";
 import { updateModals } from "@src/store/modals";
 
 const useLogOut = () => {
@@ -19,7 +22,7 @@ const useLogOut = () => {
       updateSettings({ colorScheme: "dark", golden: 0 }),
     );
     StatusBar.setBarStyle("light-content");
-    removeFromAsyncStorage("auth-token");
+    secureRemoveFromAsyncStorage("auth-token");
     removeFromAsyncStorage("color-scheme");
   };
   return logOut;

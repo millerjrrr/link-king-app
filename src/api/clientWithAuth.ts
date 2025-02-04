@@ -1,4 +1,7 @@
-import { getFromAsyncStorage } from "@src/utils/asyncStorage";
+import {
+  getFromAsyncStorage,
+  secureGetFromAsyncStorage,
+} from "@src/utils/asyncStorage";
 import client from "./client";
 import * as Localization from "expo-localization";
 import { AxiosResponse } from "axios";
@@ -13,7 +16,8 @@ interface ClientWithAuth {
 const clientWithAuth: ClientWithAuth = {
   post: async (url: string, data: any) => {
     //console.log("# API Request");
-    const token = await getFromAsyncStorage("auth-token");
+    const token =
+      await secureGetFromAsyncStorage("auth-token");
     const appLang =
       (await getFromAsyncStorage("app-lang")) ||
       Localization.getLocales()[0]?.languageCode ||
@@ -35,9 +39,12 @@ const clientWithAuth: ClientWithAuth = {
   },
   get: async (url: string) => {
     //console.log("# API Request");
-    const token = await getFromAsyncStorage("auth-token");
+    const token =
+      await secureGetFromAsyncStorage("auth-token");
     const appLang =
-      Localization.getLocales()[0]?.languageCode || "en";
+      (await getFromAsyncStorage("app-lang")) ||
+      Localization.getLocales()[0]?.languageCode ||
+      "en";
 
     return client.get(url, {
       headers: {

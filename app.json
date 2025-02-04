@@ -39,6 +39,15 @@
             "NSPrivacyAccessedAPITypeReasons": ["CA92.1"]
           }
         ]
+      },
+      "infoPlist": {
+        "CFBundleURLTypes": [
+          {
+            "CFBundleURLSchemes": [
+              "com.googleusercontent.apps.17898xxxxxx-xxxxxqhqj0exxxxxpl03xxx"
+            ]
+          }
+        ]
       }
     },
     "androidStatusBar": {

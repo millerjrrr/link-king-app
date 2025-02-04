@@ -13,7 +13,10 @@ import {
   settingsState,
   updateSettings,
 } from "@src/store/settings";
-import { saveToAsyncStorage } from "@src/utils/asyncStorage";
+import {
+  saveToAsyncStorage,
+  secureSaveToAsyncStorage,
+} from "@src/utils/asyncStorage";
 import {
   updateEmail,
   updateJustSignedUp,
@@ -39,15 +42,16 @@ const GoogleAuthButton = () => {
   const dispatch = useDispatch();
 
   const { appLang } = useSelector(settingsState);
+  const redirectUri = makeRedirectUri({
+    scheme: "com.linkoking.app",
+  });
 
   const [request, response, promptAsync] =
     Google.useAuthRequest({
       clientId: GOOGLE_WEB_CLIENT_ID, // Web Client ID (for Expo Go)
       iosClientId: GOOGLE_IOS_CLIENT_ID, // iOS standalone builds
       androidClientId: GOOGLE_ANDROID_CLIENT_ID, // Android standalone builds
-      redirectUri: makeRedirectUri({
-        scheme: "com.linkoking.app",
-      }),
+      redirectUri,
     });
 
   useEffect(() => {
@@ -78,7 +82,10 @@ const GoogleAuthButton = () => {
       );
 
       if (data.status === "success") {
-        await saveToAsyncStorage("auth-token", data.token);
+        await secureSaveToAsyncStorage(
+          "auth-token",
+          data.token,
+        );
         await saveToAsyncStorage(
           "app-lang",
           data.data.user.homeLanguage,

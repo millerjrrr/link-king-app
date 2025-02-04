@@ -48,8 +48,8 @@ const StatsScreen = () => {
 
   return (
     <PopUpContainer heading={heading}>
-      <ScrollView>
-        <BusyWrapper busy={busy} size={100}>
+      <BusyWrapper busy={busy} size={100}>
+        <ScrollView>
           <View style={{ width: "100%", padding: 15 }}>
             {showHist ? (
               <LevelHistogram
@@ -75,8 +75,8 @@ const StatsScreen = () => {
               </TouchableOpacity>
             ) : null}
           </View>
-        </BusyWrapper>
-      </ScrollView>
+        </ScrollView>
+      </BusyWrapper>
     </PopUpContainer>
   );
 };

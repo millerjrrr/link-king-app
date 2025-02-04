@@ -17,7 +17,7 @@ import {
 } from "@src/store/auth";
 import client from "@src/api/client";
 import SignUpAppLink from "@components/SignUpAppLink";
-import { saveToAsyncStorage } from "@src/utils/asyncStorage";
+import { secureSaveToAsyncStorage } from "@src/utils/asyncStorage";
 import { Formik } from "formik";
 import useCatchAsync from "@src/hooks/useCatchAsync";
 import { updateDictionary } from "@src/store/console";
@@ -62,7 +62,10 @@ const VerificationCode = () => {
           },
         },
       );
-      await saveToAsyncStorage("auth-token", data.token);
+      await secureSaveToAsyncStorage(
+        "auth-token",
+        data.token,
+      );
       dispatch(updateToken(data.token));
       dispatch(
         updateSettings({
