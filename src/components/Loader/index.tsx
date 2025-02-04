@@ -92,7 +92,7 @@ const Loader: React.FC<LoaderProps> = ({
         }}
       >
         <Image
-          source={require("@assets/img/link-crown-symbol.png")}
+          source={require("@assets/adaptive-icon.png")}
           tintColor={loaderColor}
           resizeMode="contain"
           style={{

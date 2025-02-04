@@ -39,7 +39,7 @@ const UpdateToLatestVersionPage = () => {
       Platform.OS === "ios" ? appStoreLink : playStoreLink,
     );
 
-  const source = require("@assets/img/link-crown-symbol.png");
+  const source = require("@assets/adaptive-icon.png");
 
   const { CONTRAST, INACTIVE_CONTRAST } = useColors();
 

@@ -48,7 +48,7 @@ const StatsScreen = () => {
 
   return (
     <PopUpContainer heading={heading}>
-      <BusyWrapper busy={busy} size={100}>
+      <BusyWrapper busy={busy} size={150}>
         <ScrollView>
           <View style={{ width: "100%", padding: 15 }}>
             {showHist ? (

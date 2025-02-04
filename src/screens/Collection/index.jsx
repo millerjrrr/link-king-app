@@ -37,7 +37,7 @@ const Collection = ({ navigation }) => {
       dictionarySettings={dictionarySettings}
     >
       <SearchBarContainer navigation={navigation} />
-      <BusyWrapper busy={busy} size={96} pushToTop>
+      <BusyWrapper busy={busy} size={150} pushToTop>
         <WordCollectionList
           navigation={navigation}
           tickets={tickets}

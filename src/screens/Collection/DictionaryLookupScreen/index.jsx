@@ -35,7 +35,7 @@ const DictionaryLookupScreen = () => {
       altFunction={backFunction}
     >
       <DictionaryLookupSearchbar />
-      <BusyWrapper busy={busy} size={100}>
+      <BusyWrapper busy={busy} size={150}>
         <DictionaryLookupList />
       </BusyWrapper>
       <NewWordAddedModal />

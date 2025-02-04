@@ -44,7 +44,7 @@ const AIStories = () => {
   return (
     <PopUpContainer heading={title}>
       <View style={{ paddingHorizontal: 15 }}>
-        <BusyWrapper busy={busy} size={100}>
+        <BusyWrapper busy={busy} size={150}>
           <AppText
             style={{
               padding: 5,

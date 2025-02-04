@@ -62,7 +62,7 @@ const WordInfoScreen = ({ route }) => {
 
   return (
     <PopUpContainer {...{ heading }}>
-      <BusyWrapper {...{ busy, size: 96 }}>
+      <BusyWrapper {...{ busy, size: 150 }}>
         <View style={styles.container}>
           <View {...{ style: { height: 8 } }} />
           <WordCard {...{ ticket, onPress }} />

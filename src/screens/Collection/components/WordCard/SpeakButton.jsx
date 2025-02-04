@@ -6,7 +6,7 @@ import ReadWordButton from "@src/screens/Console/components/ReadWordButton";
 
 const SpeakButton = ({
   showSpeaker = true,
-  speakWord,
+  speakWord = "error",
   height = 50,
 }) => {
   const { colorScheme } = useSelector(settingsState);
@@ -17,7 +17,6 @@ const SpeakButton = ({
           styles.container,
           { backgroundColor: colors[colorScheme].PRIMARY },
         ],
-        onPress,
       }}
     >
       <ReadWordButton

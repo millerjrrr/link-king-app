@@ -46,7 +46,7 @@ const ColorSchemeButton = ({ cs, size = 30 }) => {
         }}
       >
         <Image
-          source={require("@assets/img/link-crown-symbol.png")}
+          source={require("@assets/adaptive-icon.png")}
           tintColor={CONTRAST[0]}
           resizeMode="contain"
           style={{

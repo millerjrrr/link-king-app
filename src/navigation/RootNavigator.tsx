@@ -21,6 +21,7 @@ import WalkthroughNavigator from "./WalkthroughNavigator";
 import UpdateToLatestVersionPage from "@src/screens/popUpScreens/UpdateToLatestVersionPage";
 import appConfig from "../../app.json";
 import compareVersions from "@src/utils/versionCompare";
+import VideoSplashScreenWrapper from "@src/screens/VideoSplashScreen";
 
 const RootNavigator = () => {
   const { STATUSBAR, PRIMARY, CONTRAST } = useColors();
@@ -72,19 +73,21 @@ const RootNavigator = () => {
       />
       <ConnectedWrapper>
         <View style={{ flex: 1, backgroundColor: PRIMARY }}>
-          <AppLoadingWrapper>
-            {updateRequired ? (
-              <UpdateToLatestVersionPage />
-            ) : loggedIn ? (
-              justSignedUp ? (
-                <WalkthroughNavigator />
+          <VideoSplashScreenWrapper>
+            <AppLoadingWrapper>
+              {updateRequired ? (
+                <UpdateToLatestVersionPage />
+              ) : loggedIn ? (
+                justSignedUp ? (
+                  <WalkthroughNavigator />
+                ) : (
+                  <TabNavigator />
+                )
               ) : (
-                <TabNavigator />
-              )
-            ) : (
-              <AuthNavigator />
-            )}
-          </AppLoadingWrapper>
+                <AuthNavigator />
+              )}
+            </AppLoadingWrapper>
+          </VideoSplashScreenWrapper>
         </View>
       </ConnectedWrapper>
     </NavigationContainer>

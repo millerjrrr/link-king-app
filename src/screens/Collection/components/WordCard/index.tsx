@@ -23,7 +23,7 @@ const WordCard = ({ navigation, ticket, onPress }: any) => {
 
   const { tomorrow } = appTextSource(appLang).collection;
 
-  const { target, rating, level } = ticket;
+  const { target = "error", rating, level } = ticket;
   const scale = 30;
   const fontSize =
     target.length > 10

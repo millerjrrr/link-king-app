@@ -23,7 +23,7 @@ const DictionarySelectionScreen = () => {
 
   return (
     <PopUpContainer heading={title}>
-      <BusyWrapper busy={busy}>
+      <BusyWrapper busy={busy} size={150}>
         {dictionaries.length === 0 ? (
           <AppText
             style={{
