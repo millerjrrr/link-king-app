@@ -271,6 +271,8 @@ const it: AppText = {
           "L'app web è attualmente gratuita. Nessun abbonamento richiesto.",
       },
     },
+    shareProgress: "Condividi Progresso",
+    shareApp: "Condividi App",
     leaveAReview: {
       name: "Lascia una recensione",
     },

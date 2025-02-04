@@ -45,6 +45,7 @@ export type OptionsStackParamList = {
   Options: undefined;
   "Set Daily Goals": undefined;
   "Dictionary Selection": undefined;
+  Progress: undefined;
 };
 
 // AUTH

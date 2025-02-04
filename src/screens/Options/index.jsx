@@ -4,11 +4,11 @@ import { useNavigation } from "@react-navigation/native";
 import ColorPickerMenuItem from "./components/ColorPickerMenuItem";
 import ModalTypeMenuItem from "./components/ModalTypeMenuItem";
 import appTextSource from "../../utils/appTextSource";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { settingsState } from "./../../store/settings";
 import usePopToTop from "@src/hooks/usePopToTop";
-import WebsiteQR from "./components/WebsiteQR";
 import { Platform } from "react-native";
+import { updateModals } from "@src/store/modals";
 
 const Options = () => {
   usePopToTop();
@@ -17,12 +17,16 @@ const Options = () => {
     navigation.navigate(pageName);
   };
 
+  const dispatch = useDispatch();
+
   const { appLang } = useSelector(settingsState);
   const {
     heading,
     setDailyGoal,
     chooseDictionary,
     manageAccount,
+    shareProgress,
+    shareApp,
   } = appTextSource(appLang).options;
 
   return (
@@ -53,12 +57,30 @@ const Options = () => {
           onPress: () => navigateTo("Manage Account:"),
         }}
       />
+      <OptionsMenuItem
+        {...{
+          iconName: "share-variant",
+          name: shareProgress,
+          selected: true,
+          onPress: () => navigateTo("Progress"),
+        }}
+      />
+      <OptionsMenuItem
+        {...{
+          iconName: "qrcode-scan",
+          name: shareApp,
+          selected: true,
+          onPress: () =>
+            dispatch(
+              updateModals({ modalShowing: "qrModal" }),
+            ),
+        }}
+      />
       {Platform.OS !== "web" ? (
         <ModalTypeMenuItem optionName="leaveAReview" />
       ) : null}
       <ModalTypeMenuItem optionName="contactUs" />
       <ModalTypeMenuItem optionName="logOut" />
-      <WebsiteQR />
     </TabScreenContainer>
   );
 };

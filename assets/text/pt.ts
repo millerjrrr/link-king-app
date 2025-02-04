@@ -272,6 +272,8 @@ const pt: AppText = {
           "O aplicativo web é atualmente gratuito. Nenhuma assinatura é necessária.",
       },
     },
+    shareProgress: "Compartilhar Progresso",
+    shareApp: "Compartilhar Aplicativo",
     leaveAReview: {
       name: "Deixe um Comentário",
     },

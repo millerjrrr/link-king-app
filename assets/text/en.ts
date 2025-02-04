@@ -268,6 +268,8 @@ const en: AppText = {
           "The web app is currently free. No subscription required",
       },
     },
+    shareProgress: "Share Progress",
+    shareApp: "Share App",
     leaveAReview: {
       name: "Leave a Review",
     },

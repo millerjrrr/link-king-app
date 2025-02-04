@@ -10,8 +10,9 @@ const WebsiteQR = () => {
       tintColor={tintColor}
       resizeMode="contain"
       style={{
-        flex: 1,
-        margin: 10,
+        height: 250,
+        width: 250,
+        marginBottom: 20,
       }}
     />
   );

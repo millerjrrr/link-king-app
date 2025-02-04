@@ -8,6 +8,7 @@ import SetDailyGoalScreen from "../../screens/Options/SetDailyGoalScreen";
 import DictionarySelectionScreen from "../../screens/Options/DictionarySelectionScreen";
 import Options from "@src/screens/Options";
 import { OptionsStackParamList } from "@src/types/navigationTypes";
+import ProgressScreen from "@src/screens/Collection/ProgressScreen";
 
 const OptionsStack =
   createStackNavigator<OptionsStackParamList>();
@@ -31,6 +32,10 @@ const OptionsNavigator = () => {
       <OptionsStack.Screen
         name="Dictionary Selection"
         component={DictionarySelectionScreen}
+      />
+      <OptionsStack.Screen
+        name="Progress"
+        component={ProgressScreen}
       />
     </OptionsStack.Navigator>
   );

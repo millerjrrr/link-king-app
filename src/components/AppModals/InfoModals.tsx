@@ -10,6 +10,7 @@ import {
 } from "@src/store/modals";
 import useColors from "@src/hooks/useColors";
 import { ModalWithMessage } from "@src/types/Modals";
+import WebsiteQR from "@src/screens/Options/components/WebsiteQR";
 
 const InfoModals = () => {
   const { CONTRAST } = useColors();
@@ -20,16 +21,18 @@ const InfoModals = () => {
     "collectionInfoModal",
     "missingTTSModal",
     "dailyGoalInfoModal",
+    "qrModal",
   ];
 
-  const name: ModalWithMessage = infoModals.includes(
-    modalShowing,
-  )
-    ? (modalShowing as ModalWithMessage)
-    : "collectionInfoModal";
+  const name: ModalWithMessage | "qrModal" =
+    infoModals.includes(modalShowing)
+      ? (modalShowing as ModalWithMessage | "qrModal")
+      : "qrModal";
 
   const { modalMessage, cancel } =
-    appTextSource(appLang).modals[name];
+    name !== "qrModal"
+      ? appTextSource(appLang).modals[name]
+      : appTextSource(appLang).modals["dailyGoalInfoModal"];
 
   const dispatch = useDispatch();
   const close = () => {
@@ -38,7 +41,13 @@ const InfoModals = () => {
 
   return (
     <AppModal name={name} important>
-      <ModalText color={CONTRAST}>{modalMessage}</ModalText>
+      {modalShowing === "qrModal" ? (
+        <WebsiteQR />
+      ) : (
+        <ModalText color={CONTRAST}>
+          {modalMessage}
+        </ModalText>
+      )}
       <ModalButton
         title={cancel}
         size={20}

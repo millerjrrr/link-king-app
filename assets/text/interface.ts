@@ -212,6 +212,8 @@ interface Options {
   chooseDictionary: OptionsChooseDictionary;
   colorSchemeTitle: string;
   manageAccount: OptionsManageAccount;
+  shareProgress: string;
+  shareApp: string;
   leaveAReview: OptionsLeaveAReview;
   contactUs: OptionsContactUs;
   logOut: OptionsLogOut;
