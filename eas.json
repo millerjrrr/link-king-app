@@ -13,6 +13,12 @@
       "channel": "preview"
     },
     "production": {
+      "env": {
+        "GOOGLE_WEB_CLIENT_ID": "$GOOGLE_WEB_CLIENT_ID",
+        "GOOGLE_IOS_CLIENT_ID": "$GOOGLE_IOS_CLIENT_ID",
+        "GOOGLE_ANDROID_CLIENT_ID": "$GOOGLE_ANDROID_CLIENT_ID",
+        "CF_BUNDLE_URL": "$CF_BUNDLE_URL"
+      },
       "android": {
         "buildType": "app-bundle"
       },

@@ -15,7 +15,7 @@ export default ({ config }) => ({
     assetBundlePatterns: ["**/*"],
     scheme: "com.linkoking.app",
     ios: {
-      buildNumber: "2",
+      buildNumber: "3",
       supportsTablet: false,
       bundleIdentifier: "com.linkoking.app",
       entitlements: {
@@ -48,9 +48,7 @@ export default ({ config }) => ({
       infoPlist: {
         CFBundleURLTypes: [
           {
-            CFBundleURLSchemes: [
-              "com.googleusercontent.apps.17898xxxxxx-xxxxxqhqj0exxxxxpl03xxx",
-            ],
+            CFBundleURLSchemes: [process.env.CF_BUNDLE_URL],
           },
         ],
       },
@@ -70,7 +68,7 @@ export default ({ config }) => ({
       ],
       icon: "./assets/adaptive-icon.png",
       package: "com.linkoking.app",
-      versionCode: 58,
+      versionCode: 59,
       adaptiveIcon: {
         foregroundImage: "./assets/icon-android.png",
         backgroundColor: "#000000",

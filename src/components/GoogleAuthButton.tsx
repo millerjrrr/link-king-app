@@ -82,6 +82,14 @@ const GoogleAuthButton = () => {
 
   const loginWithGoogleToken = catchAsync(
     async (idToken: string): Promise<void> => {
+      if (
+        GOOGLE_WEB_CLIENT_ID === "" ||
+        GOOGLE_IOS_CLIENT_ID === "" ||
+        GOOGLE_ANDROID_CLIENT_ID === ""
+      )
+        throw new Error(
+          "Dev Error: Environment variables have not been set correctly",
+        );
       const { data } = await client.post(
         "/api/v1/users/sign-in-with-google",
         {
