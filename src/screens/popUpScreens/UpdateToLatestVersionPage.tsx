@@ -11,11 +11,11 @@ import {
   Platform,
 } from "react-native";
 declare function require(path: string): any;
-import appConfig from "../../../app.json";
 import { authState } from "@src/store/auth";
 import { useSelector } from "react-redux";
 import appTextSource from "@src/utils/appTextSource";
 import { settingsState } from "@src/store/settings";
+import Constants from "expo-constants";
 
 const UpdateToLatestVersionPage = () => {
   // Links to your app on the App Store and Play Store
@@ -28,7 +28,8 @@ const UpdateToLatestVersionPage = () => {
   const { heading, subHeading, linkX, currentX } =
     appTextSource(appLang).updates;
 
-  const currentVersion = appConfig.expo.version;
+  const currentVersion =
+    Constants.expoConfig?.version || "5.0.3";
   const current = currentX.replace("#X", currentVersion);
 
   const { latestVersion } = useSelector(authState);

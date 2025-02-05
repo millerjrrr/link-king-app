@@ -24,19 +24,28 @@ import {
   updateToken,
 } from "@src/store/auth";
 import useCatchAsync from "./../hooks/useCatchAsync";
-import {
-  GOOGLE_WEB_CLIENT_ID,
-  GOOGLE_IOS_CLIENT_ID,
-  GOOGLE_ANDROID_CLIENT_ID,
-} from "@env";
 import useColors from "@src/hooks/useColors";
 import appShadow from "@src/utils/appShadow";
 import AppText from "./AppText";
 import appTextSource from "@src/utils/appTextSource";
 
-declare function require(path: string): any;
+import Constants from "expo-constants";
 
-WebBrowser.maybeCompleteAuthSession();
+type ExtraProps = {
+  GOOGLE_WEB_CLIENT_ID?: string;
+  GOOGLE_IOS_CLIENT_ID?: string;
+  GOOGLE_ANDROID_CLIENT_ID?: string;
+};
+
+const extra: ExtraProps = Constants.expoConfig?.extra || {};
+
+const {
+  GOOGLE_WEB_CLIENT_ID = "",
+  GOOGLE_IOS_CLIENT_ID = "",
+  GOOGLE_ANDROID_CLIENT_ID = "",
+} = extra;
+
+declare function require(path: string): any;
 
 const GoogleAuthButton = () => {
   const dispatch = useDispatch();
@@ -45,6 +54,9 @@ const GoogleAuthButton = () => {
   const redirectUri = makeRedirectUri({
     scheme: "com.linkoking.app",
   });
+  useEffect(() => {
+    WebBrowser.maybeCompleteAuthSession();
+  }, []);
 
   const [request, response, promptAsync] =
     Google.useAuthRequest({
@@ -59,7 +71,10 @@ const GoogleAuthButton = () => {
       response?.type === "success" &&
       response.authentication?.idToken
     ) {
-      loginWithGoogleToken(response.authentication.idToken);
+      const { idToken } = response.authentication;
+      if (idToken) {
+        loginWithGoogleToken(idToken);
+      }
     }
   }, [response]);
 

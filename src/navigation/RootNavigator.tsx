@@ -19,7 +19,7 @@ import useCheckSubscriptionStatusAndFetchAuthInfo from "../hooks/subscriptionHoo
 import useColors from "@src/hooks/useColors";
 import WalkthroughNavigator from "./WalkthroughNavigator";
 import UpdateToLatestVersionPage from "@src/screens/popUpScreens/UpdateToLatestVersionPage";
-import appConfig from "../../app.json";
+import Constants from "expo-constants";
 import compareVersions from "@src/utils/versionCompare";
 import VideoSplashScreenWrapper from "@src/screens/VideoSplashScreen";
 
@@ -35,7 +35,8 @@ const RootNavigator = () => {
     },
   };
 
-  const currentVersion = appConfig.expo.version;
+  const currentVersion =
+    Constants.expoConfig?.version || "5.0.3";
 
   const { loggedIn, refresh, justSignedUp, latestVersion } =
     useSelector(authState);
