@@ -8,7 +8,8 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "@src/utils/colors";
 import SignUpAppLink from "@components/SignUpAppLink";
 import AuthFormContainer from "@src/components/Containers/AuthFormContainer";
-import GoogleAuthButton from "@src/components/GoogleAuthButton";
+import GoogleAuthButton from "@src/components/Auth3P/GoogleAuthButton";
+import Auth3PButtons from "@src/components/Auth3P/Auth3PButtons";
 
 const Welcome = () => {
   const { colorScheme, golden, appLang } =
@@ -42,7 +43,7 @@ const Welcome = () => {
         onPress={onPress}
       />
       <SignUpAppLink />
-      <GoogleAuthButton />
+      <Auth3PButtons />
     </AuthFormContainer>
   );
 };

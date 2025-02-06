@@ -15,7 +15,7 @@ import SignUpAppLink from "@components/SignUpAppLink";
 import { Formik, FormikHelpers } from "formik";
 import useChangeUsername from "@src/hooks/optionsHooks/useChangeUsername";
 import { NameScreenProps } from "@src/types/navigationTypes";
-import GoogleAuthButton from "@src/components/GoogleAuthButton";
+import Auth3PButtons from "@src/components/Auth3P/Auth3PButtons";
 
 interface FormValues {
   name: string;
@@ -90,7 +90,7 @@ const NameScreen: React.FC<NameScreenProps> = ({
         )}
       </Formik>
       {!updateName && <SignUpAppLink />}
-      {!updateName && <GoogleAuthButton />}
+      {!updateName && <Auth3PButtons />}
     </AuthFormContainer>
   );
 };

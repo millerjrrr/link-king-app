@@ -2,11 +2,6 @@ import React, { useEffect } from "react";
 import * as WebBrowser from "expo-web-browser";
 import * as Google from "expo-auth-session/providers/google";
 import { makeRedirectUri } from "expo-auth-session";
-import {
-  Image,
-  TouchableOpacity,
-  View,
-} from "react-native";
 import client from "@src/api/client";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -23,13 +18,11 @@ import {
   updateLoggedInState,
   updateToken,
 } from "@src/store/auth";
-import useCatchAsync from "./../hooks/useCatchAsync";
-import useColors from "@src/hooks/useColors";
-import appShadow from "@src/utils/appShadow";
-import AppText from "./AppText";
+import useCatchAsync from "../../hooks/useCatchAsync";
 import appTextSource from "@src/utils/appTextSource";
 
 import Constants from "expo-constants";
+import Auth3PButton from "./Auth3PButton";
 
 type ExtraProps = {
   GOOGLE_WEB_CLIENT_ID?: string;
@@ -49,8 +42,10 @@ declare function require(path: string): any;
 
 const GoogleAuthButton = () => {
   const dispatch = useDispatch();
-
   const { appLang } = useSelector(settingsState);
+  const { continueWithGoogle } =
+    appTextSource(appLang).auth.signUp;
+
   const redirectUri = makeRedirectUri({
     scheme: "com.linkoking.app",
   });
@@ -130,50 +125,15 @@ const GoogleAuthButton = () => {
     },
   );
 
-  const { SECONDARY, CONTRAST } = useColors();
-
-  const { continueWithGoogle } =
-    appTextSource(appLang).auth.signUp;
-
   return (
-    <View
-      style={{
-        flex: 1,
-        width: "100%",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <TouchableOpacity
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-          backgroundColor: SECONDARY,
-          paddingVertical: 12,
-          paddingHorizontal: 16,
-          borderRadius: 100,
-          ...appShadow(CONTRAST),
-        }}
-        disabled={!request}
-        onPress={() => promptAsync()}
-        activeOpacity={0.8}
-      >
-        <Image
-          source={require("@assets/img/google-icon.png")}
-          style={{
-            width: 24,
-            height: 24,
-            marginRight: 10,
-          }}
-        />
-
-        <AppText
-          style={{ fontSize: 16, fontWeight: "bold" }}
-        >
-          {continueWithGoogle}
-        </AppText>
-      </TouchableOpacity>
-    </View>
+    <Auth3PButton
+      name="google"
+      title={continueWithGoogle}
+      onPress={() => promptAsync()}
+      disabled={!request}
+      color="white"
+      textColor="gray"
+    />
   );
 };
 

@@ -3,7 +3,7 @@ export default ({ config }) => ({
   expo: {
     name: "Link-King",
     slug: "LinkKingApp",
-    version: "5.0.3",
+    version: "5.0.4",
     orientation: "portrait",
     icon: "./assets/icon.png",
     userInterfaceStyle: "light",
@@ -15,9 +15,10 @@ export default ({ config }) => ({
     assetBundlePatterns: ["**/*"],
     scheme: "com.linkoking.app",
     ios: {
-      buildNumber: "3",
+      buildNumber: "1",
       supportsTablet: false,
       bundleIdentifier: "com.linkoking.app",
+      useAppleSignIn: true,
       entitlements: {
         "aps-environment": "production",
       },
@@ -68,7 +69,7 @@ export default ({ config }) => ({
       ],
       icon: "./assets/adaptive-icon.png",
       package: "com.linkoking.app",
-      versionCode: 59,
+      versionCode: 60,
       adaptiveIcon: {
         foregroundImage: "./assets/icon-android.png",
         backgroundColor: "#000000",

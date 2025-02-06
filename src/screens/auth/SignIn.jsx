@@ -26,7 +26,7 @@ import {
 import appTextSource from "@src/utils/appTextSource";
 import { Formik } from "formik";
 import useCatchAsync from "@src/hooks/useCatchAsync";
-import GoogleAuthButton from "@src/components/GoogleAuthButton";
+import Auth3PButtons from "@src/components/Auth3P/Auth3PButtons";
 
 const SignIn = () => {
   const { appLang } = useSelector(settingsState);
@@ -147,7 +147,7 @@ const SignIn = () => {
           <SubmitButton title={signIn} />
         </>
       </Formik>
-      <GoogleAuthButton />
+      <Auth3PButtons />
     </AuthFormContainer>
   );
 };
