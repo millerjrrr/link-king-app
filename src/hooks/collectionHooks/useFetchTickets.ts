@@ -54,11 +54,11 @@ const useFetchTickets = () => {
     const unsubscribe = navigation.addListener(
       "focus",
       () => {
-        fetchTickets("", 1);
+        fetchTickets(searchKeyword, 1);
       },
     );
     return unsubscribe;
-  }, [navigation]);
+  }, [navigation, searchKeyword]);
 
   useEffect(() => {
     if (page > 1) fetchTickets(searchKeyword, page);

@@ -1,5 +1,4 @@
 import { TextInput } from "react-native";
-import colors from "@src/utils/colors";
 import appShadow from "@src/utils/appShadow";
 import useColors from "@src/hooks/useColors";
 
