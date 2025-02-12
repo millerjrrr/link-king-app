@@ -3,7 +3,6 @@ import {
   FlatList,
   View,
   StyleSheet,
-  Text,
   Platform,
 } from "react-native";
 import WordCard from "./WordCard";
@@ -16,7 +15,6 @@ import Loader from "@src/components/Loader";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import AppText from "@src/components/AppText";
-import PlusButton from "./WordCard/PlusButton";
 
 const ListFooterComponent = () => {
   const { allDataLoaded } = useSelector(collectionState);
@@ -41,18 +39,18 @@ const WordCollectionList = ({ navigation }) => {
   const { noWords } = appTextSource(appLang).collection;
 
   return tickets === null || tickets.length === 0 ? (
-    <View style={{ flex: 1, paddingTop: 90, width: "80%" }}>
+    <View
+      style={{ flex: 1, paddingTop: 150, width: "80%" }}
+    >
       <AppText>{noWords}</AppText>
     </View>
   ) : (
     <>
       <FlatList
-        data={["plusButton", ...tickets]}
+        data={[...tickets]}
         renderItem={({ item }) => {
           // must be called item for FlatList to work
-          return item === "plusButton" ? (
-            <PlusButton />
-          ) : (
+          return (
             <WordCard {...{ navigation, ticket: item }} />
           );
         }}
@@ -73,7 +71,7 @@ const WordCollectionList = ({ navigation }) => {
 const styles = StyleSheet.create({
   flatList: {
     flex: 1,
-    paddingTop: 90,
+    paddingTop: 150,
     width: "100%",
   },
 });

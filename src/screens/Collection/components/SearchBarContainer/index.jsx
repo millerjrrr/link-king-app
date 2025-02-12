@@ -4,6 +4,7 @@ import CollectionSearchbar from "./CollectionSearchbar";
 import TicketsCount from "./TicketsCount";
 import useColors from "@src/hooks/useColors";
 import FadeBackgroundView from "@src/components/Graphics/FadeBackgroundView";
+import PlusButton from "../WordCard/PlusButton";
 
 const SearchBarContainer = () => {
   const { PRIMARY } = useColors();
@@ -23,6 +24,7 @@ const SearchBarContainer = () => {
             icon={"sharealt"}
           />
         </View>
+        <PlusButton />
       </FadeBackgroundView>
     </View>
   );
