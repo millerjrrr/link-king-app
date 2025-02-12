@@ -270,6 +270,8 @@ const it: AppText = {
         webNotice:
           "L'app web è attualmente gratuita. Nessun abbonamento richiesto.",
       },
+      forgotOrDidntSetUpPassword:
+        "Hai dimenticato la password o non ne hai impostata una? Esci dall'account e reimposta la password usando il link 'Password dimenticata', poi accedi di nuovo.",
     },
     shareProgress: "Condividi Progresso",
     shareApp: "Condividi App",

@@ -267,6 +267,8 @@ const en: AppText = {
         webNotice:
           "The web app is currently free. No subscription required",
       },
+      forgotOrDidntSetUpPassword:
+        "Forgot your password or didn't set one up? Log out and reset your password using the forgot password link, then log back in.",
     },
     shareProgress: "Share Progress",
     shareApp: "Share App",

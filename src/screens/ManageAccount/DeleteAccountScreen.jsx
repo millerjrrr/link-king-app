@@ -17,6 +17,7 @@ import {
 import FormikSafetyButton from "@components/Buttons/FormikSafetyButton";
 import { Formik } from "formik";
 import useDeleteAccount from "@src/hooks/optionsHooks/useDeleteAccount";
+import ForgotOrDidntSetUpPassword from "@src/components/ForgotOrDidntSetUpPassword";
 
 const DeleteAccountScreen = () => {
   const { appLang } = useSelector(settingsState);
@@ -93,10 +94,11 @@ const DeleteAccountScreen = () => {
             <TouchableWithoutFeedback
               onPress={() => Keyboard.dismiss()}
             >
-              <View style={{ height: 250 }}>
+              <View>
                 <FormikSafetyButton />
               </View>
             </TouchableWithoutFeedback>
+            <ForgotOrDidntSetUpPassword />
           </View>
         </Formik>
       </ScrollView>

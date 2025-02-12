@@ -20,6 +20,7 @@ import { AntDesign } from "@expo/vector-icons";
 import colors from "@src/utils/colors";
 import { Formik } from "formik";
 import useChangeHomeLanguage from "@src/hooks/optionsHooks/useChangeHomeLanguage";
+import ForgotOrDidntSetUpPassword from "@src/components/ForgotOrDidntSetUpPassword";
 
 const ChangeHomeLanguageScreen = ({ route }) => {
   const newLanguage = route.params.code;
@@ -130,10 +131,11 @@ const ChangeHomeLanguageScreen = ({ route }) => {
             <TouchableWithoutFeedback
               onPress={() => Keyboard.dismiss()}
             >
-              <View style={{ height: 250 }}>
+              <View>
                 <FormikSafetyButton iconName="sync" />
               </View>
             </TouchableWithoutFeedback>
+            <ForgotOrDidntSetUpPassword />
           </View>
         </Formik>
       </ScrollView>

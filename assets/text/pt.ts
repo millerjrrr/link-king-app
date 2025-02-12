@@ -271,6 +271,8 @@ const pt: AppText = {
         webNotice:
           "O aplicativo web é atualmente gratuito. Nenhuma assinatura é necessária.",
       },
+      forgotOrDidntSetUpPassword:
+        "Esqueceu sua senha ou não configurou uma? Saia da conta e redefina sua senha usando o link 'Esqueci minha senha', depois faça login novamente.",
     },
     shareProgress: "Compartilhar Progresso",
     shareApp: "Compartilhar Aplicativo",
