@@ -2,13 +2,10 @@ import { View, StyleSheet } from "react-native";
 import CollectionScreenButton from "./SideButton";
 import CollectionSearchbar from "./CollectionSearchbar";
 import TicketsCount from "./TicketsCount";
-import useColors from "@src/hooks/useColors";
 import FadeBackgroundView from "@src/components/Graphics/FadeBackgroundView";
 import PlusButton from "../WordCard/PlusButton";
 
 const SearchBarContainer = () => {
-  const { PRIMARY } = useColors();
-
   return (
     <View style={styles.container}>
       <FadeBackgroundView>

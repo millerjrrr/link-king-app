@@ -1,32 +1,30 @@
 import { TextInput } from "react-native";
 import colors from "@src/utils/colors";
 import appShadow from "@src/utils/appShadow";
-import { useSelector } from "react-redux";
-import { settingsState } from "@src/store/settings";
+import useColors from "@src/hooks/useColors";
 
 //This may be used in some settings tabs in the future
 const AppInput = (props) => {
-  const { colorScheme, golden } =
-    useSelector(settingsState);
-  const color = colors[colorScheme].CONTRAST[golden];
-  const backgroundColor = colors[colorScheme].PRIMARY;
+  const {
+    CONTRAST: color,
+    PRIMARY: backgroundColor,
+    STATUSBAR,
+    INACTIVE_CONTRAST,
+  } = useColors();
 
   const keyboardAppearance =
-    colors[colorScheme].STATUSBAR.split("-")[0] === "dark"
-      ? "light"
-      : "dark";
+    STATUSBAR.split("-")[0] === "dark" ? "light" : "dark";
 
   return (
     <TextInput
       {...props}
       autoCompleteType="off"
+      selectionColor={color}
       autoCorrect={false}
       textContentType="none"
       allowFontScaling={false}
       underlineColorAndroid="transparent"
-      placeholderTextColor={
-        colors[colorScheme].INACTIVE_CONTRAST
-      }
+      placeholderTextColor={INACTIVE_CONTRAST}
       keyboardAppearance={keyboardAppearance}
       style={[
         props.style,
