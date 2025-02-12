@@ -331,7 +331,7 @@ const en: AppText = {
       heading: "Email Sent",
       subHeading:
         "Use link in email to reset your password",
-      text: "We've sent you an link which you can use to reset your password through our site!",
+      text: "We've sent you a link which you can use to reset your password through our site!",
       returnToLogin: "Return to login page",
     },
     lostPassword: {

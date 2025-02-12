@@ -1,5 +1,6 @@
 import { StatusBar } from "react-native";
 import {
+  refreshPage,
   updateLoggedInState,
   updateToken,
 } from "@src/store/auth";
@@ -24,6 +25,7 @@ const useLogOut = () => {
     StatusBar.setBarStyle("light-content");
     secureRemoveFromAsyncStorage("auth-token");
     removeFromAsyncStorage("color-scheme");
+    dispatch(refreshPage());
   };
   return logOut;
 };

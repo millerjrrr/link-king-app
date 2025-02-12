@@ -30,6 +30,8 @@ const InternetConnectionPage = () => {
     message5,
   } = appTextSource(appLang).internetConnectionPage;
 
+  const logOut = appTextSource(appLang).options.logOut.name;
+
   let [heading, message] = [title1, message1];
   if (connection === "maintenance")
     [heading, message] = [title2, message2];
@@ -69,6 +71,16 @@ const InternetConnectionPage = () => {
             }
           />
         ) : null}
+        <AppLink
+          title={logOut}
+          onPress={() =>
+            dispatch(
+              updateModals({
+                modalShowing: "logOutModal",
+              }),
+            )
+          }
+        />
       </AuthFormContainer>
     </AnnouncementContainer>
   );
