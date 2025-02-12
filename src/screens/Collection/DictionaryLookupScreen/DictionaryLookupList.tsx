@@ -17,8 +17,11 @@ import {
 import DictionaryLookupCard from "./DictionaryLookupCard";
 import { ScrollView } from "react-native-gesture-handler";
 import AddCustomDictionaryEntry from "./AddCustomDictionaryEntry";
+import { collectionState } from "@src/store/collection";
 
-const ListFooterComponent = ({ searchKeyword }) => {
+const ListFooterComponent: React.FC<{
+  searchKeyword: string;
+}> = ({ searchKeyword }) => {
   const { allDataLoaded } = useSelector(
     dictionaryLookupState,
   );
@@ -40,12 +43,10 @@ const ListFooterComponent = ({ searchKeyword }) => {
 
 const DictionaryLookupList = () => {
   const dispatch = useDispatch();
-  const {
-    dictEntries,
-    page,
-    allDataLoaded,
-    searchKeyword,
-  } = useSelector(dictionaryLookupState);
+  const { dictEntries, page, allDataLoaded } = useSelector(
+    dictionaryLookupState,
+  );
+  const { searchKeyword } = useSelector(collectionState);
   const { appLang } = useSelector(settingsState);
   const { searchDictionary, noResults, reminder } =
     appTextSource(appLang).collection
@@ -76,7 +77,7 @@ const DictionaryLookupList = () => {
         // must be called item for FlatList to work
         return <DictionaryLookupCard dictEntry={item} />;
       }}
-      keyExtractor={(item, _index) => _index}
+      keyExtractor={(item) => item.id}
       style={styles.flatList}
       onEndReached={() => {
         if (!allDataLoaded) dispatch(updatePage(page + 1));

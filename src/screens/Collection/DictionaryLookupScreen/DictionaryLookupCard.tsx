@@ -11,7 +11,9 @@ import { Entypo } from "@expo/vector-icons";
 import useAddNewWord from "@src/hooks/collectionHooks/useAddNewWord";
 import useColors from "@src/hooks/useColors";
 
-const DictionaryLookupCard = ({ dictEntry }) => {
+const DictionaryLookupCard: React.FC<{
+  dictEntry: any;
+}> = ({ dictEntry }) => {
   const { target, rating, _id: id } = dictEntry;
 
   const { CONTRAST, SECONDARY } = useColors();

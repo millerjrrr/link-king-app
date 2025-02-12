@@ -11,6 +11,12 @@ import screenDimensions from "@src/utils/screenDimensions";
 
 const { width, height } = screenDimensions();
 
+interface Props {
+  backgroundColor?: string; // Define prop type
+  size?: string; // Define prop type
+  color: string; // Define prop type
+}
+
 export const ModalContainer = styled(View)<{
   backgroundColor: string;
   color: string;
@@ -19,8 +25,10 @@ export const ModalContainer = styled(View)<{
   padding-horizontal: 5px;
   border-radius: 10px;
   align-items: center;
-  background-color: ${(props) => props.backgroundColor};
-  ${(props) => appShadowForStyledComponents(props.color)}
+  background-color: ${(props: Props) =>
+    props.backgroundColor};
+  ${(props: Props) =>
+    appShadowForStyledComponents(props.color)}
 `;
 export const WebViewContainer = styled(View)`
   padding-horizontal: 5px;
@@ -53,22 +61,22 @@ export const ModalText = styled(AppText)<
 >`
   padding-horizontal: 10px;
   padding-bottom: 10px;
-  color: ${(props) => props.color};
+  color: ${(props: Props) => props.color};
 `;
 
 export const ButtonText = styled(AppText)<
   TextStyle & { color: string; size: number }
 >`
   margin: 15px;
-  font-size: ${(props) => props.size}px;
-  color: ${(props) => props.color};
+  font-size: ${(props: Props) => props.size}px;
+  color: ${(props: Props) => props.color};
 `;
 
 export const ButtonContainer = styled(TouchableOpacity)<{
   color: string;
 }>`
   width: 100%;
-  border-top-color: ${(props) => props.color};
+  border-top-color: ${(props: Props) => props.color};
   border-top-width: ${Platform.OS === "android"
     ? 0.5
     : 0.2}px;

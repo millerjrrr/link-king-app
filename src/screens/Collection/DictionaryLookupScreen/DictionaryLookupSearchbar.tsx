@@ -2,13 +2,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import AppSearchBar from "@src/components/AppSearchBar";
-import {
-  dictionaryLookupState,
-  updateSearchKeyword,
-} from "@src/store/dictionaryLookup";
 import styled from "styled-components/native";
 import { View } from "react-native";
 import FadeBackgroundView from "@src/components/Graphics/FadeBackgroundView";
+import {
+  collectionState,
+  updateSearchKeyword,
+} from "@src/store/collection";
 
 const Container = styled(View)`
   width: 100%;
@@ -20,9 +20,7 @@ const Container = styled(View)`
 
 const DictionaryLookupSearchbar = () => {
   const { appLang } = useSelector(settingsState);
-  const { searchKeyword } = useSelector(
-    dictionaryLookupState,
-  );
+  const { searchKeyword } = useSelector(collectionState);
   const { searchMessage } =
     appTextSource(appLang).collection
       .dictionaryLookupScreen;
@@ -33,7 +31,7 @@ const DictionaryLookupSearchbar = () => {
       <FadeBackgroundView style={{ paddingBottom: 10 }}>
         <AppSearchBar
           searchKeyword={searchKeyword}
-          setSearchKeyword={(value) =>
+          setSearchKeyword={(value: string) =>
             dispatch(updateSearchKeyword(value))
           }
           placeholder={searchMessage}

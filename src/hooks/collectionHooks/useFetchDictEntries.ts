@@ -12,16 +12,16 @@ import {
   updatePage,
   updateResults,
   updateDictEntries,
-  updateSearchKeyword,
 } from "@src/store/dictionaryLookup";
+import { collectionState } from "@src/store/collection";
 
 const useFetchDictEntries = () => {
   const dispatch = useDispatch();
-  const navigation = useNavigation();
   const catchAsync = useCatchAsync();
-  const { searchKeyword, dictEntries, page } = useSelector(
+  const { dictEntries, page } = useSelector(
     dictionaryLookupState,
   );
+  const { searchKeyword } = useSelector(collectionState);
 
   const debouncedSearchKeyword = useDebounce(
     searchKeyword,
@@ -55,16 +55,6 @@ const useFetchDictEntries = () => {
       }
     },
   );
-
-  useEffect(() => {
-    const unsubscribe = navigation.addListener(
-      "blur",
-      () => {
-        dispatch(updateSearchKeyword(""));
-      },
-    );
-    return unsubscribe;
-  }, [navigation]);
 
   useEffect(() => {
     if (page > 1) fetchDictEntries(searchKeyword, page);

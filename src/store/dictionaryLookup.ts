@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "@src/store";
 
 interface DictionaryLookupState {
-  searchKeyword: string;
   dictEntries: any[];
   page: number;
   allDataLoaded: boolean;
@@ -11,7 +10,6 @@ interface DictionaryLookupState {
 }
 
 const initialState: DictionaryLookupState = {
-  searchKeyword: "",
   dictEntries: [],
   results: 0,
   page: 1,
@@ -23,9 +21,6 @@ const slice = createSlice({
   name: "dictionaryLookup",
   initialState,
   reducers: {
-    updateSearchKeyword(state, action) {
-      state.searchKeyword = action.payload;
-    },
     updateDictEntries(state, action) {
       state.dictEntries = action.payload;
     },
@@ -45,7 +40,6 @@ const slice = createSlice({
 });
 
 export const {
-  updateSearchKeyword,
   updateDictEntries,
   updateResults,
   updatePage,
