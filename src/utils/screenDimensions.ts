@@ -7,7 +7,10 @@ const screenDimensions = () => {
   const { width, height } = Platform.select({
     ios: { width: vw, height: vh },
     android: { width: vw, height: vh },
-    web: { width: vh * 0.462, height: vh * 0.95 },
+    web: {
+      width: Math.min(430, vh * 0.462),
+      height: Math.min(930, vh * 0.95),
+    },
     default: { width: vw, height: vh },
   });
 

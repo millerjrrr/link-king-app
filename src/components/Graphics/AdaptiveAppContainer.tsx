@@ -14,9 +14,8 @@ const AdaptiveAppContainer = ({
   const { CONTRAST } = useColors();
   const { height, width } = screenDimensions();
   const borderRadius = height * 0.0542;
-  const deviceWidth = Dimensions.get("window").width;
 
-  //run npx expo export --platfrom web to export
+  //run npx expo export --platform web to export
 
   return Platform.OS === "web" ? (
     <View
@@ -57,11 +56,7 @@ const AdaptiveAppContainer = ({
               borderRadius: height,
             }}
           />
-          {deviceWidth < 500 ? (
-            <DownloadAppScreenForWebAppOnMobile />
-          ) : (
-            children
-          )}
+          {children}
         </View>
       </View>
     </View>
