@@ -63,7 +63,6 @@ const AppleAuthButton = () => {
       idToken: string,
       name: string,
     ): Promise<void> => {
-      console.log(name);
       const { data } = await client.post(
         "/api/v1/users/sign-in-with-apple",
         {

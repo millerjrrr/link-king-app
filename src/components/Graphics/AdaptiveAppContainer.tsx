@@ -3,8 +3,7 @@ import appShadow from "@src/utils/appShadow";
 import colors from "@src/utils/colors";
 import screenDimensions from "@src/utils/screenDimensions";
 import { ReactNode } from "react";
-import { Dimensions, Platform, View } from "react-native";
-import DownloadAppScreenForWebAppOnMobile from "./DownloadAppScreenForWebAppOnMobile";
+import { Platform, View } from "react-native";
 
 const AdaptiveAppContainer = ({
   children,

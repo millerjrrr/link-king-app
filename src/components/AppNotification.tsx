@@ -54,7 +54,6 @@ const AppNotification = () => {
 
   useEffect(() => {
     if (message) {
-      console.log(message);
       const performAnimation = () => {
         height.value = withTiming(notificationHeight, {
           duration: 150,

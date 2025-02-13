@@ -34,10 +34,7 @@ const useCreateCustomTicket = () => {
         results,
       );
 
-      console.log(data);
-
       if (data.status === "success") {
-        console.log(data.status);
         dispatch(updateSearchKeyword(data.ticket.target));
         navigation.navigate("Collection");
         setTimeout(
