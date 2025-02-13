@@ -29,7 +29,7 @@ const SolutionsList = ({ ticket, plus, edit }: any) => {
             padding: 5,
             paddingHorizontal: 30,
             alignItems: "center",
-            maxWidth: web ? width - 30 : undefined,
+            maxWidth: web ? width - 100 : undefined,
           }}
         >
           {plus || edit ? (

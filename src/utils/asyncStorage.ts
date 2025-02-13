@@ -1,5 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as SecureStore from "expo-secure-store";
+import { Platform } from "react-native";
 
 export const saveToAsyncStorage = async (
   key: string,
@@ -19,12 +20,24 @@ export const clearAsyncStorage = async () => {
 export const secureSaveToAsyncStorage = async (
   key: string,
   value: string,
-) => await SecureStore.setItemAsync(key, value);
+) => {
+  if (Platform.OS !== "web")
+    return await SecureStore.setItemAsync(key, value);
+  else return await AsyncStorage.setItem(key, value);
+};
 
 export const secureGetFromAsyncStorage = async (
   key: string,
-) => await SecureStore.getItemAsync(key);
+) => {
+  if (Platform.OS !== "web")
+    return await SecureStore.getItemAsync(key);
+  else return await AsyncStorage.getItem(key);
+};
 
 export const secureRemoveFromAsyncStorage = async (
   key: string,
-) => await SecureStore.deleteItemAsync(key);
+) => {
+  if (Platform.OS !== "web")
+    return await SecureStore.deleteItemAsync(key);
+  else return await AsyncStorage.removeItem(key);
+};
