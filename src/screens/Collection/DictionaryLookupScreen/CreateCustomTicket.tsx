@@ -17,7 +17,7 @@ import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { CollectionStackParamList } from "@src/types/navigationTypes";
 
-const AddCustomDictionaryEntry: React.FC<{
+const CreateCustomTicket: React.FC<{
   searchKeyword: string;
 }> = ({ searchKeyword }) => {
   const { CONTRAST, PRIMARY } = useColors();
@@ -70,4 +70,4 @@ const AddCustomDictionaryEntry: React.FC<{
   );
 };
 
-export default AddCustomDictionaryEntry;
+export default CreateCustomTicket;

@@ -16,7 +16,7 @@ import {
 } from "@src/store/dictionaryLookup";
 import DictionaryLookupCard from "./DictionaryLookupCard";
 import { ScrollView } from "react-native-gesture-handler";
-import AddCustomDictionaryEntry from "./AddCustomDictionaryEntry";
+import CreateCustomTicket from "./CreateCustomTicket";
 import { collectionState } from "@src/store/collection";
 
 const ListFooterComponent: React.FC<{
@@ -32,9 +32,7 @@ const ListFooterComponent: React.FC<{
           <Loader {...{ size: 50 }} />
         </View>
       ) : (
-        <AddCustomDictionaryEntry
-          searchKeyword={searchKeyword}
-        />
+        <CreateCustomTicket searchKeyword={searchKeyword} />
       )}
       <View style={{ height: 100 }} />
     </>
@@ -62,7 +60,7 @@ const DictionaryLookupList = () => {
       <View style={{ height: 90 }} />
       {searchKeyword !== "" ? (
         <>
-          <AddCustomDictionaryEntry
+          <CreateCustomTicket
             searchKeyword={searchKeyword}
           />
           <View style={{ height: 20 }} />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import * as yup from "yup";
 import AuthFormContainer from "@components/Containers/AuthFormContainer";
 import AuthInputField from "@components/AuthInputField";
@@ -20,12 +20,13 @@ import { CollectionStackParamList } from "@src/types/navigationTypes";
 import useColors from "@src/hooks/useColors";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import appTextSource from "@src/utils/appTextSource";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import clientWithAuth from "@src/api/clientWithAuth";
 import {
   collectionState,
   updateBusy,
+  updateSearchKeyword,
 } from "@src/store/collection";
 import BusyWrapper from "@src/components/Loader/BusyWrapper";
 import { CreateCustomTicketScreenFormValues } from "@src/types/FormTypes";
@@ -44,6 +45,7 @@ const CreateCustomTicketScreen = () => {
   const { target } = route.params;
 
   const { busy } = useSelector(collectionState);
+  const dispatch = useDispatch();
 
   const { appLang } = useSelector(settingsState);
   const {
@@ -118,82 +120,93 @@ const CreateCustomTicketScreen = () => {
           initialValues={initialValues}
           validationSchema={validationSchema}
         >
-          {({ setFieldValue }) => (
-            <View style={{ width: "100%", flex: 1 }}>
-              <View
-                style={{
-                  backgroundColor: SECONDARY,
-                  padding: 15,
-                  paddingHorizontal: 15,
-                  borderRadius: 30,
-                  alignItems: "flex-end",
-                }}
-              >
-                <TouchableOpacity
+          {({ values, setFieldValue }) => {
+            useEffect(() => {
+              dispatch(
+                updateSearchKeyword(values.formTarget),
+              );
+            }, [values.formTarget]);
+
+            return (
+              <View style={{ width: "100%", flex: 1 }}>
+                <View
                   style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                  }}
-                  onPress={() => {
-                    updateSolutions(target, setFieldValue);
+                    backgroundColor: SECONDARY,
+                    padding: 15,
+                    paddingHorizontal: 15,
+                    borderRadius: 30,
+                    alignItems: "flex-end",
                   }}
                 >
-                  <MaterialIcons
-                    name="translate"
-                    size={24}
-                    color={CONTRAST}
+                  <TouchableOpacity
+                    style={{
+                      flexDirection: "row",
+                      alignItems: "center",
+                    }}
+                    onPress={() => {
+                      updateSolutions(
+                        values.formTarget,
+                        setFieldValue,
+                      );
+                    }}
+                  >
+                    <MaterialIcons
+                      name="translate"
+                      size={24}
+                      color={CONTRAST}
+                    />
+                    <AppText style={{ fontSize: 15 }}>
+                      {" "}
+                      {importSolutions}
+                    </AppText>
+                  </TouchableOpacity>
+                  <AuthInputField
+                    key="formTarget"
+                    name="formTarget"
+                    label={newTargetWord}
+                    placeholder=""
+                    autoCapitalize="none"
                   />
-                  <AppText style={{ fontSize: 15 }}>
-                    {" "}
-                    {importSolutions}
-                  </AppText>
-                </TouchableOpacity>
-                <AuthInputField
-                  key="formTarget"
-                  name="formTarget"
-                  label={newTargetWord}
-                  placeholder=""
-                  autoCapitalize="none"
-                />
-              </View>
-              <BusyWrapper busy={busy} size={70}>
-                <ScrollView
-                  showsVerticalScrollIndicator={
-                    Platform.OS !== "web"
-                  }
-                  contentContainerStyle={{
-                    padding: 5,
-                    paddingHorizontal: 30,
-                    alignItems: "center",
+                </View>
+                <BusyWrapper busy={busy} size={70}>
+                  <ScrollView
+                    showsVerticalScrollIndicator={
+                      Platform.OS !== "web"
+                    }
+                    contentContainerStyle={{
+                      padding: 5,
+                      paddingHorizontal: 30,
+                      alignItems: "center",
+                    }}
+                  >
+                    {Array.from({ length: 8 }).map(
+                      (_, index) => (
+                        <AuthInputField
+                          key={index}
+                          name={
+                            `solution${index + 1}` as keyof CreateCustomTicketScreenFormValues
+                          }
+                          label={`${solutionName} ${index + 1}`}
+                          placeholder=""
+                          bottomMargin
+                          autoCapitalize="none"
+                        />
+                      ),
+                    )}
+                  </ScrollView>
+                </BusyWrapper>
+                <View
+                  style={{
+                    padding: 30,
+                    width: "100%",
                   }}
                 >
-                  {Array.from({ length: 8 }).map(
-                    (_, index) => (
-                      <AuthInputField
-                        key={index}
-                        name={
-                          `solution${index + 1}` as keyof CreateCustomTicketScreenFormValues
-                        }
-                        label={`${solutionName} ${index + 1}`}
-                        placeholder=""
-                        bottomMargin
-                        autoCapitalize="none"
-                      />
-                    ),
-                  )}
-                </ScrollView>
-              </BusyWrapper>
-              <View
-                style={{
-                  padding: 30,
-                  width: "100%",
-                }}
-              >
-                <SubmitButton title={save} />
+                  <SubmitButton title={save} />
+                </View>
+                <View style={{ height: 150 }} />
               </View>
-              <View style={{ height: 150 }} />
-            </View>
-          )}
+            );
+          }}
         </Formik>
       </AuthFormContainer>
     </>

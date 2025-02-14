@@ -1,22 +1,35 @@
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
-import { selectConsoleState, updateFormValue } from "@src/store/console";
+import {
+  selectConsoleState,
+  updateFormValue,
+} from "@src/store/console";
 
-const XButton: React.FC<{color: string}> = ({color}) => {
+const XButton: React.FC<{ color: string }> = ({
+  color,
+}) => {
   const dispatch = useDispatch();
-  const {locals:{formValue}}= useSelector(selectConsoleState);
-  
-  return  formValue.length>0 && (
-    <TouchableOpacity
-    onPress={() => {
-        dispatch(updateFormValue(""));
-      }}
-      style={styles.container}>
-      <MaterialCommunityIcons name="close" size={24} color={color} />
-        </TouchableOpacity>
-      
-  );  
+  const {
+    locals: { formValue },
+  } = useSelector(selectConsoleState);
+
+  return (
+    formValue.length > 0 && (
+      <TouchableOpacity
+        onPress={() => {
+          dispatch(updateFormValue(""));
+        }}
+        style={styles.container}
+      >
+        <MaterialCommunityIcons
+          name="close"
+          size={24}
+          color={color}
+        />
+      </TouchableOpacity>
+    )
+  );
 };
 
 const styles = StyleSheet.create({
