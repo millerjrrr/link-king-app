@@ -9,6 +9,7 @@ import TextInputForConsole from "./TextInputForConsole";
 import { settingsState } from "@src/store/settings";
 import { useState } from "react";
 import useSubmitAnswer from "@src/hooks/consoleHooks/useSubmitAnswer";
+import XButton from "./XButton";
 
 const InputAndTimerContainer = ({
   inputFieldRef,
@@ -49,6 +50,7 @@ const InputAndTimerContainer = ({
       <Timer onComplete={onComplete} color={color} />
       <LoaderForTextInputForConsole color={color} />
       <TargetDetailsButton />
+      <XButton color={color} />
       <TextInputForConsole
         {...{
           onSubmitEditing,
