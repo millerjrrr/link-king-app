@@ -15,7 +15,7 @@ export default ({ config }) => ({
     assetBundlePatterns: ["**/*"],
     scheme: "com.linkoking.app",
     ios: {
-      buildNumber: "2",
+      buildNumber: "3",
       supportsTablet: false,
       bundleIdentifier: "com.linkoking.app",
       useAppleSignIn: true,
@@ -69,7 +69,7 @@ export default ({ config }) => ({
       ],
       icon: "./assets/adaptive-icon.png",
       package: "com.linkoking.app",
-      versionCode: 61,
+      versionCode: 62,
       adaptiveIcon: {
         foregroundImage: "./assets/icon-android.png",
         backgroundColor: "#000000",
