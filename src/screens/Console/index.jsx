@@ -17,7 +17,7 @@ import useHandleAppBackgroundExit from "../../hooks/consoleHooks/useEffects/useH
 import useUpdateOptions from "@src/hooks/consoleHooks/useEffects/useUpdateOptions";
 import usePopToTop from "@src/hooks/usePopToTop";
 import IsSubscribedWrapper from "./components/IsSubscribedWrapper";
-import usePlayBackgroundMusic from "@src/hooks/consoleHooks/useEffects/usePlayBackgroundMusic";
+import BackMusicButton from "./components/BackMusicButton";
 
 const Console = ({ navigation }) => {
   const inputFieldRef = useRef(null);
@@ -39,7 +39,6 @@ const Console = ({ navigation }) => {
   useHandleAppBackgroundExit();
   useOnKeyboardClose();
   useUpdateOptions();
-  usePlayBackgroundMusic();
 
   usePopToTop();
 
@@ -61,6 +60,7 @@ const Console = ({ navigation }) => {
           inputFieldRef={inputFieldRef}
           isKeyboardVisible={isKeyboardVisible}
         />
+        <BackMusicButton />
       </TabScreenContainer>
     </IsSubscribedWrapper>
   );

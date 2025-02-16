@@ -10,6 +10,7 @@ import {
 import React from "react";
 import ManageAccountNavigator from "./subnavigators/ManageAccountNavigator";
 import useColors from "@src/hooks/useColors";
+import usePlayBackgroundMusic from "@src/hooks/usePlayBackgroundMusic";
 
 const Tab = createBottomTabNavigator();
 
@@ -19,6 +20,8 @@ const TabNavigator = () => {
     PRIMARY,
     INACTIVE_CONTRAST,
   } = useColors();
+
+  usePlayBackgroundMusic();
 
   return (
     <Tab.Navigator

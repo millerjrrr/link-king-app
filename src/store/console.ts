@@ -45,6 +45,7 @@ interface Locals {
   busy: boolean;
   golden: number;
   options: Options;
+  musicIsPlaying: boolean;
 }
 
 interface ConsoleState {
@@ -86,6 +87,7 @@ const initialState: ConsoleState = {
     busy: false,
     golden: 0,
     options: { sound: true, blurred: false, timer: true },
+    musicIsPlaying: false,
   },
 };
 
@@ -181,6 +183,10 @@ const slice = createSlice({
     updateDictionary(state, action: PayloadAction<string>) {
       state.dictionary = action.payload;
     },
+    toggleMusicIsPlaying(state) {
+      state.locals.musicIsPlaying =
+        !state.locals.musicIsPlaying;
+    },
   },
 });
 
@@ -202,6 +208,7 @@ export const {
   updateLocals,
   incrementStatsTime,
   updateDictionary,
+  toggleMusicIsPlaying,
 } = slice.actions;
 
 export const selectConsoleState = (state: RootState) =>
