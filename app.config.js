@@ -5,7 +5,7 @@ export default ({ config }) => ({
     slug: "LinkKingApp",
     version: "5.1.0",
     orientation: "portrait",
-    icon: "./assets/icon.png",
+    icon: "./assets/app-icon.png",
     userInterfaceStyle: "light",
     splash: {
       image: "./assets/splash.png",
@@ -15,7 +15,7 @@ export default ({ config }) => ({
     assetBundlePatterns: ["**/*"],
     scheme: "com.linkoking.app",
     ios: {
-      buildNumber: "3",
+      buildNumber: "4",
       supportsTablet: false,
       bundleIdentifier: "com.linkoking.app",
       useAppleSignIn: true,
@@ -71,7 +71,7 @@ export default ({ config }) => ({
       package: "com.linkoking.app",
       versionCode: 63,
       adaptiveIcon: {
-        foregroundImage: "./assets/icon-android.png",
+        foregroundImage: "./assets/app-icon.png",
         backgroundColor: "#000000",
       },
       softwareKeyboardLayoutMode: "pan",
