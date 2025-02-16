@@ -1,31 +1,19 @@
 import { StatusBar } from "react-native";
-import {
-  refreshPage,
-  updateLoggedInState,
-  updateToken,
-} from "@src/store/auth";
-import { updateSettings } from "@src/store/settings";
 import { useDispatch } from "react-redux";
 import {
   clearAsyncStorage,
   secureRemoveFromAsyncStorage,
 } from "@src/utils/asyncStorage";
-import { updateModals } from "@src/store/modals";
+import { resetStore } from "@src/store";
 
 const useLogOut = () => {
   const dispatch = useDispatch();
 
   const logOut = async () => {
-    dispatch(updateModals({ modalShowing: "" }));
-    dispatch(updateToken(""));
-    dispatch(updateLoggedInState(false));
-    dispatch(
-      updateSettings({ colorScheme: "dark", golden: 0 }),
-    );
+    dispatch(resetStore());
     StatusBar.setBarStyle("light-content");
     secureRemoveFromAsyncStorage("auth-token");
     clearAsyncStorage();
-    dispatch(refreshPage());
   };
   return logOut;
 };

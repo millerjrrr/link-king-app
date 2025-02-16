@@ -1,5 +1,8 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { combineReducers } from "redux";
+import {
+  configureStore,
+  createAction,
+} from "@reduxjs/toolkit";
+import { combineReducers, Reducer } from "redux";
 import authReducer from "./auth";
 import collectionReducer from "./collection";
 import dictionaryLookupReducer from "./dictionaryLookup";
@@ -10,7 +13,9 @@ import statsReducer from "./stats";
 import redCoverReducer from "./redCover";
 import modalsReducer from "./modals";
 
-const rootReducer = combineReducers({
+export const resetStore = createAction("RESET_STORE");
+
+const appReducers = combineReducers({
   auth: authReducer,
   collection: collectionReducer,
   dictionaryLookup: dictionaryLookupReducer,
@@ -22,10 +27,22 @@ const rootReducer = combineReducers({
   modals: modalsReducer,
 });
 
+const rootReducer: Reducer<RootState, any> = (
+  state,
+  action,
+) => {
+  if (resetStore.match(action)) {
+    state = undefined;
+  }
+  return appReducers(state, action);
+};
+
 const store = configureStore({
   reducer: rootReducer,
 });
 
-export type RootState = ReturnType<typeof rootReducer>;
+export type RootState = ReturnType<typeof appReducers>;
+
+export type AppDispatch = typeof store.dispatch;
 
 export default store;

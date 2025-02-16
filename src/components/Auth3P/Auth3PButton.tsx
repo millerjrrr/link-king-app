@@ -38,7 +38,7 @@ const Auth3PButton: React.FC<Auth3PButtonProps> = ({
         backgroundColor: color,
         paddingVertical: 12,
         paddingHorizontal: 16,
-        borderRadius: 7,
+        borderRadius: 10,
         ...appShadow(CONTRAST),
         marginVertical: 10,
         width: 250,

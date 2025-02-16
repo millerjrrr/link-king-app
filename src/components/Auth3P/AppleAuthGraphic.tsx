@@ -2,10 +2,13 @@ import React from "react";
 import { View } from "react-native";
 import * as AppleAuthentication from "expo-apple-authentication";
 import appShadow from "@src/utils/appShadow";
+import useColors from "@src/hooks/useColors";
 
 const AppleAuthGraphic: React.FC<{
   onPress: () => void;
 }> = ({ onPress }) => {
+  const { PRIMARY } = useColors();
+
   return (
     <View
       style={{
@@ -15,7 +18,13 @@ const AppleAuthGraphic: React.FC<{
         marginVertical: 10,
       }}
     >
-      <View style={{ ...appShadow("white") }}>
+      <View
+        style={{
+          backgroundColor: PRIMARY,
+          borderRadius: 10,
+          ...appShadow("white"),
+        }}
+      >
         <AppleAuthentication.AppleAuthenticationButton
           buttonType={
             AppleAuthentication

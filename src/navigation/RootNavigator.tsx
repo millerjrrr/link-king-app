@@ -22,6 +22,7 @@ import UpdateToLatestVersionPage from "@src/screens/popUpScreens/UpdateToLatestV
 import Constants from "expo-constants";
 import compareVersions from "@src/utils/versionCompare";
 import VideoSplashScreenWrapper from "@src/screens/VideoSplashScreen";
+import usePlayBackgroundMusic from "@src/hooks/usePlayBackgroundMusic";
 
 const RootNavigator = () => {
   const { STATUSBAR, PRIMARY, CONTRAST } = useColors();
@@ -64,6 +65,8 @@ const RootNavigator = () => {
 
     update();
   }, [refresh]);
+
+  usePlayBackgroundMusic();
 
   return (
     <NavigationContainer theme={AppTheme}>
