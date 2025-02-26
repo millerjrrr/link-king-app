@@ -11,24 +11,10 @@ import {
   collectionState,
   updatePage,
 } from "@src/store/collection";
-import Loader from "@src/components/Loader";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import AppText from "@src/components/AppText";
-
-const ListFooterComponent = () => {
-  const { allDataLoaded } = useSelector(collectionState);
-  return (
-    <>
-      {!allDataLoaded ? (
-        <View style={{ height: 100 }}>
-          <Loader {...{ size: 50 }} />
-        </View>
-      ) : null}
-      <View style={{ height: 100 }} />
-    </>
-  );
-};
+import ListFooterComponent from "@src/components/ListFooterComponent";
 
 const WordCollectionList = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -61,7 +47,9 @@ const WordCollectionList = ({ navigation }) => {
             dispatch(updatePage(page + 1));
         }}
         onEndReachedThreshold={0.1}
-        ListFooterComponent={ListFooterComponent}
+        ListFooterComponent={() =>
+          ListFooterComponent({ active: !allDataLoaded })
+        }
         showsVerticalScrollIndicator={Platform.OS !== "web"}
       />
     </>

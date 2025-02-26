@@ -5,7 +5,6 @@ import ManageAccountMenuItem from "./components/ManageAccountMenuItem";
 import { authState } from "@src/store/auth";
 import TabScreenContainer from "@src/components/Containers/TabScreenContainer";
 import useUpdateAccountDetails from "../../hooks/manageAccountHooks/useUpdateAccountDetails";
-import { ScrollView } from "react-native";
 
 const ManageAccountScreen = ({ navigation }) => {
   const { appLang } = useSelector(settingsState);
@@ -20,6 +19,7 @@ const ManageAccountScreen = ({ navigation }) => {
     formEmail: email,
     subscribed: userIsSubscribed,
     vip,
+    admin,
   } = useSelector(authState);
 
   useUpdateAccountDetails();
@@ -58,6 +58,11 @@ const ManageAccountScreen = ({ navigation }) => {
       heading: "deleteAccount",
       targetScreen: "Delete Account",
     },
+    manageUsers: {
+      iconName: "account-group-outline",
+      heading: "manageUsers",
+      targetScreen: "Manage Users",
+    },
   };
 
   return (
@@ -71,6 +76,9 @@ const ManageAccountScreen = ({ navigation }) => {
       <ManageAccountMenuItem {...props.subscription} />
       <ManageAccountMenuItem {...props.homeLanguage} />
       <ManageAccountMenuItem {...props.deleteAccount} />
+      {admin && (
+        <ManageAccountMenuItem {...props.manageUsers} />
+      )}
     </TabScreenContainer>
   );
 };

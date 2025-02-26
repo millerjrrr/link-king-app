@@ -38,6 +38,7 @@ export type ManageAccountStackParamList = {
   "Change Home Language": undefined;
   "Select New Home Language": SelectNewHomeLanguageProp;
   "Delete Account": undefined;
+  "Manage Users": undefined;
 };
 
 // OPTIONS

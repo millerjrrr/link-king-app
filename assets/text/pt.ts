@@ -273,6 +273,7 @@ const pt: AppText = {
       },
       forgotOrDidntSetUpPassword:
         "Esqueceu sua senha ou não configurou uma? Saia da conta e redefina sua senha usando o link 'Esqueci minha senha', depois faça login novamente.",
+      manageUsers: "Gerenciar Usuários",
     },
     shareProgress: "Compartilhar Progresso",
     shareApp: "Compartilhar Aplicativo",

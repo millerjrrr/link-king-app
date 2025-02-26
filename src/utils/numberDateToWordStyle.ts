@@ -4,13 +4,15 @@ import appTextSource from "@src/utils/appTextSource";
 // and they have day 1 being 31-Dec-1899
 // then we have 0 is 30-Dec-1899 which is weirdly represented as the below
 
-const dateToNumberStyleDate = (dateInMS: number) =>
+export const dateToNumberStyleDate = (dateInMS: number) =>
   Math.floor(
     Math.abs(dateInMS - new Date(1899, 11, 30).getTime()) /
       (1000 * 60 * 60 * 24),
   ) * 1;
 
-const numberDateToDashFormat = (dateAsNumber: number) => {
+export const numberDateToDashFormat = (
+  dateAsNumber: number,
+) => {
   const workingDate = new Date(1899, 11, 30);
   workingDate.setDate(workingDate.getDate() + dateAsNumber);
 

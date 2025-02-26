@@ -11,6 +11,7 @@ import ManageSubscriptionScreen from "../../screens/ManageAccount/ManageSubscrip
 import ChangeHomeLanguageScreen from "../../screens/ManageAccount/ChangeHomeLanguageScreens/ChangeHomeLanguageScreen";
 import SelectNewHomeLanguageScreen from "../../screens/ManageAccount/ChangeHomeLanguageScreens/SelectNewLanguageScreen";
 import ChangeHomeLanguageWarningScreen from "../../screens/ManageAccount/ChangeHomeLanguageScreens/ChangeHomeLanguageWarningScreen";
+import ManageUsersScreen from "@src/screens/ManageAccount/ManageUsersScreen";
 import { ManageAccountStackParamList } from "@src/types/navigationTypes";
 
 const ManageAccountStack =
@@ -53,6 +54,10 @@ const ManageAccountNavigator = () => {
       <ManageAccountStack.Screen
         name="Delete Account"
         component={DeleteAccountScreen}
+      />
+      <ManageAccountStack.Screen
+        name="Manage Users"
+        component={ManageUsersScreen}
       />
     </ManageAccountStack.Navigator>
   );

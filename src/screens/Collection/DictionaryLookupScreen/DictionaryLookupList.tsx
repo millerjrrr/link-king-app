@@ -19,7 +19,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import CreateCustomTicket from "./CreateCustomTicket";
 import { collectionState } from "@src/store/collection";
 
-const ListFooterComponent: React.FC<{
+const DictionaryListFooter: React.FC<{
   searchKeyword: string;
 }> = ({ searchKeyword }) => {
   const { allDataLoaded } = useSelector(
@@ -82,7 +82,7 @@ const DictionaryLookupList = () => {
       }}
       onEndReachedThreshold={0.1}
       ListFooterComponent={
-        <ListFooterComponent
+        <DictionaryListFooter
           searchKeyword={searchKeyword}
         />
       }

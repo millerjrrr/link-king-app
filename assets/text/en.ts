@@ -269,6 +269,7 @@ const en: AppText = {
       },
       forgotOrDidntSetUpPassword:
         "Forgot your password or didn't set one up? Log out and reset your password using the forgot password link, then log back in.",
+      manageUsers: "Manage Users",
     },
     shareProgress: "Share Progress",
     shareApp: "Share App",

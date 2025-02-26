@@ -3,6 +3,7 @@ import {
   createAction,
 } from "@reduxjs/toolkit";
 import { combineReducers, Reducer } from "redux";
+import adminReducer from "./admin";
 import authReducer from "./auth";
 import collectionReducer from "./collection";
 import dictionaryLookupReducer from "./dictionaryLookup";
@@ -16,6 +17,7 @@ import modalsReducer from "./modals";
 export const resetStore = createAction("RESET_STORE");
 
 const appReducers = combineReducers({
+  admin: adminReducer,
   auth: authReducer,
   collection: collectionReducer,
   dictionaryLookup: dictionaryLookupReducer,

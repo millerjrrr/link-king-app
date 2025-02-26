@@ -12,6 +12,7 @@ interface AuthState {
   subscribed: boolean;
   subscriptionPrice: string;
   vip: number;
+  admin: boolean;
   busy: boolean;
   appLoading: boolean;
   connection:
@@ -34,6 +35,7 @@ const initialState: AuthState = {
   subscribed: false,
   subscriptionPrice: "$12.99",
   vip: 4070919600000,
+  admin: false,
   busy: false,
   appLoading: false,
   connection: "connected",
@@ -81,6 +83,9 @@ const slice = createSlice({
     updateVip(state, action: PayloadAction<number>) {
       state.vip = action.payload;
     },
+    updateAdmin(state, action: PayloadAction<boolean>) {
+      state.admin = action.payload;
+    },
     updateBusyState(state, action: PayloadAction<boolean>) {
       state.busy = action.payload;
     },
@@ -90,6 +95,7 @@ const slice = createSlice({
     ) {
       state.appLoading = action.payload;
     },
+
     updateConnectedState(
       state,
       action: PayloadAction<
@@ -132,6 +138,7 @@ export const {
   updateSubscribed,
   updateSubscriptionPrice,
   updateVip,
+  updateAdmin,
   updateLoggedInState,
   updateJustSignedUp,
   updateBusyState,

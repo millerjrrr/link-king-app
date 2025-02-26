@@ -190,6 +190,7 @@ interface OptionsManageAccount {
   usernameUpdated: string;
   subscriptionPage: OptionsManageAccountSubscriptionPage;
   forgotOrDidntSetUpPassword: string;
+  manageUsers: string;
 }
 
 interface OptionsLeaveAReview {

@@ -272,6 +272,7 @@ const it: AppText = {
       },
       forgotOrDidntSetUpPassword:
         "Hai dimenticato la password o non ne hai impostata una? Esci dall'account e reimposta la password usando il link 'Password dimenticata', poi accedi di nuovo.",
+      manageUsers: "Manage Users",
     },
     shareProgress: "Condividi Progresso",
     shareApp: "Condividi App",
