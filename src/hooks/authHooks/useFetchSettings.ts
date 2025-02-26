@@ -1,9 +1,7 @@
 import { useDispatch } from "react-redux";
-import colors from "@src/utils/colors";
 import { getFromAsyncStorage } from "@src/utils/asyncStorage";
 import { updateSettings } from "@src/store/settings";
-import { StatusBar } from "react-native";
-import useCatchAsync from "@src/hooks/useCatchAsync";
+import useCatchAsync from "@src/hooks/utilityHooks/useCatchAsync";
 import getGoalFromStorage from "@src/utils/getGoalFromAsyncStorage";
 
 const useFetchSettings = () => {
@@ -12,11 +10,15 @@ const useFetchSettings = () => {
 
   const fetchSettings = catchAsync(async () => {
     //console.log("# Fetching settings");
-    const colorScheme: string =
-      (await getFromAsyncStorage("color-scheme")) || "dark";
-    const { STATUSBAR } =
-      colors[colorScheme as keyof typeof colors];
-    StatusBar.setBarStyle(STATUSBAR);
+    const colorScheme = ((await getFromAsyncStorage(
+      "color-scheme",
+    )) || "dark") as
+      | "dark"
+      | "blue"
+      | "green"
+      | "orange"
+      | "pink"
+      | "light";
 
     const timeGoal = await getGoalFromStorage(
       "time-goal",
@@ -31,22 +33,14 @@ const useFetchSettings = () => {
       100,
     );
 
-    const settings = {
-      colorScheme,
-      timeGoal,
-      newWordsGoal,
-      stepsGoal,
-    };
-
-    Object.keys(settings).forEach((key) => {
-      const typedKey = key as keyof typeof settings;
-
-      if (settings[typedKey]) {
-        dispatch(
-          updateSettings({ [key]: settings[typedKey] }),
-        );
-      }
-    });
+    dispatch(
+      updateSettings({
+        colorScheme,
+        timeGoal,
+        newWordsGoal,
+        stepsGoal,
+      }),
+    );
   });
 
   return fetchSettings;

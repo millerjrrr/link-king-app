@@ -1,14 +1,5 @@
 import { useDispatch } from "react-redux";
-import {
-  updateAdmin,
-  updateAppLoadingState,
-  updateConnectedState,
-  updateLatestVersion,
-  updateLoggedInState,
-  updateToken,
-  updateTrialDays,
-  updateVip,
-} from "@src/store/auth";
+import { updateConnectedState } from "@src/store/auth";
 import client from "@src/api/client";
 import {
   getFromAsyncStorage,
@@ -16,8 +7,7 @@ import {
   secureGetFromAsyncStorage,
 } from "@src/utils/asyncStorage";
 import { updateSettings } from "@src/store/settings";
-import daysLeft from "@src/utils/daysLeft";
-import useCatchAsync from "../useCatchAsync";
+import useCatchAsync from "../utilityHooks/useCatchAsync";
 import * as Localization from "expo-localization";
 import useUpdateAuthData from "./useUpdateAuthData";
 
@@ -29,8 +19,6 @@ const useFetchAuthInfo = () => {
   const fetchAuthInfo = catchAsync(async () => {
     //console.log("# Fetching Auth Info");
     try {
-      dispatch(updateAppLoadingState(true));
-
       let appLang =
         (await getFromAsyncStorage("app-lang")) || false;
 
@@ -48,7 +36,6 @@ const useFetchAuthInfo = () => {
 
       // if there is no token stored on device exit
       if (!token) {
-        dispatch(updateAppLoadingState(false));
         return;
       }
 
@@ -65,16 +52,15 @@ const useFetchAuthInfo = () => {
 
       if (data.status === "success") updateAuthData(data);
     } catch (e) {
-      dispatch(updateAppLoadingState(false));
       if (e instanceof Error) {
         if (e.message.startsWith("timeout"))
           dispatch(updateConnectedState("disconnected"));
         else if (e.message.endsWith("503"))
           dispatch(updateConnectedState("maintenance"));
         else dispatch(updateConnectedState("unknown"));
+      } else {
+        console.log("other error");
       }
-    } finally {
-      dispatch(updateAppLoadingState(false));
     }
   });
 

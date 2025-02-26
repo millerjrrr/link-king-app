@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import appShadow from "@src/utils/appShadow";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 
 const DownloadAppScreenForWebAppOnMobile = () => {
   const { appLang } = useSelector(settingsState);

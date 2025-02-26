@@ -6,7 +6,7 @@ import appTextSource from "../../utils/appTextSource";
 import AppText from "@src/components/AppText";
 import AuthFormContainer from "@src/components/Containers/AuthFormContainer";
 import AntDesign from "@expo/vector-icons/AntDesign";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 import AnnouncementContainer from "@src/components/Containers/AnnouncementContainer";
 import { authState } from "@src/store/auth";
 import AppLink from "@src/components/AppLink";

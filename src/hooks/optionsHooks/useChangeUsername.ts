@@ -8,7 +8,7 @@ import {
 } from "@react-navigation/native";
 import { settingsState } from "@src/store/settings";
 import { ManageAccountStackParamList } from "@src/types/navigationTypes";
-import useCatchAsync from "../useCatchAsync";
+import useCatchAsync from "../utilityHooks/useCatchAsync";
 import { StackNavigationProp } from "@react-navigation/stack";
 
 const useChangeUsername = () => {

@@ -7,7 +7,7 @@ import {
   ItemText,
   TopShadow,
 } from "./StyledComponents";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 
 interface ScrollSelectorProps {
   onSelect: (value: number) => void;

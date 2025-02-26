@@ -10,7 +10,7 @@ import {
 } from "@src/store/console";
 import { speak } from "@src/utils/appSpeak";
 import { useDispatch, useSelector } from "react-redux";
-import useCatchAsync from "../useCatchAsync";
+import useCatchAsync from "../utilityHooks/useCatchAsync";
 
 const useHandleCorrectAnswer = () => {
   const dispatch = useDispatch();

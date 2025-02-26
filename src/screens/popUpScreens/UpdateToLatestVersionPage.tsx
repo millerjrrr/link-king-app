@@ -1,7 +1,7 @@
 import AppText from "@src/components/AppText";
 import AnnouncementContainer from "@src/components/Containers/AnnouncementContainer";
 import AuthFormContainer from "@src/components/Containers/AuthFormContainer";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 import appShadow from "@src/utils/appShadow";
 import React from "react";
 import {

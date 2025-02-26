@@ -1,6 +1,6 @@
 import Purchases from "react-native-purchases";
 import { useDispatch } from "react-redux";
-import useCatchAsync from "@src/hooks/useCatchAsync";
+import useCatchAsync from "@src/hooks/utilityHooks/useCatchAsync";
 import configurePurchases from "../../utils/configurePurchases";
 import { updateSubscriptionPrice } from "@src/store/auth";
 import { useEffect } from "react";

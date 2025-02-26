@@ -9,7 +9,7 @@ import { authState } from "@src/store/auth";
 import client from "@src/api/client";
 import SignUpAppLink from "@components/SignUpAppLink";
 import { Formik } from "formik";
-import useCatchAsync from "@src/hooks/useCatchAsync";
+import useCatchAsync from "@src/hooks/utilityHooks/useCatchAsync";
 import useUpdateAuthData from "@src/hooks/authHooks/useUpdateAuthData";
 
 const VerificationCode = () => {

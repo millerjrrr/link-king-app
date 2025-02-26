@@ -16,7 +16,7 @@ import {
 } from "@src/store/auth";
 import SignUpAppLink from "@components/SignUpAppLink";
 import { Formik } from "formik";
-import useCatchAsync from "@src/hooks/useCatchAsync";
+import useCatchAsync from "@src/hooks/utilityHooks/useCatchAsync";
 import Auth3PButtons from "@src/components/Auth3P/Auth3PButtons";
 
 const Password = () => {

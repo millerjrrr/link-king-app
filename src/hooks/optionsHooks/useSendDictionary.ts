@@ -1,6 +1,6 @@
 import { updateDictionary } from "@src/store/console";
 import clientWithAuth from "@src/api/clientWithAuth";
-import useCatchAsync from "../useCatchAsync";
+import useCatchAsync from "../utilityHooks/useCatchAsync";
 import { useDispatch } from "react-redux";
 import { updateBusyState } from "@src/store/auth";
 

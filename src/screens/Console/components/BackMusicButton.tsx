@@ -1,5 +1,5 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 import { selectConsoleLocals } from "@src/store/console";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useSelector } from "react-redux";

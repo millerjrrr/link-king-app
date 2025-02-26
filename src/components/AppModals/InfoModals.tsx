@@ -8,7 +8,7 @@ import {
   modalState,
   updateModals,
 } from "@src/store/modals";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 import { ModalWithMessage } from "@src/types/Modals";
 import WebsiteQR from "@src/screens/Options/components/WebsiteQR";
 

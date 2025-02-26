@@ -4,7 +4,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import colors from "@src/utils/colors";
-import useCatchAsync from "@src/hooks/useCatchAsync";
+import useCatchAsync from "@src/hooks/utilityHooks/useCatchAsync";
 
 const GameDescription = () => {
   const { colorScheme, golden, appLang } =

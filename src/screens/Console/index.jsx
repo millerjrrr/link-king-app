@@ -15,7 +15,7 @@ import useConsoleUpdates from "@src/hooks/consoleHooks/useEffects/useConsoleUpda
 import useOnKeyboardClose from "@src/hooks/consoleHooks/useEffects/useOnKeyboardClose";
 import useHandleAppBackgroundExit from "../../hooks/consoleHooks/useEffects/useHandleAppBackgroundExit";
 import useUpdateOptions from "@src/hooks/consoleHooks/useEffects/useUpdateOptions";
-import usePopToTop from "@src/hooks/usePopToTop";
+import usePopToTop from "@src/hooks/utilityHooks/usePopToTop";
 import IsSubscribedWrapper from "./components/IsSubscribedWrapper";
 import BackMusicButton from "./components/BackMusicButton";
 

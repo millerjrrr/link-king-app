@@ -1,6 +1,6 @@
 import { TextInput } from "react-native";
 import appShadow from "@src/utils/appShadow";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 
 //This may be used in some settings tabs in the future
 const AppInput = (props) => {

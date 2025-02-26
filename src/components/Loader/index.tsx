@@ -8,7 +8,7 @@ import Animated, {
   Easing,
 } from "react-native-reanimated";
 import { AntDesign } from "@expo/vector-icons";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 
 declare function require(path: string): any;
 

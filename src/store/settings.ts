@@ -5,7 +5,13 @@ import {
 import { RootState } from "@src/store";
 
 interface SettingsState {
-  colorScheme: "dark" | "light";
+  colorScheme:
+    | "dark"
+    | "blue"
+    | "green"
+    | "orange"
+    | "pink"
+    | "light";
   golden: number;
   timeGoal: number;
   newWordsGoal: number;

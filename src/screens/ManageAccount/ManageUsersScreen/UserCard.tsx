@@ -16,7 +16,7 @@ import {
   WordsCollected,
 } from "./styledComponents";
 import { settingsState } from "@src/store/settings";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 import { timeInStyle } from "@src/utils/timeInStyle";
 
 interface User {

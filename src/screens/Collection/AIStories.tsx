@@ -2,7 +2,7 @@ import { AntDesign } from "@expo/vector-icons";
 import AppText from "@src/components/AppText";
 import PopUpContainer from "@src/components/Containers/PopUpContainer";
 import BusyWrapper from "@src/components/Loader/BusyWrapper";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 import { settingsState } from "@src/store/settings";
 import appShadow from "@src/utils/appShadow";
 import appTextSource from "@src/utils/appTextSource";

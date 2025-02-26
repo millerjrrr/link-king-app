@@ -1,4 +1,4 @@
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 import RNPickerSelect from "react-native-picker-select";
 import {
   Container,

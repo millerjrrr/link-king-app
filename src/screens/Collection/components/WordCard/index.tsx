@@ -14,7 +14,7 @@ import {
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import SpeakButton from "./SpeakButton";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 import { updateSelectedTicket } from "@src/store/collection";
 
 const WordCard = ({ navigation, ticket, onPress }: any) => {

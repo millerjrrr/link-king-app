@@ -5,7 +5,7 @@ import { appShadowForStyledComponents } from "@src/utils/appShadow";
 import AppText from "@src/components/AppText";
 import { selectConsoleState } from "@src/store/console";
 import { updateModals } from "@src/store/modals";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 import styled from "styled-components/native";
 import { CollectionStackParamList } from "@src/types/navigationTypes";
 import { useNavigation } from "@react-navigation/native";

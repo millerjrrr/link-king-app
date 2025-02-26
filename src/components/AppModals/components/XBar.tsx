@@ -1,6 +1,6 @@
 import { AntDesign } from "@expo/vector-icons";
 import { XBarContainer } from "./StyledCompontents";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 
 const Xbar = ({ x }: { x: () => void }) => {
   //we do need to use x as xbar is passed to a special double modal

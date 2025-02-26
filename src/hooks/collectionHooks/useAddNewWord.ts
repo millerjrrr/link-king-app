@@ -1,6 +1,6 @@
 import clientWithAuth from "@src/api/clientWithAuth";
 import { useDispatch } from "react-redux";
-import useCatchAsync from "@src/hooks/useCatchAsync";
+import useCatchAsync from "@src/hooks/utilityHooks/useCatchAsync";
 import { updateBusy } from "@src/store/dictionaryLookup";
 import { updateModals } from "@src/store/modals";
 

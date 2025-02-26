@@ -7,7 +7,7 @@ import {
 import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 import { useSelector } from "react-redux";
 import { selectConsoleState } from "@src/store/console";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 import screenDimensions from "@src/utils/screenDimensions";
 
 const Timer = ({ onComplete, color }) => {

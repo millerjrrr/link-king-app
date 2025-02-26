@@ -5,7 +5,7 @@ import { makeRedirectUri } from "expo-auth-session";
 import client from "@src/api/client";
 import { useDispatch, useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
-import useCatchAsync from "../../hooks/useCatchAsync";
+import useCatchAsync from "../../hooks/utilityHooks/useCatchAsync";
 import appTextSource from "@src/utils/appTextSource";
 
 import Constants from "expo-constants";

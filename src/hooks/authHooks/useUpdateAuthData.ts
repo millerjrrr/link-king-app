@@ -3,7 +3,7 @@ import {
   secureSaveToAsyncStorage,
 } from "@src/utils/asyncStorage";
 import { useDispatch } from "react-redux";
-import useCatchAsync from "./../useCatchAsync";
+import useCatchAsync from "../utilityHooks/useCatchAsync";
 import { updateSettings } from "@src/store/settings";
 import {
   updateAdmin,
@@ -22,7 +22,7 @@ const useUpdateAuthData = () => {
   const catchAsync = useCatchAsync();
 
   const updateAuthData = catchAsync(async (data) => {
-    console.log(data);
+    //console.log("# Updating auth data");
     dispatch(
       updateTrialDays(daysLeft(data.userCreationDate)),
     );

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import useCatchAsync from "../useCatchAsync";
+import useCatchAsync from "../utilityHooks/useCatchAsync";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp as SNP } from "@react-navigation/stack";
 import { CollectionStackParamList } from "@src/types/navigationTypes";

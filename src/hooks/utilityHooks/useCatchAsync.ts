@@ -1,5 +1,5 @@
 import returnErrorMessage from "@src/utils/returnErrorMessage";
-import useLogOut from "./authHooks/useLogOut";
+import useLogOut from "../authHooks/useLogOut";
 import useAppNotification from "./useAppNotification";
 
 type AsyncFunction = (...args: any[]) => Promise<any>;

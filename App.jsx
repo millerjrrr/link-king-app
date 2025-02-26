@@ -5,6 +5,7 @@ import RootNavigator from "./src/navigation/RootNavigator";
 import AppNotification from "./src/components/AppNotification";
 import AppModals from "./src/components/AppModals";
 import AdaptiveAppContainer from "./src/components/Graphics/AdaptiveAppContainer";
+import AppLoadingContainer from "./src/navigation/AppLoadingContainer";
 
 export default function App() {
   return (
@@ -12,7 +13,9 @@ export default function App() {
       <AdaptiveAppContainer>
         <AppNotification />
         <AppModals />
-        <RootNavigator />
+        <AppLoadingContainer>
+          <RootNavigator />
+        </AppLoadingContainer>
       </AdaptiveAppContainer>
     </Provider>
   );

@@ -17,9 +17,6 @@ import AppText from "./AppText";
 const AppNotification = () => {
   const { message, type } = useSelector(notificationState);
 
-  if (process.env.NODE_ENV !== "production")
-    console.log(message, type);
-
   const dispatch = useDispatch();
 
   const { length } = message;
@@ -57,6 +54,8 @@ const AppNotification = () => {
 
   useEffect(() => {
     if (message) {
+      if (process.env.NODE_ENV !== "production")
+        console.log(message, type, "test");
       const performAnimation = () => {
         height.value = withTiming(notificationHeight, {
           duration: 150,

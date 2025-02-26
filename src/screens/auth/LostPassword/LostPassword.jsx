@@ -7,7 +7,7 @@ import client from "@src/api/client";
 import { useSelector } from "react-redux";
 import appTextSource from "@src/utils/appTextSource";
 import { settingsState } from "@src/store/settings";
-import useCatchAsync from "@src/hooks/useCatchAsync";
+import useCatchAsync from "@src/hooks/utilityHooks/useCatchAsync";
 import * as yup from "yup";
 import { Formik } from "formik";
 

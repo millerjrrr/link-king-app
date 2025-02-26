@@ -2,7 +2,7 @@ import { Image, View } from "react-native";
 import getImageSource from "@src/utils/getImageSource";
 import React from "react";
 import appShadow from "@src/utils/appShadow";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 
 interface FlagImageProps {
   flag1: string;

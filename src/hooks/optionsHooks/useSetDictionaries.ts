@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import clientWithAuth from "@src/api/clientWithAuth";
-import useCatchAsync from "@src/hooks/useCatchAsync";
+import useCatchAsync from "@src/hooks/utilityHooks/useCatchAsync";
 import { updateBusyState } from "@src/store/auth";
 import { settingsState } from "@src/store/settings";
 import languageNameCodeMap from "@src/utils/languageNameCodeMap";

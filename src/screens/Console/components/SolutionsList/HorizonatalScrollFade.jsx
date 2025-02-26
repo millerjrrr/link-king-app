@@ -1,7 +1,7 @@
 import { View } from "react-native";
 import styled from "styled-components/native";
 import { LinearGradient } from "expo-linear-gradient";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 
 const Container = styled(View)`
   position: relative;

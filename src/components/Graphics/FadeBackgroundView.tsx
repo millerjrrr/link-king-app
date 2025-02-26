@@ -1,4 +1,4 @@
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 import { LinearGradient } from "expo-linear-gradient";
 import { ReactNode } from "react";
 import { ViewStyle } from "react-native";

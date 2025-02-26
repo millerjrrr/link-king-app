@@ -13,7 +13,7 @@ import {
 } from "react-native";
 import { saveToAsyncStorage } from "@src/utils/asyncStorage";
 import appShadow from "@src/utils/appShadow";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 
 const ColorSchemeButton = ({ cs, size = 30 }) => {
   const { CONTRAST: shadowColor } = useColors();

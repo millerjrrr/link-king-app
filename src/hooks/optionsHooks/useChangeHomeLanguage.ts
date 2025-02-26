@@ -8,7 +8,7 @@ import {
 import appTextSource from "@src/utils/appTextSource";
 import { saveToAsyncStorage } from "@src/utils/asyncStorage";
 import { useDispatch, useSelector } from "react-redux";
-import useCatchAsync from "../useCatchAsync";
+import useCatchAsync from "../utilityHooks/useCatchAsync";
 import { ManageAccountStackParamList } from "@src/types/navigationTypes";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { updateDictionary } from "@src/store/console";

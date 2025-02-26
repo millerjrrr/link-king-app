@@ -14,7 +14,7 @@ import AppText from "../AppText";
 import BackButton from "../Buttons/BackButton";
 import React, { ReactNode } from "react";
 import screenDimensions from "@src/utils/screenDimensions";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 
 interface AuthFormContainerProps {
   children: ReactNode;

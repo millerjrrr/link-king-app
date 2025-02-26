@@ -2,7 +2,7 @@ import React from "react";
 import { View } from "react-native";
 import * as AppleAuthentication from "expo-apple-authentication";
 import appShadow from "@src/utils/appShadow";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 
 const AppleAuthGraphic: React.FC<{
   onPress: () => void;

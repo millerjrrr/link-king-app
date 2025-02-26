@@ -10,7 +10,7 @@ import {
 import { Modal as ModalType } from "@src/types/Modals";
 import { ReactNode } from "react";
 import Xbar from "./components/XBar";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 import AppLink from "../AppLink";
 import { Linking } from "react-native";
 import appTextSource from "@src/utils/appTextSource";

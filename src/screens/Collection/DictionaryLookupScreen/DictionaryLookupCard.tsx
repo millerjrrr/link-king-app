@@ -9,7 +9,7 @@ import {
 } from "../components/WordCard/StyledComponents";
 import { Entypo } from "@expo/vector-icons";
 import useAddNewWord from "@src/hooks/collectionHooks/useAddNewWord";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 
 const DictionaryLookupCard: React.FC<{
   dictEntry: any;

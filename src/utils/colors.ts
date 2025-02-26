@@ -1,5 +1,7 @@
+import { StatusBarStyle } from "expo-status-bar";
+
 interface ColorScheme {
-  STATUSBAR: "dark" | "light";
+  STATUSBAR: StatusBarStyle;
   PRIMARY: string;
   SECONDARY: string;
   CONTRAST: [string, string];
@@ -20,10 +22,13 @@ const commonColors = {
 const darkText = {
   CONTRAST: ["#362718", "#8a793e"] as [string, string],
   INACTIVE_CONTRAST: "#36271880",
-  STATUSBAR: "dark" as "dark" | "light",
+  STATUSBAR: "dark" as StatusBarStyle,
 };
 
-const colors: Record<string, ColorScheme> = {
+const colors: Record<
+  "dark" | "blue" | "green" | "orange" | "pink" | "light",
+  ColorScheme
+> = {
   dark: {
     PRIMARY: "#1b1b1b",
     SECONDARY: "#000000",

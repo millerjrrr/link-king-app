@@ -1,5 +1,5 @@
-import useCatchAsync from "@src/hooks/useCatchAsync";
-import { useEffect, useRef } from "react";
+import useCatchAsync from "@src/hooks/utilityHooks/useCatchAsync";
+import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import configurePurchases from "../../utils/configurePurchases";
 import Purchases from "react-native-purchases";
@@ -8,19 +8,16 @@ import {
   updateSubscribed,
 } from "@src/store/auth";
 import { Platform } from "react-native";
-import useFetchAuthInfo from "../authHooks/useFetchAuthInfo";
 
-const useCheckSubscriptionStatusAndFetchAuthInfo = () => {
+const useCheckSubscriptionStatus = () => {
   const dispatch = useDispatch();
   const catchAsync = useCatchAsync();
-  const fetchAuthInfo = useFetchAuthInfo();
   const hasChecked = useRef(false);
 
-  const checkSubscriptionStatusAndFetchAuthInfo =
-    catchAsync(async () => {
-      //console.log("# Checking subscription status");
-      dispatch(updateBusyState(true));
-      await fetchAuthInfo();
+  const checkSubscriptionStatus = catchAsync(async () => {
+    //console.log("# Checking subscription status");
+    dispatch(updateBusyState(true));
+    try {
       if (hasChecked.current) return;
       if (Platform.OS !== "web") {
         await configurePurchases();
@@ -34,10 +31,12 @@ const useCheckSubscriptionStatusAndFetchAuthInfo = () => {
         );
       }
       hasChecked.current = true; // Mark as checked
+    } finally {
       dispatch(updateBusyState(false));
-    });
+    }
+  });
 
-  return checkSubscriptionStatusAndFetchAuthInfo;
+  return checkSubscriptionStatus;
 };
 
-export default useCheckSubscriptionStatusAndFetchAuthInfo;
+export default useCheckSubscriptionStatus;

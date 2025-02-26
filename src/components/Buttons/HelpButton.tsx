@@ -2,7 +2,7 @@ import { Entypo } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
 import StatusBarFiller from "../StatusBarFiller";
 import React from "react";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 
 interface HelpButtonProps {
   help?: () => void;

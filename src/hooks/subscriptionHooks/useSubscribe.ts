@@ -6,7 +6,7 @@ import {
 } from "@src/store/auth";
 import { useDispatch } from "react-redux";
 import configurePurchases from "../../utils/configurePurchases";
-import useCatchAsync from "@src/hooks/useCatchAsync";
+import useCatchAsync from "@src/hooks/utilityHooks/useCatchAsync";
 
 const useSubscribe = () => {
   const dispatch = useDispatch();

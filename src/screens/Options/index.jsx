@@ -6,7 +6,7 @@ import ModalTypeMenuItem from "./components/ModalTypeMenuItem";
 import appTextSource from "../../utils/appTextSource";
 import { useDispatch, useSelector } from "react-redux";
 import { settingsState } from "./../../store/settings";
-import usePopToTop from "@src/hooks/usePopToTop";
+import usePopToTop from "@src/hooks/utilityHooks/usePopToTop";
 import { Platform } from "react-native";
 import { updateModals } from "@src/store/modals";
 

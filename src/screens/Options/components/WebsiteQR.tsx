@@ -1,4 +1,4 @@
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 import { Image } from "react-native";
 declare function require(path: string): any;
 

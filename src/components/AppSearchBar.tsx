@@ -1,6 +1,6 @@
 import { Searchbar } from "react-native-paper";
 import appShadow from "@src/utils/appShadow";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 
 interface Props {
   searchKeyword: string;

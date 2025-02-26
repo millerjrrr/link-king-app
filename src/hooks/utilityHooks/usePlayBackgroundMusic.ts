@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Audio } from "expo-av";
-import useCatchAsync from "@src/hooks/useCatchAsync";
+import useCatchAsync from "@src/hooks/utilityHooks/useCatchAsync";
 import { useSelector } from "react-redux";
 import { selectConsoleLocals } from "@src/store/console";
 declare function require(path: string): any;

@@ -7,7 +7,7 @@ import appTextSource from "@src/utils/appTextSource";
 import AppText from "@src/components/AppText";
 import SolutionItem from "@src/screens/Console/components/SolutionsList/SolutionItem";
 import appShadow from "@src/utils/appShadow";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 
 const UserAttempt = () => {
   const { lastAttempt } = useSelector(selectConsoleLocals);

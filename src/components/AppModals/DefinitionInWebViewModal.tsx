@@ -3,7 +3,7 @@ import { WebView } from "react-native-webview";
 import { WebViewContainer } from "./components/StyledCompontents";
 import { modalState } from "@src/store/modals";
 import AppModal from "./AppModal";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 
 const DefinitionInWebViewModal = () => {
   const { definitionSearchWord, definitionSearchLanguage } =

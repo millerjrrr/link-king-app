@@ -9,7 +9,7 @@ import {
   AutoSizeText,
   ResizeTextMode,
 } from "react-native-auto-size-text";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";

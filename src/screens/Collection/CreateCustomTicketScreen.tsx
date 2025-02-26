@@ -17,7 +17,7 @@ import {
   useRoute,
 } from "@react-navigation/native";
 import { CollectionStackParamList } from "@src/types/navigationTypes";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import appTextSource from "@src/utils/appTextSource";
 import { useDispatch, useSelector } from "react-redux";

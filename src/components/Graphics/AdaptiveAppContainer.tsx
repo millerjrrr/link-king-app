@@ -1,4 +1,4 @@
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 import appShadow from "@src/utils/appShadow";
 import colors from "@src/utils/colors";
 import screenDimensions from "@src/utils/screenDimensions";

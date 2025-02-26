@@ -8,7 +8,7 @@ import appTextSource from "@src/utils/appTextSource";
 import { settingsState } from "@src/store/settings";
 import useFetchTickets from "@src/hooks/collectionHooks/useFetchTickets";
 import { updateModals } from "@src/store/modals";
-import usePopToTop from "@src/hooks/usePopToTop";
+import usePopToTop from "@src/hooks/utilityHooks/usePopToTop";
 
 const Collection = ({ navigation }) => {
   usePopToTop();

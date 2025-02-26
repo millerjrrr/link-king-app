@@ -9,7 +9,7 @@ import { selectConsoleState } from "@src/store/console";
 import AppText from "@src/components/AppText";
 import HelpButton from "@src/components/Buttons/HelpButton";
 import { updateModals } from "@src/store/modals";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 
 const RatingCircle = () => {
   const { colorScheme, golden, appLang } =

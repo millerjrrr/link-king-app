@@ -2,7 +2,7 @@ import { useState } from "react";
 import { View, StyleSheet } from "react-native";
 import LevelLine from "./LevelLine";
 import AppText from "@src/components/AppText";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 import appShadow from "@src/utils/appShadow";
 
 const LevelHistogram = ({ lbd, histHeight }) => {

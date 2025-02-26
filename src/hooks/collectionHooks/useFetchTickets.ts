@@ -8,7 +8,7 @@ import {
   updateTickets,
 } from "@src/store/collection";
 import { useDispatch, useSelector } from "react-redux";
-import useCatchAsync from "@src/hooks/useCatchAsync";
+import useCatchAsync from "@src/hooks/utilityHooks/useCatchAsync";
 import { semiNormalize } from "@src/utils/semiNormalize";
 import { useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";

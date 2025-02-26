@@ -1,7 +1,7 @@
 import { TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 import AppText from "@src/components/AppText";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 
 const MenuItemName = styled(AppText)<{
   color: string;

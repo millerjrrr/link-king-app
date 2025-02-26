@@ -2,7 +2,7 @@ import clientWithAuth from "@src/api/clientWithAuth";
 import { updateNotification } from "@src/store/notification";
 import appTextSource from "@src/utils/appTextSource";
 import { useDispatch, useSelector } from "react-redux";
-import useCatchAsync from "@src/hooks/useCatchAsync";
+import useCatchAsync from "@src/hooks/utilityHooks/useCatchAsync";
 import { settingsState } from "@src/store/settings";
 import useLogOut from "../authHooks/useLogOut";
 

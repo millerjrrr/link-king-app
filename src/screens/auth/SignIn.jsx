@@ -13,7 +13,7 @@ import { useState } from "react";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import { Formik } from "formik";
-import useCatchAsync from "@src/hooks/useCatchAsync";
+import useCatchAsync from "@src/hooks/utilityHooks/useCatchAsync";
 import Auth3PButtons from "@src/components/Auth3P/Auth3PButtons";
 import useUpdateAuthData from "@src/hooks/authHooks/useUpdateAuthData";
 

@@ -3,7 +3,7 @@ import * as AppleAuthentication from "expo-apple-authentication";
 import client from "@src/api/client";
 import { useDispatch, useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
-import useCatchAsync from "../../hooks/useCatchAsync";
+import useCatchAsync from "../../hooks/utilityHooks/useCatchAsync";
 import AppleAuthGraphic from "./AppleAuthGraphic";
 import appTextSource from "@src/utils/appTextSource";
 import useUpdateAuthData from "./../../hooks/authHooks/useUpdateAuthData";

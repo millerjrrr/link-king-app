@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
-import useCatchAsync from "../useCatchAsync";
+import useCatchAsync from "../utilityHooks/useCatchAsync";
 import {
   adminState,
   updateAllDataLoaded,

@@ -9,7 +9,7 @@ import {
 } from "@expo/vector-icons";
 import React from "react";
 import ManageAccountNavigator from "./subnavigators/ManageAccountNavigator";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 
 const Tab = createBottomTabNavigator();
 

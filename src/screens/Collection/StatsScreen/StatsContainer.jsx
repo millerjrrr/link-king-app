@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { statsState } from "@src/store/stats";
 import { timeInStyle } from "@src/utils/timeInStyle";
 import StatsIcon from "@src/screens/Console/components/StatsContainer/StatsIcon";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 import appShadow from "@src/utils/appShadow";
 
 const StatsContainer = ({ size = 22 }) => {

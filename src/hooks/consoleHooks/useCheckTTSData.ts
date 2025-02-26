@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { Platform } from "react-native";
 import { selectConsoleState } from "@src/store/console";
 import * as Speech from "expo-speech";
-import useCatchAsync from "@src/hooks/useCatchAsync";
+import useCatchAsync from "@src/hooks/utilityHooks/useCatchAsync";
 
 const useCheckTTSData = () => {
   const catchAsync = useCatchAsync();

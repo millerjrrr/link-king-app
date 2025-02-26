@@ -15,7 +15,7 @@ import Animated, {
 } from "react-native-reanimated";
 import { useEffect } from "react";
 import AppText from "./AppText";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 
 interface FormValues {
   name: string; // Define your fields explicitly if known

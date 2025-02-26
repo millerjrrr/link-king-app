@@ -19,7 +19,7 @@ import AcceptedAnswers from "@src/screens/Collection/WordInfoScreen/AcceptedAnsw
 import { selectConsoleState } from "@src/store/console";
 import appTextSource from "@src/utils/appTextSource";
 import Modal from "react-native-modal";
-import useColors from "@src/hooks/useColors";
+import useColors from "@src/hooks/utilityHooks/useColors";
 import DefinitionInWebViewModal from "./DefinitionInWebViewModal";
 
 const NewWordAddedModal = () => {
