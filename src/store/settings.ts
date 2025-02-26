@@ -17,6 +17,7 @@ interface SettingsState {
   newWordsGoal: number;
   stepsGoal: number;
   appLang: string;
+  helpPulsing: number;
 }
 
 const initialState: SettingsState = {
@@ -26,6 +27,7 @@ const initialState: SettingsState = {
   newWordsGoal: 0,
   stepsGoal: 100,
   appLang: "en",
+  helpPulsing: 0,
 };
 
 const slice = createSlice({
@@ -43,11 +45,17 @@ const slice = createSlice({
       state.newWordsGoal = 1;
       state.stepsGoal = 100;
     },
+    incHelpPulsing(state) {
+      state.helpPulsing += 1;
+    },
   },
 });
 
-export const { updateSettings, restoreDefaultGoals } =
-  slice.actions;
+export const {
+  updateSettings,
+  restoreDefaultGoals,
+  incHelpPulsing,
+} = slice.actions;
 
 export const settingsState = (state: RootState) =>
   state.settings;

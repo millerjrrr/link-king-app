@@ -14,8 +14,7 @@ const GameDescription = () => {
   const catchAsync = useCatchAsync();
 
   const onPress = catchAsync(async () => {
-    const url =
-      "https://www.youtube.com/channel/UCtvz3tIHITft0MaJVSvy6Jg";
+    const url = "https://www.youtube.com/@linkkingapp";
     const canOpen = await Linking.canOpenURL(url);
     if (canOpen) {
       await Linking.openURL(url);

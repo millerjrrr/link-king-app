@@ -1,13 +1,16 @@
 import InputAndTimerContainer from "./components/InputAndTimerContainer";
-import { useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import OptionsContainer from "./components/OptionsContainer";
 import KeyboardAndStartButton from "./components/KeyboardAndStartButton";
 import Tail from "./components/Tail";
 import ReadWordButton from "./components/ReadWordButton";
 import StatsContainer from "./components/StatsContainer";
 import TabScreenContainer from "@src/components/Containers/TabScreenContainer";
-import { settingsState } from "@src/store/settings";
+import {
+  incHelpPulsing,
+  settingsState,
+} from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import useManageGolden from "@src/hooks/consoleHooks/useEffects/useManageGolden";
 import useTimeManager from "@src/hooks/consoleHooks/useEffects/useTimeManager";
@@ -31,6 +34,12 @@ const Console = ({ navigation }) => {
   };
 
   const { heading } = appTextSource(appLang).console;
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!isKeyboardVisible) dispatch(incHelpPulsing());
+  }, [isKeyboardVisible]);
 
   // Hook calls
   useManageGolden();
