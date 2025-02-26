@@ -384,16 +384,15 @@ const en: AppText = {
   },
   paywall: {
     heading: "Subscribe",
-    notice:
-      "Hello,\n\nWe hope you're enjoying Link-King and making great strides in your language learning journey!\n\nYour free trial has now come to an end. While we aspire to one day offer Link-King for free, we currently have various expenses that need to be covered.\n\nTo continue using the app and keep expanding your vocabulary, we invite you to subscribe. Mastering a new language takes time, and investing in a powerful tool like Link-King can make all the difference.\n\nIt’s a small investment for a huge return in your language learning journey!\n\nThank you for being part of the Link-King community.\n\nKind regards,\nThe Link-King Team",
+    message:
+      "Great job today!\nFree users can enjoy up to 5 minutes per day.\nUnlock unlimited playtime and exclusive features by subscribing now!",
+    priceDescriptionX: "Full access for just #X per year",
     terms: [
       "By making this purchase you accept our ",
       "Terms and Conditions",
       " and ",
       "Privacy Policy",
     ],
-    priceDescription: "Full access for just ",
-    perYear: "/yr",
     webAppUnavailableOnMobileNotice:
       "Unfortunately, the web app does not work so well on mobile devices.\n\nFortunately, you can download the app for FREE here!",
     openInBrowser: "Open in browser",

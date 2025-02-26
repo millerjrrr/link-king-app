@@ -304,10 +304,9 @@ interface Auth {
 
 interface Paywall {
   heading: string;
-  notice: string;
+  message: string;
+  priceDescriptionX: string;
   terms: [string, string, string, string];
-  priceDescription: string;
-  perYear: string;
   webAppUnavailableOnMobileNotice: string;
   openInBrowser: string;
 }

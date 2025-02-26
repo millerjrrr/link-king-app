@@ -388,17 +388,16 @@ const pt: AppText = {
     },
   },
   paywall: {
-    heading: "Inscrever-se",
-    notice:
-      "Olá,\n\nEsperamos que você esteja gostando do Link-King e fazendo grandes progressos em sua jornada de aprendizado de inglês!\n\nSeu período de teste gratuito chegou ao fim. Embora desejemos um dia oferecer o Link-King gratuitamente, atualmente temos diversas despesas que precisam ser cobertas.\n\nPara continuar usando o aplicativo e aprimorar seus conhecimentos de inglês, convidamos você a se inscrever. Dominar um novo idioma leva tempo e investir em uma ferramenta poderosa como o Link-King pode fazer toda a diferença.\n\nÉ um pequeno investimento para um enorme retorno em sua jornada linguística!\n\nObrigado por fazer parte da comunidade Link-King.\n\nAtenciosamente\nO Time Link-King",
+    heading: "Assine Agora",
+    message:
+      "Ótimo trabalho hoje!\nUsuários gratuitos podem aproveitar até 5 minutos por dia.\nDesbloqueie tempo ilimitado e recursos exclusivos assinando agora!",
+    priceDescriptionX: "Acesso total por apenas #X por ano",
     terms: [
       "Ao fazer esta compra você aceita nossos ",
       "Termos e Condições",
       " e ",
       "Política de Privacidade",
     ],
-    priceDescription: "Acesso total por ",
-    perYear: "/ano",
     webAppUnavailableOnMobileNotice:
       "Infelizmente, o aplicativo web não funciona tão bem em dispositivos móveis.\n\nFelizmente, você pode baixar o aplicativo GRATUITAMENTE aqui!",
     openInBrowser: "Abrir no navegador",

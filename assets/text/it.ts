@@ -387,16 +387,16 @@ const it: AppText = {
   },
   paywall: {
     heading: "Abbonati",
-    notice:
-      "Ciao,\n\nSperiamo che ti stia godendo Link-King e stia facendo grandi progressi nel tuo percorso di apprendimento delle lingue!\n\nLa tua prova gratuita è terminata. Anche se aspiriamo a offrire Link-King gratuitamente in futuro, attualmente dobbiamo coprire diverse spese.\n\nPer continuare a utilizzare l'app e ampliare il tuo vocabolario, ti invitiamo ad abbonarti. Padroneggiare una nuova lingua richiede tempo, e investire in uno strumento potente come Link-King può fare la differenza.\n\nÈ un piccolo investimento per un grande ritorno nel tuo viaggio di apprendimento delle lingue!\n\nGrazie per far parte della comunità di Link-King.\n\nCordiali saluti,\nIl Team di Link-King",
+    message:
+      "Ottimo lavoro oggi!\nGli utenti gratuiti possono giocare fino a 5 minuti al giorno.\nSblocca tempo illimitato e funzionalità esclusive abbonandoti ora!",
+    priceDescriptionX:
+      "Accesso completo per solo #X all'anno",
     terms: [
       "Effettuando questo acquisto accetti i nostri ",
       "Termini e Condizioni",
       " e la nostra ",
       "Informativa sulla Privacy",
     ],
-    priceDescription: "Accesso completo a soli ",
-    perYear: "/anno",
     webAppUnavailableOnMobileNotice:
       "Purtroppo, l'app web non funziona bene sui dispositivi mobili.\n\nFortunatamente, puoi scaricare l'app GRATUITAMENTE qui!",
     openInBrowser: "Apri nel browser",

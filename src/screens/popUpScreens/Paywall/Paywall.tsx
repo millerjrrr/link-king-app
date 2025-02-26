@@ -18,11 +18,8 @@ const Paywall = () => {
 
   const { appLang } = useSelector(settingsState);
 
-  const heading = "Subscribe";
-  const message =
-    "Great job today!\nFree users can enjoy up to 5 minutes per day.\nUnlock unlimited playtime and exclusive features by subscribing now!";
-
-  const priceDescriptionX = "Full access for #X per year";
+  const { heading, message, priceDescriptionX } =
+    appTextSource(appLang).paywall;
 
   useSetSubscriptionPrice();
   const { subscriptionPrice, busy } =
