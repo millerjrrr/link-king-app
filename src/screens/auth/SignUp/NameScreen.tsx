@@ -38,10 +38,10 @@ const NameScreen: React.FC<NameScreenProps> = ({
       .required(required),
   });
 
-  const { formName } = useSelector(authState);
+  const { accountName } = useSelector(authState);
 
   const initialValues: FormValues = {
-    name: formName,
+    name: accountName,
   };
 
   const dispatch = useDispatch();

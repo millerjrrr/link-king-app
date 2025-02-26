@@ -8,25 +8,14 @@ import AuthFormContainer from "@src/components/Containers/AuthFormContainer";
 import { useNavigation } from "@react-navigation/native";
 import client from "@src/api/client";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  authState,
-  updateEmail,
-  updateLoggedInState,
-  updateToken,
-} from "@src/store/auth";
-import {
-  saveToAsyncStorage,
-  secureSaveToAsyncStorage,
-} from "@src/utils/asyncStorage";
+import { authState } from "@src/store/auth";
 import { useState } from "react";
-import {
-  settingsState,
-  updateSettings,
-} from "@src/store/settings";
+import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import { Formik } from "formik";
 import useCatchAsync from "@src/hooks/useCatchAsync";
 import Auth3PButtons from "@src/components/Auth3P/Auth3PButtons";
+import useUpdateAuthData from "@src/hooks/authHooks/useUpdateAuthData";
 
 const SignIn = () => {
   const { appLang } = useSelector(settingsState);
@@ -44,17 +33,17 @@ const SignIn = () => {
       .trim(password.trim)
       .required(password.required),
   });
-  const { formEmail } = useSelector(authState);
+  const { accountEmail } = useSelector(authState);
 
   const initialValues = {
-    email: formEmail,
+    email: accountEmail,
     password: "",
   };
 
   const [secureEntry, setSecureEntry] = useState(true);
   const navigation = useNavigation();
-  const dispatch = useDispatch();
   const catchAsync = useCatchAsync();
+  const updateAuthData = useUpdateAuthData();
 
   const togglePasswordView = () => {
     setSecureEntry(!secureEntry);
@@ -76,22 +65,8 @@ const SignIn = () => {
           },
         },
       );
-      await secureSaveToAsyncStorage(
-        "auth-token",
-        data.token,
-      );
-      await saveToAsyncStorage(
-        "app-lang",
-        data.data.user.homeLanguage,
-      );
-      dispatch(
-        updateSettings({
-          appLang: data.data.user.homeLanguage,
-        }),
-      );
-      dispatch(updateToken(data.token));
-      dispatch(updateLoggedInState(true));
-      dispatch(updateEmail(""));
+
+      if (data.status === "success") updateAuthData(data);
     } finally {
       actions.setSubmitting(false);
     }

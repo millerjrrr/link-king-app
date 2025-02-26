@@ -2,25 +2,15 @@ import SubmitButton from "@components/Buttons/SubmitButton";
 import AuthInputField from "@components/AuthInputField";
 import * as yup from "yup";
 import AuthFormContainer from "@components/Containers/AuthFormContainer";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  settingsState,
-  updateSettings,
-} from "@src/store/settings";
+import { useSelector } from "react-redux";
+import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
-import {
-  authState,
-  updateEmail,
-  updateJustSignedUp,
-  updateLoggedInState,
-  updateToken,
-} from "@src/store/auth";
+import { authState } from "@src/store/auth";
 import client from "@src/api/client";
 import SignUpAppLink from "@components/SignUpAppLink";
-import { secureSaveToAsyncStorage } from "@src/utils/asyncStorage";
 import { Formik } from "formik";
 import useCatchAsync from "@src/hooks/useCatchAsync";
-import { updateDictionary } from "@src/store/console";
+import useUpdateAuthData from "@src/hooks/authHooks/useUpdateAuthData";
 
 const VerificationCode = () => {
   const { appLang } = useSelector(settingsState);
@@ -42,8 +32,8 @@ const VerificationCode = () => {
     code: "",
   };
 
-  const dispatch = useDispatch();
   const catchAsync = useCatchAsync();
+  const updateAuthData = useUpdateAuthData();
 
   const onSubmit = catchAsync(async (values, actions) => {
     //console.log("# Verifying the code");
@@ -62,20 +52,7 @@ const VerificationCode = () => {
           },
         },
       );
-      await secureSaveToAsyncStorage(
-        "auth-token",
-        data.token,
-      );
-      dispatch(updateToken(data.token));
-      dispatch(
-        updateSettings({
-          appLang: data.data.user.homeLanguage,
-        }),
-      );
-      dispatch(updateDictionary(data.data.user.dictionary));
-      dispatch(updateLoggedInState(true));
-      dispatch(updateJustSignedUp(true));
-      dispatch(updateEmail(""));
+      if (data.status === "success") updateAuthData(data);
     } finally {
       actions.setSubmitting(false);
     }
@@ -84,10 +61,10 @@ const VerificationCode = () => {
   const { heading, subHeading, subHeading2, verify } =
     appTextSource(appLang).auth.signUp.code;
 
-  const { formEmail } = useSelector(authState);
+  const { accountEmail } = useSelector(authState);
 
   const newSubHeading =
-    subHeading + "(" + formEmail + "). " + subHeading2;
+    subHeading + "(" + accountEmail + "). " + subHeading2;
 
   return (
     <AuthFormContainer

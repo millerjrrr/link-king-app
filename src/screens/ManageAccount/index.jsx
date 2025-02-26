@@ -15,8 +15,8 @@ const ManageAccountScreen = ({ navigation }) => {
       .subscriptionPage;
 
   const {
-    formName: name,
-    formEmail: email,
+    accountName: name,
+    accountEmail: email,
     subscribed: userIsSubscribed,
     vip,
     admin,

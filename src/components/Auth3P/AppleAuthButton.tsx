@@ -2,26 +2,13 @@ import React, { useEffect } from "react";
 import * as AppleAuthentication from "expo-apple-authentication";
 import client from "@src/api/client";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  settingsState,
-  updateSettings,
-} from "@src/store/settings";
-import {
-  saveToAsyncStorage,
-  secureSaveToAsyncStorage,
-} from "@src/utils/asyncStorage";
-import {
-  updateEmail,
-  updateJustSignedUp,
-  updateLoggedInState,
-  updateToken,
-} from "@src/store/auth";
+import { settingsState } from "@src/store/settings";
 import useCatchAsync from "../../hooks/useCatchAsync";
 import AppleAuthGraphic from "./AppleAuthGraphic";
 import appTextSource from "@src/utils/appTextSource";
+import useUpdateAuthData from "./../../hooks/authHooks/useUpdateAuthData";
 
 const AppleAuthButton = () => {
-  const dispatch = useDispatch();
   const { appLang } = useSelector(settingsState);
   appTextSource(appLang).auth.signUp;
 
@@ -38,6 +25,7 @@ const AppleAuthButton = () => {
   }, []);
 
   const catchAsync = useCatchAsync();
+  const updateAuthData = useUpdateAuthData();
 
   const signInWithApple = catchAsync(async () => {
     const credential =
@@ -78,27 +66,7 @@ const AppleAuthButton = () => {
         },
       );
 
-      if (data.status === "success") {
-        await secureSaveToAsyncStorage(
-          "auth-token",
-          data.token,
-        );
-        await saveToAsyncStorage(
-          "app-lang",
-          data.data.user.homeLanguage,
-        );
-        dispatch(
-          updateSettings({
-            appLang: data.data.user.homeLanguage,
-          }),
-        );
-        dispatch(updateToken(data.token));
-        dispatch(
-          updateJustSignedUp(data?.newUser || false),
-        );
-        dispatch(updateLoggedInState(true));
-        dispatch(updateEmail(""));
-      }
+      if (data.status === "success") updateAuthData(data);
     },
   );
 

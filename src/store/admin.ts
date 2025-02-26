@@ -12,16 +12,7 @@ interface AdminState {
 
 const initialState: AdminState = {
   searchKeyword: "",
-  users: [
-    {
-      username: "Jacob Miller",
-      email: "millerjr@tcd.ie",
-      lastPlayed: 45714,
-      timePlayingLifetime: 468374997,
-      collectedWords: 4944,
-      rating: 1040.240058773222,
-    },
-  ],
+  users: [],
   results: 0,
   page: 1,
   allDataLoaded: false,

@@ -17,6 +17,9 @@ import AppText from "./AppText";
 const AppNotification = () => {
   const { message, type } = useSelector(notificationState);
 
+  if (process.env.NODE_ENV !== "production")
+    console.log(message, type);
+
   const dispatch = useDispatch();
 
   const { length } = message;

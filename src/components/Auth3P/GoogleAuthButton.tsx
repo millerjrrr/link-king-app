@@ -4,25 +4,13 @@ import * as Google from "expo-auth-session/providers/google";
 import { makeRedirectUri } from "expo-auth-session";
 import client from "@src/api/client";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  settingsState,
-  updateSettings,
-} from "@src/store/settings";
-import {
-  saveToAsyncStorage,
-  secureSaveToAsyncStorage,
-} from "@src/utils/asyncStorage";
-import {
-  updateEmail,
-  updateJustSignedUp,
-  updateLoggedInState,
-  updateToken,
-} from "@src/store/auth";
+import { settingsState } from "@src/store/settings";
 import useCatchAsync from "../../hooks/useCatchAsync";
 import appTextSource from "@src/utils/appTextSource";
 
 import Constants from "expo-constants";
 import Auth3PButton from "./Auth3PButton";
+import useUpdateAuthData from "./../../hooks/authHooks/useUpdateAuthData";
 
 type ExtraProps = {
   GOOGLE_WEB_CLIENT_ID?: string;
@@ -38,10 +26,7 @@ const {
   GOOGLE_ANDROID_CLIENT_ID = "",
 } = extra;
 
-declare function require(path: string): any;
-
 const GoogleAuthButton = () => {
-  const dispatch = useDispatch();
   const { appLang } = useSelector(settingsState);
   const { continueWithGoogle } =
     appTextSource(appLang).auth.signUp;
@@ -74,6 +59,7 @@ const GoogleAuthButton = () => {
   }, [response]);
 
   const catchAsync = useCatchAsync();
+  const updateAuthData = useUpdateAuthData();
 
   const loginWithGoogleToken = catchAsync(
     async (idToken: string): Promise<void> => {
@@ -99,29 +85,7 @@ const GoogleAuthButton = () => {
         },
       );
 
-      if (data.status === "success") {
-        await secureSaveToAsyncStorage(
-          "auth-token",
-          data.token,
-        );
-        await saveToAsyncStorage(
-          "app-lang",
-          data.data.user.homeLanguage,
-        );
-        dispatch(
-          updateSettings({
-            appLang: data.data.user.homeLanguage,
-          }),
-        );
-        dispatch(updateToken(data.token));
-        dispatch(
-          dispatch(
-            updateJustSignedUp(data?.newUser || false),
-          ),
-        );
-        dispatch(updateLoggedInState(true));
-        dispatch(updateEmail(""));
-      }
+      if (data.status === "success") updateAuthData(data);
     },
   );
 

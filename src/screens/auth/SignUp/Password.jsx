@@ -49,7 +49,8 @@ const Password = () => {
     setSecureEntry(!secureEntry);
   };
 
-  const { formName, formEmail } = useSelector(authState);
+  const { accountName, accountEmail } =
+    useSelector(authState);
 
   const onSubmit = catchAsync(async (values, actions) => {
     //console.log("# Signing Up");
@@ -59,8 +60,8 @@ const Password = () => {
       const { data } = await client.post(
         "/api/v1/users/sign-up",
         {
-          username: formName,
-          email: formEmail,
+          username: accountName,
+          email: accountEmail,
           password,
           passwordConfirm: password,
         },

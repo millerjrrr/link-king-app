@@ -21,8 +21,8 @@ interface AuthState {
     | "maintenance"
     | "unknown";
   refresh: number;
-  formName: string;
-  formEmail: string;
+  accountName: string;
+  accountEmail: string;
   unverifiedUserId: string;
   latestVersion: string;
 }
@@ -40,8 +40,8 @@ const initialState: AuthState = {
   appLoading: false,
   connection: "connected",
   refresh: 0,
-  formName: "",
-  formEmail: "",
+  accountName: "",
+  accountEmail: "",
   unverifiedUserId: "",
   latestVersion: "5.0.1",
 };
@@ -108,10 +108,10 @@ const slice = createSlice({
       state.connection = action.payload;
     },
     updateName(state, action: PayloadAction<string>) {
-      state.formName = action.payload;
+      state.accountName = action.payload;
     },
     updateEmail(state, action: PayloadAction<string>) {
-      state.formEmail = action.payload;
+      state.accountEmail = action.payload;
     },
     updateLatestVersion(
       state,

@@ -23,10 +23,10 @@ const Email = ({ navigation }) => {
       .required(email.required),
   });
 
-  const { formEmail } = useSelector(authState);
+  const { accountEmail } = useSelector(authState);
 
   const initialValues = {
-    email: formEmail,
+    email: accountEmail,
   };
 
   const dispatch = useDispatch();

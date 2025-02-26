@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import {
   updateAdmin,
-  updateBusyState,
+  updateAppLoadingState,
   updateConnectedState,
   updateLatestVersion,
   updateLoggedInState,
@@ -19,34 +19,39 @@ import { updateSettings } from "@src/store/settings";
 import daysLeft from "@src/utils/daysLeft";
 import useCatchAsync from "../useCatchAsync";
 import * as Localization from "expo-localization";
+import useUpdateAuthData from "./useUpdateAuthData";
 
 const useFetchAuthInfo = () => {
   const dispatch = useDispatch();
   const catchAsync = useCatchAsync();
+  const updateAuthData = useUpdateAuthData();
 
   const fetchAuthInfo = catchAsync(async () => {
     //console.log("# Fetching Auth Info");
-    let appLang =
-      (await getFromAsyncStorage("app-lang")) || false;
-
-    if (appLang) dispatch(updateSettings({ appLang }));
-    else {
-      appLang =
-        Localization.getLocales()[0]?.languageCode || "en";
-      await saveToAsyncStorage("app-lang", appLang);
-      dispatch(updateSettings({ appLang }));
-    }
-
-    const token =
-      await secureGetFromAsyncStorage("auth-token");
-
-    // if there is no token stored on device exit
-    if (!token) {
-      dispatch(updateBusyState(false));
-      return;
-    }
-
     try {
+      dispatch(updateAppLoadingState(true));
+
+      let appLang =
+        (await getFromAsyncStorage("app-lang")) || false;
+
+      if (appLang) dispatch(updateSettings({ appLang }));
+      else {
+        appLang =
+          Localization.getLocales()[0]?.languageCode ||
+          "en";
+        await saveToAsyncStorage("app-lang", appLang);
+        dispatch(updateSettings({ appLang }));
+      }
+
+      const token =
+        await secureGetFromAsyncStorage("auth-token");
+
+      // if there is no token stored on device exit
+      if (!token) {
+        dispatch(updateAppLoadingState(false));
+        return;
+      }
+
       const { data } = await client.get(
         "/api/v1/users/log-in-confirmation",
         {
@@ -58,33 +63,9 @@ const useFetchAuthInfo = () => {
         },
       );
 
-      const {
-        userCreationDate,
-        vip,
-        homeLanguage,
-        version,
-        admin,
-      } = data;
-
-      console.log(admin);
-      if (data.status === "success") {
-        dispatch(
-          updateTrialDays(daysLeft(userCreationDate)),
-        );
-        dispatch(updateVip(new Date(vip).getTime() || 0));
-        dispatch(updateAdmin(admin));
-        dispatch(updateLatestVersion(version));
-        dispatch(updateBusyState(false));
-        dispatch(updateToken(token));
-        dispatch(updateLoggedInState(true));
-        if (appLang !== homeLanguage) {
-          saveToAsyncStorage("app-lang", homeLanguage);
-          dispatch(
-            updateSettings({ appLang: homeLanguage }),
-          );
-        }
-      }
+      if (data.status === "success") updateAuthData(data);
     } catch (e) {
+      dispatch(updateAppLoadingState(false));
       if (e instanceof Error) {
         if (e.message.startsWith("timeout"))
           dispatch(updateConnectedState("disconnected"));
@@ -92,6 +73,8 @@ const useFetchAuthInfo = () => {
           dispatch(updateConnectedState("maintenance"));
         else dispatch(updateConnectedState("unknown"));
       }
+    } finally {
+      dispatch(updateAppLoadingState(false));
     }
   });
 
