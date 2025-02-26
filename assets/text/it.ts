@@ -140,6 +140,8 @@ const it: AppText = {
       "clock-outline": "Tempo di gioco",
       "trophy-variant": "Serie",
       sound: "Riattiva l'ascolto per sentire le parole",
+      solutionMessage:
+        "Tieni premuto per vedere la definizione di questa parola.\n\nDigita una di queste soluzioni nella casella di input e premi Invio per continuare.",
     },
   },
   collection: {

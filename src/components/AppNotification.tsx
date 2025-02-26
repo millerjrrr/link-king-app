@@ -20,8 +20,10 @@ const AppNotification = () => {
   const dispatch = useDispatch();
 
   const { length } = message;
+  const ns = message.split("\n").length;
+
   const notificationHeight =
-    Math.ceil(length / 24) * 30 + 30;
+    Math.ceil(length / 24) * 30 + 30 * (ns + 1);
 
   const height = useSharedValue(0);
   height.value = 0;
@@ -45,6 +47,10 @@ const AppNotification = () => {
     case "info":
       backgroundColor = colors[colorScheme].PRIMARY;
       messageTime = 3000;
+      break;
+    case "longInfo":
+      backgroundColor = colors[colorScheme].PRIMARY;
+      messageTime = 5000;
       break;
   }
 

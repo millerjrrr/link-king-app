@@ -142,6 +142,8 @@ const pt: AppText = {
       "trophy-variant": "Sem Erros",
       sound:
         "Ative a audição novamente para ouvir palavras",
+      solutionMessage:
+        "Pressione e segure para ver a definição desta palavra.\n\nDigite uma das soluções na caixa de entrada e pressione Enter para continuar.",
     },
   },
   collection: {

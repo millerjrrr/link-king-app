@@ -6,7 +6,7 @@ import { RootState } from "@src/store";
 
 interface NotificationState {
   message: string;
-  type: "error" | "info" | "success";
+  type: "error" | "info" | "success" | "longInfo";
 }
 
 const initialState: NotificationState = {

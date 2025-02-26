@@ -67,7 +67,7 @@ const WordInfoScreen = ({ route }) => {
           <View {...{ style: { height: 8 } }} />
           <WordCard {...{ ticket, onPress }} />
           <AcceptedAnswers />
-          <SolutionsList {...{ ticket, plus: true }} />
+          <SolutionsList ticket={ticket} edit />
           {wrongAnswerReturned ? <UserAttempt /> : null}
         </View>
         {wordDeleteButtonPressed ? (

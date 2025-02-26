@@ -28,7 +28,7 @@ const IsSubscribedWrapper = ({
     tail.length === 0 &&
     !isWebApp;
 
-  return !(subRequired && !subscribed) ? (
+  return subRequired && !subscribed ? (
     <Paywall />
   ) : (
     <>{children}</>

@@ -62,6 +62,7 @@ interface ConsoleStatsMessages {
   "clock-outline": string;
   "trophy-variant": string;
   sound: string;
+  solutionMessage: string;
 }
 
 interface Console {

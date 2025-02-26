@@ -49,6 +49,7 @@ const SolutionsList = ({ ticket, plus, edit }: any) => {
                 <SolutionItem
                   key={index}
                   solution={solution}
+                  edit={edit}
                 />
               );
             },

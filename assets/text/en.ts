@@ -140,6 +140,8 @@ const en: AppText = {
       "clock-outline": "Time Playing",
       "trophy-variant": "Streak",
       sound: "Turn listening back on to hear words",
+      solutionMessage:
+        "Press and hold to see a definition for this word.\n\nType one of these solutions in the input box and press enter to continue.",
     },
   },
   collection: {
