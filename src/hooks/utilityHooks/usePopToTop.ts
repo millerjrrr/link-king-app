@@ -3,12 +3,17 @@ import {
   useRoute,
 } from "@react-navigation/native";
 import { StackNavigationProp as SNP } from "@react-navigation/stack";
+import { updateSearchKeyword } from "@src/store/collection";
 import {
   CollectionStackParamList,
   ConsoleStackParamList,
   OptionsStackParamList,
 } from "@src/types/navigationTypes";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { LogBox } from "react-native";
+
+LogBox.ignoreLogs(["The action 'RESET' with payload"]);
 
 const usePopToTop = () => {
   const navigation = useNavigation();
@@ -20,6 +25,8 @@ const usePopToTop = () => {
     useNavigation<SNP<OptionsStackParamList>>();
 
   const route = useRoute();
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const unsubscribe = navigation.addListener(
@@ -37,6 +44,7 @@ const usePopToTop = () => {
             index: 0,
             routes: [{ name: "Collection" }],
           });
+          dispatch(updateSearchKeyword(""));
         }
 
         if (route.name !== "Options") {
