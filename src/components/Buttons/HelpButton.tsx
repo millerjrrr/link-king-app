@@ -19,12 +19,14 @@ interface HelpButtonProps {
   padding?: boolean;
   nopadding?: boolean;
   tintColor?: string;
+  animated?: boolean;
 }
 const HelpButton: React.FC<HelpButtonProps> = ({
   help,
   padding,
   nopadding,
   tintColor,
+  animated,
 }) => {
   const { CONTRAST } = useColors();
   const color = tintColor || CONTRAST;
@@ -34,7 +36,7 @@ const HelpButton: React.FC<HelpButtonProps> = ({
 
   const scaleAnim = useRef(new Animated.Value(1)).current;
   const animate = () => {
-    if (helpPulsing > 0 && showSolution)
+    if (helpPulsing > 0 && showSolution && animated)
       Animated.loop(
         Animated.sequence([
           Animated.timing(scaleAnim, {
@@ -67,7 +69,7 @@ const HelpButton: React.FC<HelpButtonProps> = ({
         padding: 15,
         alignItems: "center",
         justifyContent: "center",
-        zIndex: 10,
+        zIndex: 999,
         transform: [{ scale: scaleAnim }],
       }}
     >

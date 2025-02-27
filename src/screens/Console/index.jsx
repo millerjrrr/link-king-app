@@ -55,6 +55,7 @@ const Console = ({ navigation }) => {
       <TabScreenContainer
         heading={heading}
         help={navigateToHelp}
+        helpAnimated
       >
         <StatsContainer />
         <OptionsContainer />

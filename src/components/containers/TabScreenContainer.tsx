@@ -18,13 +18,21 @@ interface TabScreenContainerProps {
   children: ReactNode;
   heading: string;
   help?: () => void;
+  helpAnimated: boolean;
   noBook?: boolean;
   backFunction?: () => void;
 }
 
 const TabScreenContainer: React.FC<
   TabScreenContainerProps
-> = ({ children, heading, help, noBook, backFunction }) => {
+> = ({
+  children,
+  heading,
+  help,
+  noBook,
+  backFunction,
+  helpAnimated,
+}) => {
   const { colorScheme, golden } =
     useSelector(settingsState);
   const { busy } = useSelector(authState);
@@ -50,7 +58,11 @@ const TabScreenContainer: React.FC<
           />
         ) : null}
         <FourCrowns {...{ color }} />
-        <HelpButton {...{ help, padding: true }} />
+        <HelpButton
+          help={help}
+          padding
+          animated={helpAnimated}
+        />
         {!noBook ? (
           <FlagBook {...{ padding: true }} />
         ) : null}
