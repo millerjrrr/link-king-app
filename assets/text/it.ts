@@ -52,7 +52,9 @@ const it: AppText = {
   },
   console: {
     heading: "Console",
-    start: "Avvia",
+    promptMessage:
+      "Digita le traduzioni nella casella di input sopra.\nScrivi veloce, impara veloce!",
+    helpText: "aiuto",
     targetDetails: {
       heading: "Informazioni sul tentativo",
       timedOut: "tempo scaduto!",

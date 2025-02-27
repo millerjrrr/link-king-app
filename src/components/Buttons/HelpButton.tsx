@@ -38,7 +38,7 @@ const HelpButton: React.FC<HelpButtonProps> = ({
       Animated.loop(
         Animated.sequence([
           Animated.timing(scaleAnim, {
-            toValue: 1.5, // Grow to 1.5x size
+            toValue: 3, // Grow to 1.5x size
             duration: 700,
             useNativeDriver: true,
           }),

@@ -20,7 +20,9 @@ const RootNavigator = () => {
     currentVersion,
   );
 
-  // usePlayBackgroundMusic();
+  usePlayBackgroundMusic();
+  //we want it here so that it does not play
+  //during the splash video
 
   return updateRequired ? (
     <UpdateToLatestVersionPage />

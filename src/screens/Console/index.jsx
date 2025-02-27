@@ -2,7 +2,6 @@ import InputAndTimerContainer from "./components/InputAndTimerContainer";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import OptionsContainer from "./components/OptionsContainer";
-import KeyboardAndStartButton from "./components/KeyboardAndStartButton";
 import Tail from "./components/Tail";
 import ReadWordButton from "./components/ReadWordButton";
 import StatsContainer from "./components/StatsContainer";
@@ -20,7 +19,7 @@ import useHandleAppBackgroundExit from "../../hooks/consoleHooks/useEffects/useH
 import useUpdateOptions from "@src/hooks/consoleHooks/useEffects/useUpdateOptions";
 import usePopToTop from "@src/hooks/utilityHooks/usePopToTop";
 import IsSubscribedWrapper from "./components/IsSubscribedWrapper";
-import BackMusicButton from "./components/BackMusicButton";
+import UserPromptAndMusicButton from "./components/UserPromptAndMusicButton";
 
 const Console = ({ navigation }) => {
   const inputFieldRef = useRef(null);
@@ -65,11 +64,9 @@ const Console = ({ navigation }) => {
           setIsKeyboardVisible={setIsKeyboardVisible}
         />
         <Tail setIsKeyboardVisible={setIsKeyboardVisible} />
-        <KeyboardAndStartButton
-          inputFieldRef={inputFieldRef}
+        <UserPromptAndMusicButton
           isKeyboardVisible={isKeyboardVisible}
         />
-        <BackMusicButton />
       </TabScreenContainer>
     </IsSubscribedWrapper>
   );

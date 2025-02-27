@@ -84,7 +84,6 @@ const Tail = ({ setIsKeyboardVisible }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     width: "100%",
     textAlign: "center",
     alignItems: "center",

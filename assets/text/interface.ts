@@ -67,7 +67,8 @@ interface ConsoleStatsMessages {
 
 interface Console {
   heading: string;
-  start: string;
+  promptMessage: string;
+  helpText: string;
   targetDetails: ConsoleTargetDetails;
   editTicketScreen: ConsoleEditTicketScreen;
   help: ConsoleHelp;

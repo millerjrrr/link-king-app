@@ -53,7 +53,9 @@ const pt: AppText = {
   },
   console: {
     heading: "Console",
-    start: "Começar",
+    promptMessage:
+      "Digite as traduções na caixa de entrada acima.\nDigite rápido, aprenda rápido!",
+    helpText: "ajuda",
     targetDetails: {
       heading: "Descrição",
       timedOut: "tempo esgotado!",
