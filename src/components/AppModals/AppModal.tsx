@@ -1,4 +1,3 @@
-import colors from "@src/utils/colors";
 import { useDispatch, useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import Modal from "react-native-modal";
@@ -12,8 +11,13 @@ import { ReactNode } from "react";
 import Xbar from "./components/XBar";
 import useColors from "@src/hooks/utilityHooks/useColors";
 import AppLink from "../AppLink";
-import { Linking } from "react-native";
+import {
+  Linking,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import appTextSource from "@src/utils/appTextSource";
+import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
 
 interface Props {
   name: ModalType;
@@ -39,6 +43,10 @@ const AppModal: React.FC<Props> = ({
     dispatch(updateModals({ modalShowing: "" }));
   };
 
+  const openWebViewUrl = () => {
+    if (webViewUrl) Linking.openURL(webViewUrl);
+  };
+
   return (
     <Modal
       isVisible={name === modalShowing}
@@ -55,14 +63,28 @@ const AppModal: React.FC<Props> = ({
       >
         <Xbar x={close} />
         {children}
-        {webViewUrl ? (
+        {webViewUrl && (
+          <TouchableOpacity
+            style={{
+              position: "absolute",
+              left: 7,
+              top: 7,
+            }}
+            onPress={openWebViewUrl}
+          >
+            <SimpleLineIcons
+              name="size-fullscreen"
+              size={20}
+              color={CONTRAST}
+            />
+          </TouchableOpacity>
+        )}
+        {webViewUrl && (
           <AppLink
             title={openInBrowser}
-            onPress={() => {
-              if (webViewUrl) Linking.openURL(webViewUrl);
-            }}
+            onPress={openWebViewUrl}
           />
-        ) : null}
+        )}
       </ModalContainer>
     </Modal>
   );

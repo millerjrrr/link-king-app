@@ -1,59 +1,41 @@
-import React from "react";
-import { ScrollView, View } from "react-native";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AuthButton from "@components/Buttons/AuthButton";
-import AppText from "@src/components/AppText";
-import { selectConsoleState } from "@src/store/console";
 import { settingsState } from "@src/store/settings";
-import { languages } from "../ManageAccount/ChangeHomeLanguageScreens/SelectNewLanguageScreen/getLanguageData";
-import { ResizeMode, Video } from "expo-av";
 import appTextSource from "@src/utils/appTextSource";
-import screenDimensions from "@src/utils/screenDimensions";
-import FadeBackgroundView from "@src/components/Graphics/FadeBackgroundView";
 import { updateJustSignedUp } from "@src/store/auth";
 import TabScreenContainer from "@src/components/Containers/TabScreenContainer";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { WalkthroughStackParamList } from "@src/types/navigationTypes";
-declare function require(path: string): any;
+import Entypo from "@expo/vector-icons/Entypo";
+import useColors from "@src/hooks/utilityHooks/useColors";
+import { View } from "react-native";
+import AppText from "@src/components/AppText";
+import useCatchAsync from "@src/hooks/utilityHooks/useCatchAsync";
+import client from "@src/api/client";
+import { updateModals } from "@src/store/modals";
+import { Fill30, TouchableCard } from "./styledComponents";
 
 const YoureAllSet = () => {
   const { appLang } = useSelector(settingsState);
-  const { dictionary } = useSelector(selectConsoleState);
-
-  const { name: baseLanguage } =
-    languages[appLang as keyof typeof languages];
 
   const dispatch = useDispatch();
   const onPress = () => {
     dispatch(updateJustSignedUp(false));
   };
 
-  let { heading, subHeading, howTo, dunno, playFor, next } =
-    appTextSource(appLang).walkthrough["You're all set!"];
+  const {
+    allSet,
+    writtenInstructions,
+    videoTutorial,
+    skipTutorials,
+    next,
+  } = appTextSource(appLang).walkthrough["You're all set!"];
 
-  howTo = howTo
-    .replace("#T", dictionary)
-    .replace("#N", baseLanguage);
+  const [finishButtonText, setFinishButtonText] =
+    useState(skipTutorials);
 
-  playFor = playFor.replace("#T", dictionary);
-
-  // REQUIRE VIDEOS
-  const demoEnglishPortuguese = require("@assets/img/demos/demo-English-Portuguese.mp4");
-  const demoSpanishEnglish = require("@assets/img/demos/demo-Spanish-English.mp4");
-  const demoSolutionsEnglishPortuguese = require("@assets/img/demos/demo-solutions-English-Portuguese.mp4");
-  const demoSolutionsSpanishEnglish = require("@assets/img/demos/demo-solutions-Spanish-English.mp4");
-  const source =
-    dictionary !== "English"
-      ? demoSpanishEnglish
-      : demoEnglishPortuguese;
-
-  const source2 =
-    dictionary !== "English"
-      ? demoSolutionsSpanishEnglish
-      : demoSolutionsEnglishPortuguese;
-
-  const { width } = screenDimensions();
   const navigation =
     useNavigation<
       StackNavigationProp<WalkthroughStackParamList>
@@ -61,83 +43,76 @@ const YoureAllSet = () => {
   const backFunction = () =>
     navigation.navigate("Choose a Language to Study");
 
+  const { CONTRAST, PRIMARY } = useColors();
+
+  const goToWrittenInstructions = () =>
+    navigation.navigate("How to Play");
+
+  const catchAsync = useCatchAsync();
+
+  const watchVideoOnYouTube = catchAsync(async () => {
+    const { data } = await client.get("/links", {
+      headers: {
+        "Accept-Language": appLang,
+      },
+      timeout: 3000,
+    });
+    if (data.status === "success") {
+      const tutorialLink =
+        appLang in data.links.tutorial
+          ? data.links.tutorial[appLang]
+          : data.links.tutorial.en;
+
+      dispatch(
+        updateModals({
+          modalShowing: "webViewModal",
+          webViewUrl: tutorialLink,
+        }),
+      );
+      setFinishButtonText(next);
+    }
+  });
+
   return (
     <TabScreenContainer
-      heading={heading}
+      heading={allSet}
       noBook
       backFunction={backFunction}
     >
-      <View
-        style={{
-          flex: 1,
-        }}
+      <TouchableCard
+        bg={PRIMARY}
+        color={CONTRAST}
+        onPress={goToWrittenInstructions}
       >
-        <FadeBackgroundView
-          position="top"
-          height={30}
-          style={{ borderRadius: 10 }}
+        <Entypo
+          name="open-book"
+          size={150}
+          color={CONTRAST}
         />
-        <ScrollView
-          contentContainerStyle={{
-            alignItems: "center",
-            width: "100%",
-            paddingHorizontal: 5,
-          }}
-        >
-          <View style={{ height: 30 }} />
-          <AppText>{subHeading}</AppText>
-          <AppText>{howTo}</AppText>
-          <View
-            style={{
-              overflow: "hidden",
-              alignItems: "center",
-              margin: 20,
-              height: width * 0.8,
-            }}
-          >
-            <Video
-              style={{
-                transform: [{ translateY: -0 }],
-                height: width * 1.5,
-                width: width * 0.8,
-              }}
-              source={source}
-              isMuted
-              isLooping
-              shouldPlay
-              resizeMode={ResizeMode.COVER}
-            />
-          </View>
-          <AppText>{dunno}</AppText>
-          <Video
-            style={{
-              height: width * 0.8,
-              width: width * 0.8,
-              alignSelf: "center",
-              margin: 20,
-            }}
-            source={source2}
-            isMuted
-            isLooping
-            shouldPlay
-            resizeMode={ResizeMode.COVER}
-          />
-          <AppText>{playFor}</AppText>
-          <View style={{ height: 50 }} />
-          <AuthButton
-            title={next}
-            busy={false}
-            onPress={onPress}
-          />
-          <View style={{ height: 100 }} />
-        </ScrollView>
-        <FadeBackgroundView
-          position="bottom"
-          height={50}
-          style={{ borderRadius: 10 }}
+        <AppText style={{ paddingTop: 15 }}>
+          {writtenInstructions}
+        </AppText>
+      </TouchableCard>
+      <TouchableCard
+        bg={PRIMARY}
+        color={CONTRAST}
+        onPress={watchVideoOnYouTube}
+      >
+        <Entypo
+          name="youtube"
+          size={150}
+          color={CONTRAST}
         />
-      </View>
-      <View style={{ height: 70 }} />
+        <AppText style={{ paddingTop: 15 }}>
+          {videoTutorial}
+        </AppText>
+      </TouchableCard>
+      <Fill30 />
+      <AuthButton
+        title={finishButtonText}
+        busy={false}
+        onPress={onPress}
+      />
     </TabScreenContainer>
   );
 };

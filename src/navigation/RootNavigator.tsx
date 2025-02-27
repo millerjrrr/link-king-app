@@ -27,7 +27,7 @@ const RootNavigator = () => {
   return updateRequired ? (
     <UpdateToLatestVersionPage />
   ) : loggedIn ? (
-    justSignedUp ? (
+    !justSignedUp ? (
       <WalkthroughNavigator />
     ) : (
       <TabNavigator />

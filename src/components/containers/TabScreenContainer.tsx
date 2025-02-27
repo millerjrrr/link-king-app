@@ -18,7 +18,7 @@ interface TabScreenContainerProps {
   children: ReactNode;
   heading: string;
   help?: () => void;
-  helpAnimated: boolean;
+  helpAnimated?: boolean;
   noBook?: boolean;
   backFunction?: () => void;
 }

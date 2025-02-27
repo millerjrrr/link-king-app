@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import AuthButton from "@components/Buttons/AuthButton";
@@ -42,7 +42,10 @@ const ChooseHomeLanguage = () => {
       back={false}
       nologo
     >
-      <View style={{ alignItems: "center", width: "100%" }}>
+      <TouchableOpacity
+        onPress={changeLanguage}
+        style={{ alignItems: "center", width: "100%" }}
+      >
         <FlagImage flag1={appLang} scale={3} />
         <View style={{ height: 10 }} />
         <AppText>{nativeName}</AppText>
@@ -56,7 +59,7 @@ const ChooseHomeLanguage = () => {
           title={linkTitle}
           onPress={changeLanguage}
         />
-      </View>
+      </TouchableOpacity>
     </AuthFormContainer>
   );
 };

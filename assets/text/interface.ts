@@ -341,7 +341,11 @@ interface Walkthrough {
   "Choose Home Language": WalkthroughBase;
   "Choose a Language to Study": WalkthroughBase;
   "You're all set!": {
-    heading: string;
+    allSet: string;
+    howToPlay: string;
+    writtenInstructions: string;
+    videoTutorial: string;
+    skipTutorials: string;
     subHeading: string;
     howTo: string;
     dunno: string;

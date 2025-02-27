@@ -4,6 +4,7 @@ import ChooseALanguageToStudy from "@src/screens/walkthrough/ChooseALanguageToSt
 import ChooseHomeLanguage from "@src/screens/walkthrough/ChooseHomeLanguage";
 import SelectAndChangeHomeLanguage from "@src/screens/walkthrough/SelectAndChangeHomeLanguage";
 import Welcome from "@src/screens/walkthrough/Welcome";
+import WrittenInstructions from "@src/screens/walkthrough/WrittenInstructions";
 import YoureAllSet from "@src/screens/walkthrough/YoureAllSet";
 import { WalkthroughStackParamList } from "@src/types/navigationTypes";
 
@@ -29,6 +30,10 @@ const WalkthroughNavigator = () => {
       <Stack.Screen
         name="You're all set!"
         component={YoureAllSet}
+      />
+      <Stack.Screen
+        name="How to Play"
+        component={WrittenInstructions}
       />
       <Stack.Screen
         name="Select New Home Language"

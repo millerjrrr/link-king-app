@@ -73,6 +73,7 @@ export type WalkthroughStackParamList = {
   "Choose Home Language": undefined;
   "Choose a Language to Study": undefined;
   "You're all set!": undefined;
+  "How to Play": undefined;
   "Select New Home Language": undefined;
   "Choose a Dictionary": undefined;
 };

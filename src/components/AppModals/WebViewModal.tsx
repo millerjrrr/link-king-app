@@ -16,6 +16,7 @@ const WebViewModal = () => {
             borderRadius: 10,
             backgroundColor: "black",
           }}
+          allowsInlineMediaPlayback={true} // iOS: Allows inline playback instead of full screen
           source={{
             uri: webViewUrl,
           }}

@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import { useSelector } from "react-redux";
 import AuthButton from "@components/Buttons/AuthButton";
 import { useNavigation } from "@react-navigation/native";
@@ -46,7 +46,10 @@ const ChooseALanguageToStudy = () => {
       subHeading={subHeading}
       nologo
     >
-      <View style={{ alignItems: "center", width: "100%" }}>
+      <TouchableOpacity
+        onPress={changeStudyLanguage}
+        style={{ alignItems: "center", width: "100%" }}
+      >
         <FlagImage
           flag1={appLang}
           flag2={languageNameCodeMap[dictionary]}
@@ -65,7 +68,7 @@ const ChooseALanguageToStudy = () => {
           title={linkTitle}
           onPress={changeStudyLanguage}
         />
-      </View>
+      </TouchableOpacity>
     </AuthFormContainer>
   );
 };

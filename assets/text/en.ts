@@ -38,9 +38,13 @@ const en: AppText = {
       linkTitle: "Change study language",
     },
     "You're all set!": {
-      heading: "You're all set!",
+      allSet: "You're all set",
+      howToPlay: "How to Play",
+      writtenInstructions: "Read Instructions",
+      videoTutorial: "Watch Video Tutorial",
+      skipTutorials: "Skip Tutorials",
       subHeading:
-        "When you hit next you will be taken to the console. This is where the magic happens.\n",
+        "When you hit next you will be taken to the console. This is where the magic happens.",
       howTo:
         "Words will be presented in #T. Your goal is to type the best translation in #N",
       dunno:

@@ -38,9 +38,13 @@ const it: AppText = {
       linkTitle: "Cambia lingua di studio",
     },
     "You're all set!": {
-      heading: "Tutto pronto!",
+      allSet: "Tutto pronto",
+      howToPlay: "Come giocare",
+      writtenInstructions: "Leggi le istruzioni",
+      videoTutorial: "Guarda il tutorial video",
+      skipTutorials: "Salta i tutorial",
       subHeading:
-        "Quando premi avanti, verrai portato al console. È qui che accade la magia.\n",
+        "Quando premi avanti, verrai portato al console. È qui che accade la magia.",
       howTo:
         "Le parole verranno presentate in #T. Il tuo obiettivo è digitare la migliore traduzione in #N",
       dunno:
