@@ -76,3 +76,10 @@ export type WalkthroughStackParamList = {
   "Select New Home Language": undefined;
   "Choose a Dictionary": undefined;
 };
+
+export type TabParamList = {
+  "Console:": undefined;
+  "Collection:": undefined;
+  "Options:": undefined;
+  "Manage Account:": undefined;
+};

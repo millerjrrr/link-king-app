@@ -1,4 +1,7 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import {
+  BottomTabNavigationOptions,
+  createBottomTabNavigator,
+} from "@react-navigation/bottom-tabs";
 import CollectionNavigator from "./subnavigators/CollectionNavigator";
 import OptionsNavigator from "./subnavigators/OptionsNavigator";
 import ConsoleNavigator from "./subnavigators/ConsoleNavigator";
@@ -10,31 +13,27 @@ import {
 import React from "react";
 import ManageAccountNavigator from "./subnavigators/ManageAccountNavigator";
 import useColors from "@src/hooks/utilityHooks/useColors";
+import { TabParamList } from "@src/types/navigationTypes";
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<TabParamList>();
 
 const TabNavigator = () => {
-  const {
-    CONTRAST: color,
-    PRIMARY,
-    INACTIVE_CONTRAST,
-  } = useColors();
+  const { PRIMARY, INACTIVE_CONTRAST } = useColors();
 
   return (
     <Tab.Navigator
-      screenOptions={{
+      screenOptions={(): BottomTabNavigationOptions => ({
         tabBarShowLabel: false,
         headerShown: false,
         tabBarInactiveTintColor: INACTIVE_CONTRAST,
         tabBarHideOnKeyboard: true,
         tabBarStyle: {
-          color,
           backgroundColor: PRIMARY,
           height: 80,
           padding: 10,
           borderTopWidth: 0,
         },
-      }}
+      })}
       initialRouteName="Console:"
     >
       <Tab.Screen

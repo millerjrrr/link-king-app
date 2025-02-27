@@ -5,10 +5,7 @@ import React, { useEffect, useRef } from "react";
 import useColors from "@src/hooks/utilityHooks/useColors";
 import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
-import {
-  selectConsoleLocals,
-  selectConsoleState,
-} from "@src/store/console";
+import { selectConsoleLocals } from "@src/store/console";
 
 const AnimatedTouchable = Animated.createAnimatedComponent(
   TouchableOpacity,

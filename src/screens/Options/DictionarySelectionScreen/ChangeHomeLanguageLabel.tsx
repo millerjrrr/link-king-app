@@ -5,20 +5,17 @@ import { settingsState } from "@src/store/settings";
 import getImageSource from "@src/utils/getImageSource";
 import appTextSource from "@src/utils/appTextSource";
 import { useNavigation } from "@react-navigation/native";
+import { TabParamList } from "@src/types/navigationTypes";
+import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
 
 const ChangeHomeLanguageLabel = () => {
   const { appLang } = useSelector(settingsState);
   const { changeHomeLanguage } =
     appTextSource(appLang).options.chooseDictionary;
-  const navigation = useNavigation();
-
+  const tabNavigation =
+    useNavigation<BottomTabNavigationProp<TabParamList>>();
   const onPress = () => {
-    navigation.navigate("Manage Account:");
-    navigation.navigate("Options");
-    setTimeout(
-      () => navigation.navigate("Manage Account:"),
-      1000,
-    );
+    tabNavigation.navigate("Manage Account:");
   };
 
   return (
