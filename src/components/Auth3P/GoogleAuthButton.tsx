@@ -11,6 +11,7 @@ import appTextSource from "@src/utils/appTextSource";
 import Constants from "expo-constants";
 import Auth3PButton from "./Auth3PButton";
 import useUpdateAuthData from "./../../hooks/authHooks/useUpdateAuthData";
+import { Platform } from "react-native";
 
 type ExtraProps = {
   GOOGLE_WEB_CLIENT_ID?: string;
@@ -34,8 +35,12 @@ const GoogleAuthButton = () => {
   const redirectUri = makeRedirectUri({
     scheme: "com.linkoking.app",
   });
+
+  console.log("Redirect URI:", redirectUri);
+
   useEffect(() => {
-    WebBrowser.maybeCompleteAuthSession();
+    if (Platform.OS !== "web")
+      WebBrowser.maybeCompleteAuthSession();
   }, []);
 
   const [request, response, promptAsync] =
