@@ -10,8 +10,8 @@ import { updateModals } from "@src/store/modals";
 import useCheckTTSData from "@src/hooks/consoleHooks/useCheckTTSData";
 
 const ReadWordButton = ({
-  showSpeaker,
-  speakWord,
+  showSpeaker = false,
+  speakWord = false,
   height = 75,
 }) => {
   const {

@@ -20,14 +20,21 @@ import useUpdateOptions from "@src/hooks/consoleHooks/useEffects/useUpdateOption
 import usePopToTop from "@src/hooks/utilityHooks/usePopToTop";
 import IsSubscribedWrapper from "./components/IsSubscribedWrapper";
 import UserPromptAndMusicButton from "./components/UserPromptAndMusicButton";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { ConsoleStackParamList } from "@src/types/navigationTypes";
 
-const Console = ({ navigation }) => {
+const Console = () => {
   const inputFieldRef = useRef(null);
   const { appLang } = useSelector(settingsState);
 
   const [isKeyboardVisible, setIsKeyboardVisible] =
     useState(false);
 
+  const navigation =
+    useNavigation<
+      StackNavigationProp<ConsoleStackParamList>
+    >();
   const navigateToHelp = () => {
     navigation.navigate("Console - Help");
   };
@@ -64,7 +71,7 @@ const Console = ({ navigation }) => {
           inputFieldRef={inputFieldRef}
           setIsKeyboardVisible={setIsKeyboardVisible}
         />
-        <Tail setIsKeyboardVisible={setIsKeyboardVisible} />
+        <Tail />
         <UserPromptAndMusicButton
           isKeyboardVisible={isKeyboardVisible}
         />

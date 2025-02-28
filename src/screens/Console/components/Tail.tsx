@@ -12,14 +12,21 @@ import styled from "styled-components/native";
 import SolutionsList from "./SolutionsList";
 import AppText from "../../../components/AppText";
 
+interface Props {
+  color: string;
+  size: number;
+  opacity: number;
+}
 const TailEntryText = styled(AppText)`
-  color: ${(props) => props.color};
-  font-size: ${(props) => props.size}px;
-  opacity: ${(props) => props.opacity};
+  color: ${(props: Props) => props.color};
+  font-size: ${(props: Props) => props.size}px;
+  opacity: ${(props: Props) => props.opacity};
   text-align: center;
 `;
 
-const TailEntry = ({ index }) => {
+const TailEntry: React.FC<{ index: number }> = ({
+  index,
+}) => {
   const {
     display: { tail },
   } = useSelector(selectConsoleState);
@@ -47,16 +54,11 @@ const TailEntry = ({ index }) => {
   ) : null;
 };
 
-const Tail = ({ setIsKeyboardVisible }) => {
+const Tail = () => {
   const {
     locals: { showSolution },
     gamePlay: { solutions },
   } = useSelector(selectConsoleState);
-
-  const onPress = () => {
-    Keyboard.dismiss();
-    setIsKeyboardVisible(false);
-  };
 
   return (
     <View style={styles.container}>
@@ -70,14 +72,6 @@ const Tail = ({ setIsKeyboardVisible }) => {
       ) : (
         <SolutionsList {...{ ticket: { solutions } }} />
       )}
-      <TouchableWithoutFeedback {...{ onPress }}>
-        <View
-          style={{
-            flex: 1,
-            width: "100%",
-          }}
-        />
-      </TouchableWithoutFeedback>
     </View>
   );
 };

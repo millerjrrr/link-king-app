@@ -25,6 +25,7 @@ const SolutionsList = ({ ticket, plus, edit }: any) => {
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={web}
+          keyboardShouldPersistTaps="handled"
           contentContainerStyle={{
             padding: 5,
             paddingHorizontal: 30,
