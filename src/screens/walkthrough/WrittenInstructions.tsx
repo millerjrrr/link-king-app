@@ -124,6 +124,7 @@ const WrittenInstructions = () => {
                 aspectRatio: 1,
                 borderRadius: 15,
               }}
+              nativeControls={false}
               player={player}
             />
           </VidCard>
@@ -136,6 +137,7 @@ const WrittenInstructions = () => {
                 aspectRatio: 1,
                 borderRadius: 15,
               }}
+              nativeControls={false}
               player={player2}
             />
           </VidCard>

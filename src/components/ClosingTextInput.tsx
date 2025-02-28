@@ -23,34 +23,35 @@ const ClosingTextInput = forwardRef<TextInput, Props>(
 
     const inputAccessoryViewID = "doneButtonToolbar";
 
-    return (
+    return Platform.OS === "ios" ? (
       <>
-        {Platform.OS === "ios" && (
-          <InputAccessoryView
-            nativeID={inputAccessoryViewID}
+        <InputAccessoryView nativeID={inputAccessoryViewID}>
+          <View
+            style={{
+              padding: 10,
+              alignItems: "flex-end",
+            }}
           >
-            <View
-              style={{
-                padding: 10,
-                alignItems: "flex-end",
-              }}
-            >
-              <TouchableOpacity onPress={closeKeyboard}>
-                <Ionicons
-                  name="chevron-down-circle"
-                  size={30}
-                  color={CONTRAST}
-                />
-              </TouchableOpacity>
-            </View>
-          </InputAccessoryView>
-        )}
+            <TouchableOpacity onPress={closeKeyboard}>
+              <Ionicons
+                name="chevron-down-circle"
+                size={30}
+                color={CONTRAST}
+              />
+            </TouchableOpacity>
+          </View>
+        </InputAccessoryView>
         <TextInput
           {...props}
           ref={ref || undefined} // Ensure ref is only passed when defined
           inputAccessoryViewID={inputAccessoryViewID}
         />
       </>
+    ) : (
+      <TextInput
+        ref={ref || undefined} // Ensure ref is only passed when defined
+        {...props}
+      />
     );
   },
 );

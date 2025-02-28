@@ -11,10 +11,9 @@ import { useState } from "react";
 import useSubmitAnswer from "@src/hooks/consoleHooks/useSubmitAnswer";
 import XButton from "./XButton";
 
-const InputAndTimerContainer = ({
-  inputFieldRef,
-  setIsKeyboardVisible,
-}) => {
+const InputAndTimerContainer: React.FC<{
+  setIsKeyboardVisible: (value: boolean) => void;
+}> = ({ setIsKeyboardVisible }) => {
   const {
     gamePlay: { tries },
   } = useSelector(selectConsoleState);
@@ -33,7 +32,11 @@ const InputAndTimerContainer = ({
   // accidental double tap
   const [isDisabled, setIsDisabled] = useState(false);
 
-  const sendAnswer = ({ timeOut }) => {
+  const sendAnswer = ({
+    timeOut,
+  }: {
+    timeOut: boolean;
+  }) => {
     if (!isDisabled) {
       setIsDisabled(true);
       submitAnswer(timeOut);
@@ -52,12 +55,9 @@ const InputAndTimerContainer = ({
       <TargetDetailsButton />
       <XButton color={color} />
       <TextInputForConsole
-        {...{
-          onSubmitEditing,
-          inputFieldRef,
-          setIsKeyboardVisible,
-          color,
-        }}
+        onSubmitEditing={onSubmitEditing}
+        setIsKeyboardVisible={setIsKeyboardVisible}
+        color={color}
       />
     </View>
   );

@@ -25,7 +25,6 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { ConsoleStackParamList } from "@src/types/navigationTypes";
 
 const Console = () => {
-  const inputFieldRef = useRef(null);
   const { appLang } = useSelector(settingsState);
 
   const [isKeyboardVisible, setIsKeyboardVisible] =
@@ -68,7 +67,6 @@ const Console = () => {
         <OptionsContainer />
         <ReadWordButton />
         <InputAndTimerContainer
-          inputFieldRef={inputFieldRef}
           setIsKeyboardVisible={setIsKeyboardVisible}
         />
         <Tail />

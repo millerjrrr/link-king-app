@@ -15,19 +15,19 @@ import appShadow from "@src/utils/appShadow";
 import { speak } from "@src/utils/appSpeak";
 import useColors from "@src/hooks/utilityHooks/useColors";
 import ClosingTextInput from "@src/components/ClosingTextInput";
+import { useRef } from "react";
 
 interface Props {
-  inputFieldRef: React.RefObject<TextInput>;
   onSubmitEditing: () => void;
   setIsKeyboardVisible: (value: boolean) => void;
   color: string;
 }
 const TextInputForConsole: React.FC<Props> = ({
-  inputFieldRef,
   onSubmitEditing,
   setIsKeyboardVisible,
   color,
 }) => {
+  const inputFieldRef = useRef<TextInput>(null);
   const dispatch = useDispatch();
 
   const {
@@ -87,7 +87,7 @@ const TextInputForConsole: React.FC<Props> = ({
           : (placeholder ?? undefined)
       }
       value={formValue}
-      blurOnSubmit={false}
+      submitBehavior="submit"
       enterKeyHint="enter"
       autoCapitalize="none"
       returnKeyType="next"

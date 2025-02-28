@@ -73,6 +73,7 @@ const HowToPlay = () => {
           >
             <VideoView
               player={player}
+              nativeControls={false}
               style={{
                 transform: [{ translateY: 50 }],
                 height: 0.7 * height,

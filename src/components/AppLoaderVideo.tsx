@@ -16,7 +16,7 @@ const AppLoaderVideo = () => {
       <VideoView
         style={styles.video}
         player={player}
-        allowsFullscreen
+        nativeControls={false}
       />
     </View>
   );

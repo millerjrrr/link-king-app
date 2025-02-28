@@ -48,7 +48,7 @@ const VideoSplashScreenWrapper: React.FC<{
         <VideoView
           style={styles.video}
           player={player}
-          allowsFullscreen
+          nativeControls={false}
         />
       )}
     </View>
