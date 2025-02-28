@@ -26,7 +26,10 @@ const AppNotification = () => {
     Math.ceil(length / 24) * 30 + 30 * (ns + 1);
 
   const height = useSharedValue(0);
-  height.value = 0;
+
+  useEffect(() => {
+    height.value = 0; // ✅ Correto, agora ocorre dentro de um efeito
+  }, []);
 
   const heightStyle = useAnimatedStyle(() => {
     return {

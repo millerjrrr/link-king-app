@@ -11,11 +11,7 @@ import { ReactNode } from "react";
 import Xbar from "./components/XBar";
 import useColors from "@src/hooks/utilityHooks/useColors";
 import AppLink from "../AppLink";
-import {
-  Linking,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Linking, TouchableOpacity } from "react-native";
 import appTextSource from "@src/utils/appTextSource";
 import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
 

@@ -1,16 +1,11 @@
 import React, {
   ReactNode,
   useEffect,
-  useRef,
   useState,
 } from "react";
 import { View, StyleSheet, Platform } from "react-native";
-import {
-  AVPlaybackStatusSuccess,
-  ResizeMode,
-  Video,
-} from "expo-av";
 import * as SplashScreen from "expo-splash-screen";
+import { useVideoPlayer, VideoView } from "expo-video";
 declare function require(path: string): any;
 
 SplashScreen.preventAutoHideAsync();
@@ -18,7 +13,6 @@ SplashScreen.preventAutoHideAsync();
 const VideoSplashScreenWrapper: React.FC<{
   children: ReactNode;
 }> = ({ children }) => {
-  const videoRef = useRef<Video | null>(null);
   const [showChildren, setShowChildren] = useState(false);
 
   useEffect(() => {
@@ -26,6 +20,16 @@ const VideoSplashScreenWrapper: React.FC<{
       SplashScreen.hideAsync();
     }, 500);
   }, []);
+
+  const videoSource = require("@assets/splash-video.mp4");
+  const player = useVideoPlayer(videoSource, (player) => {
+    player.loop = false;
+    player.volume = 0.3;
+    player.play();
+    player.addListener("playToEnd", () =>
+      setShowChildren(true),
+    );
+  });
 
   return showChildren ? (
     children
@@ -41,23 +45,10 @@ const VideoSplashScreenWrapper: React.FC<{
           onEnded={() => setShowChildren(true)} // Trigger state change when video ends
         />
       ) : (
-        <Video
-          ref={videoRef}
-          source={require("@assets/splash-video.mp4")} // Replace with your video file
+        <VideoView
           style={styles.video}
-          resizeMode={ResizeMode.COVER}
-          shouldPlay
-          isLooping={false}
-          volume={0.3}
-          onPlaybackStatusUpdate={(status) => {
-            // Ensure we are dealing with a successful playback status
-            if (
-              (status as AVPlaybackStatusSuccess)
-                .didJustFinish
-            ) {
-              setShowChildren(true);
-            }
-          }}
+          player={player}
+          allowsFullscreen
         />
       )}
     </View>

@@ -20,6 +20,7 @@ import {
   TextBlock,
   VidCard,
 } from "./styledComponents";
+import { useVideoPlayer, VideoView } from "expo-video";
 declare function require(path: string): any;
 
 const WrittenInstructions = () => {
@@ -74,7 +75,19 @@ const WrittenInstructions = () => {
       ? demoSolutionsSpanishEnglish
       : demoSolutionsEnglishPortuguese;
 
-  const { width } = screenDimensions();
+  const player = useVideoPlayer(source, (player) => {
+    player.loop = true;
+    player.muted = true;
+    player.play();
+  });
+
+  const player2 = useVideoPlayer(source2, (player) => {
+    player.loop = true;
+    player.muted = true;
+    player.play();
+  });
+
+  const { height } = screenDimensions();
   const navigation =
     useNavigation<
       StackNavigationProp<WalkthroughStackParamList>
@@ -103,34 +116,27 @@ const WrittenInstructions = () => {
           <Fill30 />
           <TextBlock text={subHeading} />
           <TextBlock text={howTo} />
-          <VidCard height={width * 0.8}>
-            <Video
+          <VidCard height={height * 0.3}>
+            <VideoView
               style={{
-                transform: [{ translateY: -0 }],
-                height: width * 1.5,
-                width: width * 0.8,
+                transform: [{ translateY: 75 }],
+                height: height * 0.9,
+                aspectRatio: 1,
+                borderRadius: 15,
               }}
-              source={source}
-              isMuted
-              isLooping
-              shouldPlay
-              resizeMode={ResizeMode.COVER}
+              player={player}
             />
           </VidCard>
           <TextBlock text={dunno} />
-          <VidCard height={width}>
-            <Video
+          <VidCard height={height * 0.3}>
+            <VideoView
               style={{
-                height: width * 0.8,
-                width: width * 0.8,
-                alignSelf: "center",
-                margin: 20,
+                transform: [{ translateY: -80 }],
+                height: height * 0.4,
+                aspectRatio: 1,
+                borderRadius: 15,
               }}
-              source={source2}
-              isMuted
-              isLooping
-              shouldPlay
-              resizeMode={ResizeMode.COVER}
+              player={player2}
             />
           </VidCard>
           <TextBlock text={playFor} />

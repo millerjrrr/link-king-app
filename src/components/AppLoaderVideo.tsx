@@ -1,21 +1,22 @@
-import React, { useRef } from "react";
+import React from "react";
 import { View, StyleSheet } from "react-native";
-import { ResizeMode, Video } from "expo-av";
+import { useVideoPlayer, VideoView } from "expo-video";
 declare function require(path: string): any;
 
 const AppLoaderVideo = () => {
-  const videoRef = useRef<Video | null>(null);
+  const videoSource = require("@assets/loader.mp4");
+  const player = useVideoPlayer(videoSource, (player) => {
+    player.loop = true;
+    player.muted = true;
+    player.play();
+  });
 
   return (
     <View style={styles.container}>
-      <Video
-        ref={videoRef}
-        source={require("@assets/loader.mp4")} // Replace with your video file
+      <VideoView
         style={styles.video}
-        resizeMode={ResizeMode.COVER}
-        shouldPlay
-        isLooping
-        isMuted
+        player={player}
+        allowsFullscreen
       />
     </View>
   );

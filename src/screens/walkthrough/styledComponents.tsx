@@ -42,6 +42,8 @@ const VidCardContainer = styled(View)<Props>`
   margin: 10px;
   align-items: center;
   border-radius: 15px;
+  padding: 8px;
+  overflow: hidden;
   border-width: 3px;
   border-color: ${(props: Props) => props.color};
   background-color: ${(props: Props) => props.bg};
@@ -52,8 +54,9 @@ const VidCardContainer = styled(View)<Props>`
 const VidContainer = styled(View)`
   flex: 1;
   overflow: hidden;
+  border-radius: 15px;
   align-items: center;
-  margin-vertical: 15px;
+  justify-content: center;
 `;
 export const VidCard: React.FC<{
   children: ReactNode;

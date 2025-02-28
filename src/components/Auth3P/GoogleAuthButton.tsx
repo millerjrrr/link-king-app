@@ -36,8 +36,6 @@ const GoogleAuthButton = () => {
     scheme: "com.linkoking.app",
   });
 
-  console.log("Redirect URI:", redirectUri);
-
   useEffect(() => {
     if (Platform.OS !== "web")
       WebBrowser.maybeCompleteAuthSession();
