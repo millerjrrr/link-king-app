@@ -56,6 +56,7 @@ const AuthFormContainer: React.FC<
           ],
         }
       : {
+          keyboardShouldPersistTaps: "handled",
           contentContainerStyle: [
             styles.container,
             {

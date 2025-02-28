@@ -1,9 +1,10 @@
-import { TextInput } from "react-native";
+import { TextInputProps } from "react-native";
 import appShadow from "@src/utils/appShadow";
 import useColors from "@src/hooks/utilityHooks/useColors";
+import ClosingTextInput from "./ClosingTextInput";
 
 //This may be used in some settings tabs in the future
-const AppInput = (props) => {
+const AppInput: React.FC<TextInputProps> = (props) => {
   const {
     CONTRAST: color,
     PRIMARY: backgroundColor,
@@ -15,15 +16,15 @@ const AppInput = (props) => {
     STATUSBAR.split("-")[0] === "dark" ? "light" : "dark";
 
   return (
-    <TextInput
+    <ClosingTextInput
       {...props}
-      autoCompleteType="off"
+      placeholderTextColor={INACTIVE_CONTRAST}
+      autoComplete="off"
       selectionColor={color}
       autoCorrect={false}
       textContentType="none"
       allowFontScaling={false}
       underlineColorAndroid="transparent"
-      placeholderTextColor={INACTIVE_CONTRAST}
       keyboardAppearance={keyboardAppearance}
       style={[
         props.style,
