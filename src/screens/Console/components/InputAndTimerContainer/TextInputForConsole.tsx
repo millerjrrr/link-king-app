@@ -2,6 +2,7 @@ import {
   Platform,
   StyleSheet,
   TextInput,
+  View,
 } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -119,7 +120,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 70,
     textAlign: "center",
-    paddingBottom: 7,
+    padding: 7,
     borderRadius: 35,
     zIndex: 10,
   },

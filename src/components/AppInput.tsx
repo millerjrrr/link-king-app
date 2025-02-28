@@ -35,7 +35,7 @@ const AppInput: React.FC<TextInputProps> = (props) => {
           padding: 10,
           backgroundColor,
           color,
-          ...appShadow(color),
+          ...appShadow(color, 10),
         },
       ]}
     />
