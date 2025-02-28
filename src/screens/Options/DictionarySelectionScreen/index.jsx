@@ -50,6 +50,7 @@ const DictionarySelectionScreen = () => {
                   />
                 );
               }}
+              keyboardShouldPersistTaps="handled"
               style={styles.flatList}
               ListFooterComponent={
                 <View style={{ height: 100 }} />

@@ -55,6 +55,7 @@ const DeleteAccountScreen = () => {
   return (
     <PopUpContainer {...{ heading }}>
       <ScrollView
+        keyboardShouldPersistTaps="handled"
         contentContainerStyle={{ height: "100%" }}
       >
         <BloodRedCover />

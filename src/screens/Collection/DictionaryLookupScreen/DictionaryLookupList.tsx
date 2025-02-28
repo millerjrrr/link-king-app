@@ -56,7 +56,10 @@ const DictionaryLookupList = () => {
 
   return dictEntries === null ||
     dictEntries.length === 0 ? (
-    <ScrollView style={{ flex: 1, width: "85%" }}>
+    <ScrollView
+      keyboardShouldPersistTaps="handled"
+      style={{ flex: 1, width: "85%" }}
+    >
       <View style={{ height: 90 }} />
       {searchKeyword !== "" ? (
         <>
@@ -76,6 +79,7 @@ const DictionaryLookupList = () => {
         return <DictionaryLookupCard dictEntry={item} />;
       }}
       keyExtractor={(item) => item.id}
+      keyboardShouldPersistTaps="handled"
       style={styles.flatList}
       onEndReached={() => {
         if (!allDataLoaded) dispatch(updatePage(page + 1));

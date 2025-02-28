@@ -173,6 +173,7 @@ const CreateCustomTicketScreen = () => {
                     showsVerticalScrollIndicator={
                       Platform.OS !== "web"
                     }
+                    keyboardShouldPersistTaps="handled"
                     contentContainerStyle={{
                       padding: 5,
                       paddingHorizontal: 30,

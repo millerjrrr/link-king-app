@@ -33,6 +33,7 @@ const UserCardList = () => {
           paddingTop: 100,
           width: "100%",
         }}
+        keyboardShouldPersistTaps="handled"
         onEndReached={() => {
           if (!allDataLoaded)
             dispatch(updatePage(page + 1));

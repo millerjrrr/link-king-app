@@ -23,6 +23,7 @@ const LanguageList = ({ languages, unprotect }) => {
             />
           );
         }}
+        keyboardShouldPersistTaps="handled"
         keyExtractor={(item) => item.code}
         style={styles.flatList}
         onEndReachedThreshold={0.1}

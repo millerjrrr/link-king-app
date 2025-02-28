@@ -41,6 +41,7 @@ const WordCollectionList = ({ navigation }) => {
           );
         }}
         keyExtractor={(item) => item.id || "plusButton"}
+        keyboardShouldPersistTaps="handled"
         style={styles.flatList}
         onEndReached={() => {
           if (!allDataLoaded)

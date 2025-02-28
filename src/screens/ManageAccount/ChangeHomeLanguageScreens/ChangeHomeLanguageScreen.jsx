@@ -66,6 +66,7 @@ const ChangeHomeLanguageScreen = ({ route }) => {
   return (
     <PopUpContainer {...{ heading }}>
       <ScrollView
+        keyboardShouldPersistTaps="handled"
         contentContainerStyle={{
           alignItems: "center",
           height: "100%",
