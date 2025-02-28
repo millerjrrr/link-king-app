@@ -33,7 +33,7 @@ const VideoSplashScreenWrapper: React.FC<{
     <View style={styles.container}>
       {Platform.OS === "web" ? (
         <video
-          src="/assets/splash-video.mp4" // Ensure the video is inside public/assets/ for Next.js or CRA
+          src="/assets/assets/splash-video.mp4"
           style={styles.video}
           autoPlay
           muted

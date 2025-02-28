@@ -138,6 +138,7 @@ const it: AppText = {
         description:
           "Puoi scegliere se giocare con o senza il timeout di 10 secondi. Il tempo sarà comunque contato, ma non sarai obbligato a inviare risposte errate dopo 10 secondi. Usa questa icona per alternare tra le opzioni.",
       },
+      learnMore: "scopri di più",
     },
     statsMessages: {
       "basket-fill": "Nuove parole raccolte",

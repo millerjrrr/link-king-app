@@ -79,8 +79,7 @@ const WrittenInstructions = () => {
     useNavigation<
       StackNavigationProp<WalkthroughStackParamList>
     >();
-  const backFunction = () =>
-    navigation.navigate("You're all set!");
+  const backFunction = () => navigation.goBack();
 
   return (
     <TabScreenContainer
@@ -143,9 +142,7 @@ const WrittenInstructions = () => {
           />
           <View style={{ height: 100 }} />
         </ScrollView>
-        <FadeBackgroundView position="bottom" height={50} />
       </View>
-      <View style={{ height: 70 }} />
     </TabScreenContainer>
   );
 };

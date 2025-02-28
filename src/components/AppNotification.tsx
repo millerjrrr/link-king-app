@@ -61,7 +61,7 @@ const AppNotification = () => {
   useEffect(() => {
     if (message) {
       if (process.env.NODE_ENV !== "production")
-        console.log(message, type, "test");
+        console.log(message, "[" + type + "]");
       const performAnimation = () => {
         height.value = withTiming(notificationHeight, {
           duration: 150,

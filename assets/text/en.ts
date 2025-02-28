@@ -138,6 +138,7 @@ const en: AppText = {
         description:
           "You can also choose to play with or without the 10s timeout. Your time will still be counted but you won't be forced to submit wrong answers after 10s. Use this icon to toggle between options.",
       },
+      learnMore: "learn more",
     },
     statsMessages: {
       "basket-fill": "New Words Collected",

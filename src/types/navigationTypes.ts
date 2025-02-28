@@ -21,6 +21,8 @@ export type ConsoleStackParamList = {
   };
   "Edit Solutions": undefined;
   "Console - Help": undefined;
+  "How to Play": undefined;
+  "You're all set!": undefined;
   Progress: undefined;
   "Dictionary Selection": undefined;
 };

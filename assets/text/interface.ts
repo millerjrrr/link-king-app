@@ -53,6 +53,7 @@ interface ConsoleHelp {
   listen: ConsoleHelpSection;
   read: ConsoleHelpSection;
   countdown: ConsoleHelpSection;
+  learnMore: string;
 }
 
 interface ConsoleStatsMessages {

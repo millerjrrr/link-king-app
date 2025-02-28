@@ -139,6 +139,7 @@ const pt: AppText = {
         description:
           "Você também pode optar por jogar com ou sem o tempo limite de 10s, para escrever a palavra. Use esse icone para habilitar ou desabilitar essa função.",
       },
+      learnMore: "saiba mais",
     },
     statsMessages: {
       "basket-fill": "Novas Palavras Coletadas",

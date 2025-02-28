@@ -10,12 +10,13 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { WalkthroughStackParamList } from "@src/types/navigationTypes";
 import Entypo from "@expo/vector-icons/Entypo";
 import useColors from "@src/hooks/utilityHooks/useColors";
-import { View } from "react-native";
 import AppText from "@src/components/AppText";
 import useCatchAsync from "@src/hooks/utilityHooks/useCatchAsync";
 import client from "@src/api/client";
 import { updateModals } from "@src/store/modals";
 import { Fill30, TouchableCard } from "./styledComponents";
+import { ScrollView, View } from "react-native";
+import FadeBackgroundView from "@src/components/Graphics/FadeBackgroundView";
 
 const YoureAllSet = () => {
   const { appLang } = useSelector(settingsState);
@@ -40,8 +41,7 @@ const YoureAllSet = () => {
     useNavigation<
       StackNavigationProp<WalkthroughStackParamList>
     >();
-  const backFunction = () =>
-    navigation.navigate("Choose a Language to Study");
+  const backFunction = () => navigation.goBack();
 
   const { CONTRAST, PRIMARY } = useColors();
 
@@ -79,40 +79,56 @@ const YoureAllSet = () => {
       noBook
       backFunction={backFunction}
     >
-      <TouchableCard
-        bg={PRIMARY}
-        color={CONTRAST}
-        onPress={goToWrittenInstructions}
+      <View
+        style={{
+          flex: 1,
+        }}
       >
-        <Entypo
-          name="open-book"
-          size={150}
-          color={CONTRAST}
-        />
-        <AppText style={{ paddingTop: 15 }}>
-          {writtenInstructions}
-        </AppText>
-      </TouchableCard>
-      <TouchableCard
-        bg={PRIMARY}
-        color={CONTRAST}
-        onPress={watchVideoOnYouTube}
-      >
-        <Entypo
-          name="youtube"
-          size={150}
-          color={CONTRAST}
-        />
-        <AppText style={{ paddingTop: 15 }}>
-          {videoTutorial}
-        </AppText>
-      </TouchableCard>
-      <Fill30 />
-      <AuthButton
-        title={finishButtonText}
-        busy={false}
-        onPress={onPress}
-      />
+        <FadeBackgroundView position="top" height={30} />
+        <ScrollView
+          contentContainerStyle={{
+            alignItems: "center",
+            width: "100%",
+            paddingHorizontal: 5,
+          }}
+        >
+          <TouchableCard
+            bg={PRIMARY}
+            color={CONTRAST}
+            onPress={goToWrittenInstructions}
+          >
+            <Entypo
+              name="open-book"
+              size={150}
+              color={CONTRAST}
+            />
+            <AppText style={{ paddingTop: 15 }}>
+              {writtenInstructions}
+            </AppText>
+          </TouchableCard>
+          <TouchableCard
+            bg={PRIMARY}
+            color={CONTRAST}
+            onPress={watchVideoOnYouTube}
+          >
+            <Entypo
+              name="youtube"
+              size={150}
+              color={CONTRAST}
+            />
+            <AppText style={{ paddingTop: 15 }}>
+              {videoTutorial}
+            </AppText>
+          </TouchableCard>
+          <Fill30 />
+          <AuthButton
+            title={finishButtonText}
+            busy={false}
+            onPress={onPress}
+          />
+          <Fill30 />
+        </ScrollView>
+      </View>
     </TabScreenContainer>
   );
 };

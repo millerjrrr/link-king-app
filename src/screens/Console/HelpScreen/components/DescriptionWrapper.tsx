@@ -7,15 +7,29 @@ import {
   ComponentDesc,
   ComponentTitle,
 } from "./StyledComponents";
+import { ReactNode } from "react";
 
-const DescriptionWrapper = ({ name, children }) => {
+interface DescriptionWrapperProps {
+  name: string;
+  children: ReactNode;
+}
+const DescriptionWrapper: React.FC<
+  DescriptionWrapperProps
+> = ({ name, children }) => {
   const { colorScheme, golden, appLang } =
     useSelector(settingsState);
   const color = colors[colorScheme].CONTRAST[golden];
   const backgroundColor = colors[colorScheme].PRIMARY;
 
+  const text = appTextSource(appLang).console.help;
+
   const { title, description } =
-    appTextSource(appLang).console.help[name];
+    typeof text[name as keyof typeof text] === "object"
+      ? (text[name as keyof typeof text] as {
+          title: string;
+          description: string;
+        })
+      : { title: "Error", description: "Error" };
 
   return (
     <CardContainer {...{ backgroundColor, color }}>

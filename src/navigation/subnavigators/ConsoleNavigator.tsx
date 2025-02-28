@@ -11,6 +11,8 @@ import WordInfoScreen from "@src/screens/Collection/WordInfoScreen";
 import EditTicketScreen from "@src/screens/Collection/EditTicketScreen";
 import Console from "@src/screens/Console";
 import { ConsoleStackParamList } from "@src/types/navigationTypes";
+import WrittenInstructions from "@src/screens/walkthrough/WrittenInstructions";
+import YoureAllSet from "@src/screens/walkthrough/YoureAllSet";
 
 const ConsoleStack =
   createStackNavigator<ConsoleStackParamList>();
@@ -37,6 +39,14 @@ const ConsoleNavigator = () => {
       <ConsoleStack.Screen
         name="Console - Help"
         component={HelpScreen}
+      />
+      <ConsoleStack.Screen
+        name="You're all set!"
+        component={YoureAllSet}
+      />
+      <ConsoleStack.Screen
+        name="How to Play"
+        component={WrittenInstructions}
       />
       <ConsoleStack.Screen
         name="Progress"
