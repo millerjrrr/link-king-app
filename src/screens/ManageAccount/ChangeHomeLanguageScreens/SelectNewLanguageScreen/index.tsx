@@ -6,6 +6,7 @@ import LanguageSearchBar from "./LanguageSearchBar";
 import { useEffect, useState } from "react";
 import getLanguageData from "./getLanguageData";
 import LanguageList from "./LanguageList";
+import { normalize } from "@src/utils/normalize";
 
 const SelectNewHomeLanguageScreen: React.FC<{
   unprotect?: boolean;
@@ -20,9 +21,10 @@ const SelectNewHomeLanguageScreen: React.FC<{
 
   useEffect(() => {
     setLanguages(
-      getLanguageData.filter((language) =>
-        language.native.includes(searchKeyword),
-      ),
+      getLanguageData.filter((language) => {
+        const normalized = normalize(language.native);
+        return normalized.includes(searchKeyword);
+      }),
     );
   }, [searchKeyword]);
 
