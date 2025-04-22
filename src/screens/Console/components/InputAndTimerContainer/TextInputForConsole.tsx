@@ -89,6 +89,16 @@ const TextInputForConsole: React.FC<Props> = ({
       }
       value={formValue}
       submitBehavior="submit"
+      onKeyPress={(e) => {
+        if (
+          Platform.OS === "web" &&
+          e.nativeEvent.key === "Enter"
+        ) {
+          e.preventDefault?.();
+          console.log("Enter pressed — stay focused");
+          onSubmitEditing();
+        }
+      }}
       enterKeyHint="enter"
       autoCapitalize="none"
       returnKeyType="next"
