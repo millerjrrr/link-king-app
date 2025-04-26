@@ -1,5 +1,5 @@
 import InputAndTimerContainer from "./components/InputAndTimerContainer";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import OptionsContainer from "./components/OptionsContainer";
 import Tail from "./components/Tail";

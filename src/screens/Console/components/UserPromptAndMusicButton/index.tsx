@@ -1,4 +1,6 @@
+import { View } from "react-native";
 import BackMusicButton from "./BackMusicButton";
+import ResetAccountButton from "./ResetAccountButton";
 import UserPrompt from "./UserPrompt";
 
 const UserPromptAndMusicButton: React.FC<{
@@ -7,7 +9,10 @@ const UserPromptAndMusicButton: React.FC<{
   return isKeyboardVisible ? null : (
     <>
       <UserPrompt />
-      <BackMusicButton />
+      <View style={{ flexDirection: "row" }}>
+        <BackMusicButton />
+        <ResetAccountButton />
+      </View>
     </>
   );
 };
