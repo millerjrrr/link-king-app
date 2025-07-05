@@ -23,6 +23,7 @@ import UserPromptAndMusicButton from "./components/UserPromptAndMusicButton";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { ConsoleStackParamList } from "@src/types/navigationTypes";
+import { useRequestPermissions } from "@src/hooks/utilityHooks/useRequestPermissions";
 
 const Console = () => {
   const { appLang } = useSelector(settingsState);
@@ -47,6 +48,7 @@ const Console = () => {
   }, [isKeyboardVisible]);
 
   // Hook calls
+  useRequestPermissions();
   useManageGolden();
   useTimeManager();
   useConsoleUpdates();

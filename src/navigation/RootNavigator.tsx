@@ -7,6 +7,7 @@ import UpdateToLatestVersionPage from "@src/screens/popUpScreens/UpdateToLatestV
 import Constants from "expo-constants";
 import compareVersions from "@src/utils/versionCompare";
 import usePlayBackgroundMusic from "@src/hooks/utilityHooks/usePlayBackgroundMusic";
+import { useSyncBadgeWithDue } from "@src/hooks/utilityHooks/useSyncBadgeWithDue";
 
 const RootNavigator = () => {
   const currentVersion =
@@ -20,6 +21,7 @@ const RootNavigator = () => {
     currentVersion,
   );
 
+  useSyncBadgeWithDue();
   usePlayBackgroundMusic();
   //we want it here so that it does not play
   //during the splash video

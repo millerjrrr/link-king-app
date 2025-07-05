@@ -3,7 +3,7 @@ export default ({ config }) => ({
   expo: {
     name: "Link-King",
     slug: "LinkKingApp",
-    version: "5.3.0",
+    version: "5.4.0",
     orientation: "portrait",
     icon: "./assets/icon.png",
     userInterfaceStyle: "light",
@@ -17,7 +17,7 @@ export default ({ config }) => ({
     ios: {
       buildNumber: "1",
       supportsTablet: false,
-      bundleIdentifier: "com.linkoking.app",
+      bundleIdentifier: "com.linkoking.app", //change to com.linkoking.app.dev for dev builds
       useAppleSignIn: true,
       entitlements: {
         "aps-environment": "production",
@@ -68,7 +68,7 @@ export default ({ config }) => ({
         "ACCESS_NETWORK_STATE",
       ],
       icon: "./assets/adaptive-icon.png",
-      package: "com.linkoking.app",
+      package: "com.linkoking.app", //change to com.linkoking.app.dev for dev builds
       versionCode: 65,
       adaptiveIcon: {
         foregroundImage: "./assets/android-icon.png",
@@ -85,6 +85,7 @@ export default ({ config }) => ({
       },
     },
     plugins: [
+      "expo-video",
       "expo-av",
       "expo-localization",
       "expo-secure-store",
