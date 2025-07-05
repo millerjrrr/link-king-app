@@ -9,12 +9,23 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
+    "types": [],
     "paths": {
-      "@src/*": ["src/*"],
-      "@assets/*": ["assets/*"],
-      "@auth/*": ["src/screens/auth/*"],
-      "@Console/*": ["src/screens/Console/*"],
-      "@components/*": ["src/components/*"]
+      "@src/*": [
+        "src/*"
+      ],
+      "@assets/*": [
+        "assets/*"
+      ],
+      "@auth/*": [
+        "src/screens/auth/*"
+      ],
+      "@Console/*": [
+        "src/screens/Console/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ]
     }
   },
   "include": [
