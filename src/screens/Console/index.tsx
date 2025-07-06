@@ -24,6 +24,7 @@ import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { ConsoleStackParamList } from "@src/types/navigationTypes";
 import { useRequestPermissions } from "@src/hooks/utilityHooks/useRequestPermissions";
+import useSendPushToken from "@src/hooks/utilityHooks/useSendPushToken";
 
 const Console = () => {
   const { appLang } = useSelector(settingsState);
@@ -47,8 +48,11 @@ const Console = () => {
     if (!isKeyboardVisible) dispatch(incHelpPulsing());
   }, [isKeyboardVisible]);
 
-  // Hook calls
+  // HOOK CALLS
+  // Push Token and Permissions
   useRequestPermissions();
+  useSendPushToken();
+  // Effects
   useManageGolden();
   useTimeManager();
   useConsoleUpdates();
