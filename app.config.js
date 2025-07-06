@@ -52,6 +52,7 @@ export default ({ config }) => ({
             CFBundleURLSchemes: [process.env.CF_BUNDLE_URL],
           },
         ],
+        ITSAppUsesNonExemptEncryption: false,
       },
     },
     androidStatusBar: {
