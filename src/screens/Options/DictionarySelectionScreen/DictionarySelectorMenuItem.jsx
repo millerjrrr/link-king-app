@@ -26,8 +26,10 @@ const DictionarySelectorMenuItem = ({
 
   const navigation = useNavigation();
 
-  const onPress = () => {
-    if (!selected) sendDictionary(dictionary);
+  const onPress = async () => {
+    if (!selected) {
+      await sendDictionary(dictionary);
+    }
     navigation.goBack();
   };
 
