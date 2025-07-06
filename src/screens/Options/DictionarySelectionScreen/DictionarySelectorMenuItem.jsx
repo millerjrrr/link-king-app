@@ -5,6 +5,7 @@ import { selectConsoleState } from "@src/store/console";
 import { View } from "react-native";
 import useSendDictionary from "@src/hooks/optionsHooks/useSendDictionary";
 import OptionsMenuItem from "../components/OptionsMenuItem";
+import { useNavigation } from "@react-navigation/native";
 
 const DictionarySelectorMenuItem = ({
   name: dictionary,
@@ -23,11 +24,12 @@ const DictionarySelectorMenuItem = ({
   const selected = dictionary === currentDictionary;
   const sendDictionary = useSendDictionary();
 
-  const onPress = selected
-    ? null
-    : () => {
-        sendDictionary(dictionary);
-      };
+  const navigation = useNavigation();
+
+  const onPress = () => {
+    if (!selected) sendDictionary(dictionary);
+    navigation.goBack();
+  };
 
   return (
     <View {...{ style: { height: 70, width: "100%" } }}>
