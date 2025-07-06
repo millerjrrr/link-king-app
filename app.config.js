@@ -69,7 +69,7 @@ export default ({ config }) => ({
       ],
       icon: "./assets/adaptive-icon.png",
       package: "com.linkoking.app", //change to com.linkoking.app.dev for dev builds
-      versionCode: 65,
+      versionCode: 66,
       adaptiveIcon: {
         foregroundImage: "./assets/android-icon.png",
         backgroundColor: "#000000",

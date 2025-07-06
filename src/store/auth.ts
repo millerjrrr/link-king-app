@@ -43,7 +43,7 @@ const initialState: AuthState = {
   accountName: "",
   accountEmail: "",
   unverifiedUserId: "",
-  latestVersion: "5.0.1",
+  latestVersion: "5.4.0",
 };
 
 const slice = createSlice({
