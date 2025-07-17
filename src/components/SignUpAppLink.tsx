@@ -4,10 +4,16 @@ import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import { View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { AuthStackParamList } from "@src/types/navigationTypes";
 
 const SignUpAppLink = ({}) => {
-  const navigation = useNavigation();
-  onPress = () => {
+  const navigation =
+    useNavigation<
+      StackNavigationProp<AuthStackParamList>
+    >();
+
+  const onPress = () => {
     navigation.navigate("Sign In");
   };
 
@@ -23,7 +29,7 @@ const SignUpAppLink = ({}) => {
         alignItems: "center",
       }}
     >
-      <AppLink {...{ title, onPress }} />
+      <AppLink title={title} onPress={onPress} />
     </View>
   );
 };

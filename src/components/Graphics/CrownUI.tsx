@@ -1,6 +1,18 @@
 import { Image } from "react-native";
+import CrownImage from "@assets/adaptive-icon.png";
 
-const CrownUI = ({
+interface CrownUIProps {
+  size: number;
+  position:
+    | "top-left"
+    | "top-right"
+    | "bottom-left"
+    | "bottom-right";
+  rotation: number;
+  color: `#{string}`;
+}
+
+const CrownUI: React.FC<CrownUIProps> = ({
   size = 96,
   position,
   rotation,
@@ -37,7 +49,7 @@ const CrownUI = ({
   }
   return (
     <Image
-      source={require("@assets/adaptive-icon.png")}
+      source={CrownImage}
       resizeMode="contain"
       tintColor={color}
       style={{

@@ -2,9 +2,12 @@ import React from "react";
 import { useFormikContext } from "formik";
 import { View } from "react-native";
 import RedSafetyButton from "./RedSafetyButton";
-import BusyWrapper from "./../Loader/BusyWrapper";
+import BusyWrapper from "../Loader/BusyWrapper";
+import { AntDesign } from "@expo/vector-icons";
 
-const FormikSafetyButton = ({ iconName = "delete" }) => {
+const FormikSafetyButton: React.FC<{
+  iconName: keyof typeof AntDesign.glyphMap;
+}> = ({ iconName = "delete" }) => {
   const { handleSubmit, isSubmitting } = useFormikContext();
 
   const completeFunction = () => {

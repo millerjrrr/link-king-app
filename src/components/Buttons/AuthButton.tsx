@@ -10,7 +10,11 @@ import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import AppText from "../AppText";
 
-const AuthButton = ({ title, busy, onPress }) => {
+const AuthButton: React.FC<{
+  title: string;
+  busy?: boolean;
+  onPress: () => void;
+}> = ({ title, busy, onPress }) => {
   const { colorScheme, golden } =
     useSelector(settingsState);
 
@@ -31,7 +35,7 @@ const AuthButton = ({ title, busy, onPress }) => {
       >
         <BusyWrapper
           color={color}
-          busy={busy}
+          busy={!!busy}
           size={25}
           noFlex
         >

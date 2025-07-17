@@ -2,12 +2,23 @@ import { StyleSheet, TouchableOpacity } from "react-native";
 import StatusBarFiller from "../StatusBarFiller";
 import { useSelector } from "react-redux";
 import { selectConsoleState } from "@src/store/console";
-import { useNavigation } from "@react-navigation/native";
+import {
+  useNavigation,
+  useRoute,
+} from "@react-navigation/native";
 import FlagImage from "../Graphics/FlagImage";
 import { settingsState } from "@src/store/settings";
 import languageNameCodeMap from "@src/utils/languageNameCodeMap";
+import { StackNavigationProp } from "@react-navigation/stack";
+import {
+  CollectionStackParamList,
+  ConsoleStackParamList,
+  OptionsStackParamList,
+} from "@src/types/navigationTypes";
 
-const FlagBook = ({ padding }) => {
+const FlagBook: React.FC<{ padding: number }> = ({
+  padding,
+}) => {
   const { dictionary } = useSelector(selectConsoleState);
   const { appLang } = useSelector(settingsState);
   const [flag1, flag2] = [
@@ -15,8 +26,21 @@ const FlagBook = ({ padding }) => {
     languageNameCodeMap[dictionary],
   ];
   const navigation = useNavigation();
+  const route = useRoute();
   const onPress = () => {
-    navigation.navigate("Dictionary Selection");
+    if (route.name.startsWith("Console")) {
+      (
+        navigation as StackNavigationProp<ConsoleStackParamList>
+      ).navigate("Dictionary Selection");
+    } else if (route.name.startsWith("Collection")) {
+      (
+        navigation as StackNavigationProp<CollectionStackParamList>
+      ).navigate("Dictionary Selection");
+    } else if (route.name.startsWith("Options")) {
+      (
+        navigation as StackNavigationProp<OptionsStackParamList>
+      ).navigate("Dictionary Selection");
+    }
   };
 
   return (
@@ -30,7 +54,7 @@ const FlagBook = ({ padding }) => {
       }}
     >
       {padding ? <StatusBarFiller /> : null}
-      <FlagImage {...{ flag1, flag2 }} />
+      <FlagImage flag1={flag1} flag2={flag2} />
     </TouchableOpacity>
   );
 };

@@ -4,7 +4,10 @@ import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import AppText from "./AppText";
 
-const AppLink = ({ title, onPress }) => {
+const AppLink: React.FC<{
+  title: string;
+  onPress: () => void;
+}> = ({ title, onPress }) => {
   const { colorScheme } = useSelector(settingsState);
   const color = colors[colorScheme].INACTIVE_CONTRAST;
 

@@ -15,17 +15,18 @@ import {
   redCoverState,
   updateRedCover,
 } from "@src/store/redCover";
-import {
-  useFocusEffect,
-  useNavigation,
-} from "@react-navigation/native";
+import { useFocusEffect } from "@react-navigation/native";
 
-const RedSafetyButton = ({
+const RedSafetyButton: React.FC<{
+  completeFunction: () => void;
+  iconName: keyof typeof AntDesign.glyphMap;
+  size: number;
+}> = ({
   completeFunction,
   iconName = "delete",
   size = 60,
 }) => {
-  const pressTimer = useRef(null);
+  const pressTimer = useRef(0);
   const { colorScheme, appLang } =
     useSelector(settingsState);
   const { PRIMARY, SECONDARY, RED } = colors[colorScheme];
@@ -95,7 +96,7 @@ const RedSafetyButton = ({
     dispatch(
       updateNotification({
         message,
-        type: "fail",
+        type: "error",
       }),
     );
   };
@@ -120,11 +121,9 @@ const RedSafetyButton = ({
         }}
       >
         <AntDesign
-          {...{
-            name: iconName,
-            size: size / 2,
-            color: RED,
-          }}
+          name={iconName}
+          size={size / 2}
+          color={RED}
         />
       </TouchableHighlight>
     </View>

@@ -1,13 +1,20 @@
 import { Image } from "react-native";
+import LinkKingLogoImage from "@assets/img/link-king-header-logo-flair.png";
 
-const LinkKingLogo = ({
+interface LinkKingLogoProps {
+  height: number;
+  marginTop: number;
+  tintColor: `#{string}`;
+}
+
+const LinkKingLogo: React.FC<LinkKingLogoProps> = ({
   height = 100,
   marginTop = 20,
   tintColor,
 }) => {
   return (
     <Image
-      source={require("@assets/img/link-king-header-logo-flair.png")}
+      source={LinkKingLogoImage}
       resizeMode="contain"
       tintColor={tintColor}
       style={{
