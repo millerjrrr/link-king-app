@@ -16,7 +16,6 @@ interface GamePlay {
   solutions: string[];
   speechLang: string;
   target: string;
-  tries: number;
 }
 
 interface Options {
@@ -46,6 +45,7 @@ interface Locals {
   golden: number;
   options: Options;
   musicIsPlaying: boolean;
+  isDisabled: boolean;
 }
 
 interface ConsoleState {
@@ -66,7 +66,6 @@ const initialState: ConsoleState = {
     solutions: [],
     target: "",
     speechLang: "",
-    tries: 3,
   },
   stats: {
     due: 0,
@@ -88,6 +87,7 @@ const initialState: ConsoleState = {
     golden: 0,
     options: { sound: true, blurred: false, timer: true },
     musicIsPlaying: false,
+    isDisabled: false,
   },
 };
 
@@ -100,11 +100,6 @@ const slice = createSlice({
       action: PayloadAction<Partial<Options>>,
     ) {
       Object.assign(state.locals.options, action.payload);
-    },
-    updateTries(state) {
-      state.gamePlay.tries -= 1;
-      state.locals.timerKey += 1;
-      state.locals.isPlaying = true;
     },
     updateBusyState(state, action: PayloadAction<boolean>) {
       state.locals.busy = action.payload;
@@ -187,12 +182,14 @@ const slice = createSlice({
       state.locals.musicIsPlaying =
         !state.locals.musicIsPlaying;
     },
+    setDisabled(state, action: PayloadAction<boolean>) {
+      state.locals.isDisabled = action.payload;
+    },
   },
 });
 
 export const {
   updateOptions,
-  updateTries,
   updateBusyState,
   updateFormValue,
   resetConsole,
@@ -209,6 +206,7 @@ export const {
   incrementStatsTime,
   updateDictionary,
   toggleMusicIsPlaying,
+  setDisabled,
 } = slice.actions;
 
 export const selectConsoleState = (state: RootState) =>

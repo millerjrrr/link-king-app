@@ -2,7 +2,6 @@ import {
   Platform,
   StyleSheet,
   TextInput,
-  View,
 } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -17,6 +16,8 @@ import { speak } from "@src/utils/appSpeak";
 import useColors from "@src/hooks/utilityHooks/useColors";
 import ClosingTextInput from "@src/components/ClosingTextInput";
 import { useRef } from "react";
+import { acceptAnswer } from "@src/utils/acceptAnswer";
+import useSubmitAnswer from "@src/hooks/consoleHooks/useSubmitAnswer";
 
 interface Props {
   onSubmitEditing: () => void;
@@ -30,6 +31,7 @@ const TextInputForConsole: React.FC<Props> = ({
 }) => {
   const inputFieldRef = useRef<TextInput>(null);
   const dispatch = useDispatch();
+  const submitAnswer = useSubmitAnswer();
 
   const {
     locals: {
@@ -46,6 +48,9 @@ const TextInputForConsole: React.FC<Props> = ({
 
   const onChangeText = (text: string) => {
     dispatch(updateFormValue(text));
+    if (acceptAnswer(text, solutions)) {
+      submitAnswer(text);
+    }
   };
 
   const onFocus = async () => {
@@ -95,7 +100,6 @@ const TextInputForConsole: React.FC<Props> = ({
           e.nativeEvent.key === "Enter"
         ) {
           e.preventDefault?.();
-          console.log("Enter pressed — stay focused");
           onSubmitEditing();
         }
       }}

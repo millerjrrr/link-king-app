@@ -10,7 +10,7 @@ import { updateSelectedTicket } from "@src/store/collection";
 const TargetDetailsButton = () => {
   const {
     display: { tail },
-    gamePlay: { id, target, solutions, rating, tries },
+    gamePlay: { id, target, solutions, rating },
   } = useSelector(selectConsoleState);
 
   const { colorScheme } = useSelector(settingsState);
@@ -26,7 +26,7 @@ const TargetDetailsButton = () => {
   };
   const dispatch = useDispatch();
 
-  return tries === 1 && tail.length === 0 ? (
+  return tail.length === 0 ? (
     <TouchableOpacity
       onPress={() => {
         dispatch(updateSelectedTicket(ticket));
