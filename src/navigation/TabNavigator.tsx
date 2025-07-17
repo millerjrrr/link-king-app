@@ -23,6 +23,7 @@ const TabNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={(): BottomTabNavigationOptions => ({
+        lazy: false,
         tabBarShowLabel: false,
         headerShown: false,
         tabBarInactiveTintColor: INACTIVE_CONTRAST,
