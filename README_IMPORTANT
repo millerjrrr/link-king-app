@@ -1,0 +1,7 @@
+# You will need to create a .env file for this project to work.
+# Copy this file, rename it to `.env`, and fill in the appropriate values.
+
+# Google OAuth Credentials
+GOOGLE_WEB_CLIENT_ID=your-web-client-id-here
+GOOGLE_IOS_CLIENT_ID=your-ios-client-id-here
+GOOGLE_ANDROID_CLIENT_ID=your-android-client-id-here

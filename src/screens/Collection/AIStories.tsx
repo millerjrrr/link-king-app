@@ -14,9 +14,9 @@ import {
   View,
 } from "react-native";
 import { useSelector } from "react-redux";
-import useFetchStoryPrompt from "./../../hooks/collectionHooks/useFetchStoryPrompt";
 import { collectionState } from "@src/store/collection";
 import { selectConsoleState } from "@src/store/console";
+import useFetchStoryPrompt from "@src/hooks/collectionHooks/useFetchStoryPrompt";
 
 const AIStories = () => {
   const fetchStoryPrompt = useFetchStoryPrompt();

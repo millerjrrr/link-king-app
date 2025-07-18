@@ -2,7 +2,7 @@ import React from "react";
 import SubmitButton from "@components/Buttons/SubmitButton";
 import AuthInputField from "@components/AuthInputField";
 import * as yup from "yup";
-import AuthFormContainer from "@components/Containers/AuthFormContainer";
+import AuthFormContainer from "@src/components/Containers/AuthFormContainer";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
