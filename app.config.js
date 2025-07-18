@@ -1,7 +1,7 @@
 export default ({ config }) => ({
   ...config,
   expo: {
-    name: "Link-King",
+    name: "LK Dev",
     slug: "LinkKingApp",
     version: "5.4.0",
     orientation: "portrait",
@@ -17,7 +17,7 @@ export default ({ config }) => ({
     ios: {
       buildNumber: "1",
       supportsTablet: false,
-      bundleIdentifier: "com.linkoking.app", //change to com.linkoking.app.dev for dev builds
+      bundleIdentifier: "com.linkoking.app.dev", //change to com.linkoking.app.dev for dev builds
       useAppleSignIn: true,
       entitlements: {
         "aps-environment": "production",
@@ -53,6 +53,8 @@ export default ({ config }) => ({
           },
         ],
         ITSAppUsesNonExemptEncryption: false,
+        NSMicrophoneUsageDescription:
+          "This app requires access to the microphone to convert your speech to text.",
       },
     },
     androidStatusBar: {
@@ -67,6 +69,7 @@ export default ({ config }) => ({
         "INTERNET",
         "com.android.vending.BILLING",
         "ACCESS_NETWORK_STATE",
+        "RECORD_AUDIO",
       ],
       icon: "./assets/adaptive-icon.png",
       package: "com.linkoking.app", //change to com.linkoking.app.dev for dev builds
@@ -76,9 +79,6 @@ export default ({ config }) => ({
         backgroundColor: "#000000",
       },
       softwareKeyboardLayoutMode: "pan",
-      blockedPermissions: [
-        "android.permission.RECORD_AUDIO",
-      ],
       splash: {
         image: "./assets/splash.png",
         resizeMode: "contain",

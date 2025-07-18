@@ -1,24 +1,25 @@
 import { View, StyleSheet } from "react-native";
-import colors from "@src/utils/colors";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  selectConsoleState,
+  selectConsoleLocals,
   updateOptions,
 } from "@src/store/console";
 import OptionsIcon from "./OptionsIcon";
-import { settingsState } from "@src/store/settings";
 import useCheckTTSData from "@src/hooks/consoleHooks/useCheckTTSData";
 import { updateModals } from "@src/store/modals";
+import listenerService from "@src/utils/listenerService";
 
-const OptionsContainer = ({ size = 40, show = 0 }) => {
+interface OptionsContainerProps {
+  size?: number;
+  show?: "all" | "sound" | "blurred" | "time" | "listening";
+}
+const OptionsContainer: React.FC<OptionsContainerProps> = ({
+  size = 35,
+  show = "all",
+}) => {
   const {
-    locals: {
-      options: { sound, blurred, timer },
-    },
-  } = useSelector(selectConsoleState);
-  const { colorScheme, golden } =
-    useSelector(settingsState);
-  const color = colors[colorScheme].CONTRAST[golden];
+    options: { sound, blurred, timer, listening },
+  } = useSelector(selectConsoleLocals);
 
   const checkTTSData = useCheckTTSData();
   const dispatch = useDispatch();
@@ -58,43 +59,55 @@ const OptionsContainer = ({ size = 40, show = 0 }) => {
     dispatch(updateOptions(options));
   };
 
+  const listeningButtonFunction = async () => {
+    if (!listening) {
+      listenerService.startListening();
+    } else {
+      listenerService.stopListening();
+    }
+  };
+
   return (
     <View style={styles.container}>
-      {show === 0 || show === 1 ? (
+      {show === "all" || show === "sound" ? (
         <OptionsIcon
-          {...{
-            onPress: soundButtonFunction,
-            color,
-            size,
-            option: sound,
-            textTrue: "hearing",
-            textFalse: "hearing-disabled",
-          }}
+          onPress={soundButtonFunction}
+          iconLib="MaterialIcons"
+          size={size}
+          select={sound}
+          trueIconName="hearing"
+          falseIconName="hearing-disabled"
         />
       ) : null}
-      {show === 0 || show === 2 ? (
+      {show === "all" || show === "blurred" ? (
         <OptionsIcon
-          {...{
-            onPress: blurredButtonFunction,
-            color,
-            size,
-            entypo: true,
-            option: !blurred,
-            textTrue: "eye",
-            textFalse: "eye-with-line",
-          }}
+          onPress={blurredButtonFunction}
+          iconLib="Entypo"
+          size={size}
+          select={!blurred}
+          trueIconName="eye"
+          falseIconName="eye-with-line"
         />
       ) : null}
-      {show === 0 || show === 3 ? (
+      {show === "all" || show === "time" ? (
         <OptionsIcon
-          {...{
-            onPress: timerButtonFunction,
-            color,
-            size,
-            option: timer,
-            textTrue: "timer",
-            textFalse: "timer-off",
-          }}
+          onPress={timerButtonFunction}
+          iconLib="MaterialIcons"
+          size={size}
+          select={timer}
+          trueIconName="timer"
+          falseIconName="timer-off"
+        />
+      ) : null}
+      {show === "all" || show === "listening" ? (
+        <OptionsIcon
+          onPress={listeningButtonFunction}
+          iconLib="FontAwesome"
+          size={size}
+          select={listening}
+          trueIconName="microphone"
+          falseIconName="microphone-slash"
+          animated={listening}
         />
       ) : null}
     </View>

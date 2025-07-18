@@ -22,6 +22,7 @@ interface Options {
   sound: boolean;
   blurred: boolean;
   timer: boolean;
+  listening: boolean;
 }
 
 interface Stats {
@@ -85,7 +86,12 @@ const initialState: ConsoleState = {
     timerKey: 0,
     busy: false,
     golden: 0,
-    options: { sound: true, blurred: false, timer: true },
+    options: {
+      sound: true,
+      blurred: false,
+      timer: true,
+      listening: false,
+    },
     musicIsPlaying: false,
     isDisabled: false,
   },
