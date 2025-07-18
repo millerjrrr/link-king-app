@@ -1,7 +1,7 @@
 import SubmitButton from "@components/Buttons/SubmitButton";
 import AuthInputField from "@components/AuthInputField";
 import * as yup from "yup";
-import AuthFormContainer from "@components/Containers/AuthFormContainer";
+import AuthFormContainer from "@src/components/Containers/AuthFormContainer";
 import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";

@@ -14,6 +14,25 @@ module.exports = function (api) {
           allowUndefined: false,
         },
       ],
+      [
+        "module-resolver",
+        {
+          alias: {
+            "@src": "./src",
+            "@assets": "./assets",
+            "@screens": "./src/screens",
+            "@navigation": "./src/navigation",
+            "@hooks": "./src/hooks",
+            "@store": "./src/store",
+            "@types": "./src/types",
+            "@utils": "./src/utils",
+            "@auth": "./src/screens/auth",
+            "@Console": "./src/screens/Console",
+            "@components": "./src/components",
+          },
+          extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
+        },
+      ],
     ],
   };
 };

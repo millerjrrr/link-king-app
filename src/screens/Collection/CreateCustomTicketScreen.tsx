@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import * as yup from "yup";
-import AuthFormContainer from "@components/Containers/AuthFormContainer";
+import AuthFormContainer from "@src/components/Containers/AuthFormContainer";
 import AuthInputField from "@components/AuthInputField";
 import SubmitButton from "@components/Buttons/SubmitButton";
 import {

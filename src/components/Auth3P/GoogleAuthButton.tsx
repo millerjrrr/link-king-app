@@ -3,14 +3,14 @@ import * as WebBrowser from "expo-web-browser";
 import * as Google from "expo-auth-session/providers/google";
 import { makeRedirectUri } from "expo-auth-session";
 import client from "@src/api/client";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import useCatchAsync from "../../hooks/utilityHooks/useCatchAsync";
 import appTextSource from "@src/utils/appTextSource";
 
 import Constants from "expo-constants";
 import Auth3PButton from "./Auth3PButton";
-import useUpdateAuthData from "./../../hooks/authHooks/useUpdateAuthData";
+import useUpdateAuthData from "@src/hooks/authHooks/useUpdateAuthData";
 import { Platform } from "react-native";
 
 type ExtraProps = {

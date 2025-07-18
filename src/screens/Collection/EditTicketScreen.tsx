@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import * as yup from "yup";
-import AuthFormContainer from "@components/Containers/AuthFormContainer";
+import AuthFormContainer from "@src/components/Containers/AuthFormContainer";
 import AuthInputField from "@components/AuthInputField";
 import SubmitButton from "@components/Buttons/SubmitButton";
 import { Platform, ScrollView, View } from "react-native";

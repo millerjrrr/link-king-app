@@ -9,7 +9,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
-    "types": [],
+    "types": ["styled-components-react-native"],
     "paths": {
       "@src/*": [
         "src/*"
