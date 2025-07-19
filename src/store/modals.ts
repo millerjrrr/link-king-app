@@ -4,21 +4,14 @@ import {
 } from "@reduxjs/toolkit";
 import { RootState } from "@src/store";
 import { Modal } from "@src/types/Modals";
-
-interface Ticket {
-  id?: string;
-  target?: string;
-  solutions?: string[];
-  rating?: number;
-  level?: number;
-}
+import Ticket from "@src/types/Ticket";
 
 interface ModalState {
   modalShowing: Modal | "";
   definitionSearchWord: string;
   definitionSearchLanguage: string;
   showNewWordAddedModal: boolean;
-  ticket: Ticket;
+  ticket: Ticket | {};
   webViewUrl: string;
 }
 

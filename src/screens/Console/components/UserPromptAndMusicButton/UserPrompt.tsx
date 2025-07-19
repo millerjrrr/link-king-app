@@ -8,12 +8,18 @@ import {
   incHelpPulsing,
   settingsState,
 } from "@src/store/settings";
-import { updateShowSolution } from "@src/store/console";
+import {
+  selectConsoleLocals,
+  updateShowSolution,
+} from "@src/store/console";
 import appTextSource from "@src/utils/appTextSource";
 
 const UserPrompt = () => {
   const { PRIMARY, CONTRAST } = useColors();
   const { appLang } = useSelector(settingsState);
+  const { showTypeTranslationsInfoBox } = useSelector(
+    selectConsoleLocals,
+  );
   const { promptMessage, helpText } =
     appTextSource(appLang).console;
   const dispatch = useDispatch();
@@ -27,6 +33,9 @@ const UserPrompt = () => {
         justifyContent: "flex-end",
         width: "100%",
         paddingVertical: 15,
+        display: showTypeTranslationsInfoBox
+          ? "flex"
+          : "none",
       }}
     >
       <CardContainer

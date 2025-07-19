@@ -1,7 +1,7 @@
 import CrownUI from "./CrownUI";
 
 const FourCrowns: React.FC<{
-  color: `#{string}`;
+  color: `#${string}`;
   size?: number;
 }> = ({ color, size = 96 }) => {
   const positions: Array<

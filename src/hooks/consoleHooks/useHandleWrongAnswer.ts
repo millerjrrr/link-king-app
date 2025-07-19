@@ -9,10 +9,11 @@ import {
   selectConsoleLocals,
   updateFormValue,
 } from "@src/store/console";
-import { Vibration } from "react-native";
+import { Keyboard, Vibration } from "react-native";
 import { speak } from "@src/utils/appSpeak";
 import { useDispatch, useSelector } from "react-redux";
 import useCatchAsync from "@src/hooks/utilityHooks/useCatchAsync";
+import { updateModals } from "@src/store/modals";
 
 const useHandleWrongAnswer = () => {
   const dispatch = useDispatch();
@@ -43,12 +44,30 @@ const useHandleWrongAnswer = () => {
         );
 
         const {
-          gamePlay: { target, speechLang: language },
+          display: { tail },
+          gamePlay,
+          isNewWord,
         } = data;
+        const {
+          speechLang: language,
+          tries,
+          ...ticket
+        } = gamePlay;
+
+        console.log(ticket);
+        // ✅ Check for newDicWord
+        if (isNewWord) {
+          () => Keyboard.dismiss();
+          dispatch(updateModals({ ticket }));
+          dispatch(
+            updateModals({ showNewWordAddedModal: true }),
+          );
+        }
+
         dispatch(updateConsoleState({ ...data }));
         dispatch(resetTimer());
         dispatch(updateFormValue(""));
-        speak({ target, language, sound });
+        speak({ target: ticket.target, language, sound });
         dispatch(resetConsole());
       } finally {
         dispatch(updateBusyState(false));

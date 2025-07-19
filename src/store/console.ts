@@ -47,6 +47,7 @@ interface Locals {
   options: Options;
   musicIsPlaying: boolean;
   isDisabled: boolean;
+  showTypeTranslationsInfoBox: boolean;
 }
 
 interface ConsoleState {
@@ -94,6 +95,7 @@ const initialState: ConsoleState = {
     },
     musicIsPlaying: false,
     isDisabled: false,
+    showTypeTranslationsInfoBox: true,
   },
 };
 

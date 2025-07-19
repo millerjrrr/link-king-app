@@ -25,6 +25,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { ConsoleStackParamList } from "@src/types/navigationTypes";
 import { useRequestPermissions } from "@src/hooks/utilityHooks/useRequestPermissions";
 import useSendPushToken from "@src/hooks/utilityHooks/useSendPushToken";
+import NewWordAddedModal from "@src/components/AppModals/NewWordAddedModal";
 
 const Console = () => {
   const { appLang } = useSelector(settingsState);
@@ -79,6 +80,7 @@ const Console = () => {
         <UserPromptAndMusicButton
           isKeyboardVisible={isKeyboardVisible}
         />
+        <NewWordAddedModal inConsole />
       </TabScreenContainer>
     </IsSubscribedWrapper>
   );

@@ -9,9 +9,14 @@ import { speak } from "@src/utils/appSpeak";
 import { updateModals } from "@src/store/modals";
 import useCheckTTSData from "@src/hooks/consoleHooks/useCheckTTSData";
 
-const ReadWordButton = ({
-  showSpeaker = false,
-  speakWord = false,
+interface ReadWordButtonProps {
+  showSpeaker?: boolean;
+  speakWord?: string;
+  height?: number;
+}
+const ReadWordButton: React.FC<ReadWordButtonProps> = ({
+  showSpeaker,
+  speakWord,
   height = 75,
 }) => {
   const {
@@ -24,7 +29,7 @@ const ReadWordButton = ({
   const dispatch = useDispatch();
   const checkTTSData = useCheckTTSData();
 
-  const newTarget = speakWord ? speakWord : target;
+  const newTarget = !!speakWord ? speakWord : target;
   const onPress = async () => {
     const TTS = sound || (await checkTTSData());
     if (!TTS)

@@ -10,6 +10,7 @@ import {
   updateFormValue,
   updateTimerIsOn,
   updateShowSolution,
+  updateLocals,
 } from "@src/store/console";
 import appShadow from "@src/utils/appShadow";
 import { speak } from "@src/utils/appSpeak";
@@ -60,6 +61,9 @@ const TextInputForConsole: React.FC<Props> = ({
     dispatch(updateShowSolution(false));
     dispatch(updateFormValue(""));
     dispatch(restartTheTimer());
+    dispatch(
+      updateLocals({ showTypeTranslationsInfoBox: false }),
+    );
   };
 
   const onBlur = () => {

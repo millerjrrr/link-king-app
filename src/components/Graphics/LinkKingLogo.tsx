@@ -4,7 +4,7 @@ import LinkKingLogoImage from "@assets/img/link-king-header-logo-flair.png";
 interface LinkKingLogoProps {
   height: number;
   marginTop: number;
-  tintColor: `#{string}`;
+  tintColor: `#${string}`;
 }
 
 const LinkKingLogo: React.FC<LinkKingLogoProps> = ({

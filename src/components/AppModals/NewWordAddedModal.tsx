@@ -19,14 +19,23 @@ import AcceptedAnswers from "@src/screens/Collection/WordInfoScreen/AcceptedAnsw
 import { selectConsoleState } from "@src/store/console";
 import appTextSource from "@src/utils/appTextSource";
 import Modal from "react-native-modal";
-import useColors from "@src/hooks/utilityHooks/useColors";
-import DefinitionInWebViewModal from "./DefinitionInWebViewModal";
+import SwiperWrapper from "./SwiperWrapper";
+import SwipeInstructions from "./SwipeInstructions";
+import useColors from "src/hooks/utilityHooks/useColors";
+import Ticket from "@src/types/Ticket";
+import ReadWordButton from "@src/screens/Console/components/ReadWordButton";
 
-const NewWordAddedModal = () => {
+const NewWordAddedModal: React.FC<{
+  inConsole?: boolean;
+}> = ({ inConsole }) => {
   const { appLang } = useSelector(settingsState);
   const { PRIMARY, CONTRAST } = useColors();
 
-  const { ticket } = useSelector(modalState);
+  const { ticket: untypedTicket } = useSelector(modalState);
+
+  if (Object.keys(untypedTicket).length === 0) return;
+  const ticket = untypedTicket as Ticket;
+
   const { wordAdded } =
     appTextSource(appLang).collection
       .dictionaryLookupScreen;
@@ -54,6 +63,18 @@ const NewWordAddedModal = () => {
     );
   };
 
+  const swipeLeftFunction = () => {
+    if (inConsole) {
+      console.log("left");
+    }
+
+    x();
+  };
+
+  const swipeRightFunction = () => {
+    x();
+  };
+
   const { showNewWordAddedModal } = useSelector(modalState);
 
   return (
@@ -66,28 +87,42 @@ const NewWordAddedModal = () => {
         alignItems: "center",
       }}
     >
-      <ModalContainer
-        backgroundColor={PRIMARY}
-        color={CONTRAST}
+      <SwiperWrapper
+        name="newWordAddedModal"
+        closeFunction={x}
+        swipeLeftFunction={swipeLeftFunction}
+        swipeRightFunction={swipeRightFunction}
       >
-        <NewWordModalContainer>
-          <XBarContainer onPress={x}>
-            <AntDesign
-              name="close"
-              size={24}
-              color={CONTRAST}
+        <ModalContainer
+          backgroundColor={PRIMARY}
+          color={CONTRAST}
+        >
+          <NewWordModalContainer>
+            <XBarContainer onPress={x}>
+              <AntDesign
+                name="close"
+                size={24}
+                color={CONTRAST}
+              />
+            </XBarContainer>
+            <NewWordHeader>{wordAdded}</NewWordHeader>
+            {!inConsole ? (
+              <WordCard
+                ticket={ticket}
+                onPress={showWordInfo}
+              />
+            ) : (
+              <ReadWordButton speakWord={ticket.target} />
+            )}
+            <AcceptedAnswers />
+            <SolutionsList
+              ticket={ticket}
+              edit={!inConsole}
             />
-          </XBarContainer>
-          <NewWordHeader>{wordAdded}</NewWordHeader>
-          <WordCard
-            ticket={ticket}
-            onPress={showWordInfo}
-          />
-          <AcceptedAnswers />
-          <SolutionsList ticket={ticket} edit />
-        </NewWordModalContainer>
-      </ModalContainer>
-      <DefinitionInWebViewModal />
+          </NewWordModalContainer>
+        </ModalContainer>
+        {inConsole && <SwipeInstructions />}
+      </SwiperWrapper>
     </Modal>
   );
 };

@@ -9,7 +9,7 @@ interface CrownUIProps {
     | "bottom-left"
     | "bottom-right";
   rotation: number;
-  color: `#{string}`;
+  color: `#${string}`;
 }
 
 const CrownUI: React.FC<CrownUIProps> = ({

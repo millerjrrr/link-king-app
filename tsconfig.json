@@ -11,21 +11,17 @@
     "baseUrl": ".",
     "types": ["styled-components-react-native"],
     "paths": {
-      "@src/*": [
-        "src/*"
-      ],
-      "@assets/*": [
-        "assets/*"
-      ],
-      "@auth/*": [
-        "src/screens/auth/*"
-      ],
-      "@Console/*": [
-        "src/screens/Console/*"
-      ],
-      "@components/*": [
-        "src/components/*"
-      ]
+      "@src/*": ["src/*"],
+      "@assets/*": ["assets/*"],
+      "@screens/*": ["src/screens/*"],
+      "@navigation/*": ["src/navigation/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@store/*": ["src/store/*"],
+      "@types/*": ["src/types/*"],
+      "@utils/*": ["src/utils/*"],
+      "@auth/*": ["src/screens/auth/*"],
+      "@Console/*": ["src/screens/Console/*"],
+      "@components/*": ["src/components/*"]
     }
   },
   "include": [

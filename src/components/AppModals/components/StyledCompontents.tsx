@@ -21,10 +21,10 @@ export const ModalContainer = styled(View)<{
   backgroundColor: string;
   color: string;
 }>`
-  width: ${width * 0.85}px;
   padding-horizontal: 5px;
   border-radius: 10px;
   align-items: center;
+  justify-content: center;
   background-color: ${(props: Props) =>
     props.backgroundColor};
   ${(props: Props) =>
@@ -46,7 +46,7 @@ export const NewWordModalContainer = styled(View)`
 `;
 
 export const NewWordHeader = styled(AppText)`
-  font-size: 25px;
+  font-size: 15px;
   padding-bottom: 10px;
 `;
 

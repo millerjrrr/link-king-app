@@ -2,26 +2,29 @@ import { StatusBarStyle } from "expo-status-bar";
 
 interface ColorScheme {
   STATUSBAR: StatusBarStyle;
-  PRIMARY: string;
-  SECONDARY: string;
-  CONTRAST: [string, string];
-  INACTIVE_CONTRAST: string;
-  ORANGE: string;
-  RED: string;
-  LIGHTRED: string;
-  GREEN: string;
+  PRIMARY: `#${string}`;
+  SECONDARY: `#${string}`;
+  CONTRAST: [`#${string}`, `#${string}`];
+  INACTIVE_CONTRAST: `#${string}`;
+  ORANGE: `#${string}`;
+  RED: `#${string}`;
+  LIGHTRED: `#${string}`;
+  GREEN: `#${string}`;
 }
 
 const commonColors = {
-  ORANGE: "#f8ab54",
-  RED: "#f37777",
-  LIGHTRED: "#f377774d",
-  GREEN: "#2ecc71",
+  ORANGE: "#f8ab54" as `#${string}`,
+  RED: "#f37777" as `#${string}`,
+  LIGHTRED: "#f377774d" as `#${string}`,
+  GREEN: "#2ecc71" as `#${string}`,
 };
 
 const darkText = {
-  CONTRAST: ["#362718", "#8a793e"] as [string, string],
-  INACTIVE_CONTRAST: "#36271880",
+  CONTRAST: ["#362718", "#8a793e"] as [
+    `#${string}`,
+    `#${string}`,
+  ],
+  INACTIVE_CONTRAST: "#36271880" as `#${string}`,
   STATUSBAR: "dark" as StatusBarStyle,
 };
 
