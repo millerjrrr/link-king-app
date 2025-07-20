@@ -5,6 +5,9 @@ node_modules/
 
 *.env
 
+# Commit Message
+COMMIT_MESSAGE.md
+
 # Expo
 .expo/
 dist/

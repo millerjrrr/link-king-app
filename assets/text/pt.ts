@@ -60,6 +60,10 @@ const pt: AppText = {
     promptMessage:
       "Digite as traduções na caixa de entrada acima.\nDigite rápido, aprenda rápido!",
     helpText: "ajuda",
+    swipeGesturePrompts: {
+      left: "Jogar fora!",
+      right: "Manter!",
+    },
     targetDetails: {
       heading: "Descrição",
       timedOut: "tempo esgotado!",

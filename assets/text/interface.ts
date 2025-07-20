@@ -70,6 +70,10 @@ interface Console {
   heading: string;
   promptMessage: string;
   helpText: string;
+  swipeGesturePrompts: {
+    left: string;
+    right: string;
+  };
   targetDetails: ConsoleTargetDetails;
   editTicketScreen: ConsoleEditTicketScreen;
   help: ConsoleHelp;

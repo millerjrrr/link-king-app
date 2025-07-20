@@ -30,13 +30,17 @@ const SwiperWrapper = ({
 }: SwiperWrapperProps) => {
   //gesture handling logic
   const pivotHeight = -1000; // adjust based on modal size
-  const { modalShowing } = useSelector(modalState);
+  const { modalShowing, showNewWordAddedModal } =
+    useSelector(modalState);
 
   useEffect(() => {
     if (name === modalShowing) {
       rotation.value = 0; // instant reset when modal opens
     }
-  }, [modalShowing]);
+    if (showNewWordAddedModal === true) {
+      rotation.value = 0;
+    }
+  }, [modalShowing, showNewWordAddedModal]);
 
   const rotation = useSharedValue(0);
 

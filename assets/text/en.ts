@@ -59,6 +59,10 @@ const en: AppText = {
     promptMessage:
       "Type translations into the input above.\nType fast, learn fast!",
     helpText: "help",
+    swipeGesturePrompts: {
+      left: "Bin it!",
+      right: "Keep it!",
+    },
     targetDetails: {
       heading: "Attempt Info",
       timedOut: "timed out!",

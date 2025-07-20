@@ -13,6 +13,9 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import useColors from "@src/hooks/utilityHooks/useColors";
+import appTextSource from "../../utils/appTextSource";
+import { useSelector } from "react-redux";
+import { settingsState } from "../../store/settings";
 
 interface InstructionProps {
   iconProps: any;
@@ -59,6 +62,10 @@ const AnimatedInstruction =
 
 const SwipeInstructions = () => {
   const { GREEN, RED } = useColors();
+  const { appLang } = useSelector(settingsState);
+  const { left, right } =
+    appTextSource(appLang).console.swipeGesturePrompts;
+
   const scaleAnim = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
@@ -96,7 +103,7 @@ const SwipeInstructions = () => {
           size: 140,
           color: RED,
         }}
-        label="Left Swipe"
+        label={left}
         style={{
           transform: [
             { scale: scaleAnim },
@@ -112,7 +119,7 @@ const SwipeInstructions = () => {
           color: GREEN,
           style: { transform: [{ scaleX: -1 }] },
         }}
-        label="Right Swipe"
+        label={right}
         style={{
           transform: [
             { scale: scaleAnim },

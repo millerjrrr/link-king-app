@@ -5,7 +5,7 @@ import {
 import { RootState } from "@src/store";
 
 interface Display {
-  raceTrack: string[];
+  raceTrack: string;
   tail: string[];
 }
 
@@ -60,7 +60,7 @@ interface ConsoleState {
 
 const initialState: ConsoleState = {
   dictionary: "Spanish",
-  display: { raceTrack: [], tail: [] },
+  display: { raceTrack: "", tail: [] },
   gamePlay: {
     id: "",
     level: 0,

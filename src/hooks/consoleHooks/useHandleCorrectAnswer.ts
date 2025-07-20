@@ -27,7 +27,6 @@ const useHandleCorrectAnswer = () => {
       10 * 1000,
     );
     if (time > 500) {
-      console.log(time);
       try {
         dispatch(
           updateLocals({

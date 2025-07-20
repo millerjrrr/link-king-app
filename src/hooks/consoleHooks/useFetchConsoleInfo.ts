@@ -7,6 +7,8 @@ import {
 import clientWithAuth from "@src/api/clientWithAuth";
 import useCatchAsync from "@src/hooks/utilityHooks/useCatchAsync";
 import { useDispatch } from "react-redux";
+import { typeCheckConsoleData } from "../../utils/typeCheckConsoleData";
+import { array } from "yup";
 
 const useFetchConsoleInfo = () => {
   const catchAsync = useCatchAsync();
@@ -14,32 +16,39 @@ const useFetchConsoleInfo = () => {
 
   const fetchConsoleInfo = catchAsync(
     async (repeatRepeats: boolean = false) => {
-      //console.log("# Fetching console info");
       const url = repeatRepeats
         ? "/api/v1/console/repeat-repeats"
         : "/api/v1/console/send-game-state";
       try {
         dispatch(updateBusyState(true));
         dispatch(updateShowSolution(false));
-        const {
-          data: { dictionary, display, gamePlay, stats },
-        } = await clientWithAuth.get(url);
+
+        const { data } = await clientWithAuth.get(url);
+
+        if (!typeCheckConsoleData(data)) {
+          console.log(data);
+          throw new Error(
+            "Received invalid console data shape from API",
+          );
+        }
+
         dispatch(
           updateConsoleState({
-            dictionary,
-            display,
-            gamePlay,
-            stats,
+            dictionary: data.dictionary,
+            display: data.display,
+            gamePlay: data.gamePlay,
+            stats: data.stats,
           }),
         );
+
         dispatch(
           updateLocals({
             busy: false,
-            golden: Number(stats.steps === 0),
+            golden: Number(data.stats.steps === 0),
           }),
         );
       } finally {
-        dispatch(updateBusyState(false)); //important that this comes first
+        dispatch(updateBusyState(false)); // important that this comes first
       }
     },
   );

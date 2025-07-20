@@ -59,6 +59,10 @@ const it: AppText = {
     promptMessage:
       "Digita le traduzioni nella casella di input sopra.\nScrivi veloce, impara veloce!",
     helpText: "aiuto",
+    swipeGesturePrompts: {
+      left: "Eliminalo!",
+      right: "Tienilo!",
+    },
     targetDetails: {
       heading: "Informazioni sul tentativo",
       timedOut: "tempo scaduto!",

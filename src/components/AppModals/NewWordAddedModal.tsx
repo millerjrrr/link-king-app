@@ -24,16 +24,18 @@ import SwipeInstructions from "./SwipeInstructions";
 import useColors from "src/hooks/utilityHooks/useColors";
 import Ticket from "@src/types/Ticket";
 import ReadWordButton from "@src/screens/Console/components/ReadWordButton";
+import useDeleteThisTicketAndGetNewOne from "@src/hooks/consoleHooks/useDeleteThisTicketAndGetNewOne";
 
 const NewWordAddedModal: React.FC<{
   inConsole?: boolean;
 }> = ({ inConsole }) => {
   const { appLang } = useSelector(settingsState);
   const { PRIMARY, CONTRAST } = useColors();
+  const deleteThisTicketAndGetNewOne =
+    useDeleteThisTicketAndGetNewOne();
 
   const { ticket: untypedTicket } = useSelector(modalState);
 
-  if (Object.keys(untypedTicket).length === 0) return;
   const ticket = untypedTicket as Ticket;
 
   const { wordAdded } =
@@ -65,7 +67,7 @@ const NewWordAddedModal: React.FC<{
 
   const swipeLeftFunction = () => {
     if (inConsole) {
-      console.log("left");
+      deleteThisTicketAndGetNewOne(ticket.id);
     }
 
     x();
@@ -76,6 +78,8 @@ const NewWordAddedModal: React.FC<{
   };
 
   const { showNewWordAddedModal } = useSelector(modalState);
+
+  if (Object.keys(untypedTicket).length === 0) return null;
 
   return (
     <Modal
