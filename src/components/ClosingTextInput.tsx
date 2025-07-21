@@ -18,6 +18,7 @@ const ClosingTextInput = forwardRef<TextInput, Props>(
     const { CONTRAST } = useColors();
 
     const closeKeyboard = () => {
+      console.log("pressed");
       Keyboard.dismiss();
     };
 
@@ -29,13 +30,22 @@ const ClosingTextInput = forwardRef<TextInput, Props>(
           <View
             style={{
               padding: 10,
-              alignItems: "flex-end",
+              position: "relative", // default but explicit
+              height: 40,
             }}
           >
-            <TouchableOpacity onPress={closeKeyboard}>
+            <TouchableOpacity
+              onPress={closeKeyboard}
+              style={{
+                position: "absolute",
+                top: 0,
+                right: 7,
+                zIndex: 10000,
+              }}
+            >
               <Ionicons
                 name="chevron-down-circle"
-                size={30}
+                size={35}
                 color={CONTRAST}
               />
             </TouchableOpacity>

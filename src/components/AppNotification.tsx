@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { StyleSheet, View } from "react-native";
+import { Pressable, StyleSheet, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import {
   notificationState,
@@ -61,6 +61,11 @@ const AppNotification = () => {
     number | NodeJS.Timeout | null
   >(null);
 
+  const closeNotification = () => {
+    height.value = withTiming(0, { duration: 150 });
+    dispatch(updateNotification({ message: "", type }));
+  };
+
   useEffect(() => {
     if (message) {
       if (process.env.NODE_ENV !== "production")
@@ -70,12 +75,10 @@ const AppNotification = () => {
           duration: 150,
         });
 
-        timeOutIdRef.current = setTimeout(() => {
-          height.value = withTiming(0, { duration: 150 });
-          dispatch(
-            updateNotification({ message: "", type }),
-          );
-        }, messageTime);
+        timeOutIdRef.current = setTimeout(
+          () => closeNotification(),
+          messageTime,
+        );
       };
 
       if (message) {
@@ -97,7 +100,10 @@ const AppNotification = () => {
   ]);
 
   return (
-    <View style={styles.inlineContainer}>
+    <Pressable
+      style={styles.inlineContainer}
+      onPress={closeNotification}
+    >
       <Animated.View
         style={[
           styles.container,
@@ -109,7 +115,7 @@ const AppNotification = () => {
           <AppText>{message}</AppText>
         </View>
       </Animated.View>
-    </View>
+    </Pressable>
   );
 };
 

@@ -63,6 +63,8 @@ const pt: AppText = {
     swipeGesturePrompts: {
       left: "Jogar fora!",
       right: "Manter!",
+      notification:
+        "Deslize para a esquerda ou para a direita para manter ou descartar esta palavra",
     },
     targetDetails: {
       heading: "Descrição",

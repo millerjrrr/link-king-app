@@ -1,4 +1,5 @@
 export type ConsoleData = {
+  status: string;
   display: {
     raceTrack: string;
     tail: string[];
@@ -7,7 +8,7 @@ export type ConsoleData = {
     id: string;
     target: string;
     solutions: string[];
-    level: number;
+    level?: number;
     rating: number;
     speechLang: string;
     tries?: 0 | 1 | 2 | 3;

@@ -10,12 +10,14 @@ import {
   Easing,
   StyleProp,
   ViewStyle,
+  Pressable,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import useColors from "@src/hooks/utilityHooks/useColors";
 import appTextSource from "../../utils/appTextSource";
 import { useSelector } from "react-redux";
 import { settingsState } from "../../store/settings";
+import useAppNotification from "../../hooks/utilityHooks/useAppNotification";
 
 interface InstructionProps {
   iconProps: any;
@@ -27,6 +29,14 @@ interface InstructionProps {
 const Instruction = forwardRef<View, InstructionProps>(
   ({ iconProps, label, style }, ref) => {
     const { CONTRAST } = useColors();
+    const { appLang } = useSelector(settingsState);
+
+    const message =
+      appTextSource(appLang).console.swipeGesturePrompts
+        .notification;
+    const appNofification = useAppNotification();
+
+    const onPress = () => appNofification("info", message);
 
     return (
       <View
@@ -34,7 +44,7 @@ const Instruction = forwardRef<View, InstructionProps>(
         style={[{ alignItems: "center" }, style]}
       >
         <Ionicons {...iconProps} />
-        <View
+        <Pressable
           style={{
             width: "100%",
             height: "100%",
@@ -42,6 +52,7 @@ const Instruction = forwardRef<View, InstructionProps>(
             alignItems: "center",
             position: "absolute",
           }}
+          onPress={onPress}
         >
           <Text
             style={{
@@ -51,7 +62,7 @@ const Instruction = forwardRef<View, InstructionProps>(
           >
             {label}
           </Text>
-        </View>
+        </Pressable>
       </View>
     );
   },

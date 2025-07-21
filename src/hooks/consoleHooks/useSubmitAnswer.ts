@@ -8,6 +8,7 @@ import { acceptAnswer } from "../../utils/acceptAnswer";
 import { useDispatch, useSelector } from "react-redux";
 import useHandleCorrectAnswer from "./useHandleCorrectAnswer";
 import useHandleWrongAnswer from "./useHandleWrongAnswer";
+import { updateLevelPop } from "../../store/notification";
 
 const useSubmitAnswer = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const useSubmitAnswer = () => {
 
   const {
     locals: { formValue },
-    gamePlay: { solutions },
+    gamePlay: { level, solutions },
   } = useSelector(selectConsoleState);
 
   const submitAnswer = (value?: string) => {
@@ -32,6 +33,14 @@ const useSubmitAnswer = () => {
       if (answerAccepted) {
         handleCorrectAnswer();
       } else handleWrongAnswer();
+      // if (level > 0)
+      dispatch(
+        updateLevelPop({
+          level,
+          popType: answerAccepted,
+        }),
+      );
+
       setTimeout(() => dispatch(setDisabled(false)), 800);
       return false;
     }

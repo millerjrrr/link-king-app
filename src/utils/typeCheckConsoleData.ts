@@ -6,6 +6,7 @@ export function typeCheckConsoleData(
   if (
     !data ||
     typeof data !== "object" ||
+    typeof data.status !== "string" ||
     typeof data.dictionary !== "string" ||
     !data.display ||
     typeof data.display.raceTrack !== "string" ||
@@ -14,7 +15,6 @@ export function typeCheckConsoleData(
     typeof data.gamePlay.id !== "string" ||
     typeof data.gamePlay.target !== "string" ||
     !Array.isArray(data.gamePlay.solutions) ||
-    typeof data.gamePlay.level !== "number" ||
     typeof data.gamePlay.rating !== "number" ||
     typeof data.gamePlay.speechLang !== "string" ||
     !data.stats ||
@@ -35,6 +35,12 @@ export function typeCheckConsoleData(
     return false;
   }
 
+  if (
+    "level" in data.gamePlay &&
+    typeof data.gamePlay.level !== "number"
+  ) {
+    return false;
+  }
   if (
     "isNewWord" in data &&
     typeof data.isNewWord !== "boolean"

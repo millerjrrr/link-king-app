@@ -62,6 +62,8 @@ const it: AppText = {
     swipeGesturePrompts: {
       left: "Eliminalo!",
       right: "Tienilo!",
+      notification:
+        "Scorri a sinistra o a destra per tenere questa parola o eliminarla",
     },
     targetDetails: {
       heading: "Informazioni sul tentativo",

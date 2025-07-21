@@ -62,6 +62,8 @@ const en: AppText = {
     swipeGesturePrompts: {
       left: "Bin it!",
       right: "Keep it!",
+      notification:
+        "Swipe left or right to keep this word or bin it",
     },
     targetDetails: {
       heading: "Attempt Info",

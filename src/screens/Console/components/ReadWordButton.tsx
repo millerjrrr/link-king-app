@@ -8,6 +8,7 @@ import colors from "@src/utils/colors";
 import { speak } from "@src/utils/appSpeak";
 import { updateModals } from "@src/store/modals";
 import useCheckTTSData from "@src/hooks/consoleHooks/useCheckTTSData";
+import LevelPopAnimation from "../../../components/LevelPopAnimation";
 
 interface ReadWordButtonProps {
   showSpeaker?: boolean;
@@ -53,10 +54,12 @@ const ReadWordButton: React.FC<ReadWordButtonProps> = ({
     <View
       style={{
         height,
+        width: "100%",
         justifyContent: "center",
         zIndex: 10,
       }}
     >
+      <LevelPopAnimation />
       <TouchableOpacity {...{ onPress }}>
         {blurred || showSpeaker ? (
           <Feather

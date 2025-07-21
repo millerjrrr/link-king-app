@@ -73,6 +73,7 @@ interface Console {
   swipeGesturePrompts: {
     left: string;
     right: string;
+    notification: string;
   };
   targetDetails: ConsoleTargetDetails;
   editTicketScreen: ConsoleEditTicketScreen;
