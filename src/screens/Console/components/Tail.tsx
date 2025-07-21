@@ -1,15 +1,9 @@
-import {
-  View,
-  StyleSheet,
-  TouchableWithoutFeedback,
-  Keyboard,
-} from "react-native";
+import { View, StyleSheet } from "react-native";
 import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
 import { selectConsoleState } from "@src/store/console";
 import { settingsState } from "@src/store/settings";
 import styled from "styled-components/native";
-import SolutionsList from "./SolutionsList";
 import AppText from "../../../components/AppText";
 
 interface Props {
@@ -55,23 +49,14 @@ const TailEntry: React.FC<{ index: number }> = ({
 };
 
 const Tail = () => {
-  const {
-    locals: { showSolution },
-    gamePlay: { solutions },
-  } = useSelector(selectConsoleState);
-
   return (
     <View style={styles.container}>
-      {!showSolution ? (
-        <>
-          <TailEntry index={0} />
-          <TailEntry index={1} />
-          <TailEntry index={2} />
-          <TailEntry index={3} />
-        </>
-      ) : (
-        <SolutionsList {...{ ticket: { solutions } }} />
-      )}
+      <>
+        <TailEntry index={0} />
+        <TailEntry index={1} />
+        <TailEntry index={2} />
+        <TailEntry index={3} />
+      </>
     </View>
   );
 };

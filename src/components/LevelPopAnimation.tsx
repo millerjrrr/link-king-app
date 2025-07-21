@@ -24,11 +24,11 @@ const LevelPopAnimation = () => {
   const opacity = useSharedValue(1);
 
   const [text, setText] = useState(
-    level >= 0 ? `L${level}` : "",
+    level > 0 ? `L${level}` : "",
   );
 
   useEffect(() => {
-    if (level >= 0) {
+    if (level > 0) {
       setText(`L${level}`);
       x.value = 0;
       y.value = 0;
@@ -45,7 +45,7 @@ const LevelPopAnimation = () => {
         } else {
           setText(`L0`);
         }
-      }, duration / 2);
+      }, duration / 3);
 
       // After animation: reset state
       const endTimeout = setTimeout(() => {

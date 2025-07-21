@@ -26,6 +26,7 @@ import { ConsoleStackParamList } from "@src/types/navigationTypes";
 import { useRequestPermissions } from "@src/hooks/utilityHooks/useRequestPermissions";
 import useSendPushToken from "@src/hooks/utilityHooks/useSendPushToken";
 import NewWordAddedModal from "@src/components/AppModals/NewWordAddedModal";
+import IntegratedSolutionsList from "./components/IntegratedSolutionsList";
 
 const Console = () => {
   const { appLang } = useSelector(settingsState);
@@ -70,6 +71,7 @@ const Console = () => {
         help={navigateToHelp}
         helpAnimated
       >
+        <IntegratedSolutionsList />
         <StatsContainer />
         <OptionsContainer />
         <ReadWordButton />

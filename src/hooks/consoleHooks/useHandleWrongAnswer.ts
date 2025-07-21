@@ -8,6 +8,7 @@ import {
   updateConsoleState,
   selectConsoleLocals,
   updateFormValue,
+  updateShowSolution,
 } from "@src/store/console";
 import { Keyboard, Vibration } from "react-native";
 import { speak } from "@src/utils/appSpeak";
@@ -54,7 +55,7 @@ const useHandleWrongAnswer = () => {
           ...ticket
         } = gamePlay;
 
-        console.log(ticket);
+        console.log(data);
         // ✅ Check for newDicWord
         if (isNewWord) {
           () => Keyboard.dismiss();
@@ -69,6 +70,7 @@ const useHandleWrongAnswer = () => {
         dispatch(updateFormValue(""));
         speak({ target: ticket.target, language, sound });
         dispatch(resetConsole());
+        dispatch(updateShowSolution(!isNewWord));
       } finally {
         dispatch(updateBusyState(false));
       }

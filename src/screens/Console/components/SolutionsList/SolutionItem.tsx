@@ -88,16 +88,17 @@ const SolutionItem = ({
           dispatch(updateSelectedTicket(ticket));
           navigation.navigate("Edit Solutions");
         }
-      : !edit
-        ? () => {
-            dispatch(
-              updateNotification({
-                message: solutionMessage,
-                type: "longInfo",
-              }),
-            );
-          }
-        : seeWebDefinition;
+      : // !edit
+        //   ? () => {
+        //       dispatch(
+        //         updateNotification({
+        //           message: solutionMessage,
+        //           type: "longInfo",
+        //         }),
+        //       );
+        //     }
+        //   :
+        seeWebDefinition;
 
   return (
     <SolutionContainer

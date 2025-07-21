@@ -121,7 +121,6 @@ const slice = createSlice({
       Object.assign(locals, {
         lastAttempt: locals.formValue,
         formValue: "",
-        showSolution: true,
         isPlaying: false,
         busy: false,
         timerKey: locals.timerKey + 1,

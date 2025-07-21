@@ -6,6 +6,8 @@ import {
   updateFormValue,
   updateLocals,
   restartTheTimer,
+  resetConsole,
+  updateShowSolution,
 } from "@src/store/console";
 import { speak } from "@src/utils/appSpeak";
 import { useDispatch, useSelector } from "react-redux";
@@ -56,6 +58,8 @@ const useDeleteThisTicketAndGetNewOne = () => {
           dispatch(updateFormValue(""));
           speak({ target, language, sound });
           dispatch(restartTheTimer());
+          dispatch(resetConsole());
+          dispatch(updateShowSolution(false));
         } else {
           dispatch(
             updateModals({ showNewWordAddedModal: true }),
