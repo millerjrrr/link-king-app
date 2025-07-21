@@ -102,9 +102,7 @@ export default ({ config }) => ({
       GOOGLE_ANDROID_CLIENT_ID:
         process.env.GOOGLE_ANDROID_CLIENT_ID,
     },
-    runtimeVersion: {
-      policy: "appVersion",
-    },
+    runtimeVersion: "5.4.0",
     updates: {
       url: "https://u.expo.dev/d3f81d37-8476-4818-9dc2-15ff6a7e1a63",
     },

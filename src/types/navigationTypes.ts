@@ -1,3 +1,13 @@
+// UTILITIES
+
+export type ScreensWithParams<T> = {
+  [K in keyof T]: T[K] extends undefined ? never : K;
+}[keyof T];
+
+export type ScreensWithoutParams<T> = {
+  [K in keyof T]: T[K] extends undefined ? K : never;
+}[keyof T];
+
 // COLLECTION
 export type CollectionStackParamList = {
   Collection: undefined;

@@ -49,10 +49,8 @@ const startListening = async () => {
     await new Promise((resolve) =>
       setTimeout(resolve, 2000),
     );
-    console.log("made it this far");
-    await Voice.start(
-      store.getState().settings.appLang || "en-US",
-    );
+    await Voice.stop();
+    await Voice.start("en-US");
   } catch (e) {
     console.error("Voice start error:", e);
     store.dispatch(updateOptions({ listening: false }));

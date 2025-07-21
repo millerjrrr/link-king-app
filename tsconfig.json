@@ -17,7 +17,6 @@
       "@navigation/*": ["src/navigation/*"],
       "@hooks/*": ["src/hooks/*"],
       "@store/*": ["src/store/*"],
-      "@types/*": ["src/types/*"],
       "@utils/*": ["src/utils/*"],
       "@auth/*": ["src/screens/auth/*"],
       "@Console/*": ["src/screens/Console/*"],

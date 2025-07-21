@@ -5,9 +5,26 @@ import { AntDesign } from "@expo/vector-icons";
 import { settingsState } from "@src/store/settings";
 import appShadow from "@src/utils/appShadow";
 import { useNavigation } from "@react-navigation/native";
+import {
+  CollectionStackParamList,
+  ScreensWithoutParams,
+} from "@src/types/navigationTypes";
+import { AntDesignIcons } from "@src/types/iconLibrary";
+import { StackNavigationProp } from "@react-navigation/stack";
 
-const SideButton = ({ targetScreen, icon }) => {
-  const navigation = useNavigation();
+interface SideButtonProps {
+  targetScreen: ScreensWithoutParams<CollectionStackParamList>;
+  icon: AntDesignIcons;
+}
+
+const SideButton: React.FC<SideButtonProps> = ({
+  targetScreen,
+  icon,
+}) => {
+  const navigation =
+    useNavigation<
+      StackNavigationProp<CollectionStackParamList>
+    >();
   const { colorScheme, golden } =
     useSelector(settingsState);
   const { SECONDARY, CONTRAST } = colors[colorScheme];

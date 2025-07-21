@@ -7,3 +7,7 @@ declare module "*.png" {
   const content: number;
   export default content;
 }
+
+declare global {
+  type AntDesignIcons = AntDesignIcons;
+}

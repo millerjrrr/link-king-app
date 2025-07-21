@@ -8,6 +8,7 @@ import OptionsIcon from "./OptionsIcon";
 import useCheckTTSData from "@src/hooks/consoleHooks/useCheckTTSData";
 import { updateModals } from "@src/store/modals";
 import listenerService from "@src/utils/listenerService";
+import { settingsState } from "../../../../store/settings";
 
 interface OptionsContainerProps {
   size?: number;
@@ -20,6 +21,7 @@ const OptionsContainer: React.FC<OptionsContainerProps> = ({
   const {
     options: { sound, blurred, timer, listening },
   } = useSelector(selectConsoleLocals);
+  const { appLang } = useSelector(settingsState);
 
   const checkTTSData = useCheckTTSData();
   const dispatch = useDispatch();
@@ -99,7 +101,8 @@ const OptionsContainer: React.FC<OptionsContainerProps> = ({
           falseIconName="timer-off"
         />
       ) : null}
-      {show === "all" || show === "listening" ? (
+      {appLang === "en" &&
+      (show === "all" || show === "listening") ? (
         <OptionsIcon
           onPress={listeningButtonFunction}
           iconLib="FontAwesome"

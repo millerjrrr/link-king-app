@@ -1,5 +1,5 @@
 import { View, StyleSheet } from "react-native";
-import CollectionScreenButton from "./SideButton";
+import SideButton from "./SideButton";
 import CollectionSearchbar from "./CollectionSearchbar";
 import TicketsCount from "./TicketsCount";
 import FadeBackgroundView from "@src/components/Graphics/FadeBackgroundView";
@@ -11,12 +11,12 @@ const SearchBarContainer = () => {
       <FadeBackgroundView>
         <TicketsCount />
         <View style={styles.searchBarContainer}>
-          <CollectionScreenButton
+          <SideButton
             targetScreen={"Statistics"}
             icon={"barschart"}
           />
           <CollectionSearchbar />
-          <CollectionScreenButton
+          <SideButton
             targetScreen={"Progress"}
             icon={"sharealt"}
           />
