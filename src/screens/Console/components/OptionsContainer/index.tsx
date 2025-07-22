@@ -7,7 +7,7 @@ import {
 import OptionsIcon from "./OptionsIcon";
 import useCheckTTSData from "@src/hooks/consoleHooks/useCheckTTSData";
 import { updateModals } from "@src/store/modals";
-import listenerService from "@src/utils/listenerService";
+// import listenerService from "@src/utils/listenerService";
 import { settingsState } from "../../../../store/settings";
 
 interface OptionsContainerProps {
@@ -61,13 +61,13 @@ const OptionsContainer: React.FC<OptionsContainerProps> = ({
     dispatch(updateOptions(options));
   };
 
-  const listeningButtonFunction = async () => {
-    if (!listening) {
-      listenerService.startListening();
-    } else {
-      listenerService.stopListening();
-    }
-  };
+  // const listeningButtonFunction = async () => {
+  //   if (!listening) {
+  //     listenerService.startListening();
+  //   } else {
+  //     listenerService.stopListening();
+  //   }
+  // };
 
   return (
     <View style={styles.container}>
@@ -101,7 +101,7 @@ const OptionsContainer: React.FC<OptionsContainerProps> = ({
           falseIconName="timer-off"
         />
       ) : null}
-      {appLang === "en" &&
+      {/* {appLang === "en" &&
       (show === "all" || show === "listening") ? (
         <OptionsIcon
           onPress={listeningButtonFunction}
@@ -112,7 +112,7 @@ const OptionsContainer: React.FC<OptionsContainerProps> = ({
           falseIconName="microphone-slash"
           animated={listening}
         />
-      ) : null}
+      ) : null} */}
     </View>
   );
 };

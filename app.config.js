@@ -1,9 +1,9 @@
 export default ({ config }) => ({
   ...config,
   expo: {
-    name: "LK Dev",
+    name: "Link-King",
     slug: "LinkKingApp",
-    version: "5.4.0",
+    version: "5.5.0",
     orientation: "portrait",
     icon: "./assets/icon.png",
     userInterfaceStyle: "light",
@@ -17,7 +17,7 @@ export default ({ config }) => ({
     ios: {
       buildNumber: "1",
       supportsTablet: false,
-      bundleIdentifier: "com.linkoking.app.dev", //change to com.linkoking.app.dev for dev builds
+      bundleIdentifier: "com.linkoking.app", //change to com.linkoking.app.dev for dev builds
       useAppleSignIn: true,
       entitlements: {
         "aps-environment": "production",
@@ -53,8 +53,6 @@ export default ({ config }) => ({
           },
         ],
         ITSAppUsesNonExemptEncryption: false,
-        NSMicrophoneUsageDescription:
-          "This app requires access to the microphone to convert your speech to text.",
       },
     },
     androidStatusBar: {
@@ -69,7 +67,6 @@ export default ({ config }) => ({
         "INTERNET",
         "com.android.vending.BILLING",
         "ACCESS_NETWORK_STATE",
-        "RECORD_AUDIO",
       ],
       icon: "./assets/adaptive-icon.png",
       package: "com.linkoking.app", //change to com.linkoking.app.dev for dev builds
@@ -90,6 +87,7 @@ export default ({ config }) => ({
       "expo-av",
       "expo-localization",
       "expo-secure-store",
+      "expo-font",
     ],
     extra: {
       eas: {
@@ -102,7 +100,7 @@ export default ({ config }) => ({
       GOOGLE_ANDROID_CLIENT_ID:
         process.env.GOOGLE_ANDROID_CLIENT_ID,
     },
-    runtimeVersion: "5.4.0",
+    runtimeVersion: "5.5.0",
     updates: {
       url: "https://u.expo.dev/d3f81d37-8476-4818-9dc2-15ff6a7e1a63",
     },

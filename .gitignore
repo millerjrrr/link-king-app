@@ -1,19 +1,15 @@
-# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
-
-# dependencies
+# Node modules
 node_modules/
 
-*.env
-
-# Commit Message
-COMMIT_MESSAGE.md
-
-# Expo
+# Expo-related files
 .expo/
 dist/
 web-build/
+expo-env.d.ts
 
-# Native
+# Native build artifacts and credentials
+ios/
+android/
 *.orig.*
 *.jks
 *.p8
@@ -21,22 +17,24 @@ web-build/
 *.key
 *.mobileprovision
 
-# Metro
+# Metro bundler cache/health check
 .metro-health-check*
 
-# debug
+# Debug logs
 npm-debug.*
 yarn-debug.*
 yarn-error.*
 
-# macOS
+# macOS system files
 .DS_Store
 *.pem
 
-# local env files
+# Environment files
+*.env
 .env*.local
 
-# typescript
+# TypeScript build info
 *.tsbuildinfo
 
-android/
+# Commit message file
+COMMIT_MESSAGE.md
