@@ -2,6 +2,7 @@ import { View } from "react-native";
 import styled from "styled-components/native";
 import { LinearGradient } from "expo-linear-gradient";
 import useColors from "@src/hooks/utilityHooks/useColors";
+import { ReactNode } from "react";
 
 const Container = styled(View)`
   position: relative;
@@ -11,13 +12,15 @@ const Container = styled(View)`
 
 const Fade = styled(LinearGradient)`
   position: absolute;
-  ${(props) => props.side}: 0;
+  ${(props: { side: "left" | "right" }) => props.side}: 0;
   height: 100%;
   width: 30px;
   z-index: 20;
 `;
 
-const HorizontalScrollFade = ({ children }) => {
+const HorizontalScrollFade: React.FC<{
+  children: ReactNode;
+}> = ({ children }) => {
   const { PRIMARY } = useColors();
 
   return (

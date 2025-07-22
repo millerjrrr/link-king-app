@@ -3,7 +3,9 @@ import { useSelector } from "react-redux";
 import { selectConsoleLocals } from "@src/store/console";
 import Loader from "../../../../components/Loader";
 
-const LoaderForTextInputForConsole = ({ color }) => {
+const LoaderForTextInputForConsole: React.FC<{
+  color: `#${string}`;
+}> = ({ color }) => {
   const { busy } = useSelector(selectConsoleLocals);
 
   return busy ? (

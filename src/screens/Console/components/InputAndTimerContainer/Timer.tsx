@@ -1,16 +1,14 @@
-import {
-  Dimensions,
-  Platform,
-  useWindowDimensions,
-  View,
-} from "react-native";
+import { View } from "react-native";
 import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 import { useSelector } from "react-redux";
 import { selectConsoleState } from "@src/store/console";
 import useColors from "@src/hooks/utilityHooks/useColors";
 import screenDimensions from "@src/utils/screenDimensions";
 
-const Timer = ({ onComplete, color }) => {
+const Timer: React.FC<{
+  onComplete: () => void;
+  color: `#${string}`;
+}> = ({ onComplete, color }) => {
   const {
     locals: {
       isPlaying,

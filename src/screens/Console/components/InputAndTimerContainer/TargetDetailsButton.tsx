@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectConsoleState } from "@src/store/console";
 import { settingsState } from "@src/store/settings";
 import { updateSelectedTicket } from "@src/store/collection";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { ConsoleStackParamList } from "@src/types/navigationTypes";
 
 const TargetDetailsButton = () => {
   const {
@@ -15,7 +17,10 @@ const TargetDetailsButton = () => {
 
   const { colorScheme } = useSelector(settingsState);
   const color = colors[colorScheme].LIGHTRED;
-  const navigation = useNavigation();
+  const navigation =
+    useNavigation<
+      StackNavigationProp<ConsoleStackParamList>
+    >();
 
   const ticket = {
     id,

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import * as Notifications from "expo-notifications";
 
-export const useRequestPermissions = () => {
+const useRequestPermissions = () => {
   useEffect(() => {
     const request = async () => {
       const { status } =
@@ -15,3 +15,5 @@ export const useRequestPermissions = () => {
     request();
   }, []);
 };
+
+export default useRequestPermissions;

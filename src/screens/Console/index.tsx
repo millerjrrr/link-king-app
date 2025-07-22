@@ -23,7 +23,6 @@ import UserPromptAndMusicButton from "./components/UserPromptAndMusicButton";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { ConsoleStackParamList } from "@src/types/navigationTypes";
-import { useRequestPermissions } from "@src/hooks/utilityHooks/useRequestPermissions";
 import useSendPushToken from "@src/hooks/utilityHooks/useSendPushToken";
 import NewWordAddedModal from "@src/components/AppModals/NewWordAddedModal";
 import IntegratedSolutionsList from "./components/IntegratedSolutionsList";
@@ -51,8 +50,6 @@ const Console = () => {
   }, [isKeyboardVisible]);
 
   // HOOK CALLS
-  // Push Token and Permissions
-  useRequestPermissions();
   useSendPushToken();
   // Effects
   useManageGolden();

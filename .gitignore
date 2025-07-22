@@ -36,5 +36,6 @@ yarn-error.*
 # TypeScript build info
 *.tsbuildinfo
 
+
 # Commit message file
 COMMIT_MESSAGE.md

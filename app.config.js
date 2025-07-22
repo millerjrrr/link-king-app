@@ -2,7 +2,7 @@ export default ({ config }) => ({
   ...config,
   expo: {
     name: "Link-King Dev",
-    slug: "link-king",
+    slug: "LinkKingApp",
     version: "5.5.0",
     orientation: "portrait",
     icon: "./assets/icon.png",
@@ -70,6 +70,7 @@ export default ({ config }) => ({
         "ACCESS_NOTIFICATION_POLICY",
         "POST_NOTIFICATIONS",
       ],
+      googleServicesFile: "./google-services.json",
       icon: "./assets/adaptive-icon.png",
       package: "com.linkoking.app.dev", //change to com.linkoking.app.dev for dev builds
       versionCode: 66,
@@ -93,7 +94,7 @@ export default ({ config }) => ({
     ],
     extra: {
       eas: {
-        projectId: "316bbffd-36ef-4fda-ac6a-229d1a804133",
+        projectId: "d3f81d37-8476-4818-9dc2-15ff6a7e1a63",
       },
       GOOGLE_WEB_CLIENT_ID:
         process.env.GOOGLE_WEB_CLIENT_ID,
