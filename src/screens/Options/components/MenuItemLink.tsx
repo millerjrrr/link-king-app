@@ -3,15 +3,23 @@ import styled from "styled-components/native";
 import AppText from "@src/components/AppText";
 import useColors from "@src/hooks/utilityHooks/useColors";
 
-const MenuItemName = styled(AppText)<{
-  color: string;
-}>`
-  color: ${(props) => props.color};
+const MenuItemName = styled(AppText)`
+  color: ${(props: { color: `#${string}` }) => props.color};
   font-size: 20px;
   text-align: flex-start;
 `;
 
-const MenuItemLink = ({ name, onPress, gray }: any) => {
+interface MenuItemLinkProps {
+  name: string;
+  onPress: () => void;
+  gray: boolean;
+}
+
+const MenuItemLink: React.FC<MenuItemLinkProps> = ({
+  name,
+  onPress,
+  gray,
+}) => {
   const { INACTIVE_CONTRAST, CONTRAST } = useColors();
   const color = gray ? INACTIVE_CONTRAST : CONTRAST;
 

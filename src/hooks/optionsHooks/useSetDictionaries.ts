@@ -6,13 +6,15 @@ import { settingsState } from "@src/store/settings";
 import languageNameCodeMap from "@src/utils/languageNameCodeMap";
 import { Dispatch, SetStateAction, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Dictionary from "../../types/dictionaries";
 
-interface Dictionary {
-  name: string;
+interface DictionaryPair {
+  name: Dictionary;
   code: string;
 }
+
 const useSetDictionaries = (
-  setDictionaries: Dispatch<SetStateAction<string[]>>,
+  setDictionaries: Dispatch<SetStateAction<Dictionary[]>>,
 ) => {
   const { appLang } = useSelector(settingsState);
   const dispatch = useDispatch();
@@ -28,7 +30,7 @@ const useSetDictionaries = (
       );
 
       const dictionaries = data.dictionaries
-        .map((item: Dictionary) => item.name)
+        .map((item: DictionaryPair) => item.name)
         .sort((a: string, b: string) => {
           if (a === "English") return -1; // 'en' should come first
           if (b === "English") return 1; // 'en' should come first

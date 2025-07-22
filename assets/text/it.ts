@@ -236,12 +236,6 @@ const it: AppText = {
     },
     chooseDictionary: {
       title: "Seleziona dizionario",
-      English: "Inglese",
-      Spanish: "Spagnolo",
-      Portuguese: "Portoghese",
-      textA: "Attualmente offriamo due dizionari:",
-      textB:
-        "Molte app per l'apprendimento delle lingue cercano di offrire tutte le lingue immediatamente e sacrificano la qualità per la quantità. Anche se speriamo di offrire più corsi in futuro, ci stiamo attualmente concentrando sull'ottimizzazione di questi due dizionari.",
       dictionaryError:
         "Impossibile connettersi. Nessun dizionario disponibile.",
       changeHomeLanguage: "Cambia qui la tua lingua madre",

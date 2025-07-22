@@ -10,6 +10,7 @@ import AppText from "@src/components/AppText";
 import ChangeHomeLanguageLabel from "./ChangeHomeLanguageLabel";
 import { authState } from "@src/store/auth";
 import useSetDictionaries from "../../../hooks/optionsHooks/useSetDictionaries";
+import Dictionary from "../../../types/dictionaries";
 
 const DictionarySelectionScreen = () => {
   const { appLang } = useSelector(settingsState);
@@ -18,7 +19,10 @@ const DictionarySelectionScreen = () => {
 
   const { busy, justSignedUp } = useSelector(authState);
 
-  const [dictionaries, setDictionaries] = useState([]);
+  const [dictionaries, setDictionaries] = useState<
+    Dictionary[]
+  >([]);
+
   useSetDictionaries(setDictionaries);
 
   return (
@@ -43,10 +47,7 @@ const DictionarySelectionScreen = () => {
                 return (
                   <DictionarySelectorMenuItem
                     key={`${item}:key`}
-                    {...{
-                      name: item,
-                      busy,
-                    }}
+                    dictionary={item}
                   />
                 );
               }}

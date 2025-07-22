@@ -155,11 +155,6 @@ interface OptionsVoiceSelection {
 
 interface OptionsChooseDictionary {
   title: string;
-  English: string;
-  Spanish: string;
-  Portuguese: string;
-  textA: string;
-  textB: string;
   dictionaryError: string;
   changeHomeLanguage: string;
 }
@@ -326,7 +321,7 @@ interface Updates {
   currentX: string;
 }
 
-interface LanguageNames {
+export interface LanguageNames {
   English: string;
   Spanish: string;
   Portuguese: string;

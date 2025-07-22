@@ -6,22 +6,22 @@ import { View } from "react-native";
 import useSendDictionary from "@src/hooks/optionsHooks/useSendDictionary";
 import OptionsMenuItem from "../components/OptionsMenuItem";
 import { useNavigation } from "@react-navigation/native";
+import Dictionary from "../../../types/dictionaries";
 
-const DictionarySelectorMenuItem = ({
-  name: dictionary,
-}) => {
+const DictionarySelectorMenuItem: React.FC<{
+  dictionary: Dictionary;
+}> = ({ dictionary }) => {
   const { appLang } = useSelector(settingsState);
 
-  const name =
-    appTextSource(appLang).options.chooseDictionary[
-      dictionary
-    ] || dictionary;
+  const text =
+    appTextSource(appLang).languageNames[dictionary];
 
   const { dictionary: currentDictionary } = useSelector(
     selectConsoleState,
   );
 
   const selected = dictionary === currentDictionary;
+
   const sendDictionary = useSendDictionary();
 
   const navigation = useNavigation();
@@ -36,13 +36,10 @@ const DictionarySelectorMenuItem = ({
   return (
     <View {...{ style: { height: 70, width: "100%" } }}>
       <OptionsMenuItem
-        {...{
-          dictionary,
-          name,
-          onPress,
-          selected,
-          first: true,
-        }}
+        dictionary={dictionary}
+        name={text}
+        onPress={onPress}
+        selected={selected}
       />
     </View>
   );
