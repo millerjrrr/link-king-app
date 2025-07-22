@@ -1,17 +1,20 @@
 import OptionsContainer from "../../components/OptionsContainer";
 import DescriptionWrapper from "./DescriptionWrapper";
 
-const HelpForOptions = ({ name }) => {
+const HelpForOptions: React.FC<{
+  name: "listen" | "read" | "countdown";
+}> = ({ name }) => {
   const lookup = {
-    listen: 1,
-    read: 2,
-    countdown: 3,
+    listen: "time",
+    read: "blurred",
+    countdown: "time",
   };
 
   return (
     <DescriptionWrapper {...{ name }}>
       <OptionsContainer
-        {...{ size: 40, show: lookup[name] }}
+        size={40}
+        show={lookup[name] as "time" | "blurred" | "time"}
       />
     </DescriptionWrapper>
   );

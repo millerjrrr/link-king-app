@@ -9,18 +9,40 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
-    "types": ["styled-components-react-native"],
+    "types": [
+      "styled-components-react-native"
+    ],
     "paths": {
-      "@src/*": ["src/*"],
-      "@assets/*": ["assets/*"],
-      "@screens/*": ["src/screens/*"],
-      "@navigation/*": ["src/navigation/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@store/*": ["src/store/*"],
-      "@utils/*": ["src/utils/*"],
-      "@auth/*": ["src/screens/auth/*"],
-      "@Console/*": ["src/screens/Console/*"],
-      "@components/*": ["src/components/*"]
+      "@src/*": [
+        "src/*"
+      ],
+      "@assets/*": [
+        "assets/*"
+      ],
+      "@screens/*": [
+        "src/screens/*"
+      ],
+      "@navigation/*": [
+        "src/navigation/*"
+      ],
+      "@hooks/*": [
+        "src/hooks/*"
+      ],
+      "@store/*": [
+        "src/store/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
+      ],
+      "@auth/*": [
+        "src/screens/auth/*"
+      ],
+      "@Console/*": [
+        "src/screens/Console/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ]
     }
   },
   "include": [

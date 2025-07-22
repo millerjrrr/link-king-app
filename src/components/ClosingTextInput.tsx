@@ -18,7 +18,6 @@ const ClosingTextInput = forwardRef<TextInput, Props>(
     const { CONTRAST } = useColors();
 
     const closeKeyboard = () => {
-      console.log("pressed");
       Keyboard.dismiss();
     };
 

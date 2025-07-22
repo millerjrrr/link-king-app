@@ -5,7 +5,9 @@ import RepeatRepeatsIcon from "./RepeatRepeatsIcon";
 import { selectConsoleState } from "@src/store/console";
 import { convertMsToTime } from "@src/utils/convertMsToTime";
 
-const StatsContainer = ({ size = 22 }) => {
+const StatsContainer: React.FC<{ size?: number }> = ({
+  size = 22,
+}) => {
   const {
     stats,
     locals: { timeOnThisWord },
@@ -16,25 +18,27 @@ const StatsContainer = ({ size = 22 }) => {
     <View style={styles.container}>
       {due === 0 ? (
         <StatsIcon
-          {...{ name: "basket-fill", text: newWords, size }}
+          name="basket-fill"
+          text={newWords}
+          size={size}
         />
       ) : (
-        <StatsIcon
-          {...{ name: "target", text: due, size }}
-        />
+        <StatsIcon name="target" text={due} size={size} />
       )}
       <StatsIcon
-        {...{ name: "foot-print", text: steps, size }}
+        name="foot-print"
+        text={steps}
+        size={size}
       />
       <StatsIcon
-        {...{
-          name: "clock-outline",
-          text: convertMsToTime(time + timeOnThisWord),
-          size,
-        }}
+        name="clock-outline"
+        text={convertMsToTime(time + timeOnThisWord)}
+        size={size}
       />
       <StatsIcon
-        {...{ name: "trophy-variant", text: streak, size }}
+        name="trophy-variant"
+        text={streak}
+        size={size}
       />
       {due === 0 ? (
         <RepeatRepeatsIcon

@@ -6,8 +6,15 @@ import { settingsState } from "@src/store/settings";
 import { updateNotification } from "@src/store/notification";
 import appTextSource from "@src/utils/appTextSource";
 import AppText from "../../../../components/AppText";
+import { ConsoleStatsMessages } from "../../../../../assets/text/interface";
 
-const StatsIcon = ({
+interface StatsIconProps {
+  name?: keyof typeof MaterialCommunityIcons.glyphMap;
+  text?: string | number;
+  size?: number;
+}
+
+const StatsIcon: React.FC<StatsIconProps> = ({
   name = "clock-outline",
   text = "",
   size = 18,
@@ -19,7 +26,9 @@ const StatsIcon = ({
 
   const dispatch = useDispatch();
   const message =
-    appTextSource(appLang).console.statsMessages[name];
+    appTextSource(appLang).console.statsMessages[
+      name as keyof ConsoleStatsMessages
+    ];
 
   const onPress = () =>
     dispatch(
@@ -33,7 +42,11 @@ const StatsIcon = ({
     <TouchableOpacity
       {...{ onPress, style: styles.container }}
     >
-      <MaterialCommunityIcons {...{ name, size, color }} />
+      <MaterialCommunityIcons
+        name={name}
+        size={size}
+        color={color}
+      />
       <AppText
         style={{
           fontSize: size,

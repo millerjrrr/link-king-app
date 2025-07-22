@@ -9,16 +9,7 @@ const UserPromptAndMusicButton: React.FC<{
   return isKeyboardVisible ? null : (
     <>
       <UserPrompt />
-      <View
-        style={{
-          flexDirection: "row",
-          flex: 1,
-          alignItems: "flex-end",
-        }}
-      >
-        <BackMusicButton />
-        <ResetAccountButton />
-      </View>
+      <BackMusicButton />
     </>
   );
 };

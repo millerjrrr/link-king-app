@@ -25,7 +25,6 @@ const useSubmitAnswer = () => {
     if (!isDisabled) {
       dispatch(setDisabled(true));
       dispatch(stopPlaying());
-      console.log(value || formValue);
       const answerAccepted = acceptAnswer(
         value || formValue,
         solutions,

@@ -7,8 +7,6 @@ import {
 import clientWithAuth from "@src/api/clientWithAuth";
 import useCatchAsync from "@src/hooks/utilityHooks/useCatchAsync";
 import { useDispatch } from "react-redux";
-import { typeCheckConsoleData } from "../../utils/typeCheckConsoleData";
-import { array } from "yup";
 
 const useFetchConsoleInfo = () => {
   const catchAsync = useCatchAsync();
@@ -24,13 +22,6 @@ const useFetchConsoleInfo = () => {
         dispatch(updateShowSolution(false));
 
         const { data } = await clientWithAuth.get(url);
-
-        if (!typeCheckConsoleData(data)) {
-          console.log(data);
-          throw new Error(
-            "Received invalid console data shape from API",
-          );
-        }
 
         dispatch(
           updateConsoleState({

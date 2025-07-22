@@ -1,8 +1,8 @@
 export default ({ config }) => ({
   ...config,
   expo: {
-    name: "Link-King",
-    slug: "LinkKingApp",
+    name: "Link-King Dev",
+    slug: "link-king",
     version: "5.5.0",
     orientation: "portrait",
     icon: "./assets/icon.png",
@@ -17,7 +17,7 @@ export default ({ config }) => ({
     ios: {
       buildNumber: "1",
       supportsTablet: false,
-      bundleIdentifier: "com.linkoking.app", //change to com.linkoking.app.dev for dev builds
+      bundleIdentifier: "com.linkoking.app.dev", //change to com.linkoking.app.dev for dev builds
       useAppleSignIn: true,
       entitlements: {
         "aps-environment": "production",
@@ -67,6 +67,8 @@ export default ({ config }) => ({
         "INTERNET",
         "com.android.vending.BILLING",
         "ACCESS_NETWORK_STATE",
+        "ACCESS_NOTIFICATION_POLICY",
+        "POST_NOTIFICATIONS",
       ],
       icon: "./assets/adaptive-icon.png",
       package: "com.linkoking.app", //change to com.linkoking.app.dev for dev builds

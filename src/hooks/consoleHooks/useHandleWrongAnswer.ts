@@ -55,7 +55,6 @@ const useHandleWrongAnswer = () => {
           ...ticket
         } = gamePlay;
 
-        console.log(data);
         // ✅ Check for newDicWord
         if (isNewWord) {
           () => Keyboard.dismiss();

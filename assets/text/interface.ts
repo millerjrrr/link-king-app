@@ -56,7 +56,7 @@ interface ConsoleHelp {
   learnMore: string;
 }
 
-interface ConsoleStatsMessages {
+export interface ConsoleStatsMessages {
   "basket-fill": string;
   target: string;
   "foot-print": string;

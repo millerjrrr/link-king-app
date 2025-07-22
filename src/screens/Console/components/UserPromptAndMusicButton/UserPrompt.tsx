@@ -30,9 +30,8 @@ const UserPrompt = () => {
         zIndex: 1,
         flex: 1,
         alignItems: "center",
-        justifyContent: "flex-end",
+        justifyContent: "center",
         width: "100%",
-        paddingVertical: 15,
         display: showTypeTranslationsInfoBox
           ? "flex"
           : "none",
