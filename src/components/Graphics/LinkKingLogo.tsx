@@ -2,8 +2,8 @@ import { Image } from "react-native";
 import LinkKingLogoImage from "@assets/img/link-king-header-logo-flair.png";
 
 interface LinkKingLogoProps {
-  height: number;
-  marginTop: number;
+  height?: number;
+  marginTop?: number;
   tintColor: `#${string}`;
 }
 

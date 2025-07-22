@@ -71,7 +71,7 @@ export default ({ config }) => ({
         "POST_NOTIFICATIONS",
       ],
       icon: "./assets/adaptive-icon.png",
-      package: "com.linkoking.app", //change to com.linkoking.app.dev for dev builds
+      package: "com.linkoking.app.dev", //change to com.linkoking.app.dev for dev builds
       versionCode: 66,
       adaptiveIcon: {
         foregroundImage: "./assets/android-icon.png",
@@ -93,7 +93,7 @@ export default ({ config }) => ({
     ],
     extra: {
       eas: {
-        projectId: "d3f81d37-8476-4818-9dc2-15ff6a7e1a63",
+        projectId: "316bbffd-36ef-4fda-ac6a-229d1a804133",
       },
       GOOGLE_WEB_CLIENT_ID:
         process.env.GOOGLE_WEB_CLIENT_ID,

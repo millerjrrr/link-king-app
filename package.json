@@ -1,6 +1,6 @@
 {
-  "name": "linkkingapp2",
-  "version": "1.0.0",
+  "name": "link-king",
+  "version": "5.5.0",
   "scripts": {
     "start": "expo start --dev-client",
     "android": "expo run:android",
