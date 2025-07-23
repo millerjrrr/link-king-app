@@ -14,7 +14,6 @@ export const useSyncBadgeWithDue = () => {
     if (Platform.OS === "ios")
       Notifications.setBadgeCountAsync(due);
     else {
-      console.log("setting badge count");
       Notifications.scheduleNotificationAsync({
         content: {
           title: "You have due words",

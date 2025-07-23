@@ -3,6 +3,7 @@ import { ReactNode, useEffect } from "react";
 import {
   Gesture,
   GestureDetector,
+  GestureHandlerRootView,
 } from "react-native-gesture-handler";
 import Animated, {
   useSharedValue,
@@ -69,13 +70,22 @@ const SwiperWrapper = ({
   }));
 
   return (
-    <GestureDetector gesture={panGesture}>
-      <Animated.View
-        style={[{ width: "100%" }, animatedStyle]}
-      >
-        {children}
-      </Animated.View>
-    </GestureDetector>
+    <GestureHandlerRootView
+      style={{
+        height: "100%",
+        width: "100%",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <GestureDetector gesture={panGesture}>
+        <Animated.View
+          style={[{ width: "100%" }, animatedStyle]}
+        >
+          {children}
+        </Animated.View>
+      </GestureDetector>
+    </GestureHandlerRootView>
   );
 };
 
