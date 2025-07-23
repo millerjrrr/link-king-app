@@ -27,7 +27,6 @@ const UserPrompt = () => {
   return (
     <View
       style={{
-        zIndex: 1,
         flex: 1,
         alignItems: "center",
         justifyContent: "center",

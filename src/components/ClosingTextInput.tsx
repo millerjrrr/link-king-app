@@ -31,6 +31,7 @@ const ClosingTextInput = forwardRef<TextInput, Props>(
               padding: 10,
               position: "relative", // default but explicit
               height: 40,
+              zIndex: 10000,
             }}
           >
             <TouchableOpacity
