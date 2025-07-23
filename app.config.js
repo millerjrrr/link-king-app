@@ -72,8 +72,7 @@ export default ({ config }) => ({
       ],
       googleServicesFile: "./google-services.json",
       icon: "./assets/adaptive-icon.png",
-      package: "com.linkoking.app.dev", //change to com.linkoking.app.dev for dev builds
-      versionCode: 66,
+      package: "com.linkoking.app", //change to com.linkoking.app.dev for dev builds
       adaptiveIcon: {
         foregroundImage: "./assets/android-icon.png",
         backgroundColor: "#000000",

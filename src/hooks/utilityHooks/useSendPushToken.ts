@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import * as Notifications from "expo-notifications";
 import * as Device from "expo-device";
 import clientWithAuth from "@src/api/clientWithAuth";
+import * as Localization from "expo-localization";
+import { Platform } from "react-native";
 
 const useSendPushToken = () => {
   useEffect(() => {
@@ -31,13 +33,26 @@ const useSendPushToken = () => {
         "/api/v1/users/update-user-push-token-and-timezone",
         {
           pushToken: token,
-          timezone:
-            Intl.DateTimeFormat().resolvedOptions()
-              .timeZone,
+          timezone: Localization.getCalendars()[0].timeZone,
         },
       );
     };
 
+    const setupForAndroidNotifications = () => {
+      if (Platform.OS === "android") {
+        Notifications.setNotificationChannelAsync(
+          "default",
+          {
+            name: "default",
+            importance:
+              Notifications.AndroidImportance.HIGH,
+            showBadge: true,
+          },
+        );
+      }
+    };
+
+    setupForAndroidNotifications();
     registerPushToken();
   }, []);
 };

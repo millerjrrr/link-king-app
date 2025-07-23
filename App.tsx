@@ -7,9 +7,11 @@ import AdaptiveAppContainer from "./src/components/Graphics/AdaptiveAppContainer
 import AppLoadingContainer from "./src/navigation/AppLoadingContainer";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import useRequestPermissions from "./src/hooks/utilityHooks/useRequestPermissions";
+import useSendPushToken from "./src/hooks/utilityHooks/useSendPushToken";
 
 export default function App() {
   useRequestPermissions();
+  useSendPushToken();
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>

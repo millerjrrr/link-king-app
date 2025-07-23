@@ -23,7 +23,6 @@ import UserPromptAndMusicButton from "./components/UserPromptAndMusicButton";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { ConsoleStackParamList } from "@src/types/navigationTypes";
-import useSendPushToken from "@src/hooks/utilityHooks/useSendPushToken";
 import NewWordAddedModal from "@src/components/AppModals/NewWordAddedModal";
 import IntegratedSolutionsList from "./components/IntegratedSolutionsList";
 
@@ -49,8 +48,6 @@ const Console = () => {
     if (!isKeyboardVisible) dispatch(incHelpPulsing());
   }, [isKeyboardVisible]);
 
-  // HOOK CALLS
-  useSendPushToken();
   // Effects
   useManageGolden();
   useTimeManager();
