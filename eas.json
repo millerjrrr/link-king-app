@@ -26,9 +26,11 @@
         "CF_BUNDLE_URL": "$CF_BUNDLE_URL"
       },
       "android": {
+        "autoIncrement": true,
         "buildType": "app-bundle"
       },
       "ios": {
+        "autoIncrement": true,
         "simulator": false
       },
       "channel": "production"

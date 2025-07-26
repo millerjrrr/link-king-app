@@ -11,16 +11,19 @@ import {
 import { speak } from "@src/utils/appSpeak";
 import { useDispatch, useSelector } from "react-redux";
 import useCatchAsync from "../utilityHooks/useCatchAsync";
+import usePlaySound from "./usePlaySound";
 
 const useHandleCorrectAnswer = () => {
   const dispatch = useDispatch();
+  const playSound = usePlaySound();
   const catchAsync = useCatchAsync();
   const {
     startedThisWord,
-    options: { sound },
+    options: { sound, bing },
   } = useSelector(selectConsoleLocals);
 
   const handleCorrectAnswer = catchAsync(async () => {
+    if (bing) playSound("bing");
     //console.log("# Handling correct Answer");
     const time = Math.min(
       Date.now() - startedThisWord,
@@ -54,6 +57,7 @@ const useHandleCorrectAnswer = () => {
         dispatch(updateConsoleState({ ...data }));
         dispatch(updateFormValue(""));
         speak({ target, language, sound });
+
         dispatch(restartTheTimer());
       } finally {
         dispatch(updateBusyState(false));

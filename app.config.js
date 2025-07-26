@@ -1,7 +1,7 @@
 export default ({ config }) => ({
   ...config,
   expo: {
-    name: "Link-King Dev",
+    name: "Link-King",
     slug: "LinkKingApp",
     version: "5.5.0",
     orientation: "portrait",
@@ -15,9 +15,8 @@ export default ({ config }) => ({
     assetBundlePatterns: ["**/*"],
     scheme: "com.linkoking.app",
     ios: {
-      buildNumber: "1",
       supportsTablet: false,
-      bundleIdentifier: "com.linkoking.app.dev", //change to com.linkoking.app.dev for dev builds
+      bundleIdentifier: "com.linkoking.app", //change to com.linkoking.app.dev for dev builds
       useAppleSignIn: true,
       entitlements: {
         "aps-environment": "production",

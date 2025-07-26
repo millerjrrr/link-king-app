@@ -22,6 +22,7 @@ interface Options {
   sound: boolean;
   blurred: boolean;
   timer: boolean;
+  bing: boolean;
   listening: boolean;
 }
 
@@ -91,6 +92,7 @@ const initialState: ConsoleState = {
       sound: true,
       blurred: false,
       timer: true,
+      bing: true,
       listening: false,
     },
     musicIsPlaying: false,

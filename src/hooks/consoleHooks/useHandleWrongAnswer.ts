@@ -15,17 +15,20 @@ import { speak } from "@src/utils/appSpeak";
 import { useDispatch, useSelector } from "react-redux";
 import useCatchAsync from "@src/hooks/utilityHooks/useCatchAsync";
 import { updateModals } from "@src/store/modals";
+import usePlaySound from "./usePlaySound";
 
 const useHandleWrongAnswer = () => {
   const dispatch = useDispatch();
+  const playSound = usePlaySound();
   const catchAsync = useCatchAsync();
   const {
     startedThisWord,
-    options: { sound },
+    options: { sound, bing },
   } = useSelector(selectConsoleLocals);
 
   const handleWrongAnswer = catchAsync(async () => {
     //console.log("# Handling wrong answer");
+    if (bing) playSound("buzz");
     const time = Math.min(
       Date.now() - startedThisWord,
       10 * 1000,
@@ -44,11 +47,7 @@ const useHandleWrongAnswer = () => {
           },
         );
 
-        const {
-          display: { tail },
-          gamePlay,
-          isNewWord,
-        } = data;
+        const { gamePlay, isNewWord } = data;
         const {
           speechLang: language,
           tries,
@@ -67,7 +66,9 @@ const useHandleWrongAnswer = () => {
         dispatch(updateConsoleState({ ...data }));
         dispatch(resetTimer());
         dispatch(updateFormValue(""));
+
         speak({ target: ticket.target, language, sound });
+
         dispatch(resetConsole());
         dispatch(updateShowSolution(!isNewWord));
       } finally {

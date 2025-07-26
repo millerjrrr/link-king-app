@@ -31,7 +31,10 @@ const useSubmitAnswer = () => {
       );
       if (answerAccepted) {
         handleCorrectAnswer();
-      } else handleWrongAnswer();
+      } else {
+        handleWrongAnswer();
+      }
+
       // if (level > 0)
       dispatch(
         updateLevelPop({
@@ -44,6 +47,7 @@ const useSubmitAnswer = () => {
       return false;
     }
   };
+
   return submitAnswer;
 };
 

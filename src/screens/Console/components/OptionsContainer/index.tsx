@@ -9,19 +9,27 @@ import useCheckTTSData from "@src/hooks/consoleHooks/useCheckTTSData";
 import { updateModals } from "@src/store/modals";
 // import listenerService from "@src/utils/listenerService";
 import { settingsState } from "../../../../store/settings";
+import usePlaySound from "../../../../hooks/consoleHooks/usePlaySound";
 
 interface OptionsContainerProps {
   size?: number;
-  show?: "all" | "sound" | "blurred" | "time" | "listening";
+  show?:
+    | "all"
+    | "sound"
+    | "blurred"
+    | "time"
+    | "bing"
+    | "listening";
 }
 const OptionsContainer: React.FC<OptionsContainerProps> = ({
   size = 35,
   show = "all",
 }) => {
   const {
-    options: { sound, blurred, timer, listening },
+    options: { sound, blurred, timer, bing, listening },
   } = useSelector(selectConsoleLocals);
   const { appLang } = useSelector(settingsState);
+  const playSound = usePlaySound();
 
   const checkTTSData = useCheckTTSData();
   const dispatch = useDispatch();
@@ -57,6 +65,14 @@ const OptionsContainer: React.FC<OptionsContainerProps> = ({
   const timerButtonFunction = async () => {
     const options = {
       timer: !timer,
+    };
+    dispatch(updateOptions(options));
+  };
+
+  const bingButtonFunction = () => {
+    playSound(bing ? "buzz" : "bing");
+    const options = {
+      bing: !bing,
     };
     dispatch(updateOptions(options));
   };
@@ -99,6 +115,16 @@ const OptionsContainer: React.FC<OptionsContainerProps> = ({
           select={timer}
           trueIconName="timer"
           falseIconName="timer-off"
+        />
+      ) : null}
+      {show === "all" || show === "bing" ? (
+        <OptionsIcon
+          onPress={bingButtonFunction}
+          iconLib="FontAwesome"
+          size={size}
+          select={bing}
+          trueIconName="bell-o"
+          falseIconName="bell-slash-o"
         />
       ) : null}
       {/* {appLang === "en" &&
