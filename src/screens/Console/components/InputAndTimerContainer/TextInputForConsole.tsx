@@ -16,9 +16,10 @@ import appShadow from "@src/utils/appShadow";
 import { speak } from "@src/utils/appSpeak";
 import useColors from "@src/hooks/utilityHooks/useColors";
 import ClosingTextInput from "@src/components/ClosingTextInput";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { acceptAnswer } from "@src/utils/acceptAnswer";
 import useSubmitAnswer from "@src/hooks/consoleHooks/useSubmitAnswer";
+import useDebounce from "../../../../hooks/collectionHooks/useDebounce";
 
 interface Props {
   onSubmitEditing: () => void;
@@ -47,11 +48,16 @@ const TextInputForConsole: React.FC<Props> = ({
   const keyboardAppearance =
     STATUSBAR === "dark" ? "light" : "dark";
 
+  const debouncedFormValue = useDebounce(formValue, 100);
+
+  useEffect(() => {
+    if (acceptAnswer(debouncedFormValue, solutions)) {
+      submitAnswer(debouncedFormValue);
+    }
+  }, [debouncedFormValue, solutions]);
+
   const onChangeText = (text: string) => {
     dispatch(updateFormValue(text));
-    if (acceptAnswer(text, solutions)) {
-      submitAnswer(text);
-    }
   };
 
   const onFocus = async () => {
