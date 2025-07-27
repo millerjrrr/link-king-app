@@ -14,7 +14,6 @@ const StatsContainer: React.FC<{ size?: number }> = ({
 }) => {
   const {
     stats,
-    gamePlay: { target },
     locals: { timerIsOn },
   } = useSelector(selectConsoleState);
   const { due, steps, time, streak, newWords } = stats;
@@ -22,14 +21,14 @@ const StatsContainer: React.FC<{ size?: number }> = ({
 
   const [timeInc, setTimeInc] = useState(0);
 
-  useEffect(() => setTimeInc(0), [target]);
+  useEffect(() => setTimeInc(0), [time]);
 
   // 1. Increment time every second
   useEffect(() => {
     let intervalId: NodeJS.Timeout;
     if (timerIsOn) {
       intervalId = setInterval(() => {
-        setTimeInc(timeInc + 1000);
+        setTimeInc((prev) => prev + 1000);
       }, 1000);
     }
 
@@ -68,7 +67,7 @@ const StatsContainer: React.FC<{ size?: number }> = ({
       />
       <StatsIcon
         name="clock-outline"
-        text={convertMsToTime(time)}
+        text={convertMsToTime(time + timeInc)}
         size={size}
       />
       <StatsIcon

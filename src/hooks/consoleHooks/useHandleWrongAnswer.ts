@@ -36,7 +36,6 @@ const useHandleWrongAnswer = () => {
       try {
         Vibration.vibrate(500);
         dispatch(updateBusyState(true));
-        dispatch(incrementStatsTime(time));
         let { data } = await clientWithAuth.post(
           "/api/v1/console/submit-attempt",
           {
