@@ -9,7 +9,7 @@ import {
 import { InputAccessoryView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import useColors from "@src/hooks/utilityHooks/useColors";
-import { forwardRef } from "react";
+import { forwardRef, useMemo } from "react";
 
 interface Props extends TextInputProps {}
 
@@ -21,7 +21,11 @@ const ClosingTextInput = forwardRef<TextInput, Props>(
       Keyboard.dismiss();
     };
 
-    const inputAccessoryViewID = "doneButtonToolbar";
+    const inputAccessoryViewID = useMemo(
+      () =>
+        `doneButtonToolbar-${Math.random().toString(36).slice(2)}`,
+      [],
+    );
 
     return Platform.OS === "ios" ? (
       <>
@@ -53,15 +57,12 @@ const ClosingTextInput = forwardRef<TextInput, Props>(
         </InputAccessoryView>
         <TextInput
           {...props}
-          ref={ref || undefined} // Ensure ref is only passed when defined
+          ref={ref}
           inputAccessoryViewID={inputAccessoryViewID}
         />
       </>
     ) : (
-      <TextInput
-        ref={ref || undefined} // Ensure ref is only passed when defined
-        {...props}
-      />
+      <TextInput ref={ref} {...props} />
     );
   },
 );

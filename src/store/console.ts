@@ -38,7 +38,6 @@ interface Locals {
   formValue: string;
   lastAttempt: string;
   showSolution: boolean;
-  timeOnThisWord: number;
   startedThisWord: number;
   isPlaying: boolean;
   timerIsOn: boolean;
@@ -81,7 +80,6 @@ const initialState: ConsoleState = {
     formValue: "",
     lastAttempt: "",
     showSolution: false,
-    timeOnThisWord: 0,
     startedThisWord: 0,
     isPlaying: false,
     timerIsOn: false,
@@ -134,15 +132,6 @@ const slice = createSlice({
     ) {
       state.locals.showSolution = action.payload;
     },
-    incrementTimeOnThisWord(
-      state,
-      action: PayloadAction<number>,
-    ) {
-      state.locals.timeOnThisWord += action.payload;
-    },
-    resetTimeOnThisWord(state) {
-      state.locals.timeOnThisWord = 0;
-    },
     restartTheTimer(state) {
       state.locals.timerKey += 1;
       state.locals.isPlaying = true;
@@ -156,7 +145,6 @@ const slice = createSlice({
         isPlaying: false,
         timerKey: state.locals.timerKey + 1,
         timerIsOn: false,
-        timeOnThisWord: 0,
       });
     },
     resetTimer(state) {
@@ -203,8 +191,6 @@ export const {
   updateFormValue,
   resetConsole,
   updateShowSolution,
-  incrementTimeOnThisWord,
-  resetTimeOnThisWord,
   restartTheTimer,
   stopPlaying,
   backOut,

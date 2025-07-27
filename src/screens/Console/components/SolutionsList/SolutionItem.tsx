@@ -57,10 +57,11 @@ const SolutionItem = ({
   appLang.slice(0, 2);
 
   const dispatch = useDispatch();
-  const navigation =
-    useNavigation<
-      StackNavigationProp<CollectionStackParamList>
-    >();
+  const navigation = edit
+    ? useNavigation<
+        StackNavigationProp<CollectionStackParamList>
+      >()
+    : undefined;
 
   const seeWebDefinition = !(ticket && target)
     ? () => {
@@ -83,10 +84,12 @@ const SolutionItem = ({
             dispatch(
               updateModals({
                 showNewWordAddedModal: false,
+                currentTabName: "Collection:",
               }),
             );
           dispatch(updateSelectedTicket(ticket));
-          navigation.navigate("Edit Solutions");
+          if (navigation)
+            navigation.navigate("Edit Solutions");
         }
       : // !edit
         //   ? () => {

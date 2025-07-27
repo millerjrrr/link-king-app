@@ -22,6 +22,8 @@ interface SwiperWrapperProps {
   swipeRightFunction?: () => void;
 }
 
+const scrollGesture = Gesture.Native();
+
 const SwiperWrapper = ({
   name,
   children,
@@ -59,7 +61,8 @@ const SwiperWrapper = ({
       } else {
         rotation.value = withTiming(0);
       }
-    });
+    })
+    .simultaneousWithExternalGesture(scrollGesture);
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [

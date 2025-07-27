@@ -33,7 +33,6 @@ const useHandleCorrectAnswer = () => {
       try {
         dispatch(
           updateLocals({
-            timeOnThisWord: 0, // the clock is reset to zero, and starts counting the next timeOnThisWord to be sent to the server
             startedThisWord: Date.now(),
             timerIsOn: true, // the clock should still be running to count seconds playing the game
             busy: true,

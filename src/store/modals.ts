@@ -5,6 +5,7 @@ import {
 import { RootState } from "@src/store";
 import { Modal } from "@src/types/Modals";
 import Ticket from "@src/types/Ticket";
+import { TabParamList } from "../types/navigationTypes";
 
 interface ModalState {
   modalShowing: Modal | "";
@@ -13,6 +14,7 @@ interface ModalState {
   showNewWordAddedModal: boolean;
   ticket: Ticket | {};
   webViewUrl: string;
+  currentTabName: keyof TabParamList;
 }
 
 const initialState: ModalState = {
@@ -22,6 +24,7 @@ const initialState: ModalState = {
   showNewWordAddedModal: false,
   ticket: {},
   webViewUrl: "",
+  currentTabName: "Console:",
 };
 
 const slice = createSlice({

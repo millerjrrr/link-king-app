@@ -16,7 +16,7 @@ const configureAudio = async () => {
   // Force audio output through the speaker
   const soundObject = new Audio.Sound();
   await soundObject.loadAsync(
-    require("@assets/backgroundMusic/SilentTrick.mp3"),
+    require("@assets/sounds/SilentTrick.mp3"),
     { shouldPlay: true },
   );
   await soundObject.unloadAsync();

@@ -12,6 +12,7 @@ const AppModals = () => {
       <OnPressModals />
       <DefinitionInWebViewModal />
       <WebViewModal />
+      <NewWordAddedModal />
     </>
   );
 };

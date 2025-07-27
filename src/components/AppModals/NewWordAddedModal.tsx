@@ -1,4 +1,3 @@
-import colors from "@src/utils/colors";
 import { useDispatch, useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import {
@@ -26,9 +25,10 @@ import Ticket from "@src/types/Ticket";
 import ReadWordButton from "@src/screens/Console/components/ReadWordButton";
 import useDeleteThisTicketAndGetNewOne from "@src/hooks/consoleHooks/useDeleteThisTicketAndGetNewOne";
 
-const NewWordAddedModal: React.FC<{
-  inConsole?: boolean;
-}> = ({ inConsole }) => {
+const NewWordAddedModal = () => {
+  const { currentTabName } = useSelector(modalState);
+
+  const inConsole = currentTabName === "Console:";
   const { appLang } = useSelector(settingsState);
   const { PRIMARY, CONTRAST } = useColors();
   const deleteThisTicketAndGetNewOne =
@@ -119,10 +119,7 @@ const NewWordAddedModal: React.FC<{
               <ReadWordButton speakWord={ticket.target} />
             )}
             <AcceptedAnswers />
-            <SolutionsList
-              ticket={ticket}
-              edit={!inConsole}
-            />
+            <SolutionsList ticket={ticket} edit={false} />
           </NewWordModalContainer>
         </ModalContainer>
         {inConsole && <SwipeInstructions />}

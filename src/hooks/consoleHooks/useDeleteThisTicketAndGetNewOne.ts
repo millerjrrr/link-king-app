@@ -13,7 +13,6 @@ import { speak } from "@src/utils/appSpeak";
 import { useDispatch, useSelector } from "react-redux";
 import useCatchAsync from "@src/hooks/utilityHooks/useCatchAsync";
 import { updateModals } from "../../store/modals";
-import { typeCheckConsoleData } from "../../utils/typeCheckConsoleData";
 import useAppNotification from "../utilityHooks/useAppNotification";
 import appTextSource from "../../utils/appTextSource";
 import { settingsState } from "../../store/settings";
@@ -36,7 +35,6 @@ const useDeleteThisTicketAndGetNewOne = () => {
       try {
         dispatch(
           updateLocals({
-            timeOnThisWord: 0,
             startedThisWord: Date.now(),
             timerIsOn: true,
             busy: true,
@@ -62,13 +60,19 @@ const useDeleteThisTicketAndGetNewOne = () => {
           dispatch(updateShowSolution(false));
         } else {
           dispatch(
-            updateModals({ showNewWordAddedModal: true }),
+            updateModals({
+              showNewWordAddedModal: true,
+              currentTabName: "Console:",
+            }),
           );
         }
       } catch (err) {
         appNotification("error", errorMsg);
         dispatch(
-          updateModals({ showNewWordAddedModal: true }),
+          updateModals({
+            showNewWordAddedModal: true,
+            currentTabName: "Console:",
+          }),
         );
       } finally {
         dispatch(updateBusyState(false));

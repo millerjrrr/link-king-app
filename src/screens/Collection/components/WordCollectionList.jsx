@@ -37,10 +37,15 @@ const WordCollectionList = ({ navigation }) => {
         renderItem={({ item }) => {
           // must be called item for FlatList to work
           return (
-            <WordCard {...{ navigation, ticket: item }} />
+            <WordCard
+              navigation={navigation}
+              ticket={item}
+            />
           );
         }}
-        keyExtractor={(item) => item.id || "plusButton"}
+        keyExtractor={(item, index) =>
+          item.id?.toString() ?? `item-${index}`
+        }
         keyboardShouldPersistTaps="handled"
         style={styles.flatList}
         onEndReached={() => {

@@ -21,6 +21,7 @@ const useAddNewWord = () => {
       dispatch(
         updateModals({
           showNewWordAddedModal: true,
+          currentTabName: "Collection:",
           ticket,
         }),
       );

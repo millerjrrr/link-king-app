@@ -2,7 +2,6 @@ import clientWithAuth from "@src/api/clientWithAuth";
 import {
   updateBusyState,
   resetTimer,
-  resetTimeOnThisWord,
   incrementStatsTime,
   resetConsole,
   updateConsoleState,
@@ -37,7 +36,6 @@ const useHandleWrongAnswer = () => {
       try {
         Vibration.vibrate(500);
         dispatch(updateBusyState(true));
-        dispatch(resetTimeOnThisWord());
         dispatch(incrementStatsTime(time));
         let { data } = await clientWithAuth.post(
           "/api/v1/console/submit-attempt",
@@ -59,7 +57,10 @@ const useHandleWrongAnswer = () => {
           () => Keyboard.dismiss();
           dispatch(updateModals({ ticket }));
           dispatch(
-            updateModals({ showNewWordAddedModal: true }),
+            updateModals({
+              showNewWordAddedModal: true,
+              currentTabName: "Console:",
+            }),
           );
         }
 

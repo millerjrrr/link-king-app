@@ -7,7 +7,7 @@ import {
   updateModals,
 } from "@src/store/modals";
 import { Modal as ModalType } from "@src/types/Modals";
-import { ReactNode, useEffect } from "react";
+import { ReactNode } from "react";
 import Xbar from "./components/XBar";
 import useColors from "@src/hooks/utilityHooks/useColors";
 import AppLink from "../AppLink";

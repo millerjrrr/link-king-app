@@ -12,7 +12,6 @@ import {
 } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import useManageGolden from "@src/hooks/consoleHooks/useEffects/useManageGolden";
-import useTimeManager from "@src/hooks/consoleHooks/useEffects/useTimeManager";
 import useConsoleUpdates from "@src/hooks/consoleHooks/useEffects/useConsoleUpdates";
 import useOnKeyboardClose from "@src/hooks/consoleHooks/useEffects/useOnKeyboardClose";
 import useHandleAppBackgroundExit from "../../hooks/consoleHooks/useEffects/useHandleAppBackgroundExit";
@@ -23,7 +22,6 @@ import UserPromptAndMusicButton from "./components/UserPromptAndMusicButton";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { ConsoleStackParamList } from "@src/types/navigationTypes";
-import NewWordAddedModal from "@src/components/AppModals/NewWordAddedModal";
 import IntegratedSolutionsList from "./components/IntegratedSolutionsList";
 
 const Console = () => {
@@ -50,7 +48,6 @@ const Console = () => {
 
   // Effects
   useManageGolden();
-  useTimeManager();
   useConsoleUpdates();
   useHandleAppBackgroundExit();
   useOnKeyboardClose();
@@ -76,7 +73,6 @@ const Console = () => {
         <UserPromptAndMusicButton
           isKeyboardVisible={isKeyboardVisible}
         />
-        <NewWordAddedModal inConsole />
       </TabScreenContainer>
     </IsSubscribedWrapper>
   );

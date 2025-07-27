@@ -25,7 +25,7 @@ const usePlayBackgroundMusic = () => {
     if (musicIsPlaying) {
       // Dispatch Redux update after ensuring sound stopped
 
-      const file = require("@assets/backgroundMusic/BackgroundMusic.mp3");
+      const file = require("@assets/sounds/BackgroundMusic.mp3");
       const { sound } = await Audio.Sound.createAsync(
         file,
         {

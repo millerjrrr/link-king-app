@@ -1,7 +1,8 @@
-import { Platform, ScrollView, View } from "react-native";
+import { Platform, View } from "react-native";
 import SolutionItem from "./SolutionItem";
 import HorizontalScrollFade from "./HorizonatalScrollFade";
 import screenDimensions from "@src/utils/screenDimensions";
+import { ScrollView } from "react-native-gesture-handler";
 
 const { width } = screenDimensions();
 

@@ -16,7 +16,7 @@ import {
   OptionsStackParamList,
 } from "@src/types/navigationTypes";
 
-const FlagBook: React.FC<{ padding: number }> = ({
+const FlagBook: React.FC<{ padding: boolean }> = ({
   padding,
 }) => {
   const { dictionary } = useSelector(selectConsoleState);
