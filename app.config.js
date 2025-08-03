@@ -3,7 +3,7 @@ export default ({ config }) => ({
   expo: {
     name: "Link-King",
     slug: "LinkKingApp",
-    version: "5.5.0",
+    version: "5.5.1",
     orientation: "portrait",
     icon: "./assets/icon.png",
     userInterfaceStyle: "light",
