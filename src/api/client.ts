@@ -6,9 +6,9 @@ const baseURL =
     ? "https://api.link-king.com" // Production server
     : Platform.OS === "web"
       ? "http://localhost:3001"
-      : // : "http://192.168.1.86:3001"; // Windows IP
-        // "http://192.168.1.111:3001"; // Mac IP
-        "https://api.link-king.com"; //sometimes still want liveServer
+      : "http://192.168.1.86:3001"; // Windows IP
+// "http://192.168.1.111:3001"; // Mac IP
+// "https://api.link-king.com"; //sometimes still want liveServer
 
 const client: AxiosInstance = axios.create({
   baseURL,
