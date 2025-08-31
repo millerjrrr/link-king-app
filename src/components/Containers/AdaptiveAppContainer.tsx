@@ -1,7 +1,7 @@
-import useColors from "@src/hooks/utilityHooks/useColors";
 import appShadow from "@src/utils/appShadow";
 import colors from "@src/utils/colors";
 import screenDimensions from "@src/utils/screenDimensions";
+import { LinearGradient } from "expo-linear-gradient";
 import { ReactNode } from "react";
 import { Platform, View } from "react-native";
 
@@ -10,14 +10,18 @@ const AdaptiveAppContainer = ({
 }: {
   children: ReactNode;
 }) => {
-  const { CONTRAST } = useColors();
+  const { CONTRAST, PRIMARY, SECONDARY } = colors.dark;
   const { height, width } = screenDimensions();
   const borderRadius = height * 0.0542;
 
   //run npx expo export --platform web to export
 
   return Platform.OS === "web" ? (
-    <View
+    <LinearGradient
+      colors={[SECONDARY, PRIMARY]}
+      locations={[0, 1]}
+      start={{ x: 0.0, y: 0.0 }}
+      end={{ x: 1, y: 1 }}
       style={{
         flex: 1,
         justifyContent: "center",
@@ -26,10 +30,10 @@ const AdaptiveAppContainer = ({
     >
       <View
         style={{
-          borderColor: colors.dark.CONTRAST[1],
+          borderColor: CONTRAST[1],
           borderWidth: 3,
           borderRadius,
-          ...appShadow(CONTRAST, 15),
+          ...appShadow(CONTRAST[0], 15),
         }}
       >
         <View
@@ -58,7 +62,7 @@ const AdaptiveAppContainer = ({
           {children}
         </View>
       </View>
-    </View>
+    </LinearGradient>
   ) : (
     <View style={{ flex: 1, backgroundColor: "black" }}>
       {children}

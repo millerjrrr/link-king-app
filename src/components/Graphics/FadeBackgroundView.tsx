@@ -31,7 +31,7 @@ const FadeBackgroundView: React.FC<
 
   return (
     <LinearGradient
-      colors={colors}
+      colors={colors as [string, string, ...string[]]}
       style={{
         position: "absolute",
         width: "100%",

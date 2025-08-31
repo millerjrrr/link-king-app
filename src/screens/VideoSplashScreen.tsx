@@ -16,6 +16,10 @@ const VideoSplashScreenWrapper: React.FC<{
   const [showChildren, setShowChildren] = useState(false);
 
   useEffect(() => {
+    if (Platform.OS === "web") {
+      document.title = "Loading...";
+    }
+
     setTimeout(() => {
       SplashScreen.hideAsync();
     }, 500);
@@ -35,21 +39,33 @@ const VideoSplashScreenWrapper: React.FC<{
     children
   ) : (
     <View style={styles.container}>
-      {Platform.OS === "web" ? (
-        <video
-          src="/assets/assets/splash-video.mp4"
-          style={styles.video}
-          autoPlay
-          muted
-          playsInline
-          onEnded={() => setShowChildren(true)} // Trigger state change when video ends
-        />
-      ) : (
-        <VideoView
-          style={styles.video}
-          player={player}
-          nativeControls={false}
-        />
+      <View
+        style={[
+          { flex: 1 },
+          !showChildren && { opacity: 0 },
+        ]}
+      >
+        {children}
+      </View>
+      {!showChildren && (
+        <>
+          {Platform.OS === "web" ? (
+            <video
+              src="/assets/assets/splash-video.mp4"
+              style={styles.video}
+              autoPlay
+              muted
+              playsInline
+              onEnded={() => setShowChildren(true)} // Trigger state change when video ends
+            />
+          ) : (
+            <VideoView
+              style={styles.video}
+              player={player}
+              nativeControls={false}
+            />
+          )}
+        </>
       )}
     </View>
   );

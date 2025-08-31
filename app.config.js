@@ -84,6 +84,11 @@ export default ({ config }) => ({
         backgroundColor: "#000000",
       },
     },
+    web: {
+      favicon: "./assets/icon.png",
+      name: "Link-King",
+      description: "Next Level Language Learning",
+    },
     plugins: [
       "expo-video",
       "expo-av",

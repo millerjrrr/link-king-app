@@ -1,12 +1,16 @@
 import axios, { AxiosInstance } from "axios";
 import { Platform } from "react-native";
 
+const ProductionServer = "https://api.link-king.com";
+const LocalHost = "http://localhost:3001";
+const LocalIP = "http://192.168.1.86:3001";
+
 const baseURL =
   process.env.NODE_ENV === "production"
-    ? "https://api.link-king.com" // Production server
+    ? ProductionServer
     : Platform.OS === "web"
-      ? "http://localhost:3001"
-      : "http://192.168.1.86:3001"; // Windows IP
+      ? LocalHost
+      : LocalIP; // Windows IP
 // "http://192.168.1.111:3001"; // Mac IP
 // "https://api.link-king.com"; //sometimes still want liveServer
 

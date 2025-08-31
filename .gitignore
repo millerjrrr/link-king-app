@@ -39,3 +39,5 @@ yarn-error.*
 
 # Commit message file
 COMMIT_MESSAGE.md
+
+desktop.ini
