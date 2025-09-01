@@ -65,7 +65,7 @@ export default ({ config }) => ({
     android: {
       targetSdkVersion: 35, // set to Android 15
       compileSdkVersion: 35,
-      versionCode: 69,
+      versionCode: 70,
       permissions: [
         "INTERNET",
         "com.android.vending.BILLING",
