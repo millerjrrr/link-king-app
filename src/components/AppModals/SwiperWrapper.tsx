@@ -20,6 +20,7 @@ interface SwiperWrapperProps {
   closeFunction: () => void;
   swipeLeftFunction?: () => void;
   swipeRightFunction?: () => void;
+  active: boolean;
 }
 
 const scrollGesture = Gesture.Native();
@@ -30,6 +31,7 @@ const SwiperWrapper = ({
   closeFunction,
   swipeLeftFunction = closeFunction,
   swipeRightFunction = closeFunction,
+  active,
 }: SwiperWrapperProps) => {
   //gesture handling logic
   const pivotHeight = -1000; // adjust based on modal size
@@ -72,11 +74,9 @@ const SwiperWrapper = ({
     ],
   }));
 
-  return (
+  return active ? (
     <GestureHandlerRootView
       style={{
-        height: "100%",
-        width: "100%",
         alignItems: "center",
         justifyContent: "center",
       }}
@@ -89,6 +89,8 @@ const SwiperWrapper = ({
         </Animated.View>
       </GestureDetector>
     </GestureHandlerRootView>
+  ) : (
+    children
   );
 };
 

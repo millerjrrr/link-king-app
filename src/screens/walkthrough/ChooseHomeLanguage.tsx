@@ -56,7 +56,7 @@ const ChooseHomeLanguage = () => {
           onPress={onPress}
         />
         <AppLink
-          title={linkTitle}
+          title={linkTitle || "Change Home Language"}
           onPress={changeLanguage}
         />
       </TouchableOpacity>

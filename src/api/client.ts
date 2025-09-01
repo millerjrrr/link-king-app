@@ -3,7 +3,7 @@ import { Platform } from "react-native";
 
 const ProductionServer = "https://api.link-king.com";
 const LocalHost = "http://localhost:3001";
-const LocalIP = "http://192.168.1.86:3001";
+const LocalIP = "http://192.168.1.68:3001";
 
 const baseURL =
   process.env.NODE_ENV === "production"

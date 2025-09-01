@@ -11,7 +11,11 @@ import { ReactNode } from "react";
 import Xbar from "./components/XBar";
 import useColors from "@src/hooks/utilityHooks/useColors";
 import AppLink from "../AppLink";
-import { Linking, TouchableOpacity } from "react-native";
+import {
+  Linking,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import appTextSource from "@src/utils/appTextSource";
 import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
 import SwiperWrapper from "./SwiperWrapper";
@@ -64,6 +68,7 @@ const AppModal: React.FC<Props> = ({
         closeFunction={close}
         swipeLeftFunction={swipeLeftFunction}
         swipeRightFunction={swipeRightFunction}
+        active={name !== "definitionInWebViewModal"}
       >
         <ModalContainer
           backgroundColor={PRIMARY}

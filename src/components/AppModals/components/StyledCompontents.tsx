@@ -8,7 +8,6 @@ import styled from "styled-components/native";
 import AppText from "../../AppText";
 import { appShadowForStyledComponents } from "@src/utils/appShadow";
 import screenDimensions from "@src/utils/screenDimensions";
-
 const { width, height } = screenDimensions();
 
 interface Props {
@@ -17,10 +16,12 @@ interface Props {
   color: string; // Define prop type
 }
 
+// width: ${width - 10}px;
 export const ModalContainer = styled(View)<{
   backgroundColor: string;
   color: string;
 }>`
+  width: ${width - 30}px;
   padding-horizontal: 5px;
   border-radius: 10px;
   align-items: center;
@@ -30,6 +31,7 @@ export const ModalContainer = styled(View)<{
   ${(props: Props) =>
     appShadowForStyledComponents(props.color)}
 `;
+
 export const WebViewContainer = styled(View)`
   padding-horizontal: 5px;
   padding-vertical: 10px;

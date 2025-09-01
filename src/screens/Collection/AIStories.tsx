@@ -9,6 +9,7 @@ import appTextSource from "@src/utils/appTextSource";
 import { useEffect } from "react";
 import {
   Clipboard,
+  Platform,
   ScrollView,
   TouchableOpacity,
   View,
@@ -110,6 +111,10 @@ const AIStories = () => {
                   padding: 5,
                   backgroundColor: SECONDARY,
                   width: "100%",
+                  height:
+                    Platform.OS === "web"
+                      ? "100%"
+                      : undefined,
                 }}
               >
                 <AppText

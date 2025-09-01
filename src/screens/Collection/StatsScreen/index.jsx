@@ -8,6 +8,7 @@ import AppText from "@src/components/AppText";
 import StatsContainer from "./StatsContainer";
 import useFetchStatsInfo from "@src/hooks/collectionHooks/useFetchStatsInfo";
 import {
+  Platform,
   ScrollView,
   TouchableOpacity,
   View,
@@ -49,7 +50,12 @@ const StatsScreen = () => {
   return (
     <PopUpContainer heading={heading}>
       <BusyWrapper busy={busy} size={150}>
-        <ScrollView>
+        <ScrollView
+          style={{ width: "100%" }}
+          showsVerticalScrollIndicator={
+            Platform.OS !== "web"
+          }
+        >
           <View style={{ width: "100%", padding: 15 }}>
             {showHist ? (
               <LevelHistogram
