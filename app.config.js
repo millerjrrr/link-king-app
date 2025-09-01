@@ -63,6 +63,7 @@ export default ({ config }) => ({
       backgroundColor: "#000000",
     },
     android: {
+      versionCode: 69,
       permissions: [
         "INTERNET",
         "com.android.vending.BILLING",
