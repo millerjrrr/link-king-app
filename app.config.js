@@ -63,6 +63,8 @@ export default ({ config }) => ({
       backgroundColor: "#000000",
     },
     android: {
+      targetSdkVersion: 35, // set to Android 15
+      compileSdkVersion: 35,
       versionCode: 69,
       permissions: [
         "INTERNET",
