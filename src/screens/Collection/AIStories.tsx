@@ -89,7 +89,7 @@ const AIStories = () => {
                 }}
               >
                 <AntDesign
-                  name="copy1"
+                  name="copy"
                   size={20}
                   color={CONTRAST}
                 />

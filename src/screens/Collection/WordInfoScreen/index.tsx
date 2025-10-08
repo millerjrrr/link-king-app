@@ -15,12 +15,23 @@ import {
   collectionState,
   updateWordDeleteButtonPressed,
 } from "@src/store/collection";
-import { useFocusEffect } from "@react-navigation/native";
+import {
+  RouteProp,
+  useFocusEffect,
+} from "@react-navigation/native";
 import { updateModals } from "@src/store/modals";
 import definitionWebLookup from "@src/utils/definitionWebLookup";
 import WordCard from "../components/WordCard";
+import { CollectionStackParamList } from "@src/types/navigationTypes";
 
-const WordInfoScreen = ({ route }) => {
+type WordInfoRouteProp = RouteProp<
+  CollectionStackParamList,
+  "Word Details"
+>;
+
+const WordInfoScreen: React.FC<{
+  route: WordInfoRouteProp;
+}> = ({ route }) => {
   const { selectedTicket: ticket } =
     useSelector(collectionState);
   const { wrongAnswerReturned } = route.params;

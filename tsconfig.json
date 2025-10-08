@@ -2,54 +2,33 @@
   "compilerOptions": {
     "target": "esnext",
     "jsx": "react-native",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "strict": true,
     "noImplicitAny": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
-    "types": [
-      "styled-components-react-native"
-    ],
+    "types": ["styled-components-react-native"],
     "paths": {
-      "@src/*": [
-        "src/*"
-      ],
-      "@assets/*": [
-        "assets/*"
-      ],
-      "@screens/*": [
-        "src/screens/*"
-      ],
-      "@navigation/*": [
-        "src/navigation/*"
-      ],
-      "@hooks/*": [
-        "src/hooks/*"
-      ],
-      "@store/*": [
-        "src/store/*"
-      ],
-      "@utils/*": [
-        "src/utils/*"
-      ],
-      "@auth/*": [
-        "src/screens/auth/*"
-      ],
-      "@Console/*": [
-        "src/screens/Console/*"
-      ],
-      "@components/*": [
-        "src/components/*"
-      ]
+      "@src/*": ["src/*"],
+      "@assets/*": ["assets/*"],
+      "@screens/*": ["src/screens/*"],
+      "@navigation/*": ["src/navigation/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@store/*": ["src/store/*"],
+      "@utils/*": ["src/utils/*"],
+      "@auth/*": ["src/screens/auth/*"],
+      "@Console/*": ["src/screens/Console/*"],
+      "@components/*": ["src/components/*"]
     }
   },
   "include": [
     "src/**/*",
     "assets/**/*",
     "declarations.d.ts",
-    "env.d.ts"
+    "env.d.ts",
+    "reanimated-fix.d.ts"
   ],
   "exclude": [
     "node_modules",

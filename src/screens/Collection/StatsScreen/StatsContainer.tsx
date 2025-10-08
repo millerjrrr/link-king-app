@@ -6,7 +6,9 @@ import StatsIcon from "@src/screens/Console/components/StatsContainer/StatsIcon"
 import useColors from "@src/hooks/utilityHooks/useColors";
 import appShadow from "@src/utils/appShadow";
 
-const StatsContainer = ({ size = 22 }) => {
+const StatsContainer: React.FC<{ size?: number }> = ({
+  size = 22,
+}) => {
   const {
     userGameData: {
       collectedWords,

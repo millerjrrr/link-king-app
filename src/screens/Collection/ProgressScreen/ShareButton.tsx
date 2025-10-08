@@ -3,6 +3,7 @@ import {
   Share,
   StyleSheet,
   TouchableOpacity,
+  View,
 } from "react-native";
 import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
@@ -10,8 +11,11 @@ import { settingsState } from "@src/store/settings";
 import { captureRef } from "react-native-view-shot";
 import appTextSource from "@src/utils/appTextSource";
 import useCatchAsync from "@src/hooks/utilityHooks/useCatchAsync";
+import { RefObject } from "react";
 
-const ShareButton = ({ shareRef }) => {
+const ShareButton: React.FC<{
+  shareRef: RefObject<View>;
+}> = ({ shareRef }) => {
   const { colorScheme, golden, appLang } =
     useSelector(settingsState);
 

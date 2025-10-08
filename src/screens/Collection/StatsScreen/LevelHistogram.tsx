@@ -5,8 +5,11 @@ import AppText from "@src/components/AppText";
 import useColors from "@src/hooks/utilityHooks/useColors";
 import appShadow from "@src/utils/appShadow";
 
-const LevelHistogram = ({ lbd, histHeight }) => {
-  [selected, setSelected] = useState(1);
+const LevelHistogram: React.FC<{
+  lbd: any[];
+  histHeight: number;
+}> = ({ lbd, histHeight }) => {
+  const [selected, setSelected] = useState(1);
   const heights = lbd.map((row) => row.frequency);
   let maxHeight = Math.max(...heights);
 

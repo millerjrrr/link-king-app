@@ -47,7 +47,7 @@ const Console = () => {
   }, [isKeyboardVisible]);
 
   // Effects
-  useManageGolden();
+  // useManageGolden(); not currently using
   useConsoleUpdates();
   useHandleAppBackgroundExit();
   useOnKeyboardClose();

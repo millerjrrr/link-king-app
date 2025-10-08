@@ -10,12 +10,12 @@ import { settingsState } from "@src/store/settings";
 import appShadow from "@src/utils/appShadow";
 import AppText from "@src/components/AppText";
 
-const LevelLine = ({
-  level,
-  height,
-  touched = false,
-  onPress,
-}) => {
+const LevelLine: React.FC<{
+  level: number;
+  height: number;
+  touched?: boolean;
+  onPress: () => void;
+}> = ({ level, height, touched = false, onPress }) => {
   const { colorScheme, golden } =
     useSelector(settingsState);
   const color = colors[colorScheme].CONTRAST[golden];
@@ -41,13 +41,9 @@ const LevelLine = ({
         ]}
       />
       <AppText
-        style={
-          touched
-            ? {
-                fontWeight: "bold",
-              }
-            : null
-        }
+        style={{
+          fontWeight: touched ? "bold" : undefined,
+        }}
       >
         {level}
       </AppText>

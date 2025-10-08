@@ -25,10 +25,10 @@ const OptionsNavigator = () => {
         name="Options"
         component={Options}
       />
-      <OptionsStack.Screen
+      {/* <OptionsStack.Screen
         name="Set Daily Goals"
         component={SetDailyGoalScreen}
-      />
+      /> */}
       <OptionsStack.Screen
         name="Dictionary Selection"
         component={DictionarySelectionScreen}

@@ -35,7 +35,8 @@ const useFetchConsoleInfo = () => {
         dispatch(
           updateLocals({
             busy: false,
-            golden: Number(data.stats.steps === 0),
+            // golden: Number(data.stats.steps === 0),
+            golden: 0, //temporarily remove goal reached logic
           }),
         );
       } finally {

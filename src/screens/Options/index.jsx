@@ -31,7 +31,7 @@ const Options = () => {
 
   return (
     <TabScreenContainer heading={heading} noBook>
-      <OptionsMenuItem
+      {/* <OptionsMenuItem
         {...{
           iconName: "target-variant",
           name: setDailyGoal.heading,
@@ -39,12 +39,13 @@ const Options = () => {
           first: true,
           onPress: () => navigateTo("Set Daily Goals"),
         }}
-      />
+      /> */}
       <OptionsMenuItem
         {...{
           iconName: "book-open-variant",
           name: chooseDictionary.title,
           selected: true,
+          first: true,
           onPress: () => navigateTo("Dictionary Selection"),
         }}
       />
@@ -65,7 +66,7 @@ const Options = () => {
           onPress: () => navigateTo("Progress"),
         }}
       />
-      <OptionsMenuItem
+      {/* <OptionsMenuItem
         {...{
           iconName: "qrcode-scan",
           name: shareApp,
@@ -75,7 +76,7 @@ const Options = () => {
               updateModals({ modalShowing: "qrModal" }),
             ),
         }}
-      />
+      /> */}
       {Platform.OS !== "web" ? (
         <ModalTypeMenuItem optionName="leaveAReview" />
       ) : null}

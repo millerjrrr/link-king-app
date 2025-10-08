@@ -1,22 +1,21 @@
 import { TouchableOpacity } from "react-native";
-import colors from "@src/utils/colors";
-import { useSelector } from "react-redux";
-import { settingsState } from "@src/store/settings";
 import AppText from "./AppText";
+import useColors from "@src/hooks/utilityHooks/useColors";
 
 const AppLink: React.FC<{
   title: string;
   onPress: () => void;
 }> = ({ title, onPress }) => {
-  const { colorScheme } = useSelector(settingsState);
-  const color = colors[colorScheme].INACTIVE_CONTRAST;
+  const { INACTIVE_CONTRAST } = useColors();
 
   return (
     <TouchableOpacity
       onPress={onPress}
       style={{ padding: 5, paddingTop: 10 }}
     >
-      <AppText style={{ color, fontSize: 15 }}>
+      <AppText
+        style={{ color: INACTIVE_CONTRAST, fontSize: 15 }}
+      >
         {title}
       </AppText>
     </TouchableOpacity>

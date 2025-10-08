@@ -16,6 +16,8 @@ import {
 import BusyWrapper from "@src/components/Loader/BusyWrapper";
 import screenDimensions from "@src/utils/screenDimensions";
 import { useNavigation } from "@react-navigation/native";
+import { CollectionStackParamList } from "@src/types/navigationTypes";
+import { StackNavigationProp } from "@react-navigation/stack";
 
 const { width } = screenDimensions();
 
@@ -41,7 +43,10 @@ const StatsScreen = () => {
   const { title } =
     appTextSource(appLang).collection.stories;
 
-  const navigation = useNavigation();
+  const navigation =
+    useNavigation<
+      StackNavigationProp<CollectionStackParamList>
+    >();
 
   const onPress = () => {
     navigation.navigate("AI Stories");
