@@ -67,7 +67,7 @@ const Loader: React.FC<LoaderProps> = ({
         {!altimage ? (
           <AntDesign
             {...{
-              name: "loading1",
+              name: "loading",
               size,
               color: loaderColor,
             }}
@@ -75,7 +75,7 @@ const Loader: React.FC<LoaderProps> = ({
         ) : (
           <AntDesign
             {...{
-              name: "loading2",
+              name: "loading",
               size,
               color: loaderColor,
             }}

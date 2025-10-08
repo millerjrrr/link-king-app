@@ -1,24 +1,24 @@
-import { Platform } from "react-native";
-import Purchases from "react-native-purchases";
+// import { Platform } from "react-native";
+// import Purchases from "react-native-purchases";
 
-interface IAPIKeys {
-  apple: string;
-  google: string;
-}
+// interface IAPIKeys {
+//   apple: string;
+//   google: string;
+// }
 
-const APIKeys: IAPIKeys = {
-  apple: "appl_QgfQKNSmxGdAVCVMrVwEwRigqrx",
-  google: "goog_JjbneAASzihqWIqEMWWBLdBkoyf",
-};
+// const APIKeys: IAPIKeys = {
+//   apple: "appl_QgfQKNSmxGdAVCVMrVwEwRigqrx",
+//   google: "goog_JjbneAASzihqWIqEMWWBLdBkoyf",
+// };
 
-const configurePurchases = async () => {
-  const apiKey =
-    Platform.OS === "android"
-      ? APIKeys.google
-      : APIKeys.apple;
-  await Purchases.configure({
-    apiKey,
-  });
-};
+// const configurePurchases = async () => {
+//   const apiKey =
+//     Platform.OS === "android"
+//       ? APIKeys.google
+//       : APIKeys.apple;
+//   await Purchases.configure({
+//     apiKey,
+//   });
+// };
 
-export default configurePurchases;
+// export default configurePurchases;

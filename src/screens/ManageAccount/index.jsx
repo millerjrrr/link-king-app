@@ -73,7 +73,7 @@ const ManageAccountScreen = ({ navigation }) => {
     >
       <ManageAccountMenuItem {...props.email} />
       <ManageAccountMenuItem {...props.name} />
-      <ManageAccountMenuItem {...props.subscription} />
+      {/* <ManageAccountMenuItem {...props.subscription} /> */}
       <ManageAccountMenuItem {...props.homeLanguage} />
       <ManageAccountMenuItem {...props.deleteAccount} />
       {admin && (

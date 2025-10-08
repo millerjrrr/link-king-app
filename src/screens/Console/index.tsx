@@ -17,7 +17,7 @@ import useOnKeyboardClose from "@src/hooks/consoleHooks/useEffects/useOnKeyboard
 import useHandleAppBackgroundExit from "../../hooks/consoleHooks/useEffects/useHandleAppBackgroundExit";
 import useUpdateOptions from "@src/hooks/consoleHooks/useEffects/useUpdateOptions";
 import usePopToTop from "@src/hooks/utilityHooks/usePopToTop";
-import IsSubscribedWrapper from "./components/IsSubscribedWrapper";
+// import IsSubscribedWrapper from "./components/IsSubscribedWrapper";
 import UserPromptAndMusicButton from "./components/UserPromptAndMusicButton";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
@@ -56,25 +56,25 @@ const Console = () => {
   usePopToTop();
 
   return (
-    <IsSubscribedWrapper>
-      <TabScreenContainer
-        heading={heading}
-        help={navigateToHelp}
-        helpAnimated
-      >
-        <IntegratedSolutionsList />
-        <StatsContainer />
-        <OptionsContainer />
-        <ReadWordButton />
-        <InputAndTimerContainer
-          setIsKeyboardVisible={setIsKeyboardVisible}
-        />
-        <Tail />
-        <UserPromptAndMusicButton
-          isKeyboardVisible={isKeyboardVisible}
-        />
-      </TabScreenContainer>
-    </IsSubscribedWrapper>
+    // <IsSubscribedWrapper>
+    <TabScreenContainer
+      heading={heading}
+      help={navigateToHelp}
+      helpAnimated
+    >
+      <IntegratedSolutionsList />
+      <StatsContainer />
+      <OptionsContainer />
+      <ReadWordButton />
+      <InputAndTimerContainer
+        setIsKeyboardVisible={setIsKeyboardVisible}
+      />
+      <Tail />
+      <UserPromptAndMusicButton
+        isKeyboardVisible={isKeyboardVisible}
+      />
+    </TabScreenContainer>
+    // </IsSubscribedWrapper>
   );
 };
 

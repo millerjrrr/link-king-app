@@ -13,12 +13,12 @@ const SearchBarContainer = () => {
         <View style={styles.searchBarContainer}>
           <SideButton
             targetScreen={"Statistics"}
-            icon={"barschart"}
+            icon={"bar-chart"}
           />
           <CollectionSearchbar />
           <SideButton
             targetScreen={"Progress"}
-            icon={"sharealt"}
+            icon={"share-alt"}
           />
         </View>
         <PlusButton />

@@ -7,7 +7,6 @@ import { StatusBar } from "expo-status-bar";
 import { View } from "react-native";
 import AppLoadingWrapper from "@src/components/Loader/AppLoadingWrapper";
 import useColors from "@src/hooks/utilityHooks/useColors";
-import VideoSplashScreenWrapper from "@src/screens/VideoSplashScreen";
 import useStartUpHooks from "@src/hooks/useStartUpHooks";
 import { ReactNode } from "react";
 
@@ -36,11 +35,7 @@ const AppLoadingContainer: React.FC<{
       />
       <ConnectedWrapper>
         <View style={{ flex: 1, backgroundColor: PRIMARY }}>
-          <VideoSplashScreenWrapper>
-            <AppLoadingWrapper>
-              {children}
-            </AppLoadingWrapper>
-          </VideoSplashScreenWrapper>
+          <AppLoadingWrapper>{children}</AppLoadingWrapper>
         </View>
       </ConnectedWrapper>
     </NavigationContainer>

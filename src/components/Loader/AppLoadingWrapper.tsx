@@ -1,7 +1,6 @@
 import React, { ReactNode } from "react";
 import { useSelector } from "react-redux";
 import { authState } from "@src/store/auth";
-import AppLoaderVideo from "../AppLoaderVideo";
 
 const AppLoadingWrapper = ({
   children,
@@ -10,7 +9,7 @@ const AppLoadingWrapper = ({
 }) => {
   const { appLoading } = useSelector(authState);
 
-  return <>{appLoading ? <AppLoaderVideo /> : children}</>;
+  return <>{children}</>;
 };
 
 export default AppLoadingWrapper;
