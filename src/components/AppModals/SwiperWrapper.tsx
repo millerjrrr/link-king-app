@@ -20,7 +20,7 @@ interface SwiperWrapperProps {
   closeFunction: () => void;
   swipeLeftFunction?: () => void;
   swipeRightFunction?: () => void;
-  active: boolean;
+  active?: boolean;
 }
 
 const scrollGesture = Gesture.Native();

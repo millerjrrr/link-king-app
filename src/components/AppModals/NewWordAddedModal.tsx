@@ -96,6 +96,7 @@ const NewWordAddedModal = () => {
         closeFunction={x}
         swipeLeftFunction={swipeLeftFunction}
         swipeRightFunction={swipeRightFunction}
+        active
       >
         <ModalContainer
           backgroundColor={PRIMARY}
