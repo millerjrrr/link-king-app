@@ -9,6 +9,9 @@
       "channel": "development",
       "android": {
         "buildType": "apk"
+      },
+      "env": {
+        "NPM_CONFIG_FORCE": "true"
       }
     },
     "preview": {
@@ -16,6 +19,9 @@
       "channel": "preview",
       "android": {
         "buildType": "apk"
+      },
+      "env": {
+        "NPM_CONFIG_FORCE": "true"
       }
     },
     "production": {
@@ -23,7 +29,8 @@
         "GOOGLE_WEB_CLIENT_ID": "$GOOGLE_WEB_CLIENT_ID",
         "GOOGLE_IOS_CLIENT_ID": "$GOOGLE_IOS_CLIENT_ID",
         "GOOGLE_ANDROID_CLIENT_ID": "$GOOGLE_ANDROID_CLIENT_ID",
-        "CF_BUNDLE_URL": "$CF_BUNDLE_URL"
+        "CF_BUNDLE_URL": "$CF_BUNDLE_URL",
+        "NPM_CONFIG_FORCE": "true"
       },
       "android": {
         "autoIncrement": false,
