@@ -11,7 +11,7 @@ const baseURL =
     ? ProductionServer
     : Platform.OS === "web"
       ? LocalHost
-      : LocalIP;
+      : ProductionServer;
 
 const client: AxiosInstance = axios.create({
   baseURL,
