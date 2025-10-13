@@ -10,8 +10,11 @@ import { authState, updateEmail } from "@src/store/auth";
 import SignUpAppLink from "@components/SignUpAppLink";
 import { Formik } from "formik";
 import Auth3PButtons from "@src/components/Auth3P/Auth3PButtons";
+import { AuthStackNavProp } from "@src/types/navigationTypes";
 
-const Email = ({ navigation }) => {
+const Email: React.FC<{ navigation: AuthStackNavProp }> = ({
+  navigation,
+}) => {
   const { appLang } = useSelector(settingsState);
   const { email } = appTextSource(appLang).auth.forms;
 
@@ -31,7 +34,7 @@ const Email = ({ navigation }) => {
 
   const dispatch = useDispatch();
 
-  const onSubmit = async (values, actions) => {
+  const onSubmit = async (values: any, actions: any) => {
     actions.setSubmitting(true);
     await dispatch(updateEmail(values.email));
     await navigation.navigate("Password");
@@ -71,17 +74,5 @@ const Email = ({ navigation }) => {
     </AuthFormContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  marginBottom: {
-    marginBottom: 20,
-  },
-  linkContainer: {
-    width: "100%",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-});
 
 export default Email;

@@ -1,5 +1,8 @@
 // UTILITIES
 
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { StackNavigationProp } from "@react-navigation/stack";
+
 export type ScreensWithParams<T> = {
   [K in keyof T]: T[K] extends undefined ? never : K;
 }[keyof T];
@@ -77,6 +80,9 @@ export type AuthStackParamList = {
   "Lost Password": undefined;
   "Check Your Email": undefined;
 };
+
+export type AuthStackNavProp =
+  StackNavigationProp<AuthStackParamList>;
 
 // WALKTHROUGH
 

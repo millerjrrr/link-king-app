@@ -11,3 +11,8 @@ declare module "*.png" {
 declare global {
   type AntDesignIcons = AntDesignIcons;
 }
+
+declare module "react-native-reanimated" {
+  export const withSequence: any;
+  export const withSpring: any;
+}

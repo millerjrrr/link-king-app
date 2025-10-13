@@ -10,8 +10,15 @@ import { settingsState } from "@src/store/settings";
 import useCatchAsync from "@src/hooks/utilityHooks/useCatchAsync";
 import * as yup from "yup";
 import { Formik } from "formik";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import {
+  AuthStackNavProp,
+  AuthStackParamList,
+} from "@src/types/navigationTypes";
 
-const LostPassword = ({ navigation }) => {
+const LostPassword: React.FC<{
+  navigation: AuthStackNavProp;
+}> = ({ navigation }) => {
   const { appLang } = useSelector(settingsState);
   const {
     forms: { email },
@@ -46,7 +53,7 @@ const LostPassword = ({ navigation }) => {
           headers: {
             "Accept-Language": appLang,
           },
-        },
+        }
       );
       if (data.status === "success")
         navigation.navigate("Check Your Email");
@@ -80,11 +87,7 @@ const LostPassword = ({ navigation }) => {
             />
             <AppLink
               title={signUp}
-              onPress={() =>
-                navigation.navigate("Welcome", {
-                  key: "start",
-                })
-              }
+              onPress={() => navigation.navigate("Welcome")}
             />
           </View>
           <SubmitButton title={sendLink} />

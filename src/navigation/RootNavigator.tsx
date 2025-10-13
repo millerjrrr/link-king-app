@@ -18,7 +18,7 @@ const RootNavigator = () => {
 
   const updateRequired = compareVersions(
     latestVersion,
-    currentVersion,
+    currentVersion
   );
 
   useSyncBadgeWithDue();

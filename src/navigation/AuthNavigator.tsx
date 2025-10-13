@@ -1,4 +1,4 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createStackNavigator } from "@react-navigation/stack";
 import Welcome from "@auth/SignUp/Welcome";
 import NameScreen from "@auth/SignUp/NameScreen";
 import Email from "@auth/SignUp/Email";
@@ -9,8 +9,7 @@ import CheckYourEmail from "@auth/LostPassword/CheckYourEmail";
 import SignIn from "@auth/SignIn";
 import { AuthStackParamList } from "@src/types/navigationTypes";
 
-const Stack =
-  createNativeStackNavigator<AuthStackParamList>();
+const Stack = createStackNavigator<AuthStackParamList>();
 
 const AuthNavigator = () => {
   return (

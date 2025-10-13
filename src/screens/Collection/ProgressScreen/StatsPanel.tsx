@@ -4,6 +4,12 @@ import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import styled from "styled-components/native";
 import { appShadowForStyledComponents } from "@src/utils/appShadow";
+import { ReactNode } from "react";
+
+interface Props {
+  backgroundColor?: string; // Define prop type
+  shadowColor?: `#${string}`; // Define prop type
+}
 
 const Container = styled(View)`
   flex: 1;
@@ -12,17 +18,22 @@ const Container = styled(View)`
   padding: 15px;
 `;
 
-const Panel = styled(View)`
+const Panel = styled(View)<Props>`
   width: 100%;
   align-items: center;
   padding: 15px;
   border-radius: 20px;
-  background-color: ${(props) => props.backgroundColor};
-  ${(props) =>
-    appShadowForStyledComponents(props.shadowColor)}
+  background-color: ${(props: Props) =>
+    props.backgroundColor || "transparent"};
+  ${(props: Props) =>
+    appShadowForStyledComponents(
+      props.shadowColor || "#000"
+    )}
 `;
 
-const StatsPanel = ({ children }) => {
+const StatsPanel: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
   const { colorScheme, golden } =
     useSelector(settingsState);
 

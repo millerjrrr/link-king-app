@@ -49,11 +49,11 @@ const PopUpContainer: React.FC<PopUpContainerProps> = ({
       <BottomShadow />
       <FourCrowns {...{ color: SECONDARY }} />
       <HelpButton help={help} />
-      <BackButton altFunction={altFunction} />
+      <BackButton altFunction={altFunction} extraPadding />
       <LinkKingLogo
         {...{
           height: 40,
-          marginTop: Platform.OS === "web" ? 30 : 0,
+          marginTop: 40,
           tintColor: color,
         }}
       />
@@ -73,7 +73,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     width: "100%",
-    paddingTop: 10,
     overflow: "hidden",
     borderRadius: 10,
   },

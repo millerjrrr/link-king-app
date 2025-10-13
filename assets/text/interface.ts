@@ -279,9 +279,14 @@ interface AuthSignUpStep {
   subHeading: string;
   buttonTitle?: string;
 }
+interface AuthStart {
+  heading: string;
+  subHeading: string;
+  buttonTitle: string;
+}
 
 interface AuthSignUp {
-  start: AuthSignUpStep;
+  start: AuthStart;
   name: AuthSignUpStep;
   email: AuthSignUpStep;
   password: AuthSignUpStep;

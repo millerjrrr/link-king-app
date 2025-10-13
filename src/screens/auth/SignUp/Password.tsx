@@ -18,6 +18,8 @@ import SignUpAppLink from "@components/SignUpAppLink";
 import { Formik } from "formik";
 import useCatchAsync from "@src/hooks/utilityHooks/useCatchAsync";
 import Auth3PButtons from "@src/components/Auth3P/Auth3PButtons";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { AuthStackParamList } from "@src/types/navigationTypes";
 
 const Password = () => {
   const { appLang } = useSelector(settingsState);
@@ -30,7 +32,7 @@ const Password = () => {
       .min(8, password.min)
       .matches(
         /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[^a-zA-Z\d]).*$/,
-        password.matches,
+        password.matches
       )
       .required(password.required),
   });
@@ -43,7 +45,10 @@ const Password = () => {
   const catchAsync = useCatchAsync();
 
   const [secureEntry, setSecureEntry] = useState(true);
-  const navigation = useNavigation();
+  const navigation =
+    useNavigation<
+      StackNavigationProp<AuthStackParamList>
+    >();
 
   const togglePasswordView = () => {
     setSecureEntry(!secureEntry);
@@ -70,13 +75,13 @@ const Password = () => {
           headers: {
             "Accept-Language": appLang,
           },
-        },
+        }
       );
 
       if (data.status === "success") {
         dispatch(updateName(""));
         dispatch(
-          updateUnverifiedUserId(data.unverifiedUserId),
+          updateUnverifiedUserId(data.unverifiedUserId)
         );
         navigation.navigate("Verification Code");
       }

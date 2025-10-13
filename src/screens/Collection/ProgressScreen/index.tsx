@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { statsState } from "@src/store/stats";
-import { useRef } from "react";
+import { RefObject, useRef } from "react";
 import StatsPanel from "./StatsPanel";
 import BusyWrapper from "@src/components/Loader/BusyWrapper";
 import LinkKingIcon from "./LinkKingIcon";
@@ -15,7 +15,9 @@ import BottomShadow from "../../../components/BottomShadow";
 
 const ProgressScreen = () => {
   const { busy } = useSelector(statsState);
-  const statsPanelRef = useRef();
+  const statsPanelRef = useRef<React.ComponentRef<
+    typeof ViewShot
+  > | null>(null);
   useFetchStatsInfo();
 
   return (

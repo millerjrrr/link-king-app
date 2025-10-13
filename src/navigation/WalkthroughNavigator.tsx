@@ -1,4 +1,7 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import {
+  CardStyleInterpolators,
+  createStackNavigator,
+} from "@react-navigation/stack";
 import DictionarySelectionScreen from "@src/screens/Options/DictionarySelectionScreen";
 import ChooseALanguageToStudy from "@src/screens/walkthrough/ChooseALanguageToStudy";
 import ChooseHomeLanguage from "@src/screens/walkthrough/ChooseHomeLanguage";
@@ -9,7 +12,7 @@ import YoureAllSet from "@src/screens/walkthrough/YoureAllSet";
 import { WalkthroughStackParamList } from "@src/types/navigationTypes";
 
 const Stack =
-  createNativeStackNavigator<WalkthroughStackParamList>();
+  createStackNavigator<WalkthroughStackParamList>();
 
 const WalkthroughNavigator = () => {
   return (
@@ -40,7 +43,8 @@ const WalkthroughNavigator = () => {
         component={SelectAndChangeHomeLanguage}
         options={{
           presentation: "modal",
-          animation: "slide_from_bottom",
+          cardStyleInterpolator:
+            CardStyleInterpolators.forVerticalIOS,
           gestureEnabled: true,
         }}
       />
@@ -49,7 +53,8 @@ const WalkthroughNavigator = () => {
         component={DictionarySelectionScreen}
         options={{
           presentation: "modal",
-          animation: "slide_from_bottom",
+          cardStyleInterpolator:
+            CardStyleInterpolators.forVerticalIOS,
           gestureEnabled: true,
         }}
       />

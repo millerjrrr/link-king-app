@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 
 const PasswordVisibilityIcon: React.FC<{
-  privateIcon: string;
+  privateIcon: boolean;
 }> = ({ privateIcon }) => {
   const { colorScheme, golden } =
     useSelector(settingsState);

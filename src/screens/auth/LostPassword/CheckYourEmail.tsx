@@ -7,8 +7,11 @@ import AuthButton from "@components/Buttons/AuthButton";
 import { Fontisto } from "@expo/vector-icons";
 import AppText from "@components/AppText";
 import colors from "@src/utils/colors";
+import { AuthStackNavProp } from "@src/types/navigationTypes";
 
-const CheckYourEmail = ({ navigation }) => {
+const CheckYourEmail: React.FC<{
+  navigation: AuthStackNavProp;
+}> = ({ navigation }) => {
   const { appLang } = useSelector(settingsState);
   const { heading, subHeading, text, returnToLogin } =
     appTextSource(appLang).auth.passwordReset;

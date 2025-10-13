@@ -11,6 +11,7 @@ import AuthFormContainer from "@src/components/Containers/AuthFormContainer";
 import Auth3PButtons from "@src/components/Auth3P/Auth3PButtons";
 import BusyWrapper from "../../../components/Loader/BusyWrapper";
 import { authState } from "../../../store/auth";
+import { AuthStackNavProp } from "@src/types/navigationTypes";
 
 const Welcome = () => {
   const { colorScheme, golden, appLang } =
@@ -18,10 +19,10 @@ const Welcome = () => {
   const color = colors[colorScheme].CONTRAST[golden];
   const { busy } = useSelector(authState);
 
-  const navigation = useNavigation();
+  const navigation = useNavigation<AuthStackNavProp>();
 
   const onPress = async () => {
-    navigation.navigate("Name");
+    navigation.navigate("Name", {});
   };
 
   const { heading, subHeading, buttonTitle } =

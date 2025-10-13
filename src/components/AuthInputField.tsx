@@ -20,6 +20,7 @@ import useColors from "@src/hooks/utilityHooks/useColors";
 interface FormValues {
   name: string; // Define your fields explicitly if known
   email: string; // Define your fields explicitly if known
+  code?: string;
   password: string; // Define your fields explicitly if known
   newSolutions1: string;
   newSolutions2: string;
@@ -57,7 +58,7 @@ interface AuthInputFieldProps {
 }
 
 const AuthInputField: React.FC<AuthInputFieldProps> = (
-  props,
+  props
 ) => {
   const { RED: red } = useColors();
 
@@ -92,7 +93,7 @@ const AuthInputField: React.FC<AuthInputFieldProps> = (
         mass: 0.5,
         stiffness: 1000,
         restDisplacementThreshold: 0.1,
-      }),
+      })
     );
   };
 
