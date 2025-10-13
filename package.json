@@ -38,7 +38,6 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-native": "0.81.4",
-    "react-native-auto-size-text": "^1.1.1",
     "react-native-circular-progress-indicator": "^4.4.2",
     "react-native-countdown-circle-timer": "^3.2.1",
     "react-native-gesture-handler": "~2.28.0",

@@ -5,10 +5,7 @@ import {
   InfoContainer,
   Padding,
 } from "../components/WordCard/StyledComponents";
-import {
-  AutoSizeText,
-  ResizeTextMode,
-} from "react-native-auto-size-text";
+import AutoResizeText from "@src/components/AutoResizeText";
 import useColors from "@src/hooks/utilityHooks/useColors";
 import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
@@ -47,14 +44,9 @@ const CreateCustomTicket: React.FC<{
             justifyContent: "center",
           }}
         >
-          <AutoSizeText
-            fontSize={24}
-            mode={ResizeTextMode.max_lines}
-            numberOfLines={1}
-            style={{ fontWeight: "bold", color: CONTRAST }}
-          >
+          <AutoResizeText fontSize={24} numberOfLines={1}>
             {addCustomWord}
-          </AutoSizeText>
+          </AutoResizeText>
         </InfoContainer>
 
         <IconContainer style={{ width: 30 }}>
