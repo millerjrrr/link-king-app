@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import PopUpContainer from "../../../../components/Containers/PopUpContainer";
+import PopUpContainer from "../../../../components/Containers/PopUpsContainer";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import LanguageSearchBar from "./LanguageSearchBar";
@@ -24,7 +24,7 @@ const SelectNewHomeLanguageScreen: React.FC<{
       getLanguageData.filter((language) => {
         const normalized = normalize(language.native);
         return normalized.includes(searchKeyword);
-      }),
+      })
     );
   }, [searchKeyword]);
 

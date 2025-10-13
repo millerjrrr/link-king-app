@@ -1,6 +1,6 @@
 import { Platform, StyleSheet, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import PopUpContainer from "@src/components/Containers/PopUpContainer";
+import PopUpContainer from "@src/components/Containers/PopUpsContainer";
 import React, { useCallback } from "react";
 import BusyWrapper from "@src/components/Loader/BusyWrapper";
 import ResponseInformation from "./ResponseInformation";
@@ -46,14 +46,14 @@ const WordInfoScreen: React.FC<{
     Platform.OS === "web"
       ? definitionWebLookup(
           ticket.target,
-          definitionSearchLanguage,
+          definitionSearchLanguage
         )
       : dispatch(
           updateModals({
             modalShowing: "definitionInWebViewModal",
             definitionSearchWord: ticket.target,
             definitionSearchLanguage,
-          }),
+          })
         );
   };
 
@@ -68,7 +68,7 @@ const WordInfoScreen: React.FC<{
       return () => {
         dispatch(updateWordDeleteButtonPressed(false));
       };
-    }, [dispatch]),
+    }, [dispatch])
   );
 
   return (

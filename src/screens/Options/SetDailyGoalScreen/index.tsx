@@ -6,7 +6,7 @@ import {
 } from "@src/store/settings";
 import colors from "@src/utils/colors";
 import appTextSource from "@src/utils/appTextSource";
-import PopUpContainer from "@src/components/Containers/PopUpContainer";
+import PopUpContainer from "@src/components/Containers/PopUpsContainer";
 import AppText from "@src/components/AppText";
 import ScrollSelector from "./ScrollSelector";
 import { saveToAsyncStorage } from "@src/utils/asyncStorage";
@@ -71,7 +71,7 @@ const SetDailyGoalScreen = ({}) => {
 
   const help = () => {
     dispatch(
-      updateModals({ modalShowing: "dailyGoalInfoModal" }),
+      updateModals({ modalShowing: "dailyGoalInfoModal" })
     );
   };
 
@@ -124,7 +124,7 @@ const SetDailyGoalScreen = ({}) => {
             dispatch(
               updateModals({
                 modalShowing: "setDailyGoalModal",
-              }),
+              })
             )
           }
           style={{ marginTop: 35 }}
