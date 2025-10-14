@@ -1,3 +1,4 @@
+import "react-native-reanimated";
 import { Provider } from "react-redux";
 import store from "./src/store";
 import RootNavigator from "./src/navigation/RootNavigator";

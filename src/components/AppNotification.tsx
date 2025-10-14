@@ -57,9 +57,7 @@ const AppNotification = () => {
       break;
   }
 
-  const timeOutIdRef = useRef<
-    number | NodeJS.Timeout | null
-  >(null);
+  const timeOutIdRef = useRef<number | null>(null);
 
   const closeNotification = () => {
     height.value = withTiming(0, { duration: 150 });
@@ -77,7 +75,7 @@ const AppNotification = () => {
 
         timeOutIdRef.current = setTimeout(
           () => closeNotification(),
-          messageTime,
+          messageTime
         );
       };
 

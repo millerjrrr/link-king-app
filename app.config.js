@@ -114,6 +114,6 @@ export default ({ config }) => ({
     updates: {
       url: "https://u.expo.dev/d3f81d37-8476-4818-9dc2-15ff6a7e1a63",
     },
-    jsEngine: "jsc",
+    jsEngine: "hermes",
   },
 });
