@@ -60,15 +60,16 @@ export default ({ config }) => ({
       translucent: true,
     },
     androidNavigationBar: {
+      visible: "visible",
       backgroundColor: "#000000",
     },
     android: {
       targetSdkVersion: 35, // set to Android 15
       compileSdkVersion: 35,
-      versionCode: 70,
+      versionCode: 72,
       permissions: [
         "INTERNET",
-        "com.android.vending.BILLING",
+        // "com.android.vending.BILLING",
         "ACCESS_NETWORK_STATE",
         "ACCESS_NOTIFICATION_POLICY",
         "POST_NOTIFICATIONS",

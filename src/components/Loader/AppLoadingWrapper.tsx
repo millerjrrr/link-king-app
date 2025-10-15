@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import { useSelector } from "react-redux";
 import { authState } from "@src/store/auth";
+import BusyWrapper from "./BusyWrapper";
 
 const AppLoadingWrapper = ({
   children,
@@ -9,7 +10,11 @@ const AppLoadingWrapper = ({
 }) => {
   const { appLoading } = useSelector(authState);
 
-  return <>{children}</>;
+  return (
+    <BusyWrapper busy={appLoading} size={200}>
+      {children}
+    </BusyWrapper>
+  );
 };
 
 export default AppLoadingWrapper;

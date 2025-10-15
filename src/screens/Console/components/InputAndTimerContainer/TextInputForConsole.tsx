@@ -68,7 +68,7 @@ const TextInputForConsole: React.FC<Props> = ({
     dispatch(updateFormValue(""));
     dispatch(restartTheTimer());
     dispatch(
-      updateLocals({ showTypeTranslationsInfoBox: false }),
+      updateLocals({ showTypeTranslationsInfoBox: false })
     );
   };
 
@@ -100,7 +100,7 @@ const TextInputForConsole: React.FC<Props> = ({
       placeholder={
         inputFieldRef.current?.isFocused()
           ? undefined
-          : (placeholder ?? undefined)
+          : placeholder ?? undefined
       }
       value={formValue}
       submitBehavior="submit"
@@ -130,10 +130,10 @@ const TextInputForConsole: React.FC<Props> = ({
           ...appShadow(color),
           backgroundColor: PRIMARY,
           fontSize,
-          ...(Platform.OS === "web"
-            ? { outlineStyle: "none" }
-            : {}),
         },
+        Platform.OS === "web"
+          ? { outlineStyle: undefined }
+          : {},
       ]}
     />
   );
