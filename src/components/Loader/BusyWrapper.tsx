@@ -10,7 +10,6 @@ interface BusyWrapperProps {
   color?: string;
   children: ReactNode;
   noFlex?: boolean;
-  pulse?: boolean;
 }
 const BusyWrapper: React.FC<BusyWrapperProps> = ({
   busy,
@@ -18,19 +17,16 @@ const BusyWrapper: React.FC<BusyWrapperProps> = ({
   color,
   children,
   noFlex,
-  pulse,
 }) => {
-  const { SECONDARY } = useColors();
   return (
     <>
       {busy ? (
         <View
           style={{
             flex: noFlex ? 0 : 1,
-            backgroundColor: noFlex ? undefined : SECONDARY,
           }}
         >
-          <Loader {...{ color, size, pulse }} />
+          <Loader {...{ color, size }} />
         </View>
       ) : (
         children

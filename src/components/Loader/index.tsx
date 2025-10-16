@@ -86,9 +86,6 @@ const Loader: React.FC<LoaderProps> = ({
         style={{
           position: "absolute",
           borderRadius: 500,
-          backgroundColor: !altimage
-            ? SECONDARY
-            : undefined,
         }}
       >
         <Image
