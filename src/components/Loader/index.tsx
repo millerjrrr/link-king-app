@@ -43,7 +43,7 @@ const Loader: React.FC<LoaderProps> = ({
         duration,
         easing: Easing.linear,
       }),
-      -1,
+      -1
     );
 
     initialRotation.value = animation;

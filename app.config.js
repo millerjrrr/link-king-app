@@ -15,7 +15,7 @@ export default ({ config }) => ({
     assetBundlePatterns: ["**/*"],
     scheme: "com.linkoking.app",
     ios: {
-      buildNumber: "1",
+      buildNumber: "2",
       supportsTablet: false,
       bundleIdentifier: "com.linkoking.app", //change to com.linkoking.app.dev for dev builds
       useAppleSignIn: true,
@@ -66,7 +66,7 @@ export default ({ config }) => ({
     android: {
       targetSdkVersion: 35, // set to Android 15
       compileSdkVersion: 35,
-      versionCode: 72,
+      versionCode: 73,
       permissions: [
         "INTERNET",
         // "com.android.vending.BILLING",

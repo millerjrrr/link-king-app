@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
     "target": "esnext",
+    "module": "Node16",
     "jsx": "react-native",
-    "moduleResolution": "node",
+    "moduleResolution": "Node16",
     "strict": true,
     "noImplicitAny": true,
     "esModuleInterop": true,

@@ -1,6 +1,7 @@
 {
   "cli": {
-    "appVersionSource": "local"
+    "version": ">= 16.10.0",
+    "appVersionSource": "remote"
   },
   "build": {
     "development": {
@@ -33,11 +34,11 @@
         "NPM_CONFIG_FORCE": "true"
       },
       "android": {
-        "autoIncrement": false,
+        "autoIncrement": true,
         "buildType": "app-bundle"
       },
       "ios": {
-        "autoIncrement": false,
+        "autoIncrement": true,
         "simulator": false
       },
       "channel": "production"

@@ -35,7 +35,7 @@ const ReadWordButton: React.FC<ReadWordButtonProps> = ({
     const TTS = sound || (await checkTTSData());
     if (!TTS)
       dispatch(
-        updateModals({ modalShowing: "missingTTSModal" }),
+        updateModals({ modalShowing: "missingTTSModal" })
       );
     else
       speak({ target: newTarget, language, sound: true });

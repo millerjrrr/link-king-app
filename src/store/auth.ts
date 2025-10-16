@@ -37,7 +37,7 @@ const initialState: AuthState = {
   vip: 4070919600000,
   admin: false,
   busy: false,
-  appLoading: false,
+  appLoading: true,
   connection: "connected",
   refresh: 0,
   accountName: "",
@@ -52,13 +52,13 @@ const slice = createSlice({
   reducers: {
     updateLoggedInState(
       state,
-      action: PayloadAction<boolean>,
+      action: PayloadAction<boolean>
     ) {
       state.loggedIn = action.payload;
     },
     updateJustSignedUp(
       state,
-      action: PayloadAction<boolean>,
+      action: PayloadAction<boolean>
     ) {
       state.justSignedUp = action.payload;
     },
@@ -70,13 +70,13 @@ const slice = createSlice({
     },
     updateSubscribed(
       state,
-      action: PayloadAction<boolean>,
+      action: PayloadAction<boolean>
     ) {
       state.subscribed = action.payload;
     },
     updateSubscriptionPrice(
       state,
-      action: PayloadAction<string>,
+      action: PayloadAction<string>
     ) {
       state.subscriptionPrice = action.payload;
     },
@@ -91,7 +91,7 @@ const slice = createSlice({
     },
     updateAppLoadingState(
       state,
-      action: PayloadAction<boolean>,
+      action: PayloadAction<boolean>
     ) {
       state.appLoading = action.payload;
     },
@@ -103,7 +103,7 @@ const slice = createSlice({
         | "disconnected"
         | "maintenance"
         | "unknown"
-      >,
+      >
     ) {
       state.connection = action.payload;
     },
@@ -115,13 +115,13 @@ const slice = createSlice({
     },
     updateLatestVersion(
       state,
-      action: PayloadAction<string>,
+      action: PayloadAction<string>
     ) {
       state.latestVersion = action.payload;
     },
     updateUnverifiedUserId(
       state,
-      action: PayloadAction<string>,
+      action: PayloadAction<string>
     ) {
       state.unverifiedUserId = action.payload;
     },

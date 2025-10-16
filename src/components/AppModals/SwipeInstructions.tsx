@@ -2,6 +2,7 @@ import React, {
   useRef,
   useEffect,
   forwardRef,
+  ComponentProps,
 } from "react";
 import {
   View,
@@ -19,8 +20,14 @@ import { useSelector } from "react-redux";
 import { settingsState } from "../../store/settings";
 import useAppNotification from "../../hooks/utilityHooks/useAppNotification";
 
+interface IconProps {
+  name: ComponentProps<typeof Ionicons>["name"];
+  size: number;
+  color: `#${string}`;
+  flip?: boolean;
+}
 interface InstructionProps {
-  iconProps: any;
+  iconProps: IconProps;
   label: string;
   style?: StyleProp<ViewStyle>;
 }
@@ -38,12 +45,22 @@ const Instruction = forwardRef<View, InstructionProps>(
 
     const onPress = () => appNofification("info", message);
 
+    const { name, size, color, flip } = iconProps;
+
     return (
       <View
         ref={ref}
         style={[{ alignItems: "center" }, style]}
       >
-        <Ionicons {...iconProps} />
+        <View
+          style={
+            flip
+              ? { transform: [{ scaleX: -1 }] }
+              : undefined
+          }
+        >
+          <Ionicons {...{ name, size, color }} />
+        </View>
         <Pressable
           style={{
             width: "100%",
@@ -65,7 +82,7 @@ const Instruction = forwardRef<View, InstructionProps>(
         </Pressable>
       </View>
     );
-  },
+  }
 );
 
 const AnimatedInstruction =
@@ -94,7 +111,7 @@ const SwipeInstructions = () => {
           useNativeDriver: true,
           easing: Easing.linear,
         }),
-      ]),
+      ])
     ).start();
   }, [scaleAnim]);
 
@@ -128,7 +145,7 @@ const SwipeInstructions = () => {
           name: "arrow-undo",
           size: 140,
           color: GREEN,
-          style: { transform: [{ scaleX: -1 }] },
+          flip: true,
         }}
         label={right}
         style={{
