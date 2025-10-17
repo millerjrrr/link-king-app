@@ -47,7 +47,7 @@
   "submit": {
     "production": {
       "android": {
-        "serviceAccountKeyPath": "../link-king-submit-api-4f509eefdcb1.json",
+        "serviceAccountKeyPath": "./eas-submit-android-key.json",
         "track": "internal"
       }
     }

@@ -60,7 +60,7 @@ const Loader: React.FC<LoaderProps> = ({
         width: "100%",
         alignItems: "center",
         justifyContent: "center",
-        // backgroundColor: altimage ? SECONDARY : undefined,
+        backgroundColor: altimage ? SECONDARY : undefined,
       }}
     >
       <Animated.View style={transform}>

@@ -41,3 +41,6 @@ yarn-error.*
 COMMIT_MESSAGE.md
 
 desktop.ini
+
+# eas submit key for android
+eas-submit-android-key.json

@@ -59,7 +59,6 @@ export default ({ config }) => ({
       translucent: true,
     },
     androidNavigationBar: {
-      visible: "visible",
       backgroundColor: "#000000",
     },
     android: {
