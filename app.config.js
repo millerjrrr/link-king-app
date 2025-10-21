@@ -61,7 +61,6 @@ export default ({ config }) => ({
     androidNavigationBar: {
       backgroundColor: "#000000",
       barStyle: "light-content",
-      visible: "sticky-immersive",
     },
     android: {
       targetSdkVersion: 35, // set to Android 15

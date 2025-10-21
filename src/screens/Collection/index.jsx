@@ -1,4 +1,4 @@
-import TabScreenContainer from "@src/components/Containers/TabScreenContainer";
+import TabScreenContainer from "@src/components/Containers/TabScreensContainer";
 import WordCollectionList from "./components/WordCollectionList";
 import SearchBarContainer from "./components/SearchBarContainer";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,7 +21,7 @@ const Collection = ({ navigation }) => {
 
   const help = () => {
     dispatch(
-      updateModals({ modalShowing: "collectionInfoModal" }),
+      updateModals({ modalShowing: "collectionInfoModal" })
     );
   };
 

@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Platform } from "react-native";
 import colors from "@src/utils/colors";
 import StatusBarFiller from "../StatusBarFiller";
 import { useSelector } from "react-redux";
@@ -13,6 +13,7 @@ import BackButton from "../Buttons/BackButton";
 import BusyWrapper from "../Loader/BusyWrapper";
 import { authState } from "@src/store/auth";
 import BottomShadow from "../BottomShadow";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 interface TabScreenContainerProps {
   children: ReactNode;
@@ -41,8 +42,11 @@ const TabScreenContainer: React.FC<
   const tintColor = CONTRAST[golden];
   const color = SECONDARY;
 
+  const Wrapper =
+    Platform.OS === "android" ? SafeAreaView : View;
+
   return (
-    <>
+    <Wrapper style={{ flex: 1 }} edges={["bottom"]}>
       <BottomShadow />
       <View
         style={[
@@ -78,7 +82,7 @@ const TabScreenContainer: React.FC<
           {children}
         </BusyWrapper>
       </View>
-    </>
+    </Wrapper>
   );
 };
 

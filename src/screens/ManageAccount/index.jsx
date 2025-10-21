@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import ManageAccountMenuItem from "./components/ManageAccountMenuItem";
 import { authState } from "@src/store/auth";
-import TabScreenContainer from "@src/components/Containers/TabScreenContainer";
+import TabScreenContainer from "@src/components/Containers/TabScreensContainer";
 import useUpdateAccountDetails from "../../hooks/manageAccountHooks/useUpdateAccountDetails";
 
 const ManageAccountScreen = ({ navigation }) => {
@@ -43,8 +43,8 @@ const ManageAccountScreen = ({ navigation }) => {
         vip > Date.now()
           ? vipMessage
           : userIsSubscribed
-            ? subscribed
-            : notSubscribed,
+          ? subscribed
+          : notSubscribed,
       targetScreen: "Manage Subscription",
     },
     homeLanguage: {

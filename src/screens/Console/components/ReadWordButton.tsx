@@ -56,6 +56,7 @@ const ReadWordButton: React.FC<ReadWordButtonProps> = ({
         height,
         width: "100%",
         justifyContent: "center",
+        alignItems: "center",
         zIndex: 10,
       }}
     >

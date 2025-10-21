@@ -4,7 +4,7 @@ import AuthButton from "@components/Buttons/AuthButton";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import { updateJustSignedUp } from "@src/store/auth";
-import TabScreenContainer from "@src/components/Containers/TabScreenContainer";
+import TabScreenContainer from "@src/components/Containers/TabScreensContainer";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { WalkthroughStackParamList } from "@src/types/navigationTypes";
@@ -67,7 +67,7 @@ const YoureAllSet = () => {
         updateModals({
           modalShowing: "webViewModal",
           webViewUrl: tutorialLink,
-        }),
+        })
       );
       setFinishButtonText(next);
     }
