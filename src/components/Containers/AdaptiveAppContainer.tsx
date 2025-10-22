@@ -4,7 +4,6 @@ import screenDimensions from "@src/utils/screenDimensions";
 import { LinearGradient } from "expo-linear-gradient";
 import { ReactNode } from "react";
 import { Platform, View } from "react-native";
-import { SafeAreaProvider } from "react-native-safe-area-context";
 
 const AdaptiveAppContainer = ({
   children,
@@ -65,11 +64,9 @@ const AdaptiveAppContainer = ({
       </View>
     </LinearGradient>
   ) : (
-    <SafeAreaProvider>
-      <View style={{ flex: 1, backgroundColor: "black" }}>
-        {children}
-      </View>
-    </SafeAreaProvider>
+    <View style={{ flex: 1, backgroundColor: "black" }}>
+      {children}
+    </View>
   );
 };
 

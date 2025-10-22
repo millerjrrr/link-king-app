@@ -10,8 +10,8 @@ const baseURL =
   process.env.NODE_ENV === "production"
     ? ProductionServer
     : Platform.OS === "web"
-      ? LocalHost
-      : ProductionServer;
+    ? LocalHost
+    : ProductionServer;
 
 const client: AxiosInstance = axios.create({
   baseURL,

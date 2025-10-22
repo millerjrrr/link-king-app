@@ -14,6 +14,7 @@ import React from "react";
 import ManageAccountNavigator from "./subnavigators/ManageAccountNavigator";
 import useColors from "@src/hooks/utilityHooks/useColors";
 import { TabParamList } from "@src/types/navigationTypes";
+import { Platform } from "react-native";
 
 const Tab = createBottomTabNavigator<TabParamList>();
 
@@ -30,7 +31,9 @@ const TabNavigator = () => {
         tabBarHideOnKeyboard: true,
         tabBarStyle: {
           backgroundColor: PRIMARY,
-          height: 80,
+          justifyContent: "flex-start",
+          alignItems: "flex-start",
+          height: 80 + (Platform.OS === "android" ? 50 : 0),
           padding: 10,
           borderTopWidth: 0,
         },
