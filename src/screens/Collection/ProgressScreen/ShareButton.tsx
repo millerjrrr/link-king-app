@@ -25,7 +25,9 @@ const ShareButton: React.FC<ShareButtonProps> = ({
   const { challenge } =
     appTextSource(appLang).collection.progressScreen;
 
-  const message = challenge + " https://link-king.com";
+  const message =
+    challenge +
+    " https://millerjrrr.github.io/jacobs-apps/#/link-king";
 
   const catchAsync = useCatchAsync();
 

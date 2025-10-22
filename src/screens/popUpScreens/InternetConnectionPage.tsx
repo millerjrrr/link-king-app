@@ -55,7 +55,9 @@ const InternetConnectionPage = () => {
           <AppLink
             title={message4}
             onPress={() =>
-              Linking.openURL("https://link-king.com")
+              Linking.openURL(
+                "https://millerjrrr.github.io/jacobs-apps/#/link-king"
+              )
             }
           />
         ) : null}
@@ -66,7 +68,7 @@ const InternetConnectionPage = () => {
               dispatch(
                 updateModals({
                   modalShowing: "contactUsModal",
-                }),
+                })
               )
             }
           />
@@ -77,7 +79,7 @@ const InternetConnectionPage = () => {
             dispatch(
               updateModals({
                 modalShowing: "logOutModal",
-              }),
+              })
             )
           }
         />

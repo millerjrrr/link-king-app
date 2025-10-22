@@ -14,7 +14,8 @@ const DownloadAppScreenForWebAppOnMobile = () => {
 
   const goToLinkKingCom = () => {
     if (typeof window !== "undefined") {
-      window.location.href = "https://link-king.com"; // Opens the link in the current window
+      window.location.href =
+        "https://millerjrrr.github.io/jacobs-apps/#/link-king"; // Opens the link in the current window
     }
   };
 

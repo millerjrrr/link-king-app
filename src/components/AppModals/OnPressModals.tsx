@@ -29,7 +29,7 @@ const OnPressModals = () => {
     dispatch(
       updateModals({
         modalShowing: "",
-      }),
+      })
     );
   };
 
@@ -56,8 +56,8 @@ const OnPressModals = () => {
           updateNotification({
             message: err,
             type: "error",
-          }),
-        ),
+          })
+        )
       );
     },
     logOutModal: logOut,
@@ -72,13 +72,13 @@ const OnPressModals = () => {
     },
     ratingInfoModal: () => {
       Linking.openURL(
-        "https://link-king.com/2025/01/06/what-is-an-elo-rating/",
+        "https://millerjrrr.github.io/jacobs-apps/link-king-com/2025/01/06/what-is-an-elo-rating/index.html"
       );
     },
   };
 
   const name: ModalWithMessage = Object.keys(
-    onPress,
+    onPress
   ).includes(modalShowing)
     ? (modalShowing as ModalWithMessage)
     : "logOutModal";

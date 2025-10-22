@@ -46,8 +46,8 @@ const TermsAndConditions = () => {
               updateModals({
                 modalShowing: "webViewModal",
                 webViewUrl:
-                  "https://link-king.com/terms-conditions/",
-              }),
+                  "https://millerjrrr.github.io/jacobs-apps/link-king-com/terms-conditions/index.html",
+              })
             )
           }
         >
@@ -62,7 +62,7 @@ const TermsAndConditions = () => {
                 modalShowing: "webViewModal",
                 webViewUrl:
                   "https://link-king.com/privacy-policy/",
-              }),
+              })
             )
           }
         >
