@@ -5,6 +5,7 @@ import {
   secureRemoveFromAsyncStorage,
 } from "@src/utils/asyncStorage";
 import { resetStore } from "@src/store";
+import { updateAppLoadingState } from "@src/store/auth";
 
 const useLogOut = () => {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ const useLogOut = () => {
     StatusBar.setBarStyle("light-content");
     secureRemoveFromAsyncStorage("auth-token");
     clearAsyncStorage();
+    dispatch(updateAppLoadingState(false));
   };
   return logOut;
 };
