@@ -36,11 +36,13 @@ const ModalTypeMenuItem = ({
       onPress =
         Platform.OS === "web"
           ? () => {
-              window.open(`https://link-king.com/contact`);
+              window.open(
+                `https://millerjrrr.github.io/jacobs-apps/`
+              );
             }
           : () =>
               dispatch(
-                updateModals({ modalShowing: name }),
+                updateModals({ modalShowing: name })
               );
       break;
     case "logOut":

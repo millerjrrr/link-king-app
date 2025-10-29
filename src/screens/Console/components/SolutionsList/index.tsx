@@ -1,7 +1,9 @@
-import { View } from "react-native";
+import { Platform, View } from "react-native";
 import SolutionItem from "./SolutionItem";
 import HorizontalScrollFade from "./HorizonatalScrollFade";
 import { ScrollView } from "react-native-gesture-handler";
+import screenDimensions from "@src/utils/screenDimensions";
+const { width } = screenDimensions();
 
 const SolutionsList = ({ ticket, plus, edit }: any) => {
   const { solutions, target } = ticket;
@@ -18,7 +20,13 @@ const SolutionsList = ({ ticket, plus, edit }: any) => {
       >
         <ScrollView
           horizontal
-          showsHorizontalScrollIndicator={false}
+          style={{
+            maxWidth:
+              Platform.OS === "web" ? width - 60 : "100%",
+          }} //important for web
+          showsHorizontalScrollIndicator={
+            Platform.OS === "web"
+          }
           keyboardShouldPersistTaps="handled"
           contentContainerStyle={{
             padding: 5,
@@ -46,7 +54,7 @@ const SolutionsList = ({ ticket, plus, edit }: any) => {
                   edit={edit}
                 />
               );
-            },
+            }
           )}
         </ScrollView>
       </View>

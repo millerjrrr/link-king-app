@@ -71,7 +71,11 @@ const IntegratedSolutionsList = () => {
           </TouchableOpacity>
           <AcceptedAnswers />
           <View
-            style={{ borderRadius: 10, overflow: "hidden" }}
+            style={{
+              borderRadius: 10,
+              overflow: "hidden",
+              width: "100%",
+            }}
           >
             <SolutionsList ticket={{ solutions }} />
           </View>
