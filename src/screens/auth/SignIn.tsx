@@ -5,9 +5,8 @@ import AuthInputField from "@src/components/AuthInputField";
 import * as yup from "yup";
 import PasswordVisibilityIcon from "@src/components/PasswordVisibilityIcon";
 import AuthFormContainer from "@src/components/Containers/AuthFormContainer";
-import { useNavigation } from "@react-navigation/native";
 import client from "@src/api/client";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { authState } from "@src/store/auth";
 import { useState } from "react";
 import { settingsState } from "@src/store/settings";
@@ -16,8 +15,11 @@ import { Formik } from "formik";
 import useCatchAsync from "@src/hooks/utilityHooks/useCatchAsync";
 import Auth3PButtons from "@src/components/Auth3P/Auth3PButtons";
 import useUpdateAuthData from "@src/hooks/authHooks/useUpdateAuthData";
+import { AuthStackNavProp } from "@src/types/navigationTypes";
 
-const SignIn = () => {
+const SignIn: React.FC<{
+  navigation: AuthStackNavProp;
+}> = ({ navigation }) => {
   const { appLang } = useSelector(settingsState);
   const { email, password } =
     appTextSource(appLang).auth.forms;
@@ -41,7 +43,6 @@ const SignIn = () => {
   };
 
   const [secureEntry, setSecureEntry] = useState(true);
-  const navigation = useNavigation();
   const catchAsync = useCatchAsync();
   const updateAuthData = useUpdateAuthData();
 
@@ -63,7 +64,7 @@ const SignIn = () => {
           headers: {
             "Accept-Language": appLang,
           },
-        },
+        }
       );
 
       if (data.status === "success") updateAuthData(data);

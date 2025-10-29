@@ -31,11 +31,14 @@ const TabNavigator = () => {
         tabBarHideOnKeyboard: true,
         tabBarStyle: {
           backgroundColor: PRIMARY,
-          justifyContent: "flex-start",
-          alignItems: "flex-start",
+          ...(Platform.OS === "android" && {
+            justifyContent: "flex-start",
+            alignItems: "flex-start",
+          }),
           height: 80 + (Platform.OS === "android" ? 50 : 0),
           padding: 10,
           borderTopWidth: 0,
+          width: "100%",
         },
       })}
       initialRouteName="Console:"
