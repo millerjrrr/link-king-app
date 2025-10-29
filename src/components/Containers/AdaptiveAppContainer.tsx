@@ -18,8 +18,8 @@ const AdaptiveAppContainer = ({
 
   return Platform.OS === "web" ? (
     <LinearGradient
-      colors={[SECONDARY, PRIMARY]}
-      locations={[0, 1]}
+      colors={["black", "grey", "white", "grey", "black"]}
+      locations={[0, 0.1, 0.5, 0.9, 1]}
       start={{ x: 0.0, y: 0.0 }}
       end={{ x: 1, y: 1 }}
       style={{
