@@ -10,7 +10,7 @@ const AdaptiveAppContainer = ({
 }: {
   children: ReactNode;
 }) => {
-  const { CONTRAST, PRIMARY, SECONDARY } = colors.dark;
+  const { CONTRAST } = colors.dark;
   const { height, width } = screenDimensions();
   const borderRadius = height * 0.0542;
 
@@ -18,10 +18,10 @@ const AdaptiveAppContainer = ({
 
   return Platform.OS === "web" ? (
     <LinearGradient
-      colors={["black", "grey", "white", "grey", "black"]}
-      locations={[0, 0.1, 0.5, 0.9, 1]}
+      colors={["grey", "black", "grey"]}
+      locations={[0, 0.5, 1]}
       start={{ x: 0.0, y: 0.0 }}
-      end={{ x: 1, y: 1 }}
+      end={{ x: 1, y: 0.5 }}
       style={{
         flex: 1,
         justifyContent: "center",
