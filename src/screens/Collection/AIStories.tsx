@@ -18,6 +18,8 @@ import { useSelector } from "react-redux";
 import { collectionState } from "@src/store/collection";
 import { selectConsoleState } from "@src/store/console";
 import useFetchStoryPrompt from "@src/hooks/collectionHooks/useFetchStoryPrompt";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const AIStories = () => {
   const fetchStoryPrompt = useFetchStoryPrompt();
@@ -48,7 +50,7 @@ const AIStories = () => {
         <BusyWrapper busy={busy} size={150}>
           <AppText
             style={{
-              padding: 5,
+              padding: base * 5,
               paddingBottom: 20,
               textAlign: "justify",
             }}
@@ -58,7 +60,7 @@ const AIStories = () => {
           <View
             style={{
               borderRadius: 20,
-              padding: 3,
+              padding: base * 3,
               backgroundColor: PRIMARY,
               ...appShadow(CONTRAST),
               flex: 1,
@@ -75,7 +77,7 @@ const AIStories = () => {
             >
               <AppText
                 style={{
-                  padding: 10,
+                  padding: base * 10,
                   fontSize: 15,
                 }}
               >
@@ -84,7 +86,7 @@ const AIStories = () => {
               <TouchableOpacity
                 onPress={copyText}
                 style={{
-                  padding: 10,
+                  padding: base * 10,
                   flexDirection: "row",
                 }}
               >
@@ -108,7 +110,7 @@ const AIStories = () => {
               <ScrollView
                 contentContainerStyle={{
                   borderRadius: 20,
-                  padding: 5,
+                  padding: base * 5,
                   backgroundColor: SECONDARY,
                   width: "100%",
                   height:
@@ -120,7 +122,7 @@ const AIStories = () => {
                 <AppText
                   style={{
                     textAlign: "justify",
-                    padding: 5,
+                    padding: base * 5,
                   }}
                 >
                   {fullprompt}

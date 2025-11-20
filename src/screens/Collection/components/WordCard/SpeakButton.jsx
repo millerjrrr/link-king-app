@@ -3,6 +3,8 @@ import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import ReadWordButton from "@src/screens/Console/components/ReadWordButton";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const SpeakButton = ({
   showSpeaker = true,
@@ -32,7 +34,7 @@ const SpeakButton = ({
 
 const styles = StyleSheet.create({
   container: {
-    padding: 5,
+    padding: base * 5,
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",

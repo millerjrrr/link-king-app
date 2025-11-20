@@ -8,6 +8,8 @@ import AppText from "@components/AppText";
 import { appShadowForStyledComponents } from "@src/utils/appShadow";
 import useColors from "@src/hooks/utilityHooks/useColors";
 import { ReactNode } from "react";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 interface Props {
   bg: string;
@@ -15,23 +17,23 @@ interface Props {
 }
 
 export const TouchableCard = styled(
-  TouchableOpacity,
+  TouchableOpacity
 )<Props>`
   width: 100%;
-  padding: 15px;
-  margin: 20px;
+  padding: ${base * 15}px;
+  margin: ${base * 20}px;
   align-items: center;
-  border-radius: 15px;
+  border-radius: ${base * 15}px;
   background-color: ${(props: Props) => props.bg};
   ${(props: Props) =>
     appShadowForStyledComponents(props.color)};
 `;
 export const Card = styled(View)<Props>`
   width: 100%;
-  padding: 15px;
-  margin: 10px;
+  padding: ${base * 15}px;
+  margin: ${base * 10}px;
   align-items: center;
-  border-radius: 15px;
+  border-radius: ${base * 15}px;
   background-color: ${(props: Props) => props.bg};
   ${(props: Props) =>
     appShadowForStyledComponents(props.color)};
@@ -39,12 +41,12 @@ export const Card = styled(View)<Props>`
 
 const VidCardContainer = styled(View)<Props>`
   width: 100%;
-  margin: 10px;
+  margin: ${base * 10}px;
   align-items: center;
-  border-radius: 15px;
-  padding: 8px;
+  border-radius: ${base * 15}px;
+  padding: ${base * 8}px;
   overflow: hidden;
-  border-width: 3px;
+  border-width: ${base * 3}px;
   border-color: ${(props: Props) => props.color};
   background-color: ${(props: Props) => props.bg};
   ${(props: Props) =>
@@ -54,7 +56,7 @@ const VidCardContainer = styled(View)<Props>`
 const VidContainer = styled(View)`
   flex: 1;
   overflow: hidden;
-  border-radius: 15px;
+  border-radius: ${base * 15}px;
   align-items: center;
   justify-content: center;
 `;
@@ -78,12 +80,12 @@ export const VidCard: React.FC<{
 };
 
 export const Fill30 = styled(View)`
-  height: 30px;
+  height: ${base * 30}px;
 `;
 
 export const HelpScroll = styled(ScrollView)`
   width: 100%;
-  padding: 30px;
+  padding: ${base * 30}px;
 `;
 
 export const TextBlock: React.FC<{ text: string }> = ({

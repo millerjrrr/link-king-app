@@ -2,7 +2,20 @@ import React from "react";
 import { FlatList, View, StyleSheet } from "react-native";
 import LanguageCard from "./LanguageCard";
 
-const LanguageList = ({ languages, unprotect }) => {
+export interface Language {
+  code: string;
+  name: string;
+  native: string;
+}
+
+interface LanguageListProps {
+  languages: Language[];
+  unprotect: boolean;
+}
+const LanguageList: React.FC<LanguageListProps> = ({
+  languages,
+  unprotect,
+}) => {
   return languages === null ||
     languages.length === 0 ? null : (
     <>

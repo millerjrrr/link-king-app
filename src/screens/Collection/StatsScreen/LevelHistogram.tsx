@@ -4,6 +4,8 @@ import LevelLine from "./LevelLine";
 import AppText from "@src/components/AppText";
 import useColors from "@src/hooks/utilityHooks/useColors";
 import appShadow from "@src/utils/appShadow";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const LevelHistogram: React.FC<{
   lbd: any[];
@@ -14,7 +16,7 @@ const LevelHistogram: React.FC<{
   let maxHeight = Math.max(...heights);
 
   const normalizedHeights = heights.map(
-    (h) => (h * histHeight) / maxHeight,
+    (h) => (h * histHeight) / maxHeight
   );
   const { CONTRAST, SECONDARY } = useColors();
 
@@ -45,7 +47,7 @@ const LevelHistogram: React.FC<{
         style={{
           fontSize: 50,
           fontWeight: "bold",
-          padding: 10,
+          padding: base * 10,
         }}
       >
         {heights[selected - 1]}
@@ -64,7 +66,7 @@ const styles = StyleSheet.create({
     width: "100%",
     flexDirection: "row",
     alignItems: "flex-end",
-    padding: 10,
+    padding: base * 10,
     borderRadius: 10,
   },
 });

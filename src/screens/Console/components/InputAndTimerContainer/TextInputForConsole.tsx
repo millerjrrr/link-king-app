@@ -20,6 +20,8 @@ import { useEffect, useRef } from "react";
 import { acceptAnswer } from "@src/utils/acceptAnswer";
 import useSubmitAnswer from "@src/hooks/consoleHooks/useSubmitAnswer";
 import useDebounce from "../../../../hooks/collectionHooks/useDebounce";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 interface Props {
   onSubmitEditing: () => void;
@@ -144,7 +146,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 70,
     textAlign: "center",
-    padding: 7,
+    padding: base * 7,
     borderRadius: 35,
     zIndex: 10,
   },

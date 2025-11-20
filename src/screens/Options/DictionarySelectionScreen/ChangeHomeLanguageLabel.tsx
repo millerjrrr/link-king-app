@@ -7,6 +7,8 @@ import appTextSource from "@src/utils/appTextSource";
 import { useNavigation } from "@react-navigation/native";
 import { TabParamList } from "@src/types/navigationTypes";
 import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const ChangeHomeLanguageLabel = () => {
   const { appLang } = useSelector(settingsState);
@@ -20,13 +22,11 @@ const ChangeHomeLanguageLabel = () => {
 
   return (
     <TouchableOpacity
-      {...{
-        onPress,
-        style: {
-          flexDirection: "row",
-          alignItems: "center",
-          paddingVertical: 30,
-        },
+      onPress={onPress}
+      style={{
+        flexDirection: "row",
+        alignItems: "center",
+        paddingVertical: 30,
       }}
     >
       <Image
@@ -43,7 +43,7 @@ const ChangeHomeLanguageLabel = () => {
         {...{
           style: {
             fontSize: 18,
-            padding: 5,
+            padding: base * 5,
           },
         }}
       >

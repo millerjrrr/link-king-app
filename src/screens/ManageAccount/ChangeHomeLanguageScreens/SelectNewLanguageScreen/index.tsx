@@ -31,9 +31,13 @@ const SelectNewHomeLanguageScreen: React.FC<{
   return (
     <PopUpContainer heading={heading}>
       <LanguageSearchBar
-        {...{ searchKeyword, setSearchKeyword }}
+        searchKeyword={searchKeyword}
+        setSearchKeyword={setSearchKeyword}
       />
-      <LanguageList {...{ languages, unprotect }} />
+      <LanguageList
+        languages={languages}
+        unprotect={unprotect ?? false}
+      />
     </PopUpContainer>
   );
 };

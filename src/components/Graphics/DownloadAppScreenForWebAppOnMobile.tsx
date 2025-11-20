@@ -5,6 +5,8 @@ import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import appShadow from "@src/utils/appShadow";
 import useColors from "@src/hooks/utilityHooks/useColors";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const DownloadAppScreenForWebAppOnMobile = () => {
   const { appLang } = useSelector(settingsState);
@@ -25,14 +27,14 @@ const DownloadAppScreenForWebAppOnMobile = () => {
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
-        padding: 15,
+        padding: base * 15,
       }}
     >
       <TouchableOpacity
         onPress={goToLinkKingCom}
         style={{
           width: "95%",
-          padding: 10,
+          padding: base * 10,
           backgroundColor: PRIMARY,
           borderRadius: 10,
           ...appShadow(CONTRAST),

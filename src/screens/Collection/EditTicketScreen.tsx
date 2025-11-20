@@ -12,6 +12,8 @@ import useSaveTicket from "@src/hooks/collectionHooks/useSaveTicket";
 import { Formik, FormikHelpers } from "formik";
 import BottomShadow from "@src/components/BottomShadow";
 import { collectionState } from "@src/store/collection";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 interface FormValues {
   newSolutions1: string;
@@ -39,7 +41,7 @@ const EditTicketScreen = () => {
   const notSilly = yup.string().test(
     "no-bad-solutions", // Unique name for the test
     "Entries can't be silly", // Custom error message
-    (value) => !value || normalize(value) !== "",
+    (value) => !value || normalize(value) !== ""
   );
 
   const validationSchema = yup.object().shape({
@@ -68,11 +70,11 @@ const EditTicketScreen = () => {
 
   const onSubmit = async (
     values: FormValues,
-    actions: FormikHelpers<FormValues>,
+    actions: FormikHelpers<FormValues>
   ) => {
     actions.setSubmitting(true);
     const newSolutions = Object.values(values).filter(
-      (solution) => solution !== "",
+      (solution) => solution !== ""
     );
     await saveTicket(id, newSolutions);
     actions.setSubmitting(false);
@@ -101,7 +103,7 @@ const EditTicketScreen = () => {
                 }
                 keyboardShouldPersistTaps="handled"
                 contentContainerStyle={{
-                  padding: 5,
+                  padding: base * 5,
                   paddingHorizontal: 30,
                   alignItems: "center",
                 }}
@@ -111,19 +113,21 @@ const EditTicketScreen = () => {
                     <AuthInputField
                       key={index}
                       name={
-                        `newSolutions${index + 1}` as keyof FormValues
+                        `newSolutions${
+                          index + 1
+                        }` as keyof FormValues
                       }
                       label={`${solutionName} ${index + 1}`}
                       placeholder=""
                       bottomMargin
                       autoCapitalize="none"
                     />
-                  ),
+                  )
                 )}
               </ScrollView>
               <View
                 style={{
-                  padding: 30,
+                  padding: base * 30,
                   width: "100%",
                 }}
               >

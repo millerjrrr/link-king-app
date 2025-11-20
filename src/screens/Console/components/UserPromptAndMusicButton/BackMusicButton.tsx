@@ -4,20 +4,22 @@ import { selectConsoleLocals } from "@src/store/console";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useSelector } from "react-redux";
 import useToggleBGMusic from "@src/hooks/consoleHooks/useToggleBGMusic";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const BackMusicButton = () => {
   const { SECONDARY } = useColors();
   const toggleBGMusic = useToggleBGMusic();
 
   const { musicIsPlaying } = useSelector(
-    selectConsoleLocals,
+    selectConsoleLocals
   );
 
   return (
     <TouchableOpacity
       onPress={toggleBGMusic}
       style={{
-        padding: 15,
+        padding: base * 15,
         flexDirection: "row",
         alignItems: "center",
       }}

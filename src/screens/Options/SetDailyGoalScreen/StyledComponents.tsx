@@ -3,7 +3,7 @@ import screenDimensions from "@src/utils/screenDimensions";
 import { LinearGradient } from "expo-linear-gradient";
 import { TextStyle, View } from "react-native";
 import styled from "styled-components/native";
-const { height, width } = screenDimensions();
+const { base, height, width } = screenDimensions();
 
 // index
 export const Container = styled(View)`
@@ -11,14 +11,14 @@ export const Container = styled(View)`
   width: 100%;
   align-items: center;
   justify-content: space-between;
-  padding: 15px;
+  padding: ${base * 15}px;
 `;
 
 export const GoalContainer = styled(View)`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: ${width - 30}px;
+  width: ${width - 30 * base}px;
 `;
 
 // Scroll Selector
@@ -26,13 +26,13 @@ export const Column = styled(View)`
   position: relative;
   height: ${height * 0.2}px;
   flex-direction: column;
-  padding-horizontal: 3px;
+  padding-horizontal: ${base * 3}px;
 `;
 
 export const TopShadow = styled(LinearGradient)`
   position: absolute;
   top: 0;
-  height: 20px;
+  height: ${base * 20}px;
   width: 100%;
   z-index: 20;
 `;
@@ -40,13 +40,13 @@ export const TopShadow = styled(LinearGradient)`
 export const BottomShadow = styled(LinearGradient)`
   position: absolute;
   bottom: 0;
-  height: 20px;
+  height: ${base * 20}px;
   width: 100%;
   z-index: 20;
 `;
 
 export const ItemPadding = styled(View)`
-  width: 40px;
+  width: ${base * 40}px;
   align-items: center;
   justify-content: center;
 `;
@@ -54,12 +54,12 @@ export const ItemPadding = styled(View)`
 export const ItemText = styled(AppText)<
   TextStyle & { fontWeight: "bold" | "normal" }
 >`
-  font-size: 20px;
+  font-size: ${base * 20}px;
   font-weight: ${(props) => props.fontWeight};
 `;
 
 //Dropdown Selector
 export const DropdownContainer = styled(View)`
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: ${base * 8}px;
 `;

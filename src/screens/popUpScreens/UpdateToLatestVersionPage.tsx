@@ -16,6 +16,8 @@ import { useSelector } from "react-redux";
 import appTextSource from "@src/utils/appTextSource";
 import { settingsState } from "@src/store/settings";
 import Constants from "expo-constants";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const UpdateToLatestVersionPage = () => {
   // Links to your app on the App Store and Play Store
@@ -37,7 +39,7 @@ const UpdateToLatestVersionPage = () => {
 
   const onPress = () =>
     Linking.openURL(
-      Platform.OS === "ios" ? appStoreLink : playStoreLink,
+      Platform.OS === "ios" ? appStoreLink : playStoreLink
     );
 
   const source = require("@assets/adaptive-icon.png");
@@ -55,7 +57,7 @@ const UpdateToLatestVersionPage = () => {
         <TouchableOpacity
           onPress={onPress}
           style={{
-            padding: 20,
+            padding: base * 20,
             marginTop: 30,
             marginBottom: 20,
             backgroundColor: "#000000",

@@ -5,6 +5,8 @@ import { timeInStyle } from "@src/utils/timeInStyle";
 import StatsIcon from "@src/screens/Console/components/StatsContainer/StatsIcon";
 import useColors from "@src/hooks/utilityHooks/useColors";
 import appShadow from "@src/utils/appShadow";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const StatsContainer: React.FC<{ size?: number }> = ({
   size = 22,
@@ -68,7 +70,7 @@ const StatsContainer: React.FC<{ size?: number }> = ({
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
+    padding: base * 10,
     alignItems: "center",
     borderRadius: 10,
     borderWidth: 1,

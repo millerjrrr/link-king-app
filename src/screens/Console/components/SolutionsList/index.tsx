@@ -3,7 +3,7 @@ import SolutionItem from "./SolutionItem";
 import HorizontalScrollFade from "./HorizonatalScrollFade";
 import { ScrollView } from "react-native-gesture-handler";
 import screenDimensions from "@src/utils/screenDimensions";
-const { width } = screenDimensions();
+const { base, width } = screenDimensions();
 
 const SolutionsList = ({ ticket, plus, edit }: any) => {
   const { solutions, target } = ticket;
@@ -29,7 +29,7 @@ const SolutionsList = ({ ticket, plus, edit }: any) => {
           }
           keyboardShouldPersistTaps="handled"
           contentContainerStyle={{
-            padding: 5,
+            padding: base * 5,
             paddingHorizontal: 30,
             alignItems: "center",
           }}

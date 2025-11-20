@@ -16,6 +16,8 @@ import Animated, {
 import { useEffect } from "react";
 import AppText from "./AppText";
 import useColors from "@src/hooks/utilityHooks/useColors";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 interface FormValues {
   name: string; // Define your fields explicitly if known
@@ -154,7 +156,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    padding: 5,
+    padding: base * 5,
   },
   rightIcon: {
     width: 45,

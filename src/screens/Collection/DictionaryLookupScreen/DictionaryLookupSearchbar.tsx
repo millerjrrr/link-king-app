@@ -9,11 +9,13 @@ import {
   collectionState,
   updateSearchKeyword,
 } from "@src/store/collection";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const Container = styled(View)`
   width: 100%;
   align-items: center;
-  height: 10px;
+  height: ${base * 10}px;
   align-items: center;
   z-index: 20;
 `;

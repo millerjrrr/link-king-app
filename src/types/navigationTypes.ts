@@ -40,18 +40,13 @@ export type ConsoleStackParamList = {
   "Dictionary Selection": undefined;
 };
 
-// MANAGE ACCOUNT
-export interface SelectNewHomeLanguageProp {
-  unprotect?: boolean;
-}
-
 export type ManageAccountStackParamList = {
   "Manage Account": undefined;
   "Change Account Name": undefined;
   "Manage Subscription": undefined;
   "Change Home Language - Warning": undefined;
-  "Change Home Language": undefined;
-  "Select New Home Language": SelectNewHomeLanguageProp;
+  "Change Home Language": { code?: string };
+  "Select New Home Language": { unprotect?: boolean };
   "Delete Account": undefined;
   "Manage Users": undefined;
 };

@@ -13,8 +13,9 @@ import StatusBarFiller from "../StatusBarFiller";
 import AppText from "../AppText";
 import BackButton from "../Buttons/BackButton";
 import React, { ReactNode } from "react";
-import screenDimensions from "@src/utils/screenDimensions";
 import useColors from "@src/hooks/utilityHooks/useColors";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 interface AuthFormContainerProps {
   children: ReactNode;
@@ -96,7 +97,7 @@ const AuthFormContainer: React.FC<
         {subHeading ? (
           <AppText
             style={{
-              padding: 5,
+              padding: base * 5,
               paddingLeft: popUp ? 40 : 5,
               fontSize: 16,
               textAlign: !nologo ? "center" : "left",

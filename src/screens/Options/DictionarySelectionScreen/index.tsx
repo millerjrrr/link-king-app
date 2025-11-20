@@ -11,6 +11,8 @@ import ChangeHomeLanguageLabel from "./ChangeHomeLanguageLabel";
 import { authState } from "@src/store/auth";
 import useSetDictionaries from "../../../hooks/optionsHooks/useSetDictionaries";
 import Dictionary from "../../../types/dictionaries";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const DictionarySelectionScreen = () => {
   const { appLang } = useSelector(settingsState);
@@ -33,7 +35,7 @@ const DictionarySelectionScreen = () => {
             style={{
               textAlign: "left",
               fontSize: 15,
-              padding: 20,
+              padding: base * 20,
             }}
           >
             {dictionaryError}

@@ -13,6 +13,8 @@ import BackButton from "../Buttons/BackButton";
 import BusyWrapper from "../Loader/BusyWrapper";
 import { authState } from "@src/store/auth";
 import BottomShadow from "../BottomShadow";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 interface TabScreenContainerProps {
   children: ReactNode;

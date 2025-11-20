@@ -21,8 +21,17 @@ import colors from "@src/utils/colors";
 import { Formik } from "formik";
 import useChangeHomeLanguage from "@src/hooks/optionsHooks/useChangeHomeLanguage";
 import ForgotOrDidntSetUpPassword from "@src/components/ForgotOrDidntSetUpPassword";
+import screenDimensions from "@src/utils/screenDimensions";
+import { RouteProp } from "@react-navigation/native";
+import { ManageAccountStackParamList } from "@src/types/navigationTypes";
+const { base } = screenDimensions();
 
-const ChangeHomeLanguageScreen = ({ route }) => {
+const ChangeHomeLanguageScreen: React.FC<{
+  route: RouteProp<
+    ManageAccountStackParamList,
+    "Change Home Language"
+  >;
+}> = ({ route }) => {
   const newLanguage = route.params.code;
   const { appLang, colorScheme, golden } =
     useSelector(settingsState);
@@ -54,7 +63,7 @@ const ChangeHomeLanguageScreen = ({ route }) => {
     setSecureEntry(!secureEntry);
   };
 
-  const onSubmit = async (values, actions) => {
+  const onSubmit = async (values: any, actions: any) => {
     actions.setSubmitting(true);
     await changeHomeLanguage({
       password: values.password,
@@ -83,18 +92,17 @@ const ChangeHomeLanguageScreen = ({ route }) => {
         >
           <FlagImage {...{ flag1: appLang, scale: 1.5 }} />
           <AntDesign
-            {...{
-              name: "arrowright",
-              size: 48,
-              color,
-            }}
+            name="arrow-right"
+            size={48}
+            color={color}
           />
           <FlagImage
-            {...{ flag1: newLanguage, scale: 1.5 }}
+            flag1={newLanguage || "en"}
+            scale={1.5}
           />
         </View>
         <AppText
-          {...{ style: { padding: 15, fontSize: 20 } }}
+          style={{ padding: base * 15, fontSize: 20 }}
         >
           {changeHomeLanguageDetails}
         </AppText>

@@ -12,6 +12,8 @@ import Animated, {
 } from "react-native-reanimated";
 import AppText from "./AppText";
 import useColors from "../hooks/utilityHooks/useColors";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const LevelPopAnimation = () => {
   const duration = 1000;
@@ -24,7 +26,7 @@ const LevelPopAnimation = () => {
   const opacity = useSharedValue(1);
 
   const [text, setText] = useState(
-    level > 0 ? `L${level}` : "",
+    level > 0 ? `L${level}` : ""
   );
 
   useEffect(() => {
@@ -50,7 +52,7 @@ const LevelPopAnimation = () => {
       // After animation: reset state
       const endTimeout = setTimeout(() => {
         dispatch(
-          updateLevelPop({ level: -1, popType: false }),
+          updateLevelPop({ level: -1, popType: false })
         );
       }, duration);
 
@@ -85,7 +87,7 @@ const LevelPopAnimation = () => {
         animatedStyle,
       ]}
     >
-      <View style={{ padding: 4 }}>
+      <View style={{ padding: base * 4 }}>
         <AppText
           style={{
             color: popType ? GREEN : RED,

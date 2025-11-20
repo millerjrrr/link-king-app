@@ -22,10 +22,8 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import appTextSource from "@src/utils/appTextSource";
 import { useDispatch, useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
-import clientWithAuth from "@src/api/clientWithAuth";
 import {
   collectionState,
-  updateBusy,
   updateSearchKeyword,
 } from "@src/store/collection";
 import BusyWrapper from "@src/components/Loader/BusyWrapper";
@@ -33,6 +31,8 @@ import { CreateCustomTicketScreenFormValues } from "@src/types/FormTypes";
 import useCreateCustomTicket from "@src/hooks/collectionHooks/useCreateCustomTicket";
 import useUpdateSolutions from "@src/hooks/collectionHooks/useUpdateSolutions";
 import AppText from "@src/components/AppText";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 type CreateCustomTicketScreenRouteProp = RouteProp<
   CollectionStackParamList,
@@ -61,7 +61,7 @@ const CreateCustomTicketScreen = () => {
   const notSilly = yup.string().test(
     "no-bad-solutions", // Unique name for the test
     silly, // Custom error message
-    (value) => !value || normalize(value) !== "",
+    (value) => !value || normalize(value) !== ""
   );
 
   const validationSchema = yup.object().shape({
@@ -94,7 +94,7 @@ const CreateCustomTicketScreen = () => {
 
   const onSubmit = async (
     values: CreateCustomTicketScreenFormValues,
-    actions: FormikHelpers<CreateCustomTicketScreenFormValues>,
+    actions: FormikHelpers<CreateCustomTicketScreenFormValues>
   ) => {
     try {
       actions.setSubmitting(true);
@@ -123,7 +123,7 @@ const CreateCustomTicketScreen = () => {
           {({ values, setFieldValue }) => {
             useEffect(() => {
               dispatch(
-                updateSearchKeyword(values.formTarget),
+                updateSearchKeyword(values.formTarget)
               );
             }, [values.formTarget]);
 
@@ -132,7 +132,7 @@ const CreateCustomTicketScreen = () => {
                 <View
                   style={{
                     backgroundColor: SECONDARY,
-                    padding: 15,
+                    padding: base * 15,
                     paddingHorizontal: 15,
                     borderRadius: 30,
                     alignItems: "flex-end",
@@ -146,7 +146,7 @@ const CreateCustomTicketScreen = () => {
                     onPress={() => {
                       updateSolutions(
                         values.formTarget,
-                        setFieldValue,
+                        setFieldValue
                       );
                     }}
                   >
@@ -175,7 +175,7 @@ const CreateCustomTicketScreen = () => {
                     }
                     keyboardShouldPersistTaps="handled"
                     contentContainerStyle={{
-                      padding: 5,
+                      padding: base * 5,
                       paddingHorizontal: 30,
                       alignItems: "center",
                     }}
@@ -185,20 +185,24 @@ const CreateCustomTicketScreen = () => {
                         <AuthInputField
                           key={index}
                           name={
-                            `solution${index + 1}` as keyof CreateCustomTicketScreenFormValues
+                            `solution${
+                              index + 1
+                            }` as keyof CreateCustomTicketScreenFormValues
                           }
-                          label={`${solutionName} ${index + 1}`}
+                          label={`${solutionName} ${
+                            index + 1
+                          }`}
                           placeholder=""
                           bottomMargin
                           autoCapitalize="none"
                         />
-                      ),
+                      )
                     )}
                   </ScrollView>
                 </BusyWrapper>
                 <View
                   style={{
-                    padding: 30,
+                    padding: base * 30,
                     width: "100%",
                   }}
                 >

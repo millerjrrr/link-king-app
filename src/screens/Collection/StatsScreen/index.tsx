@@ -14,12 +14,11 @@ import {
   View,
 } from "react-native";
 import BusyWrapper from "@src/components/Loader/BusyWrapper";
-import screenDimensions from "@src/utils/screenDimensions";
 import { useNavigation } from "@react-navigation/native";
 import { CollectionStackParamList } from "@src/types/navigationTypes";
 import { StackNavigationProp } from "@react-navigation/stack";
-
-const { width } = screenDimensions();
+import screenDimensions from "@src/utils/screenDimensions";
+const { base, width } = screenDimensions();
 
 const StatsScreen = () => {
   const { levelBreakdown, busy } = useSelector(statsState);
@@ -61,14 +60,18 @@ const StatsScreen = () => {
             Platform.OS !== "web"
           }
         >
-          <View style={{ width: "100%", padding: 15 }}>
+          <View
+            style={{ width: "100%", padding: base * 15 }}
+          >
             {showHist ? (
               <LevelHistogram
                 lbd={levelBreakdown}
                 histHeight={width * 0.7}
               />
             ) : (
-              <AppText {...{ style: { padding: 15 } }}>
+              <AppText
+                {...{ style: { padding: base * 15 } }}
+              >
                 {description}
               </AppText>
             )}
@@ -76,10 +79,16 @@ const StatsScreen = () => {
             {showStories ? (
               <TouchableOpacity
                 onPress={onPress}
-                style={{ padding: 5, paddingTop: 10 }}
+                style={{
+                  padding: base * 5,
+                  paddingTop: 10,
+                }}
               >
                 <AppText
-                  style={{ padding: 20, fontSize: 25 }}
+                  style={{
+                    padding: base * 20,
+                    fontSize: 25,
+                  }}
                 >
                   {title}
                 </AppText>

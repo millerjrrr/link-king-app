@@ -18,6 +18,8 @@ import FormikSafetyButton from "@components/Buttons/FormikSafetyButton";
 import { Formik } from "formik";
 import useDeleteAccount from "@src/hooks/optionsHooks/useDeleteAccount";
 import ForgotOrDidntSetUpPassword from "@src/components/ForgotOrDidntSetUpPassword";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const DeleteAccountScreen = () => {
   const { appLang } = useSelector(settingsState);
@@ -44,7 +46,7 @@ const DeleteAccountScreen = () => {
   };
 
   const deleteAccount = useDeleteAccount();
-  const onSubmit = async (values, actions) => {
+  const onSubmit = async (values: any, actions: any) => {
     actions.setSubmitting(true);
     await deleteAccount({
       password: values.password,
@@ -60,16 +62,14 @@ const DeleteAccountScreen = () => {
       >
         <BloodRedCover />
         <AppText
-          {...{ style: { padding: 15, fontSize: 20 } }}
+          style={{ padding: base * 15, fontSize: 20 }}
         >
           {deleteAccountDetails}
         </AppText>
         <Formik
-          {...{
-            onSubmit,
-            initialValues,
-            validationSchema,
-          }}
+          onSubmit={onSubmit}
+          initialValues={initialValues}
+          validationSchema={validationSchema}
         >
           <View
             {...{

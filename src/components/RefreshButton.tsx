@@ -5,6 +5,8 @@ import { refreshPage } from "@src/store/auth";
 import AuthButton from "./Buttons/AuthButton";
 import appTextSource from "@src/utils/appTextSource";
 import { settingsState } from "@src/store/settings";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const RefreshButton = () => {
   const dispatch = useDispatch();
@@ -29,7 +31,7 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
     width: "100%",
-    padding: 20,
+    padding: base * 20,
     zIndex: 10,
   },
 });

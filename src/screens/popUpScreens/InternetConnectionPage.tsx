@@ -11,6 +11,8 @@ import AnnouncementContainer from "@src/components/Containers/AnnouncementContai
 import { authState } from "@src/store/auth";
 import AppLink from "@src/components/AppLink";
 import { updateModals } from "@src/store/modals";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const InternetConnectionPage = () => {
   const { appLang } = useSelector(settingsState);
@@ -45,7 +47,7 @@ const InternetConnectionPage = () => {
           name="disconnect"
           size={100}
           color={CONTRAST}
-          style={{ padding: 20 }}
+          style={{ padding: base * 20 }}
         />
         <AppText style={{ paddingVertical: 10 }}>
           {message}

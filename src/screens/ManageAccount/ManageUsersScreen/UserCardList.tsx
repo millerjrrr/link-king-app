@@ -4,6 +4,8 @@ import { adminState, updatePage } from "@src/store/admin";
 import { FlatList, Platform, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import UserCard from "./UserCard";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const UserCardList = () => {
   const dispatch = useDispatch();
@@ -14,7 +16,11 @@ const UserCardList = () => {
 
   return users === null || users.length === 0 ? (
     <View
-      style={{ flex: 1, paddingTop: 100, width: "80%" }}
+      style={{
+        flex: 1,
+        paddingTop: base * 100,
+        width: "80%",
+      }}
     >
       <AppText>{noUsers}</AppText>
     </View>
@@ -29,8 +35,8 @@ const UserCardList = () => {
         keyExtractor={(item) => item.email}
         style={{
           flex: 1,
-          padding: 15,
-          paddingTop: 100,
+          padding: base * 15,
+          paddingTop: base * 100,
           width: "100%",
         }}
         keyboardShouldPersistTaps="handled"

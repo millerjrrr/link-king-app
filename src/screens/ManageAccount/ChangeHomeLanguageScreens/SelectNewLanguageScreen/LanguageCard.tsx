@@ -12,18 +12,40 @@ import colors from "@src/utils/colors";
 import { appShadowForStyledComponents } from "@src/utils/appShadow";
 import { useCallback } from "react";
 import useChangeHomeLanguageForNewUser from "@src/hooks/authHooks/useChangeHomeLanguageForNewUser";
+import screenDimensions from "@src/utils/screenDimensions";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { ManageAccountStackParamList } from "@src/types/navigationTypes";
+const { base } = screenDimensions();
 
-const Container = styled(TouchableOpacity)`
+interface StyleProps {
+  backgroundColor: `#${string}`;
+  color: `#${string}`;
+}
+const Container = styled(TouchableOpacity)<StyleProps>`
   flex-direction: row;
-  margin: 10px 25px;
-  border-radius: 15px;
-  padding: 10px;
-  background-color: ${(props) => props.backgroundColor};
-  ${(props) => appShadowForStyledComponents(props.color)}
+  margin: ${base * 10}px ${base * 25}px;
+  border-radius: ${base * 15}px;
+  padding: ${base * 10}px;
+  background-color: ${(props: StyleProps) =>
+    props.backgroundColor};
+  ${(props: StyleProps) =>
+    appShadowForStyledComponents(props.color)}
 `;
 
-const LanguageCard = ({ code, native, unprotect }) => {
-  const navigation = useNavigation();
+interface LanguageCardProps {
+  code: string;
+  native: string;
+  unprotect: boolean;
+}
+const LanguageCard: React.FC<LanguageCardProps> = ({
+  code,
+  native,
+  unprotect,
+}) => {
+  const navigation =
+    useNavigation<
+      StackNavigationProp<ManageAccountStackParamList>
+    >();
   const dispatch = useDispatch();
 
   const { appLang, colorScheme, golden } =
@@ -44,7 +66,7 @@ const LanguageCard = ({ code, native, unprotect }) => {
         updateNotification({
           message: languageAlreadySelected,
           type: "info",
-        }),
+        })
       );
     } else {
       if (unprotect) {

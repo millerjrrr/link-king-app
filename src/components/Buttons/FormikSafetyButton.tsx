@@ -4,9 +4,11 @@ import { View } from "react-native";
 import RedSafetyButton from "./RedSafetyButton";
 import BusyWrapper from "../Loader/BusyWrapper";
 import { AntDesign } from "@expo/vector-icons";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const FormikSafetyButton: React.FC<{
-  iconName: keyof typeof AntDesign.glyphMap;
+  iconName?: keyof typeof AntDesign.glyphMap;
 }> = ({ iconName = "delete" }) => {
   const { handleSubmit, isSubmitting } = useFormikContext();
 
@@ -20,7 +22,7 @@ const FormikSafetyButton: React.FC<{
         style={{
           width: "100%",
           alignItems: "center",
-          padding: 15,
+          padding: base * 15,
         }}
       >
         <RedSafetyButton

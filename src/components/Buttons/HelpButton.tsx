@@ -6,9 +6,11 @@ import useColors from "@src/hooks/utilityHooks/useColors";
 import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import { selectConsoleLocals } from "@src/store/console";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const AnimatedTouchable = Animated.createAnimatedComponent(
-  TouchableOpacity,
+  TouchableOpacity
 );
 
 interface HelpButtonProps {
@@ -47,7 +49,7 @@ const HelpButton: React.FC<HelpButtonProps> = ({
             useNativeDriver: true,
           }),
         ]),
-        { iterations: 3 },
+        { iterations: 3 }
       ).start();
   };
 
@@ -63,7 +65,7 @@ const HelpButton: React.FC<HelpButtonProps> = ({
         position: "absolute",
         top: nopadding ? 0 : 10,
         right: 0,
-        padding: 15,
+        padding: base * 15,
         alignItems: "center",
         justifyContent: "center",
         zIndex: 999,

@@ -1,6 +1,8 @@
 import { TouchableOpacity } from "react-native";
 import AppText from "./AppText";
 import useColors from "@src/hooks/utilityHooks/useColors";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const AppLink: React.FC<{
   title: string;
@@ -11,7 +13,7 @@ const AppLink: React.FC<{
   return (
     <TouchableOpacity
       onPress={onPress}
-      style={{ padding: 5, paddingTop: 10 }}
+      style={{ padding: base * 5, paddingTop: 10 }}
     >
       <AppText
         style={{ color: INACTIVE_CONTRAST, fontSize: 15 }}

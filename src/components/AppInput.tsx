@@ -2,6 +2,8 @@ import { TextInputProps } from "react-native";
 import appShadow from "@src/utils/appShadow";
 import useColors from "@src/hooks/utilityHooks/useColors";
 import ClosingTextInput from "./ClosingTextInput";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 //This may be used in some settings tabs in the future
 const AppInput: React.FC<TextInputProps> = (props) => {
@@ -29,13 +31,13 @@ const AppInput: React.FC<TextInputProps> = (props) => {
       style={[
         props.style,
         {
-          height: 45,
-          borderRadius: 15,
-          fontSize: 20,
-          padding: 10,
+          height: base * 45,
+          borderRadius: base * 15,
+          fontSize: base * 20,
+          padding: base * 10,
           backgroundColor,
           color,
-          ...appShadow(color, 10),
+          ...appShadow(color, base * 10),
         },
       ]}
     />

@@ -2,6 +2,8 @@ import useColors from "@src/hooks/utilityHooks/useColors";
 import appShadow from "@src/utils/appShadow";
 import React, { ReactNode } from "react";
 import { View } from "react-native";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const AnnouncementContainer: React.FC<{
   children: ReactNode;
@@ -13,7 +15,7 @@ const AnnouncementContainer: React.FC<{
       style={{
         flex: 1,
         backgroundColor: SECONDARY,
-        padding: 5,
+        padding: base * 5,
         paddingVertical: 50,
       }}
     >

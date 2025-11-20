@@ -15,6 +15,8 @@ import ManageAccountNavigator from "./subnavigators/ManageAccountNavigator";
 import useColors from "@src/hooks/utilityHooks/useColors";
 import { TabParamList } from "@src/types/navigationTypes";
 import { Platform } from "react-native";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const Tab = createBottomTabNavigator<TabParamList>();
 
@@ -36,7 +38,7 @@ const TabNavigator = () => {
             alignItems: "flex-start",
           }),
           height: 80 + (Platform.OS === "android" ? 50 : 0),
-          padding: 10,
+          padding: base * 10,
           borderTopWidth: 0,
           width: "100%",
         },

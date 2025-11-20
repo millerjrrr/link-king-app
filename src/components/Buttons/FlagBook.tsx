@@ -15,6 +15,8 @@ import {
   ConsoleStackParamList,
   OptionsStackParamList,
 } from "@src/types/navigationTypes";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const FlagBook: React.FC<{ padding: boolean }> = ({
   padding,
@@ -64,7 +66,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     left: 0,
-    padding: 15,
+    padding: base * 15,
     alignItems: "center",
     justifyContent: "center",
     zIndex: 10,

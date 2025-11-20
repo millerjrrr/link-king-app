@@ -10,6 +10,8 @@ import { InputAccessoryView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import useColors from "@src/hooks/utilityHooks/useColors";
 import { forwardRef, useMemo } from "react";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 interface Props extends TextInputProps {}
 
@@ -23,8 +25,10 @@ const ClosingTextInput = forwardRef<TextInput, Props>(
 
     const inputAccessoryViewID = useMemo(
       () =>
-        `doneButtonToolbar-${Math.random().toString(36).slice(2)}`,
-      [],
+        `doneButtonToolbar-${Math.random()
+          .toString(36)
+          .slice(2)}`,
+      []
     );
 
     return Platform.OS === "ios" ? (
@@ -32,7 +36,7 @@ const ClosingTextInput = forwardRef<TextInput, Props>(
         <InputAccessoryView nativeID={inputAccessoryViewID}>
           <View
             style={{
-              padding: 10,
+              padding: base * 10,
               position: "relative", // default but explicit
               height: 40,
               zIndex: 10000,
@@ -64,7 +68,7 @@ const ClosingTextInput = forwardRef<TextInput, Props>(
     ) : (
       <TextInput ref={ref} {...props} />
     );
-  },
+  }
 );
 
 export default ClosingTextInput;

@@ -1,11 +1,17 @@
 import { View, StyleSheet } from "react-native";
 import AppSearchBar from "../../../../components/AppSearchBar";
 import FadeBackgroundView from "@src/components/Graphics/FadeBackgroundView";
+import screenDimensions from "@src/utils/screenDimensions";
+import { Dispatch, SetStateAction } from "react";
+const { base } = screenDimensions();
 
-const LanguageSearchBar = ({
-  searchKeyword,
-  setSearchKeyword,
-}) => {
+interface LanguageSearchBarProps {
+  searchKeyword: string;
+  setSearchKeyword: Dispatch<SetStateAction<string>>;
+}
+const LanguageSearchBar: React.FC<
+  LanguageSearchBarProps
+> = ({ searchKeyword, setSearchKeyword }) => {
   return (
     <View style={styles.container}>
       <FadeBackgroundView>
@@ -31,7 +37,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "flex-end",
     flexDirection: "row",
-    paddingBottom: 10,
+    paddingBottom: base * 10,
   },
 });
 

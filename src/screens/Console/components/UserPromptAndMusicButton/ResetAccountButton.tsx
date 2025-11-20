@@ -5,9 +5,11 @@ import {
   authState,
   updateConnectedState,
 } from "@src/store/auth";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import { useDispatch, useSelector } from "react-redux";
 import useCatchAsync from "./../../../../hooks/utilityHooks/useCatchAsync";
+import screenDimensions from "@src/utils/screenDimensions";
+import { TouchableOpacity } from "react-native";
+const { base } = screenDimensions();
 
 const ResetAccountButton = () => {
   const { SECONDARY } = useColors();
@@ -17,7 +19,7 @@ const ResetAccountButton = () => {
 
   const resetAccount = catchAsync(async () => {
     const { data } = await clientWithAuth.get(
-      "/api/v1/users/reset-user-data",
+      "/api/v1/users/reset-user-data"
     );
     if (data.status === "success")
       dispatch(updateConnectedState("disconnected"));
@@ -27,7 +29,7 @@ const ResetAccountButton = () => {
     <TouchableOpacity
       onPress={resetAccount}
       style={{
-        padding: 15,
+        padding: base * 15,
         flexDirection: "row",
         alignItems: "center",
       }}
