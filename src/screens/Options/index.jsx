@@ -1,4 +1,4 @@
-import TabScreenContainer from "@src/components/Containers/TabScreensContainer";
+import TabScreenContainer from "@src/components/containers/TabScreensContainer";
 import OptionsMenuItem from "./components/OptionsMenuItem";
 import { useNavigation } from "@react-navigation/native";
 import ColorPickerMenuItem from "./components/ColorPickerMenuItem";

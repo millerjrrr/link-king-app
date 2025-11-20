@@ -2,7 +2,7 @@ import React from "react";
 import SubmitButton from "@components/Buttons/SubmitButton";
 import AuthInputField from "@components/AuthInputField";
 import * as yup from "yup";
-import AuthFormContainer from "@src/components/Containers/AuthFormContainer";
+import AuthFormContainer from "@src/components/containers/AuthFormContainer";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
@@ -50,7 +50,7 @@ const NameScreen: React.FC<NameScreenProps> = ({
 
   const onSubmit = async (
     values: FormValues,
-    actions: FormikHelpers<FormValues>,
+    actions: FormikHelpers<FormValues>
   ) => {
     actions.setSubmitting(true);
     await dispatch(updateNameOnRecord(values.name));

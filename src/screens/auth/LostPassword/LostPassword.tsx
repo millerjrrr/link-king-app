@@ -2,7 +2,7 @@ import { StyleSheet, View } from "react-native";
 import SubmitButton from "@components/Buttons/SubmitButton";
 import AppLink from "@components/AppLink";
 import AuthInputField from "@components/AuthInputField";
-import AuthFormContainer from "@src/components/Containers/AuthFormContainer";
+import AuthFormContainer from "@src/components/containers/AuthFormContainer";
 import client from "@src/api/client";
 import { useSelector } from "react-redux";
 import appTextSource from "@src/utils/appTextSource";

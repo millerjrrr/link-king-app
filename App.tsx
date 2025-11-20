@@ -4,7 +4,7 @@ import store from "./src/store";
 import RootNavigator from "./src/navigation/RootNavigator";
 import AppNotification from "./src/components/AppNotification";
 import AppModals from "./src/components/AppModals";
-import AdaptiveAppContainer from "./src/components/Containers/AdaptiveAppContainer";
+import AdaptiveAppContainer from "./src/components/containers/AdaptiveAppContainer";
 import AppLoadingContainer from "./src/navigation/AppLoadingContainer";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import useRequestPermissions from "./src/hooks/utilityHooks/useRequestPermissions";

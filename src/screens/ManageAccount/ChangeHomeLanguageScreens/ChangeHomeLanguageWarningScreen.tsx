@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import PopUpContainer from "../../../components/Containers/PopUpsContainer";
+import PopUpContainer from "../../../components/containers/PopUpsContainer";
 import { settingsState } from "@src/store/settings";
 import { useNavigation } from "@react-navigation/native";
 import AuthButton from "../../../components/Buttons/AuthButton";

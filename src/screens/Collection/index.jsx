@@ -1,4 +1,4 @@
-import TabScreenContainer from "@src/components/Containers/TabScreensContainer";
+import TabScreenContainer from "@src/components/containers/TabScreensContainer";
 import WordCollectionList from "./components/WordCollectionList";
 import SearchBarContainer from "./components/SearchBarContainer";
 import { useDispatch, useSelector } from "react-redux";

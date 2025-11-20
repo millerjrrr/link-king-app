@@ -5,7 +5,7 @@ import OptionsContainer from "./components/OptionsContainer";
 import Tail from "./components/Tail";
 import ReadWordButton from "./components/ReadWordButton";
 import StatsContainer from "./components/StatsContainer";
-import TabScreenContainer from "@src/components/Containers/TabScreensContainer";
+import TabScreenContainer from "@src/components/containers/TabScreensContainer";
 import {
   incHelpPulsing,
   settingsState,

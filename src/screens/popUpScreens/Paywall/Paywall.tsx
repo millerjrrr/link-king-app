@@ -4,13 +4,13 @@ import appTextSource from "@src/utils/appTextSource";
 import { useDispatch, useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import AppText from "@src/components/AppText";
-import AuthFormContainer from "@src/components/Containers/AuthFormContainer";
+import AuthFormContainer from "@src/components/containers/AuthFormContainer";
 import TermsAndConditions from "./TermsAndConditions";
 import useSetSubscriptionPrice from "../../../hooks/subscriptionHooks/useSetSubscriptionPrice";
 import { authState } from "@src/store/auth";
 import useSubscribe from "../../../hooks/subscriptionHooks/useSubscribe";
 import { updateModals } from "@src/store/modals";
-import AnnouncementContainer from "@src/components/Containers/AnnouncementContainer";
+import AnnouncementContainer from "@src/components/containers/AnnouncementContainer";
 
 const Paywall = () => {
   const subscribe = useSubscribe();
@@ -26,7 +26,7 @@ const Paywall = () => {
     useSelector(authState);
   const priceDescription = priceDescriptionX.replace(
     "#X",
-    subscriptionPrice,
+    subscriptionPrice
   );
 
   const { name } = appTextSource(appLang).options.logOut;
@@ -55,7 +55,7 @@ const Paywall = () => {
             dispatch(
               updateModals({
                 modalShowing: "logOutModal",
-              }),
+              })
             )
           }
           style={{ fontSize: 12 }}

@@ -1,6 +1,6 @@
 import { AntDesign } from "@expo/vector-icons";
 import AppText from "@src/components/AppText";
-import PopUpContainer from "@src/components/Containers/PopUpsContainer";
+import PopUpContainer from "@src/components/containers/PopUpsContainer";
 import BusyWrapper from "@src/components/Loader/BusyWrapper";
 import useColors from "@src/hooks/utilityHooks/useColors";
 import { settingsState } from "@src/store/settings";

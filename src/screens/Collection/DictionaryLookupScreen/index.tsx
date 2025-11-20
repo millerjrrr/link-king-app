@@ -1,4 +1,4 @@
-import PopUpContainer from "@src/components/Containers/PopUpsContainer";
+import PopUpContainer from "@src/components/containers/PopUpsContainer";
 import DictionaryLookupList from "./DictionaryLookupList";
 import DictionaryLookupSearchbar from "./DictionaryLookupSearchbar";
 import useFetchDictEntries from "@src/hooks/collectionHooks/useFetchDictEntries";

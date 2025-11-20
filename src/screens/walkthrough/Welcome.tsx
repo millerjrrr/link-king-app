@@ -4,7 +4,7 @@ import { settingsState } from "@src/store/settings";
 import AuthButton from "@components/Buttons/AuthButton";
 import { useNavigation } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
-import AuthFormContainer from "@src/components/Containers/AuthFormContainer";
+import AuthFormContainer from "@src/components/containers/AuthFormContainer";
 import useColors from "@src/hooks/utilityHooks/useColors";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { WalkthroughStackParamList } from "@src/types/navigationTypes";

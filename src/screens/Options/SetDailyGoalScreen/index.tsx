@@ -6,7 +6,7 @@ import {
 } from "@src/store/settings";
 import colors from "@src/utils/colors";
 import appTextSource from "@src/utils/appTextSource";
-import PopUpContainer from "@src/components/Containers/PopUpsContainer";
+import PopUpContainer from "@src/components/containers/PopUpsContainer";
 import AppText from "@src/components/AppText";
 import ScrollSelector from "./ScrollSelector";
 import { saveToAsyncStorage } from "@src/utils/asyncStorage";

@@ -7,7 +7,7 @@ import { useNavigation } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "@src/utils/colors";
 import SignUpAppLink from "@components/SignUpAppLink";
-import AuthFormContainer from "@src/components/Containers/AuthFormContainer";
+import AuthFormContainer from "@src/components/containers/AuthFormContainer";
 import Auth3PButtons from "@src/components/Auth3P/Auth3PButtons";
 import BusyWrapper from "../../../components/Loader/BusyWrapper";
 import { authState } from "../../../store/auth";

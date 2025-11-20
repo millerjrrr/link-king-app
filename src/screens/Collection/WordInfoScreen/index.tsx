@@ -1,6 +1,6 @@
 import { Platform, StyleSheet, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import PopUpContainer from "@src/components/Containers/PopUpsContainer";
+import PopUpContainer from "@src/components/containers/PopUpsContainer";
 import React, { useCallback } from "react";
 import BusyWrapper from "@src/components/Loader/BusyWrapper";
 import ResponseInformation from "./ResponseInformation";

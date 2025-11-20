@@ -2,7 +2,7 @@ import { TouchableOpacity, View } from "react-native";
 import { useSelector } from "react-redux";
 import AuthButton from "@components/Buttons/AuthButton";
 import { useNavigation } from "@react-navigation/native";
-import AuthFormContainer from "@src/components/Containers/AuthFormContainer";
+import AuthFormContainer from "@src/components/containers/AuthFormContainer";
 import AppLink from "@src/components/AppLink";
 import FlagImage from "@src/components/Graphics/FlagImage";
 import AppText from "@src/components/AppText";

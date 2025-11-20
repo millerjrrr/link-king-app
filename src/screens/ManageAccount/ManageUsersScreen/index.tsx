@@ -1,6 +1,6 @@
 import { StyleSheet, View } from "react-native";
 import UserCard from "./UserCard";
-import PopUpContainer from "@src/components/Containers/PopUpsContainer";
+import PopUpContainer from "@src/components/containers/PopUpsContainer";
 import AppSearchBar from "@src/components/AppSearchBar";
 import { useDispatch, useSelector } from "react-redux";
 import {

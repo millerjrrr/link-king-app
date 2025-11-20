@@ -11,7 +11,7 @@ import appTextSource from "@src/utils/appTextSource";
 import screenDimensions from "@src/utils/screenDimensions";
 import FadeBackgroundView from "@src/components/Graphics/FadeBackgroundView";
 import { updateJustSignedUp } from "@src/store/auth";
-import TabScreenContainer from "@src/components/Containers/TabScreensContainer";
+import TabScreenContainer from "@src/components/containers/TabScreensContainer";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { WalkthroughStackParamList } from "@src/types/navigationTypes";

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import PopUpContainer from "../../../components/Containers/PopUpsContainer";
+import PopUpContainer from "../../../components/containers/PopUpsContainer";
 import BloodRedCover from "../../../components/BloodRedCover";
 import { settingsState } from "@src/store/settings";
 import AuthInputField from "../../../components/AuthInputField";

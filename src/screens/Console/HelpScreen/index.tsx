@@ -1,5 +1,5 @@
 import { Platform, View } from "react-native";
-import PopUpContainer from "../../../components/Containers/PopUpsContainer";
+import PopUpContainer from "../../../components/containers/PopUpsContainer";
 import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";

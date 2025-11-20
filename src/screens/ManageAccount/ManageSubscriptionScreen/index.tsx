@@ -4,7 +4,7 @@ import { settingsState } from "@src/store/settings";
 import StatusPanel from "./StatusPanel";
 import YourSubscriptionPanel from "./YourSubscriptionPanel";
 import { Container } from "./styled";
-import AuthFormContainer from "@src/components/Containers/AuthFormContainer";
+import AuthFormContainer from "@src/components/containers/AuthFormContainer";
 import { authState } from "@src/store/auth";
 import { Platform } from "react-native";
 import AppText from "@src/components/AppText";
