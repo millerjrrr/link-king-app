@@ -2,6 +2,8 @@ import { TouchableOpacity } from "react-native";
 import { useDispatch } from "react-redux";
 import { updateNotification } from "@src/store/notification";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 type MaterialCommunityIconNames =
   keyof typeof MaterialCommunityIcons.glyphMap;
@@ -26,14 +28,14 @@ const Icon: React.FC<IconProps> = ({
           updateNotification({
             message,
             type: "info",
-          }),
+          })
         )
       }
     >
       <MaterialCommunityIcons
         name={name}
         color={color}
-        size={96}
+        size={base * 96}
       />
     </TouchableOpacity>
   );

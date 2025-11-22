@@ -15,16 +15,16 @@ const AnnouncementContainer: React.FC<{
       style={{
         flex: 1,
         backgroundColor: SECONDARY,
-        padding: base * 5,
-        paddingVertical: 50,
+        padding: base * 20,
+        paddingVertical: base * 50,
       }}
     >
       <View
         style={{
           flex: 1,
           backgroundColor: PRIMARY,
-          borderRadius: 50,
-          ...appShadow(CONTRAST, 10),
+          borderRadius: base * 50,
+          ...appShadow(CONTRAST, base * 10),
         }}
       >
         <View
@@ -33,7 +33,7 @@ const AnnouncementContainer: React.FC<{
             overflow: "hidden",
             borderWidth: 1,
             borderColor: PRIMARY,
-            borderRadius: 50,
+            borderRadius: base * 50,
           }}
         >
           {children}

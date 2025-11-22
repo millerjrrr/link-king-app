@@ -2,6 +2,8 @@ import useColors from "@src/hooks/utilityHooks/useColors";
 import appShadow from "@src/utils/appShadow";
 import { Image, TouchableOpacity } from "react-native";
 import AppText from "../AppText";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 interface Auth3PButtonProps {
   onPress: () => void;
@@ -36,13 +38,13 @@ const Auth3PButton: React.FC<Auth3PButtonProps> = ({
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: color,
-        paddingVertical: 12,
-        paddingHorizontal: 16,
-        borderRadius: 10,
+        paddingVertical: base * 12,
+        paddingHorizontal: base * 16,
+        borderRadius: base * 10,
         ...appShadow(CONTRAST),
-        marginVertical: 10,
-        width: 250,
-        height: 50,
+        marginVertical: base * 10,
+        width: base * 250,
+        height: base * 50,
       }}
       disabled={disabled}
       onPress={onPress}
@@ -51,14 +53,14 @@ const Auth3PButton: React.FC<Auth3PButtonProps> = ({
       <Image
         source={images[name]}
         style={{
-          width: 24,
-          height: 24,
-          marginRight: 10,
+          width: base * 24,
+          height: base * 24,
+          marginRight: base * 10,
         }}
       />
       <AppText
         style={{
-          fontSize: 16,
+          fontSize: base * 16,
           fontWeight: "bold",
           color: textColor,
         }}

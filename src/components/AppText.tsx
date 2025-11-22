@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import colors from "@src/utils/colors";
 import { ReactNode } from "react";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 interface AppTextProps {
   style?: TextStyle;
@@ -22,7 +24,7 @@ const AppText: React.FC<AppTextProps> = ({
   return (
     <Text
       style={{
-        fontSize: 25,
+        fontSize: base * 25,
         textAlign: "center",
         color,
         ...style,

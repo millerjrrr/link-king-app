@@ -11,6 +11,8 @@ import { languages } from "./../ManageAccount/ChangeHomeLanguageScreens/SelectNe
 import { StackNavigationProp } from "@react-navigation/stack";
 import { WalkthroughStackParamList } from "@src/types/navigationTypes";
 import appTextSource from "@src/utils/appTextSource";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const ChooseHomeLanguage = () => {
   const { appLang } = useSelector(settingsState);
@@ -47,9 +49,9 @@ const ChooseHomeLanguage = () => {
         style={{ alignItems: "center", width: "100%" }}
       >
         <FlagImage flag1={appLang} scale={3} />
-        <View style={{ height: 10 }} />
+        <View style={{ height: base * 10 }} />
         <AppText>{nativeName}</AppText>
-        <View style={{ height: 20 }} />
+        <View style={{ height: base * 20 }} />
         <AuthButton
           title={buttonTitle}
           busy={false}

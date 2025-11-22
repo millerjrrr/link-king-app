@@ -6,6 +6,8 @@ import colors from "@src/utils/colors";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { authState } from "@src/store/auth";
 import { Panel } from "../styled";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const StatusPanelVIP = () => {
   const { colorScheme, appLang, golden } =
@@ -28,7 +30,7 @@ const StatusPanelVIP = () => {
       </AppText>
       <FontAwesome5
         name={subscribed ? "check" : "times"}
-        size={24}
+        size={base * 24}
         color={CONTRAST[(golden + 1) % 2]}
       />
     </Panel>

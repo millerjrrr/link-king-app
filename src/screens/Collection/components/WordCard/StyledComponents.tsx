@@ -6,8 +6,8 @@ import screenDimensions from "@src/utils/screenDimensions";
 const { base } = screenDimensions();
 
 interface Props {
-  backgroundColor: `#${string}`;
-  color: `#${string}`;
+  backgroundColor?: `#${string}`;
+  color?: `#${string}`;
   fontSize?: number;
 }
 
@@ -23,7 +23,7 @@ export const Container = styled(View)<Props>`
   background-color: ${(props: Props) =>
     props.backgroundColor};
   ${(props: Props) =>
-    appShadowForStyledComponents(props.color)}
+    appShadowForStyledComponents(props.color || "#ffffff")}
 `;
 
 export const InfoContainer = styled(TouchableOpacity)`
@@ -46,8 +46,7 @@ export const RowContainer = styled(View)`
 `;
 
 export const Title = styled(AppText)<Props>`
-  font-size: ${(props: Props) =>
-    props.fontSize ? props.fontSize * base : 20 * base}px;
+  font-size: ${(props: Props) => props.fontSize}px;
   font-weight: bold;
   align-items: flex-start;
   justify-content: center;

@@ -24,6 +24,8 @@ import useColors from "src/hooks/utilityHooks/useColors";
 import Ticket from "@src/types/Ticket";
 import ReadWordButton from "@src/screens/Console/components/ReadWordButton";
 import useDeleteThisTicketAndGetNewOne from "@src/hooks/consoleHooks/useDeleteThisTicketAndGetNewOne";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const NewWordAddedModal = () => {
   const { currentTabName } = useSelector(modalState);
@@ -55,13 +57,13 @@ const NewWordAddedModal = () => {
         modalShowing: "definitionInWebViewModal",
         definitionSearchWord: ticket.target,
         definitionSearchLanguage,
-      }),
+      })
     );
   };
 
   const x = () => {
     dispatch(
-      updateModals({ showNewWordAddedModal: false }),
+      updateModals({ showNewWordAddedModal: false })
     );
   };
 
@@ -106,7 +108,7 @@ const NewWordAddedModal = () => {
             <XBarContainer onPress={x}>
               <AntDesign
                 name="close"
-                size={24}
+                size={base * 24}
                 color={CONTRAST}
               />
             </XBarContainer>

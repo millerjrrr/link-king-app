@@ -8,6 +8,8 @@ import { settingsState } from "@src/store/settings";
 import { updateSelectedTicket } from "@src/store/collection";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { ConsoleStackParamList } from "@src/types/navigationTypes";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const TargetDetailsButton = () => {
   const {
@@ -42,7 +44,11 @@ const TargetDetailsButton = () => {
       style={styles.container}
     >
       <MaterialCommunityIcons
-        {...{ name: "progress-question", size: 36, color }}
+        {...{
+          name: "progress-question",
+          size: base * 36,
+          color,
+        }}
       />
     </TouchableOpacity>
   ) : null;
@@ -50,7 +56,7 @@ const TargetDetailsButton = () => {
 
 const styles = StyleSheet.create({
   container: {
-    width: 60,
+    width: base * 60,
     height: "100%",
     aspectRatio: 1,
     borderRadius: 1000,

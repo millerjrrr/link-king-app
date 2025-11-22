@@ -9,7 +9,7 @@ import screenDimensions from "@src/utils/screenDimensions";
 const { base } = screenDimensions();
 
 const StatsContainer: React.FC<{ size?: number }> = ({
-  size = 22,
+  size = base * 22,
 }) => {
   const {
     userGameData: {
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   container: {
     padding: base * 10,
     alignItems: "center",
-    borderRadius: 10,
+    borderRadius: base * 10,
     borderWidth: 1,
     width: "100%",
   },
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingVertical: 5,
+    paddingVertical: base * 5,
   },
 });
 

@@ -4,6 +4,8 @@ import { selectConsoleLocals } from "@src/store/console";
 import AppText from "@src/components/AppText";
 import appShadow from "@src/utils/appShadow";
 import useColors from "@src/hooks/utilityHooks/useColors";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const UserAttempt = () => {
   const { lastAttempt } = useSelector(selectConsoleLocals);
@@ -23,7 +25,7 @@ const UserAttempt = () => {
         <AppText
           style={{
             color: RED,
-            fontSize: 25,
+            fontSize: base * 25,
           }}
         >
           {lastAttempt}
@@ -37,18 +39,18 @@ const styles = StyleSheet.create({
   container: {
     zIndex: 1,
     width: "100%",
-    height: 50,
+    height: base * 50,
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
-    borderRadius: 35,
+    borderRadius: base * 35,
   },
   fakeSolution: {
     justifyContent: "center",
     alignItems: "center",
-    paddingHorizontal: 13,
-    borderRadius: 20,
-    height: 40,
+    paddingHorizontal: base * 13,
+    borderRadius: base * 20,
+    height: base * 40,
   },
 });
 

@@ -2,6 +2,8 @@ import { settingsState } from "@src/store/settings";
 import colors from "@src/utils/colors";
 import { LinearGradient } from "expo-linear-gradient";
 import { useSelector } from "react-redux";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const BottomShadow = () => {
   const { colorScheme, golden } =
@@ -15,7 +17,7 @@ const BottomShadow = () => {
         position: "absolute",
         bottom: 0,
         width: "100%",
-        height: 5,
+        height: base * 5,
         zIndex: 10,
       }}
       colors={[color + "00", color + "60"]}

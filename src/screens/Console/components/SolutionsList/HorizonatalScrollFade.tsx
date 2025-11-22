@@ -3,6 +3,8 @@ import styled from "styled-components/native";
 import { LinearGradient } from "expo-linear-gradient";
 import useColors from "@src/hooks/utilityHooks/useColors";
 import { ReactNode } from "react";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const Container = styled(View)`
   position: relative;
@@ -10,11 +12,13 @@ const Container = styled(View)`
   padding-horizontal: 3px;
 `;
 
-const Fade = styled(LinearGradient)`
+const Fade = styled(LinearGradient)<{
+  side: "left" | "right";
+}>`
   position: absolute;
   ${(props: { side: "left" | "right" }) => props.side}: 0;
   height: 100%;
-  width: 30px;
+  width: ${base * 30}px;
   z-index: 20;
 `;
 

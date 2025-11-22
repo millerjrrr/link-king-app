@@ -38,7 +38,7 @@ const ClosingTextInput = forwardRef<TextInput, Props>(
             style={{
               padding: base * 10,
               position: "relative", // default but explicit
-              height: 40,
+              height: base * 40,
               zIndex: 10000,
             }}
           >
@@ -47,13 +47,13 @@ const ClosingTextInput = forwardRef<TextInput, Props>(
               style={{
                 position: "absolute",
                 top: 0,
-                right: 7,
+                right: base * 7,
                 zIndex: 10000,
               }}
             >
               <Ionicons
                 name="chevron-down-circle"
-                size={35}
+                size={base * 35}
                 color={CONTRAST}
               />
             </TouchableOpacity>

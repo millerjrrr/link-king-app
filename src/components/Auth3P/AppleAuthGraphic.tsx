@@ -3,6 +3,8 @@ import { View } from "react-native";
 import * as AppleAuthentication from "expo-apple-authentication";
 import appShadow from "@src/utils/appShadow";
 import useColors from "@src/hooks/utilityHooks/useColors";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const AppleAuthGraphic: React.FC<{
   onPress: () => void;
@@ -15,13 +17,13 @@ const AppleAuthGraphic: React.FC<{
         width: "100%",
         alignItems: "center",
         justifyContent: "center",
-        marginVertical: 10,
+        marginVertical: base * 10,
       }}
     >
       <View
         style={{
           backgroundColor: PRIMARY,
-          borderRadius: 10,
+          borderRadius: base * 10,
           ...appShadow("white"),
         }}
       >
@@ -34,10 +36,10 @@ const AppleAuthGraphic: React.FC<{
             AppleAuthentication
               .AppleAuthenticationButtonStyle.BLACK
           } // Change to WHITE if needed
-          cornerRadius={10}
+          cornerRadius={base * 10}
           style={{
-            width: 250, // Recommended width for mobile
-            height: 50, // Apple recommends at least 44pt
+            width: base * 250, // Recommended width for mobile
+            height: base * 50, // Apple recommends at least 44pt
           }}
           onPress={onPress}
         />

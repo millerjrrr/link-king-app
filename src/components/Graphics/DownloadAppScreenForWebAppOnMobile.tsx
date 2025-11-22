@@ -36,7 +36,7 @@ const DownloadAppScreenForWebAppOnMobile = () => {
           width: "95%",
           padding: base * 10,
           backgroundColor: PRIMARY,
-          borderRadius: 10,
+          borderRadius: base * 10,
           ...appShadow(CONTRAST),
         }}
       >

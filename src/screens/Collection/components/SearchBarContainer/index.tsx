@@ -4,6 +4,8 @@ import CollectionSearchbar from "./CollectionSearchbar";
 import TicketsCount from "./TicketsCount";
 import FadeBackgroundView from "@src/components/Graphics/FadeBackgroundView";
 import PlusButton from "../WordCard/PlusButton";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const SearchBarContainer = () => {
   return (
@@ -39,7 +41,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "flex-end",
     flexDirection: "row",
-    paddingBottom: 10,
+    paddingBottom: base * 10,
   },
 });
 

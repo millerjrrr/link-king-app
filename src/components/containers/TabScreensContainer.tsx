@@ -70,13 +70,13 @@ const TabScreenContainer: React.FC<
         ) : null}
         <LinkKingLogo
           {...{
-            height: 30,
+            height: base * 30,
             marginTop: 0,
             tintColor,
           }}
         />
         <AppText style={styles.heading}>{heading}</AppText>
-        <BusyWrapper busy={busy} size={150}>
+        <BusyWrapper busy={busy} size={base * 150}>
           {children}
         </BusyWrapper>
       </View>
@@ -90,13 +90,13 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     justifyContent: "flex-start",
-    paddingHorizontal: 15,
+    paddingHorizontal: base * 15,
     overflow: "hidden",
   },
   heading: {
-    fontSize: 12,
+    fontSize: base * 12,
     fontWeight: "bold",
-    paddingBottom: 5,
+    paddingBottom: base * 5,
   },
 });
 

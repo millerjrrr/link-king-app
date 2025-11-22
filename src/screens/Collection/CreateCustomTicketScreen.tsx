@@ -133,8 +133,8 @@ const CreateCustomTicketScreen = () => {
                   style={{
                     backgroundColor: SECONDARY,
                     padding: base * 15,
-                    paddingHorizontal: 15,
-                    borderRadius: 30,
+                    paddingHorizontal: base * 15,
+                    borderRadius: base * 30,
                     alignItems: "flex-end",
                   }}
                 >
@@ -155,7 +155,9 @@ const CreateCustomTicketScreen = () => {
                       size={24}
                       color={CONTRAST}
                     />
-                    <AppText style={{ fontSize: 15 }}>
+                    <AppText
+                      style={{ fontSize: base * 15 }}
+                    >
                       {" "}
                       {importSolutions}
                     </AppText>
@@ -168,7 +170,7 @@ const CreateCustomTicketScreen = () => {
                     autoCapitalize="none"
                   />
                 </View>
-                <BusyWrapper busy={busy} size={70}>
+                <BusyWrapper busy={busy} size={base * 70}>
                   <ScrollView
                     showsVerticalScrollIndicator={
                       Platform.OS !== "web"
@@ -176,7 +178,7 @@ const CreateCustomTicketScreen = () => {
                     keyboardShouldPersistTaps="handled"
                     contentContainerStyle={{
                       padding: base * 5,
-                      paddingHorizontal: 30,
+                      paddingHorizontal: base * 30,
                       alignItems: "center",
                     }}
                   >
@@ -208,7 +210,7 @@ const CreateCustomTicketScreen = () => {
                 >
                   <SubmitButton title={save} />
                 </View>
-                <View style={{ height: 150 }} />
+                <View style={{ height: base * 150 }} />
               </View>
             );
           }}

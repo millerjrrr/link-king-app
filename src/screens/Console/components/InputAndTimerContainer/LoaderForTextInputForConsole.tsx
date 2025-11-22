@@ -2,6 +2,8 @@ import { View } from "react-native";
 import { useSelector } from "react-redux";
 import { selectConsoleLocals } from "@src/store/console";
 import Loader from "../../../../components/Loader";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const LoaderForTextInputForConsole: React.FC<{
   color: `#${string}`;
@@ -15,7 +17,7 @@ const LoaderForTextInputForConsole: React.FC<{
         zIndex: 20,
       }}
     >
-      <Loader size={30} color={color} />
+      <Loader size={base * 30} color={color} />
     </View>
   ) : null;
 };

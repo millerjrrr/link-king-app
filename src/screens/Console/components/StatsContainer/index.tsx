@@ -8,9 +8,11 @@ import {
 } from "@src/store/console";
 import { convertMsToTime } from "@src/utils/convertMsToTime";
 import { useEffect, useState } from "react";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const StatsContainer: React.FC<{ size?: number }> = ({
-  size = 22,
+  size = base * 22,
 }) => {
   const {
     stats,
@@ -25,26 +27,23 @@ const StatsContainer: React.FC<{ size?: number }> = ({
 
   // 1. Increment time every second
   useEffect(() => {
-    let intervalId: NodeJS.Timeout;
-    if (timerIsOn) {
-      intervalId = setInterval(() => {
-        setTimeInc((prev) => prev + 1000);
-      }, 1000);
-    }
+    if (!timerIsOn) return;
+
+    const intervalId = setInterval(() => {
+      setTimeInc((prev) => prev + 1000);
+    }, 1000);
 
     return () => clearInterval(intervalId);
   }, [timerIsOn, setTimeInc]);
 
   // 2. Timeout for Timer Reset
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
     const timeOutTime = 10 * 1000;
+    if (!timerIsOn) return;
 
-    if (timerIsOn) {
-      timeoutId = setTimeout(() => {
-        dispatch(updateTimerIsOn(false));
-      }, timeOutTime);
-    }
+    const timeoutId = setTimeout(() => {
+      dispatch(updateTimerIsOn(false));
+    }, timeOutTime);
 
     return () => clearTimeout(timeoutId);
   }, [timerIsOn, steps, dispatch]);
@@ -76,9 +75,7 @@ const StatsContainer: React.FC<{ size?: number }> = ({
         size={size}
       />
       {due === 0 ? (
-        <RepeatRepeatsIcon
-          {...{ name: "stop", size: 32 }}
-        />
+        <RepeatRepeatsIcon name="stop" size={base * 32} />
       ) : null}
     </View>
   );
@@ -87,8 +84,8 @@ const StatsContainer: React.FC<{ size?: number }> = ({
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    marginTop: 5,
-    paddingVertical: 3,
+    marginTop: base * 5,
+    paddingVertical: base * 3,
     zIndex: 10,
   },
 });

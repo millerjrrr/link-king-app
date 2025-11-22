@@ -13,10 +13,13 @@ const AppLink: React.FC<{
   return (
     <TouchableOpacity
       onPress={onPress}
-      style={{ padding: base * 5, paddingTop: 10 }}
+      style={{ padding: base * 5, paddingTop: base * 10 }}
     >
       <AppText
-        style={{ color: INACTIVE_CONTRAST, fontSize: 15 }}
+        style={{
+          color: INACTIVE_CONTRAST,
+          fontSize: base * 15,
+        }}
       >
         {title}
       </AppText>

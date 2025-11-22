@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 interface BackButtonProps {
   extraPadding?: boolean;
@@ -28,15 +30,17 @@ const BackButton: React.FC<BackButtonProps> = ({
         style={[
           styles.container,
           {
-            paddingVertical: extraPadding ? 45 : 15,
-            paddingRight: 15,
+            paddingVertical: extraPadding
+              ? base * 45
+              : base * 15,
+            paddingRight: base * 15,
           },
         ]}
       >
         <Entypo
           {...{
             name: "chevron-small-left",
-            size: 48,
+            size: base * 48,
             color,
           }}
         />

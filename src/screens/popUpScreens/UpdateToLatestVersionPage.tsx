@@ -9,6 +9,7 @@ import {
   Linking,
   TouchableOpacity,
   Platform,
+  View,
 } from "react-native";
 declare function require(path: string): any;
 import { authState } from "@src/store/auth";
@@ -42,7 +43,7 @@ const UpdateToLatestVersionPage = () => {
       Platform.OS === "ios" ? appStoreLink : playStoreLink
     );
 
-  const source = require("@assets/adaptive-icon.png");
+  const source = require("@assets/icon.png");
 
   const { CONTRAST, INACTIVE_CONTRAST } = useColors();
 
@@ -57,26 +58,35 @@ const UpdateToLatestVersionPage = () => {
         <TouchableOpacity
           onPress={onPress}
           style={{
-            padding: base * 20,
-            marginTop: 30,
-            marginBottom: 20,
-            backgroundColor: "#000000",
-            borderRadius: 30,
-            ...appShadow(CONTRAST, 10),
+            marginTop: base * 30,
+            marginBottom: base * 20,
+            backgroundColor: "black",
+            borderRadius: base * 30,
+            ...appShadow(CONTRAST, base * 10),
           }}
         >
-          <Image
-            source={source}
-            style={{ height: 150, width: 150 }}
-            resizeMode="contain"
-          />
+          <View
+            style={{
+              overflow: "hidden",
+              borderRadius: base * 30,
+            }}
+          >
+            <Image
+              source={source}
+              style={{
+                height: base * 200,
+                width: base * 200,
+              }}
+              resizeMode="contain"
+            />
+          </View>
         </TouchableOpacity>
         <AppText onPress={onPress}>{link}</AppText>
         <AppText
           style={{
             color: INACTIVE_CONTRAST,
-            fontSize: 15,
-            marginTop: 10,
+            fontSize: base * 15,
+            marginTop: base * 10,
           }}
         >
           {current}

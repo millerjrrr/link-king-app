@@ -49,7 +49,7 @@ const InternetConnectionPage = () => {
           color={CONTRAST}
           style={{ padding: base * 20 }}
         />
-        <AppText style={{ paddingVertical: 10 }}>
+        <AppText style={{ paddingVertical: base * 10 }}>
           {message}
         </AppText>
         <RefreshButton />

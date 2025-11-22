@@ -5,6 +5,8 @@ import AppText from "../../../../components/AppText";
 import colors from "@src/utils/colors";
 import { authState } from "@src/store/auth";
 import { Panel } from "../styled";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const StatusPanelStandard = () => {
   const { colorScheme, appLang, golden } =
@@ -26,7 +28,7 @@ const StatusPanelStandard = () => {
 
   const expires = new Intl.DateTimeFormat(
     appLang,
-    options,
+    options
   ).format(date);
 
   return (
@@ -35,7 +37,7 @@ const StatusPanelStandard = () => {
       shadowColor={CONTRAST[golden]}
     >
       <AppText>{vipMessage}</AppText>
-      <AppText style={{ fontSize: 15 }}>
+      <AppText style={{ fontSize: base * 15 }}>
         {vipExpires + expires}
       </AppText>
     </Panel>

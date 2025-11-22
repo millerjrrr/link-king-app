@@ -4,6 +4,8 @@ import { WebViewContainer } from "./components/StyledCompontents";
 import { modalState } from "@src/store/modals";
 import AppModal from "./AppModal";
 import useColors from "@src/hooks/utilityHooks/useColors";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const DefinitionInWebViewModal = () => {
   const { definitionSearchWord, definitionSearchLanguage } =
@@ -17,7 +19,7 @@ const DefinitionInWebViewModal = () => {
         <WebView
           style={{
             flex: 1,
-            borderRadius: 10,
+            borderRadius: base * 10,
             backgroundColor: SECONDARY,
           }}
           source={{

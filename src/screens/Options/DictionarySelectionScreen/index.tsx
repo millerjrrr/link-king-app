@@ -29,12 +29,12 @@ const DictionarySelectionScreen = () => {
 
   return (
     <PopUpContainer heading={title}>
-      <BusyWrapper busy={busy} size={150}>
+      <BusyWrapper busy={busy} size={base * 150}>
         {dictionaries.length === 0 ? (
           <AppText
             style={{
               textAlign: "left",
-              fontSize: 15,
+              fontSize: base * 15,
               padding: base * 20,
             }}
           >
@@ -56,7 +56,7 @@ const DictionarySelectionScreen = () => {
               keyboardShouldPersistTaps="handled"
               style={styles.flatList}
               ListFooterComponent={
-                <View style={{ height: 100 }} />
+                <View style={{ height: base * 100 }} />
               }
             />
             {justSignedUp ? null : (

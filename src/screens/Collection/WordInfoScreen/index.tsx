@@ -23,6 +23,8 @@ import { updateModals } from "@src/store/modals";
 import definitionWebLookup from "@src/utils/definitionWebLookup";
 import WordCard from "../components/WordCard";
 import { CollectionStackParamList } from "@src/types/navigationTypes";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 type WordInfoRouteProp = RouteProp<
   CollectionStackParamList,
@@ -73,9 +75,9 @@ const WordInfoScreen: React.FC<{
 
   return (
     <PopUpContainer {...{ heading }}>
-      <BusyWrapper {...{ busy, size: 150 }}>
+      <BusyWrapper busy={busy} size={base * 150}>
         <View style={styles.container}>
-          <View {...{ style: { height: 8 } }} />
+          <View style={{ height: base * 8 }} />
           <WordCard {...{ ticket, onPress }} />
           <AcceptedAnswers />
           <SolutionsList ticket={ticket} edit />
@@ -96,7 +98,7 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
-    paddingHorizontal: 15,
+    paddingHorizontal: base * 15,
     zIndex: 1,
   },
 });

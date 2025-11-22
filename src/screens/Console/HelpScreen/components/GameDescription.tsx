@@ -3,6 +3,8 @@ import DescriptionWrapper from "./DescriptionWrapper";
 import { AntDesign } from "@expo/vector-icons";
 import useCatchAsync from "@src/hooks/utilityHooks/useCatchAsync";
 import useColors from "@src/hooks/utilityHooks/useColors";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const GameDescription = () => {
   const { CONTRAST } = useColors();
@@ -25,7 +27,7 @@ const GameDescription = () => {
       <TouchableOpacity onPress={goToYoutube}>
         <AntDesign
           name="youtube"
-          size={96}
+          size={base * 96}
           color={CONTRAST}
         />
       </TouchableOpacity>

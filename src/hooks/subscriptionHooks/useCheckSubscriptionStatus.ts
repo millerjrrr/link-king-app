@@ -2,7 +2,6 @@
 // import { useRef } from "react";
 // import { useDispatch } from "react-redux";
 // import configurePurchases from "../../utils/configurePurchases";
-// to bring back subscription logic will need to reinstall this package
 // import Purchases from "react-native-purchases";
 // import {
 //   updateBusyState,
@@ -30,8 +29,8 @@
 //         dispatch(
 //           updateSubscribed(
 //             customerInfo.entitlements.active["Standard"] !==
-//               undefined,
-//           ),
+//               undefined
+//           )
 //         );
 //       }
 //       hasChecked.current = true; // Mark as checked

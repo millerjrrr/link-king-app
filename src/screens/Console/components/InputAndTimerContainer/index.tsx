@@ -6,6 +6,8 @@ import TextInputForConsole from "./TextInputForConsole";
 import useSubmitAnswer from "@src/hooks/consoleHooks/useSubmitAnswer";
 import XButton from "./XButton";
 import useColors from "@src/hooks/utilityHooks/useColors";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const InputAndTimerContainer: React.FC<{
   setIsKeyboardVisible: (value: boolean) => void;
@@ -39,7 +41,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     zIndex: 1,
-    marginBottom: 10,
+    marginBottom: base * 10,
   },
 });
 

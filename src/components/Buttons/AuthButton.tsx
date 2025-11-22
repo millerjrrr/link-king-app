@@ -9,6 +9,8 @@ import appShadow from "@src/utils/appShadow";
 import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import AppText from "../AppText";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const AuthButton: React.FC<{
   title: string;
@@ -36,7 +38,7 @@ const AuthButton: React.FC<{
         <BusyWrapper
           color={color}
           busy={!!busy}
-          size={25}
+          size={base * 25}
           noFlex
         >
           <AppText>{title}</AppText>
@@ -55,8 +57,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     width: "100%",
-    height: 45,
-    borderRadius: 20,
+    height: base * 45,
+    borderRadius: base * 20,
   },
 });
 

@@ -9,6 +9,8 @@ import {
 import { settingsState } from "@src/store/settings";
 import { Entypo } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const PlusButton = () => {
   const { colorScheme, golden } =
@@ -32,7 +34,7 @@ const PlusButton = () => {
         >
           <Entypo
             name="plus"
-            size={24}
+            size={base * 24}
             color={CONTRAST[golden]}
           />
         </InfoContainer>

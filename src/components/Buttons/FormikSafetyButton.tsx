@@ -17,7 +17,7 @@ const FormikSafetyButton: React.FC<{
   };
 
   return (
-    <BusyWrapper busy={isSubmitting} size={150}>
+    <BusyWrapper busy={isSubmitting} size={base * 150}>
       <View
         style={{
           width: "100%",
@@ -28,7 +28,7 @@ const FormikSafetyButton: React.FC<{
         <RedSafetyButton
           completeFunction={completeFunction}
           iconName={iconName}
-          size={100}
+          size={base * 100}
         />
       </View>
     </BusyWrapper>

@@ -8,8 +8,8 @@ const ListFooterComponent: React.FC<{
 }> = ({ active }) => {
   return (
     <View style={{ padding: base * 15 }}>
-      {active && <Loader size={60} />}
-      <View style={{ height: 160 }} />
+      {active && <Loader size={base * 60} />}
+      <View style={{ height: base * 160 }} />
     </View>
   );
 };

@@ -51,7 +51,9 @@ const FlagBook: React.FC<{ padding: boolean }> = ({
         onPress,
         style: [
           styles.container,
-          { paddingVertical: padding ? 5 : 15 },
+          {
+            paddingVertical: padding ? base * 5 : base * 15,
+          },
         ],
       }}
     >

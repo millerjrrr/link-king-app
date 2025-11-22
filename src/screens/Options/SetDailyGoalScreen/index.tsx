@@ -18,6 +18,8 @@ import {
 import Icon from "./Icon";
 import DropdownSelector from "./DropdownSelector";
 import { selectConsoleState } from "@src/store/console";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const SetDailyGoalScreen = ({}) => {
   const {
@@ -127,12 +129,12 @@ const SetDailyGoalScreen = ({}) => {
               })
             )
           }
-          style={{ marginTop: 35 }}
+          style={{ marginTop: base * 35 }}
         >
           <AppText
             style={{
               color: colors[colorScheme].INACTIVE_CONTRAST,
-              fontSize: 18,
+              fontSize: base * 18,
             }}
           >
             {textD}

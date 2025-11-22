@@ -10,6 +10,8 @@ import { settingsState } from "@src/store/settings";
 import { captureRef } from "react-native-view-shot";
 import appTextSource from "@src/utils/appTextSource";
 import useCatchAsync from "@src/hooks/utilityHooks/useCatchAsync";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 interface ShareButtonProps {
   shareRef: any;
@@ -44,14 +46,13 @@ const ShareButton: React.FC<ShareButtonProps> = ({
   return (
     <>
       <TouchableOpacity
-        {...{ onPress, style: styles.container }}
+        onPress={onPress}
+        style={styles.container}
       >
         <Entypo
-          {...{
-            name: "share",
-            size: 30,
-            color,
-          }}
+          name="share"
+          size={base * 30}
+          color={color}
         />
       </TouchableOpacity>
     </>
@@ -66,8 +67,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     zIndex: 10,
-    paddingVertical: 25,
-    paddingHorizontal: 15,
+    paddingVertical: base * 25,
+    paddingHorizontal: base * 15,
   },
 });
 

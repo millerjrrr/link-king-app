@@ -23,7 +23,7 @@ const DeleteButton = () => {
       <TouchableOpacity onPress={onPress}>
         <FontAwesome
           name={"trash"}
-          size={100}
+          size={base * 100}
           color={RED}
         />
       </TouchableOpacity>

@@ -10,6 +10,8 @@ import AppText from "@src/components/AppText";
 import HelpButton from "@src/components/Buttons/HelpButton";
 import { updateModals } from "@src/store/modals";
 import useColors from "@src/hooks/utilityHooks/useColors";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const RatingCircle = () => {
   const { colorScheme, golden, appLang } =
@@ -31,7 +33,7 @@ const RatingCircle = () => {
 
   const help = () =>
     dispatch(
-      updateModals({ modalShowing: "ratingInfoModal" }),
+      updateModals({ modalShowing: "ratingInfoModal" })
     );
 
   const { GREEN: tintColor } = useColors();
@@ -40,19 +42,19 @@ const RatingCircle = () => {
     <>
       <AppText
         style={{
-          fontSize: 20,
-          paddingTop: 10,
+          fontSize: base * 20,
+          paddingTop: base * 10,
           color: green,
         }}
       >
         {textA + translatedDictionary + textB}
       </AppText>
-      <View style={{ paddingVertical: 15 }}>
+      <View style={{ paddingVertical: base * 15 }}>
         <View
           style={{
             position: "absolute",
             top: 0,
-            right: -40,
+            right: -base * 40,
             zIndex: 100,
           }}
         >
@@ -64,7 +66,7 @@ const RatingCircle = () => {
         </View>
         <CircularProgress
           value={rating}
-          radius={100}
+          radius={base * 100}
           maxValue={2500}
           progressValueColor={color}
           activeStrokeSecondaryColor={color}

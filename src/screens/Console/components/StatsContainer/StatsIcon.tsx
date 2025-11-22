@@ -6,7 +6,9 @@ import { settingsState } from "@src/store/settings";
 import { updateNotification } from "@src/store/notification";
 import appTextSource from "@src/utils/appTextSource";
 import AppText from "../../../../components/AppText";
-import { ConsoleStatsMessages } from "../../../../../assets/text/interface";
+import { ConsoleStatsMessages } from "@assets/text/interface";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 interface StatsIconProps {
   name?: keyof typeof MaterialCommunityIcons.glyphMap;
@@ -17,7 +19,7 @@ interface StatsIconProps {
 const StatsIcon: React.FC<StatsIconProps> = ({
   name = "clock-outline",
   text = "",
-  size = 18,
+  size = base * 18,
 }) => {
   const { colorScheme, golden, appLang } =
     useSelector(settingsState);
@@ -35,7 +37,7 @@ const StatsIcon: React.FC<StatsIconProps> = ({
       updateNotification({
         message,
         type: "info",
-      }),
+      })
     );
 
   return (
@@ -50,7 +52,7 @@ const StatsIcon: React.FC<StatsIconProps> = ({
       <AppText
         style={{
           fontSize: size,
-          paddingLeft: 3,
+          paddingLeft: base * 3,
         }}
       >
         {text}
@@ -63,7 +65,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
-    paddingHorizontal: 8,
+    paddingHorizontal: base * 8,
   },
 });
 

@@ -12,7 +12,7 @@ const SolutionsList = ({ ticket, plus, edit }: any) => {
     <HorizontalScrollFade>
       <View
         style={{
-          height: 70,
+          height: base * 70,
           alignItems: "center",
           justifyContent: "center",
           backgroundColor: "#00000000",
@@ -22,7 +22,9 @@ const SolutionsList = ({ ticket, plus, edit }: any) => {
           horizontal
           style={{
             maxWidth:
-              Platform.OS === "web" ? width - 60 : "100%",
+              Platform.OS === "web"
+                ? width - base * 60
+                : "100%",
           }} //important for web
           showsHorizontalScrollIndicator={
             Platform.OS === "web"
@@ -30,7 +32,7 @@ const SolutionsList = ({ ticket, plus, edit }: any) => {
           keyboardShouldPersistTaps="handled"
           contentContainerStyle={{
             padding: base * 5,
-            paddingHorizontal: 30,
+            paddingHorizontal: base * 30,
             alignItems: "center",
           }}
         >

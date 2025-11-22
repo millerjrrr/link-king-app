@@ -5,6 +5,8 @@ import {
   selectConsoleState,
   updateFormValue,
 } from "@src/store/console";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const XButton: React.FC<{ color: string }> = ({
   color,
@@ -24,7 +26,7 @@ const XButton: React.FC<{ color: string }> = ({
       >
         <MaterialCommunityIcons
           name="close"
-          size={24}
+          size={base * 24}
           color={color}
         />
       </TouchableOpacity>
@@ -34,7 +36,7 @@ const XButton: React.FC<{ color: string }> = ({
 
 const styles = StyleSheet.create({
   container: {
-    width: 60,
+    width: base * 60,
     height: "100%",
     aspectRatio: 1,
     borderRadius: 1000,

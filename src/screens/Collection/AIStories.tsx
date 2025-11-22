@@ -46,12 +46,12 @@ const AIStories = () => {
 
   return (
     <PopUpContainer heading={title}>
-      <View style={{ paddingHorizontal: 15 }}>
-        <BusyWrapper busy={busy} size={150}>
+      <View style={{ paddingHorizontal: base * 15 }}>
+        <BusyWrapper busy={busy} size={base * 150}>
           <AppText
             style={{
               padding: base * 5,
-              paddingBottom: 20,
+              paddingBottom: base * 20,
               textAlign: "justify",
             }}
           >
@@ -59,13 +59,13 @@ const AIStories = () => {
           </AppText>
           <View
             style={{
-              borderRadius: 20,
+              borderRadius: base * 20,
               padding: base * 3,
               backgroundColor: PRIMARY,
               ...appShadow(CONTRAST),
               flex: 1,
-              marginBottom: 20,
-              paddingBottom: 20,
+              marginBottom: base * 20,
+              paddingBottom: base * 20,
             }}
           >
             <View
@@ -78,7 +78,7 @@ const AIStories = () => {
               <AppText
                 style={{
                   padding: base * 10,
-                  fontSize: 15,
+                  fontSize: base * 15,
                 }}
               >
                 {prompt}
@@ -92,10 +92,10 @@ const AIStories = () => {
               >
                 <AntDesign
                   name="copy"
-                  size={20}
+                  size={base * 20}
                   color={CONTRAST}
                 />
-                <AppText style={{ fontSize: 15 }}>
+                <AppText style={{ fontSize: base * 15 }}>
                   {copy}
                 </AppText>
               </TouchableOpacity>
@@ -103,13 +103,13 @@ const AIStories = () => {
             <View
               style={{
                 flex: 1,
-                borderRadius: 20,
+                borderRadius: base * 20,
                 overflow: "hidden",
               }}
             >
               <ScrollView
                 contentContainerStyle={{
-                  borderRadius: 20,
+                  borderRadius: base * 20,
                   padding: base * 5,
                   backgroundColor: SECONDARY,
                   width: "100%",

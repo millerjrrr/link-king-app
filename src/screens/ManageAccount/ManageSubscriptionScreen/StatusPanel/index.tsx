@@ -2,7 +2,7 @@ import appTextSource from "@src/utils/appTextSource";
 import { useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import { authState } from "@src/store/auth";
-import { Container, PanelLabel } from "../styled";
+import { PanelLabel } from "../styled";
 import StatusPanelVIP from "./StatusPanelVIP";
 import StatusPanelStandard from "./StatusPanelStandard";
 

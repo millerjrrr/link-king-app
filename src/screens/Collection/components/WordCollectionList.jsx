@@ -15,6 +15,8 @@ import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import AppText from "@src/components/AppText";
 import ListFooterComponent from "@src/components/ListFooterComponent";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const WordCollectionList = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -26,7 +28,11 @@ const WordCollectionList = ({ navigation }) => {
 
   return tickets === null || tickets.length === 0 ? (
     <View
-      style={{ flex: 1, paddingTop: 150, width: "80%" }}
+      style={{
+        flex: 1,
+        paddingTop: base * 150,
+        width: "80%",
+      }}
     >
       <AppText>{noWords}</AppText>
     </View>
@@ -65,7 +71,7 @@ const WordCollectionList = ({ navigation }) => {
 const styles = StyleSheet.create({
   flatList: {
     flex: 1,
-    paddingTop: 150,
+    paddingTop: base * 150,
     width: "100%",
   },
 });

@@ -1,8 +1,6 @@
 import React, { ReactNode } from "react";
 import Loader from ".";
 import { View } from "react-native";
-import colors from "@src/utils/colors";
-import useColors from "@src/hooks/utilityHooks/useColors";
 
 interface BusyWrapperProps {
   busy: boolean;

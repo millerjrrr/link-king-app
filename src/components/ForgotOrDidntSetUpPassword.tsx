@@ -4,6 +4,8 @@ import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import AppLink from "./AppLink";
 import { updateModals } from "@src/store/modals";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const ForgotOrDidntSetUpPassword = () => {
   const { appLang } = useSelector(settingsState);
@@ -13,14 +15,14 @@ const ForgotOrDidntSetUpPassword = () => {
   const title = appTextSource(appLang).options.logOut.name;
   return (
     <>
-      <AppText style={{ fontSize: 15 }}>
+      <AppText style={{ fontSize: base * 15 }}>
         {forgotOrDidntSetUpPassword}
       </AppText>
       <AppLink
         title={title}
         onPress={() =>
           dispatch(
-            updateModals({ modalShowing: "logOutModal" }),
+            updateModals({ modalShowing: "logOutModal" })
           )
         }
       />

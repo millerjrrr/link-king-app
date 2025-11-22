@@ -104,7 +104,7 @@ const EditTicketScreen = () => {
                 keyboardShouldPersistTaps="handled"
                 contentContainerStyle={{
                   padding: base * 5,
-                  paddingHorizontal: 30,
+                  paddingHorizontal: base * 30,
                   alignItems: "center",
                 }}
               >
@@ -133,7 +133,7 @@ const EditTicketScreen = () => {
               >
                 <SubmitButton title={save} />
               </View>
-              <View style={{ height: 150 }} />
+              <View style={{ height: base * 150 }} />
             </>
           )}
         </Formik>

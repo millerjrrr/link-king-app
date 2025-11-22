@@ -8,7 +8,6 @@ import { settingsState } from "@src/store/settings";
 
 import BusyWrapper from "@src/components/Loader/BusyWrapper";
 import { dictionaryLookupState } from "@src/store/dictionaryLookup";
-import NewWordAddedModal from "@src/components/AppModals/NewWordAddedModal";
 import { useNavigation } from "@react-navigation/native";
 import { updateModals } from "@src/store/modals";
 

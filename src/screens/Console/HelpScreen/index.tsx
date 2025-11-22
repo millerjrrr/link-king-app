@@ -11,6 +11,8 @@ import HelpForOptions from "./components/HelpForOptions";
 import GameDescription from "./components/GameDescription";
 import React from "react";
 import FadeBackgroundView from "@src/components/Graphics/FadeBackgroundView";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const HelpScreen = React.memo(() => {
   const { appLang } = useSelector(settingsState);
@@ -18,7 +20,7 @@ const HelpScreen = React.memo(() => {
 
   return (
     <PopUpContainer heading={heading}>
-      <FadeBackgroundView height={50} />
+      <FadeBackgroundView height={base * 50} />
       <HelpScroll
         showsVerticalScrollIndicator={Platform.OS !== "web"}
       >
@@ -32,7 +34,7 @@ const HelpScreen = React.memo(() => {
         <HelpForOptions name="listen" />
         <HelpForOptions name="read" />
         <HelpForOptions name="countdown" />
-        <View style={{ height: 30 }} />
+        <View style={{ height: base * 30 }} />
       </HelpScroll>
     </PopUpContainer>
   );

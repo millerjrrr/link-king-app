@@ -8,6 +8,8 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import useColors from "@src/hooks/utilityHooks/useColors";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 interface ScrollSelectorProps {
   onSelect: (value: number) => void;
@@ -15,7 +17,7 @@ interface ScrollSelectorProps {
   start: number;
 }
 
-const ITEM_HEIGHT = 40;
+const ITEM_HEIGHT = base * 40;
 
 const ScrollSelector: React.FC<ScrollSelectorProps> = ({
   onSelect,
@@ -28,10 +30,10 @@ const ScrollSelector: React.FC<ScrollSelectorProps> = ({
   const data = Array.from({ length }, (_, i) => i);
 
   const handleScrollEnd = (
-    e: NativeSyntheticEvent<NativeScrollEvent>,
+    e: NativeSyntheticEvent<NativeScrollEvent>
   ) => {
     const index = Math.round(
-      e.nativeEvent.contentOffset.y / ITEM_HEIGHT,
+      e.nativeEvent.contentOffset.y / ITEM_HEIGHT
     );
     setSelectedIndex(index);
     onSelect(index);
@@ -85,7 +87,7 @@ const ScrollSelector: React.FC<ScrollSelectorProps> = ({
           >
             <Text
               style={{
-                fontSize: 20,
+                fontSize: base * 20,
                 color: CONTRAST,
                 fontWeight:
                   index === selectedIndex

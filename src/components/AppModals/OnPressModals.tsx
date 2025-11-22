@@ -18,6 +18,8 @@ import useRestoreGoalDefaults from "@src/hooks/optionsHooks/useRestoreGoalDefaul
 import useFetchConsoleInfo from "./../../hooks/consoleHooks/useFetchConsoleInfo";
 import { collectionState } from "@src/store/collection";
 import useFlagAndDeleteTicket from "./../../hooks/collectionHooks/useFlagAndDeleteTicket";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const OnPressModals = () => {
   const { CONTRAST } = useColors();
@@ -48,7 +50,7 @@ const OnPressModals = () => {
   > = {
     leaveAReviewModal: goToRatingPage,
     contactUsModal: () => {
-      const email = "millerjr@tcd.ie";
+      const email = "info@link-king.app";
       const subject = encodeURIComponent(subjectText);
       const url = `mailto:${email}?subject=${subject}`;
       Linking.openURL(url).catch((err) =>
@@ -90,7 +92,7 @@ const OnPressModals = () => {
       <ModalText color={CONTRAST}>{modalMessage}</ModalText>
       <ModalButton
         title={title || ""}
-        size={20}
+        size={base * 20}
         onPress={
           onPress[name] ? onPress[name] : () => void 0
         }

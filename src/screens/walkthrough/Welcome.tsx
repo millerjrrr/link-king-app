@@ -9,6 +9,8 @@ import useColors from "@src/hooks/utilityHooks/useColors";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { WalkthroughStackParamList } from "@src/types/navigationTypes";
 import appTextSource from "@src/utils/appTextSource";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const Welcome = () => {
   const { appLang } = useSelector(settingsState);
@@ -32,9 +34,13 @@ const Welcome = () => {
       subHeading={subHeading}
       back={false}
     >
-      <View style={{ height: 40 }} />
-      <Feather name={"settings"} size={100} color={color} />
-      <View style={{ height: 60 }} />
+      <View style={{ height: base * 40 }} />
+      <Feather
+        name={"settings"}
+        size={base * 100}
+        color={color}
+      />
+      <View style={{ height: base * 60 }} />
       <AuthButton
         title={buttonTitle}
         busy={false}

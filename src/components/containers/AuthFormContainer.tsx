@@ -71,7 +71,7 @@ const AuthFormContainer: React.FC<
       style={{
         flex: 1,
         overflow: "hidden",
-        borderRadius: 10,
+        borderRadius: base * 10,
       }}
     >
       <FourCrowns color={SECONDARY} />
@@ -81,15 +81,15 @@ const AuthFormContainer: React.FC<
         {!nologo ? (
           <LinkKingLogo tintColor={CONTRAST} />
         ) : popUp ? null : (
-          <View style={{ height: 60 }} />
+          <View style={{ height: base * 60 }} />
         )}
         <AppText
           style={{
             textAlign: !nologo ? "center" : "left",
             color: CONTRAST,
             fontWeight: "bold",
-            paddingHorizontal: 5,
-            paddingLeft: popUp ? 40 : 5,
+            paddingHorizontal: base * 5,
+            paddingLeft: popUp ? base * 40 : base * 5,
           }}
         >
           {heading}
@@ -98,8 +98,8 @@ const AuthFormContainer: React.FC<
           <AppText
             style={{
               padding: base * 5,
-              paddingLeft: popUp ? 40 : 5,
-              fontSize: 16,
+              paddingLeft: popUp ? base * 40 : base * 5,
+              fontSize: base * 16,
               textAlign: !nologo ? "center" : "left",
               color: CONTRAST,
             }}
@@ -107,7 +107,7 @@ const AuthFormContainer: React.FC<
             {subHeading}
           </AppText>
         ) : null}
-        <View style={{ height: 10 }} />
+        <View style={{ height: base * 10 }} />
         {children}
       </Container>
     </View>
@@ -121,13 +121,13 @@ const styles = StyleSheet.create({
       Platform.select({
         ios: 0,
         web: -screenDimensions().height * 0.02,
-        android: (StatusBar.currentHeight || 30) + 8,
+        android: (StatusBar.currentHeight || 30) + base * 8,
         default: 0,
       }),
     width: "100%",
     alignItems: "center",
     justifyContent: "flex-start",
-    paddingHorizontal: 15,
+    paddingHorizontal: base * 15,
   },
 });
 

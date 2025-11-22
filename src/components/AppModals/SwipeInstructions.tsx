@@ -19,6 +19,8 @@ import appTextSource from "../../utils/appTextSource";
 import { useSelector } from "react-redux";
 import { settingsState } from "../../store/settings";
 import useAppNotification from "../../hooks/utilityHooks/useAppNotification";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 interface IconProps {
   name: ComponentProps<typeof Ionicons>["name"];
@@ -73,7 +75,7 @@ const Instruction = forwardRef<View, InstructionProps>(
         >
           <Text
             style={{
-              fontSize: 15,
+              fontSize: base * 15,
               color: CONTRAST,
             }}
           >
@@ -128,7 +130,7 @@ const SwipeInstructions = () => {
       <AnimatedInstruction
         iconProps={{
           name: "arrow-undo",
-          size: 140,
+          size: base * 140,
           color: RED,
         }}
         label={left}
@@ -143,7 +145,7 @@ const SwipeInstructions = () => {
       <AnimatedInstruction
         iconProps={{
           name: "arrow-undo",
-          size: 140,
+          size: base * 140,
           color: GREEN,
           flip: true,
         }}

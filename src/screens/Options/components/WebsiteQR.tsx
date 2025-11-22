@@ -1,6 +1,8 @@
 import useColors from "@src/hooks/utilityHooks/useColors";
 import { Image } from "react-native";
 declare function require(path: string): any;
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const WebsiteQR = () => {
   const tintColor = useColors().CONTRAST;
@@ -10,9 +12,9 @@ const WebsiteQR = () => {
       tintColor={tintColor}
       resizeMode="contain"
       style={{
-        height: 250,
-        width: 250,
-        marginBottom: 20,
+        height: base * 250,
+        width: base * 250,
+        marginBottom: base * 20,
       }}
     />
   );

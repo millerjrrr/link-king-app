@@ -6,14 +6,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import { updateModals } from "@src/store/modals";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const Container = styled(View)`
   width: 100%;
-  padding-vertical: 10px;
+  padding-vertical: ${base * 10}px;
 `;
 
 const TextComponent = styled(AppText)<{ color: string }>`
-  font-size: 15px;
+  font-size: ${base * 15}px;
   color: ${(props) => props.color};
 `;
 

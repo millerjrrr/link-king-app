@@ -12,6 +12,8 @@ import BusyWrapper from "../Loader/BusyWrapper";
 import { authState } from "@src/store/auth";
 import BottomShadow from "../BottomShadow";
 import FadeBackgroundView from "../Graphics/FadeBackgroundView";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 interface PopUpContainerProps {
   children: ReactNode;
@@ -51,16 +53,14 @@ const PopUpContainer: React.FC<PopUpContainerProps> = ({
       <HelpButton help={help} />
       <BackButton altFunction={altFunction} />
       <LinkKingLogo
-        {...{
-          height: 40,
-          marginTop: Platform.OS === "web" ? 30 : 0,
-          tintColor: color,
-        }}
+        height={base * 40}
+        marginTop={Platform.OS === "web" ? base * 30 : 0}
+        tintColor={color}
       />
       <AppText style={styles.heading}>{heading}</AppText>
       <View style={styles.container}>
-        <FadeBackgroundView height={20} />
-        <BusyWrapper busy={busy} size={150}>
+        <FadeBackgroundView height={base * 20} />
+        <BusyWrapper busy={busy} size={base * 150}>
           {children}
         </BusyWrapper>
       </View>
@@ -73,14 +73,14 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     width: "100%",
-    paddingTop: 10,
+    paddingTop: base * 10,
     overflow: "hidden",
-    borderRadius: 10,
+    borderRadius: base * 10,
   },
   heading: {
-    fontSize: 15,
+    fontSize: base * 15,
     fontWeight: "bold",
-    paddingBottom: 15,
+    paddingBottom: base * 15,
   },
 });
 

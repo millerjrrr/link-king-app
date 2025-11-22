@@ -45,8 +45,10 @@ export type ManageAccountStackParamList = {
   "Change Account Name": undefined;
   "Manage Subscription": undefined;
   "Change Home Language - Warning": undefined;
-  "Change Home Language": { code?: string };
-  "Select New Home Language": { unprotect?: boolean };
+  "Change Home Language": { code?: string } | undefined;
+  "Select New Home Language":
+    | { unprotect?: boolean }
+    | undefined;
   "Delete Account": undefined;
   "Manage Users": undefined;
 };

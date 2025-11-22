@@ -7,8 +7,8 @@ import appTextSource from "@src/utils/appTextSource";
 import AppText from "../../../components/AppText";
 import { View } from "react-native";
 import { ManageAccountStackParamList } from "@src/types/navigationTypes";
-import screenDimensions from "@src/utils/screenDimensions";
 import { StackNavigationProp } from "@react-navigation/stack";
+import screenDimensions from "@src/utils/screenDimensions";
 const { base } = screenDimensions();
 
 const ChangeHomeLanguageWarningScreen = () => {
@@ -26,9 +26,9 @@ const ChangeHomeLanguageWarningScreen = () => {
   } = appTextSource(appLang).options.manageAccount;
 
   return (
-    <PopUpContainer {...{ heading, padding: base * 15 }}>
+    <PopUpContainer heading={heading} padding={base * 15}>
       <AppText>{changeHomeLanguageWarning}</AppText>
-      <View style={{ height: 50 }} />
+      <View style={{ height: base * 50 }} />
       <AuthButton
         {...{
           title,

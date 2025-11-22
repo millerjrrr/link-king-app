@@ -8,8 +8,10 @@ import OptionsIcon from "./OptionsIcon";
 import useCheckTTSData from "@src/hooks/consoleHooks/useCheckTTSData";
 import { updateModals } from "@src/store/modals";
 // import listenerService from "@src/utils/listenerService";
-import { settingsState } from "../../../../store/settings";
-import usePlaySound from "../../../../hooks/consoleHooks/usePlaySound";
+import { settingsState } from "@store/settings";
+import usePlaySound from "@hooks/consoleHooks/usePlaySound";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 interface OptionsContainerProps {
   size?: number;
@@ -22,7 +24,7 @@ interface OptionsContainerProps {
     | "listening";
 }
 const OptionsContainer: React.FC<OptionsContainerProps> = ({
-  size = 35,
+  size = base * 35,
   show = "all",
 }) => {
   const {
@@ -38,7 +40,7 @@ const OptionsContainer: React.FC<OptionsContainerProps> = ({
     const TTS = sound || (await checkTTSData());
     if (!TTS)
       dispatch(
-        updateModals({ modalShowing: "missingTTSModal" }),
+        updateModals({ modalShowing: "missingTTSModal" })
       );
     else {
       const options = blurred
@@ -52,7 +54,7 @@ const OptionsContainer: React.FC<OptionsContainerProps> = ({
     const TTS = blurred || (await checkTTSData());
     if (!TTS)
       dispatch(
-        updateModals({ modalShowing: "missingTTSModal" }),
+        updateModals({ modalShowing: "missingTTSModal" })
       );
     else {
       const options = !blurred
@@ -146,7 +148,7 @@ const OptionsContainer: React.FC<OptionsContainerProps> = ({
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    paddingVertical: 3,
+    paddingVertical: base * 3,
     zIndex: 10,
   },
 });

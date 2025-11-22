@@ -5,13 +5,15 @@ import { selectConsoleState } from "@src/store/console";
 import { settingsState } from "@src/store/settings";
 import styled from "styled-components/native";
 import AppText from "../../../components/AppText";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 interface Props {
-  color: string;
+  color: `#${string}`;
   size: number;
   opacity: number;
 }
-const TailEntryText = styled(AppText)`
+const TailEntryText = styled(AppText)<Props>`
   color: ${(props: Props) => props.color};
   font-size: ${(props: Props) => props.size}px;
   opacity: ${(props: Props) => props.opacity};
@@ -37,11 +39,9 @@ const TailEntry: React.FC<{ index: number }> = ({
 
   return tail[index] ? (
     <TailEntryText
-      {...{
-        color,
-        size,
-        opacity,
-      }}
+      color={color}
+      size={size}
+      opacity={opacity}
     >
       {tail[index]}
     </TailEntryText>

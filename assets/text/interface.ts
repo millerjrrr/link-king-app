@@ -334,6 +334,7 @@ export interface LanguageNames {
   Italian: string;
   German: string;
 }
+export type LanguageName = keyof LanguageNames;
 
 interface WalkthroughBase {
   heading: string;

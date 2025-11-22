@@ -7,6 +7,7 @@ import { settingsState } from "@src/store/settings";
 import { updateModals } from "@src/store/modals";
 import { ModalWithMessage } from "@src/types/Modals";
 import { Platform } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const ModalTypeMenuItem = ({
   optionName,
@@ -53,8 +54,13 @@ const ModalTypeMenuItem = ({
   }
 
   return (
-    <OptionsMenuItemContainer iconName={iconName}>
-      <MenuItemLink name={linkTitle} onPress={onPress} />
+    <OptionsMenuItemContainer
+      onPress={onPress}
+      iconName={
+        iconName as keyof typeof MaterialCommunityIcons.glyphMap
+      }
+    >
+      <MenuItemLink onPress={onPress} name={linkTitle} />
     </OptionsMenuItemContainer>
   );
 };

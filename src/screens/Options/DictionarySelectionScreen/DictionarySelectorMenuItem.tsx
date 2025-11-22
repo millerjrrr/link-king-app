@@ -7,6 +7,8 @@ import useSendDictionary from "@src/hooks/optionsHooks/useSendDictionary";
 import OptionsMenuItem from "../components/OptionsMenuItem";
 import { useNavigation } from "@react-navigation/native";
 import Dictionary from "../../../types/dictionaries";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const DictionarySelectorMenuItem: React.FC<{
   dictionary: Dictionary;
@@ -17,7 +19,7 @@ const DictionarySelectorMenuItem: React.FC<{
     appTextSource(appLang).languageNames[dictionary];
 
   const { dictionary: currentDictionary } = useSelector(
-    selectConsoleState,
+    selectConsoleState
   );
 
   const selected = dictionary === currentDictionary;
@@ -34,7 +36,9 @@ const DictionarySelectorMenuItem: React.FC<{
   };
 
   return (
-    <View {...{ style: { height: 70, width: "100%" } }}>
+    <View
+      {...{ style: { height: base * 70, width: "100%" } }}
+    >
       <OptionsMenuItem
         dictionary={dictionary}
         name={text}

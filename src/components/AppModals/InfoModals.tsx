@@ -11,6 +11,8 @@ import {
 import useColors from "@src/hooks/utilityHooks/useColors";
 import { ModalWithMessage } from "@src/types/Modals";
 import WebsiteQR from "@src/screens/Options/components/WebsiteQR";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const InfoModals = () => {
   const { CONTRAST } = useColors();
@@ -50,7 +52,7 @@ const InfoModals = () => {
       )}
       <ModalButton
         title={cancel}
-        size={20}
+        size={base * 20}
         onPress={close}
       />
     </AppModal>

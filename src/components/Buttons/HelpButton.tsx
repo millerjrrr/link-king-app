@@ -61,9 +61,13 @@ const HelpButton: React.FC<HelpButtonProps> = ({
     <AnimatedTouchable
       onPress={help}
       style={{
-        paddingVertical: nopadding ? 0 : padding ? 5 : 15,
+        paddingVertical: nopadding
+          ? 0
+          : padding
+          ? base * 5
+          : base * 15,
         position: "absolute",
-        top: nopadding ? 0 : 10,
+        top: nopadding ? 0 : base * 10,
         right: 0,
         padding: base * 15,
         alignItems: "center",
@@ -73,7 +77,7 @@ const HelpButton: React.FC<HelpButtonProps> = ({
       }}
     >
       {padding ? <StatusBarFiller /> : null}
-      <Entypo {...{ name: "help", size: 24, color }} />
+      <Entypo name="help" size={base * 24} color={color} />
     </AnimatedTouchable>
   ) : null;
 };

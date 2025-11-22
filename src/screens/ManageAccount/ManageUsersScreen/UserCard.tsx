@@ -1,8 +1,6 @@
-import { useSelector } from "react-redux";
 import {
   dateToNumberStyleDate,
   numberDateToDashFormat,
-  numberDateToWordStyleDate,
 } from "./../../../utils/numberDateToWordStyle";
 import {
   Container,
@@ -15,9 +13,10 @@ import {
   TimePlayed,
   WordsCollected,
 } from "./styledComponents";
-import { settingsState } from "@src/store/settings";
 import useColors from "@src/hooks/utilityHooks/useColors";
 import { timeInStyle } from "@src/utils/timeInStyle";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 interface User {
   username: string;
@@ -37,7 +36,6 @@ const UserCard: React.FC<{ user: User }> = ({ user }) => {
     collectedWords,
     rating,
   } = user;
-  const { appLang } = useSelector(settingsState);
 
   const scale = 30;
   const usernameFontSize =
@@ -57,14 +55,17 @@ const UserCard: React.FC<{ user: User }> = ({ user }) => {
     lastPlayed === today || lastPlayed === today - 1
       ? GREEN
       : lastPlayed > today - 7
-        ? ORANGE
-        : RED;
+      ? ORANGE
+      : RED;
 
   return (
     <Container backgroundColor={SECONDARY} color={color}>
       <Padding>
         <RowContainer>
-          <Name color={color} fontSize={usernameFontSize}>
+          <Name
+            color={color}
+            fontSize={base * usernameFontSize}
+          >
             {username}
           </Name>
           <LastPlayed color={color}>
@@ -72,7 +73,10 @@ const UserCard: React.FC<{ user: User }> = ({ user }) => {
           </LastPlayed>
         </RowContainer>
         <RowContainer>
-          <Email color={color} fontSize={emailFontSize}>
+          <Email
+            color={color}
+            fontSize={base * emailFontSize}
+          >
             {" " + email}
           </Email>
           <TimePlayed color={color}>

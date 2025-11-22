@@ -16,6 +16,8 @@ import {
   updateRedCover,
 } from "@src/store/redCover";
 import { useFocusEffect } from "@react-navigation/native";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const RedSafetyButton: React.FC<{
   completeFunction: () => void;
@@ -24,7 +26,7 @@ const RedSafetyButton: React.FC<{
 }> = ({
   completeFunction,
   iconName = "delete",
-  size = 60,
+  size = base * 60,
 }) => {
   const pressTimer = useRef(0);
   const { colorScheme, appLang } =
@@ -42,7 +44,7 @@ const RedSafetyButton: React.FC<{
       return () => {
         dispatch(updateRedCover({ elapsedTime: 0 }));
       };
-    }, [dispatch]),
+    }, [dispatch])
   );
 
   useEffect(() => {
@@ -51,7 +53,7 @@ const RedSafetyButton: React.FC<{
         dispatch(
           updateRedCover({
             elapsedTime: (Date.now() - startTime) / 1000,
-          }),
+          })
         );
       }
     }, 100);
@@ -66,14 +68,14 @@ const RedSafetyButton: React.FC<{
         updateRedCover({
           startTime: 0,
           redCoverZIndex: 1,
-        }),
+        })
       );
     }, 3100); //needs a little longer to ensure screen fills
     dispatch(
       updateRedCover({
         startTime: Date.now(),
         redCoverZIndex: 5,
-      }),
+      })
     );
   };
 
@@ -84,7 +86,7 @@ const RedSafetyButton: React.FC<{
         startTime: 0,
         redCoverZIndex: 1,
         elapsedTime: 0,
-      }),
+      })
     );
   };
 
@@ -97,7 +99,7 @@ const RedSafetyButton: React.FC<{
       updateNotification({
         message,
         type: "error",
-      }),
+      })
     );
   };
 

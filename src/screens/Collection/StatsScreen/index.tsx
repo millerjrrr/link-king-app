@@ -53,7 +53,7 @@ const StatsScreen = () => {
 
   return (
     <PopUpContainer heading={heading}>
-      <BusyWrapper busy={busy} size={150}>
+      <BusyWrapper busy={busy} size={base * 150}>
         <ScrollView
           style={{ width: "100%" }}
           showsVerticalScrollIndicator={
@@ -81,13 +81,13 @@ const StatsScreen = () => {
                 onPress={onPress}
                 style={{
                   padding: base * 5,
-                  paddingTop: 10,
+                  paddingTop: base * 10,
                 }}
               >
                 <AppText
                   style={{
                     padding: base * 20,
-                    fontSize: 25,
+                    fontSize: base * 25,
                   }}
                 >
                   {title}

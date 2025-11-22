@@ -16,6 +16,8 @@ import useCatchAsync from "@src/hooks/utilityHooks/useCatchAsync";
 import Auth3PButtons from "@src/components/Auth3P/Auth3PButtons";
 import useUpdateAuthData from "@src/hooks/authHooks/useUpdateAuthData";
 import { AuthStackNavProp } from "@src/types/navigationTypes";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const SignIn: React.FC<{
   navigation: AuthStackNavProp;
@@ -134,7 +136,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    marginBottom: 30,
+    marginBottom: base * 30,
   },
 });
 

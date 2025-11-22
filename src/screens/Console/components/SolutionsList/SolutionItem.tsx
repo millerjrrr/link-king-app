@@ -13,7 +13,8 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { updateSelectedTicket } from "@src/store/collection";
 import Ticket from "@src/types/Ticket";
 import definitionWebLookup from "@src/utils/definitionWebLookup";
-import { updateNotification } from "@src/store/notification";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 import appTextSource from "@src/utils/appTextSource";
 
 interface Props {
@@ -23,12 +24,12 @@ interface Props {
 const SolutionContainer = styled(TouchableOpacity)<Props>`
   background-color: ${(props: Props) =>
     props.backgroundColor};
-  margin-horizontal: 5px;
+  margin-horizontal: ${base * 5}px;
   justify-content: center;
   align-items: center;
-  padding-horizontal: 13px;
-  border-radius: 20px;
-  height: 40px;
+  padding-horizontal: ${base * 13}px;
+  border-radius: ${base * 20}px;
+  height: ${base * 40}px;
   ${(props: Props) =>
     appShadowForStyledComponents(props.color)}
 `;
@@ -72,10 +73,10 @@ const SolutionItem = ({
                 modalShowing: "definitionInWebViewModal",
                 definitionSearchWord: solution,
                 definitionSearchLanguage: languageCode,
-              }),
+              })
             );
       }
-    : null;
+    : () => {};
 
   const onPress =
     ticket && target
@@ -85,7 +86,7 @@ const SolutionItem = ({
               updateModals({
                 showNewWordAddedModal: false,
                 currentTabName: "Collection:",
-              }),
+              })
             );
           dispatch(updateSelectedTicket(ticket));
           if (navigation)

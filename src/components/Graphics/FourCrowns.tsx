@@ -1,9 +1,11 @@
 import CrownUI from "./CrownUI";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const FourCrowns: React.FC<{
   color: `#${string}`;
   size?: number;
-}> = ({ color, size = 96 }) => {
+}> = ({ color, size = base * 96 }) => {
   const positions: Array<
     | "top-left"
     | "top-right"

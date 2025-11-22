@@ -8,6 +8,8 @@ import {
   IconLibrary,
   IconNameMap,
 } from "@src/types/iconLibrary";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 interface OptionsIconProps<T extends IconLibrary> {
   onPress: () => void;
@@ -21,7 +23,7 @@ interface OptionsIconProps<T extends IconLibrary> {
 
 const OptionsIcon = <T extends IconLibrary>({
   onPress,
-  size = 40,
+  size = base * 40,
   iconLib,
   select,
   trueIconName,
@@ -51,7 +53,7 @@ const OptionsIcon = <T extends IconLibrary>({
           duration: 400,
           useNativeDriver: true,
         }),
-      ]),
+      ])
     );
 
     pulse.start();
@@ -63,7 +65,7 @@ const OptionsIcon = <T extends IconLibrary>({
   }, [animated]);
 
   const Icon = getIconComponent(
-    iconLib,
+    iconLib
   ) as React.ComponentType<{
     name: IconNameMap[T];
     size?: number;
@@ -78,7 +80,7 @@ const OptionsIcon = <T extends IconLibrary>({
         aspectRatio: 1,
         justifyContent: "center",
         alignItems: "center",
-        margin: 8,
+        margin: base * 8,
         marginBottom: 0,
         ...appShadow(CONTRAST),
         height,

@@ -9,6 +9,8 @@ import colors from "@src/utils/colors";
 import { settingsState } from "@src/store/settings";
 import appShadow from "@src/utils/appShadow";
 import AppText from "@src/components/AppText";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const LevelLine: React.FC<{
   level: number;
@@ -53,11 +55,11 @@ const LevelLine: React.FC<{
 
 const styles = StyleSheet.create({
   lineStyle: {
-    width: 8,
-    borderRadius: 6,
+    width: base * 8,
+    borderRadius: base * 6,
   },
   touched: {
-    width: 12,
+    width: base * 12,
   },
 });
 

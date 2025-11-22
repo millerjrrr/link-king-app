@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { settingsState } from "@src/store/settings";
 import { updateModals } from "@src/store/modals";
 import { ComponentProps } from "react";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 type MaterialCommunityIconsName = ComponentProps<
   typeof MaterialCommunityIcons
@@ -12,7 +14,7 @@ type MaterialCommunityIconsName = ComponentProps<
 
 const RepeatRepeatsIcon = ({
   name = "stop",
-  size = 32,
+  size = base * 32,
 }: {
   name: MaterialCommunityIconsName;
   size: number;
@@ -23,7 +25,7 @@ const RepeatRepeatsIcon = ({
   const dispatch = useDispatch();
   const onPress = () =>
     dispatch(
-      updateModals({ modalShowing: "repeatRepeatsModal" }),
+      updateModals({ modalShowing: "repeatRepeatsModal" })
     );
 
   return (
@@ -45,7 +47,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
-    paddingHorizontal: 8,
+    paddingHorizontal: base * 8,
   },
 });
 

@@ -1,9 +1,6 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import colors from "@src/utils/colors";
-import {
-  settingsState,
-  updateSettings,
-} from "@src/store/settings";
+import { updateSettings } from "@src/store/settings";
 import {
   StatusBar,
   View,
@@ -14,21 +11,21 @@ import {
 import { saveToAsyncStorage } from "@src/utils/asyncStorage";
 import appShadow from "@src/utils/appShadow";
 import useColors from "@src/hooks/utilityHooks/useColors";
+import icon from "@assets/adaptive-icon.png";
 
-const ColorSchemeButton = ({ cs, size = 30 }) => {
+const ColorSchemeButton: React.FC<{
+  cs: keyof typeof colors;
+  size?: number;
+}> = ({ cs, size = 30 }) => {
   const { CONTRAST: shadowColor } = useColors();
   const dispatch = useDispatch();
 
-  const {
-    STATUSBAR: statusBarColor,
-    SECONDARY: backgroundColor,
-    CONTRAST,
-  } = colors[cs];
+  const { SECONDARY: backgroundColor, CONTRAST } =
+    colors[cs];
 
   const onPress = () => {
     saveToAsyncStorage("color-scheme", cs);
     dispatch(updateSettings({ colorScheme: cs }));
-    StatusBar.setBarStyle(statusBarColor);
   };
 
   return (
@@ -42,11 +39,11 @@ const ColorSchemeButton = ({ cs, size = 30 }) => {
           aspectRatio: 1,
           alignItems: "center",
           justifyContent: "center",
-          borderRadius: 20,
+          borderRadius: size,
         }}
       >
         <Image
-          source={require("@assets/adaptive-icon.png")}
+          source={icon}
           tintColor={CONTRAST[0]}
           resizeMode="contain"
           style={{

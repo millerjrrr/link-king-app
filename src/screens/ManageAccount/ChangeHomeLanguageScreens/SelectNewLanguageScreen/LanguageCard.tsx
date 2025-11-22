@@ -93,7 +93,7 @@ const LanguageCard: React.FC<LanguageCardProps> = ({
       onPress={onPress}
     >
       <FlagImage {...{ flag1: code }} />
-      <View {...{ style: { width: 10 } }} />
+      <View style={{ width: base * 10 }} />
       <AppText>{native}</AppText>
     </Container>
   );

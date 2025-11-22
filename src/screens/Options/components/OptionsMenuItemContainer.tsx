@@ -8,37 +8,41 @@ import languageNameCodeMap from "@src/utils/languageNameCodeMap";
 import Dictionary from "../../../types/dictionaries";
 import { ReactNode } from "react";
 import useColors from "../../../hooks/utilityHooks/useColors";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 interface StyleProps {
   backgroundColor?: string;
   borderTopWidth?: number;
   borderColor?: string;
 }
-const TouchableContainer = styled(TouchableOpacity)<{}>`
+const TouchableContainer = styled(
+  TouchableOpacity
+)<StyleProps>`
   width: 100%;
-  height: 60px;
+  height: ${base * 60}px;
   align-items: center;
   flex-direction: row;
-  margin-horizontal: 10px;
+  margin-horizontal: ${base * 10}px;
   background-color: ${(props: StyleProps) =>
     props.backgroundColor};
 `;
 
-const Container = styled(View)`
+const Container = styled(View)<StyleProps>`
   width: 100%;
-  height: 60px;
+  height: ${base * 60}px;
   align-items: center;
   flex-direction: row;
-  margin-horizontal: 10px;
+  margin-horizontal: ${base * 10}px;
   background-color: ${(props: StyleProps) =>
     props.backgroundColor};
 `;
 
-const OptionContainer = styled(View)`
+const OptionContainer = styled(View)<StyleProps>`
   flex: 1;
   height: 100%;
   justify-content: center;
-  margin: 10px;
+  margin: ${base * 10}px;
   border-color: ${(props: StyleProps) => props.borderColor};
   border-top-width: ${(props: StyleProps) =>
     props.borderTopWidth}px;
@@ -73,14 +77,14 @@ const OptionsMenuItemContainer: React.FC<
       {!!iconName && (
         <MaterialCommunityIcons
           name={iconName}
-          size={32}
+          size={base * 32}
           color={CONTRAST}
-          style={{ margin: 5 }}
+          style={{ margin: base * 5 }}
         />
       )}
       <OptionContainer
         borderColor={INACTIVE_CONTRAST}
-        borderTopWidth={first ? 0 : 1}
+        borderTopWidth={first ? 0 : base * 1}
       >
         {children}
       </OptionContainer>
@@ -93,7 +97,7 @@ const OptionsMenuItemContainer: React.FC<
       <FlagImage flag1={flag1} flag2={flag2} />
       <OptionContainer
         borderColor={INACTIVE_CONTRAST}
-        borderTopWidth={first ? 0 : 1}
+        borderTopWidth={first ? 0 : base * 1}
       >
         {children}
       </OptionContainer>

@@ -18,23 +18,25 @@ import DictionaryLookupCard from "./DictionaryLookupCard";
 import { ScrollView } from "react-native-gesture-handler";
 import CreateCustomTicket from "./CreateCustomTicket";
 import { collectionState } from "@src/store/collection";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const DictionaryListFooter: React.FC<{
   searchKeyword: string;
 }> = ({ searchKeyword }) => {
   const { allDataLoaded } = useSelector(
-    dictionaryLookupState,
+    dictionaryLookupState
   );
   return (
     <>
       {!allDataLoaded ? (
-        <View style={{ height: 100 }}>
-          <Loader {...{ size: 50 }} />
+        <View style={{ height: base * 100 }}>
+          <Loader {...{ size: base * 50 }} />
         </View>
       ) : (
         <CreateCustomTicket searchKeyword={searchKeyword} />
       )}
-      <View style={{ height: 100 }} />
+      <View style={{ height: base * 100 }} />
     </>
   );
 };
@@ -42,7 +44,7 @@ const DictionaryListFooter: React.FC<{
 const DictionaryLookupList = () => {
   const dispatch = useDispatch();
   const { dictEntries, page, allDataLoaded } = useSelector(
-    dictionaryLookupState,
+    dictionaryLookupState
   );
   const { searchKeyword } = useSelector(collectionState);
   const { appLang } = useSelector(settingsState);
@@ -60,13 +62,13 @@ const DictionaryLookupList = () => {
       keyboardShouldPersistTaps="handled"
       style={{ flex: 1, width: "85%" }}
     >
-      <View style={{ height: 90 }} />
+      <View style={{ height: base * 90 }} />
       {searchKeyword !== "" ? (
         <>
           <CreateCustomTicket
             searchKeyword={searchKeyword}
           />
-          <View style={{ height: 20 }} />
+          <View style={{ height: base * 20 }} />
         </>
       ) : null}
       <AppText>{noWords}</AppText>
@@ -98,7 +100,7 @@ const DictionaryLookupList = () => {
 const styles = StyleSheet.create({
   flatList: {
     flex: 1,
-    paddingTop: 90,
+    paddingTop: base * 90,
     width: "100%",
   },
 });

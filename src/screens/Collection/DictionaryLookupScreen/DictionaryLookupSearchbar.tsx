@@ -30,7 +30,9 @@ const DictionaryLookupSearchbar = () => {
 
   return (
     <Container>
-      <FadeBackgroundView style={{ paddingBottom: 10 }}>
+      <FadeBackgroundView
+        style={{ paddingBottom: base * 10 }}
+      >
         <AppSearchBar
           searchKeyword={searchKeyword}
           setSearchKeyword={(value: string) =>

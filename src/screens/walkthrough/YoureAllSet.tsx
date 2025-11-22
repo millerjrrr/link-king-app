@@ -15,8 +15,15 @@ import useCatchAsync from "@src/hooks/utilityHooks/useCatchAsync";
 import client from "@src/api/client";
 import { updateModals } from "@src/store/modals";
 import { Fill30, TouchableCard } from "./styledComponents";
-import { ScrollView, View } from "react-native";
+import {
+  Linking,
+  Platform,
+  ScrollView,
+  View,
+} from "react-native";
 import FadeBackgroundView from "@src/components/Graphics/FadeBackgroundView";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const YoureAllSet = () => {
   const { appLang } = useSelector(settingsState);
@@ -62,13 +69,16 @@ const YoureAllSet = () => {
         appLang in data.links.tutorial
           ? data.links.tutorial[appLang]
           : data.links.tutorial.en;
-
-      dispatch(
-        updateModals({
-          modalShowing: "webViewModal",
-          webViewUrl: tutorialLink,
-        })
-      );
+      if (Platform.OS === "web")
+        Linking.openURL(tutorialLink);
+      else {
+        dispatch(
+          updateModals({
+            modalShowing: "webViewModal",
+            webViewUrl: tutorialLink,
+          })
+        );
+      }
       setFinishButtonText(next);
     }
   });
@@ -84,14 +94,19 @@ const YoureAllSet = () => {
           flex: 1,
         }}
       >
-        <FadeBackgroundView position="top" height={30} />
+        <FadeBackgroundView
+          position="top"
+          height={base * 30}
+        />
         <ScrollView
           contentContainerStyle={{
             alignItems: "center",
             width: "100%",
-            paddingHorizontal: 5,
+            height: "100%",
+            paddingHorizontal: base * 5,
           }}
         >
+          <View style={{ height: base * 30 }} />
           <TouchableCard
             bg={PRIMARY}
             color={CONTRAST}
@@ -99,10 +114,10 @@ const YoureAllSet = () => {
           >
             <Entypo
               name="open-book"
-              size={150}
+              size={base * 150}
               color={CONTRAST}
             />
-            <AppText style={{ paddingTop: 15 }}>
+            <AppText style={{ paddingTop: base * 15 }}>
               {writtenInstructions}
             </AppText>
           </TouchableCard>
@@ -113,10 +128,10 @@ const YoureAllSet = () => {
           >
             <Entypo
               name="youtube"
-              size={150}
+              size={base * 150}
               color={CONTRAST}
             />
-            <AppText style={{ paddingTop: 15 }}>
+            <AppText style={{ paddingTop: base * 15 }}>
               {videoTutorial}
             </AppText>
           </TouchableCard>

@@ -11,7 +11,7 @@ import { ReactNode } from "react";
 
 interface DescriptionWrapperProps {
   name: string;
-  children: ReactNode;
+  children?: ReactNode;
 }
 const DescriptionWrapper: React.FC<
   DescriptionWrapperProps

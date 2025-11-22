@@ -13,6 +13,8 @@ import appTextSource from "@src/utils/appTextSource";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { CollectionStackParamList } from "@src/types/navigationTypes";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const CreateCustomTicket: React.FC<{
   searchKeyword: string;
@@ -44,15 +46,18 @@ const CreateCustomTicket: React.FC<{
             justifyContent: "center",
           }}
         >
-          <AutoResizeText fontSize={24} numberOfLines={1}>
+          <AutoResizeText
+            fontSize={base * 24}
+            numberOfLines={1}
+          >
             {addCustomWord}
           </AutoResizeText>
         </InfoContainer>
 
-        <IconContainer style={{ width: 30 }}>
+        <IconContainer style={{ width: base * 30 }}>
           <Entypo
             name="plus"
-            size={24}
+            size={base * 24}
             color={CONTRAST}
             onPress={openCustomWordScreen}
           />

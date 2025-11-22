@@ -62,7 +62,10 @@ const DeleteAccountScreen = () => {
       >
         <BloodRedCover />
         <AppText
-          style={{ padding: base * 15, fontSize: 20 }}
+          style={{
+            padding: base * 15,
+            fontSize: base * 20,
+          }}
         >
           {deleteAccountDetails}
         </AppText>
@@ -72,11 +75,9 @@ const DeleteAccountScreen = () => {
           validationSchema={validationSchema}
         >
           <View
-            {...{
-              style: {
-                marginHorizontal: 15,
-                zIndex: 2,
-              },
+            style={{
+              marginHorizontal: base * 15,
+              zIndex: 2,
             }}
           >
             <AuthInputField

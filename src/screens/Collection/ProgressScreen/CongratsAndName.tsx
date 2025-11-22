@@ -4,6 +4,8 @@ import { statsState } from "@src/store/stats";
 import { settingsState } from "@src/store/settings";
 import appTextSource from "@src/utils/appTextSource";
 import AppText from "@src/components/AppText";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const CongratsAndName = () => {
   const { colorScheme, golden, appLang } =
@@ -24,7 +26,7 @@ const CongratsAndName = () => {
       <AppText
         style={{
           fontWeight: "bold",
-          fontSize: 40,
+          fontSize: base * 40,
         }}
       >
         {congratulations}
@@ -32,7 +34,7 @@ const CongratsAndName = () => {
       <AppText
         style={{
           fontWeight: "bold",
-          fontSize: 30,
+          fontSize: base * 30,
           color: nameColor,
         }}
       >
@@ -40,7 +42,7 @@ const CongratsAndName = () => {
       </AppText>
       <AppText
         style={{
-          fontSize: 20,
+          fontSize: base * 20,
         }}
       >
         {collected.A + collectedWords + collected.B}

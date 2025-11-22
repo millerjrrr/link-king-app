@@ -1,3 +1,4 @@
+import { LanguageName } from "@assets/text/interface";
 import {
   createSlice,
   PayloadAction,
@@ -51,7 +52,7 @@ interface Locals {
 }
 
 interface ConsoleState {
-  dictionary: string;
+  dictionary: LanguageName;
   display: Display;
   gamePlay: GamePlay;
   stats: Stats;
@@ -105,7 +106,7 @@ const slice = createSlice({
   reducers: {
     updateOptions(
       state,
-      action: PayloadAction<Partial<Options>>,
+      action: PayloadAction<Partial<Options>>
     ) {
       Object.assign(state.locals.options, action.payload);
     },
@@ -128,7 +129,7 @@ const slice = createSlice({
     },
     updateShowSolution(
       state,
-      action: PayloadAction<boolean>,
+      action: PayloadAction<boolean>
     ) {
       state.locals.showSolution = action.payload;
     },
@@ -156,23 +157,26 @@ const slice = createSlice({
     },
     updateConsoleState(
       state,
-      action: PayloadAction<Partial<ConsoleState>>,
+      action: PayloadAction<Partial<ConsoleState>>
     ) {
       return { ...state, ...action.payload };
     },
     updateLocals(
       state,
-      action: PayloadAction<Partial<Locals>>,
+      action: PayloadAction<Partial<Locals>>
     ) {
       Object.assign(state.locals, action.payload);
     },
     incrementStatsTime(
       state,
-      action: PayloadAction<number>,
+      action: PayloadAction<number>
     ) {
       state.stats.time += action.payload;
     },
-    updateDictionary(state, action: PayloadAction<string>) {
+    updateDictionary(
+      state,
+      action: PayloadAction<LanguageName>
+    ) {
       state.dictionary = action.payload;
     },
     toggleMusicIsPlaying(state) {

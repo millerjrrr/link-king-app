@@ -1,4 +1,5 @@
 import languageNameCodeMap from "@src/utils/languageNameCodeMap";
+import { Language } from "./LanguageList";
 
 export const languages = {
   af: {
@@ -922,7 +923,7 @@ export const languages = {
   },
 };
 
-const hasFlag = (o) =>
+const hasFlag = (o: Language) =>
   languageNameCodeMap[o.name] ? true : false;
 
 const getLanguageData = Object.entries(languages)

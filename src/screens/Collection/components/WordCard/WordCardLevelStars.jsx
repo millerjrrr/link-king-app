@@ -3,6 +3,8 @@ import colors from "@src/utils/colors";
 import { useSelector } from "react-redux";
 import { LevelStarsContainer } from "./StyledComponents";
 import { settingsState } from "@src/store/settings";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const WordCardLevelStars = ({ stars, target }) => {
   const { colorScheme, golden } =
@@ -15,11 +17,9 @@ const WordCardLevelStars = ({ stars, target }) => {
       {levelArray.map((_, index) => (
         <Entypo
           key={`star-${target}-${index}`}
-          {...{
-            name: "star",
-            size: 15,
-            color,
-          }}
+          name="star"
+          size={base * 15}
+          color={color}
         />
       ))}
     </LevelStarsContainer>

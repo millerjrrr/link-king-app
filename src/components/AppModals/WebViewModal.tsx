@@ -3,6 +3,8 @@ import { WebView } from "react-native-webview";
 import { WebViewContainer } from "./components/StyledCompontents";
 import { modalState } from "@src/store/modals";
 import AppModal from "./AppModal";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const WebViewModal = () => {
   const { webViewUrl } = useSelector(modalState);
@@ -13,7 +15,7 @@ const WebViewModal = () => {
         <WebView
           style={{
             flex: 1,
-            borderRadius: 10,
+            borderRadius: base * 10,
             backgroundColor: "black",
           }}
           allowsInlineMediaPlayback={true} // iOS: Allows inline playback instead of full screen

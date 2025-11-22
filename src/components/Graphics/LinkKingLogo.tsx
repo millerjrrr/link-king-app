@@ -1,5 +1,7 @@
 import { Image } from "react-native";
 import LinkKingLogoImage from "@assets/img/link-king-header-logo-flair.png";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 interface LinkKingLogoProps {
   height?: number;
@@ -8,8 +10,8 @@ interface LinkKingLogoProps {
 }
 
 const LinkKingLogo: React.FC<LinkKingLogoProps> = ({
-  height = 100,
-  marginTop = 20,
+  height = base * 100,
+  marginTop = base * 20,
   tintColor,
 }) => {
   return (

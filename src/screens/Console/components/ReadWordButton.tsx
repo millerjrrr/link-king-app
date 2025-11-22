@@ -9,6 +9,8 @@ import { speak } from "@src/utils/appSpeak";
 import { updateModals } from "@src/store/modals";
 import useCheckTTSData from "@src/hooks/consoleHooks/useCheckTTSData";
 import LevelPopAnimation from "../../../components/LevelPopAnimation";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 interface ReadWordButtonProps {
   showSpeaker?: boolean;
@@ -18,7 +20,7 @@ interface ReadWordButtonProps {
 const ReadWordButton: React.FC<ReadWordButtonProps> = ({
   showSpeaker,
   speakWord,
-  height = 75,
+  height = base * 75,
 }) => {
   const {
     gamePlay: { target, speechLang: language },
@@ -73,8 +75,8 @@ const ReadWordButton: React.FC<ReadWordButtonProps> = ({
         ) : (
           <AppText
             style={{
-              paddingBottom: 10,
-              fontSize,
+              paddingBottom: base * 10,
+              fontSize: base * fontSize,
             }}
           >
             {target}

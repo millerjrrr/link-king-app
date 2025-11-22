@@ -12,6 +12,8 @@ import CongratsAndName from "./CongratsAndName";
 import ViewShot from "react-native-view-shot";
 import useFetchStatsInfo from "@src/hooks/collectionHooks/useFetchStatsInfo";
 import BottomShadow from "../../../components/BottomShadow";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const ProgressScreen = () => {
   const { busy } = useSelector(statsState);
@@ -21,7 +23,7 @@ const ProgressScreen = () => {
   useFetchStatsInfo();
 
   return (
-    <BusyWrapper busy={busy} size={150}>
+    <BusyWrapper busy={busy} size={base * 150}>
       <BackButton />
       <ShareButton shareRef={statsPanelRef} />
       <ViewShot

@@ -9,7 +9,7 @@ const { base } = screenDimensions();
 const SpeakButton = ({
   showSpeaker = true,
   speakWord = "error",
-  height = 50,
+  height = base * 50,
 }) => {
   const { colorScheme } = useSelector(settingsState);
   return (
@@ -35,7 +35,7 @@ const SpeakButton = ({
 const styles = StyleSheet.create({
   container: {
     padding: base * 5,
-    borderRadius: 10,
+    borderRadius: base * 10,
     alignItems: "center",
     justifyContent: "center",
   },

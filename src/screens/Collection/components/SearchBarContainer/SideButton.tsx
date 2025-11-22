@@ -11,6 +11,8 @@ import {
 } from "@src/types/navigationTypes";
 import { AntDesignIcons } from "@src/types/iconLibrary";
 import { StackNavigationProp } from "@react-navigation/stack";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 interface SideButtonProps {
   targetScreen: ScreensWithoutParams<CollectionStackParamList>;
@@ -41,23 +43,25 @@ const SideButton: React.FC<SideButtonProps> = ({
       ]}
       onPress={() => navigation.navigate(targetScreen)}
     >
-      <AntDesign {...{ name: icon, size: 18, color }} />
+      <AntDesign
+        {...{ name: icon, size: base * 18, color }}
+      />
     </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   button: {
-    width: 30,
+    width: base * 30,
     aspectRatio: 1,
-    margin: 7,
+    margin: base * 7,
     marginBottom: 0,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 1000,
   },
   text: {
-    fontSize: 15,
+    fontSize: base * 15,
     textAlign: "center",
   },
 });

@@ -32,7 +32,7 @@ const ChangeHomeLanguageScreen: React.FC<{
     "Change Home Language"
   >;
 }> = ({ route }) => {
-  const newLanguage = route.params.code;
+  const newLanguage = route?.params?.code ?? "en";
   const { appLang, colorScheme, golden } =
     useSelector(settingsState);
   const color = colors[colorScheme].CONTRAST[golden];
@@ -93,16 +93,16 @@ const ChangeHomeLanguageScreen: React.FC<{
           <FlagImage {...{ flag1: appLang, scale: 1.5 }} />
           <AntDesign
             name="arrow-right"
-            size={48}
+            size={base * 48}
             color={color}
           />
-          <FlagImage
-            flag1={newLanguage || "en"}
-            scale={1.5}
-          />
+          <FlagImage flag1={newLanguage} scale={1.5} />
         </View>
         <AppText
-          style={{ padding: base * 15, fontSize: 20 }}
+          style={{
+            padding: base * 15,
+            fontSize: base * 20,
+          }}
         >
           {changeHomeLanguageDetails}
         </AppText>
@@ -116,7 +116,7 @@ const ChangeHomeLanguageScreen: React.FC<{
           <View
             {...{
               style: {
-                paddingHorizontal: 15,
+                paddingHorizontal: base * 15,
                 width: "100%",
                 zIndex: 2,
               },

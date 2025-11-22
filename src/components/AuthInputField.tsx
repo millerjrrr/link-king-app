@@ -114,8 +114,12 @@ const AuthInputField: React.FC<AuthInputFieldProps> = (
   return (
     <Animated.View style={[{ width: "100%" }, inputStyle]}>
       <View style={styles.labelContainer}>
-        <AppText style={{ fontSize: 15 }}>{label}</AppText>
-        <AppText style={{ fontSize: 15, color: red }}>
+        <AppText style={{ fontSize: base * 15 }}>
+          {label}
+        </AppText>
+        <AppText
+          style={{ fontSize: base * 15, color: red }}
+        >
           {errorMsg}
         </AppText>
       </View>
@@ -130,7 +134,7 @@ const AuthInputField: React.FC<AuthInputFieldProps> = (
             secureTextEntry,
             style: {
               width: "100%",
-              marginBottom: bottomMargin ? 20 : 0,
+              marginBottom: bottomMargin ? base * 20 : 0,
             },
             onChangeText: handleChange(name),
             value: values[name],
@@ -159,8 +163,8 @@ const styles = StyleSheet.create({
     padding: base * 5,
   },
   rightIcon: {
-    width: 45,
-    height: 45,
+    width: base * 45,
+    height: base * 45,
     position: "absolute",
     top: 0,
     right: 0,

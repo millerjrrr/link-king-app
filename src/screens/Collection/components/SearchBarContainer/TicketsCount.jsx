@@ -3,12 +3,14 @@ import { useSelector } from "react-redux";
 import { collectionState } from "@src/store/collection";
 import BusyWrapper from "@src/components/Loader/BusyWrapper";
 import AppText from "@src/components/AppText";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const TicketsCount = () => {
   const { results, busy } = useSelector(collectionState);
   return (
     <View style={styles.container}>
-      <BusyWrapper {...{ busy, size: 10 }}>
+      <BusyWrapper {...{ busy, size: base * 10 }}>
         <AppText style={styles.text}>{results}</AppText>
       </BusyWrapper>
     </View>
@@ -18,11 +20,11 @@ const TicketsCount = () => {
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
-    marginBottom: 5,
-    height: 15,
+    marginBottom: base * 5,
+    height: base * 15,
   },
   text: {
-    fontSize: 10,
+    fontSize: base * 10,
     fontWeight: "bold",
   },
 });

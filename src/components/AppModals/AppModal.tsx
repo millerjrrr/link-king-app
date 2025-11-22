@@ -11,14 +11,12 @@ import { ReactNode } from "react";
 import Xbar from "./components/XBar";
 import useColors from "@src/hooks/utilityHooks/useColors";
 import AppLink from "../AppLink";
-import {
-  Linking,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Linking, TouchableOpacity } from "react-native";
 import appTextSource from "@src/utils/appTextSource";
 import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
 import SwiperWrapper from "./SwiperWrapper";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 interface Props {
   name: ModalType;
@@ -80,14 +78,14 @@ const AppModal: React.FC<Props> = ({
             <TouchableOpacity
               style={{
                 position: "absolute",
-                left: 7,
-                top: 7,
+                left: base * 7,
+                top: base * 7,
               }}
               onPress={openWebViewUrl}
             >
               <SimpleLineIcons
                 name="size-fullscreen"
-                size={20}
+                size={base * 20}
                 color={CONTRAST}
               />
             </TouchableOpacity>

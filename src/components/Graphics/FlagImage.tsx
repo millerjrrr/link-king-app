@@ -3,6 +3,8 @@ import getImageSource from "@src/utils/getImageSource";
 import React from "react";
 import appShadow from "@src/utils/appShadow";
 import useColors from "@src/hooks/utilityHooks/useColors";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 interface FlagImageProps {
   flag1: string;
@@ -22,20 +24,22 @@ const FlagImage: React.FC<FlagImageProps> = ({
   return (
     <View
       style={{
-        width: 36 * scale + (flag2 ? 18 * scale : 0),
-        height: 36 * scale,
-        margin: 5,
-        borderRadius: 18 * scale,
+        width:
+          base * 36 * scale +
+          (flag2 ? base * 18 * scale : 0),
+        height: base * 36 * scale,
+        margin: base * 5,
+        borderRadius: base * 18 * scale,
         backgroundColor: PRIMARY,
-        ...appShadow(CONTRAST, 5),
+        ...appShadow(CONTRAST, base * 5),
       }}
     >
       <Image
         source={source1}
         resizeMode={"contain"}
         style={{
-          width: 36 * scale,
-          height: 36 * scale,
+          width: base * 36 * scale,
+          height: base * 36 * scale,
           position: "absolute",
           top: 0,
           left: 0,
@@ -46,11 +50,11 @@ const FlagImage: React.FC<FlagImageProps> = ({
           source={source2}
           resizeMode={"contain"}
           style={{
-            width: 36 * scale,
-            height: 36 * scale,
+            width: base * 36 * scale,
+            height: base * 36 * scale,
             position: "absolute",
             top: 0,
-            left: 18 * scale,
+            left: base * 18 * scale,
           }}
         />
       ) : null}

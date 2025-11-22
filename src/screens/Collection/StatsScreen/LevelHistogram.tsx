@@ -45,7 +45,7 @@ const LevelHistogram: React.FC<{
       </View>
       <AppText
         style={{
-          fontSize: 50,
+          fontSize: base * 50,
           fontWeight: "bold",
           padding: base * 10,
         }}
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "flex-end",
     padding: base * 10,
-    borderRadius: 10,
+    borderRadius: base * 10,
   },
 });
 

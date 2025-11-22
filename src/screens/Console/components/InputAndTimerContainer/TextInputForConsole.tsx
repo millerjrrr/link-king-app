@@ -131,7 +131,7 @@ const TextInputForConsole: React.FC<Props> = ({
           color,
           ...appShadow(color),
           backgroundColor: PRIMARY,
-          fontSize,
+          fontSize: base * fontSize,
         },
         Platform.OS === "web"
           ? { outlineStyle: undefined }
@@ -144,10 +144,10 @@ const TextInputForConsole: React.FC<Props> = ({
 const styles = StyleSheet.create({
   input: {
     width: "100%",
-    height: 70,
+    height: base * 70,
     textAlign: "center",
     padding: base * 7,
-    borderRadius: 35,
+    borderRadius: base * 35,
     zIndex: 10,
   },
 });

@@ -13,6 +13,8 @@ import Animated, {
 } from "react-native-reanimated";
 import { settingsState } from "@src/store/settings";
 import AppText from "./AppText";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const AppNotification = () => {
   const { message, type } = useSelector(notificationState);
@@ -131,11 +133,11 @@ const styles = StyleSheet.create({
   },
   border: {
     flex: 1,
-    margin: 3,
+    margin: base * 3,
     justifyContent: "center",
     alignItems: "center",
-    paddingHorizontal: 15,
-    borderRadius: 4,
+    paddingHorizontal: base * 15,
+    borderRadius: base * 4,
   },
 });
 

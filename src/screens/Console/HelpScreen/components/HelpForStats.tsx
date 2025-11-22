@@ -1,6 +1,8 @@
 import StatsIcon from "@screens/Console/components/StatsContainer/StatsIcon";
 import DescriptionWrapper from "./DescriptionWrapper";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 type StatName = "dueToday" | "steps" | "time" | "streak";
 
@@ -22,7 +24,7 @@ const HelpForStats: React.FC<{ name: StatName }> = ({
             name
           ] as keyof typeof MaterialCommunityIcons.glyphMap
         }
-        size={50}
+        size={base * 50}
       />
     </DescriptionWrapper>
   );

@@ -1,5 +1,7 @@
 import { Image } from "react-native";
 import CrownImage from "@assets/adaptive-icon.png";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 interface CrownUIProps {
   size: number;
@@ -13,7 +15,7 @@ interface CrownUIProps {
 }
 
 const CrownUI: React.FC<CrownUIProps> = ({
-  size = 96,
+  size = base * 96,
   position,
   rotation,
   color,

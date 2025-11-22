@@ -16,6 +16,8 @@ import appTextSource from "@src/utils/appTextSource";
 import SpeakButton from "./SpeakButton";
 import useColors from "@src/hooks/utilityHooks/useColors";
 import { updateSelectedTicket } from "@src/store/collection";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const WordCard = ({ navigation, ticket, onPress }: any) => {
   const { appLang } = useSelector(settingsState);
@@ -49,7 +51,10 @@ const WordCard = ({ navigation, ticket, onPress }: any) => {
           onPress={onPress || goToWordInfoScreenForTicket}
         >
           <RowContainer>
-            <Title color={CONTRAST} fontSize={fontSize}>
+            <Title
+              color={CONTRAST}
+              fontSize={base * fontSize}
+            >
               {target}
             </Title>
             <Rating color={CONTRAST}>

@@ -10,6 +10,8 @@ import {
 import { Entypo } from "@expo/vector-icons";
 import useAddNewWord from "@src/hooks/collectionHooks/useAddNewWord";
 import useColors from "@src/hooks/utilityHooks/useColors";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const DictionaryLookupCard: React.FC<{
   dictEntry: any;
@@ -34,11 +36,14 @@ const DictionaryLookupCard: React.FC<{
       <Container
         color={CONTRAST}
         backgroundColor={SECONDARY}
-        style={{ height: 50 }}
+        style={{ height: base * 50 }}
       >
         <InfoContainer onPress={addWord}>
           <RowContainer>
-            <Title color={CONTRAST} fontSize={fontSize}>
+            <Title
+              color={CONTRAST}
+              fontSize={base * fontSize}
+            >
               {target}
             </Title>
             <Rating color={CONTRAST}>
@@ -46,10 +51,10 @@ const DictionaryLookupCard: React.FC<{
             </Rating>
           </RowContainer>
         </InfoContainer>
-        <IconContainer style={{ width: 30 }}>
+        <IconContainer style={{ width: base * 30 }}>
           <Entypo
             name="plus"
-            size={24}
+            size={base * 24}
             color={CONTRAST}
             onPress={addWord}
           />

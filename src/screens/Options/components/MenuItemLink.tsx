@@ -2,17 +2,21 @@ import { TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 import AppText from "@src/components/AppText";
 import useColors from "@src/hooks/utilityHooks/useColors";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
-const MenuItemName = styled(AppText)`
+const MenuItemName = styled(AppText)<{
+  color: `#${string}`;
+}>`
   color: ${(props: { color: `#${string}` }) => props.color};
-  font-size: 20px;
+  font-size: ${base * 20}px;
   text-align: flex-start;
 `;
 
 interface MenuItemLinkProps {
   name: string;
   onPress: () => void;
-  gray: boolean;
+  gray?: boolean;
 }
 
 const MenuItemLink: React.FC<MenuItemLinkProps> = ({

@@ -1,6 +1,8 @@
 import useColors from "@src/hooks/utilityHooks/useColors";
 import React, { ReactNode, useState } from "react";
 import { Text, TextProps } from "react-native";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 interface AutoResizeTextProps extends TextProps {
   fontSize?: number;
@@ -13,8 +15,8 @@ interface AutoResizeTextProps extends TextProps {
  * Automatically scales text size down until it fits on one line.
  */
 const AutoResizeText: React.FC<AutoResizeTextProps> = ({
-  fontSize = 24,
-  minFontSize = 14,
+  fontSize = base * 24,
+  minFontSize = base * 14,
   numberOfLines = 1,
   children,
   ...rest

@@ -3,6 +3,8 @@ import useColors from "@src/hooks/utilityHooks/useColors";
 import ClosingTextInput from "./ClosingTextInput";
 import { TouchableOpacity, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 interface Props {
   searchKeyword: string;
@@ -28,8 +30,8 @@ const AppSearchBar: React.FC<Props> = ({
     <View style={{ width: "70%", marginTop: 8 }}>
       <TouchableOpacity
         style={{
-          height: 60,
-          width: 60,
+          height: base * 60,
+          width: base * 60,
           alignItems: "center",
           justifyContent: "center",
           position: "absolute",
@@ -41,7 +43,7 @@ const AppSearchBar: React.FC<Props> = ({
         {searchKeyword === "" ? (
           <Ionicons
             name="search-sharp"
-            size={24}
+            size={base * 24}
             color={color}
           />
         ) : (
@@ -65,10 +67,10 @@ const AppSearchBar: React.FC<Props> = ({
         style={{
           zIndex: 10,
           backgroundColor: SECONDARY,
-          height: 60,
-          paddingLeft: 50,
-          borderRadius: 35,
-          fontSize: 20,
+          height: base * 60,
+          paddingLeft: base * 50,
+          borderRadius: base * 35,
+          fontSize: base * 20,
           color,
           ...appShadow(color),
         }}

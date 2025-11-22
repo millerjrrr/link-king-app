@@ -12,6 +12,8 @@ import appTextSource from "@src/utils/appTextSource";
 import languageNameCodeMap from "@src/utils/languageNameCodeMap";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { WalkthroughStackParamList } from "@src/types/navigationTypes";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const ChooseALanguageToStudy = () => {
   const { appLang } = useSelector(settingsState);
@@ -55,17 +57,17 @@ const ChooseALanguageToStudy = () => {
           flag2={languageNameCodeMap[dictionary]}
           scale={3}
         />
-        <View style={{ height: 10 }} />
+        <View style={{ height: base * 10 }} />
         <AppText>{name}</AppText>
-        <View style={{ height: 20 }} />
+        <View style={{ height: base * 20 }} />
         <AuthButton
           title={buttonTitle}
           busy={false}
           onPress={onPress}
         />
-        <View style={{ height: 20 }} />
+        <View style={{ height: base * 20 }} />
         <AppLink
-          title={linkTitle}
+          title={linkTitle || ""}
           onPress={changeStudyLanguage}
         />
       </TouchableOpacity>

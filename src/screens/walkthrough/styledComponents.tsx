@@ -21,7 +21,7 @@ export const TouchableCard = styled(
 )<Props>`
   width: 100%;
   padding: ${base * 15}px;
-  margin: ${base * 20}px;
+  margin: ${base * 10}px;
   align-items: center;
   border-radius: ${base * 15}px;
   background-color: ${(props: Props) => props.bg};

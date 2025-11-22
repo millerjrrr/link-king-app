@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { ScrollView, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import AuthButton from "@components/Buttons/AuthButton";
-import AppText from "@src/components/AppText";
 import { selectConsoleState } from "@src/store/console";
 import { settingsState } from "@src/store/settings";
 import { languages } from "../ManageAccount/ChangeHomeLanguageScreens/SelectNewLanguageScreen/getLanguageData";
-import { ResizeMode, Video } from "expo-av";
 import appTextSource from "@src/utils/appTextSource";
 import screenDimensions from "@src/utils/screenDimensions";
 import FadeBackgroundView from "@src/components/Graphics/FadeBackgroundView";
@@ -87,7 +85,7 @@ const WrittenInstructions = () => {
     player.play();
   });
 
-  const { height } = screenDimensions();
+  const { height, base } = screenDimensions();
   const navigation =
     useNavigation<
       StackNavigationProp<WalkthroughStackParamList>
@@ -105,12 +103,15 @@ const WrittenInstructions = () => {
           flex: 1,
         }}
       >
-        <FadeBackgroundView position="top" height={30} />
+        <FadeBackgroundView
+          position="top"
+          height={base * 30}
+        />
         <ScrollView
           contentContainerStyle={{
             alignItems: "center",
             width: "100%",
-            paddingHorizontal: 5,
+            paddingHorizontal: base * 5,
           }}
         >
           <Fill30 />
@@ -119,10 +120,10 @@ const WrittenInstructions = () => {
           <VidCard height={height * 0.3}>
             <VideoView
               style={{
-                transform: [{ translateY: 75 }],
+                transform: [{ translateY: base * 75 }],
                 height: height * 0.9,
                 aspectRatio: 1,
-                borderRadius: 15,
+                borderRadius: base * 15,
               }}
               nativeControls={false}
               player={player}
@@ -142,13 +143,13 @@ const WrittenInstructions = () => {
             />
           </VidCard>
           <TextBlock text={playFor} />
-          <View style={{ height: 50 }} />
+          <View style={{ height: base * 50 }} />
           <AuthButton
             title={next}
             busy={false}
             onPress={onPress}
           />
-          <View style={{ height: 100 }} />
+          <View style={{ height: base * 100 }} />
         </ScrollView>
       </View>
     </TabScreenContainer>

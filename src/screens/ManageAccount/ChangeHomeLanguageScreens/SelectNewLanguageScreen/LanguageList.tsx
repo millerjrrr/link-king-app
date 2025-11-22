@@ -1,6 +1,8 @@
 import React from "react";
 import { FlatList, View, StyleSheet } from "react-native";
 import LanguageCard from "./LanguageCard";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 export interface Language {
   code: string;
@@ -41,7 +43,7 @@ const LanguageList: React.FC<LanguageListProps> = ({
         style={styles.flatList}
         onEndReachedThreshold={0.1}
         ListFooterComponent={
-          <View style={{ height: 100 }} />
+          <View style={{ height: base * 100 }} />
         }
         showsVerticalScrollIndicator={false}
       />
@@ -52,7 +54,7 @@ const LanguageList: React.FC<LanguageListProps> = ({
 const styles = StyleSheet.create({
   flatList: {
     flex: 1,
-    paddingTop: 90,
+    paddingTop: base * 90,
     width: "100%",
   },
 });

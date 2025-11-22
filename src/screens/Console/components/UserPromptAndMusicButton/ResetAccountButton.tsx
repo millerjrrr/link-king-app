@@ -36,7 +36,7 @@ const ResetAccountButton = () => {
     >
       <MaterialCommunityIcons
         name={"archive-refresh"}
-        size={24}
+        size={base * 24}
         color={SECONDARY}
       />
     </TouchableOpacity>

@@ -48,8 +48,7 @@ export const Name = styled(AppText)<{
   fontSize: number;
   color: string;
 }>`
-  font-size: ${(props: Props) =>
-    props.fontSize ? props.fontSize * base : 20 * base}px;
+  font-size: ${(props: Props) => props.fontSize}px;
   font-weight: bold;
   align-items: flex-start;
   justify-content: center;
@@ -60,8 +59,7 @@ export const Email = styled(AppText)<{
   fontSize: number;
   color: string;
 }>`
-  font-size: ${(props: Props) =>
-    props.fontSize ? props.fontSize * base : 20 * base}px;
+  font-size: ${(props: Props) => props.fontSize}px;
   align-items: flex-start;
   justify-content: center;
   color: ${(props: Props) => props.color};

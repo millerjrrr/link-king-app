@@ -1,9 +1,8 @@
 import useColors from "@src/hooks/utilityHooks/useColors";
 import RNPickerSelect from "react-native-picker-select";
-import {
-  Container,
-  DropdownContainer,
-} from "./StyledComponents";
+import { DropdownContainer } from "./StyledComponents";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 interface DropdownSelectorProps {
   onSelect: (value: number) => void;
@@ -24,17 +23,17 @@ const DropdownSelector: React.FC<DropdownSelectorProps> = ({
     (_, index) => ({
       label: index.toString(),
       value: index,
-    }),
+    })
   );
 
   const commonStyles = {
-    fontSize: 40,
+    fontSize: base * 40,
     color: CONTRAST,
     backgroundColor: SECONDARY,
-    paddingVertical: 10,
-    paddingHorizontal: 10,
+    paddingVertical: base * 10,
+    paddingHorizontal: base * 10,
     textAlign: "center",
-    boderRadius: 8,
+    boderRadius: base * 8,
     outline: "none", // Remove the white border (focus outline)
     borderWidth: 0,
   };

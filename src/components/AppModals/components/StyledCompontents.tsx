@@ -8,19 +8,19 @@ import styled from "styled-components/native";
 import AppText from "../../AppText";
 import { appShadowForStyledComponents } from "@src/utils/appShadow";
 import screenDimensions from "@src/utils/screenDimensions";
-const { width, height } = screenDimensions();
+const { base, width, height } = screenDimensions();
 
 interface Props {
   backgroundColor?: `#${string}`; // Define prop type
-  size?: string; // Define prop type
+  size?: number; // Define prop type
   color: `#${string}`; // Define prop type
 }
 
 // width: ${width - 10}px;
 export const ModalContainer = styled(View)<Props>`
   width: ${width - 30}px;
-  padding-horizontal: 5px;
-  border-radius: 10px;
+  padding-horizontal: ${base * 5}px;
+  border-radius: ${base * 10}px;
   align-items: center;
   justify-content: center;
   background-color: ${({ backgroundColor }) =>
@@ -30,41 +30,41 @@ export const ModalContainer = styled(View)<Props>`
 `;
 
 export const WebViewContainer = styled(View)`
-  padding-horizontal: 5px;
-  padding-vertical: 10px;
-  border-radius: 10px;
+  padding-horizontal: ${base * 5}px;
+  padding-vertical: ${base * 10}px;
+  border-radius: ${base * 10}px;
   height: ${height * 0.7}px;
   width: 100%;
 `;
 
 export const NewWordModalContainer = styled(View)`
-  padding-horizontal: 5px;
-  padding-vertical: 10px;
-  border-radius: 10px;
+  padding-horizontal: ${base * 5}px;
+  padding-vertical: ${base * 10}px;
+  border-radius: ${base * 10}px;
   width: 100%;
 `;
 
 export const NewWordHeader = styled(AppText)`
-  font-size: 15px;
-  padding-bottom: 10px;
+  font-size: ${base * 15}px;
+  padding-bottom: ${base * 10}px;
 `;
 
 export const XBarContainer = styled(TouchableOpacity)`
-  padding-top: 5px;
+  padding-top: ${base * 5}px;
   align-items: flex-end;
   width: 100%;
 `;
 
 export const ModalText = styled(AppText)<TextStyle & Props>`
-  padding-horizontal: 10px;
-  padding-bottom: 10px;
+  padding-horizontal: ${base * 10}px;
+  padding-bottom: ${base * 10}px;
   color: ${(props: Props) => props.color};
 `;
 
 export const ButtonText = styled(AppText)<
   TextStyle & Props
 >`
-  margin: 15px;
+  margin: ${base * 15}px;
   font-size: ${(props: Props) => props.size}px;
   color: ${(props: Props) => props.color};
 `;
@@ -75,6 +75,6 @@ export const ButtonContainer = styled(
   width: 100%;
   border-top-color: ${(props: Props) => props.color};
   border-top-width: ${Platform.OS === "android"
-    ? 0.5
-    : 0.2}px;
+    ? 0.5 * base
+    : 0.2 * base}px;
 `;

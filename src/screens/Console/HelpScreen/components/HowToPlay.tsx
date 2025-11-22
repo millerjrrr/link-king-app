@@ -39,7 +39,7 @@ const HowToPlay = () => {
     player.play();
   });
 
-  const { height } = screenDimensions();
+  const { height, base } = screenDimensions();
 
   const navigation =
     useNavigation<
@@ -54,8 +54,8 @@ const HowToPlay = () => {
             backgroundColor: PRIMARY,
             borderRadius: height * 0.25 * 0.0542,
             borderColor: INACTIVE_CONTRAST,
-            borderWidth: 3,
-            margin: 15,
+            borderWidth: base * 3,
+            margin: base * 15,
             justifyContent: "center",
             alignItems: "center",
             width: "100%",
@@ -75,7 +75,7 @@ const HowToPlay = () => {
               player={player}
               nativeControls={false}
               style={{
-                transform: [{ translateY: 50 }],
+                transform: [{ translateY: base * 50 }],
                 height: 0.7 * height,
                 aspectRatio: 1,
                 borderRadius: height * 0.25 * 0.0542,
@@ -92,7 +92,7 @@ const HowToPlay = () => {
         >
           <Entypo
             name="open-book"
-            size={10}
+            size={base * 10}
             color={CONTRAST}
           />
           <AppLink

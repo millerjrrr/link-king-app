@@ -12,6 +12,8 @@ import Auth3PButtons from "@src/components/Auth3P/Auth3PButtons";
 import BusyWrapper from "../../../components/Loader/BusyWrapper";
 import { authState } from "../../../store/auth";
 import { AuthStackNavProp } from "@src/types/navigationTypes";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const Welcome = () => {
   const { colorScheme, golden, appLang } =
@@ -34,13 +36,13 @@ const Welcome = () => {
       subHeading={subHeading}
       back={false}
     >
-      <BusyWrapper busy={busy} size={150}>
+      <BusyWrapper busy={busy} size={base * 150}>
         <MaterialCommunityIcons
           name={"account-arrow-right-outline"}
-          size={100}
+          size={base * 100}
           color={color}
         />
-        <View style={{ height: 20 }} />
+        <View style={{ height: base * 20 }} />
         <AuthButton
           title={buttonTitle}
           busy={false}

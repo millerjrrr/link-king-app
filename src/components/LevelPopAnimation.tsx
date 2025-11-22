@@ -80,7 +80,7 @@ const LevelPopAnimation = () => {
       style={[
         {
           position: "absolute",
-          top: 20,
+          top: base * 20,
           right: 0,
           zIndex: 10000,
         },
@@ -91,7 +91,7 @@ const LevelPopAnimation = () => {
         <AppText
           style={{
             color: popType ? GREEN : RED,
-            fontSize: 24,
+            fontSize: base * 24,
             fontWeight: "bold",
           }}
         >

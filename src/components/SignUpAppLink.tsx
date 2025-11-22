@@ -6,6 +6,8 @@ import { View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { AuthStackParamList } from "@src/types/navigationTypes";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const SignUpAppLink = ({}) => {
   const navigation =
@@ -24,7 +26,7 @@ const SignUpAppLink = ({}) => {
   return (
     <View
       style={{
-        marginTop: 10,
+        marginTop: base * 10,
         width: "100%",
         alignItems: "center",
       }}

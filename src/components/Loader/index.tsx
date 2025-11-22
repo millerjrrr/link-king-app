@@ -9,6 +9,8 @@ import Animated, {
 } from "react-native-reanimated";
 import { AntDesign } from "@expo/vector-icons";
 import useColors from "@src/hooks/utilityHooks/useColors";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 declare function require(path: string): any;
 
@@ -19,7 +21,7 @@ interface LoaderProps {
   duration?: number;
 }
 const Loader: React.FC<LoaderProps> = ({
-  size = 24,
+  size = base * 24,
   color,
   altimage,
   duration = 700,
@@ -85,7 +87,7 @@ const Loader: React.FC<LoaderProps> = ({
       <View
         style={{
           position: "absolute",
-          borderRadius: 500,
+          borderRadius: base * 500,
         }}
       >
         <Image

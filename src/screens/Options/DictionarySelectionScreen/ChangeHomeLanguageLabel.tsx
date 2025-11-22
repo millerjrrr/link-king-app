@@ -26,7 +26,7 @@ const ChangeHomeLanguageLabel = () => {
       style={{
         flexDirection: "row",
         alignItems: "center",
-        paddingVertical: 30,
+        paddingVertical: base * 30,
       }}
     >
       <Image
@@ -34,15 +34,15 @@ const ChangeHomeLanguageLabel = () => {
           source: getImageSource(appLang),
           resizeMode: "contain",
           style: {
-            width: 30,
-            height: 30,
+            width: base * 30,
+            height: base * 30,
           },
         }}
       />
       <AppText
         {...{
           style: {
-            fontSize: 18,
+            fontSize: base * 18,
             padding: base * 5,
           },
         }}

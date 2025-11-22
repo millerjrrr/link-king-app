@@ -9,6 +9,8 @@ import { settingsState } from "@src/store/settings";
 import useFetchTickets from "@src/hooks/collectionHooks/useFetchTickets";
 import { updateModals } from "@src/store/modals";
 import usePopToTop from "@src/hooks/utilityHooks/usePopToTop";
+import screenDimensions from "@src/utils/screenDimensions";
+const { base } = screenDimensions();
 
 const Collection = ({ navigation }) => {
   usePopToTop();
@@ -37,7 +39,7 @@ const Collection = ({ navigation }) => {
       dictionarySettings={dictionarySettings}
     >
       <SearchBarContainer navigation={navigation} />
-      <BusyWrapper busy={busy} size={150} pushToTop>
+      <BusyWrapper busy={busy} size={base * 150} pushToTop>
         <WordCollectionList
           navigation={navigation}
           tickets={tickets}

@@ -37,7 +37,9 @@ const TabNavigator = () => {
             justifyContent: "flex-start",
             alignItems: "flex-start",
           }),
-          height: 80 + (Platform.OS === "android" ? 50 : 0),
+          height:
+            base * 80 +
+            (Platform.OS === "android" ? base * 50 : 0),
           padding: base * 10,
           borderTopWidth: 0,
           width: "100%",
@@ -52,7 +54,7 @@ const TabNavigator = () => {
           tabBarIcon: ({ color, size }) => (
             <Ionicons
               name="game-controller"
-              size={size + 15}
+              size={base * (size + 15)}
               color={color}
             />
           ),
@@ -65,7 +67,7 @@ const TabNavigator = () => {
           tabBarIcon: ({ color, size }) => (
             <Entypo
               name="open-book"
-              size={size + 15}
+              size={base * (size + 15)}
               color={color}
             />
           ),
@@ -78,7 +80,7 @@ const TabNavigator = () => {
           tabBarIcon: ({ color, size }) => (
             <MaterialIcons
               name="settings"
-              size={size + 15}
+              size={base * (size + 15)}
               color={color}
             />
           ),
