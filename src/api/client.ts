@@ -9,7 +9,7 @@ const LocalIP = "http://192.168.1.64:3001";
 const baseURL =
   process.env.NODE_ENV === "production"
     ? ProductionServer
-    : ProductionServer;
+    : LocalHost;
 
 const client: AxiosInstance = axios.create({
   baseURL,

@@ -37,7 +37,7 @@ const GoogleAuthButton = () => {
 
   const redirectUri = web
     ? AuthSession.makeRedirectUri({
-        path: "jacobs-apps/link-king-web-app", // your deployed subpath
+        path: "/link-king-web-app", // your deployed subpath
       })
     : AuthSession.makeRedirectUri({
         scheme: "com.linkoking.app",
