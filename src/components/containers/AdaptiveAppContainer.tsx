@@ -19,11 +19,7 @@ const AdaptiveAppContainer = ({
     Dimensions.get("window");
 
   return Platform.OS === "web" && vh < 1.5 * vw ? (
-    <LinearGradient
-      colors={["grey", "black", "grey"]}
-      locations={[0, 0.5, 1]}
-      start={{ x: 0.0, y: 0.0 }}
-      end={{ x: 1, y: 0.5 }}
+    <View
       style={{
         flex: 1,
         justifyContent: "center",
@@ -64,7 +60,7 @@ const AdaptiveAppContainer = ({
           {children}
         </View>
       </View>
-    </LinearGradient>
+    </View>
   ) : (
     <View style={{ flex: 1, backgroundColor: "black" }}>
       {children}
