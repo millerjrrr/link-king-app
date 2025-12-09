@@ -1,62 +1,62 @@
-import appShadow from "@src/utils/appShadow";
-import colors from "@src/utils/colors";
 import screenDimensions from "@src/utils/screenDimensions";
-const { base, height, width } = screenDimensions();
-import { LinearGradient } from "expo-linear-gradient";
+const { height, width } = screenDimensions();
 import { ReactNode } from "react";
-import { Dimensions, Platform, View } from "react-native";
+import {
+  Dimensions,
+  Image,
+  Platform,
+  View,
+} from "react-native";
+declare function require(path: string): any;
 
 const AdaptiveAppContainer = ({
   children,
 }: {
   children: ReactNode;
 }) => {
-  const { CONTRAST } = colors.dark;
-  const borderRadius = height * 0.0542;
+  const borderRadius = height * 0.075;
 
   //run npx expo export --platform web to export
   const { width: vw, height: vh } =
     Dimensions.get("window");
 
-  return Platform.OS === "web" && vh < 1.5 * vw ? (
+  return Platform.OS === "web" ? (
     <View
       style={{
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
+        backgroundColor: "black",
       }}
     >
       <View
         style={{
-          borderColor: CONTRAST[1],
-          borderWidth: base * 3,
-          borderRadius,
-          ...appShadow(CONTRAST[0], 15),
+          position: "relative",
+          display: "flex",
+          overflow: "hidden",
+          height: vh,
+          width: 0.5 * vh,
         }}
       >
+        <Image
+          source={require("@assets/img/iPhone_Static.png")}
+          style={{
+            position: "absolute",
+            zIndex: 1,
+            height: vh,
+            width: 0.5 * vh,
+          }}
+        />
         <View
           style={{
-            height,
-            width,
+            zIndex: 2,
+            display: "flex",
+            flex: 1,
             borderRadius,
             overflow: "hidden",
-            borderWidth: base * 10,
-            backgroundColor: "black",
+            margin: "7.5%",
           }}
         >
-          <View
-            style={{
-              width: 0.3 * width,
-              height: 0.085 * width,
-              top: 0.033 * width,
-              left: "50%",
-              transform: [{ translateX: -0.15 * width }],
-              backgroundColor: "black",
-              position: "absolute",
-              zIndex: 1000,
-              borderRadius: height,
-            }}
-          />
           {children}
         </View>
       </View>
